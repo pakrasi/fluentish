@@ -17,7 +17,7 @@ import { langAttr, dirAttr } from '../../core/lang.js';
 import { countTo } from '../../core/motion.js';
 import { fitToKeyboard, keep, reveal as revealEl } from '../../core/keyboard.js';
 import { ARTICLES, TRIES, judge, judgeTyped, doneOf, pointsOf, foundCount, piecesOf, spell, partsOf, tapTile, dropLast, endingChains, buildOf } from '../../domain/wordbuild-family.js';
-import { loadFamilies, todayBoard, saveDay, answerClue, stateOf } from './family-data.js';
+import { loadFamilies, todayBoard, saveDay, answerClue, stateOf, tomorrowRoot } from './family-data.js';
 import { knowledge, cardsOf, addActivity } from './data.js';
 import { formWord } from './fword.js';
 import { play, css, reduced, wait, nudge, finishAll } from './fx.js';
@@ -624,11 +624,32 @@ export async function mountToday(el, ctx) {
     const counted = [nNew ? t('build.today.doneNew', { n: nNew }) : null, nRev ? t('build.today.doneReviews', { n: nRev }) : null].filter(Boolean);
     const grid = h('div', { class: 'pz-grid', role: 'img', 'aria-label': t('build.today.doneGrid', { f1: c('f1'), f2: c('f2'), shown: c('shown') }) }, day.cards.map(id => h('i', { class: `is-${day.done[id]}` })));
     const fig = h('span', { class: 'figure tnum pz-fig' }, '0');
+    // the reason to come back: tomorrow's root, named now and kept (family-data.js tomorrowRoot); count only, no streak
+    const next = tomorrowRoot(ctx, d, fams, k);
+    const nextFam = next ? fams.get(next) : null;
+    const famLink = (/** @type {Form} */ f) => `#/practice/build/family/${encodeURIComponent(fam.root)}?w=${encodeURIComponent(f.id)}&from=today`;
+    /** A word of the board (or an extra word): its state, the word, its meaning; a link to its card in the family. @param {Form} f @param {string | null} dn */
+    const wordRow = (f, dn) => h('li', null, h('a', { class: 'pz-dw pressable', href: famLink(f) },
+      h('span', { class: ['pz-bsq', dn && `is-${dn}`], 'aria-hidden': 'true' }),
+      h('span', { class: 'pz-dw-w', lang: langAttr(), dir: dirAttr() }, f.art ? h('span', { class: 'fw-art' }, `${f.art} `) : null, f.word),
+      h('span', { class: 'pz-dw-en' }, f.clue || f.en),
+      h('span', { class: 'pz-dw-st caption' }, dn === 'shown' ? t('build.today.doneShown') : dn ? t('build.today.doneFound') : t('build.today.doneExtra'))));
+    // the board's prefixes and endings with what each means (the parts its words were built from)
+    const preIds = [...new Set(forms.flatMap(f => [...f.pre].reverse()))];
+    const sufIds = [...new Set(forms.flatMap(f => f.suf))];
+    const partRow = (/** @type {string} */ text, /** @type {string} */ sense) => h('li', { class: 'pz-dp' }, h('span', { class: 'pz-dp-de', lang: langAttr(), dir: dirAttr() }, text), h('span', { class: 'pz-dp-en' }, sense || ''));
+    const extras = day.extras.map(id => fam.byId.get(id)).filter(Boolean);
     const sec = h('section', { class: 'pz-done', 'aria-labelledby': 'pz-done-h' },
       h('h2', { id: 'pz-done-h', tabindex: '-1' }, t('build.today.doneTitle')),
       fig, h('p', { class: 'pz-done-of' }, t('build.today.doneOf', { n: N })), grid,
+      next ? h('p', { class: 'pz-next' }, t('build.today.doneTomorrowRoot', { root: '\u0000' }).split('\u0000').flatMap((x, i) => (i ? [h('span', { class: 'pz-next-root', lang: langAttr(), dir: dirAttr() }, next), x] : [x])).filter(x => x !== ''),
+        nextFam ? h('span', { class: 'pz-next-en' }, ` ${String(nextFam.en).split(/[,;]/)[0].trim()}`) : null) : h('p', { class: 'pz-next' }, t('build.today.doneTomorrow')),
       h('p', { class: 'caption pz-done-line' }, [day.extras.length ? t('build.today.doneExtras', { n: day.extras.length }) : null,
-        counted.length ? t('build.today.doneCounted', { words: counted.join(' and ') }) : t('build.today.doneNothing'), t('build.today.doneTomorrow')].filter(Boolean).join(' ')),
+        counted.length ? t('build.today.doneCounted', { words: counted.join(' and ') }) : t('build.today.doneNothing')].filter(Boolean).join(' ')),
+      h('section', { class: 'pz-dsec', 'aria-labelledby': 'pz-dparts-h' }, h('h3', { id: 'pz-dparts-h' }, t('build.today.doneParts')),
+        h('ul', { class: 'pz-dparts' }, preIds.map(p => partRow(`${p}-`, preSense(p))), sufIds.map(x => partRow(endLabel(x), endSense(x))))),
+      h('section', { class: 'pz-dsec', 'aria-labelledby': 'pz-dwords-h' }, h('h3', { id: 'pz-dwords-h' }, t('build.today.doneWords')),
+        h('ul', { class: 'pz-dwords' }, forms.map((f, i) => wordRow(f, day.done[day.cards[i]] || null)), extras.map(f => wordRow(/** @type {Form} */ (f), null)))),
       // One word (WORDGAMES-DESIGN §5.2, phase 3) goes here: a second, typed round on one form of the root
       h('div', { class: 'pz-done-acts' },
         h('a', { class: 'btn btn-primary pressable', href: `#/practice/build/family/${encodeURIComponent(fam.root)}?from=today` }, t('build.today.seeFamily')),
@@ -637,7 +658,11 @@ export async function mountToday(el, ctx) {
     drawProgress();
     drawBoard();
     countTo(fig, n, { duration: 700 });
-    if (!reduced()) [...grid.children].forEach((x, i) => play(x, [{ transform: 'scale(0.4)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 560, delay: 200 + i * 40, easing: css('--spring-pop') }));
+    if (!reduced()) {
+      [...grid.children].forEach((x, i) => play(x, [{ transform: 'scale(0.4)', opacity: 0 }, { transform: 'none', opacity: 1 }], { duration: 560, delay: 200 + i * 40, easing: css('--spring-pop') }));
+      const after = 200 + grid.children.length * 40;
+      [...sec.querySelectorAll('.pz-next, .pz-dsec, .pz-done-acts')].forEach((x, i) => play(x, [{ opacity: 0, transform: 'translateY(8px)' }, { opacity: 1, transform: 'none' }], { duration: 380, delay: after + i * 70, easing: css('--ease-out') }));
+    }
     /** @type {HTMLElement | null} */ (sec.querySelector('h2'))?.focus({ preventScroll: true });
     if (!day.counted) { day.counted = true; saveDay(store, day); addActivity(store, ctx.clock.today(), { minutes: Math.max(1, Math.round((day.ms || 0) / 60000)), rounds: 1, kind: 'build' }); }
   }

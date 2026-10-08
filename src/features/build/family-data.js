@@ -3,8 +3,8 @@
 
    Writes:
      kv 'build.family'   Today's family: { days: [{ day, root, level, cards, writes, fresh, tiles, tries, done, split,
-                          extras, points, ms, stats: {known, n} }], recent: [root] } (domain FamilyLog), the last 60
-                          days. In the backup (rule 'family': merged by day), so a board in progress follows him.
+                          extras, points, ms, stats: {known, n} }], recent: [root], next: {day, root} } (domain
+                          FamilyLog), the last 60 days; next is the root the done screen named for tomorrow. In the backup (rule 'family': merged by day), so a board in progress follows him.
      kv 'build.reports'  "Report this word": [{ form, root, word, day }] on this device only (never in a backup, never
                           sent anywhere); Profile › Diagnostics lists them. A reported form leaves the board.
      cards 'build'       only for a board word that is due today or new inside the allowance (saveAnswer). */
@@ -13,6 +13,7 @@ import { dayAllowance, todayPlan } from '../../domain/allowance.js';
 import { courseGoal } from '../../domain/levels.js';
 import { loadContent, cardsOf, dueFns, saveAnswer, today as todayState } from './data.js';
 import { loadBuild } from '../../data/build-content.js';
+import * as D8 from '../../domain/days.js';
 
 export const FAMILY = 'build.family';
 export const REPORTS = 'build.reports';
@@ -84,13 +85,38 @@ export function todayBoard(ctx, d, fams, k = null) {
   const level = g.level || g.goal || 'B1';
   const light = todayPlan({ store: ctx.store, c, settings }).kind === 'light';
   const reported = new Set(reportsOf(ctx.store).map(r => r.form));
-  const board = F.boardFor({ families: fams, cards: cardsOf(ctx.store), day: c.today, level, light, newLeft: b ? b.newLeft : 0, paused: !b || b.paused || !c.newItems,
-    isDue: dueFns(c).isDue, state: f => stateOf(d, k, f), recent: log.recent || [], reported });
+  const o = { families: fams, cards: cardsOf(ctx.store), day: c.today, level, light, newLeft: b ? b.newLeft : 0, paused: !b || b.paused || !c.newItems,
+    isDue: dueFns(c).isDue, state: (/** @type {F.Form} */ f) => stateOf(d, k, f), recent: log.recent || [], reported };
+  // the root yesterday's done screen named ("Tomorrow: kommen") when it still makes a board, else the day's pick
+  const named = log.next && log.next.day === c.today && fams.has(log.next.root) ? log.next.root : null;
+  const board = (named ? F.boardFor({ ...o, root: named }) : null) || F.boardFor(o);
   if (!board) return null;
   const fam = /** @type {F.Family} */ (fams.get(board.root));
   const day = { ...F.newDay(board), stats: statsOf(d, k, fam) };
   ctx.store.update(FAMILY, (/** @type {any} */ x) => F.putDay(x, day), null);
   return day;
+}
+
+/**
+ * Tomorrow's root, for the done screen's "Tomorrow: kommen": the board picker run for tomorrow with today's root in
+ * the recent list, kept in the log (next: {day, root}) so tomorrow's board is that root when it still makes one.
+ * @param {any} ctx @param {any} d @param {Map<string, F.Family>} fams @param {any} [k] knowledge
+ * @returns {string | null}
+ */
+export function tomorrowRoot(ctx, d, fams, k = null) {
+  const c = ctx.clock.ctx();
+  const day = D8.add(c.today, 1);
+  const log = logOf(ctx.store);
+  if (log.next && log.next.day === day && fams.has(log.next.root)) return log.next.root;
+  const g = courseGoal(ctx.settings());
+  const reported = new Set(reportsOf(ctx.store).map(r => r.form));
+  const cards = cardsOf(ctx.store);
+  const recent = log.recent || [];   // today's root is its last entry (putDay), so it rests
+  const board = F.boardFor({ families: fams, cards, day, level: g.level || g.goal || 'B1', newLeft: F.BOARD_NEW, paused: !c.newItems,
+    isDue: (/** @type {any} */ r) => !!(r && r.due && r.due <= day), state: f => stateOf(d, k, f), recent, reported });
+  if (!board) return null;
+  ctx.store.update(FAMILY, (/** @type {any} */ x) => ({ ...(x || { days: [], recent: [] }), next: { day, root: board.root } }), null);
+  return board.root;
 }
 
 /** Known of a family's forms ("5 of 32 known"). @param {any} d @param {any} k @param {F.Family} fam */
