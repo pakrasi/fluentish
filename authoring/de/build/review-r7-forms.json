@@ -1,0 +1,100 @@
+{
+ "pass": "review-r7-forms.json",
+ "about": "Round 7 second pass (branch r7/wordgame-content2): 17 standard words promoted from rare[] to forms, each with a DWDS dictionary entry and 38,000+ DWDS corpus hits. Machine gates (validator, grading corpus incl. the family classes at 0 graded right, board probes), then pass A (strict native de-DE lexicographer persona), pass B (native DaF teacher persona, blind to pass A), reconcile; pass B was over 2%, so a final blind pass (learner's-dictionary editor persona) on the fixed batch. Model personas, not people: reviewedBy model-2pass. A tutor list is in TUTOR-CHECK.md section 5.",
+ "reviewedBy": "model-2pass",
+ "reviewedAt": "2026-10-08",
+ "ids": [
+  "hingehen.verb",
+  "ergehen.verb",
+  "mithalten.verb",
+  "anstehen.verb",
+  "zustehen.verb",
+  "vorgeben.verb",
+  "freigeben.verb",
+  "mitgeben.verb",
+  "die_Vergebung",
+  "die_Eintragung",
+  "einträglich.adj",
+  "sich_beteiligen.verb",
+  "die_Beteiligung",
+  "unterziehen.verb",
+  "sich_belaufen.verb",
+  "hinsehen.verb",
+  "zuschreiben.verb"
+ ],
+ "passes": [
+  {
+   "pass": "A",
+   "entries": 17,
+   "errors": 0,
+   "improves": 7,
+   "errorRate": 0.0
+  },
+  {
+   "pass": "B (blind)",
+   "entries": 17,
+   "errors": 1,
+   "improves": 9,
+   "errorRate": 0.0588
+  },
+  {
+   "pass": "final (blind, after reconcile)",
+   "entries": 17,
+   "errors": 0,
+   "improves": 3,
+   "errorRate": 0.0
+  }
+ ],
+ "reconcile": [
+  {
+   "id": "einträglich.adj",
+   "field": "why, note",
+   "decision": "fixed (B error, A improve agree): the money sense of eintragen is current (formal), not 'once'; the umlaut note points to verträglich, erträglich"
+  },
+  {
+   "id": "vorgeben.verb",
+   "field": "level",
+   "decision": "C1 → B2 (A and B agree)"
+  },
+  {
+   "id": "mithalten.verb",
+   "field": "clue",
+   "decision": "'to keep pace (with the others)': beibehalten's clue also starts 'to keep up' (A and B agree)"
+  },
+  {
+   "id": "zustehen.verb",
+   "field": "clue, note",
+   "decision": "clue without 'due' (anstehen's clue uses it); note: zugestanden is also the Partizip of zugestehen"
+  },
+  {
+   "id": "unterziehen.verb",
+   "field": "en, note",
+   "decision": "the separable reading is not rare (recipes, clothes): the note says so with its stress; en names the non-reflexive use with a thing"
+  },
+  {
+   "id": "die_Beteiligung",
+   "field": "clue",
+   "decision": "participation and turnout first: 'a stake' overlapped der Anteil"
+  },
+  {
+   "id": "zuschreiben.verb",
+   "field": "en",
+   "decision": "added: sich etwas selbst zuzuschreiben haben"
+  },
+  {
+   "id": "ergehen.verb",
+   "field": "en, exEn",
+   "decision": "the impersonal pattern es ergeht jemandem; final pass: translation shows it"
+  },
+  {
+   "id": "die_Eintragung",
+   "field": "exEn",
+   "decision": "final pass: the translation keeps the noun"
+  },
+  {
+   "id": "sich_belaufen.verb",
+   "field": "note",
+   "decision": "final pass: Partizip II belaufen, no ge-"
+  }
+ ]
+}

@@ -61,17 +61,17 @@ read it once. Quote the form id (in brackets) with a correction.
 - **legen**: entlegen; erlegen; unterlegen
 - **setzen**: zersetzen; entsetzen; widersetzen
 - **nehmen**: ausnehmen; durchnehmen
-- **geben**: vorgeben; mitgeben; durchgeben; hingeben; freigeben
+- **geben**: durchgeben; hingeben
 - **kommen**: verkommen; hinkommen; überkommen
-- **gehen**: zergehen; ergehen; hingehen; übergehen
-- **ziehen**: hinziehen; nachziehen; durchziehen; unterziehen; mitziehen
+- **gehen**: zergehen; übergehen
+- **ziehen**: hinziehen; nachziehen; durchziehen; mitziehen
 - **fallen**: missfallen; herfallen
-- **halten**: vorhalten; mithalten; herhalten
+- **halten**: vorhalten; herhalten
 - **sprechen**: zersprechen; vorsprechen; mitsprechen; lossprechen
-- **schreiben**: zuschreiben; nachschreiben; hinschreiben
-- **sehen**: ersehen; besehen; hinsehen; wegsehen
+- **schreiben**: nachschreiben; hinschreiben
+- **sehen**: ersehen; besehen; wegsehen
 - **fahren**: zerfahren; entfahren; widerfahren; anfahren; auffahren; ausfahren
-- **stehen**: erstehen; anstehen; zustehen
+- **stehen**: erstehen
 - **arbeiten**: zerarbeiten; umarbeiten; nacharbeiten; vorarbeiten; zuarbeiten; herausarbeiten
 - **bieten**: erbieten; entbieten; nachbieten
 - **brechen**: entbrechen; umbrechen; gebrechen
@@ -80,7 +80,7 @@ read it once. Quote the form id (in brackets) with a correction.
 - **hören**: misshören; erhören; hinhören
 - **kaufen**: bekaufen
 - **lassen**: zerlassen
-- **laufen**: zerlaufen; erlaufen; belaufen
+- **laufen**: zerlaufen; erlaufen
 - **leiten**: missleiten; herleiten; zuleiten
 - **machen**: bemachen
 - **richten**: zurichten; abrichten; vorrichten
@@ -89,7 +89,7 @@ read it once. Quote the form id (in brackets) with a correction.
 - **scheiden**: verscheiden; abscheiden
 - **schlagen**: abschlagen; beschlagen; verschlagen; entschlagen; überschlagen
 - **stimmen**: mitstimmen; beistimmen; verstimmen
-- **teilen**: zerteilen; beteilen; beteiligen
+- **teilen**: zerteilen; beteilen
 - **treten**: zutreten; untertreten; umtreten
 - **weisen**: unterweisen
 
@@ -213,3 +213,26 @@ read it once. Quote the form id (in brackets) with a correction.
 - [die_Postleitzahl] **die Postleitzahl** (POstleitzahl): die Postleitzahl: a compound takes the gender of its last part, die Zahl.
 - [die_Geheimzahl] **die Geheimzahl** (GehEimzahl): die Geheimzahl: a compound takes the gender of its last part, die Zahl. geheim is stressed on its second syllable: ge-HEIM-zahl.
 - [der_Zahler] **der Zahler** (ZAhler): Not to be confused with der Zähler (meter, counter; numerator).
+
+## 5. New forms (round 7, second pass)
+
+Standard words moved from the "possibly real" list to forms, with a meaning, a clue and an example. Check the
+meaning, the helper (aux) and the clue (it must lead to this word, not another of the family).
+
+- [hingehen.verb] **hingehen** (gehen): go there (to a place, an event). Clue: to go there (to an event, a place). Helper: ist hingegangen.
+- [ergehen.verb] **ergehen** (gehen): fare, get on (impersonal: es ergeht jemandem gut, schlecht; Wie ist es dir ergangen?); be issued (an order, a ruling). Clue: to fare, to get on (how have you been?). Helper: ist ergangen.
+- [mithalten.verb] **mithalten** (halten): keep up (with others, in a race, a discussion). Clue: to keep pace (with the others). Helper: hat mitgehalten.
+- [anstehen.verb] **anstehen** (stehen): be due, be coming up (a task, a decision); queue (stand in line). Clue: to be coming up, to be due (a task, a decision). Helper: hat angestanden.
+- [zustehen.verb] **zustehen** (stehen): be entitled to, be due to (someone): Das steht dir zu.. Clue: to be someone's by right (holiday, money). Helper: hat zugestanden.
+- [vorgeben.verb] **vorgeben** (geben): pretend, claim (falsely); set, lay down (a target, a framework). Clue: to pretend (to be ill); to set (a target). Helper: hat vorgegeben.
+- [freigeben.verb] **freigeben** (geben): release, clear (for use); open (a road); approve (a document). Clue: to release, to clear (a road, a file) for use. Helper: hat freigegeben.
+- [mitgeben.verb] **mitgeben** (geben): give (someone) something to take along. Clue: to give someone something to take along. Helper: hat mitgegeben.
+- [die_Vergebung] **die Vergebung** (geben): forgiveness. Clue: the forgiveness (of a wrong).
+- [die_Eintragung] **die Eintragung** (tragen): registration, entry (in an official register). Clue: the registration (in an official register).
+- [einträglich.adj] **einträglich** (tragen): lucrative, profitable. Clue: lucrative, profitable (a business).
+- [sich_beteiligen.verb] **sich beteiligen** (teilen): sich beteiligen an: take part in, contribute to; jemanden beteiligen: give someone a share. Clue: to take part, to chip in (sich, an). Helper: hat beteiligt.
+- [die_Beteiligung] **die Beteiligung** (teilen): participation, involvement; turnout (an election); stake (in a firm). Clue: the participation; the turnout (in a vote).
+- [unterziehen.verb] **unterziehen** (ziehen): sich einer Sache unterziehen: undergo (an operation, a test); etwas/jemanden einer Sache unterziehen: subject (something, someone) to (a check, a review). Clue: to undergo (an operation, a test; sich). Helper: hat unterzogen.
+- [sich_belaufen.verb] **sich belaufen** (laufen): sich belaufen auf: amount to, come to (a sum). Clue: to amount to (costs, damage; sich, auf). Helper: hat belaufen.
+- [hinsehen.verb] **hinsehen** (sehen): look (at it), look closely (instead of looking away). Clue: to look closely (instead of looking away). Helper: hat hingesehen.
+- [zuschreiben.verb] **zuschreiben** (schreiben): attribute (to someone, dative): a quotation, a work, a quality; sich etwas selbst zuzuschreiben haben = have only yourself to blame. Clue: to attribute (a quotation, a work) to someone. Helper: hat zugeschrieben.

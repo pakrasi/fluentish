@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "9db794b72396",
+ "version": "1db7d2d70d68",
  "languages": [
   {
    "id": "khasi",
@@ -385,7 +385,7 @@
    "path": "build/de.json",
    "schema": "build@1",
    "bytes": 236587,
-   "sha256": "ef6705aaa5be58e91bec9b2ad638df7630314f504f13b8d07baba318b9c7c981"
+   "sha256": "2bc59a73cb6084e4d7d274d250a60a4d7259c081376f3354d54ebb9b06488bb8"
   },
   {
    "id": "build.family.arbeiten",
@@ -456,23 +456,23 @@
    "path": "build/family/geben.json",
    "schema": "build-family@1",
    "bytes": 23431,
-   "sha256": "03bcf2c8ba349d820df0bda6227feca430a6d76ef2d819dcb7eaee485b7a0520",
+   "sha256": "8f2a17f1fb65bb88a99b94fc19358ffa6f33c3fdbd386800044ff11731a5290e",
    "lazy": true
   },
   {
    "id": "build.family.gehen",
    "path": "build/family/gehen.json",
    "schema": "build-family@1",
-   "bytes": 23578,
-   "sha256": "02160740cc4963f9b928d567d07452254c542f487f0a55cc5616e76d48e9c1d5",
+   "bytes": 23622,
+   "sha256": "54eb635994c4594dd953b36d6569a853847c5922e3b2ea77bc65ecd14f30c2bf",
    "lazy": true
   },
   {
    "id": "build.family.halten",
    "path": "build/family/halten.json",
    "schema": "build-family@1",
-   "bytes": 24962,
-   "sha256": "af7b3c59f46b3f55e273983bd934cfd71503e67d8c85b8d92d6a439d90d88f2d",
+   "bytes": 24964,
+   "sha256": "d97f25f35ec07d645be97fcf0dbb3d0e35a0c17478bc3fbdeef7b1216d3f9899",
    "lazy": true
   },
   {
@@ -511,8 +511,8 @@
    "id": "build.family.laufen",
    "path": "build/family/laufen.json",
    "schema": "build-family@1",
-   "bytes": 17261,
-   "sha256": "d8456c4b0870ea5dc222b7cf8503ef75aa5c9fdbe1f6e8d45dba11943e5bc115",
+   "bytes": 17329,
+   "sha256": "76a51c8654a949627b12e92036c227ff5995e60f7bb60225f1d62f635923df0f",
    "lazy": true
   },
   {
@@ -599,8 +599,8 @@
    "id": "build.family.schreiben",
    "path": "build/family/schreiben.json",
    "schema": "build-family@1",
-   "bytes": 20941,
-   "sha256": "971ef7a4379c2026714449a65f89368809c90576af93061d5863da3329822005",
+   "bytes": 21018,
+   "sha256": "3b4ab624c62ef9d32710521b36310a84b3271beb2f6655842335a97a692be924",
    "lazy": true
   },
   {
@@ -631,8 +631,8 @@
    "id": "build.family.stehen",
    "path": "build/family/stehen.json",
    "schema": "build-family@1",
-   "bytes": 24215,
-   "sha256": "ce5e7f06b9c68f60e6964a295bc37a217c59fffb1b9ddaee8b97185633fb392d",
+   "bytes": 24289,
+   "sha256": "4dca3f60eeeb0ed214a967d099fc74af5b96c107a40d0a4d9f483ffeb57801a1",
    "lazy": true
   },
   {
@@ -663,16 +663,16 @@
    "id": "build.family.teilen",
    "path": "build/family/teilen.json",
    "schema": "build-family@1",
-   "bytes": 21888,
-   "sha256": "d89fd62eae5226c756fd8719c30d0d72b9209961ca77bef743bf8751fccb43e2",
+   "bytes": 21894,
+   "sha256": "f92aa56371214846dfa94c9a1e7af2392323551a49d3fc17855ed7c4709dab5d",
    "lazy": true
   },
   {
    "id": "build.family.tragen",
    "path": "build/family/tragen.json",
    "schema": "build-family@1",
-   "bytes": 23903,
-   "sha256": "ee1f12ae7afa6fab5ea4135f9d55a0356db646c52d080fdb49144fd9a2e0511e",
+   "bytes": 24003,
+   "sha256": "e0a35dc616f16d511cca491e5e9835b1264bcccfb88276b54a3e0b907a557d18",
    "lazy": true
   },
   {
@@ -703,8 +703,8 @@
    "id": "build.family.ziehen",
    "path": "build/family/ziehen.json",
    "schema": "build-family@1",
-   "bytes": 23723,
-   "sha256": "231c4cf0e4f672d5bc7ef84d5def92669bce8c43c8172d442a4f35f2a48edeb8",
+   "bytes": 23858,
+   "sha256": "42b05968420622f20524e1911dc06cb190e4fbfb7a6d295b112b52d12c3bbdc1",
    "lazy": true
   },
   {
