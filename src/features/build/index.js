@@ -8,6 +8,8 @@
      #/practice/build/round?kind=…           a round, full screen (round.js): review | prefixes | verbs | sentences |
                                              suffixes | drill ("Which prefix?") | pick&ids=…
      #/practice/build/game                   Split or stay, 60 seconds (game.js)
+     #/practice/build/family[/<root>]        Word family: a root and every form built from it (family.js, round 7)
+     #/practice/build/today                  Today's family, the daily puzzle (today.js, round 7)
    Content: content/build/de.json (tools/build-wordbuild.mjs). Pure logic: domain/wordbuild.js, wordbuild-plan.js,
    wordbuild-grade.js and buildBudget in domain/budget.js. Storage and settings: data.js. Prototype and spec:
    PREFIX-DESIGN (round 2). */
@@ -29,6 +31,8 @@ export async function mount(el, ctx) {
   if (view === 'suffixes') return (await import('./chain.js')).mountChains(el, ctx, arg);
   if (view === 'round') return (await import('./round.js')).mountRound(el, ctx);
   if (view === 'game') return (await import('./game.js')).mountGame(el, ctx);
+  if (view === 'family') return (await import('./family.js')).mountFamily(el, ctx, arg);
+  if (view === 'today') return (await import('./today.js')).mountToday(el, ctx);
   if (view === 'drill') { ctx.go('/practice/build/round?kind=drill', { replace: true }); return; }
   replace(el, h('div', { class: 'wb stack' }, h('div', { class: 'page-head' }, h('h1', null, ctx.t('error.notFound'))), h('a', { class: 'btn pressable', href: '#/practice/build' }, ctx.t('build.back'))));
 }

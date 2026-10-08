@@ -5,6 +5,7 @@
      cards 'build'   one FSRS record per card (the one review schedule, its own deck)
      kv 'build'      { calib: [{id, guess, truth, day}] (the derivability guesses, logged, never graded), rounds: {day, n} }
      kv 'build.game' Split or stay: { games: [{day, n, right, missed, timed}], untimed } (no card is ever written)
+     kv 'build.family', 'build.reports'  Today's family and reported words: family-data.js
      settings        practice.buildNew (the deck's daily cap) through data/settings.js setSetting
    and appends card.reviewed events (deck 'build'). */
 import * as FS from '../../domain/fsrs.js';
@@ -13,6 +14,7 @@ import * as D8 from '../../domain/days.js';
 import { dayAllowance } from '../../domain/allowance.js';
 import { DECK, bare, lemmaMaps, itemResolver } from '../../domain/wordbuild.js';
 import { openNew, shownToday, recentMisses } from '../../domain/wordbuild-plan.js';
+import { splitMisses } from '../../domain/wordbuild-family.js';
 import { lexiconOf } from '../../domain/wordbuild-grade.js';
 import { loadKnowledge } from '../../data/knowledge.js';
 import { setSetting } from '../../data/settings.js';
@@ -61,7 +63,9 @@ export function today(ctx, d, k = null) {
   const dueIds = Object.entries(cards).filter(([id, r]) => r && r.reps && RD.isDue(r, c.today, RD.sideCap(c)) && known.has(id)).map(([id]) => id);
   const game = ctx.store.get(GAME, null);
   const root = (/** @type {string} */ id) => { const r = d.R.get(id); const s = k && r ? k.get(`W:${r.lemma}`) : null; return { state: s ? s.state : 'unseen', zipf: r ? d.zipf(r.lemma) : 0 }; };
-  const open = openNew({ content: d.c, cards, today: c.today, root, missed: recentMisses(game, c.today, D8.diff) });
+  // verbs whose split he missed (Split or stay, Today's family): their sentence cards come first
+  const missed = [...new Set([...splitMisses(ctx.store.get('build.family', null), c.today, D8.diff), ...recentMisses(game, c.today, D8.diff)])];
+  const open = openNew({ content: d.c, cards, today: c.today, root, missed });
   const unseen = open.px.length + open.verbs.length + open.ps.length + open.sx.length;
   const shown = shownToday(cards, c.today);
   writeStats(ctx.store, c.today, unseen);
@@ -86,16 +90,18 @@ const tz = () => { try { return Intl.DateTimeFormat().resolvedOptions().timeZone
 
 /**
  * Save one answer: schedule the card (FSRS, the exam rules in its context), write it and its card.reviewed event.
- * @param {any} ctx @param {{id: string, g: 1|2|3|4, ms?: number, flags?: string, mode?: string}} a
+ * study: a new item shown before any answer (Today's family shows it after three tries): its learning steps start, no
+ * lapse (domain/fsrs.js, flag v).
+ * @param {any} ctx @param {{id: string, g: 1|2|3|4, ms?: number, flags?: string, mode?: string, study?: boolean}} a
  * @returns {{rec: any, reinsert: null | 'learn' | 'lapse', before: any}}
  */
-export function saveAnswer(ctx, { id, g, ms = 0, flags = '', mode = 't' }) {
+export function saveAnswer(ctx, { id, g, ms = 0, flags = '', mode = 't', study = false }) {
   const c = ctx.clock.ctx();
   const cards = cardsOf(ctx.store);
   const before = cards[id] ? structuredClone(cards[id]) : null;
   const fc = RD.forecast(cards, c.today, 8, RD.sideCap(c));
   const forecast = (/** @type {string} */ day) => (fc.find((/** @type {any} */ x) => x.day === day) || {}).n || 0;
-  const res = FS.schedule(before, { g, ms, onTime: g >= 3, flags, mode, src: 'practice' }, { ...RD.sideCap(c), forecast }, Date.now());
+  const res = FS.schedule(before, { g, ms, onTime: g >= 3, flags, mode, src: 'practice', ...(study ? { study: true } : {}) }, { ...RD.sideCap(c), forecast }, Date.now());
   if (res.rec) {
     ctx.store.putCards(DECK, [[id, res.rec]]);
     ctx.store.append('card.reviewed', { deck: DECK, itemId: id, g, ms: Math.round(ms), flags, mode, ctx: { exam: c.exam, phase: c.phase, tz: tz() },

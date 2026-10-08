@@ -125,6 +125,8 @@ export function familyModel(c, { info = () => null } = {}) {
         const kind = n.cls === 'verb' && side === 'pre' ? (P.get(String(n.add))?.kind === 'i' ? 'i' : P.get(String(n.add))?.kind === 's' ? 's' : undefined) : undefined;
         const f = add({ id: formIdOf(n), word: n.word, art: n.art || null, cls: n.cls, parent: parent.id, add: n.add, side, pre: [...parent.pre, ...(side === 'pre' ? [String(n.add)] : [])],
           suf: [...parent.suf, ...(side === 'suf' ? [String(n.add)] : [])], kind, join: null, stress: 'stem', en: n.en, clue: /** @type {any} */ (n).clue || n.en, note: n.note, rare: n.rare,
+          // an ending on a word keeps its meaning (die Ausstellung from ausstellen): literal, unless authored otherwise
+          grade: side === 'suf' ? 'T' : undefined,
           lemma: n.lemma || null, card: side === 'suf' && pwWords.has(n.word) ? `PW:${n.word}` : null, key: null });
         local.set(n.id, f);
       }
