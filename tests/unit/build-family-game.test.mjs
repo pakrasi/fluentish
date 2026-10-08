@@ -239,3 +239,45 @@ test('word sheets find their family: a form\'s lemma, or a member of the root\'s
   assert.equal(ix.get('stellung_nehmen.phrase'), undefined, 'phrases are not forms');
   assert.equal(ix.get('kennen.verb'), undefined, 'no family data for kennen');
 });
+
+/* ---------------- the content lane's full shape (content/build/FAMILY-SCHEMA.md) ---------------- */
+const FF = (/** @type {any} */ o) => ({ kind: undefined, side: 'pre', pre: [], suf: [], key: null, seg: [], stress: 0, en: 'x', clue: undefined, ex: 'x.', exEn: 'x', grade: 'T', how: 'lit', level: 'B1', lemma: null, lex: ['list'], board: true, ...o });
+const fullFamily = () => ({ root: 'stellen', lemma: 'stellen.verb', en: 'put, place', pres3: 'stellt', pret: 'stellte', aux: 'hat', pp: 'gestellt', level: 'A1', zipf: 4.9, stems: ['stell'],
+  forms: [
+    FF({ id: 'stellen.verb', card: null, word: 'stellen', cls: 'verb', parent: null, side: undefined, key: null, seg: [['r', 'stell'], ['i', 'en']], stress: 1, board: false }),
+    FF({ id: 'ausstellen.verb', card: 'PV:ausstellen', word: 'ausstellen', cls: 'verb', kind: 's', parent: 'stellen.verb', add: 'aus', pre: ['aus'], key: 'aus|', seg: [['p', 'aus'], ['r', 'stell'], ['i', 'en']], stress: 1, clue: 'to exhibit' }),
+    FF({ id: 'die_Ausstellung', card: 'PW:Ausstellung', word: 'Ausstellung', art: 'die', cls: 'noun', parent: 'ausstellen.verb', add: 'ung', side: 'suf', pre: ['aus'], suf: ['ung'], key: 'aus|ung', seg: [['p', 'Aus'], ['r', 'stell'], ['s', 'ung']], stress: 1, clue: 'the exhibition', lemma: 'die_Ausstellung' }),
+    FF({ id: 'herstellen.verb', card: 'PF:herstellen.verb', word: 'herstellen', cls: 'verb', kind: 's', parent: 'stellen.verb', add: 'her', pre: ['her'], key: 'her|', seg: [['p', 'her'], ['r', 'stell'], ['i', 'en']], stress: 1, clue: 'to manufacture', lemma: 'herstellen.verb' }),
+    FF({ id: 'der_Hersteller', card: 'PF:der_Hersteller', word: 'Hersteller', art: 'der', cls: 'noun', parent: 'herstellen.verb', add: 'er', side: 'suf', pre: ['her'], suf: ['er'], key: 'her|er', seg: [['p', 'Her'], ['r', 'stell'], ['s', 'er']], stress: 1, clue: 'the manufacturer' }),
+    FF({ id: 'bestellen.verb', card: 'PV:bestellen', word: 'bestellen', cls: 'verb', kind: 'i', parent: 'stellen.verb', add: 'be', pre: ['be'], key: 'be|', seg: [['p', 'be'], ['r', 'stell'], ['i', 'en']], stress: 3, clue: 'to order (food)' }),
+    FF({ id: 'die_Bestellung', card: 'PW:Bestellung', word: 'Bestellung', art: 'die', cls: 'noun', parent: 'bestellen.verb', add: 'ung', side: 'suf', pre: ['be'], suf: ['ung'], key: 'be|ung', seg: [['p', 'Be'], ['r', 'stell'], ['s', 'ung']], stress: 3, clue: 'the order you placed' }),
+    FF({ id: 'einstellen.verb', card: 'PV:einstellen', word: 'einstellen', cls: 'verb', kind: 's', parent: 'stellen.verb', add: 'ein', pre: ['ein'], key: 'ein|', seg: [['p', 'ein'], ['r', 'stell'], ['i', 'en']], stress: 1, clue: 'to hire' }),
+    FF({ id: 'unvorstellbar.adj', card: 'PF:unvorstellbar.adj', word: 'unvorstellbar', cls: 'adj', parent: 'ausstellen.verb', add: 'un', pre: ['un', 'vor'], suf: ['bar'], key: 'un+vor|bar', seg: [['p', 'un'], ['p', 'vor'], ['r', 'stell'], ['s', 'bar']], stress: 0, clue: 'unimaginable', board: true }),
+    FF({ id: 'die_Angestellte', card: 'PF:die_Angestellte', word: 'Angestellte', art: 'die', cls: 'noun', adjNoun: true, parent: 'einstellen.verb', add: 'pp', side: 'suf', pre: ['an'], suf: ['pp'], key: 'an|pp', seg: [['p', 'An'], ['i', 'ge'], ['r', 'stell'], ['i', 't'], ['i', 'e']], stress: 0, clue: 'an employee', board: false }),
+    FF({ id: 'entstellen.verb', card: 'PV:entstellen', word: 'entstellen', cls: 'verb', kind: 'i', parent: 'stellen.verb', add: 'ent', pre: ['ent'], key: 'ent|', seg: [['p', 'ent'], ['r', 'stell'], ['i', 'en']], stress: 3, clue: 'to disfigure', rare: true, level: 'C1' }),
+  ],
+  boards: {}, none: [{ key: 'zer|', word: 'zerstellen', chk: { dwds: false, wf: 0, hits: 0 } }], rare: [{ key: 'ent|', word: 'entstellen', why: 'exists' }], reviewedBy: 'model-2pass', reviewedAt: '2026-10-08' });
+
+test('the full shape is read as it is: cards, keys, written parts, stress index, board flags', async () => {
+  const { familyCardIds } = await import('../../src/domain/wordbuild.js');
+  const c = { ...content(), families: [fullFamily()] };
+  const st = /** @type {F.Family} */ (F.familyModel(c).get('stellen'));
+  assert.deepEqual(st.forms.map(f => f.id).slice(0, 2), ['stellen.verb', 'ausstellen.verb'], 'the content\'s forms, root first');
+  assert.equal(st.byCard.get('PF:der_Hersteller')?.parent, 'herstellen.verb');
+  assert.deepEqual(pfIds(c).sort(), familyCardIds(c).sort(), 'PF ids are the content\'s');
+  const by = (/** @type {string} */ id) => /** @type {F.Form} */ (st.byId.get(id));
+  assert.deepEqual(by('unvorstellbar.adj').pre, ['vor', 'un'], 'nearest the root first');
+  assert.equal(by('unvorstellbar.adj').key, null, 'two prefixes: no tile key');
+  assert.deepEqual(F.piecesOf(by('die_Ausstellung')), { pre: ['Aus'], base: 'stell', tail: '', suf: ['ung'] });
+  assert.deepEqual(F.piecesOf(by('herstellen.verb')), { pre: ['her'], base: 'stell', tail: 'en', suf: [] });
+  assert.equal(by('herstellen.verb').stress, 'pre'); assert.equal(by('herstellen.verb').stressIdx, 1);
+  assert.equal(by('bestellen.verb').stress, 'stem');
+  assert.equal(by('die_Angestellte').board, false, 'an adjective noun is never on a board');
+  const b = /** @type {F.Board} */ (F.boardFor({ families: F.familyModel(c), cards: {}, day: DAY, level: 'B1', newLeft: 3, isDue, root: 'stellen' }));
+  assert.ok(b.cards.length >= 6);
+  assert.ok(!b.cards.includes('PV:entstellen'), 'a rare form is not on a B1 board');
+  assert.ok(!b.cards.includes('PF:die_Angestellte'));
+  assert.ok(b.tiles.pre.includes('zer'), 'the checked non-word\'s key gives the distractor');
+  assert.equal(F.judge({ fam: st, cards: b.cards, i: 0, done: {}, pick: { pre: 'zer' } }).outcome, 'nonword');
+  assert.equal(F.judge({ fam: st, cards: b.cards, i: 0, done: {}, pick: { pre: 'ent' } }).outcome, 'extra', 'rare is real: an extra word, never "not a word"');
+});

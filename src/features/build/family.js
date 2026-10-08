@@ -21,7 +21,7 @@ import { freq } from '../../domain/wordcard.js';
 import { kidsOf, piecesOf, TILE_ENDINGS } from '../../domain/wordbuild-family.js';
 import { loadFamilies, stateOf, todayOf, todayBoard, reportWord, unreportWord, reportsOf } from './family-data.js';
 import { knowledge } from './data.js';
-import { formWord, stressed } from './fword.js';
+import { formWord, stressed, stressedAt, stressPlace } from './fword.js';
 import { play, css, reduced, wait, finishAll } from './fx.js';
 
 /** @typedef {import('../../domain/wordbuild-family.js').Form} Form */
@@ -261,12 +261,17 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
     const step = f.side === 'pre' ? 'pre' : f.side === 'suf' ? 'suf' : null;
     const verb = f.cls === 'verb';
     const sep = verb && f.join === 's' && pc.pre.length > 0, weldOn = verb && f.join === 'i' && pc.pre.length > 0;
-    const onPre = f.stress === 'pre' && pc.pre.length > 0;
+    const preText = pc.pre.join('');
+    const sp = stressPlace(f, preText);
+    const onPre = sp.onPre;
     const art = f.art ? h('span', { class: 'fv-artp' }, f.art) : null;
-    const preEls = pc.pre.map((x, i) => h('span', { class: ['fv-pc', 'is-pre', i === pc.pre.length - 1 && step === 'pre' && 'is-add'] }, i === pc.pre.length - 1 && onPre ? stressed(x) : x,
+    // the dot goes into the prefix piece that holds the stressed vowel (the content's index), else the last one
+    let off = sp.at ?? -1, dotIn = pc.pre.length - 1;
+    if (onPre && sp.at != null) { let acc = 0; for (let i = 0; i < pc.pre.length; i++) { if (sp.at < acc + pc.pre[i].length) { dotIn = i; off = sp.at - acc; break; } acc += pc.pre[i].length; } }
+    const preEls = pc.pre.map((x, i) => h('span', { class: ['fv-pc', 'is-pre', i === pc.pre.length - 1 && step === 'pre' && 'is-add'] }, onPre && i === dotIn ? (off >= 0 ? stressedAt(x, off) : stressed(x)) : x,
       i === pc.pre.length - 1 && sep ? h('span', { class: 'fv-joint' }) : null));
     const rest = pc.base + pc.tail;
-    const baseEl = h('span', { class: 'fv-pc is-base' }, onPre ? rest : stressed(rest));
+    const baseEl = h('span', { class: 'fv-pc is-base' }, onPre ? rest : sp.at != null && sp.at < rest.length ? stressedAt(rest, sp.at) : stressed(rest));
     const sufEls = pc.suf.map((x, i) => h('span', { class: ['fv-pc', 'is-suf', i === pc.suf.length - 1 && step === 'suf' && 'is-add'] }, x));
     const weld = weldOn ? h('span', { class: 'fv-weld' }) : null;
     const big = h('span', { class: 'fv-big', lang: langAttr(), dir: dirAttr() }, art, h('span', { class: 'fv-big-w' }, preEls, baseEl, sufEls, weld));
@@ -391,7 +396,9 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
     if (by === 'root') {
       const fam = /** @type {Family} */ (fams.get(root));
       const r0 = fam.forms[0];
-      const rc = d.c.roots.find((/** @type {any} */ x) => x.id === root);
+      const rc = d.c.roots.find((/** @type {any} */ x) => x.id === root) || fam.info || null;
+      if (r0.level == null && fam.info && fam.info.level) r0.level = fam.info.level;
+      if (r0.zipf == null && fam.info && fam.info.zipf != null) r0.zipf = fam.info.zipf;
       const f0 = freq(r0.zipf ?? NaN);
       side.append(h('p', { class: 'label' }, t('build.family.label')),
         h('div', { class: 'fv-h1' }, h('h1', { lang: langAttr(), dir: dirAttr() }, root), h('span', { class: 'fv-en' }, fam.en)),

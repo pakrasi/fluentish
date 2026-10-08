@@ -14,6 +14,9 @@
                    none: [<checked non-word>] }]
                A form whose id or word (and word type) is already in the model only adds its fields to it. Any other
                form is new and gets card PF:<form id>, unless a PV or PW card exists for it (one item, one build card).
+   The content lane's full shape (content/build/FAMILY-SCHEMA.md: the root first with parent null, every form with its
+   card, key, written parts seg, stress index, board flag; checked non-words as {key, word}) is read as it is
+   (fromFamily): it is the family. The partial shape above (forms the build lacks) is merged into the derived one.
    Card ids are append-only (tests/fixtures/shipped-ids.txt): PF:<form> uses the form's authored id, which is the
    word-list id when there is one (der_Hersteller, herstellen.verb), else the same shape (die_Bestellung).
 
@@ -45,6 +48,10 @@
  * @property {string | null} card   PV:/PW:/PF: or null (the family view only)
  * @property {string | null} key    `${prefix}|${ending}` when one prefix tile and one ending tile build it, else null
  * @property {boolean} [added]  a form from the families key that the build content lacked
+ * @property {boolean} [board]  may be on a board (the content's flag; derived forms: when it has a key)
+ * @property {number} [stressIdx] the stressed vowel's index in word (the content's stress)
+ * @property {[string, string][]} [seg] the written parts (p prefix, r root, s ending, i inflection, c compound, l link)
+ * @property {boolean} [adjNoun] @property {boolean} [pl]
  */
 /**
  * @typedef {object} Family
@@ -53,6 +60,9 @@
  * @property {Form[]} forms   the root first, then depth first in content order
  * @property {Map<string, Form>} byId @property {Map<string, Form>} byCard
  * @property {string[]} none  checked non-words (zerstellen): the only words called "not a German word"
+ * @property {string[]} [noneKeys] their tile keys (zer|)
+ * @property {string[]} [stems] the written root stems (geben: geb, gab, gib, gäb); [0] is the centre tile
+ * @property {any} [info] the root's forms (pres3, pret, aux, pp, level, zipf) when it is not a build root
  */
 
 /** Endings that are tiles: a single written ending whose rule gives the word type (and a noun's article). */
@@ -98,6 +108,7 @@ export function familyModel(c, { info = () => null } = {}) {
     const fam = famOf.get(rid) || null;
     const en = r ? r.en : fam && fam.en;
     if (!en) continue;
+    if (fam && Array.isArray(fam.forms) && fam.forms.length && fam.forms[0].parent === null && 'card' in fam.forms[0]) { out.set(rid, fromFamily(fam, P, info)); continue; }
     /** @type {Form[]} */ const forms = [];
     /** @type {Map<string, Form>} */ const byId = new Map();
     const add = (/** @type {Form} */ f) => { forms.push(f); byId.set(f.id, f); return f; };
@@ -154,6 +165,7 @@ export function familyModel(c, { info = () => null } = {}) {
       f.join = pv ? (pv.kind || (INSEP.has(String(pv.add)) ? 'i' : P.get(String(pv.add))?.kind === 's' ? 's' : null)) || null : null;
       f.stress = /** @type {any} */ (f).stressAt || (f.pre.length ? (f.pre[f.pre.length - 1] === 'un' || f.join === 's' ? 'pre' : 'stem') : 'stem');
       f.key = keyOf(f);
+      f.board = !!f.key;
       const w = f.lemma ? info(f.lemma) : null;
       if (w) {
         if (!f.level && w.level) f.level = w.level;
@@ -164,6 +176,45 @@ export function familyModel(c, { info = () => null } = {}) {
     out.set(rid, { root: rid, stem: stemOf(rid), en, lemma: forms[0].lemma || null, forms: order(forms), byId, byCard: new Map(forms.filter(f => f.card).map(f => [/** @type {string} */ (f.card), f])), none });
   }
   return out;
+}
+
+/**
+ * A family in the content lane's full shape (FAMILY-SCHEMA.md), read as it is: its forms, cards, keys, parts, stress
+ * and board flags. pre is stored nearest the root first (the schema lists the outermost first).
+ * @param {any} fam @param {Map<string, any>} P @param {(lemma: string) => any} info @returns {Family}
+ */
+function fromFamily(fam, P, info) {
+  /** @type {Map<string, Form>} */ const byId = new Map();
+  /** @type {Form[]} */ const forms = [];
+  for (const x of fam.forms) {
+    const pre = [...(x.pre || [])].reverse(), suf = [...(x.suf || [])];
+    /** @type {Form} */ const f = { id: x.id, word: x.word, inf: x.cls === 'verb' && x.refl ? `sich ${x.word}` : undefined, art: x.art || null, cls: x.cls, parent: x.parent ?? null,
+      add: x.add, side: x.side === 'cmp' ? undefined : x.side, pre, suf, kind: x.kind, join: null, stress: 'stem', grade: x.grade, how: x.how, en: x.en, clue: x.clue || x.en,
+      ex: x.ex, exEn: x.exEn, why: x.why, note: x.note, level: x.level || null, zipf: x.zipf ?? null, lemma: x.lemma ?? null, rare: !!x.rare, pp: x.pp, aux: x.aux,
+      card: x.parent == null ? null : x.card || null, key: null, board: !!x.board && !x.adjNoun && !x.pl, stressIdx: Number.isInteger(x.stress) ? x.stress : undefined,
+      seg: Array.isArray(x.seg) ? x.seg : undefined, adjNoun: !!x.adjNoun, pl: !!x.pl };
+    forms.push(f); byId.set(f.id, f);
+  }
+  for (const f of forms) {
+    const pv = nearestPrefixed(f, byId);
+    f.join = pv ? (pv.kind || (INSEP.has(String(pv.add)) ? 'i' : P.get(String(pv.add))?.kind === 's' ? 's' : null)) || null : null;
+    const pc = piecesOf(f);
+    const preLen = pc.pre.join('').length;
+    f.stress = f.stressIdx != null ? (f.stressIdx < preLen ? 'pre' : 'stem') : f.pre.length && (f.join === 's' || f.pre[f.pre.length - 1] === 'un') ? 'pre' : 'stem';
+    // a tile key: one prefix (or none) and one tile ending (or none); the content's key says the same with + for more
+    const k = typeof fam.forms.find((/** @type {any} */ y) => y.id === f.id)?.key === 'string' ? keyOf(f) : null;
+    f.key = k;
+    if (f.lemma && (f.level == null || f.zipf == null || !f.ex)) {
+      const w = info(f.lemma);
+      if (w) { if (!f.level && w.level) f.level = w.level; if (f.zipf == null && w.zipf != null) f.zipf = w.zipf; if (!f.ex && w.ex) { f.ex = w.ex; f.exEn = f.exEn || w.exEn; } }
+    }
+  }
+  const stems = Array.isArray(fam.stems) && fam.stems.length ? fam.stems.map(String) : [stemOf(fam.root)];
+  return { root: fam.root, stem: stems[0], stems, en: fam.en, lemma: fam.lemma || null, forms: order(forms), byId,
+    byCard: new Map(forms.filter(f => f.card).map(f => [/** @type {string} */ (f.card), f])),
+    none: (fam.none || []).map((/** @type {any} */ n) => (typeof n === 'string' ? n : n.word)),
+    noneKeys: (fam.none || []).map((/** @type {any} */ n) => (typeof n === 'string' ? null : n.key)).filter(Boolean),
+    info: { pres3: fam.pres3, pret: fam.pret, aux: fam.aux, pp: fam.pp, level: fam.level || null, zipf: fam.zipf ?? null } };
 }
 
 /** Fields a families entry may add to a form (never its id, card or tree). @param {Form} f @param {any} x */
@@ -219,6 +270,16 @@ export function pathOf(fam, f) {
  * @param {Form} f @returns {{pre: string[], base: string, tail: string, suf: string[]}}
  */
 export function piecesOf(f) {
+  if (f.seg && f.seg.length) {
+    // the content's written parts: prefixes first, the endings last, a verb's inflection the tail
+    const seg = f.seg;
+    let i = 0; /** @type {string[]} */ const pre = [];
+    while (i < seg.length && seg[i][0] === 'p') pre.push(seg[i++][1]);
+    let j = seg.length; /** @type {string[]} */ const suf = []; let tail = '';
+    if (f.cls === 'verb' && j > i && seg[j - 1][0] === 'i') tail = seg[--j][1];
+    while (j > i && seg[j - 1][0] === 's') suf.unshift(seg[--j][1]);
+    return { pre, base: seg.slice(i, j).map(x => x[1]).join(''), tail, suf };
+  }
   const w = f.word, lw = w.toLowerCase();
   let start = 0; /** @type {string[]} */ const pre = [];
   for (const p of [...f.pre].reverse()) if (lw.startsWith(p, start)) { pre.push(w.slice(start, start + p.length)); start += p.length; }
@@ -277,7 +338,8 @@ export function hashOf(s) {
 export function boardFor({ families, cards, day, level = 'B1', light = false, newLeft, paused = false, isDue, state = () => 'unseen', recent = [], reported = new Set(), root = null }) {
   const L = lv(level || 'B1');
   const size = boardSize(level, light);
-  const playable = (/** @type {Family} */ fam) => fam.forms.filter(f => f.card && f.key && f.clue && !reported.has(f.id) && lv(f.level || 'B1') <= L + 1);
+  // rare forms never on A2 or B1 boards (FAMILY-SCHEMA: real but rare)
+  const playable = (/** @type {Family} */ fam) => fam.forms.filter(f => f.card && f.key && f.board !== false && f.clue && !reported.has(f.id) && lv(f.level || 'B1') <= L + 1 && !(f.rare && L < 3));
   const due = (/** @type {Form} */ f) => { const r = cards[/** @type {string} */ (f.card)]; return !!(r && r.reps && isDue(r)); };
   const seen = (/** @type {Form} */ f) => !!(cards[/** @type {string} */ (f.card)]?.reps) || ['known', 'shaky', 'unknown'].includes(state(f));
   const rest = new Set(recent.slice(-ROOT_REST));
@@ -330,7 +392,9 @@ export function tilesFor(fam, pick, L) {
   const pre = new Set(pick.map(f => f.pre[0]).filter(Boolean));
   const suf = new Set(pick.map(f => f.suf[0]).filter(Boolean));
   const realPre = [...new Set(fam.forms.filter(f => f.key && f.pre.length === 1 && !pre.has(f.pre[0])).map(f => f.pre[0]))];
-  const nonPre = fam.none.map(w => nonWordParts(fam, w)).filter(x => x && x.pre && !pre.has(x.pre) && !realPre.includes(x.pre)).map(x => /** @type {string} */ (x && x.pre));
+  const fromKeys = (fam.noneKeys || []).map(k => String(k).split('|')).filter(([p, e]) => p && !p.includes('+') && !e).map(([p]) => p);
+  const nonPre = [...fromKeys, ...fam.none.map(w => nonWordParts(fam, w)).filter(x => x && x.pre && !x.suf).map(x => /** @type {string} */ (x && x.pre))]
+    .filter((p, i, a) => a.indexOf(p) === i && !pre.has(p) && !realPre.includes(p));
   const nReal = L <= 1 ? 1 : L === 2 ? 1 : 2, nNon = L <= 1 ? 0 : L === 2 ? 1 : 2;
   for (const p of realPre.slice(0, nReal)) if (pre.size < 10) pre.add(p);
   for (const p of nonPre.slice(0, nNon)) if (pre.size < 10) pre.add(p);
@@ -345,9 +409,10 @@ export function tilesFor(fam, pick, L) {
 /** A checked non-word in parts (zerstellen → zer + stell + en). @param {Family} fam @param {string} w */
 export function nonWordParts(fam, w) {
   const lw = String(w).toLowerCase().replace(/^(der|die|das)\s+/, '');
-  const i = lw.indexOf(fam.stem);
+  const stem = (fam.stems || [fam.stem]).map(x => x.toLowerCase()).find(x => lw.includes(x)) || fam.stem;
+  const i = lw.indexOf(stem);
   if (i < 0) return null;
-  const rest = lw.slice(i + fam.stem.length);
+  const rest = lw.slice(i + stem.length);
   return { pre: lw.slice(0, i) || null, suf: rest === 'en' || rest === 'n' || rest === '' ? null : TILE_ENDINGS.find(s => rest === s) || rest };
 }
 
@@ -404,7 +469,7 @@ export function judge({ fam, cards, i, done, pick }) {
   const extra = fam.forms.find(f => f.key === key && f.id !== cur.id);
   if (extra) return { outcome: 'extra', form: extra, states };
   const spelled = spell(fam, { pre, suf }).toLowerCase();
-  if (fam.none.some(w => String(w).toLowerCase().replace(/^(der|die|das)\s+/, '') === spelled)) return { outcome: 'nonword', states };
+  if ((fam.noneKeys || []).includes(key) || fam.none.some(w => String(w).toLowerCase().replace(/^(der|die|das)\s+/, '') === spelled)) return { outcome: 'nonword', states };
   return { outcome: 'miss', states };
 }
 
@@ -423,9 +488,10 @@ export function parseTyped(fam, input) {
   const low = s.toLowerCase();
   const form = fam.forms.find(f => f.key && (f.word.toLowerCase() === low || (f.inf && f.inf.toLowerCase() === low))) || null;
   if (form) return { art, pre: form.pre[0] || null, suf: form.suf[0] || null, form };
-  const i = low.indexOf(fam.stem);
+  const stem = (fam.stems || [fam.stem]).map(x => x.toLowerCase()).find(x => low.includes(x)) || fam.stem;
+  const i = low.indexOf(stem);
   if (i < 0) return null;
-  const rest = low.slice(i + fam.stem.length);
+  const rest = low.slice(i + stem.length);
   const suf = rest === '' || rest === 'en' || rest === 'n' ? null : rest;
   return { art, pre: low.slice(0, i) || null, suf, form: null };
 }
