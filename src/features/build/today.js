@@ -23,6 +23,21 @@ import { formWord } from './fword.js';
 import { play, css, reduced, wait, nudge, finishAll } from './fx.js';
 import { sheet as openSheet } from '../shared/textview.js';
 
+/** From this many prefix tiles the hive is three rows round the root instead of a ring. */
+const ROWS_FROM = 10;
+/**
+ * Three rows round the root: two tiles each side of it, the rest above and below, offset like bricks. Centres in px
+ * from the hive's middle (x) and its top (y). Tiles 50 × 40, the root 88 × 56; 316 px wide at 12 tiles.
+ * @param {number} n @returns {{x: number, y: number}[]}
+ */
+export function rowPlaces(n) {
+  const side = Math.min(4, n), top = Math.ceil((n - side) / 2), bottom = n - side - top;
+  const row = (/** @type {number} */ k, /** @type {number} */ y) => Array.from({ length: k }, (_, i) => ({ x: (i - (k - 1) / 2) * 56, y }));
+  const mid = [-133, -77, 77, 133].slice(side === 4 ? 0 : 1, side === 4 ? 4 : 1 + side).map(x => ({ x, y: 76 }));
+  // clockwise from the top left, as the ring ran
+  return [...row(top, 20), ...mid.filter(p => p.x > 0), ...row(bottom, 132).reverse(), ...mid.filter(p => p.x < 0).reverse()];
+}
+
 /** @typedef {import('../../domain/wordbuild-family.js').Form} Form */
 /** @typedef {import('../../domain/wordbuild-family.js').Family} Family */
 /** @typedef {'art'|'pre'|'suf'} Part */
@@ -79,9 +94,10 @@ export async function mountToday(el, ctx) {
   const say = (/** @type {any[]} */ ...parts) => { replace(msg, ...parts); };
   const de = (/** @type {string} */ s) => h('span', { class: 'pz-de', lang: langAttr(), dir: dirAttr() }, s);
   const countEl = h('span', { class: 'tnum pz-count-n' }, String(foundCount(day, day.done)));
-  const squares = h('span', { class: 'pz-sqs', 'aria-hidden': 'true' }, forms.map(() => h('i')));
+  // one square per meaning under the root and the count; a tap on them opens the board too (the count is the button)
+  const squares = h('span', { class: 'pz-sqs', 'aria-hidden': 'true', onclick: () => boardSheet() }, forms.map(() => h('i')));
   const prog = h('button', { type: 'button', class: 'pz-prog pressable', 'aria-haspopup': 'dialog', onpointerdown: keep, onclick: () => boardSheet() },
-    h('span', { class: 'pz-prog-top' }, h('span', { class: 'pz-count' }, countEl, ` ${t('build.today.found', { n: '', total: N }).trim()}`), h('span', { class: 'pz-chev', 'aria-hidden': 'true' }, '›')), squares);
+    h('span', { class: 'pz-count' }, countEl, ` ${t('build.today.found', { n: '', total: N }).trim()}`), h('span', { class: 'pz-chev', 'aria-hidden': 'true' }, '›'));
   const meaning = h('p', { class: 'pz-meaning' });
   const meta = h('p', { class: 'pz-meta' });
   const build = h('div', { class: 'pz-build', lang: langAttr(), dir: dirAttr() });
@@ -98,8 +114,14 @@ export async function mountToday(el, ctx) {
   const acts = h('div', { class: 'pz-acts' }, input, delBtn, typeBtn, checkBtn);
   const help = h('button', { type: 'button', class: 'pz-help pressable', 'aria-label': t('build.today.help'), onpointerdown: keep, onclick: () => say(t('build.today.helpText')) }, icon('info', { size: 20 }));
   const head = h('div', { class: 'pz-head' }, backLink(), h('h1', null, t('build.today.title')), help);
-  const rootLine = h('p', { class: 'pz-root' }, h('span', { class: 'pz-root-w', lang: langAttr(), dir: dirAttr() }, fam.root), h('span', { class: 'pz-root-en' }, fam.en));
-  const main = h('div', { class: 'pz-main' }, head, rootLine, prog, clue, msg, playArea, acts);
+  // the root and its meaning share a row with the count (it was a row of its own: B2 boards pushed Check off a phone);
+  // the root opens the family view, so the family is one tap from the game
+  const famHref = `#/practice/build/family/${encodeURIComponent(fam.root)}?from=today`;
+  const rootLine = h('div', { class: 'pz-top' },
+    h('a', { class: 'pz-root pressable', href: famHref, onpointerdown: keep }, h('span', { class: 'pz-root-w', lang: langAttr(), dir: dirAttr() }, fam.root), h('span', { class: 'pz-root-en' }, fam.en),
+      h('span', { class: 'sr-only' }, `, ${t('build.today.seeFamily')}`)),
+    prog);
+  const main = h('div', { class: 'pz-main' }, head, rootLine, squares, clue, msg, playArea, acts);
   const aside = h('aside', { class: 'pz-board', 'aria-label': t('build.today.board') });
   const box = h('div', { class: 'pz', role: 'region', 'aria-label': t('build.today.title') }, main, aside);
   replace(el, box);
@@ -112,21 +134,31 @@ export async function mountToday(el, ctx) {
     const pre = day.tiles.pre;
     const n = pre.length;
     replace(hive);
+    // up to 9 prefixes on a ring round the root; from 10 (B2, some B1 boards) three rows round it, which is 32 px
+    // shorter and keeps every tile clear of its neighbours at 360 px (the ring overlapped 4 pairs at B2)
+    const rows = n >= ROWS_FROM;
+    hive.classList.toggle('is-rows', rows);
+    const at = rows ? rowPlaces(n) : null;
     pre.forEach((p, i) => {
       const a = -Math.PI / 2 + i * (2 * Math.PI / Math.max(1, n));
+      const style = at ? { left: `calc(50% + ${at[i].x}px)`, top: `${at[i].y}px` } : { left: `${50 + 40 * Math.cos(a)}%`, top: `${50 + 38 * Math.sin(a)}%` };
       const b = h('button', { type: 'button', class: 'hx pressable', lang: langAttr(), dir: dirAttr(), 'aria-pressed': 'false', 'aria-label': t('build.today.prefixTile', { p }), onpointerdown: keep, onclick: () => pick('pre', p, b),
-        style: { left: `${50 + 40 * Math.cos(a)}%`, top: `${50 + 38 * Math.sin(a)}%` } }, p);
+        style }, p);
       tileEls.set(tileKey('pre', p), b);
       hive.append(b);
     });
     hive.append(h('div', { class: 'hx is-centre', lang: langAttr(), dir: dirAttr(), role: 'img', 'aria-label': t('build.today.rootTile', { root: fam.root }) }, STEM, h('small', null, fam.root)),
       h('div', { class: 'hx-ripple', 'aria-hidden': 'true' }));
     replace(ends);
-    for (const x of day.tiles.suf) { const b = h('button', { type: 'button', class: 'hx pressable', lang: langAttr(), dir: dirAttr(), 'aria-pressed': 'false', 'aria-label': t('build.today.endingTile', { s: endLabel(x) }), 'data-suf': x, onpointerdown: keep, onclick: () => pick('suf', x, b) }, endLabel(x)); tileEls.set(tileKey('suf', x), b); ends.append(b); }
-    if (nouns) {
-      if (day.tiles.suf.length) ends.append(h('span', { class: 'pz-sep', 'aria-hidden': 'true' }));
-      ARTICLES.forEach((x, i) => { const b = h('button', { type: 'button', class: 'hx is-art pressable', lang: langAttr(), dir: dirAttr(), 'aria-pressed': 'false', 'aria-label': t('build.today.articleTile', { a: x }), onpointerdown: keep, onclick: () => pick('art', x, b) }, x, h('kbd', null, String(i + 1))); tileEls.set(tileKey('art', x), b); ends.append(b); });
-    }
+    const sufRow = h('div', { class: 'pz-ends-row' }), artRow = h('div', { class: 'pz-ends-row' });
+    for (const x of day.tiles.suf) { const b = h('button', { type: 'button', class: 'hx pressable', lang: langAttr(), dir: dirAttr(), 'aria-pressed': 'false', 'aria-label': t('build.today.endingTile', { s: endLabel(x) }), 'data-suf': x, onpointerdown: keep, onclick: () => pick('suf', x, b) }, endLabel(x)); tileEls.set(tileKey('suf', x), b); sufRow.append(b); }
+    if (nouns) ARTICLES.forEach((x, i) => { const b = h('button', { type: 'button', class: 'hx is-art pressable', lang: langAttr(), dir: dirAttr(), 'aria-pressed': 'false', 'aria-label': t('build.today.articleTile', { a: x }), onpointerdown: keep, onclick: () => pick('art', x, b) }, x, h('kbd', null, String(i + 1))); tileEls.set(tileKey('art', x), b); artRow.append(b); });
+    // two endings and the articles share a row with a rule between them; more endings take a row of their own, so
+    // nothing wraps on its own (the rule ended up alone at the end of a line)
+    const two = day.tiles.suf.length > 2 && nouns;
+    ends.classList.toggle('is-two', two);
+    if (two) ends.append(sufRow, artRow);
+    else ends.append(...sufRow.childNodes, ...(day.tiles.suf.length && nouns ? [h('span', { class: 'pz-sep', 'aria-hidden': 'true' })] : []), ...artRow.childNodes);
     ends.hidden = !ends.children.length;
   }
   /** An ending that makes a noun (the build content's rule, the bare stem, the infinitive noun, -ling). @param {string} x */
@@ -137,7 +169,7 @@ export async function mountToday(el, ctx) {
   /** An ending's tile: "-ung", "bare stem", "Partizip II" (the build content's labels). @param {string} x */
   function endLabel(x) {
     const sx = d.c.suffixes.find((/** @type {any} */ s) => s.id === x);
-    return x === 'pp' ? 'Partizip II' : x === 'ppr' ? 'Partizip I' : sx && /^-/.test(sx.label) ? sx.label.split(',')[0] : sx ? sx.label : `-${x}`;
+    return x === 'pp' ? t('build.today.pp') : x === 'ppr' ? t('build.today.ppr') : sx && /^-/.test(sx.label) ? sx.label.split(',')[0] : sx ? sx.label : `-${x}`;
   }
   function syncTiles() {
     for (const [key, b] of tileEls) { const [part, v] = key.split(':'); b.setAttribute('aria-pressed', String(part === 'art' ? S.b.art === v : partsOf(S.b[/** @type {Part} */ (part)]).includes(v))); }
@@ -529,7 +561,7 @@ export async function mountToday(el, ctx) {
       h('div', { class: 'pz-done-acts' },
         h('a', { class: 'btn btn-primary pressable', href: `#/practice/build/family/${encodeURIComponent(fam.root)}?from=today` }, t('build.today.seeFamily')),
         h('a', { class: 'btn pressable', href: '#/today' }, t('build.today.toToday'))));
-    replace(main, head, rootLine, prog, sec);
+    replace(main, head, rootLine, squares, sec);
     drawProgress();
     drawBoard();
     countTo(fig, n, { duration: 700 });

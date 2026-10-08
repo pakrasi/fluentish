@@ -2123,6 +2123,8 @@ export default {
   'build.today.endings': 'Endings and articles',
   'build.today.prefixTile': 'Prefix {p}-',
   'build.today.endingTile': 'Ending {s}',
+  'build.today.pp': 'Part. II',
+  'build.today.ppr': 'Part. I',
   'build.today.articleTile': 'Article {a}',
   'build.today.rootTile': 'Root: {root}',
   'build.today.tapFirst': 'Tap a prefix first.',
