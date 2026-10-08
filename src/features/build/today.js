@@ -91,7 +91,13 @@ export async function mountToday(el, ctx) {
 
   /* ---------------- layout ---------------- */
   const msg = h('p', { class: 'pz-msg', role: 'status', 'aria-live': 'polite' });
-  const say = (/** @type {any[]} */ ...parts) => { replace(msg, ...parts); };
+  // a long line can push the thumb row under the screen's edge on a small phone: the column then scrolls just enough
+  // to keep Check in view (the head goes first; the meaning stays)
+  const say = (/** @type {any[]} */ ...parts) => {
+    replace(msg, ...parts);
+    if (!parts.length || S.typing) return;
+    requestAnimationFrame(() => { const r = acts.getBoundingClientRect(); if (alive && r.height && r.bottom > innerHeight) box.scrollBy({ top: r.bottom - innerHeight, behavior: 'instant' }); });
+  };
   const de = (/** @type {string} */ s) => h('span', { class: 'pz-de', lang: langAttr(), dir: dirAttr() }, s);
   const countEl = h('span', { class: 'tnum pz-count-n' }, String(foundCount(day, day.done)));
   // one square per meaning under the root and the count; a tap on them opens the board too (the count is the button)
@@ -102,7 +108,7 @@ export async function mountToday(el, ctx) {
   const meta = h('p', { class: 'pz-meta' });
   const build = h('div', { class: 'pz-build', lang: langAttr(), dir: dirAttr() });
   const navBtn = (/** @type {number} */ dir) => h('button', { type: 'button', class: 'pz-nav pressable', 'aria-label': t(dir < 0 ? 'build.today.prev' : 'build.today.next'), onpointerdown: keep, onclick: () => go(S.idx + dir) }, icon(dir < 0 ? 'prev' : 'next', { size: 16 }));
-  const clue = h('section', { class: 'pz-clue', 'aria-label': t('build.today.clueRegion') }, h('div', { class: 'pz-clue-top' }, navBtn(-1), h('div', { class: 'pz-clue-mid' }, meaning, meta), navBtn(1)), build);
+  const clue = h('section', { class: 'pz-clue', 'aria-label': t('build.today.clueRegion') }, h('div', { class: 'pz-clue-top' }, navBtn(-1), h('div', { class: 'pz-clue-mid' }, meaning, meta), navBtn(1)), build, msg);
   const hive = h('div', { class: 'pz-hive', role: 'group', 'aria-label': t('build.today.prefixes') });
   const ends = h('div', { class: 'pz-ends', role: 'group', 'aria-label': t('build.today.endings') });
   const playArea = h('div', { class: 'pz-play' }, hive, ends);
@@ -122,7 +128,8 @@ export async function mountToday(el, ctx) {
     h('a', { class: 'pz-root pressable', href: famHref, onpointerdown: keep }, h('span', { class: 'pz-root-w', lang: langAttr(), dir: dirAttr() }, fam.root), h('span', { class: 'pz-root-en' }, fam.en),
       h('span', { class: 'sr-only' }, `, ${t('build.today.seeFamily')}`)),
     prog);
-  const main = h('div', { class: 'pz-main' }, head, rootLine, squares, clue, msg, playArea, learn, acts);
+  // the status line sits in the clue card under the word it is about, and takes room only when it says something
+  const main = h('div', { class: 'pz-main' }, head, rootLine, squares, clue, playArea, learn, acts);
   const aside = h('aside', { class: 'pz-board', 'aria-label': t('build.today.board') });
   const box = h('div', { class: 'pz', role: 'region', 'aria-label': t('build.today.title') }, main, aside);
   replace(el, box);
@@ -607,6 +614,7 @@ export async function mountToday(el, ctx) {
     const n = ((i % N) + N) % N;
     if (n === S.idx) { if (!keepBuild) drawClue(); return; }
     hideLearn();
+    if (box.scrollTop && !S.typing) box.scrollTo({ top: 0, behavior: 'instant' });
     const dir = n > S.idx ? 1 : -1;
     // the new meaning is current at once: a tile tapped while the card slides counts for it (input is never blocked)
     spent[S.idx] = clueMs();

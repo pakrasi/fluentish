@@ -215,7 +215,7 @@
 .pz-sqs i.is-now { box-shadow: inset 0 0 0 2px var(--accent); }
 
 /* the clue card */
-.pz-clue { margin-top: 4px; padding: 10px 8px 14px; border-radius: var(--r-card); background: var(--surface); box-shadow: var(--shadow-card); }
+.pz-clue { margin-top: 4px; padding: 8px 8px 12px; border-radius: var(--r-card); background: var(--surface); box-shadow: var(--shadow-card); }
 .pz-clue-top { display: grid; grid-template-columns: 44px minmax(0, 1fr) 44px; align-items: center; gap: 4px; }
 .pz-clue-mid { text-align: center; min-width: 0; }
 .pz-nav { width: 44px; height: 44px; border: 0; border-radius: 22px; background: var(--surface-2); color: var(--ink-2); cursor: pointer; display: grid; place-items: center; }
@@ -244,12 +244,12 @@
 .pz-shown { display: block; width: 100%; text-align: center; margin-top: 6px; }
 .pz-weld { position: absolute; bottom: 2px; inset-inline-start: 50%; width: 46%; margin-inline-start: -23%; height: 2px; border-radius: 1px; background: var(--ink); transform-origin: left; }
 
-.pz-msg { min-height: 36px; margin: 8px 2px 0; font: 400 14px/1.4 var(--font-ui); color: var(--ink-2); text-align: center; text-wrap: balance; }
+.pz-msg { margin: 8px 6px 0; font: 400 14px/1.4 var(--font-ui); color: var(--ink-2); text-align: center; text-wrap: balance; }
 .pz-de, .pz-ex { font: 400 16px/1.4 var(--font-display); color: var(--ink); }
 .pz-ex u { text-decoration-color: var(--accent); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
 
 /* the hive: the root in the middle, the prefixes round it */
-.pz-play { transition: opacity var(--dur-quick) var(--ease-out); }
+.pz-play { margin-top: 10px; transition: opacity var(--dur-quick) var(--ease-out); }
 .pz-play.is-dim { opacity: 0.35; pointer-events: none; }
 .pz-hive { position: relative; width: 260px; height: 184px; margin: 2px auto 0; flex: none; }
 .hx { position: absolute; transform: translate(-50%, -50%); min-width: 52px; padding: 0 8px; height: 40px; border: 1px solid var(--hairline-strong); border-radius: var(--r-tile); background: var(--surface); color: var(--ink);
@@ -269,7 +269,7 @@
 .pz-hive.is-rows .hx:not(.is-centre) { min-width: 50px; }
 .pz-ends[hidden] { display: none; }
 .pz-hive.is-rows .hx.is-centre { inset: auto; height: 50px; margin-inline: 4px; }
-.pz-ends .hx { position: relative; transform: none; width: auto; min-width: 54px; height: 44px; padding: 0 12px; }
+.pz-ends .hx { position: relative; transform: none; width: auto; min-width: 48px; height: 40px; padding: 0 10px; font-size: 17px; }
 .pz-ends .hx.is-art { min-width: 48px; font: 500 15px/1 var(--font-ui); display: inline-flex; align-items: center; justify-content: center; gap: 0; }
 .pz-sep { width: 1px; margin: 6px 4px; background: var(--hairline-strong); }
 .hx kbd, .pz-acts kbd, .pz-split kbd { font: 500 10px/1 var(--font-mono); opacity: 0.6; border: 1px solid currentColor; border-radius: 4px; padding: 1px 3px; margin-inline-start: 6px; }
@@ -296,7 +296,7 @@
 .pz-grade { display: inline-flex; align-items: center; gap: 6px; color: var(--ink-3); }
 .pz-learn-ex .pz-ex { font-size: 17px; }
 .pz-exen { margin-top: -6px; font: 400 13px/1.35 var(--font-ui); color: var(--ink-3); }
-.pz.is-learning .pz-msg:empty { display: none; }
+.pz-msg:empty { margin: 0; }   /* kept in the tree: a live region must exist before it speaks */
 .pz-acts.is-next { grid-template-columns: 1fr; }
 .pz-acts.is-next > .btn:not(.pz-check) { display: none; }
 
