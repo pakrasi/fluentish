@@ -37,10 +37,14 @@ async function familyLog(page) {
 async function solveOne(page) {
   // the last find holds its example on screen before the next open meaning comes in
   await expect.poll(() => page.evaluate(() => { const x = /** @type {any} */ (window).__family; return !x.day.done[x.day.cards[x.idx]]; }), { timeout: 8000 }).toBe(true);
-  const s = await page.evaluate(() => { const x = /** @type {any} */ (window).__family; const f = x.forms[x.idx]; return { card: x.day.cards[x.idx], pre: f.pre[0] || null, suf: f.suf[0] || null, art: f.art || null, join: f.cls === 'verb' ? f.join : null }; });
+  // every tile of the word: un- and the inner prefix (unverständlich), each ending of a chain (-lich, then -keit)
+  const s = await page.evaluate(() => { const x = /** @type {any} */ (window).__family; const f = x.forms[x.idx]; return { card: x.day.cards[x.idx], pre: [...f.pre].reverse(), suf: [...f.suf], art: f.art || null, join: f.cls === 'verb' ? f.join : null }; });
   const tiles = page.getByRole('region', { name: "Today's family" });
-  if (s.pre) await tiles.getByRole('button', { name: `Prefix ${s.pre}-`, exact: true }).click();
-  if (s.suf) await tiles.locator(`button[data-suf="${s.suf}"]`).click();
+  // start from an empty build (a word typed before stays in the slots)
+  await page.locator('.pz-meaning').click();
+  await page.keyboard.press('Escape');
+  for (const p of s.pre) await tiles.getByRole('button', { name: `Prefix ${p}-`, exact: true }).click();
+  for (const x of s.suf) await tiles.locator(`button[data-suf="${x}"]`).click();
   if (s.art) await tiles.getByRole('button', { name: `Article ${s.art}`, exact: true }).click();
   await tiles.getByRole('button', { name: /^Check/ }).click();
   if (s.join) {
@@ -138,6 +142,40 @@ test("typing in Today's family: keyboard mode, the word parsed into its parts", 
   if (s.join) await box.getByRole('button', { name: s.join === 's' ? /^Splits/ : /^Stays/ }).click();
   await expect.poll(() => page.evaluate(card => /** @type {any} */ (window).__family.day.done[card] || null, s.card)).toBe('f1');
   await checkA11y(page, "Today's family typed");
+});
+
+test("Today's family builds un- words and chained endings with the tiles; another word typed is not the clue's", async ({ page }) => {
+  test.setTimeout(90_000);
+  const t = today();
+  // due reviews on fallen put its words with un- and two endings on the board (der Unfall, zufällig, unauffällig)
+  const due = ['PF:der_Unfall', 'PW:zufällig', 'PF:unauffällig.adj'];
+  await seed(page, { examInDays: null, veteran: true, cards: { build: Object.fromEntries(due.map(id => [id, rec(t, 4)])) } });
+  await open(page, '#/practice/build/today');
+  const box = page.getByRole('region', { name: "Today's family" });
+  await expect.poll(() => page.evaluate(() => /** @type {any} */ (window).__family?.day.root)).toBe('fallen');
+  const cards = await page.evaluate(() => /** @type {any} */ (window).__family.day.cards);
+  for (const id of due) expect(cards).toContain(id);
+  /** Go to a clue with the arrow keys. @param {string} id */
+  const goTo = async id => {
+    for (let k = 0; k < cards.length; k++) {
+      if (await page.evaluate(c => { const x = /** @type {any} */ (window).__family; return x.day.cards[x.idx] === c; }, id)) return;
+      await page.locator('.pz-meaning').click();
+      await page.keyboard.press('ArrowDown');
+    }
+  };
+  // another word of the family typed for der Unfall is never der Unfall (and never "a wrong article")
+  await goTo('PF:der_Unfall');
+  await page.locator('.pz-meaning').click();
+  await page.keyboard.type('der Zufall');
+  await page.keyboard.press('Enter');
+  await expect(box.locator('.pz-msg')).not.toHaveText(/wrong article/);
+  expect(await page.evaluate(() => /** @type {any} */ (window).__family.day.done['PF:der_Unfall'] || null)).toBe(null);
+  // each of them built with its tiles: un + bare stem + der; zu + bare stem + -ig; un + auf + -ig
+  for (const id of due) {
+    await goTo(id);
+    if (await page.evaluate(c => !!(/** @type {any} */ (window).__family.day.done[c]), id)) continue;
+    expect(await solveOne(page)).toBe(id);
+  }
 });
 
 test('inside a round the family opens as a sheet over it, and the round goes on', async ({ page }) => {

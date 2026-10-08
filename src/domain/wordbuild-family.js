@@ -544,7 +544,7 @@ export function judge({ fam, cards, i, done, pick }) {
   const cur = /** @type {Form} */ (fam.byCard.get(cards[i]));
   /** @type {{art: PartState, pre: PartState, suf: PartState}} */ const none = { art: null, pre: null, suf: null };
   if (!pre && !suf) return { outcome: 'empty', states: none };
-  const key = `${pre || ''}|${suf || ''}`;
+  const key = keyBuilt(fam, pre, suf);
   const [cp, cs] = String(cur.key).split('|');
   const ok = { art: cur.art ? (art === cur.art ? 'ok' : 'no') : (art ? 'no' : null), pre: pre ? 'ok' : null, suf: suf ? 'ok' : null };
   if (key === cur.key) {
@@ -561,7 +561,7 @@ export function judge({ fam, cards, i, done, pick }) {
   /** @type {{art: PartState, pre: PartState, suf: PartState}} */ const states = {
     art: cur.art ? (art === cur.art ? 'ok' : 'no') : (art ? 'no' : null),
     pre: pre === (cp || null) ? (pre ? 'ok' : null) : realPre(pre) ? 'near' : pre ? 'no' : null,
-    suf: suf === (cs || null) ? (suf ? 'ok' : null) : suf ? 'no' : null,
+    suf: (key.split('|')[1] || null) === (cs || null) ? (suf ? 'ok' : null) : suf ? 'no' : null,
   };
   if (found >= 0) return { outcome: 'found', target: found, form: forms[found], states: { art: null, pre: pre ? 'near' : null, suf: suf ? 'near' : null } };
   const extra = fam.forms.find(f => f.key === key && f.id !== cur.id);
@@ -569,6 +569,18 @@ export function judge({ fam, cards, i, done, pick }) {
   const spelled = spell(fam, { pre, suf }).toLowerCase();
   if ((fam.noneKeys || []).includes(key) || fam.none.some(w => String(w).toLowerCase().replace(/^(der|die|das)\s+/, '') === spelled)) return { outcome: 'nonword', states };
   return { outcome: 'miss', states };
+}
+
+/**
+ * The key of a build. The bare stem writes no letters before another ending, so zu + -ig builds zufällig (zu + bare
+ * stem + -ig) when no word of the family is zu + -ig itself (ver + -lich is verträglich, not vertraglich).
+ * @param {Family} fam @param {string | null} pre @param {string | null} suf
+ */
+export function keyBuilt(fam, pre, suf) {
+  const key = `${pre || ''}|${suf || ''}`;
+  if (!suf || partsOf(suf).includes('stem') || fam.forms.some(f => f.key === key)) return key;
+  const alt = `${pre || ''}|stem+${suf}`;
+  return fam.forms.some(f => f.key === alt) ? alt : key;
 }
 
 /**

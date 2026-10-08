@@ -16,8 +16,7 @@ import { icon } from '../../core/icons.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
 import { fling, countTo } from '../../core/motion.js';
 import { fitToKeyboard, keep, reveal as revealEl } from '../../core/keyboard.js';
-import { ARTICLES, TRIES, judge, parseTyped, doneOf, pointsOf, foundCount, piecesOf, spell } from '../../domain/wordbuild-family.js';
-import { gradeTyped } from '../../domain/wordbuild-grade.js';
+import { ARTICLES, TRIES, judge, judgeTyped, doneOf, pointsOf, foundCount, piecesOf, spell, partsOf, tapTile, dropLast, endingChains, buildOf } from '../../domain/wordbuild-family.js';
 import { loadFamilies, todayBoard, saveDay, answerClue, stateOf } from './family-data.js';
 import { knowledge, cardsOf, addActivity } from './data.js';
 import { formWord } from './fword.js';
@@ -69,6 +68,8 @@ export async function mountToday(el, ctx) {
   let alive = true;
   const nouns = forms.some(f => !!f.art);
   const STEM = fam.stem;
+  // endings German chains (-lich then -keit, -er then -in): a second ending tile chains on only there
+  const CHAINS = endingChains(fams.values());
 
   /* ---------------- layout ---------------- */
   const msg = h('p', { class: 'pz-msg', role: 'status', 'aria-live': 'polite' });
@@ -136,7 +137,7 @@ export async function mountToday(el, ctx) {
     return x === 'pp' ? 'Partizip II' : x === 'ppr' ? 'Partizip I' : sx && /^-/.test(sx.label) ? sx.label.split(',')[0] : sx ? sx.label : `-${x}`;
   }
   function syncTiles() {
-    for (const [key, b] of tileEls) { const [part, v] = key.split(':'); b.setAttribute('aria-pressed', String(S.b[/** @type {Part} */ (part)] === v)); }
+    for (const [key, b] of tileEls) { const [part, v] = key.split(':'); b.setAttribute('aria-pressed', String(part === 'art' ? S.b.art === v : partsOf(S.b[/** @type {Part} */ (part)]).includes(v))); }
   }
 
   /* ---------------- the clue ---------------- */
@@ -177,18 +178,23 @@ export async function mountToday(el, ctx) {
     const slot = (/** @type {Part} */ part, /** @type {string | null} */ v, /** @type {string} */ shown) => {
       const st = states[part];
       if (!v) {
-        const hint = part === 'pre' && easy && (day.tries[id] || 0) > 0 && f.pre[0] ? f.pre[0] : null;
+        // the hint is the whole first part: un + ver of unverständlich
+        const hint = part === 'pre' && easy && (day.tries[id] || 0) > 0 && f.pre.length ? partsOf(buildOf(f).pre).join('') : null;
         return h('span', { class: ['pt', 'is-empty', hint && 'is-hint'], 'data-part': part }, hint || t(`build.today.slot.${part}`));
       }
-      return h('span', { class: ['pt', `is-${part}`, st && `is-${st}`], 'data-part': part }, shown);
+      return h('span', { class: ['pt', `is-${part}`, st && `is-${st}`], 'data-part': part, 'data-v': v }, shown);
     };
     if (noun || S.b.art) parts.push(slot('art', S.b.art, S.b.art || ''));
-    const nounEnd = !!S.b.suf && nounEnding(S.b.suf);
-    const preText = S.b.pre ? (nounEnd ? S.b.pre.charAt(0).toUpperCase() + S.b.pre.slice(1) : S.b.pre) : null;
-    parts.push(slot('pre', S.b.pre, preText || ''));
-    const rootText = !S.b.pre && nounEnd ? STEM.charAt(0).toUpperCase() + STEM.slice(1) : STEM;
-    parts.push(h('span', { class: ['pt', 'is-root', S.b.pre && 'is-joined-s', S.b.suf && 'is-joined-e'], 'data-part': 'root' }, rootText, S.b.suf ? null : h('span', { class: 'pt-tail' }, fam.root.slice(STEM.length))));
-    if (noun || S.b.suf) parts.push(slot('suf', S.b.suf, S.b.suf ? endLabel(S.b.suf).replace(/^-/, '') : ''));
+    // one piece per tile: un + ver, -lich + -keit
+    const pres = partsOf(S.b.pre), ends = partsOf(S.b.suf);
+    const nounEnd = ends.length > 0 && nounEnding(ends[ends.length - 1]);
+    const cap = (/** @type {string} */ x) => x.charAt(0).toUpperCase() + x.slice(1);
+    if (!pres.length) parts.push(slot('pre', null, ''));
+    pres.forEach((p, k) => parts.push(slot('pre', p, k === 0 && nounEnd ? cap(p) : p)));
+    const rootText = !pres.length && nounEnd ? cap(STEM) : STEM;
+    parts.push(h('span', { class: ['pt', 'is-root', pres.length && 'is-joined-s', ends.length && 'is-joined-e'], 'data-part': 'root' }, rootText, ends.length ? null : h('span', { class: 'pt-tail' }, fam.root.slice(STEM.length))));
+    if (noun && !ends.length) parts.push(slot('suf', null, ''));
+    for (const x of ends) parts.push(slot('suf', x, endLabel(x).replace(/^-/, '')));
     replace(build, parts);
     const spelled = S.b.pre || S.b.suf ? `${S.b.art ? `${S.b.art} ` : ''}${spell(fam, S.b)}` : '';
     build.setAttribute('aria-label', spelled ? t('build.today.yourWord', { w: spelled }) : t('build.today.yourWordNone'));
@@ -230,10 +236,11 @@ export async function mountToday(el, ctx) {
     finishAll();
     if (day.done[card()]) { if (!nextOpen()) return; }
     if (S.typing) setTyping(false);
-    S.b[part] = S.b[part] === v ? null : v;
+    S.b = tapTile(S.b, part, v, CHAINS);
     drawBuild(); syncTiles();
-    if (!S.b[part] || !from || reduced()) return;
-    const to = /** @type {HTMLElement | null} */ (build.querySelector(`[data-part="${part}"]`));
+    const on = part === 'art' ? S.b.art === v : partsOf(S.b[part]).includes(v);
+    if (!on || !from || reduced()) return;
+    const to = /** @type {HTMLElement | null} */ (build.querySelector(`[data-part="${part}"][data-v="${v}"]`));
     if (!to) return;
     // a copy of the tile flies to its slot on a 14 px arc; a prefix settles against the stem, an ending snaps on
     const a = from.getBoundingClientRect(), b2 = to.getBoundingClientRect();
@@ -248,7 +255,7 @@ export async function mountToday(el, ctx) {
   function del() {
     if (S.splitting || S.over) return;
     if (S.typing) { input.value = input.value.slice(0, -1); drawBuild(); return; }
-    if (S.b.suf) S.b.suf = null; else if (S.b.pre) S.b.pre = null; else S.b.art = null;
+    S.b = dropLast(S.b);
     drawBuild(); syncTiles();
   }
   function clear() { S.b = { art: null, pre: null, suf: null }; input.value = ''; drawBuild(); syncTiles(); }
@@ -269,28 +276,28 @@ export async function mountToday(el, ctx) {
   });
 
   /* ---------------- check ---------------- */
-  async function check() {
+  /** @param {string | null} [retyped] a typed word that filled another clue, judged again for that clue */
+  async function check(retyped = null) {
     if (S.busy || S.splitting || S.over) return;
     finishAll();
     const id = card(), f = cur();
     if (day.done[id]) { nextOpen(); return; }
-    let slip = false, typed = false;
-    if (S.typing) {
-      const raw = input.value.trim();
+    let slip = false, typed = false, typedWord = '';
+    /** @type {import('../../domain/wordbuild-family.js').Judged | null} */ let tres = null;
+    const raw = retyped != null ? retyped : S.typing ? input.value.trim() : null;
+    if (raw != null) {
       if (!raw) { input.focus({ preventScroll: true }); return; }
-      const p = parseTyped(fam, raw);
-      if (!p) { say(t('build.today.useRoot', { stem: STEM })); nudge(build); return; }
-      typed = true;
-      S.b = { art: p.art, pre: p.pre, suf: p.suf };
-      // the typed word is graded strictly against the clue's word (articles, umlauts, a noun's capital)
-      if (p.form && p.form === f) {
-        const g = gradeTyped(raw, { accept: [`${f.art ? `${f.art} ` : ''}${f.word}`, ...(f.inf && f.inf !== f.word ? [f.inf] : [])], noun: !!f.art, lexicon: d.lex });
-        slip = g.ok && g.slip;
-      }
-      setTyping(false);
+      // a typed word is judged as a word (domain judgeTyped): right only when it is the clue's own word, graded as the
+      // round grades it; another word of the family is that word, never this one
+      const r = judgeTyped({ fam, cards: day.cards, i: S.idx, done: day.done, input: raw, lexicon: d.flex });
+      if (!r) { say(t('build.today.useRoot', { stem: STEM })); nudge(build); return; }
+      typed = true; tres = r; slip = r.slip;
+      typedWord = raw.replace(/^(der|die|das)\s+/i, '');
+      S.b = { ...r.pick };
+      if (S.typing) setTyping(false);
       drawBuild(); syncTiles();
     }
-    const res = judge({ fam, cards: day.cards, i: S.idx, done: day.done, pick: S.b });
+    const res = tres || judge({ fam, cards: day.cards, i: S.idx, done: day.done, pick: S.b });
     const tries = () => day.tries[id] || 0;
     if (res.outcome === 'empty') { say(t('build.today.tapFirst')); nudge(build); return; }
     if (res.outcome === 'other' && res.target != null) {
@@ -300,7 +307,7 @@ export async function mountToday(el, ctx) {
       await go(res.target, { keepBuild: true });
       S.b = keepB; drawBuild(); syncTiles();
       await wait(400);
-      return check();
+      return check(typed ? raw : null);
     }
     S.busy = true;
     if (res.outcome === 'found' && res.form) {
@@ -328,11 +335,13 @@ export async function mountToday(el, ctx) {
     await flip(res.states);
     nudge(build);
     const nearPre = res.states.pre === 'near' && S.b.pre ? t('build.today.near', { word: spell(fam, { pre: S.b.pre }) }) : '';
-    if (res.outcome === 'article') {
+    if (res.outcome === 'article' && res.noArticle) say(t('build.today.noArticle'));
+    else if (res.outcome === 'article') {
       const sx = d.c.suffixes.find((/** @type {any} */ x) => x.id === f.suf[f.suf.length - 1]);
       say(t('build.today.article', { rule: f.note || (sx ? `${sx.label}: ${sx.rule}` : '') }));
-    } else if (res.outcome === 'nonword') say(`${t('build.today.nonword', { word: spell(fam, S.b) })} ${nearPre}`.trim());
-    else say(`${t('build.today.miss')} ${nearPre}`.trim());
+    } else if (res.outcome === 'nonword') say(`${t('build.today.nonword', { word: typed ? typedWord : spell(fam, S.b) })} ${nearPre}`.trim());
+    // a word of the rare list may be German: it is never called wrong, only not this family's
+    else say(`${t(res.rare ? 'build.today.missRare' : 'build.today.miss')} ${nearPre}`.trim());
     announce(partsSpoken(res.states));
     S.busy = false;
     drawClue({ keepBuild: true }); drawBuild(res.states);

@@ -2128,6 +2128,8 @@ export default {
   'build.today.extraAgain': '{word} is in your extra words already.',
   'build.today.nonword': '{word} is not a German word.',
   'build.today.miss': 'Not in this family\'s list.',
+  'build.today.missRare': 'Not in this family\'s list (it may be a rare word).',
+  'build.today.noArticle': 'Right word. It takes no article.',
   'build.today.near': '{word} is a word, with another meaning.',
   'build.today.article': 'Right word, wrong article. {rule}',
   'build.today.hint': 'The first part: {pre}-',

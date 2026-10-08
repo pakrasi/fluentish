@@ -14,7 +14,7 @@ import * as D8 from '../../domain/days.js';
 import { dayAllowance } from '../../domain/allowance.js';
 import { DECK, bare, lemmaMaps, itemResolver } from '../../domain/wordbuild.js';
 import { openNew, shownToday, recentMisses } from '../../domain/wordbuild-plan.js';
-import { splitMisses } from '../../domain/wordbuild-family.js';
+import { splitMisses, familyLexicon } from '../../domain/wordbuild-family.js';
 import { lexiconOf } from '../../domain/wordbuild-grade.js';
 import { loadKnowledge } from '../../data/knowledge.js';
 import { setSetting } from '../../data/settings.js';
@@ -35,7 +35,9 @@ export function loadContent(ctx) {
       const F = new Map(c.frames.map((/** @type {any} */ f) => [f.id, f]));
       const S = new Map(c.suffixes.map((/** @type {any} */ s) => [s.id, s]));
       const maps = lemmaMaps(c);
-      return { c, words: words || [], byId, P, R, V, F, S, resolve: itemResolver(maps), lex: lexiconOf(c), zipf: (/** @type {string} */ id) => (byId.get(id) || {}).zipf || 0 };
+      return { c, words: words || [], byId, P, R, V, F, S, resolve: itemResolver(maps), lex: lexiconOf(c),
+        // Today's family: the build words, the word list and the rare lists (domain/wordbuild-family.js judgeTyped)
+        flex: familyLexicon(c, words || []), zipf: (/** @type {string} */ id) => (byId.get(id) || {}).zipf || 0 };
     });
     memo.catch(() => { memo = null; });
   }
