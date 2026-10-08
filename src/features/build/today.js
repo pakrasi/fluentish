@@ -252,7 +252,7 @@ export async function mountToday(el, ctx) {
     }));
     return [h('h2', null, t('build.today.board')), h('p', { class: 'caption' }, t('build.today.boardMeta', { root: fam.root, n: N, level })), list,
       h('p', { class: 'pz-extra' }, day.extras.length ? t('build.today.extras', { list: day.extras.map(x => formName(x)).join(', ') }) : t('build.today.extrasNone')),
-      h('p', { class: 'pz-key' }, ['f1', 'f2', 'shown'].map(x => h('span', null, h('span', { class: ['pz-bsq', `is-${x}`], 'aria-hidden': 'true' }), t(`build.today.key.${x}`))))];
+      h('p', { class: 'pz-key' }, ['f1', 'f2', 'shown', 'open'].map(x => h('span', null, h('span', { class: ['pz-bsq', `is-${x}`], 'aria-hidden': 'true' }), t(`build.today.key.${x}`))))];
   }
   const formName = (/** @type {string} */ id) => { const f = fam.byId.get(id); return f ? `${f.art ? `${f.art} ` : ''}${f.word}` : id; };
   function drawBoard() { replace(aside, boardNodes(false)); if (sh) sh.set(...boardNodes(true).slice(1)); }   // the sheet has its own title
@@ -373,7 +373,7 @@ export async function mountToday(el, ctx) {
       say(t('build.today.article', { rule: f.note || (sx ? `${sx.label}: ${sx.rule}` : '') }));
     } else if (res.outcome === 'nonword') say(`${t('build.today.nonword', { word: typed ? typedWord : spell(fam, S.b) })} ${nearPre}`.trim());
     // a word of the rare list may be German: it is never called wrong, only not this family's
-    else say(`${t(res.rare ? 'build.today.missRare' : 'build.today.miss')} ${nearPre}`.trim());
+    else say(`${t(res.rare ? 'build.today.missRare' : 'build.today.miss', { word: typed ? typedWord : spell(fam, S.b) })} ${nearPre}`.trim());
     announce(partsSpoken(res.states));
     S.busy = false;
     drawClue({ keepBuild: true }); drawBuild(res.states);

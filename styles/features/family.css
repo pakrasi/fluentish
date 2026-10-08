@@ -211,7 +211,7 @@
 .pz-sqs i { height: 8px; border-radius: 2px; box-shadow: inset 0 0 0 1.5px var(--field-border); }
 .pz-sqs i.is-f1 { background: var(--ink); box-shadow: none; }
 .pz-sqs i.is-f2 { background: repeating-linear-gradient(-45deg, var(--ink) 0 1.5px, transparent 1.5px 3.5px); box-shadow: inset 0 0 0 1.5px var(--ink); }
-.pz-sqs i.is-shown { box-shadow: inset 0 0 0 1.5px var(--ink-3); }
+.pz-sqs i.is-shown { background: var(--cell-empty); box-shadow: inset 0 0 0 1.5px var(--ink-3); }
 .pz-sqs i.is-now { box-shadow: inset 0 0 0 2px var(--accent); }
 
 /* the clue card */
@@ -323,7 +323,7 @@ body.kb .pz-top { justify-content: end; }
 .pz-bsq { display: inline-block; width: 14px; height: 14px; border-radius: 3px; box-shadow: inset 0 0 0 1.5px var(--field-border); }
 .pz-bsq.is-f1 { background: var(--ink); box-shadow: none; }
 .pz-bsq.is-f2 { background: repeating-linear-gradient(-45deg, var(--ink) 0 1.5px, transparent 1.5px 3.5px); box-shadow: inset 0 0 0 1.5px var(--ink); }
-.pz-bsq.is-shown { box-shadow: inset 0 0 0 1.5px var(--ink-3); }
+.pz-bsq.is-shown { background: var(--cell-empty); box-shadow: inset 0 0 0 1.5px var(--ink-3); }
 .pz-extra { margin-top: 14px; font-size: 13px; color: var(--ink-2); }
 .pz-key { display: flex; flex-wrap: wrap; gap: 6px 14px; margin-top: 10px; font-size: 12px; color: var(--ink-3); }
 .pz-key > span { display: inline-flex; gap: 6px; align-items: center; }
@@ -338,7 +338,7 @@ body.kb .pz-top { justify-content: end; }
 .pz-grid i { width: 18px; height: 18px; border-radius: 4px; box-shadow: inset 0 0 0 1.5px var(--field-border); }
 .pz-grid i.is-f1 { background: var(--ink); box-shadow: none; }
 .pz-grid i.is-f2 { background: repeating-linear-gradient(-45deg, var(--ink) 0 1.5px, transparent 1.5px 3.5px); box-shadow: inset 0 0 0 1.5px var(--ink); }
-.pz-grid i.is-shown { box-shadow: inset 0 0 0 1.5px var(--ink-3); }
+.pz-grid i.is-shown { background: var(--cell-empty); box-shadow: inset 0 0 0 1.5px var(--ink-3); }
 .pz-done-line { max-width: 36ch; margin: 0 auto; }
 .pz-done-acts { display: grid; gap: 8px; margin-top: 22px; padding-bottom: calc(var(--s-3) + env(safe-area-inset-bottom)); }
 /* tomorrow's root: the reason to come back, plainly */
