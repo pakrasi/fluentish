@@ -38,7 +38,8 @@ export const PRIVATE_DECKS = new Set(['script']);
  *   seen       by item: first the earliest, last the latest, n the larger
  *   fill       taken only when this device has none (logs that belong to one device: the day's new-item counts …)
  *   checks     typed production checks and Quick sort's Learn picks: per item and field, the later (domain/checks.js joinChecks)
- * @type {Record<string, 'settings' | 'activity' | 'mistakes' | 'seen' | 'fill' | 'checks'>}
+ *   family     Today's family by day: the union of found, the most tries (domain/wordbuild-family.js joinFamily)
+ * @type {Record<string, 'settings' | 'activity' | 'mistakes' | 'seen' | 'fill' | 'checks' | 'family'>}
  */
 export const SNAPSHOT_KV = {
   settings: 'settings', activity: 'activity', mistakes: 'mistakes', 'lookup.seen': 'seen', known: 'fill',
@@ -53,6 +54,8 @@ export const SNAPSHOT_KV = {
   'conv.sessions': 'fill', 'conv.used': 'seen',
   // typed production checks and the words he sorted to Learn (round 5, domain/checks.js): item ids, days and results only
   'known.checks': 'checks',
+  // Today's family (round 7): each day's root, board (card ids), tries, finds and extra words; no free text
+  'build.family': 'family',
 };
 /**
  * Collections found by an exact name pattern rather than a fixed name, with their merge rule (data/restore.js). Only

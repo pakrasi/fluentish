@@ -28,6 +28,7 @@ const ALLOWED = {
   'conv.sessions': 'fill',   // conversation sessions: numbers and ids, no free text (lane L4, PLAN-REVIEW B6)
   'conv.used': 'seen',       // words he used in conversations: the conversation evidence (lane L4)
   'known.checks': 'checks',  // typed production checks and Quick sort's Learn picks: item ids, days, results (round 5)
+  'build.family': 'family',  // Today's family: day, root, card ids, tries, finds, extra words (round 7)
 };
 
 /** Collections found by pattern, and their rule. */
@@ -46,6 +47,7 @@ const DENIED = [
   'today.anyway',       // "Study anyway" on an Off day (lane L1b): one day, this device
   'scripts',            // Script mode's scripts (round 2)
   'secrets',
+  'build.reports',      // "Report this word" (round 7): device-only by the owner's choice, never sent anywhere
 ];
 
 test('SNAPSHOT_KV is exactly the allowed list, with the same merge rules', () => {

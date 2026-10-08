@@ -29,6 +29,7 @@ import { fnv1a, isoWithOffset } from './ids.js';
 import { joinActivity } from '../domain/activity.js';
 import { mergeMonth } from '../domain/progress.js';
 import { joinChecks } from '../domain/checks.js';
+import { joinFamily } from '../domain/wordbuild-family.js';
 import * as B from './sync/backup.js';
 
 export const JOURNAL_KV = 'backup.journal';
@@ -217,6 +218,7 @@ export function planRestore(store, { snapshots, events }) {
     else if (rule === 'mistakes') next = incoming.reduce(joinMistakes, cur || {});
     else if (rule === 'seen') next = incoming.reduce(joinSeen, cur || {});
     else if (rule === 'checks') next = incoming.reduce(joinChecks, cur || {});
+    else if (rule === 'family') next = incoming.reduce((a, b) => joinFamily(a, b), cur || null);
     else if (isEmpty(cur)) next = incoming.find(v => !isEmpty(v)) ?? cur;
     if (canon(next ?? null) === canon(cur ?? null) || (isEmpty(next) && isEmpty(cur))) continue;
     kv[name] = next;
