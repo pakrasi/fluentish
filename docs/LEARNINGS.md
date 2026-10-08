@@ -62,6 +62,19 @@ or added, strong verbs with weak endings, prefix swaps, agreement, a lower-case 
 found 222 wrong answers graded right across the corpus, which the hand-written cases had missed. After the fix every
 class is at 0 on every set and the test keeps it there. Hand-written cases remain useful as a held-out set.
 
+**Test the path the learner's answer takes, not a neighbour of it.** Round 7's word families passed four model
+review passes and a grader check of 7,481 wrong answers, all through the round's typed cards (`gradeTyped`). Today's
+family graded typed words another way: it cut them into tiles and compared the tiles, so a different word that shared
+or landed on another word's tiles was right (vertraglich for verträglich, das Gebot for das Gebiet) or "a wrong
+article" (das Schloss for der Schluss), and 34 board slots had words the tiles could never build. The independent
+German review found it by running the game's own functions. The fix judges a typed word as a word, with the round's
+grader and a lexicon of the word list, and gives the game, its content boards and the validator one rule for what tiles
+build (`tileKey`). Two things keep it fixed: the review's probes are tests on the shipped content
+(`tests/unit/family-grading.test.mjs`: every board slot built, every form right for its own clue, every other form and
+umlaut neighbour wrong for every clue), and the grading corpus has the cross-word classes (`cross-lexeme-family`,
+`cross-lexeme-umlaut`, `noun-verb-conversion`) for Today's family and for the round, at 0 graded right. When a feature
+grades answers its own way, it gets its own item type in the corpus.
+
 **Contract first, then parallel lanes.** Before round 4's lanes forked, a plan review checked the plan against the
 code and found seven blockers (a new deck would have crashed Today, older cached clients would drop new settings
 fields, a privacy body check would have stopped all backups, B2 items would have shifted his B1 numbers). They were
