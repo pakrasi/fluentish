@@ -38,3 +38,11 @@ genders, plurals, verb forms and usage. Nothing was copied from them.
 ## Audio
 
 No synthesised audio is published for the graded texts. The app reads them with the device's own voice.
+
+## Word families: lexicon checks (`authoring/build/family-lexcheck.de.json`)
+
+The word families (`content/build/de.json` families) were checked against the DWDS (Digitales Wörterbuch der deutschen
+Sprache, Berlin-Brandenburgische Akademie der Wissenschaften, https://www.dwds.de) through its public snippet and
+frequency APIs, and against wordfreq (above). Only facts are recorded: whether DWDS has a dictionary entry for a word,
+its number of hits in the DWDS corpora, and its wordfreq Zipf value. No DWDS text, definition or example is copied.
+The `zipf` of a family form that is not in the word list is its wordfreq value (CC BY-SA 4.0, as above).

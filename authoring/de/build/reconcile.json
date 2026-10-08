@@ -1,0 +1,13 @@
+[
+ {"id": "missgehen, zerziehen, widerfallen, widerschreiben, zerbringen, entteilen", "decision": "moved from none to rare; the distractor tiles changed to another checked non-word", "why": "a reviewer was not certain they are never used (older or literary German, or a few corpus hits)"},
+ {"id": "teilnehmen, der Teilnehmer, die Teilnahme", "decision": "forms of nehmen with the particle teil, not compounds of teilen", "why": "the stem is nehm/nahm; one word belongs to one family"},
+ {"id": "der Arbeitgeber, der Arbeitnehmer", "decision": "kept in geben and nehmen only", "why": "a word belongs to one family (one PF card)"},
+ {"id": "übereinstimmen, vorhersagen", "decision": "particles überein and vorher added", "why": "the stress and the split follow the whole particle (übereinstimmen, vorhersagen)"},
+ {"id": "clue overlaps", "decision": "pass B and the re-review found clues another family form could answer (mostly near-synonym prefixes on one board); each was rewritten; the final blind pass counted a clue as an error only when the other form was at least as likely", "why": "the game fills another board word without a try, but a clue must lead to one word"},
+ {"id": "rare lists", "decision": "derived from the lexicon check over every tile combination (-ung, -er, -nis, -heit, -keit, -bar, -lich, -ig, -sam and the verb) plus the real words reviewers named; 423 entries", "why": "a real word built from the tiles must never be called wrong; anything not listed already gets the safe 'not in this family's list'"},
+ {"id": "angehen.verb aux", "decision": "left as ist (the word list's form), note: sein in standard German, hat in the south; on the tutor list", "why": "pass A1 and the final pass disagreed"},
+ {"id": "A2 boards of stimmen and fragen", "decision": "no A2 board", "why": "fewer than six board forms at A1 to B1; the game uses the B1 board"},
+ {"id": "die Anbieterin", "decision": "added to fill the bieten B1 board after die Darbietung (C1) left it", "why": "bieten has few forms at B2 or below"},
+ {"id": "clue length", "decision": "at most 64 characters (was 48)", "why": "disambiguating clues need a short context in brackets"},
+ {"id": "existing verbs and chain words", "decision": "22 verbs[] entries and 2 chain nodes corrected in place (senses, examples, translations); no id, kind, participle or helper changed", "why": "PV/PW cards share their text with the family view"}
+]
