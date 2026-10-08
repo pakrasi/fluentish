@@ -8,13 +8,19 @@
        his goals: the row shows even before the deck was started (priority 35). While an exam is ahead its new cards
        pause and the row shows only due cards (priority 56, after the exam work; never cut). Not in a new learner's
        first week.
-     - Split or stay: the 60-second game (1 min, optional: it never takes the place of a row before it), only after
-       the exam or with no date, and once the deck has been started. */
+     - Today's family (round 7): the daily puzzle, a board of meanings to build from one root (today.js). Optional
+       (it never takes the place of a row before it), priority 46 (between Word building and the old game row),
+       minutes = board size × the review cost. It shows once prepare() has made the day's board (family-data.js
+       todayBoard): not in a new learner's first week, and with an exam ahead only when he has seen six or more
+       forms of a root (new items pause then). "4 of 10 found" while in progress, the done tick at the end.
+       It replaces Split or stay on Today (the owner's decision of 8 Oct): the board asks splits or stays for every
+       verb on it, and Split or stay stays in the Word building hub. */
 import { DECK } from '../../domain/wordbuild.js';
-import { playedToday } from '../../domain/wordbuild-plan.js';
 import { dayAllowance } from '../../domain/allowance.js';
+import { dayOf, foundCount } from '../../domain/wordbuild-family.js';
+import { REVIEW_COST } from '../../domain/budget.js';
 
-const KV = 'build', GAME = 'build.game';
+const KV = 'build', FAMILY = 'build.family';
 
 /** Refresh the open-card count Today reads (loads the content once a session). Never throws. @param {any} ctx a view ctx */
 export async function prepare(ctx) {
@@ -23,6 +29,12 @@ export async function prepare(ctx) {
     const { loadContent, today } = await import('./data.js');
     const d = await loadContent(ctx);
     writeStats(ctx.store, today(ctx, d));
+    // Today's family: the day's board, made once (not in a new learner's first week)
+    const c = ctx.clock.ctx();
+    if (c.phase === 'day' || dayOf(ctx.store.get(FAMILY, null), c.today)) return;
+    if (dayAllowance({ store: ctx.store, c, settings: ctx.settings() }).mode === 'start') return;
+    const [{ familiesOf, todayBoard }, { knowledge }] = await Promise.all([import('./family-data.js'), import('./data.js')]);
+    todayBoard(ctx, d, familiesOf(d), await knowledge(ctx).catch(() => null));
   } catch { /* offline: Today plans from the last stats */ }
 }
 
@@ -57,12 +69,17 @@ export function planItems({ store, c, settings, t }) {
   } else if (rounds > 0) {
     out.push({ id: 'build.round', source: 'build', kind: 'review', title: t('plan.build'), detail: t('plan.build.done'), minutes: 0, href: '#/practice/build', priority: goal ? 35 : 56, done: true });
   }
-  // the game: after the exam or with no date, once Word building has been started
-  if (goal && started) {
-    const game = store.get(GAME, null);
-    const played = playedToday(game, c.today);
-    out.push({ id: 'build.game', source: 'build', kind: 'warmup', title: t('plan.game'), detail: played ? t('plan.game.done') : t('plan.game.detail'),
-      minutes: 1, href: '#/practice/build/game?from=today', priority: 58, noCut: true, optional: true, done: played, action: t('plan.game.action') });
+  // Today's family: once prepare() has made the day's board
+  const fam = dayOf(store.get(FAMILY, null), c.today);
+  if (fam && fam.cards.length) {
+    const total = fam.cards.length, found = foundCount(fam, fam.done || {});
+    const finished = fam.cards.every(id => (fam.done || {})[id]);
+    const started2 = Object.keys(fam.done || {}).length > 0 || (fam.extras || []).length > 0;
+    const min = Math.max(1, Math.ceil(total * REVIEW_COST.build));
+    out.push({ id: 'build.family', source: 'build', kind: 'warmup', title: t('plan.family'),
+      detail: finished || started2 ? t('plan.family.progress', { root: fam.root, n: found, total }) : t('plan.family.detail', { root: fam.root, n: total }),
+      minutes: finished ? 0 : min, href: finished ? `#/practice/build/family/${encodeURIComponent(fam.root)}?from=today` : '#/practice/build/today?from=today',
+      priority: 46, noCut: true, optional: true, done: finished, action: t('plan.family.action', { min }) });
   }
   return out;
 }

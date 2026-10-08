@@ -143,9 +143,10 @@ test('Split or stay: every verb once per deck, the reading decides, no card is w
   assert.ok(P.playedToday(log, TODAY));
 });
 
-test("Today: Word building's rows (a goal after the exam; due cards only while an exam is ahead; the game after the exam)", async () => {
-  // changed in round 3 (journey #1, #5): while an exam is ahead the row shows due cards only and the game is not
-  // offered; after the exam the row shows even before the deck was started, and the game once it was.
+test("Today: Word building's rows (a goal after the exam; due cards only while an exam is ahead; Today's family once its board is made)", async () => {
+  // changed in round 3 (journey #1, #5): while an exam is ahead the row shows due cards only; after the exam the row
+  // shows even before the deck was started. Round 7: Today's family replaces Split or stay's row (the owner's
+  // decision of 8 Oct); it shows once prepare() has made the day's board.
   const { planItems } = await import('../../src/features/build/plan.js');
   const t = (k, v = {}) => `${k}${Object.keys(v).length ? ' ' + JSON.stringify(v) : ''}`;
   const exam = '2026-10-20';
@@ -160,14 +161,28 @@ test("Today: Word building's rows (a goal after the exam; due cards only while a
   const r = rows[0];
   assert.equal(r.priority, 56); assert.ok(r.noCut); assert.match(r.detail, /plan\.build\.due \{"n":1\}/); assert.equal(r.reviews, 1);
   // after the exam: a goal (priority 35), 1 due + 2 new (its want is 5, 4 are open; hotfix: its share of the
-  // sustainable rate, 15 at 60 min a day, is 2), and the game
+  // sustainable rate, 15 at 60 min a day, is 2); no game row (Split or stay stays in the hub)
   const after = context({ today: TODAY, exam: '2026-10-09' });
-  const ra = planItems({ store: mk(cards, { build: { stats: { day: TODAY, open: 4 } } }), c: after, settings: { ...settings, exam: { ...settings.exam, date: '2026-10-09' } }, t });
-  assert.deepEqual(ra.map(x => x.id), ['build.round', 'build.game']);
-  assert.equal(ra[0].priority, 35); assert.match(ra[0].detail, /"due":1,"n":2/); assert.ok(ra[1].optional);
+  const sAfter = { ...settings, exam: { ...settings.exam, date: '2026-10-09' } };
+  const ra = planItems({ store: mk(cards, { build: { stats: { day: TODAY, open: 4 } } }), c: after, settings: sAfter, t });
+  assert.deepEqual(ra.map(x => x.id), ['build.round']);
+  assert.equal(ra[0].priority, 35); assert.match(ra[0].detail, /"due":1,"n":2/);
+  // the day's board made: Today's family, optional, between Word building and the old game row
+  const board = { day: TODAY, root: 'stellen', level: 'B1', cards: ['PV:a', 'PV:b', 'PV:c', 'PV:d', 'PV:e', 'PV:f', 'PV:g', 'PV:h', 'PV:i', 'PV:j'], writes: [], fresh: [], tiles: { pre: [], suf: [] }, tries: {}, done: {}, split: {}, extras: [], points: 0, ms: 0 };
+  const fam = planItems({ store: mk(cards, { build: { stats: { day: TODAY, open: 4 } }, 'build.family': { days: [board], recent: ['stellen'] } }), c: after, settings: sAfter, t });
+  const row = fam.find(x => x.id === 'build.family');
+  assert.ok(row && row.optional && row.noCut && !row.done);
+  assert.equal(row.priority, 46); assert.equal(row.minutes, 4, '10 words × 0.4 min');
+  assert.equal(row.href, '#/practice/build/today?from=today');
+  assert.match(row.detail, /plan\.family\.detail \{"root":"stellen","n":10\}/);
+  // in progress: the count only; finished: the done tick, and the row opens the family
+  const mid = planItems({ store: mk(cards, { 'build.family': { days: [{ ...board, done: { 'PV:a': 'f1', 'PV:b': 'shown' } }] } }), c: after, settings: sAfter, t }).find(x => x.id === 'build.family');
+  assert.match(mid.detail, /plan\.family\.progress \{"root":"stellen","n":1,"total":10\}/);
+  const all = Object.fromEntries(board.cards.map(id => [id, 'f1']));
+  const fin = planItems({ store: mk(cards, { 'build.family': { days: [{ ...board, done: all }] } }), c: after, settings: sAfter, t }).find(x => x.id === 'build.family');
+  assert.ok(fin.done); assert.equal(fin.href, '#/practice/build/family/stellen?from=today');
+  // yesterday's board is gone and nothing is owed
+  assert.equal(planItems({ store: mk(cards, { 'build.family': { days: [{ ...board, day: '2026-10-01' }] } }), c: after, settings: sAfter, t }).find(x => x.id === 'build.family'), undefined);
   // the exam day: nothing
   assert.deepEqual(planItems({ store: mk(cards), c: context({ today: exam, exam }), settings, t }), []);
-  // played today: the game row shows done
-  const log = { games: [{ day: TODAY, n: 10, right: 7, missed: [], timed: true }] };
-  assert.ok(planItems({ store: mk(cards, { 'build.game': log }), c: after, settings, t }).find(x => x.id === 'build.game').done);
 });

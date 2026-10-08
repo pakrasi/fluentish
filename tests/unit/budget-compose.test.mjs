@@ -235,7 +235,7 @@ test('maintenance after the exam: no mock unless a next exam is set, his goals o
   assert.equal(b.mode, 'maintenance');
   assert.ok(!items.some(r => r.id === 'practice.teil2'), 'no Teil 2 talk after the exam');
   assert.ok(items.some(r => r.id === 'build.round' && r.priority === 35), 'Word building is a goal');
-  assert.ok(items.some(r => r.id === 'build.game' && r.optional), 'and the game, which never takes a row\'s place');
+  assert.ok(!items.some(r => r.id === 'build.game'), 'Split or stay has no Today row any more (round 7: Today\'s family replaces it)');
   assert.ok(items.some(r => r.id === 'script.bike01' && r.priority === 30), 'the script gets its share');
 });
 
