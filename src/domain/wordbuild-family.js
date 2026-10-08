@@ -530,7 +530,7 @@ export const buildOf = f => ({ art: f.art || null, pre: f.pre.length ? [...f.pre
  * What a build is, for the clue in hand.
  *   right    the clue's word (a noun with its article)
  *   article  the clue's word with the wrong article (a try is spent; the line says the rule)
- *   other    another open clue on the board: it is filled instead (no try spent)
+ *   other    another open clue on the board: the game names it and fills nothing (no try spent, no grade)
  *   found    a board word found already (no try spent)
  *   extra    a real word of the family that is not on the board (an extra word, never a miss)
  *   nonword  a checked non-word: "not a German word" (a try is spent)
@@ -631,7 +631,7 @@ function stemCut(fam, word) {
  * A typed word, judged for the clue in hand. The word is a word first, not a set of tiles: it is right only when it
  * is the clue's own word, as the round's typed cards grade it (domain/wordbuild-grade.js gradeTyped: no typo
  * tolerance; a dropped umlaut or a noun's small letter is a slip, rated Hard, unless the plain spelling is another
- * word of the lexicon). Any other word of the family is that word (another clue, found, or an extra word), never
+ * word of the lexicon). Any other word of the family is that word (another clue, named; found; or an extra word), never
  * this one: das Gebot is not das Gebiet, das Schloss is not der Schluss with a wrong article, vertraglich is not
  * verträglich. A word the family does not have is "not in this family's list" (a rare word says so), a checked
  * non-word is "not a German word", and nothing else is judged by its tiles.
@@ -670,7 +670,7 @@ export function judgeTyped({ fam, cards, i, done, input, lexicon = null }) {
     return { outcome: 'miss', states: none, pick: b, slip: false };
   }
   if (form) {
-    // another word of the family: another clue (filled instead), one found already, or an extra word
+    // another word of the family: another clue (named, not filled), one found already, or an extra word
     const b = { ...buildOf(form), art };
     const j = cards.findIndex((id, k) => k !== i && fam.byCard.get(id) === form);
     const twin = j >= 0 ? j : cards.findIndex((id, k) => { const g = fam.byCard.get(id); return k !== i && !!g && g.word === form.word && g.cls === form.cls && !done[id]; });

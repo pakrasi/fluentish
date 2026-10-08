@@ -4,8 +4,8 @@
    and a board of meanings (10 at B1, 6 at A2 and on a Light day, 12 from B2) to build. He taps a prefix, and for a
    noun an ending and an article (or types the word), and checks: each part flips (right · a real word with another
    meaning · not part of it; the root is given and never flips). A verb with the right prefix asks one more thing:
-   Splits or Stays, and the word splits ("stellt … aus") or the weld draws. Another word on the board fills that one
-   instead (no try spent); a real family word not on the board is an extra word, never a miss; three tries, then the
+   Splits or Stays, and the word splits ("stellt … aus") or the weld draws. Another word on the board is named with its
+   meaning and fills nothing (no try spent, no grade: tapping tiles must not clear the board); a real family word not on the board is an extra word, never a miss; three tries, then the
    word is shown, a study step. Progress is "7 of 10 found" and nothing else: no ranks, streaks or sharing.
    One board a day per device (family-data.js todayBoard, deterministic from the day), resumable after a reload.
    Grades and writes: family-data.js answerClue (only due words and new words inside the allowance write; tiles cap
@@ -64,6 +64,9 @@ export async function mountToday(el, ctx) {
   const easy = level === 'A1' || level === 'A2';
   const S = { idx: Math.max(0, day.cards.findIndex(id => !day.done[id])), b: /** @type {{art: string | null, pre: string | null, suf: string | null}} */ ({ art: null, pre: null, suf: null }),
     busy: false, splitting: false, typing: false, t0: performance.now(), over: false };
+  // time on each clue: the time since he came to it, plus the time spent on it before (moving away keeps it)
+  /** @type {Record<number, number>} */ const spent = {};
+  const clueMs = () => (spent[S.idx] || 0) + performance.now() - S.t0;
   if (S.idx < 0) S.idx = 0;
   let alive = true;
   const nouns = forms.some(f => !!f.art);
@@ -276,15 +279,14 @@ export async function mountToday(el, ctx) {
   });
 
   /* ---------------- check ---------------- */
-  /** @param {string | null} [retyped] a typed word that filled another clue, judged again for that clue */
-  async function check(retyped = null) {
+  async function check() {
     if (S.busy || S.splitting || S.over) return;
     finishAll();
     const id = card(), f = cur();
     if (day.done[id]) { nextOpen(); return; }
     let slip = false, typed = false, typedWord = '';
     /** @type {import('../../domain/wordbuild-family.js').Judged | null} */ let tres = null;
-    const raw = retyped != null ? retyped : S.typing ? input.value.trim() : null;
+    const raw = S.typing ? input.value.trim() : null;
     if (raw != null) {
       if (!raw) { input.focus({ preventScroll: true }); return; }
       // a typed word is judged as a word (domain judgeTyped): right only when it is the clue's own word, graded as the
@@ -301,13 +303,13 @@ export async function mountToday(el, ctx) {
     const tries = () => day.tries[id] || 0;
     if (res.outcome === 'empty') { say(t('build.today.tapFirst')); nudge(build); return; }
     if (res.outcome === 'other' && res.target != null) {
-      // another meaning on the board: it is filled instead, no try spent here
-      const keepB = { ...S.b };
-      say(t('build.today.onBoard', { en: forms[res.target].clue }));
-      await go(res.target, { keepBuild: true });
-      S.b = keepB; drawBuild(); syncTiles();
-      await wait(400);
-      return check(typed ? raw : null);
+      // another meaning on the board: he is told which, no try is spent, and nothing is filled or graded (the
+      // meaning was never read; tapping tiles and Check must not clear the board)
+      const of = forms[res.target];
+      const w = `${of.art ? `${of.art} ` : ''}${of.word}`;
+      say(...splitText(t('build.today.onBoard', { word: w, en: of.clue }), w));
+      nudge(build);
+      return;
     }
     S.busy = true;
     if (res.outcome === 'found' && res.form) {
@@ -379,8 +381,8 @@ export async function mountToday(el, ctx) {
   function askSplit(o) {
     const f = cur();
     S.splitting = true;
-    const yes = h('button', { type: 'button', class: 'btn pressable pz-split', onpointerdown: keep, onclick: () => answerSplit(true, o) }, h('span', null, t('build.game.splits'), ' ', h('kbd', null, '←')), h('small', { lang: langAttr(), dir: dirAttr() }, 'ich stelle … auf'));
-    const no = h('button', { type: 'button', class: 'btn pressable pz-split', onpointerdown: keep, onclick: () => answerSplit(false, o) }, h('span', null, t('build.game.stays'), ' ', h('kbd', null, '→')), h('small', { lang: langAttr(), dir: dirAttr() }, 'ich bestelle'));
+    const yes = h('button', { type: 'button', class: 'btn pressable pz-split', onpointerdown: keep, onclick: () => answerSplit(true, o) }, h('span', null, t('build.game.splits'), ' ', h('kbd', null, '←')), h('small', null, t('build.game.splitsHint')));
+    const no = h('button', { type: 'button', class: 'btn pressable pz-split', onpointerdown: keep, onclick: () => answerSplit(false, o) }, h('span', null, t('build.game.stays'), ' ', h('kbd', null, '→')), h('small', null, t('build.game.staysHint')));
     const group = h('div', { class: 'pz-splitq', role: 'group', 'aria-label': t('build.today.splitGroup') }, yes, no);
     say(de(f.word), '. ', t('build.today.splitAsk', { pre: f.pre[0] }));
     acts.hidden = true; playArea.classList.add('is-dim');
@@ -398,6 +400,8 @@ export async function mountToday(el, ctx) {
     const pre = /** @type {HTMLElement | null} */ (build.querySelector('[data-part="pre"]')), root = /** @type {HTMLElement | null} */ (build.querySelector('[data-part="root"]'));
     if (pre && root && !reduced()) {
       if (f.join === 's') {
+        // the stem moves in front as the verb's present form (stellt … ab), never the infinitive (stellen ab)
+        root.textContent = (fam.info && fam.info.pres3) || `${STEM}t`;
         const pw = pre.offsetWidth, rw = root.offsetWidth;
         await Promise.all([
           play(root, [{ transform: 'none' }, { transform: `translateX(${-pw}px)` }], { duration: 460, easing: css('--ease-inout'), fill: 'forwards' }),
@@ -422,7 +426,7 @@ export async function mountToday(el, ctx) {
     if (o.slip) day.slip[id] = true;
     day.done[id] = doneOf({ tries, splitMiss: !!o.splitMiss, artMiss });
     day.points = (day.points || 0) + pointsOf(tries, false, !!o.splitMiss);
-    const ms = performance.now() - S.t0;
+    const ms = clueMs();
     day.ms = (day.ms || 0) + Math.round(ms);
     saveDay(store, day);
     answerClue(ctx, day, id, { tries, splitMiss: !!o.splitMiss, artMiss, slip: !!o.slip, typed: !!o.typed, ms });
@@ -446,7 +450,7 @@ export async function mountToday(el, ctx) {
     const f = cur(), id = card();
     day.done[id] = 'shown';
     saveDay(store, day);
-    answerClue(ctx, day, id, { tries: day.tries[id] || TRIES, shown: true, ms: performance.now() - S.t0 });
+    answerClue(ctx, day, id, { tries: day.tries[id] || TRIES, shown: true, ms: clueMs() });
     const why = f.grade === 'O' ? t('build.today.learnWhy') : f.note ? `${f.note} ` : '';
     say(t('build.today.shown', { word: `${f.art ? `${f.art} ` : ''}${f.word}`, why }));
     drawClue();
@@ -492,6 +496,7 @@ export async function mountToday(el, ctx) {
     if (n === S.idx) { if (!keepBuild) drawClue(); return; }
     const dir = n > S.idx ? 1 : -1;
     // the new meaning is current at once: a tile tapped while the card slides counts for it (input is never blocked)
+    spent[S.idx] = clueMs();
     S.idx = n; S.t0 = performance.now();
     if (!keepBuild) { S.b = { art: null, pre: null, suf: null }; syncTiles(); if (S.typing) input.value = ''; }
     if (!reduced()) await play(clue, [{ opacity: 1, transform: 'none' }, { opacity: 0, transform: `translateX(${-24 * dir}px)` }], { duration: 140, easing: css('--ease-in'), fill: 'forwards' });

@@ -178,6 +178,39 @@ test("Today's family builds un- words and chained endings with the tiles; anothe
   }
 });
 
+test("a build that is another clue's word names that clue and fills nothing: no try, no card written", async ({ page }) => {
+  test.setTimeout(60_000);
+  await seed(page, { examInDays: null, veteran: true, cards: cards() });
+  await open(page, '#/practice/build/today');
+  const box = page.getByRole('region', { name: "Today's family" });
+  // the open clue, and another open clue on the board that a different set of tiles builds
+  const s = await page.evaluate(() => {
+    const x = /** @type {any} */ (window).__family, f = x.forms[x.idx];
+    const j = x.forms.findIndex((/** @type {any} */ g, /** @type {number} */ k) => k !== x.idx && !x.day.done[x.day.cards[k]] && g.key !== f.key && g.word !== f.word);
+    const g = x.forms[j];
+    return { card: x.day.cards[x.idx], other: x.day.cards[j], word: `${g.art ? `${g.art} ` : ''}${g.word}`, pre: [...g.pre].reverse(), suf: [...g.suf], art: g.art || null };
+  });
+  const before = await storedCards(page, 'build');
+  // with the tiles
+  for (const p of s.pre) await box.getByRole('button', { name: `Prefix ${p}-`, exact: true }).click();
+  for (const x of s.suf) await box.locator(`button[data-suf="${x}"]`).click();
+  if (s.art) await box.getByRole('button', { name: `Article ${s.art}`, exact: true }).click();
+  await box.getByRole('button', { name: /^Check/ }).click();
+  await expect(box.locator('.pz-msg')).toContainText('for another meaning');
+  // typed
+  await page.locator('.pz-meaning').click();
+  await page.keyboard.press('Escape');
+  await page.keyboard.type(s.word);
+  await page.keyboard.press('Enter');
+  await expect(box.locator('.pz-msg')).toContainText('for another meaning');
+  const day = await page.evaluate(() => /** @type {any} */ (window).__family.day);
+  expect(day.done[s.other] || null).toBe(null);
+  expect(day.done[s.card] || null).toBe(null);
+  expect(day.tries[s.card] || 0).toBe(0);
+  expect(await page.evaluate(() => { const x = /** @type {any} */ (window).__family; return x.day.cards[x.idx]; })).toBe(s.card);
+  expect(await storedCards(page, 'build')).toEqual(before);
+});
+
 test('inside a round the family opens as a sheet over it, and the round goes on', async ({ page }) => {
   await seed(page, { examInDays: null, veteran: true, cards: cards() });
   await open(page, '#/practice/build/round?kind=pick&ids=PV:ausstellen');

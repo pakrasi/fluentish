@@ -47,8 +47,8 @@ export async function mountGame(el, ctx) {
     const meaning = h('p', { class: 'wb-gmeaning' });
     const ex = h('p', { class: 'wb-gex', lang: langAttr(), dir: dirAttr(), 'aria-live': 'polite' });
     const card = h('div', { class: 'wb-card wb-gcard' }, word, meaning, ex);
-    const bS = h('button', { type: 'button', class: 'btn pressable', onclick: () => answer(true) }, t('build.game.splits'), h('small', { lang: langAttr(), dir: dirAttr() }, 'ich stelle … auf'), h('kbd', null, '←'));
-    const bI = h('button', { type: 'button', class: 'btn pressable', onclick: () => answer(false) }, t('build.game.stays'), h('small', { lang: langAttr(), dir: dirAttr() }, 'ich bestelle'), h('kbd', null, '→'));
+    const bS = h('button', { type: 'button', class: 'btn pressable', onclick: () => answer(true) }, t('build.game.splits'), h('small', null, t('build.game.splitsHint')), h('kbd', null, '←'));
+    const bI = h('button', { type: 'button', class: 'btn pressable', onclick: () => answer(false) }, t('build.game.stays'), h('small', null, t('build.game.staysHint')), h('kbd', null, '→'));
     const untimedBox = h('label', { class: 'wb-toggle' }, h('input', { type: 'checkbox', checked: untimed, onchange: (/** @type {Event} */ e) => {
       store.update(GAME, (/** @type {any} */ s) => ({ ...(s || {}), untimed: /** @type {HTMLInputElement} */ (e.target).checked }), {}); start();
     } }), t('build.game.untimed'));
