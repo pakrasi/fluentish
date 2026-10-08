@@ -1,6 +1,6 @@
 {
  "schema": "fluentish-content@1",
- "version": "bc7287eafcae",
+ "version": "9db794b72396",
  "languages": [
   {
    "id": "khasi",
@@ -384,8 +384,8 @@
    "id": "build.de",
    "path": "build/de.json",
    "schema": "build@1",
-   "bytes": 235496,
-   "sha256": "38f06e4df955d92caec5aebd70132427e1f5e21f04144473a638de6e672e9d50"
+   "bytes": 236587,
+   "sha256": "ef6705aaa5be58e91bec9b2ad638df7630314f504f13b8d07baba318b9c7c981"
   },
   {
    "id": "build.family.arbeiten",
@@ -455,24 +455,24 @@
    "id": "build.family.geben",
    "path": "build/family/geben.json",
    "schema": "build-family@1",
-   "bytes": 21325,
-   "sha256": "6aed562047fe16a77a60748af23a00a6507e355c2ec499a58647976ea22a159f",
+   "bytes": 23431,
+   "sha256": "03bcf2c8ba349d820df0bda6227feca430a6d76ef2d819dcb7eaee485b7a0520",
    "lazy": true
   },
   {
    "id": "build.family.gehen",
    "path": "build/family/gehen.json",
    "schema": "build-family@1",
-   "bytes": 22472,
-   "sha256": "ce9ad2bbfc4a120fc4fb00a738a2bad8efbc21547070e1e7c2e493ccfbf1abb2",
+   "bytes": 23578,
+   "sha256": "02160740cc4963f9b928d567d07452254c542f487f0a55cc5616e76d48e9c1d5",
    "lazy": true
   },
   {
    "id": "build.family.halten",
    "path": "build/family/halten.json",
    "schema": "build-family@1",
-   "bytes": 24382,
-   "sha256": "cd192f54bc8ed4298195bce75d60e7cad1e6e1e4e9d18e4c26bab1a17343d4fe",
+   "bytes": 24962,
+   "sha256": "af7b3c59f46b3f55e273983bd934cfd71503e67d8c85b8d92d6a439d90d88f2d",
    "lazy": true
   },
   {
@@ -511,8 +511,8 @@
    "id": "build.family.laufen",
    "path": "build/family/laufen.json",
    "schema": "build-family@1",
-   "bytes": 16656,
-   "sha256": "3b305c24f13156f5340be35f3b9bfbf5050348c7382314e40b0e20041d7150ee",
+   "bytes": 17261,
+   "sha256": "d8456c4b0870ea5dc222b7cf8503ef75aa5c9fdbe1f6e8d45dba11943e5bc115",
    "lazy": true
   },
   {
@@ -599,16 +599,16 @@
    "id": "build.family.schreiben",
    "path": "build/family/schreiben.json",
    "schema": "build-family@1",
-   "bytes": 20395,
-   "sha256": "7c640269cbe94425239ef869f876a8dc67932c970990532754b9e681a71bbc77",
+   "bytes": 20941,
+   "sha256": "971ef7a4379c2026714449a65f89368809c90576af93061d5863da3329822005",
    "lazy": true
   },
   {
    "id": "build.family.sehen",
    "path": "build/family/sehen.json",
    "schema": "build-family@1",
-   "bytes": 21469,
-   "sha256": "0600fcae3d2685cc5892f88c98de1e9fc421bb598cb2eda90c08b72d5b5e5567",
+   "bytes": 22009,
+   "sha256": "1ef2409e5f2165fa5ef2eea682be3d4231dfa05e71e040895cdcd07af2a5fe53",
    "lazy": true
   },
   {
@@ -631,8 +631,8 @@
    "id": "build.family.stehen",
    "path": "build/family/stehen.json",
    "schema": "build-family@1",
-   "bytes": 22896,
-   "sha256": "accc9c6c848e636e6a4eeb2955743df622f213f11666eb6272a5d821db618813",
+   "bytes": 24215,
+   "sha256": "ce5e7f06b9c68f60e6964a295bc37a217c59fffb1b9ddaee8b97185633fb392d",
    "lazy": true
   },
   {
@@ -663,16 +663,16 @@
    "id": "build.family.teilen",
    "path": "build/family/teilen.json",
    "schema": "build-family@1",
-   "bytes": 20616,
-   "sha256": "ccf960822cbb399bb8f30d7c0f8c93c251ae9021d49f5a7e08d08aaafe3bc5d3",
+   "bytes": 21888,
+   "sha256": "d89fd62eae5226c756fd8719c30d0d72b9209961ca77bef743bf8751fccb43e2",
    "lazy": true
   },
   {
    "id": "build.family.tragen",
    "path": "build/family/tragen.json",
    "schema": "build-family@1",
-   "bytes": 22812,
-   "sha256": "24476ba46be3c6d5fd61c0288837a17da24aae645c01f5165f350cc6e3d58004",
+   "bytes": 23903,
+   "sha256": "ee1f12ae7afa6fab5ea4135f9d55a0356db646c52d080fdb49144fd9a2e0511e",
    "lazy": true
   },
   {
@@ -703,8 +703,8 @@
    "id": "build.family.ziehen",
    "path": "build/family/ziehen.json",
    "schema": "build-family@1",
-   "bytes": 23087,
-   "sha256": "009357913bcabc007fb90e523a8e0b85ffa65cd3b96765b8aa96e48d0feb6d2a",
+   "bytes": 23723,
+   "sha256": "231c4cf0e4f672d5bc7ef84d5def92669bce8c43c8172d442a4f35f2a48edeb8",
    "lazy": true
   },
   {

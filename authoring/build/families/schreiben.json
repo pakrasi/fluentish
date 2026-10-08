@@ -32,7 +32,8 @@
   {"id": "die_Anschrift", "word": "Anschrift", "cls": "noun", "art": "die", "parent": "anschreiben.verb", "add": "t", "side": "suf", "en": "(postal) address", "clue": "the postal address (formal)", "why": "What you write on a letter so that it reaches someone.", "grade": "M", "level": "B1", "ex": "Bitte geben Sie Ihre Anschrift und Ihre Telefonnummer an.", "exEn": "Please give your address and your phone number."},
   {"id": "die_Ausschreibung", "word": "Ausschreibung", "cls": "noun", "art": "die", "parent": "ausschreiben.verb", "add": "ung", "side": "suf", "en": "job posting; call for tenders", "clue": "the job posting; a call for tenders", "grade": "T", "ex": "Die Ausschreibung für die Stelle läuft bis Ende Mai.", "exEn": "The job posting runs until the end of May."},
   {"id": "eingeschrieben.adj", "word": "eingeschrieben", "cls": "adj", "parent": "sich_einschreiben.verb", "add": "pp", "side": "suf", "en": "enrolled (student); registered (letter)", "clue": "enrolled (at a university)", "grade": "T", "ex": "Mein Sohn ist an der Universität eingeschrieben.", "exEn": "My son is enrolled at the university."},
-  {"id": "das_Einschreiben", "word": "Einschreiben", "cls": "noun", "art": "das", "parent": "sich_einschreiben.verb", "add": "inf", "side": "suf", "en": "registered letter", "clue": "the registered letter", "why": "einschreiben = write in: the post office writes the letter into a register.", "grade": "M", "level": "B1", "ex": "Den Vertrag schicke ich per Einschreiben.", "exEn": "I'm sending the contract by registered post."}
+  {"id": "das_Einschreiben", "word": "Einschreiben", "cls": "noun", "art": "das", "parent": "sich_einschreiben.verb", "add": "inf", "side": "suf", "en": "registered letter", "clue": "the registered letter", "why": "einschreiben = write in: the post office writes the letter into a register.", "grade": "M", "level": "B1", "ex": "Den Vertrag schicke ich per Einschreiben.", "exEn": "I'm sending the contract by registered post."},
+  {"id": "zuschreiben.verb", "word": "zuschreiben", "cls": "verb", "parent": "schreiben.verb", "add": "zu", "side": "pre", "kind": "s", "aux": "hat", "pp": "zugeschrieben", "en": "attribute (to someone): a quotation, a work, a quality", "clue": "to attribute (a quotation, a work) to someone", "why": "zu = to: you write it to someone's account.", "grade": "M", "level": "C1", "ex": "Das Zitat wird oft Goethe zugeschrieben.", "exEn": "The quotation is often attributed to Goethe."}
  ],
  "boards": {
   "A2": {"words": ["aufschreiben.verb", "unterschreiben.verb", "die_Unterschrift", "beschreiben.verb", "die_Beschreibung", "das_Schreiben"], "light": ["aufschreiben.verb", "unterschreiben.verb", "die_Unterschrift", "beschreiben.verb", "die_Beschreibung", "das_Schreiben"], "tiles": {"pre": ["auf", "ab", "unter", "be"], "suf": ["ung", "inf", "t"]}, "distract": [{"pre": "ab", "is": "extra"}]},
@@ -43,7 +44,6 @@
   {"key": "miss|", "word": "missschreiben"}
  ],
  "rare": [
-  {"key": "zu|", "word": "zuschreiben", "why": "DWDS: zuschreiben = attribute to (jemandem etwas zuschreiben)"},
   {"key": "nach|", "word": "nachschreiben", "why": "DWDS: nachschreiben = sit (an exam) later; write down what is said"},
   {"key": "hin|", "word": "hinschreiben", "why": "DWDS: hinschreiben = write down (colloquial)"}
  ],

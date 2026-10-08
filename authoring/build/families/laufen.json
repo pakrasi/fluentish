@@ -27,7 +27,8 @@
   {"id": "entlaufen.verb", "word": "entlaufen", "cls": "verb", "parent": "laufen.verb", "add": "ent", "side": "pre", "kind": "i", "aux": "ist", "pp": "entlaufen", "en": "run away, escape (a pet, a prisoner)", "clue": "to run away (a pet; wording of 'missing' notices)", "why": "ent- = away from: you run away from someone.", "grade": "T", "level": "C1", "ex": "Unsere Katze ist vor drei Tagen entlaufen.", "exEn": "Our cat ran away three days ago."},
   {"id": "überlaufen.verb", "word": "überlaufen", "cls": "verb", "parent": "laufen.verb", "add": "über", "side": "pre", "kind": "s", "aux": "ist", "pp": "übergelaufen", "en": "overflow; defect (to the other side)", "clue": "to overflow (a bath, a pot)", "why": "über = over: the water runs over the edge.", "grade": "T", "level": "B2", "ex": "Das Wasser in der Badewanne ist übergelaufen.", "exEn": "The water in the bath has overflowed.", "note": "Also inseparable: es überläuft mich kalt (a shiver runs over me); adjective überlaufen (not separable) = overcrowded (ein überlaufener Strand)."},
   {"id": "herumlaufen.verb", "word": "herumlaufen", "cls": "verb", "parent": "laufen.verb", "add": "herum", "side": "pre", "kind": "s", "aux": "ist", "pp": "herumgelaufen", "en": "walk around, run around", "clue": "to walk around (aimlessly)", "why": "herum = around: you run around.", "grade": "T", "level": "B1", "ex": "Die Kinder laufen im Garten herum.", "exEn": "The children are running around in the garden.", "stress": 3},
-  {"id": "vorbeilaufen.verb", "word": "vorbeilaufen", "cls": "verb", "parent": "laufen.verb", "add": "vorbei", "side": "pre", "kind": "s", "aux": "ist", "pp": "vorbeigelaufen", "en": "walk past, run past", "clue": "to walk past (someone)", "why": "vorbei = past: you walk past.", "grade": "T", "level": "B1", "ex": "Er ist einfach an mir vorbeigelaufen.", "exEn": "He just walked right past me."}
+  {"id": "vorbeilaufen.verb", "word": "vorbeilaufen", "cls": "verb", "parent": "laufen.verb", "add": "vorbei", "side": "pre", "kind": "s", "aux": "ist", "pp": "vorbeigelaufen", "en": "walk past, run past", "clue": "to walk past (someone)", "why": "vorbei = past: you walk past.", "grade": "T", "level": "B1", "ex": "Er ist einfach an mir vorbeigelaufen.", "exEn": "He just walked right past me."},
+  {"id": "sich_belaufen.verb", "word": "belaufen", "cls": "verb", "refl": true, "parent": "laufen.verb", "add": "be", "side": "pre", "kind": "i", "aux": "hat", "pp": "belaufen", "en": "sich belaufen auf: amount to, come to (a sum)", "clue": "to amount to (costs, damage; sich, auf)", "why": "Learn it as a word: sich auf eine Summe belaufen = come to a sum, like betragen.", "grade": "O", "level": "C1", "ex": "Der Schaden beläuft sich auf rund fünftausend Euro.", "exEn": "The damage comes to about five thousand euros."}
  ],
  "boards": {
   "A2": {"words": ["abgelaufen.adj", "weglaufen.verb", "weiterlaufen.verb", "loslaufen.verb", "herumlaufen.verb", "vorbeilaufen.verb"], "light": ["abgelaufen.adj", "weglaufen.verb", "weiterlaufen.verb", "loslaufen.verb", "herumlaufen.verb", "vorbeilaufen.verb"], "tiles": {"pre": ["ab", "weg", "ver", "herum", "los", "vorbei", "weiter"], "suf": ["pp"]}, "distract": [{"pre": "ver", "is": "extra"}]},
@@ -40,8 +41,7 @@
  ],
  "rare": [
   {"key": "zer|", "word": "zerlaufen", "why": "DWDS: melt, run (butter, colours)"},
-  {"key": "er|", "word": "erlaufen", "why": "DWDS: reach or win by running (sport)"},
-  {"key": "be|", "word": "belaufen", "why": "exists: sich belaufen auf = amount to (costs)"}
+  {"key": "er|", "word": "erlaufen", "why": "DWDS: reach or win by running (sport)"}
  ],
  "reviewedBy": "model-2pass",
  "reviewedAt": "2026-10-08"
