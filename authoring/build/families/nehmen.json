@@ -40,7 +40,8 @@
   {"id": "die_Notaufnahme", "word": "Notaufnahme", "cls": "noun", "art": "die", "parent": "die_Aufnahme", "add": "Not", "side": "cmp", "seg": [["c", "Not"], ["p", "auf"], ["r", "nahm"], ["s", "e"]], "en": "emergency department, A&E", "clue": "the emergency department (hospital)", "ex": "In der Nacht musste er in die Notaufnahme.", "exEn": "During the night he had to go to A&E.", "why": "Not = emergency, Aufnahme = admission: where emergencies are admitted.", "grade": "T"},
   {"id": "teilnehmen.verb", "word": "teilnehmen", "cls": "verb", "parent": "nehmen.verb", "add": "teil", "side": "pre", "kind": "s", "aux": "hat", "pp": "teilgenommen", "en": "take part, participate (in)", "clue": "to take part (in a course)", "why": "teil = part: you take your part in something.", "grade": "T", "lemma": "teilnehmen.verb", "ex": "Nimmst du morgen am Kurs teil?", "exEn": "Are you taking part in the course tomorrow?"},
   {"id": "der_Teilnehmer", "word": "Teilnehmer", "cls": "noun", "art": "der", "en": "participant", "clue": "the participant (in a course)", "grade": "T", "lemma": "der_Teilnehmer", "ex": "Der Kurs hat zwölf Teilnehmer.", "exEn": "The course has twelve participants.", "parent": "teilnehmen.verb", "add": "er", "side": "suf"},
-  {"id": "die_Teilnahme", "word": "Teilnahme", "cls": "noun", "art": "die", "en": "participation; attendance", "clue": "the participation, the attendance", "grade": "T", "lemma": "die_Teilnahme", "ex": "Die Teilnahme am Kurs ist kostenlos.", "exEn": "Taking part in the course is free.", "parent": "teilnehmen.verb", "add": "e", "side": "suf", "note": "-e with the past vowel of nehmen (nahm), as in die Annahme."}
+  {"id": "die_Teilnahme", "word": "Teilnahme", "cls": "noun", "art": "die", "en": "participation; attendance", "clue": "the participation, the attendance", "grade": "T", "lemma": "die_Teilnahme", "ex": "Die Teilnahme am Kurs ist kostenlos.", "exEn": "Taking part in the course is free.", "parent": "teilnehmen.verb", "add": "e", "side": "suf", "note": "-e with the past vowel of nehmen (nahm), as in die Annahme."},
+  {"id": "vernehmen.verb", "word": "vernehmen", "cls": "verb", "parent": "nehmen.verb", "add": "ver", "side": "pre", "kind": "i", "aux": "hat", "pp": "vernommen", "en": "question (a witness, a suspect); hear, perceive (formal)", "clue": "to question (a witness); to hear (formal)", "why": "From an old sense of nehmen, take in with the senses: you take in what a witness says. Die Vernehmung is the questioning.", "grade": "M", "level": "C1", "rare": true, "ex": "Die Polizei hat drei Zeugen vernommen.", "exEn": "The police questioned three witnesses."}
  ],
  "boards": {
   "A2": {"words": ["mitnehmen.verb", "abnehmen.verb", "zunehmen.verb", "wegnehmen.verb", "annehmen.verb", "aufnehmen.verb"], "light": ["mitnehmen.verb", "abnehmen.verb", "zunehmen.verb", "wegnehmen.verb", "annehmen.verb", "aufnehmen.verb"], "tiles": {"pre": ["mit", "ab", "zu", "weg", "an", "auf", "ein"], "suf": []}, "distract": [{"pre": "ein", "is": "extra"}]},
@@ -52,7 +53,6 @@
   {"key": "miss|", "word": "missnehmen"}
  ],
  "rare": [
-  {"key": "ver|", "word": "vernehmen", "why": "DWDS: vernehmen = question (a witness); hear (formal)"},
   {"key": "aus|", "word": "ausnehmen", "why": "DWDS: ausnehmen = exclude, except; gut (a fish); fleece someone"},
   {"key": "durch|", "word": "durchnehmen", "why": "DWDS: durchnehmen = go through, cover (a topic in class)"}
  ],

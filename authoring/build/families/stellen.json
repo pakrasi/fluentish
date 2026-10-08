@@ -42,7 +42,8 @@
   {"id": "die_Angestellte", "word": "Angestellte", "cls": "noun", "art": "die", "adjNoun": true, "parent": "anstellen.verb", "add": "pp", "side": "suf", "en": "employee (salaried)", "clue": "the (female) employee", "note": "angestellt (employed) used as a noun: der Angestellte, die Angestellte, ein Angestellter.", "grade": "T", "level": "B1", "lemma": "die_Angestellte", "ex": "Sie ist Angestellte bei einer Bank.", "exEn": "She is an employee at a bank."},
   {"id": "die_Aufstellung", "word": "Aufstellung", "cls": "noun", "art": "die", "parent": "aufstellen.verb", "add": "ung", "side": "suf", "en": "list (drawn up); line-up (of a team)", "clue": "the line-up; a list (drawn up)", "grade": "T", "level": "B2", "ex": "Der Trainer gibt die Aufstellung bekannt.", "exEn": "The coach announces the line-up."},
   {"id": "die_Umstellung", "word": "Umstellung", "cls": "noun", "art": "die", "parent": "umstellen-s.verb", "add": "ung", "side": "suf", "en": "changeover, switch; adjustment", "clue": "the changeover (to a new system)", "grade": "T", "level": "B2", "ex": "Die Umstellung auf das neue System dauert zwei Wochen.", "exEn": "The changeover to the new system takes two weeks."},
-  {"id": "die_Erstellung", "word": "Erstellung", "cls": "noun", "art": "die", "parent": "erstellen.verb", "add": "ung", "side": "suf", "en": "drawing up, preparation (of a document)", "clue": "the drawing up (of a report)", "grade": "T", "level": "C1", "ex": "Die Erstellung des Berichts hat lange gedauert.", "exEn": "Drawing up the report took a long time."}
+  {"id": "die_Erstellung", "word": "Erstellung", "cls": "noun", "art": "die", "parent": "erstellen.verb", "add": "ung", "side": "suf", "en": "drawing up, preparation (of a document)", "clue": "the drawing up (of a report)", "grade": "T", "level": "C1", "ex": "Die Erstellung des Berichts hat lange gedauert.", "exEn": "Drawing up the report took a long time."},
+  {"id": "der_Besteller", "word": "Besteller", "cls": "noun", "art": "der", "parent": "bestellen.verb", "add": "er", "side": "suf", "en": "the person who orders, the customer", "clue": "the person who places an order", "grade": "T", "level": "C1", "rare": true, "ex": "Der Besteller zahlt den Versand.", "exEn": "The customer pays for shipping."}
  ],
  "boards": {
   "A2": {"words": ["bestellen.verb", "vorstellen.verb", "die_Bestellung", "ausstellen.verb", "die_Ausstellung", "abstellen.verb"], "light": ["bestellen.verb", "vorstellen.verb", "die_Bestellung", "ausstellen.verb", "die_Ausstellung", "abstellen.verb"], "tiles": {"pre": ["auf", "vor", "aus", "ab", "be"], "suf": ["ung"]}, "distract": [{"pre": "auf", "is": "extra"}]},
@@ -59,7 +60,6 @@
   {"key": "ein|er", "word": "Einsteller", "why": "Found by the lexicon check: 4613 DWDS corpus hits; wordfreq 1.63."},
   {"key": "an|er", "word": "Ansteller", "why": "Found by the lexicon check: 217 DWDS corpus hits."},
   {"key": "ab|er", "word": "Absteller", "why": "Found by the lexicon check: 722 DWDS corpus hits."},
-  {"key": "be|er", "word": "Besteller", "why": "Found by the lexicon check: DWDS has an entry; 139093 DWDS corpus hits; wordfreq 2.82."},
   {"key": "um|er", "word": "Umsteller", "why": "Found by the lexicon check: 887 DWDS corpus hits."},
   {"key": "fest|er", "word": "Feststeller", "why": "Found by the lexicon check: DWDS has an entry; 3901 DWDS corpus hits."},
   {"key": "fest|bar", "word": "feststellbar", "why": "Found by the lexicon check: DWDS has an entry; 77653 DWDS corpus hits; wordfreq 3.12."},

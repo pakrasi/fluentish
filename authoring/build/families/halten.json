@@ -37,7 +37,8 @@
   {"id": "das_Verhältnis", "word": "Verhältnis", "cls": "noun", "art": "das", "parent": "sich_verhalten.verb", "add": "nis", "side": "suf", "en": "relationship (between people); ratio, proportion", "clue": "the relationship (between people); a ratio", "why": "sich verhalten zu = relate to: how two people or numbers relate.", "note": "The stem takes an umlaut: hält.", "grade": "M", "ex": "Ich habe ein gutes Verhältnis zu meinen Eltern.", "exEn": "I have a good relationship with my parents."},
   {"id": "erhältlich.adj", "chain": "halten/n6", "clue": "available (to buy)", "level": "B2"},
   {"id": "die_Unterhaltung", "chain": "halten/n8", "clue": "the conversation; entertainment"},
-  {"id": "der_Unterhalt", "word": "Unterhalt", "cls": "noun", "art": "der", "parent": "sich_unterhalten.verb", "add": "stem", "side": "suf", "en": "maintenance (payments); upkeep, living costs", "clue": "the maintenance payments (for children)", "why": "unterhalten also means support, keep: the money for keeping someone.", "grade": "M", "ex": "Er zahlt Unterhalt für seine zwei Kinder.", "exEn": "He pays maintenance for his two children."}
+  {"id": "der_Unterhalt", "word": "Unterhalt", "cls": "noun", "art": "der", "parent": "sich_unterhalten.verb", "add": "stem", "side": "suf", "en": "maintenance (payments); upkeep, living costs", "clue": "the maintenance payments (for children)", "why": "unterhalten also means support, keep: the money for keeping someone.", "grade": "M", "ex": "Er zahlt Unterhalt für seine zwei Kinder.", "exEn": "He pays maintenance for his two children."},
+  {"id": "zuhalten.verb", "word": "zuhalten", "cls": "verb", "parent": "halten.verb", "add": "zu", "side": "pre", "kind": "s", "aux": "hat", "pp": "zugehalten", "en": "hold shut (a door); sich die Nase zuhalten = hold your nose", "clue": "to hold shut (a door; your nose, your ears)", "why": "zu = shut, as in zumachen: you hold it so it stays shut.", "grade": "T", "level": "B2", "ex": "Sie hält sich die Ohren zu.", "exEn": "She covers her ears."}
  ],
  "boards": {
   "A2": {"words": ["behalten.verb", "sich_unterhalten.verb", "anhalten.verb", "aushalten.verb", "erhalten.verb", "enthalten.verb"], "light": ["behalten.verb", "sich_unterhalten.verb", "anhalten.verb", "aushalten.verb", "erhalten.verb", "enthalten.verb"], "tiles": {"pre": ["be", "unter", "an", "aus", "er", "ent", "ab"], "suf": []}, "distract": [{"pre": "ab", "is": "extra"}]},
@@ -50,7 +51,6 @@
  ],
  "rare": [
   {"key": "vor|", "word": "vorhalten", "why": "DWDS: vorhalten = reproach (jemandem etwas vorhalten); keep in reserve"},
-  {"key": "zu|", "word": "zuhalten", "why": "DWDS: zuhalten = hold shut (die Nase, die Tür)"},
   {"key": "mit|", "word": "mithalten", "why": "DWDS: mithalten = keep up (with others)"},
   {"key": "her|", "word": "herhalten", "why": "DWDS: herhalten müssen = have to serve as (an excuse)"}
  ],
