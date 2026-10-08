@@ -171,11 +171,8 @@ export async function mountToday(el, ctx) {
       build.setAttribute('aria-label', t('build.today.yourWord', { w: `${f.art ? `${f.art} ` : ''}${f.word}` }));
       return;
     }
-    if (S.typing) {
-      replace(build, h('span', { class: 'pz-typed' }, input.value || ' ', h('span', { class: 'pz-caret', 'aria-hidden': 'true' })));
-      build.setAttribute('aria-label', input.value ? t('build.today.yourWord', { w: input.value }) : t('build.today.yourWordNone'));
-      return;
-    }
+    // typing: the field holds the word, so the card keeps its empty slots (it showed the word twice)
+    const B = S.typing ? { art: null, pre: null, suf: null } : S.b;
     const noun = !!f.art;
     /** @type {any[]} */ const parts = [];
     const slot = (/** @type {Part} */ part, /** @type {string | null} */ v, /** @type {string} */ shown) => {
@@ -187,9 +184,9 @@ export async function mountToday(el, ctx) {
       }
       return h('span', { class: ['pt', `is-${part}`, st && `is-${st}`], 'data-part': part, 'data-v': v }, shown);
     };
-    if (noun || S.b.art) parts.push(slot('art', S.b.art, S.b.art || ''));
+    if (noun || B.art) parts.push(slot('art', B.art, B.art || ''));
     // one piece per tile: un + ver, -lich + -keit
-    const pres = partsOf(S.b.pre), ends = partsOf(S.b.suf);
+    const pres = partsOf(B.pre), ends = partsOf(B.suf);
     const nounEnd = ends.length > 0 && nounEnding(ends[ends.length - 1]);
     const cap = (/** @type {string} */ x) => x.charAt(0).toUpperCase() + x.slice(1);
     if (!pres.length) parts.push(slot('pre', null, ''));
@@ -199,7 +196,8 @@ export async function mountToday(el, ctx) {
     if (noun && !ends.length) parts.push(slot('suf', null, ''));
     for (const x of ends) parts.push(slot('suf', x, endLabel(x).replace(/^-/, '')));
     replace(build, parts);
-    const spelled = S.b.pre || S.b.suf ? `${S.b.art ? `${S.b.art} ` : ''}${spell(fam, S.b)}` : '';
+    if (S.typing) { build.setAttribute('aria-label', input.value ? t('build.today.yourWord', { w: input.value }) : t('build.today.yourWordNone')); return; }
+    const spelled = B.pre || B.suf ? `${B.art ? `${B.art} ` : ''}${spell(fam, B)}` : '';
     build.setAttribute('aria-label', spelled ? t('build.today.yourWord', { w: spelled }) : t('build.today.yourWordNone'));
   }
 
@@ -216,7 +214,7 @@ export async function mountToday(el, ctx) {
       const dn = day.done[day.cards[i]];
       const w = dn ? h('span', { class: 'pz-bw', lang: langAttr(), dir: dirAttr() }, f.art ? h('span', { class: 'fw-art' }, f.art) : null, f.word) : h('span', { class: 'pz-bw is-open' }, t('build.today.notFound'));
       return h('li', { class: i === S.idx ? 'is-cur' : null }, h('button', { type: 'button', class: 'pz-brow', onclick: () => { go(i); if (inSheet && sh) sh.close(); } },
-        h('span', { class: ['pz-bsq', dn && `is-${dn}`], role: 'img', 'aria-label': t(`build.today.sq.${dn || 'open'}`) }),
+        h('span', { class: ['pz-bsq', dn && `is-${dn}`], role: dn ? 'img' : null, 'aria-label': dn ? t(`build.today.sq.${dn}`) : null, 'aria-hidden': dn ? null : 'true' }),
         h('span', { class: 'pz-bm' }, w, h('span', { class: 'pz-bclue' }, f.clue)),
         h('span', { class: 'caption' }, t(`build.family.type.${f.cls}`).toLowerCase())));
     }));
@@ -225,7 +223,7 @@ export async function mountToday(el, ctx) {
       h('p', { class: 'pz-key' }, ['f1', 'f2', 'shown'].map(x => h('span', null, h('span', { class: ['pz-bsq', `is-${x}`], 'aria-hidden': 'true' }), t(`build.today.key.${x}`))))];
   }
   const formName = (/** @type {string} */ id) => { const f = fam.byId.get(id); return f ? `${f.art ? `${f.art} ` : ''}${f.word}` : id; };
-  function drawBoard() { replace(aside, boardNodes(false)); if (sh) sh.set(...boardNodes(true)); }
+  function drawBoard() { replace(aside, boardNodes(false)); if (sh) sh.set(...boardNodes(true).slice(1)); }   // the sheet has its own title
   /** @type {any} */ let sh = null;
   function boardSheet() {
     if (matchMedia('(min-width: 900px)').matches) { /** @type {HTMLElement | null} */ (aside.querySelector('h2'))?.focus(); return; }
