@@ -19,7 +19,9 @@ async function familyLog(page) {
     const r = indexedDB.open('fluentish');
     r.onerror = () => reject(r.error);
     r.onsuccess = () => {
-      const db = r.result; let out = null;
+      const db = r.result;
+      /** @type {any} */
+      let out = null;
       const q = db.transaction('kv').objectStore('kv').openCursor();
       q.onsuccess = () => { const c = q.result; if (!c) { db.close(); resolve(out); return; } if (/** @type {any[]} */ (c.key)[1] === 'build.family') out = c.value; c.continue(); };
       q.onerror = () => reject(q.error);
