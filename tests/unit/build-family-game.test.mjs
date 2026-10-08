@@ -63,7 +63,7 @@ test('the model: a root, its verbs, the chains that grow from it, and the famili
   assert.equal(by('die_Ausstellung').parent, 'ausstellen', 'a chain word hangs under its verb');
   assert.equal(by('die_Ausstellung').key, 'aus|ung');
   assert.equal(by('die_Vorstellung').parent, 'vorstellen', 'a chain that starts at a verb of the root joins under it');
-  assert.equal(by('unvorstellbar').key, null, 'two prefixes: not on a board');
+  assert.equal(by('unvorstellbar').key, 'un+vor|bar', 'un- and one prefix: the tiles build it (un, vor, -bar)');
   assert.equal(by('unvorstellbar').card, null, 'no card of its own');
   assert.deepEqual(F.piecesOf(by('unvorstellbar')).pre, ['un', 'vor'], 'pieces read from the front');
   // families: a new form gets PF: (its authored id), a form that has a card only gains fields
@@ -278,7 +278,7 @@ test('the full shape is read as it is: cards, keys, written parts, stress index,
   assert.deepEqual(pfIds(c).sort(), familyCardIds(c).sort(), 'PF ids are the content\'s');
   const by = (/** @type {string} */ id) => /** @type {F.Form} */ (st.byId.get(id));
   assert.deepEqual(by('unvorstellbar.adj').pre, ['vor', 'un'], 'nearest the root first');
-  assert.equal(by('unvorstellbar.adj').key, null, 'two prefixes: no tile key');
+  assert.equal(by('unvorstellbar.adj').key, 'un+vor|bar', 'un- and one prefix: a tile key, as the content\'s key');
   assert.deepEqual(F.piecesOf(by('die_Ausstellung')), { pre: ['Aus'], base: 'stell', tail: '', suf: ['ung'] });
   assert.deepEqual(F.piecesOf(by('herstellen.verb')), { pre: ['her'], base: 'stell', tail: 'en', suf: [] });
   assert.equal(by('herstellen.verb').stress, 'pre'); assert.equal(by('herstellen.verb').stressIdx, 1);

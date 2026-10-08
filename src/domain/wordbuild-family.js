@@ -24,6 +24,8 @@
    meanings (6 at A2 and on a Light day, 12 from B2) to build. boardFor() picks the day's root and words; judge()
    says what a build is; gradeFor() turns a finished clue into an FSRS grade; joinFamily() merges two devices' logs. */
 
+import { gradeTyped, lexiconOf } from './wordbuild-grade.js';
+
 /** @typedef {import('./wordbuild.js').BuildContent} BuildContent */
 /** @typedef {'verb'|'noun'|'adj'} Cls */
 /**
@@ -64,6 +66,7 @@
  * @property {string[]} [stems] the written root stems (geben: geb, gab, gib, gäb); [0] is the centre tile
  * @property {any} [info] the root's forms (pres3, pret, aux, pp, level, zipf) when it is not a build root
  * @property {Record<string, {words: string[], light?: string[]}>} [boards] the content's default boards by level
+ * @property {string[]} [rare] the content's rare list: words the family does not list, never called wrong (they may be rare)
  */
 
 /** The written endings, in tile order (a board may also use the bare stem, the Partizip II and others: their own tiles). */
@@ -217,7 +220,8 @@ function fromFamily(fam, P, info) {
     byCard: new Map(forms.filter(f => f.card).map(f => [/** @type {string} */ (f.card), f])),
     none: (fam.none || []).map((/** @type {any} */ n) => (typeof n === 'string' ? n : n.word)),
     noneKeys: (fam.none || []).map((/** @type {any} */ n) => (typeof n === 'string' ? null : n.key)).filter(Boolean),
-    info: { pres3: fam.pres3, pret: fam.pret, aux: fam.aux, pp: fam.pp, level: fam.level || null, zipf: fam.zipf ?? null }, boards: fam.boards || undefined };
+    info: { pres3: fam.pres3, pret: fam.pret, aux: fam.aux, pp: fam.pp, level: fam.level || null, zipf: fam.zipf ?? null }, boards: fam.boards || undefined,
+    rare: (fam.rare || []).map((/** @type {any} */ r) => String(r.word)) };
 }
 
 /** A board clue when none is authored: "to …" for a verb, "the …" for a noun (FAMILY-SCHEMA's shape). @param {Form} f */
@@ -243,15 +247,29 @@ function nearestPrefixed(f, byId) {
   return null;
 }
 
-/** The tile key of a form: one prefix (or none) and one tile ending (or none). The root itself has none. @param {Form} f */
-export function keyOf(f) {
-  if (!f.parent || f.side === 'pp' || f.pre.length > 1 || f.suf.length > 1) return null;
-  if (f.suf.length && !/^[a-zäöü]+$/.test(f.suf[0])) return null;
-  if (f.cls === 'verb' && f.suf.length) return null;
-  if (!f.pre.length && !f.suf.length) return null;
-  if (f.pre[0] === 'un') return null;
-  return `${f.pre[0] || ''}|${f.suf[0] || ''}`;
+/** The most endings a build chains (die Zuständigkeit: zu + bare stem + -ig + -keit). */
+export const MAX_ENDINGS = 3;
+
+/**
+ * The tiles that build a word, as its key: its prefixes (outermost first: un + one other at most, as in unverständlich)
+ * and its chain of endings (innermost first: -lich + -keit). Null when tiles cannot build it: the root, a compound, a
+ * participle form, two prefixes without un-, or a verb with an ending. The content's key has the same shape
+ * (FAMILY-SCHEMA: `un+ver|lich`), so the game, the content's boards and the validator agree on what can be built.
+ * @param {{parent: string | null | undefined, side?: string, cls: string, pre: string[], suf: string[]}} f pre outermost first
+ * @returns {string | null}
+ */
+export function tileKey(f) {
+  if (f.parent == null || f.side === 'pp' || f.side === 'cmp') return null;
+  const pre = f.pre || [], suf = f.suf || [];
+  if (!pre.length && !suf.length) return null;
+  if (pre.length > 2 || (pre.length === 2 && (pre[0] !== 'un' || pre[1] === 'un'))) return null;
+  if (suf.length > MAX_ENDINGS || suf.some(s => !/^[a-zäöü]+$/.test(s))) return null;
+  if (f.cls === 'verb' && suf.length) return null;
+  return `${pre.join('+')}|${suf.join('+')}`;
 }
+
+/** The tile key of a form (its pre is stored nearest the root first). @param {Form} f */
+export const keyOf = f => tileKey({ ...f, pre: [...f.pre].reverse() });
 
 /** Depth first from the root, children in the order they were added. @param {Form[]} forms */
 function order(forms) {
@@ -371,8 +389,9 @@ export function boardFor({ families, cards, day, level = 'B1', light = false, ne
     // below B2 one reading of a dual verb per board (two clues on the same tiles); the clues must differ
     if (L < 3 && keys.has(f.key)) return false;
     if (pick.some(x => x.clue === f.clue && x.cls === f.cls)) return false;
-    // ten prefixes round the root at most
-    if (f.pre[0] && !pick.some(x => x.pre[0] === f.pre[0]) && new Set(pick.map(x => x.pre[0]).filter(Boolean)).size >= 10) return false;
+    // ten prefixes round the root at most (un- of unverständlich is a tile of its own)
+    const ring = new Set(pick.flatMap(x => x.pre));
+    if (f.pre.some(p => !ring.has(p)) && new Set([...ring, ...f.pre]).size > 10) return false;
     pick.push(f); keys.add(f.key); return true;
   };
   const z = (/** @type {Form} */ f) => -(f.zipf || 0);
@@ -394,7 +413,8 @@ export function boardFor({ families, cards, day, level = 'B1', light = false, ne
     const lvlName = L <= 1 && fam.boards.A2 ? 'A2' : L >= 3 && fam.boards.B2 ? 'B2' : 'B1';
     const def = fam.boards[lvlName] || fam.boards.B1;
     const words = def ? (light && def.light && def.light.length ? def.light : def.words) : [];
-    for (const id of words) { const f = fam.byId.get(id); if (f && f.card && !reported.has(f.id) && !pick.includes(f)) pick.push(f); }
+    // only words the tiles can build (the validator holds the content's boards to the same rule)
+    for (const id of words) { const f = fam.byId.get(id); if (f && f.card && f.key && !reported.has(f.id) && !pick.includes(f)) pick.push(f); }
   }
   // an A2 board needs six forms at A1 to B1; else the family's B1 forms make a board of six (FAMILY-SCHEMA)
   if (pick.length < Math.min(6, size)) return L <= 1 ? boardFor({ families, cards, day, level: 'B1', light: true, newLeft, paused, isDue, state, recent, reported, root: root || fam.root }) : null;
@@ -410,8 +430,9 @@ export function boardFor({ families, cards, day, level = 'B1', light = false, ne
  * @param {Family} fam @param {Form[]} pick @param {number} L the level's index
  */
 export function tilesFor(fam, pick, L) {
-  const pre = new Set(pick.map(f => f.pre[0]).filter(Boolean));
-  const suf = new Set(pick.map(f => f.suf[0]).filter(Boolean));
+  // every part of every board word: un- and the inner prefix, each ending of a chain (-lich, -keit)
+  const pre = new Set(pick.flatMap(f => f.pre));
+  const suf = new Set(pick.flatMap(f => f.suf));
   const realPre = [...new Set(fam.forms.filter(f => f.key && f.pre.length === 1 && !pre.has(f.pre[0])).map(f => f.pre[0]))];
   const fromKeys = (fam.noneKeys || []).map(k => String(k).split('|')).filter(([p, e]) => p && !p.includes('+') && !e).map(([p]) => p);
   const nonPre = [...fromKeys, ...fam.none.map(w => nonWordParts(fam, w)).filter(x => x && x.pre && !x.suf).map(x => /** @type {string} */ (x && x.pre))]
@@ -439,18 +460,70 @@ export function nonWordParts(fam, w) {
   return { pre: lw.slice(0, i) || null, suf: rest === 'en' || rest === 'n' || rest === '' ? null : TILE_ENDINGS.find(s => rest === s) || rest };
 }
 
-/** The word a build spells (for the line under a miss): aus + stell + en, Aus + stell + ung. @param {Family} fam @param {{pre?: string | null, suf?: string | null}} b */
+/** The parts of a build's prefix or ending ("un+ver" → un, ver). @param {string | null | undefined} s @returns {string[]} */
+export const partsOf = s => (s ? String(s).split('+') : []);
+
+/**
+ * The word a build spells (for the line under a miss): the family's word when one has these tiles (un + ver + lich:
+ * unverständlich), else aus + stell + en, Aus + stell + ung.
+ * @param {Family} fam @param {{pre?: string | null, suf?: string | null}} b
+ */
 export function spell(fam, { pre = null, suf = null }) {
-  const verb = !suf || !['ung', 'er', 'e', 'in', 'heit', 'keit', 'schaft', 'nis'].includes(suf);
-  const w = `${pre || ''}${fam.stem}${suf || (verb ? fam.root.slice(fam.stem.length) : '')}`;
-  return suf && !verb ? w.charAt(0).toUpperCase() + w.slice(1) : w;
+  const f = (pre || suf) ? fam.forms.find(x => x.key === `${pre || ''}|${suf || ''}`) : null;
+  if (f) return f.word;
+  const ends = partsOf(suf), last = ends[ends.length - 1] || null;
+  const verb = !last || !['ung', 'er', 'e', 'in', 'heit', 'keit', 'schaft', 'nis'].includes(last);
+  const tail = ends.map(x => (x === 'stem' ? '' : x)).join('');
+  const w = `${partsOf(pre).join('')}${fam.stem}${tail || (verb && !ends.length ? fam.root.slice(fam.stem.length) : '')}`;
+  return last && !verb ? w.charAt(0).toUpperCase() + w.slice(1) : w;
 }
+
+/**
+ * The endings that may follow one another in the family's words (lich → keit, er → in, stem → ig): the language's
+ * chains, read from every form, so a second ending tile chains on only where German chains them.
+ * @param {Iterable<Family>} families @returns {Set<string>} "lich+keit"
+ */
+export function endingChains(families) {
+  /** @type {Set<string>} */ const out = new Set();
+  for (const fam of families) for (const f of fam.forms) if (f.key) for (let i = 1; i < f.suf.length; i++) out.add(`${f.suf[i - 1]}+${f.suf[i]}`);
+  return out;
+}
+
+/**
+ * A tile tapped: the build with it. A prefix replaces the prefix, except un-, which goes in front of one other
+ * (un + ver); a prefix tapped again comes off. An ending replaces the ending, or chains onto it where German chains
+ * them (-lich then -keit); an ending tapped again comes off with the endings after it. An article toggles.
+ * @param {{art: string | null, pre: string | null, suf: string | null}} b @param {'art'|'pre'|'suf'} part @param {string} v
+ * @param {Set<string>} [chains] endingChains()
+ */
+export function tapTile(b, part, v, chains = new Set()) {
+  if (part === 'art') return { ...b, art: b.art === v ? null : v };
+  const have = partsOf(b[part]);
+  /** @type {string[]} */ let next;
+  if (have.includes(v)) next = part === 'pre' ? have.filter(x => x !== v) : have.slice(0, have.indexOf(v));
+  else if (part === 'pre') next = v === 'un' ? ['un', ...have] : [...(have.includes('un') ? ['un'] : []), v];
+  else next = have.length && have.length < MAX_ENDINGS && chains.has(`${have[have.length - 1]}+${v}`) ? [...have, v] : [v];
+  return { ...b, [part]: next.length ? next.join('+') : null };
+}
+
+/** The build with its last part taken off: the last ending, else the inner prefix, else un-, else the article. @param {{art: string | null, pre: string | null, suf: string | null}} b */
+export function dropLast(b) {
+  const s = partsOf(b.suf), p = partsOf(b.pre);
+  if (s.length) return { ...b, suf: s.slice(0, -1).join('+') || null };
+  if (p.length) return { ...b, pre: p.slice(0, -1).join('+') || null };
+  return { ...b, art: null };
+}
+
+/** The tiles of a form, as a build: {pre: "un+ver", suf: "lich+keit"}. @param {Form} f */
+export const buildOf = f => ({ art: f.art || null, pre: f.pre.length ? [...f.pre].reverse().join('+') : null, suf: f.suf.length ? f.suf.join('+') : null });
 
 /* ------------------------------------------------------------------ checking a build */
 
 /**
  * @typedef {'right'|'article'|'other'|'found'|'extra'|'nonword'|'miss'|'empty'} Outcome
  * @typedef {'ok'|'near'|'no'|null} PartState  right · a real word with another meaning · not part of it
+ * @typedef {{outcome: Outcome, target?: number, form?: Form, states: {art: PartState, pre: PartState, suf: PartState}, noArticle?: boolean, rare?: boolean}} Judged
+ *   noArticle: the right word typed or built with an article it does not take; rare: a word of the family's rare list
  */
 
 /**
@@ -464,7 +537,7 @@ export function spell(fam, { pre = null, suf = null }) {
  *   miss     anything else: "not in this family's list" (a try is spent)
  * states: each part's flip (the root never flips).
  * @param {{fam: Family, cards: string[], i: number, done: Record<string, string>, pick: {art?: string | null, pre?: string | null, suf?: string | null}}} o
- * @returns {{outcome: Outcome, target?: number, form?: Form, states: {art: PartState, pre: PartState, suf: PartState}}}
+ * @returns {Judged}
  */
 export function judge({ fam, cards, i, done, pick }) {
   const art = pick.art || null, pre = pick.pre || null, suf = pick.suf || null;
@@ -476,6 +549,8 @@ export function judge({ fam, cards, i, done, pick }) {
   const ok = { art: cur.art ? (art === cur.art ? 'ok' : 'no') : (art ? 'no' : null), pre: pre ? 'ok' : null, suf: suf ? 'ok' : null };
   if (key === cur.key) {
     if (cur.art && art !== cur.art) return { outcome: 'article', form: cur, states: /** @type {any} */ ({ ...ok, art: 'no' }) };
+    // the right word with an article it does not take (die ausstellen): not right
+    if (!cur.art && art) return { outcome: 'article', form: cur, noArticle: true, states: /** @type {any} */ ({ ...ok, art: 'no' }) };
     return { outcome: 'right', form: cur, states: /** @type {any} */ ({ ...ok, art: cur.art ? 'ok' : null }) };
   }
   const forms = cards.map(id => /** @type {Form} */ (fam.byCard.get(id)));
@@ -498,25 +573,123 @@ export function judge({ fam, cards, i, done, pick }) {
 
 /**
  * A typed word in parts, against the family: "die ausstellung" → {art: die, pre: aus, suf: ung}. The word is matched
- * against the family's forms first (exact spelling, case and umlauts folded only for finding the form); otherwise
- * it is cut at the stem. Null when the root is not in it.
+ * against the family's forms first (case and ae/ä folded only for finding the form; a capital or an article prefers
+ * the noun of a verb–noun pair, das Verhalten); otherwise it is cut at the stem. Null when the root is not in it.
+ * Only for drawing the parts: judgeTyped() grades a typed word.
  * @param {Family} fam @param {string} input
  * @returns {{art: string | null, pre: string | null, suf: string | null, form: Form | null} | null}
  */
 export function parseTyped(fam, input) {
-  let s = String(input || '').trim().replace(/\s+/g, ' ');
-  let art = null;
+  const { art, word } = splitArticle(input);
+  const form = formsSpelled(fam, word, !!art || /^\p{Lu}/u.test(word))[0] || null;
+  if (form) { const b = buildOf(form); return { art, pre: b.pre, suf: b.suf, form }; }
+  const cut = stemCut(fam, word);
+  return cut ? { art, ...cut, form: null } : null;
+}
+
+/** "Das  Verhalten " → {art: das, word: Verhalten}. @param {string} input */
+function splitArticle(input) {
+  const s = String(input || '').normalize('NFC').trim().replace(/\s+/g, ' ');
   const m = /^(der|die|das)\s+(.+)$/i.exec(s);
-  if (m) { art = m[1].toLowerCase(); s = m[2]; }
-  const low = s.toLowerCase();
-  const form = fam.forms.find(f => f.key && (f.word.toLowerCase() === low || (f.inf && f.inf.toLowerCase() === low))) || null;
-  if (form) return { art, pre: form.pre[0] || null, suf: form.suf[0] || null, form };
-  const stem = (fam.stems || [fam.stem]).map(x => x.toLowerCase()).find(x => low.includes(x)) || fam.stem;
+  return m ? { art: m[1].toLowerCase(), word: m[2] } : { art: null, word: s };
+}
+/** Lower case, ae/oe/ue/ss for ä/ö/ü/ß, "sich" dropped: the spelling a form is found by. @param {string} s */
+const spellKey = s => String(s).toLowerCase().replace(/^sich\s+/, '').replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss');
+/**
+ * The family's forms spelled as typed (not the root), the most likely first: the noun of a verb–noun pair when the word
+ * has a capital or an article (das Verhalten), else the verb (verhalten).
+ * @param {Family} fam @param {string} word @param {boolean} nounish
+ */
+function formsSpelled(fam, word, nounish) {
+  const k = spellKey(word);
+  const hit = fam.forms.filter(f => f.parent != null && (spellKey(f.word) === k || (f.inf && spellKey(f.inf) === k)));
+  return hit.sort((a, b) => (nounish ? (a.cls === 'noun' ? 0 : 1) - (b.cls === 'noun' ? 0 : 1) : (a.cls === 'noun' ? 1 : 0) - (b.cls === 'noun' ? 1 : 0)));
+}
+/** A word cut at the family's stem: aus|stell|ung → {pre: aus, suf: ung}. Null when no stem is in it. @param {Family} fam @param {string} word */
+function stemCut(fam, word) {
+  const low = word.toLowerCase();
+  const stem = (fam.stems || [fam.stem]).map(x => x.toLowerCase()).find(x => low.includes(x));
+  if (!stem) return null;
   const i = low.indexOf(stem);
-  if (i < 0) return null;
   const rest = low.slice(i + stem.length);
-  const suf = rest === '' || rest === 'en' || rest === 'n' ? null : rest;
-  return { art, pre: low.slice(0, i) || null, suf, form: null };
+  return { pre: low.slice(0, i) || null, suf: rest === '' || rest === 'en' || rest === 'n' ? null : rest };
+}
+
+/**
+ * A typed word, judged for the clue in hand. The word is a word first, not a set of tiles: it is right only when it
+ * is the clue's own word, as the round's typed cards grade it (domain/wordbuild-grade.js gradeTyped: no typo
+ * tolerance; a dropped umlaut or a noun's small letter is a slip, rated Hard, unless the plain spelling is another
+ * word of the lexicon). Any other word of the family is that word (another clue, found, or an extra word), never
+ * this one: das Gebot is not das Gebiet, das Schloss is not der Schluss with a wrong article, vertraglich is not
+ * verträglich. A word the family does not have is "not in this family's list" (a rare word says so), a checked
+ * non-word is "not a German word", and nothing else is judged by its tiles.
+ * @param {{fam: Family, cards: string[], i: number, done: Record<string, string>, input: string, lexicon?: Set<string> | null}} o
+ *   lexicon: folded German words (wordbuild-grade.js lexiconOf with the word list): a dropped umlaut that spells one is a miss
+ * @returns {(Judged & {pick: {art: string | null, pre: string | null, suf: string | null}, slip: boolean}) | null} null: the root is not in it
+ */
+export function judgeTyped({ fam, cards, i, done, input, lexicon = null }) {
+  const { art, word } = splitArticle(input);
+  const cur = /** @type {Form} */ (fam.byCard.get(cards[i]));
+  if (!word) return null;
+  const nounish = !!art || /^\p{Lu}/u.test(word);
+  let forms = formsSpelled(fam, word, nounish);
+  if (!forms.length) {
+    // a dropped umlaut (zufallig for zufällig), when the plain spelling is not a word itself (vertraglich, Gebot)
+    const plain = (/** @type {string} */ x) => spellKey(x).replace(/ae/g, 'a').replace(/oe/g, 'o').replace(/ue/g, 'u');
+    forms = fam.forms.filter(f => f.parent != null && /[äöü]/i.test(f.word) && plain(f.word) === plain(word)
+      && gradeTyped(word, { accept: [f.word], lexicon }).ok);
+  }
+  // the word type the capital and the article chose (das Verhalten, verhalten); among its forms the clue's own word
+  // comes first (the two readings of a dual verb: umstellen)
+  const same = (/** @type {Form} */ f) => f === cur || (f.word === cur.word && f.cls === cur.cls && (f.art || null) === (cur.art || null));
+  const top = forms.filter(f => forms[0] && (f.cls === 'noun') === (forms[0].cls === 'noun'));
+  const form = top.find(same) || top[0] || null;
+  /** @type {{art: PartState, pre: PartState, suf: PartState}} */ const none = { art: null, pre: null, suf: null };
+  // the root itself is no answer: as with no tile tapped
+  if (!form && spellKey(word) === spellKey(fam.root)) return { outcome: 'empty', states: none, pick: { art, pre: null, suf: null }, slip: false };
+  if (form && same(form)) {
+    const b = { ...buildOf(cur), art };
+    /** @type {{art: PartState, pre: PartState, suf: PartState}} */ const ok = { art: cur.art ? (art === cur.art ? 'ok' : 'no') : art ? 'no' : null, pre: b.pre ? 'ok' : null, suf: b.suf ? 'ok' : null };
+    // the noun is right: only then is a wrong or missing article the miss
+    if (cur.art && art !== cur.art) return { outcome: 'article', form: cur, states: ok, pick: b, slip: false };
+    if (!cur.art && art) return { outcome: 'article', form: cur, noArticle: true, states: ok, pick: b, slip: false };
+    const g = gradeTyped(art ? `${art} ${word}` : word, { accept: [`${cur.art ? `${cur.art} ` : ''}${cur.word}`, ...(cur.inf && cur.inf !== cur.word ? [cur.inf] : [])], noun: !!cur.art, lexicon });
+    if (g.ok) return { outcome: 'right', form: cur, states: ok, pick: b, slip: g.slip };
+    return { outcome: 'miss', states: none, pick: b, slip: false };
+  }
+  if (form) {
+    // another word of the family: another clue (filled instead), one found already, or an extra word
+    const b = { ...buildOf(form), art };
+    const j = cards.findIndex((id, k) => k !== i && fam.byCard.get(id) === form);
+    const twin = j >= 0 ? j : cards.findIndex((id, k) => { const g = fam.byCard.get(id); return k !== i && !!g && g.word === form.word && g.cls === form.cls && !done[id]; });
+    if (twin >= 0 && !done[cards[twin]]) return { outcome: 'other', target: twin, form: /** @type {Form} */ (fam.byCard.get(cards[twin])), states: none, pick: b, slip: false };
+    if (twin >= 0) return { outcome: 'found', target: twin, form, states: none, pick: b, slip: false };
+    return { outcome: 'extra', form, states: { art: null, pre: b.pre ? 'near' : null, suf: b.suf ? 'near' : null }, pick: b, slip: false };
+  }
+  const k = spellKey(word);
+  if (fam.none.some(w => spellKey(String(w).replace(/^(der|die|das)\s+/i, '')) === k)) {
+    const cut = stemCut(fam, word) || { pre: null, suf: null };
+    return { outcome: 'nonword', states: { art: null, pre: cut.pre ? 'no' : null, suf: cut.suf ? 'no' : null }, pick: { art, ...cut }, slip: false };
+  }
+  const cut = stemCut(fam, word);
+  const rare = (fam.rare || []).some(w => spellKey(w) === k);
+  if (!cut) return rare ? { outcome: 'miss', rare: true, states: none, pick: { art, pre: null, suf: null }, slip: false } : null;
+  // not a word of the family: the parts flip only when they build no word of it (else the tiles would say "right")
+  const key = `${cut.pre || ''}|${cut.suf || ''}`;
+  const [cp, cs] = String(cur.key).split('|');
+  const states = fam.forms.some(f => f.key === key) ? none
+    : { art: null, pre: cut.pre ? (cut.pre === cp ? 'ok' : 'no') : null, suf: cut.suf ? (cut.suf === cs ? 'ok' : 'no') : null };
+  return { outcome: 'miss', rare, states: /** @type {any} */ (states), pick: { art, ...cut }, slip: false };
+}
+
+/**
+ * The lexicon Today's family grades typed words with: every word the build content knows (verbs, participles, chain
+ * and family words), the word list and the families' rare lists. A dropped umlaut that spells one of them is that
+ * other word, not a slip (vertraglich is not verträglich).
+ * @param {BuildContent & {families?: any[]}} c @param {{w: string}[]} [words] the word list
+ */
+export function familyLexicon(c, words = []) {
+  return lexiconOf(c, [...words.map(w => String(w.w || '')), ...(c.families || []).flatMap((/** @type {any} */ f) => (f.rare || []).map((/** @type {any} */ r) => String(r.word)))]);
 }
 
 /* ------------------------------------------------------------------ grades */
