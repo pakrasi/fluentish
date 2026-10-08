@@ -2125,6 +2125,7 @@ export default {
   'build.today.endingTile': 'Ending {s}',
   'build.today.pp': 'Part. II',
   'build.today.ppr': 'Part. I',
+  'build.today.inf': '-en (das)',
   'build.today.articleTile': 'Article {a}',
   'build.today.rootTile': 'Root: {root}',
   'build.today.tapFirst': 'Tap a prefix first.',

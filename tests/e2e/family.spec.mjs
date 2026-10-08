@@ -37,7 +37,7 @@ async function familyLog(page) {
 async function solveOne(page) {
   // a found word's lesson stays until Next (no timer): move on to the next open meaning
   if (await page.evaluate(() => { const x = /** @type {any} */ (window).__family; return !!x.day.done[x.day.cards[x.idx]] && !x.day.cards.every((/** @type {string} */ id) => x.day.done[id]); })) {
-    await page.getByRole('region', { name: "Today's family" }).getByRole('button', { name: /^Next/ }).click();
+    await page.getByRole('region', { name: "Today's family" }).locator('.pz-check').click();
   }
   await expect.poll(() => page.evaluate(() => { const x = /** @type {any} */ (window).__family; return !x.day.done[x.day.cards[x.idx]]; }), { timeout: 8000 }).toBe(true);
   // every tile of the word: un- and the inner prefix (unverständlich), each ending of a chain (-lich, then -keit)
@@ -74,7 +74,7 @@ test("Today's row opens Today's family; build every word, the done screen, and o
   const n = await page.evaluate(() => /** @type {any} */ (window).__family.day.cards.length);
   expect(n).toBeGreaterThanOrEqual(6);
   for (let i = 0; i < n; i++) await solveOne(page);
-  await page.getByRole('region', { name: "Today's family" }).getByRole('button', { name: /^Finish/ }).click();
+  await page.getByRole('region', { name: "Today's family" }).locator('.pz-check').click();
   await expect(page.getByText(`of ${n} words found`)).toBeVisible({ timeout: 10_000 });
   await expect(page.getByRole('heading', { level: 2, name: "Today's board is done" })).toBeVisible();
   await checkA11y(page, "Today's family done");

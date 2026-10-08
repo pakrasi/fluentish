@@ -27,15 +27,15 @@ import { sheet as openSheet } from '../shared/textview.js';
 const ROWS_FROM = 10;
 /**
  * Three rows round the root: two tiles each side of it, the rest above and below, offset like bricks. Centres in px
- * from the hive's middle (x) and its top (y). Tiles 50 × 40, the root 88 × 56; 316 px wide at 12 tiles.
+ * from the hive's middle (x) and its top (y). Tiles 50 × 40, the root 88 × 50; 316 px wide at 12 tiles, 140 tall.
  * @param {number} n @returns {{x: number, y: number}[]}
  */
 export function rowPlaces(n) {
   const side = Math.min(4, n), top = Math.ceil((n - side) / 2), bottom = n - side - top;
   const row = (/** @type {number} */ k, /** @type {number} */ y) => Array.from({ length: k }, (_, i) => ({ x: (i - (k - 1) / 2) * 56, y }));
-  const mid = [-133, -77, 77, 133].slice(side === 4 ? 0 : 1, side === 4 ? 4 : 1 + side).map(x => ({ x, y: 76 }));
+  const mid = [-133, -77, 77, 133].slice(side === 4 ? 0 : 1, side === 4 ? 4 : 1 + side).map(x => ({ x, y: 70 }));
   // clockwise from the top left, as the ring ran
-  return [...row(top, 20), ...mid.filter(p => p.x > 0), ...row(bottom, 132).reverse(), ...mid.filter(p => p.x < 0).reverse()];
+  return [...row(top, 20), ...mid.filter(p => p.x > 0), ...row(bottom, 120).reverse(), ...mid.filter(p => p.x < 0).reverse()];
 }
 
 /** @typedef {import('../../domain/wordbuild-family.js').Form} Form */
@@ -137,7 +137,8 @@ export async function mountToday(el, ctx) {
     replace(hive);
     // up to 9 prefixes on a ring round the root; from 10 (B2, some B1 boards) three rows round it, which is 32 px
     // shorter and keeps every tile clear of its neighbours at 360 px (the ring overlapped 4 pairs at B2)
-    const rows = n >= ROWS_FROM;
+    // (also from 6 when the endings take two rows: the ring and two rows do not fit a 664 px phone)
+    const rows = n >= ROWS_FROM || (n >= 6 && day.tiles.suf.length > 2 && nouns);
     hive.classList.toggle('is-rows', rows);
     const at = rows ? rowPlaces(n) : null;
     pre.forEach((p, i) => {
@@ -169,7 +170,7 @@ export async function mountToday(el, ctx) {
   /** An ending's tile: "-ung", "bare stem", "Partizip II" (the build content's labels). @param {string} x */
   function endLabel(x) {
     const sx = d.c.suffixes.find((/** @type {any} */ s) => s.id === x);
-    return x === 'pp' ? t('build.today.pp') : x === 'ppr' ? t('build.today.ppr') : sx && /^-/.test(sx.label) ? sx.label.split(',')[0] : sx ? sx.label : `-${x}`;
+    return x === 'pp' ? t('build.today.pp') : x === 'ppr' ? t('build.today.ppr') : x === 'inf' ? t('build.today.inf') : sx && /^-/.test(sx.label) ? sx.label.split(',')[0] : sx ? sx.label : `-${x}`;
   }
   function syncTiles() {
     for (const [key, b] of tileEls) { const [part, v] = key.split(':'); b.setAttribute('aria-pressed', String(part === 'art' ? S.b.art === v : partsOf(S.b[/** @type {Part} */ (part)]).includes(v))); }
@@ -181,6 +182,8 @@ export async function mountToday(el, ctx) {
   function drawClue({ keepBuild = false } = {}) {
     const f = cur(), id = card();
     meaning.textContent = f.clue;
+    // a long meaning is set a size smaller, so three lines still leave Check on a 664 px phone
+    meaning.classList.toggle('is-long', f.clue.length > 38);
     const ss = stateOf(d, k, f);
     const tries = day.tries[id] || 0;
     /** @type {any[]} */ const bits = [h('span', { class: 'tnum' }, t('build.today.clueOf', { n: S.idx + 1, total: N })), h('span', null, t(`build.family.type.${f.cls}`).toLowerCase()), f.level ? h('span', { class: 'tnum' }, f.level) : null];
