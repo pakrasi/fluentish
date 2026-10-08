@@ -20,7 +20,7 @@ nodes gain `ex`/`exEn`). Two new top-level keys:
   "stems": ["stell"],           // the written root stems the forms use (geben: ["geb","gab","gib","gäb"]); [0] is the centre tile
   "forms": [ Form, … ],         // the root itself first (parent null), then a tree: every form's parent is earlier
   "boards": { "A2": Board, "B1": Board, "B2": Board },   // C1 uses B2
-  "none": [ { "key": "zer|", "word": "zerstellen" } ],   // CHECKED non-words: the only words the game may call "not a German word"
+  "none": [ { "key": "zer|", "word": "zerstellen", "chk": { "dwds": false, "wf": 0, "hits": 0 } } ],  // CHECKED non-words: the only words the game may call "not a German word"
   "rare": [ { "key": "ent|", "word": "entstellen", "why": "exists: disfigure" } ],  // combos checked and NOT safe to call wrong
   "reviewedBy": "model-2pass", "reviewedAt": "2026-10-08"
 } ]
@@ -48,7 +48,7 @@ nodes gain `ex`/`exEn`). Two new top-level keys:
 | `rare` | Real but rare: never on A2/B1 boards. |
 | `board` | Eligible for a board: single article, at most one prefix (or `un` + one), not `pl`/`adjNoun`/`cmp`, a unique clue. |
 | `lemma` | Word-list id or `null`. Knowledge item: `W:<lemma>` when set, else the card id (PV/PW rules as today). |
-| `lex` | Where the form was found: `list` (word list), `dwds` (DWDS has the lemma), `wf` (wordfreq Zipf > 0). Every form has at least one of `list`/`dwds`. |
+| `lex` | Where the form was found: `list` (word list), `dwds` (a DWDS dictionary entry), `corpus` (200+ hits in the DWDS corpora), `wf` (wordfreq Zipf > 0). Every form has `list`, `dwds` or `corpus`. |
 
 ## Board
 ```jsonc
@@ -65,3 +65,10 @@ ones from the same family (`boardFor`); `words` is the default composition and i
 2. matches any other form of the family → an extra word (never a miss).
 3. matches a `none` entry → "Not a German word" (the only place this is said).
 4. anything else (including `rare`) → "Not in this family's list". Never "not a word".
+
+## How a non-word is checked
+`chk` is recorded by `tools/family_lexcheck.py` (facts only: no DWDS text and no wordfreq list is copied): no DWDS
+dictionary entry, at most 10 hits in the DWDS corpora (about 53 billion tokens), wordfreq Zipf 0 for the infinitive and
+its finite forms. The validator also requires it to be in no lexicon the build knows (the word list, its morphology,
+every build and family word), and both model review passes must agree (`authoring/de/build/REVIEW.json`). Anything in
+doubt goes to `rare` instead.
