@@ -31,6 +31,7 @@ import { cardIds, compose, zipfOf } from '../shared/cluster-items.js';
 import { clusterLayout } from '../shared/cluster-layout.js';
 import { pickerLinks } from '../shared/picker.js';
 import { CODE_STATE, STATES, groupName, mapHref, fromPage, askable } from './groups.js';
+import { familyRootsOf } from '../../data/families.js';
 
 const STUDY_N = 10;
 /** Most items the block of type shows (a level group has over a thousand; the map shows them all). */
@@ -167,7 +168,11 @@ export async function mountGroup(el, ctx, type, id) {
   const sortIds = words.filter((/** @type {string} */ x) => stateOf(x).state !== 'known' && askable(textOf(x))).map((/** @type {string} */ x) => x.slice(2));
   const sortHref = cl ? `#/practice/sort?cluster=${encodeURIComponent(key)}&from=${encodeURIComponent(from)}`
     : `#/practice/sort?ids=${encodeURIComponent(sortIds.join(','))}&title=${encodeURIComponent(name)}&from=${encodeURIComponent(from)}`;
+  // round 7: a word family with Word building data links to its family view ("How the words are built"), and back
+  const built = type === 'family' ? h('span', { class: 'cl-built' }) : null;
+  if (built) familyRootsOf(ctx.content).then(rs => { if (rs.has(id)) built.replaceChildren(h('a', { class: 'btn pressable cl-map', href: `#/practice/build/family/${encodeURIComponent(id)}?from=map` }, t('build.family.howBuilt'))); }).catch(() => {});
   const links = h('p', { class: 'cl-links' },
+    built,
     sortIds.length > 1 ? h('a', { class: 'btn btn-quiet pressable cl-map', href: sortHref }, t('explore.page.sort', { n: sortIds.length })) : null,
     g ? h('a', { class: 'btn btn-quiet pressable cl-map', href: mapHref(key) }, icon('next', { size: 16 }), t('explore.page.onMap')) : null);
 

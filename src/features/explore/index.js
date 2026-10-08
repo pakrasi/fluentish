@@ -31,6 +31,7 @@ import { langAttr, dirAttr, languageName } from '../../core/lang.js';
 import { MODES, summarise, nextUp, encode, nextBestGroup, gapsOf } from '../../domain/atlas.js';
 import { loadAtlas, layoutOf, scores, loadDetails, prefs, setPrefs, fold, find, totals } from '../../data/atlas.js';
 import { ensurePlacement, roundOf } from '../shared/data.js';
+import { familyLink } from '../shared/family-link.js';
 import { openPicker } from '../shared/picker.js';
 import { CODE_STATE, STATES, groupName, pageHref } from './groups.js';
 import { createMap } from './map.js';
@@ -711,6 +712,7 @@ async function mountMap(el, ctx, offs) {
       if (opp.length) links.push(linkRow(t('explore.card.opposite'), opp));
       const fam = D.famOf.get(wid), f = fam ? D.families.get(fam) : null;
       if (f) links.push(linkRow(t('explore.card.family'), f.members.filter((/** @type {string} */ m) => m !== wid).slice(0, 10)));
+      links.push(familyLink(ctx, wid, { from: 'map' }));   // round 7: how the word is built (Word family)
       if (!/[…()[\]]/.test(A.text[i])) acts.push(studyLink(`#/practice/round?kind=cluster%3Apick&ids=${encodeURIComponent(wid)}&from=map`, t('explore.card.practise'), true));
       acts.push(h('a', { class: 'btn pressable', href: `#/lookup/words/${encodeURIComponent(wid)}` }, t('explore.card.lookup')));
     } else if (kind === 'c') {

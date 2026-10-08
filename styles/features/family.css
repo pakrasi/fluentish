@@ -313,3 +313,13 @@ body.kb .pz-head, body.kb .pz-root, body.kb .pz-msg:empty { display: none; }
 .wb-famtop-acts { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
 .wb-famtop-acts .btn-primary { flex: 1 1 auto; }
 .wb-gamerow { margin-top: var(--s-2); }
+
+/* ---------- "Family: stellen ›" on word sheets (shared/family-link.js) ---------- */
+.fam-link-slot:empty { display: none; }
+.fam-link { display: inline-flex; align-items: center; gap: 6px; min-height: var(--tap); padding: 0; border: 0; background: none; color: var(--accent-ink); text-decoration: none; font: 500 15px/1 var(--font-ui); cursor: pointer; }
+.fam-link-label { color: var(--ink-2); }
+.fam-link-root { font: 400 18px/1 var(--font-display); color: var(--accent-ink); }
+.fam-link svg { color: var(--ink-3); }
+.fam-sheet .tv-sheet-body { padding-top: 0; }
+.cl-built:empty { display: none; }
+.diag-reports { margin: 0 0 4px; padding-inline-start: 1.1em; }

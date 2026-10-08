@@ -23,6 +23,7 @@ import { hl, glyph, paged, markForm, caption } from './ui.js';
 import { play, stop, prefetchAudio } from '../../services/audio.js';
 import { markSeen } from '../../data/seen.js';
 import { refreshWords, loadData, stateFor } from '../shared/data.js';
+import { familyLink } from '../shared/family-link.js';
 import { connected, resultsRepo } from '../../data/connection.js';
 import { COLLECTION as EXAM_WORDS, inQueue } from '../shared/words.js';
 import { recheckCount } from '../shared/recheck.js';
@@ -232,7 +233,9 @@ export async function mount(el, ctx) {
     const meaning = g?.gloss || (r ? r.en.join(', ') : null);
     const fromList = !!(g && !g.gloss && r);   // a captured word still waiting: the word list already knows its meaning
     add(wrap, meaning ? h('p', { class: 'lk-meaning' }, meaning) : h('p', { class: 'lk-meaning is-muted' }, t('lookup.sheet.waiting')),
-      fromList ? h('p', { class: 'caption' }, t('lookup.sheet.fromList')) : null);
+      fromList ? h('p', { class: 'caption' }, t('lookup.sheet.fromList')) : null,
+      // round 7: the word's family in Word building ("Family: stellen ›")
+      familyLink(ctx, r ? r.id : null, { from: 'lookup' }));
     if (g?.note) add(wrap, h('p', { class: 'lk-note' }, de(g.note)));
     const stats = [g?.exam_days ? t('lookup.sheet.tests', { n: g.exam_days, total: testsTotal }) : null, band ? t(`lookup.sheet.freq.${band}`) : null].filter(Boolean);
     if (g) {

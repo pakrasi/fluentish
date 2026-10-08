@@ -82,7 +82,7 @@ export async function mountHub(el, ctx) {
         h('a', { class: ['btn', 'pressable', fdone && 'btn-primary'], href: `#/practice/build/family/${encodeURIComponent(fday.root)}` }, t('build.hub.familySee'))))
       : h('section', { class: 'wb-famtop' }, h('a', { class: 'btn pressable', href: '#/practice/build/family' }, t('build.hub.families')));
     const gameRow = h('a', { class: 'wb-hrow pressable wb-gamerow', href: '#/practice/build/game' },
-      h('span', { class: 'wb-hrow-top' }, h('span', { class: 'row-title' }, t('build.hub.game')), icon('next', { size: 16 })), h('span', { class: 'row-detail' }, t('build.hub.gameDetail')));
+      h('span', { class: 'wb-hrow-top' }, h('span', { class: 'row-title' }, t('build.game.title')), icon('next', { size: 16 })), h('span', { class: 'row-detail' }, t('build.hub.game')));
     replace(el, h('div', { class: ['wb', 'stack', start && 'has-dock'] },
       backLink('#/practice', t('practice.title')),
       h('div', { class: 'page-head' }, h('h1', null, t('build.title'))),

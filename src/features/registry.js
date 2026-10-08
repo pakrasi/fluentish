@@ -37,7 +37,7 @@ export const FEATURES = [
   { id: 'today', paths: ['/today'], tab: 'today', view: () => import('./today/index.js'), plan: null },
   { id: 'today-progress', paths: ['/today/progress'], tab: 'today', view: () => import('./today/progress/index.js'), plan: null },
   // Practice: sibling features under #/practice, listed before the hub so their paths win the match
-  { id: 'build', paths: ['/practice/build', '/practice/build/*'], tab: 'practice', view: () => import('./build/index.js'), plan: () => import('./build/plan.js') },
+  { id: 'build', paths: ['/practice/build', '/practice/build/*'], tab: 'practice', view: () => import('./build/index.js'), plan: () => import('./build/plan.js'), boot: () => import('./build/boot.js') },
   { id: 'practice-script', paths: [scriptRound, '/practice/scripts', '/practice/scripts/*'], tab: 'practice', view: () => import('./practice-script/index.js'), plan: () => import('./practice-script/plan.js') },
   { id: 'practice-conversation', paths: ['/practice/conversation', '/practice/conversation/*'], tab: 'practice', view: () => import('./practice-conversation/index.js'), plan: () => import('./practice-conversation/plan.js') },
   { id: 'practice-read', paths: [readRound, '/practice/read', '/practice/read/*'], tab: 'practice', view: () => import('./practice-read/index.js'), plan: () => import('./practice-read/plan.js'), boot: () => import('./practice-read/boot.js') },
@@ -67,7 +67,7 @@ export const routes = () => FEATURES.flatMap(f => f.paths.map(p => ({ ...(typeof
 
 /**
  * Run every feature's boot module once the app has started (main.js). A failing one is logged and skipped.
- * @param {{store: any, bus: any, t: (k: string, v?: any) => string, toast: (text: string) => void, log: (where: string, e: unknown) => void}} app
+ * @param {{store: any, bus: any, t: (k: string, v?: any) => string, toast: (text: string) => void, log: (where: string, e: unknown) => void, clock?: any, settings?: () => any, content?: any, app?: any}} app
  */
 export async function startFeatures(app) {
   await Promise.all(FEATURES.filter(f => f.boot).map(async f => {

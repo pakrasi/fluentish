@@ -39,6 +39,7 @@ import { loadClusters, dueCards as clusterDue, update as updateClusters, dayOf a
 import { drawClusterDone } from '../shared/cluster-layout.js';
 import { checkMark } from '../shared/check-mark.js';
 import { marked } from '../../data/known.js';
+import { familyLink } from '../shared/family-link.js';
 import { skipsNew } from '../../domain/known.js';
 import { knowButton, isKnowKey, knowCard, knownResult } from '../shared/iknow.js';
 import { wordMeta, wordPanel } from '../../core/wordpanel.js';
@@ -456,8 +457,10 @@ export async function mountRound(el, ctx) {
   }
   function wordCard(/** @type {any} */ it) {
     const c = it && it.card; if (!c) return null;
-    // a card whose item is one word: the shared word panel (forms, one example, where it is from)
-    if (c.type) return wordPanel(c, { keep, play: async (/** @type {string} */ ex) => { if (!(await playAudio(ctx.content, ex))) readAloud(ex); } });
+    // a card whose item is one word: the shared word panel (forms, one example, where it is from), and its family
+    // (round 7: "Family: stellen ›" opens the family as a sheet over the round, so the round goes on)
+    const wid = /^W:/.test(String(it.id)) ? it.id : /^CF:/.test(String(it.id)) ? String(it.id).slice(3) : null;
+    if (c.type) return [wordPanel(c, { keep, play: async (/** @type {string} */ ex) => { if (!(await playAudio(ctx.content, ex))) readAloud(ex); } }), familyLink(ctx, wid, { inRound: true, keep })];
     const ex = c.ex;
     const play = ex ? h('button', { type: 'button', class: 'pr-play pressable', 'aria-label': t('practice.word.play'), onpointerdown: keep,
       onclick: async () => { if (!(await playAudio(ctx.content, ex))) readAloud(ex); } }, icon('play', { size: 16 })) : null;

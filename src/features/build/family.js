@@ -55,7 +55,7 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
     if (sheet) return null;
     const [href, label] = from === 'map' ? [`#/lookup/map/family/${encodeURIComponent(rootArg || '')}`, t('build.family.onMap')]
       : from === 'today' ? ['#/practice/build/today', t('build.today.title')]
-      : from === 'lookup' ? ['javascript-back', t('lookup.title')]
+      : from === 'lookup' || from === 'read' ? ['javascript-back', t(from === 'read' ? 'build.family.backRead' : 'lookup.title')]
       : ['#/practice/build', t('build.title')];
     if (href === 'javascript-back') return h('button', { type: 'button', class: 'pr-backlink pressable', onclick: () => history.back() }, icon('prev', { size: 16 }), label);
     return h('a', { class: 'pr-backlink pressable', href }, icon('prev', { size: 16 }), label);

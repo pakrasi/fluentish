@@ -30,6 +30,7 @@ import { fill } from '../../services/prompts/index.js';
 import { TEMPLATES } from '../../services/prompts/read.js';
 import { config } from '../../core/config.js';
 import { addActivity } from '../shared/data.js';
+import { familyLink } from '../shared/family-link.js';
 import * as R from '../shared/read-data.js';
 import { textView, sheet, tray, hairline, quote } from '../shared/textview.js';
 import * as L from './logic.js';
@@ -218,6 +219,7 @@ export async function mountReader(el, ctx, read0, given) {
         h('span', { class: ['rd-state', `is-${state}`] }, t(`read.state.${state}`))),
       gloss ? h('p', { class: 'rd-gloss' }, gloss) : h('label', { class: 'field-label' }, t('read.sheet.meaning'), meaningIn),
       h('p', { class: 'caption' }, gloss ? t(`read.sheet.from.${from || 'list'}`) : t('read.sheet.noMeaning')),
+      entry && entry.id ? familyLink(ctx, entry.id, { from: 'read' }) : null,   // round 7: "Family: stellen ›"
       split ? h('p', { class: 'callout rd-note' }, t('read.sheet.separable', { parts: P.at.map(k => s.toks[k].t).join(' … ') })) : null,
       !ext && wc ? wordPanel(wc.card, { head: false }) : null,
       !ext ? quote(s.toks, P.at) : null,

@@ -221,7 +221,7 @@ async function main() {
   sw.start();
 
   // what features do once the app has started (the exam keeps a Sprechen take a reload cut off)
-  startFeatures({ store, bus, t, toast, log });
+  startFeatures({ store, bus, t, toast, log, clock, settings, content, app });
 
   // ---------- progress log ----------
   // one record per study day (data/progress.js): the past once per device (with the backup when this device is
