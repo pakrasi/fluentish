@@ -8,7 +8,7 @@
    list has no meaning for (the only Claude call of phase 1). */
 import { h, replace, announce } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
-import { countTo, haptic, reduced } from '../../core/motion.js';
+import { countTo, haptic, reduced, easing } from '../../core/motion.js';
 import * as FS from '../../domain/fsrs.js';
 import * as P from '../../domain/script/parse.js';
 import * as St from '../../data/scripts.js';
@@ -201,8 +201,7 @@ export async function mountMark(el, ctx, script0, sectionId) {
       if (!r.width || !to.width) { resolve(null); return; }
       const clone = h('span', { class: 'sc-lift', lang: langAttr(), dir: dirAttr(), 'aria-hidden': 'true', style: { left: `${r.left}px`, top: `${r.top}px`, width: `${r.width}px`, height: `${r.height}px` } }, b.textContent);
       document.body.append(clone);
-      const css = getComputedStyle(document.documentElement);
-      const ease = css.getPropertyValue('--spring-snappy').trim() || 'cubic-bezier(0.22, 1, 0.36, 1)';
+      const ease = easing('--spring-snappy');
       const k = Math.min(1, to.height / r.height || 1);
       const dx = to.left - r.left, dy = to.top + to.height / 2 - (r.top + r.height / 2);
       const up = clone.animate([{ transform: 'none' }, { transform: 'translateY(-8px)' }], { duration: 110, delay, easing: 'ease-out', fill: 'forwards' });

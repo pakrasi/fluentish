@@ -2,7 +2,7 @@
 // @paper-design/shaders (src/vendor/paper-shaders, same origin, no CDN); everything else is plain DOM / 2D canvas.
 // Copied from the design kit with its API kept. Changes: the vendored shader path, markNode() (the mark built with
 // DOM calls, for pages that never parse markup), and runway's `examLabel` option for i18n.
-import { reduced, haptic } from './motion.js';
+import { reduced, haptic, easing } from './motion.js';
 import { runwayDays, midnight, daysBetween } from '../domain/runway.js';
 
 const root = document.documentElement;
@@ -331,7 +331,7 @@ export function weekStripUpdate(el, cols, changed) {
   const subs = days.map(d => d.querySelector('small')?.textContent || '');
   cols.forEach((c, i) => { const r = paintColumn(days[i], c, maxPlan, planOnly); /** @type {HTMLElement | null} */ (days[i].querySelector('.runway-bar > span'))?.style.setProperty('--p', String(r)); });
   if (reduced()) return;
-  const soft = getComputedStyle(root).getPropertyValue('--spring-soft').trim() || 'cubic-bezier(0.22, 1, 0.36, 1)';
+  const soft = easing('--spring-soft');
   days.forEach((d, i) => {
     const bar = /** @type {HTMLElement} */ (d.firstElementChild);
     const after = bar.getBoundingClientRect().height;

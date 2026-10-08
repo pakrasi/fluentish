@@ -3,7 +3,7 @@
    round (features/practice-round, kind=cluster:…). Motion only through the kit (core/motion.js, core/brand.js Field),
    so reduced motion gets the final state at once. */
 import { h, replace, announce } from '../../core/dom.js';
-import { countTo, reduced, haptic } from '../../core/motion.js';
+import { countTo, reduced, haptic, easing } from '../../core/motion.js';
 import { Field } from '../../core/brand.js';
 import { doneHero, againLink } from './done-hero.js';
 import { loadClusters, loadKnowledge, countsOf, cellsOf, update, DECK } from './cluster-data.js';
@@ -116,8 +116,8 @@ export async function settle(lay, after, countEl, to) {
   const turned = (/** @type {HTMLElement} */ x) => B(x).cls !== N(x).cls;
   // the units that land one by one: a pair that snapped, or a word whose state changed (outside a snapped pair)
   const units = all.filter(x => !x.classList.contains('cl-link') && turned(x) && !(x.parentElement && isPair(x.parentElement) && turned(x.parentElement)));
-  const ease = getComputedStyle(document.documentElement).getPropertyValue('--spring-pop').trim() || 'ease-out';
-  const soft = getComputedStyle(document.documentElement).getPropertyValue('--spring-soft').trim() || 'ease-out';
+  const ease = easing('--spring-pop');
+  const soft = easing('--spring-soft');
   const parts = (/** @type {HTMLElement} */ u) => (isPair(u) ? [u, .../** @type {HTMLElement[]} */ ([...u.querySelectorAll('.cl-w, .cl-link')])] : [u]);
   // hold every unit in its old look and place until its turn
   for (const u of units) for (const x of parts(u)) x.className = B(x).cls;

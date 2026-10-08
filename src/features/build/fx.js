@@ -2,7 +2,7 @@
    the kit's reduced-motion rule built in: under reduced motion nothing travels and the end state is set at once.
    DESIGN.md: one primary motion per moment, translation and opacity only, input never blocked (a new tap cancels a
    running move and jumps to its end), nothing loops at rest. */
-import { reduced } from '../../core/motion.js';
+import { reduced, easing } from '../../core/motion.js';
 
 export { reduced };
 
@@ -20,7 +20,8 @@ const running = new Set();
  */
 export function play(el, frames, o = {}) {
   if (!el || reduced() || !(/** @type {any} */ (el).animate)) return Promise.resolve();
-  const a = /** @type {HTMLElement} */ (el).animate(frames, { fill: 'backwards', ...o });
+  // springs are linear() curves, which WAAPI in WebKit rejects: easing() gives the ease-out curve there
+  const a = /** @type {HTMLElement} */ (el).animate(frames, { fill: 'backwards', ...o, ...(o.easing ? { easing: easing(String(o.easing)) } : {}) });
   running.add(a);
   return a.finished.then(() => { running.delete(a); }, () => { running.delete(a); });
 }

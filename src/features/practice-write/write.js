@@ -13,7 +13,7 @@
 import { h, replace, announce } from '../../core/dom.js';
 import { linkRow, notice, section, seg } from '../../core/ui.js';
 import { icon } from '../../core/icons.js';
-import { correct as fxCorrect, wrong as fxWrong, resetAnswer, segments, swap, reduced, countTo, haptic, wait } from '../../core/motion.js';
+import { correct as fxCorrect, wrong as fxWrong, resetAnswer, segments, swap, reduced, countTo, haptic, wait, easing } from '../../core/motion.js';
 import { label } from '../../core/clock.js';
 import * as Match from '../../domain/match.js';
 import * as RD from '../../domain/b1ready.js';
@@ -380,7 +380,7 @@ function mountBuild(el, ctx, data, task) {
     replace(slot, fly); slot.classList.add('is-filled'); slot.classList.remove('is-now');
     if (!reduced()) {
       const b = fly.getBoundingClientRect(), dx = a.left - b.left, dy = a.top - b.top;
-      const ease = getComputedStyle(document.documentElement).getPropertyValue('--spring-soft').trim() || 'ease-out';
+      const ease = easing('--spring-soft');
       await fly.animate([{ transform: `translate(${dx}px, ${dy}px)` }, { transform: `translate(${dx / 2}px, ${dy / 2 - 6}px)`, offset: 0.5 }, { transform: 'none' }],
         { duration: 520, easing: ease }).finished.catch(() => {});
       if (!alive) return;

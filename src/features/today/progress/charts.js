@@ -9,7 +9,7 @@
    Motion: a chart can draw in once (play()); under reduced motion it appears drawn. Colours come from classes in
    styles/features/progress.css, so light and dark are the tokens'. */
 import { h } from '../../../core/dom.js';
-import { reduced } from '../../../core/motion.js';
+import { reduced, easing as safeEasing } from '../../../core/motion.js';
 import * as D8 from '../../../domain/days.js';
 
 const NS = 'http://www.w3.org/2000/svg';
@@ -168,7 +168,7 @@ function readout(svg, tip, n, at, mark = () => {}, pick, keys) {
 
 const DRAW_MS = 900;
 /** A motion token's easing as WAAPI takes it (a CSS var() is not an easing there). @param {string} name */
-const easing = name => getComputedStyle(document.documentElement).getPropertyValue(name).trim() || EASE_OUT;
+const easing = (/** @type {string} */ name) => safeEasing(name, EASE_OUT);
 
 /**
  * The known line arrives (DESIGN.md › Earned moments): the line draws in from start to end (900 ms, ease-out); each

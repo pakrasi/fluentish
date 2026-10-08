@@ -22,6 +22,57 @@ const wait = ms => new Promise(r => setTimeout(r, ms));
 const raf = () => new Promise(r => requestAnimationFrame(r));
 
 /* ------------------------------------------------------------------ */
+/* Easing for the Web Animations API                                    */
+/* ------------------------------------------------------------------ */
+
+/** The kit's ease-out curve: what every spring falls back to. */
+export const EASE_OUT = 'cubic-bezier(0.22, 1, 0.36, 1)';
+
+/**
+ * Choose an easing WAAPI will take: the value itself when `accepts` says so, else the fallback (pure; tested in node).
+ * @param {string | null | undefined} value @param {(v: string) => boolean} accepts @param {string} [fallback]
+ */
+export function pickEasing(value, accepts, fallback = EASE_OUT) {
+  const v = String(value || '').trim();
+  return v && accepts(v) ? v : fallback;
+}
+
+/** @type {Map<string, boolean>} */ const takes = new Map();
+/** Whether element.animate() takes this easing here (WebKit throws on linear() in WAAPI while CSS takes it). @param {string} v */
+function waapiTakes(v) {
+  if (takes.has(v)) return /** @type {boolean} */ (takes.get(v));
+  let ok = true;
+  try { const a = document.createElement('div').animate([{ opacity: 1 }, { opacity: 1 }], { duration: 1, easing: v }); a.cancel(); } catch { ok = false; }
+  takes.set(v, ok);
+  return ok;
+}
+
+/**
+ * A kit easing for element.animate(): a token name ('--spring-pop', 'var(--spring-pop)') or a curve. Springs are
+ * linear() curves, which WAAPI in WebKit rejects with a TypeError: there they become the ease-out curve, so an
+ * animation never throws and never stops a flow. Use this for every easing passed to element.animate().
+ * @param {string} nameOrValue @param {string} [fallback]
+ */
+export function easing(nameOrValue, fallback = EASE_OUT) {
+  let v = String(nameOrValue || '').trim();
+  const m = /^var\((--[\w-]+)\)$/.exec(v);
+  if (m) v = m[1];
+  if (v.startsWith('--')) v = getComputedStyle(root).getPropertyValue(v).trim();
+  return pickEasing(v, waapiTakes, fallback);
+}
+
+/**
+ * element.animate() with a safe easing (easing() above); returns the Animation, or null when the element cannot
+ * animate. Movement only: callers check reduced() themselves.
+ * @param {Element | null | undefined} el @param {Keyframe[]} frames @param {KeyframeAnimationOptions} [o]
+ */
+export function animate(el, frames, o = {}) {
+  if (!el || !(/** @type {any} */ (el).animate)) return null;
+  const opts = o.easing ? { ...o, easing: easing(String(o.easing)) } : o;
+  try { return el.animate(frames, opts); } catch { return el.animate(frames, { ...opts, easing: EASE_OUT }); }
+}
+
+/* ------------------------------------------------------------------ */
 /* Transitions                                                          */
 /* ------------------------------------------------------------------ */
 
@@ -109,7 +160,7 @@ export function fling(el, toEl, { duration = 440 } = {}) {
   ], { duration, easing: 'cubic-bezier(0.45, 0, 0.25, 1)', fill: 'forwards' });
   return anim.finished.catch(() => {}).then(() => {
     ghost.remove();
-    const pop = getComputedStyle(root).getPropertyValue('--spring-pop').trim() || 'ease-out';
+    const pop = easing('--spring-pop');
     toEl.animate([{ transform: 'scale(1)' }, { transform: 'scale(1.1)', offset: 0.35 }, { transform: 'scale(1)' }], { duration: 360, easing: pop });
   });
 }
@@ -122,13 +173,13 @@ function crossfade(el) {
  * FLIP: animate elements from their old box to their new box after mutate() runs.
  * Use for list reorders, a chip moving into a sentence, a tile snapping into a slot.
  */
-export async function flip(els, mutate, { duration, easing = 'var(--spring-snappy)' } = {}) {
+export async function flip(els, mutate, { duration, easing: curve = 'var(--spring-snappy)' } = {}) {
   els = [...els];
   const first = new Map(els.map(el => [el, el.getBoundingClientRect()]));
   await mutate();
   if (reduced()) return;
   const dur = duration ?? cssMs('--dur-card', 380);
-  const ease = easing.startsWith('var(') ? getComputedStyle(root).getPropertyValue(easing.slice(4, -1)).trim() || 'ease-out' : easing;
+  const ease = easing(curve);
   for (const el of els) {
     const a = first.get(el), b = el.getBoundingClientRect();
     const dx = a.left - b.left, dy = a.top - b.top, sx = a.width / (b.width || 1), sy = a.height / (b.height || 1);
@@ -152,7 +203,7 @@ export async function kbShift(apply) {
   const els = [...document.querySelectorAll('.kb-flip')].filter(el => el.getClientRects().length > 0);
   const first = new Map(els.map(el => [el, el.getBoundingClientRect().top]));
   apply();
-  const ease = getComputedStyle(root).getPropertyValue('--spring-snappy').trim() || 'ease-out';
+  const ease = easing('--spring-snappy');
   for (const el of els) {
     if (!el.getClientRects().length) continue;
     const dy = /** @type {number} */ (first.get(el)) - el.getBoundingClientRect().top;
