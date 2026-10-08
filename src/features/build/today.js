@@ -25,17 +25,17 @@ import { sheet as openSheet } from '../shared/textview.js';
 
 /** From this many prefix tiles the hive is three rows round the root instead of a ring. */
 const ROWS_FROM = 10;
+
 /**
- * Three rows round the root: two tiles each side of it, the rest above and below, offset like bricks. Centres in px
- * from the hive's middle (x) and its top (y). Tiles 50 × 40, the root 88 × 50; 316 px wide at 12 tiles, 140 tall.
- * @param {number} n @returns {{x: number, y: number}[]}
+ * Three rows round the root: the four shortest prefixes beside it (two each side), the rest above and below, in the
+ * tiles' order. @param {string[]} pre @returns {{top: string[], left: string[], right: string[], bottom: string[]}}
  */
-export function rowPlaces(n) {
-  const side = Math.min(4, n), top = Math.ceil((n - side) / 2), bottom = n - side - top;
-  const row = (/** @type {number} */ k, /** @type {number} */ y) => Array.from({ length: k }, (_, i) => ({ x: (i - (k - 1) / 2) * 56, y }));
-  const mid = [-133, -77, 77, 133].slice(side === 4 ? 0 : 1, side === 4 ? 4 : 1 + side).map(x => ({ x, y: 70 }));
-  // clockwise from the top left, as the ring ran
-  return [...row(top, 20), ...mid.filter(p => p.x > 0), ...row(bottom, 120).reverse(), ...mid.filter(p => p.x < 0).reverse()];
+export function rowGroups(pre) {
+  const side = [...pre].sort((a, b) => a.length - b.length).slice(0, Math.min(4, Math.max(0, pre.length - 2)));
+  const rest = pre.filter(p => !side.includes(p));
+  const top = rest.slice(0, Math.ceil(rest.length / 2)), bottom = rest.slice(top.length);
+  const mid = pre.filter(p => side.includes(p));
+  return { top, left: mid.slice(0, Math.ceil(mid.length / 2)), right: mid.slice(Math.ceil(mid.length / 2)), bottom };
 }
 
 /** @typedef {import('../../domain/wordbuild-family.js').Form} Form */
@@ -135,21 +135,30 @@ export async function mountToday(el, ctx) {
     const pre = day.tiles.pre;
     const n = pre.length;
     replace(hive);
-    // up to 9 prefixes on a ring round the root; from 10 (B2, some B1 boards) three rows round it, which is 32 px
-    // shorter and keeps every tile clear of its neighbours at 360 px (the ring overlapped 4 pairs at B2)
-    // (also from 6 when the endings take two rows: the ring and two rows do not fit a 664 px phone)
-    const rows = n >= ROWS_FROM || (n >= 6 && day.tiles.suf.length > 2 && nouns);
+    // up to 9 short prefixes on a ring round the root. From 10 (B2, some B1 boards), with a long prefix (wieder,
+    // zurück), or when the endings take two rows: three rows round the root, laid out by the browser, so no tile
+    // overlaps another at any width and the hive is 44 px shorter (the ring overlapped 4 pairs at B2 and pushed Check
+    // off a 664 px phone). The shortest prefixes sit beside the root.
+    const rows = n >= ROWS_FROM || pre.some(p => p.length > 4) || (n >= 6 && day.tiles.suf.length > 2 && nouns);
     hive.classList.toggle('is-rows', rows);
-    const at = rows ? rowPlaces(n) : null;
-    pre.forEach((p, i) => {
-      const a = -Math.PI / 2 + i * (2 * Math.PI / Math.max(1, n));
-      const style = at ? { left: `calc(50% + ${at[i].x}px)`, top: `${at[i].y}px` } : { left: `${50 + 40 * Math.cos(a)}%`, top: `${50 + 38 * Math.sin(a)}%` };
-      const b = h('button', { type: 'button', class: 'hx pressable', lang: langAttr(), dir: dirAttr(), 'aria-pressed': 'false', 'aria-label': t('build.today.prefixTile', { p }), onpointerdown: keep, onclick: () => pick('pre', p, b),
-        style }, p);
+    const tile = (/** @type {string} */ p, /** @type {Record<string, string> | null} */ style) => {
+      const b = h('button', { type: 'button', class: 'hx pressable', lang: langAttr(), dir: dirAttr(), 'aria-pressed': 'false', 'aria-label': t('build.today.prefixTile', { p }), onpointerdown: keep, onclick: () => pick('pre', p, b), style }, p);
       tileEls.set(tileKey('pre', p), b);
-      hive.append(b);
-    });
-    hive.append(h('div', { class: 'hx is-centre', lang: langAttr(), dir: dirAttr(), role: 'img', 'aria-label': t('build.today.rootTile', { root: fam.root }) }, STEM, h('small', null, fam.root)));
+      return b;
+    };
+    const centre = h('div', { class: 'hx is-centre', lang: langAttr(), dir: dirAttr(), role: 'img', 'aria-label': t('build.today.rootTile', { root: fam.root }) }, STEM, h('small', null, fam.root));
+    if (rows) {
+      const g = rowGroups(pre);
+      hive.append(h('div', { class: 'pz-hrow' }, g.top.map(p => tile(p, null))),
+        h('div', { class: 'pz-hrow' }, g.left.map(p => tile(p, null)), centre, g.right.map(p => tile(p, null))),
+        h('div', { class: 'pz-hrow' }, g.bottom.map(p => tile(p, null))));
+    } else {
+      pre.forEach((p, i) => {
+        const a = -Math.PI / 2 + i * (2 * Math.PI / Math.max(1, n));
+        hive.append(tile(p, { left: `${50 + 40 * Math.cos(a)}%`, top: `${50 + 38 * Math.sin(a)}%` }));
+      });
+      hive.append(centre);
+    }
     replace(ends);
     const sufRow = h('div', { class: 'pz-ends-row' }), artRow = h('div', { class: 'pz-ends-row' });
     for (const x of day.tiles.suf) { const b = h('button', { type: 'button', class: 'hx pressable', lang: langAttr(), dir: dirAttr(), 'aria-pressed': 'false', 'aria-label': t('build.today.endingTile', { s: endLabel(x) }), 'data-suf': x, onpointerdown: keep, onclick: () => pick('suf', x, b) }, endLabel(x)); tileEls.set(tileKey('suf', x), b); sufRow.append(b); }
