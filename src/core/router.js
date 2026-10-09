@@ -6,7 +6,15 @@
    view's <h1> for screen readers.
 
    A view module exports mount(el, ctx). mount may be async and may return a cleanup function or
-   { unmount?(), canLeave?(): boolean | Promise<boolean> }. See docs/CONTRIBUTING-FEATURES.md. */
+   { unmount?(), canLeave?(): boolean | Promise<boolean> }. See docs/CONTRIBUTING-FEATURES.md.
+
+   Lifecycle (tests/unit/router-lifecycle.test.mjs):
+   - every mount gets a fresh host element inside the view, so a slow mount that a newer navigation overtook writes
+     into a detached node and never into the view on screen;
+   - ctx.signal is aborted when the view is left, before its unmount runs, and as soon as a newer navigation starts
+     while its mount is still in flight;
+   - unmount runs exactly once, also for a mount that was overtaken (when it resolves);
+   - canLeave() false keeps the view: its signal stays live and unmount does not run. */
 
 /**
  * @typedef {object} Route
@@ -118,10 +126,15 @@ export function mapLegacy(hash) {
 }
 
 /**
+ * @typedef {{unmount?: () => void, canLeave?: () => boolean | Promise<boolean>}} Cleanup
+ * @typedef {{path: string, hash: string, cleanup: Cleanup | null, ctrl: AbortController}} Shown
+ */
+
+/**
  * @param {object} o
  * @param {Route[]} o.routes
- * @param {HTMLElement} o.view                       the element views mount into
- * @param {(r: Route, params: Record<string,string>, query: URLSearchParams) => any} o.makeCtx
+ * @param {HTMLElement} o.view                       the element views mount into (each mount gets a fresh child of it)
+ * @param {(r: Route, params: Record<string,string>, query: URLSearchParams) => any} o.makeCtx   the router adds `signal`
  * @param {(path: string, r: Route | null) => string | null} [o.guard]  return a path to redirect to
  * @param {string} o.home                            path for '#/' and unknown paths
  * @param {(update: () => any) => Promise<void>} [o.transition]
@@ -129,16 +142,28 @@ export function mapLegacy(hash) {
  * @param {(err: unknown, path: string) => void} [o.onError]
  */
 export function createRouter({ routes, view, makeCtx, guard, home, transition, onMounted, onError }) {
-  /** @type {{path: string, hash: string, cleanup: null | {unmount?: () => void, canLeave?: () => any}} | null} */
+  /** the view on screen; null between leaving one view and the next mount resolving @type {Shown | null} */
   let current = null;
+  /** the mount in flight; aborted as soon as a newer navigation starts @type {AbortController | null} */
+  let pending = null;
   let token = 0;
   let restoring = false;
 
   const setHash = (/** @type {string} */ h) => { history.replaceState(history.state, '', h); };
 
+  /** Leave a view: abort its signal first, then run its unmount. Callers take it out of `current` first, so a view is
+      left exactly once. @param {{ctrl: AbortController, cleanup: Cleanup | null} | null} v */
+  function leave(v) {
+    if (!v) return;
+    v.ctrl.abort();
+    try { v.cleanup?.unmount?.(); } catch (e) { console.error(e); }
+  }
+
   async function render() {
     if (restoring) { restoring = false; return; }
     const mine = ++token;
+    // a mount still in flight will never be shown now: tell it to stop at once
+    if (pending) { pending.abort(); pending = null; }
     const legacy = mapLegacy(location.hash);
     if (legacy) setHash(legacy);
     let { path, query } = parseHash(location.hash);
@@ -152,20 +177,35 @@ export function createRouter({ routes, view, makeCtx, guard, home, transition, o
       if (!ok) { restoring = true; location.hash = current.hash; return; }
     }
     let mod;
-    try { mod = await hit.route.load(); } catch (e) { onError?.(e, path); return; }
+    try { mod = await hit.route.load(); } catch (e) {
+      if (mine !== token) return;
+      // the error view replaces the old view's DOM, so the old view stops too
+      const prev = current; current = null; leave(prev);
+      onError?.(e, path);
+      return;
+    }
     if (mine !== token) return;   // a newer navigation started while this one was loading
     const { route, params } = hit;
-    const ctx = makeCtx(route, params, query);
+    const ctrl = new AbortController();
+    pending = ctrl;
+    const ctx = { ...makeCtx(route, params, query), signal: ctrl.signal };
     const update = async () => {
-      try { current?.cleanup?.unmount?.(); } catch (e) { console.error(e); }
-      view.replaceChildren();
+      // a newer navigation started before this ran (a view transition calls it a frame later): the screen is its now
+      if (mine !== token) return;
+      const prev = current; current = null; leave(prev);
+      // a fresh host per mount: a mount that a newer navigation overtakes writes into a detached node, never the live view
+      const host = document.createElement('div');
+      host.className = 'view-host';
+      view.replaceChildren(host);
       document.body.dataset.chrome = route.chrome === false ? 'off' : 'on';
       let ret;
-      try { ret = await mod.mount(view, ctx); } catch (e) { onError?.(e, path); }
+      try { ret = await mod.mount(host, ctx); } catch (e) { if (mine === token) onError?.(e, path); }
+      /** @type {Cleanup | null} */
       const cleanup = typeof ret === 'function' ? { unmount: ret } : ret || null;
-      // a newer navigation mounted while this mount was pending: this view is already gone, so it stops now
-      if (mine !== token) { try { cleanup?.unmount?.(); } catch (e) { console.error(e); } return; }
-      current = { path, hash: location.hash, cleanup };
+      // a newer navigation took over while this mount was pending: its host is already detached, so it stops now
+      if (mine !== token) { leave({ ctrl, cleanup }); return; }
+      if (pending === ctrl) pending = null;
+      current = { path, hash: location.hash, cleanup, ctrl };
     };
     if (transition && current) await transition(update); else await update();
     if (mine !== token) return;
@@ -185,6 +225,7 @@ export function createRouter({ routes, view, makeCtx, guard, home, transition, o
       location.hash = h;
     },
     refresh: render,
+    /** the path of the view on screen; null while a mount is in flight */
     get path() { return current?.path ?? null; },
   };
 }
