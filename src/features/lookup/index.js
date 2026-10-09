@@ -14,6 +14,7 @@ import { icon } from '../../core/icons.js';
 import { num } from '../../core/i18n.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
 import { dueOn, compute as readiness } from '../../domain/b1ready.js';
+import { dash, ringGeometry } from '../../domain/meter.js';
 import * as D from './data.js';
 import { parseRoute, hashFor } from './route.js';
 import { search } from './search.js';
@@ -604,15 +605,16 @@ function mapArt() {
   const svg = document.createElementNS(NS, 'svg');
   svg.setAttribute('viewBox', '0 0 64 64'); svg.setAttribute('class', 'lk-map-art'); svg.setAttribute('aria-hidden', 'true');
   for (const [x, y, r, k] of [[29, 30, 15, 0.7], [50, 16, 9, 0.45], [12, 47, 8, 0.85], [49, 46, 11, 0.3], [12, 14, 7, 0.6], [30, 56, 6, 0.5]]) {
-    const c = 2 * Math.PI * r;
-    const ring = (/** @type {string} */ stroke, /** @type {string | null} */ dash) => {
+    // one arc per disc on the meter family's geometry (domain/meter.js): a full track, the known share in ink
+    const g = ringGeometry({ r, stroke: 1.4 });
+    const ring = (/** @type {string} */ stroke, /** @type {string | null} */ pattern) => {
       const e = document.createElementNS(NS, 'circle');
       e.setAttribute('cx', String(x)); e.setAttribute('cy', String(y)); e.setAttribute('r', String(r));
       e.setAttribute('fill', 'none'); e.setAttribute('stroke', stroke); e.setAttribute('stroke-width', '1.4');
-      if (dash) { e.setAttribute('stroke-dasharray', dash); e.setAttribute('transform', `rotate(-90 ${x} ${y})`); }
+      if (pattern) { e.setAttribute('stroke-dasharray', pattern); e.setAttribute('transform', `rotate(-90 ${x} ${y})`); }
       return e;
     };
-    svg.append(ring('var(--hairline-strong)', null), ring('var(--ink)', `${(c * k).toFixed(1)} ${c.toFixed(1)}`));
+    svg.append(ring('var(--hairline-strong)', null), ring('var(--ink)', dash(k, g.seg, g.C)));
     // the paragraph: short lines inside the ring, one in the accent
     const lines = Math.max(1, Math.floor((r * 1.1) / 3));
     for (let j = 0; j < lines; j++) {
