@@ -17,7 +17,7 @@
    Reduced motion: open and close are a 140 ms fade; a drag still follows the finger and the release snaps.
 
      const s = createSheet({ title: 'Round size', body: [...], actions: [startBtn], opener: link,
-       labels: { close: t('x.close') }, signal: ctx.signal, onClose: reason => ... });
+       labels: { close: t('practice.size.close') }, signal: ctx.signal, onClose: reason => ... });
      s.update({ body: [...] }); s.setDetent('full'); await s.close('done');
 
    Strings come from the caller (src/ui/index.js). Motion: CSS transitions on motion.css tokens (styles/ui.css
