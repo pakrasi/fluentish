@@ -32,7 +32,67 @@
 /* ---- ui/tile ---- */
 /* ---- end ui/tile ---- */
 
-/* ---- ui/sheet ---- */
+/* ---- ui/sheet (src/ui/sheet.js: the one sheet; design C "### 6", DESIGN.md sheet-open) ---- */
+/* The dialog covers the screen and is transparent: its scrim is the backdrop (it follows a drag, which ::backdrop
+   cannot), its panel the sheet. The panel's place is --ui-sheet-y (px down from its top detent, set by sheet.js);
+   .is-shown is open. Phone: the bottom edge; from 720 px a card in the middle. Opens on spring-snappy (card
+   duration), closes in --ui-sheet-ms (160 ms ease-in; a flick sets its own time on ease-out). Reduced motion
+   (.is-rm): a 140 ms fade, and a drag's release snaps. */
+.ui-sheet { position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0;
+  background: transparent; color: var(--ink); overflow: hidden; overscroll-behavior: contain; }
+.ui-sheet::backdrop { background: transparent; }
+.ui-sheet-scrim { position: absolute; inset: 0; background: rgb(12 14 20 / 0.36); opacity: var(--ui-sheet-o, 1);
+  transition: opacity var(--dur-base) var(--ease-out); -webkit-tap-highlight-color: transparent; }
+.ui-sheet-panel { position: absolute; inset: auto 0 0 0; display: flex; flex-direction: column; max-height: min(92dvh, 640px);
+  padding-bottom: calc(var(--s-3) + env(safe-area-inset-bottom)); border-radius: var(--r-card) var(--r-card) 0 0;
+  background: var(--surface); box-shadow: var(--shadow-sheet); transform: translate3d(0, var(--ui-sheet-y, 0px), 0);
+  transition: transform var(--dur-card) var(--spring-snappy), opacity var(--dur-card) var(--ease-out); }
+/* the panel's colour continues under its bottom edge, so the rubber band never shows a gap */
+.ui-sheet-panel::after { content: ""; position: absolute; inset: 100% 0 auto 0; height: 50vh; background: var(--surface); pointer-events: none; }
+.ui-sheet.is-detents .ui-sheet-panel { height: min(92dvh, 640px); }
+.ui-sheet:not(.is-shown) .ui-sheet-panel { transform: translate3d(0, 100%, 0); }
+.ui-sheet:not(.is-shown) .ui-sheet-scrim { opacity: 0; }
+.ui-sheet.is-closing .ui-sheet-panel { transition: transform var(--ui-sheet-ms, 160ms) var(--ui-sheet-ease, var(--ease-in)), opacity var(--ui-sheet-ms, 160ms) var(--ease-in); }
+.ui-sheet.is-closing .ui-sheet-scrim { transition: opacity var(--ui-sheet-ms, 160ms) var(--ease-in); }
+.ui-sheet.is-dragging .ui-sheet-panel { transition: none; will-change: transform; }
+.ui-sheet.is-dragging .ui-sheet-scrim { transition: none; }
+.ui-sheet.is-rm .ui-sheet-panel { transition: opacity 140ms linear; }
+.ui-sheet.is-rm .ui-sheet-scrim { transition: opacity 140ms linear; }
+.ui-sheet.is-rm:not(.is-shown) .ui-sheet-panel { transform: translate3d(0, var(--ui-sheet-y, 0px), 0); opacity: 0; }
+.ui-sheet.is-rm.is-dragging .ui-sheet-panel, .ui-sheet.is-rm.is-dragging .ui-sheet-scrim { transition: none; }
+/* the handle: a 36 x 4 grip on a 44 px button; it and the header take the drag */
+.ui-sheet-grab { flex: none; display: grid; place-items: center; width: 100%; height: var(--tap); padding: 0; border: 0; border-radius: var(--r-card) var(--r-card) 0 0;
+  background: transparent; cursor: grab; touch-action: none; -webkit-tap-highlight-color: transparent; }
+.ui-sheet-grip { width: 36px; height: 4px; border-radius: 2px; background: color-mix(in srgb, var(--ink-3) 40%, transparent); }
+.ui-sheet-grab:focus-visible { outline: none; }
+.ui-sheet-grab:focus-visible .ui-sheet-grip { outline: 2px solid var(--accent); outline-offset: 4px; }
+.ui-sheet.is-dragging .ui-sheet-grab { cursor: grabbing; }
+.ui-sheet-head { flex: none; display: flex; align-items: center; gap: var(--s-3); padding: 0 var(--gutter, 16px) var(--s-1); touch-action: none; }
+.ui-sheet-title { flex: 1; min-width: 0; margin: 0; font: 400 var(--fs-h2)/1.15 var(--font-display); }
+.ui-sheet-title:focus { outline: none; }
+.ui-sheet-x { flex: none; width: var(--tap); padding: 0; margin-inline-end: calc(-1 * var(--s-2)); }
+.ui-sheet-body { flex: 0 1 auto; min-height: 0; display: grid; align-content: start; gap: var(--s-3); padding: var(--s-2) var(--gutter, 16px) var(--s-3);
+  overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+.ui-sheet.is-detents .ui-sheet-body { flex-grow: 1; }
+.ui-sheet-actions { flex: none; display: grid; gap: var(--s-2); padding: var(--s-1) var(--gutter, 16px) 0; }
+.ui-sheet-actions[hidden] { display: none; }
+/* the keyboard is up (body.kb, core/keyboard.js): on the keyboard, no taller than the visible screen */
+.ui-sheet.is-kb .ui-sheet-panel { bottom: var(--kb, 0px); max-height: var(--vv-h, 100dvh); padding-bottom: var(--s-2); }
+.ui-sheet.is-kb.is-detents .ui-sheet-panel { height: var(--vv-h, 100dvh); }
+/* modal: false (a peek sheet over a page that stays usable): no scrim, only the panel takes touches */
+.ui-sheet.is-modeless { pointer-events: none; z-index: 40; }
+.ui-sheet.is-modeless .ui-sheet-panel { pointer-events: auto; }
+@media (min-width: 720px) {
+  .ui-sheet-panel, .ui-sheet.is-detents .ui-sheet-panel { inset: 0; margin: auto; width: min(440px, calc(100% - 32px)); height: fit-content; padding: var(--s-4) 0 var(--s-5);
+    border-radius: var(--r-card); box-shadow: var(--shadow-lift), 0 0 0 1px var(--hairline); }
+  .ui-sheet-panel::after { content: none; }
+  .ui-sheet-grab { display: none; }
+  .ui-sheet-head, .ui-sheet-body, .ui-sheet-actions { padding-inline: var(--s-5); }
+  .ui-sheet.is-side .ui-sheet-panel { inset: var(--s-4) var(--s-4) auto auto; margin: 0; width: min(380px, calc(100% - 32px)); }
+  .ui-sheet:not(.is-shown) .ui-sheet-panel { transform: translate3d(0, calc(24px * var(--move)), 0) scale(calc(1 - 0.02 * var(--move))); opacity: 0; }
+  .ui-sheet.is-rm:not(.is-shown) .ui-sheet-panel { transform: none; }
+}
+@media (forced-colors: active) { .ui-sheet-panel { border: 1px solid CanvasText; } .ui-sheet-grip { background: CanvasText; } }
 /* ---- end ui/sheet ---- */
 
 /* ---- ui/toast ---- */
