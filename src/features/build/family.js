@@ -41,6 +41,8 @@ const ANG = /** @type {Record<string, number>} */ ({ auf: -90, vor: -45, ein: 0,
 const W = 360, H = 344, CX = 180, CY = 172;
 /** The ring is taller than wide (1.3), so a tile and the derivability bar under it clear the tile below at 360 px. */
 const RY = 1.3;
+/** …and a little wider than the base radius, so a long prefix beside the root (zusammen) clears it in any font. */
+const RX = 1.12;
 /** The ring's other places: beside the side compass points, where labels clear their neighbours at 360 px (e2e
    family.spec measures every root). 8 compass places + these 4 = at most 12 verbs on the ring. */
 const BETWEEN = [-22.5, 157.5, 22.5, -157.5];
@@ -176,34 +178,53 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
     const pos = (/** @type {number} */ a, /** @type {number} */ rad, k2 = 1) => ({ x: CX + rad * Math.cos(a), y: CY + rad * k2 * Math.sin(a) });
     // compass order for the keyboard: clockwise from the top
     const order = [...onRing].sort((a, b) => (((/** @type {number} */ (place.get(a.id)) + 90) + 360) % 360) - (((/** @type {number} */ (place.get(b.id)) + 90) + 360) % 360));
+    /** @type {{btn: HTMLElement, p: {x: number, y: number}, a: number, rects: Element[]}[]} */ const squares = [];
     for (const v of order) {
       const a = /** @type {number} */ (place.get(v.id)) * Math.PI / 180;
-      const p = pos(a, r, RY);
+      const p = { x: CX + r * RX * Math.cos(a), y: CY + r * RY * Math.sin(a) };
       const c0 = pos(a, 50, 0.5);
       svg.append(s('line', { class: ['fv-spoke', v.join === 'i' && 'is-i'].filter(Boolean).join(' '), x1: c0.x, y1: c0.y, x2: p.x - 22 * Math.cos(a), y2: p.y - 14 * Math.sin(a) }));
       const ks = kidsOf(fam, v.id);
-      // the nouns and adjectives grown from it: a short row of squares just outside the tile's box (its half width
-      // from the label's length), across the spoke, so none touches the tile or another square
-      const hw = Math.max(20, ((v.pre[0] || v.word).length * 8 + 12) / 2) + 6, hh = 13 + 14;
-      const ca = Math.cos(a), sa = Math.sin(a);
-      const reach = Math.min(Math.abs(ca) > 1e-3 ? hw / Math.abs(ca) : Infinity, Math.abs(sa) > 1e-3 ? hh / Math.abs(sa) : Infinity) + 4;
-      // a row across the top and bottom tiles and the diagonals, a column at the sides
-      const across = Math.abs(sa) > 0.5;
-      ks.forEach((kf, i) => {
-        const off = (i - (ks.length - 1) / 2) * 11;
-        const kx = across ? p.x + off : p.x + ca * reach, ky = across ? p.y + Math.sign(sa) * (hh + 4) : p.y + off;
-        svg.append(s('rect', { class: `fv-kid is-${st(kf)}`, x: kx - 4, y: ky - 4, width: 8, height: 8, rx: 1.5 }));
-      });
-      wrap.append(verbButton(v, (preCount.get(v.pre[0] || '') || 0) > 1, { class: 'fv-node', style: { left: `${(p.x / W) * 100}%`, top: `${(p.y / H) * 100}%` } }));
+      // the nouns and adjectives grown from it: a short row of squares just outside the tile's box, across the spoke,
+      // so none touches the tile or another square. Placed first from the label's length, then again from the tile's
+      // measured size once it is on the page (fonts differ)
+      const rects = ks.map(kf => s('rect', { class: `fv-kid is-${st(kf)}`, width: 8, height: 8, rx: 1.5 }));
+      rects.forEach(x => svg.append(x));
+      const btn = verbButton(v, (preCount.get(v.pre[0] || '') || 0) > 1, { class: 'fv-node', style: { left: `${(p.x / W) * 100}%`, top: `${(p.y / H) * 100}%` } });
+      wrap.append(btn);
+      const item = { btn, p, a, rects };
+      squares.push(item);
+      placeSquares(item, Math.max(20, ((v.pre[0] || v.word).length * 8 + 12) / 2), 13);
     }
     wrap.append(h('span', { class: 'fv-node-root', lang: langAttr(), dir: dirAttr(), 'aria-hidden': 'true', style: { left: '50%', top: `${(CY / H) * 100}%` } }, fam.root));
     roving(wrap, '.fv-node');
+    // and again whenever a tile changes size (the web font arriving, a zoom)
+    const measure = () => { const k = wrap.clientWidth / W; if (k) for (const it of squares) placeSquares(it, it.btn.offsetWidth / 2 / k, it.btn.offsetHeight / 2 / k); };
+    if (typeof ResizeObserver === 'function') { const ro = new ResizeObserver(() => { if (!wrap.isConnected) { ro.disconnect(); return; } measure(); }); ro.observe(wrap); squares.forEach(it => ro.observe(it.btn)); }
+    else requestAnimationFrame(measure);
     if (!more.length) return wrap;
     const chips = h('div', { class: 'fv-more-chips', role: 'group', 'aria-labelledby': 'fv-more-h' },
       more.map(v => verbButton(v, (preCount.get(v.pre[0] || '') || 0) > 1, { class: 'fv-vchip' })));
     roving(chips, '.fv-vchip');
     return h('div', { class: 'fv-ring-wrap' }, wrap,
       h('div', { class: 'fv-more' }, h('p', { class: 'fv-more-h', id: 'fv-more-h' }, t('build.family.moreVerbs', { n: more.length })), chips));
+  }
+
+  /**
+   * The squares of a ring tile's nouns, outside its box: hw and hh are the tile's half width and height in the ring's
+   * units; the derivability bar takes 10 more under it. A row across the top, bottom and diagonals, a column at the sides.
+   * @param {{p: {x: number, y: number}, a: number, rects: Element[]}} it @param {number} hw @param {number} hh
+   */
+  function placeSquares({ p, a, rects }, hw, hh) {
+    const ca = Math.cos(a), sa = Math.sin(a);
+    const w = hw + 6, hgt = hh + 14;
+    const reach = Math.min(Math.abs(ca) > 1e-3 ? w / Math.abs(ca) : Infinity, Math.abs(sa) > 1e-3 ? hgt / Math.abs(sa) : Infinity) + 4;
+    const across = Math.abs(sa) > 0.5;
+    rects.forEach((r, i) => {
+      const off = (i - (rects.length - 1) / 2) * 11;
+      const kx = across ? p.x + off : p.x + ca * reach, ky = across ? p.y + Math.sign(sa) * (hgt + 4) : p.y + off;
+      r.setAttribute('x', String(kx - 4)); r.setAttribute('y', String(ky - 4));
+    });
   }
 
   /**
