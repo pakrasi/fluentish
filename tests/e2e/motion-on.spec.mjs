@@ -114,6 +114,25 @@ test('a named element only the old view has leaves with the page; a pair that mo
   }
 });
 
+test('segmented control: no slide on mount; a press slides transform only, never width', async ({ page }) => {
+  await seed(page, { veteran: true, motion: 'full' });
+  await page.goto(`${APP}#/profile`);
+  // log every transition the thumbs run from the first frame of the page
+  await page.evaluate(() => {
+    const w = /** @type {any} */ (window);
+    w.__seg = [];
+    document.addEventListener('transitionrun', e => { if (/** @type {Element} */ (e.target).classList?.contains('seg-thumb')) w.__seg.push(e.propertyName); }, true);
+  });
+  await expect(page.locator('.seg').first()).toBeVisible();
+  await settle(page);
+  await page.waitForTimeout(400);
+  expect(await page.evaluate(() => /** @type {any} */ (window).__seg), 'the thumb moved on its own on mount').toEqual([]);
+  const seg = page.locator('.seg').first();
+  await seg.locator('button[aria-pressed="false"]').first().click();
+  await expect.poll(() => page.evaluate(() => /** @type {any} */ (window).__seg)).toContain('transform');
+  expect(await page.evaluate(() => /** @type {any} */ (window).__seg)).not.toContain('width');
+});
+
 test('reduced motion: the answer reveal, the check stroke, round segments and the segmented thumb do not animate', async ({ page }) => {
   await seed(page, { veteran: true });   // the default seed: motion 'reduce'
   await open(page, '#/profile');

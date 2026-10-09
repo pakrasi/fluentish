@@ -449,20 +449,36 @@ export function ring(el, arcs, { stroke = 5.5, gapDeg = 5 } = {}) {
 /* Segmented control thumb                                              */
 /* ------------------------------------------------------------------ */
 
-/** Wire a .seg: moves the thumb under the pressed button. Calls onChange(value). */
+/**
+ * Wire a .seg: moves the thumb under the pressed button. Calls onChange(value).
+ * Only a press slides the thumb (transform, on the CSS transition). Its width and every placement that is not a press
+ * (mount, fonts arriving, a resize) are set with the transition off, so the control never moves by itself.
+ */
 export function segmented(el, onChange) {
   let thumb = el.querySelector('.seg-thumb');
   if (!thumb) { thumb = document.createElement('span'); thumb.className = 'seg-thumb'; el.prepend(thumb); }
-  const place = btn => { thumb.style.width = btn.offsetWidth + 'px'; thumb.style.transform = `translateX(${btn.offsetLeft}px)`; };
+  let pressedAt = -Infinity;
+  const place = (btn, slide = false) => {
+    const at = `translateX(${btn.offsetLeft}px)`, w = btn.offsetWidth + 'px';
+    if (slide) { thumb.style.width = w; thumb.style.transform = at; return; }
+    if (thumb.style.width === w && thumb.style.transform === at) return;
+    thumb.style.transition = 'none'; thumb.style.width = w; thumb.style.transform = at;
+    void thumb.offsetWidth; thumb.style.transition = '';
+  };
   const btns = [...el.querySelectorAll('button')];
+  const current = () => btns.find(b => b.getAttribute('aria-pressed') === 'true') || btns[0];
   btns.forEach(b => b.addEventListener('click', () => {
     btns.forEach(x => x.setAttribute('aria-pressed', x === b));
-    place(b); onChange?.(b.value || b.textContent.trim());
+    pressedAt = performance.now();
+    place(b, true); onChange?.(b.value || b.textContent.trim());
   }));
-  const cur = btns.find(b => b.getAttribute('aria-pressed') === 'true') || btns[0];
-  thumb.style.transition = 'none'; place(cur); void thumb.offsetWidth; thumb.style.transition = '';
-  // the control is rebuilt on every settings change: stop observing once it has left the page
-  const ro = new ResizeObserver(() => { if (!el.isConnected) { ro.disconnect(); return; } place(btns.find(b => b.getAttribute('aria-pressed') === 'true') || btns[0]); });
+  place(current());
+  // the control is rebuilt on every settings change: stop observing once it has left the page. A resize during a
+  // press's slide (within the base duration) lets the slide finish to the new place instead of jumping.
+  const ro = new ResizeObserver(() => {
+    if (!el.isConnected) { ro.disconnect(); return; }
+    place(current(), performance.now() - pressedAt < cssMs('--dur-base', 240));
+  });
   ro.observe(el);
   return ro;
 }
