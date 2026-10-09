@@ -51,3 +51,24 @@ test('a typo on a right answer: the letters underlined in accent, nothing in the
   const sweep = await page.locator('.pr-card .answer').evaluate(a => { const s = getComputedStyle(a, '::after'); return { bottom: s.bottom, height: s.height, border: getComputedStyle(a).borderBottomWidth }; });
   expect(sweep).toEqual({ bottom: '-2px', height: '2px', border: '1px' });
 });
+
+test('every mark on a right answer is drawn without --bad, in light and dark', async ({ page }) => {
+  await seed(page, {});
+  await open(page, '#/practice');
+  for (const theme of ['light', 'dark']) {
+    await page.evaluate(th => { document.documentElement.dataset.theme = th; }, theme);
+    const out = await page.evaluate(() => {
+      const probe = (/** @type {string} */ v) => { const p = document.createElement('span'); p.style.color = `var(${v})`; document.body.append(p); const c = getComputedStyle(p).color; p.remove(); return c; };
+      const bad = probe('--bad');
+      // the marks markSlips (round.js) and the write builder (write.js) put on an answer graded right
+      const host = document.createElement('div');
+      host.className = 'pr-fb';
+      for (const [tag, cls] of [['span', 'pr-slip'], ['span', 'pr-capfix'], ['button', 'wr-text wr-fixme'], ['span', 'pr-fix']]) { const e = document.createElement(tag); e.className = cls; e.textContent = 'Geschenk'; host.append(e); }
+      document.body.append(host);
+      const res = [...host.children].map(e => ({ cls: e.className, red: [getComputedStyle(e).color, getComputedStyle(e).textDecorationColor].includes(bad) }));
+      host.remove();
+      return res;
+    });
+    expect(out.filter(x => x.red), theme).toEqual([]);
+  }
+});
