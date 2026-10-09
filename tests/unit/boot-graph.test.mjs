@@ -28,3 +28,93 @@ test('the boot graph stays within its budget', () => {
   assert.ok(now.rawKB <= BUDGET.rawKB, `boot graph is ${now.rawKB} KB raw, budget ${BUDGET.rawKB} KB`);
   assert.ok(now.gzipKB <= BUDGET.gzipKB, `boot graph is ${now.gzipKB} KB gzip, budget ${BUDGET.gzipKB} KB`);
 });
+
+/* ---------- the restore journal at start (data/restore-journal.js) ----------
+   Boot reads the journal and loads data/restore.js only for a restore or an undo that was cut off. These tests load
+   the data layer after a module hook is in place, so they see which modules a start really loads. */
+
+const loaded = new Set();
+const { registerHooks } = /** @type {any} */ (await import('node:module'));
+registerHooks?.({ resolve(/** @type {string} */ spec, /** @type {any} */ ctx, /** @type {any} */ next) { const r = next(spec, ctx); loaded.add(r.url); return r; } });
+const restoreLoaded = () => [...loaded].some(u => u.endsWith('/src/data/restore.js'));
+const NO_HOOKS = registerHooks ? false : 'node:module registerHooks is missing (Node 22.15 or later)';
+
+const DAY = '2026-10-04';
+const clock = { today: () => DAY };
+const card = (/** @type {number} */ u) => ({ S: 2, D: 5, due: DAY, reps: 1, lapses: 0, last: DAY, first: DAY, stage: 1, streak: 0, learn: null, relearn: false, u, hist: [] });
+
+/** A device with one profile, card BP:a answered here (u 1) and a restore that wrote BP:a (u 2) and BP:new. */
+async function restoredDevice(/** @type {'applying' | 'undoing' | 'done'} */ stage) {
+  const { createMemoryAdapter } = await import('../../src/data/adapters/memory.js');
+  const { openSession } = await import('../../src/data/session.js');
+  const { fnv1a } = await import('../../src/data/ids.js');
+  const { canon } = await import('../../src/domain/cardmerge.js');
+  const { JOURNAL_KV } = await import('../../src/data/restore-journal.js');
+  const hash = (/** @type {any} */ v) => fnv1a(canon(v ?? null));
+  const adapter = createMemoryAdapter();
+  const s0 = await openSession({ adapter, legacyStorage: null, clock });
+  const pid = s0.profile.id;
+  await adapter.putCards(pid, 'b1', [['BP:a', card(2)], ['BP:new', card(2)]]);
+  await adapter.putKV('device', JOURNAL_KV, {
+    id: `1-${s0.device.deviceId}`, at: '', kind: 'restore', profileId: pid, stage, counts: {}, sources: null,
+    before: { cards: { b1: { 'BP:a': card(1), 'BP:new': null } }, kv: {} },
+    after: { cards: { b1: { 'BP:a': hash(card(2)), 'BP:new': hash(card(2)) } }, kv: {} },
+  });
+  return { adapter, pid, openSession, JOURNAL_KV };
+}
+
+test('a start with a finished restore in the journal does not load restore.js', { skip: NO_HOOKS }, async () => {
+  const { adapter, pid, openSession, JOURNAL_KV } = await restoredDevice('done');
+  const s = await openSession({ adapter, legacyStorage: null, clock });
+  assert.equal(s.restoreRecovered, null);
+  assert.equal(s.store.cards('b1')['BP:a'].u, 2, 'a finished restore stays');
+  assert.equal((await adapter.loadScope('device'))[JOURNAL_KV].stage, 'done');
+  assert.equal(restoreLoaded(), false, 'restore.js stays out of an everyday start');
+  assert.ok(pid);
+});
+
+test('a restore cut off mid-way (applying) is put back at the next start, through the lazy import', { skip: NO_HOOKS }, async () => {
+  const { adapter, openSession, JOURNAL_KV } = await restoredDevice('applying');
+  const s = await openSession({ adapter, legacyStorage: null, clock });
+  assert.equal(s.restoreRecovered, 'rolledBack');
+  assert.equal(restoreLoaded(), true);
+  assert.equal(s.store.cards('b1')['BP:a'].u, 1, 'the card as it was before the restore');
+  assert.equal(s.store.cards('b1')['BP:new'], undefined, 'what the restore added is gone');
+  assert.equal((await adapter.loadScope('device'))[JOURNAL_KV].stage, 'rolledBack');
+  const again = await openSession({ adapter, legacyStorage: null, clock });
+  assert.equal(again.restoreRecovered, null, 'a second start finds nothing to do');
+});
+
+test('an undo cut off mid-way (undoing) is finished at the next start, keeping a card changed since', { skip: NO_HOOKS }, async () => {
+  const { adapter, pid, openSession, JOURNAL_KV } = await restoredDevice('undoing');
+  await adapter.putCards(pid, 'b1', [['BP:new', card(3)]]);   // answered after the restore: the undo keeps it
+  const s = await openSession({ adapter, legacyStorage: null, clock });
+  assert.equal(s.restoreRecovered, 'undone');
+  assert.equal(s.store.cards('b1')['BP:a'].u, 1);
+  assert.equal(s.store.cards('b1')['BP:new'].u, 3);
+  assert.equal((await adapter.loadScope('device'))[JOURNAL_KV].stage, 'undone');
+});
+
+test('a cut-off restore whose code cannot load stops the start; nothing opens over it', async () => {
+  const { recoverIfCutOff } = await import('../../src/data/restore-journal.js');
+  const { adapter, pid, openSession, JOURNAL_KV } = await restoredDevice('applying');
+  const offline = () => Promise.reject(new TypeError('Failed to fetch dynamically imported module'));
+  await assert.rejects(recoverIfCutOff(adapter, pid, offline), (/** @type {any} */ e) => e.fatal === true);
+  await assert.rejects(openSession({ adapter, legacyStorage: null, clock, recover: (a, p) => recoverIfCutOff(a, p, offline) }), /did not load/);
+  assert.equal((await adapter.loadScope('device'))[JOURNAL_KV].stage, 'applying', 'left for the next start');
+  // the next start with the code there recovers as usual
+  const s = await openSession({ adapter, legacyStorage: null, clock });
+  assert.equal(s.restoreRecovered, 'rolledBack');
+  assert.equal(s.store.cards('b1')['BP:a'].u, 1);
+});
+
+test('a journal of another profile, or none, loads nothing and changes nothing', async () => {
+  const { recoverIfCutOff } = await import('../../src/data/restore-journal.js');
+  const { adapter, pid } = await restoredDevice('applying');
+  let calls = 0;
+  const load = async () => { calls++; return import('../../src/data/restore.js'); };
+  assert.equal(await recoverIfCutOff(adapter, 'another-profile', load), null);
+  const { createMemoryAdapter } = await import('../../src/data/adapters/memory.js');
+  assert.equal(await recoverIfCutOff(createMemoryAdapter(), pid, load), null);
+  assert.equal(calls, 0);
+});

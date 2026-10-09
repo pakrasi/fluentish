@@ -16,7 +16,7 @@ import { Store } from './store.js';
 import { uuidv7, isoWithOffset, newDeviceId, createHlc } from './ids.js';
 import { readLegacy, hasLegacyProgress, planMigration, applyMigration } from './migrate.js';
 import { planPreviewMerge, legacyChangedSince, deviceMerge, purgeArchived, canon } from './cutover.js';
-import { recoverRestore } from './restore.js';
+import { recoverIfCutOff } from './restore-journal.js';
 import { archiveOld } from './archive.js';
 import { normalizeSettings } from './settings.js';
 
@@ -29,8 +29,9 @@ import { normalizeSettings } from './settings.js';
  * @param {() => BroadcastChannel | null} [o.channel]
  * @param {() => Date} [o.now]
  * @param {'local' | 'shadow'} [o.kind]
+ * @param {typeof recoverIfCutOff} [o.recover]  tests only: the cut-off restore recovery (data/restore-journal.js)
  */
-export async function openSession({ adapter, legacyStorage, clock, bus, channel = () => null, now = () => new Date(), kind = 'local' }) {
+export async function openSession({ adapter, legacyStorage, clock, bus, channel = () => null, now = () => new Date(), kind = 'local', recover = recoverIfCutOff }) {
   let device = await adapter.getDevice();
   if (!device) { device = { deviceId: newDeviceId(), activeProfile: null, seq: 0, createdAt: isoWithOffset(now()) }; await adapter.putDevice(device); }
 
@@ -87,9 +88,13 @@ export async function openSession({ adapter, legacyStorage, clock, bus, channel 
     await adapter.putDevice(device);
   }
 
-  // a restore from the backup that was cut off is put back before anything reads the cards (data/restore.js)
+  // a restore from the backup that was cut off is put back before anything reads the cards (data/restore.js, loaded
+  // only then: data/restore-journal.js). If restore.js cannot load, the start fails rather than open over it.
   /** @type {'rolledBack' | 'undone' | null} */ let restoreRecovered = null;
-  try { restoreRecovered = await recoverRestore(adapter, profile.id); } catch (e) { console.error('restore recovery failed', e); }
+  try { restoreRecovered = await recover(adapter, profile.id); } catch (e) {
+    if (/** @type {any} */ (e)?.fatal) throw e;
+    console.error('restore recovery failed', e);
+  }
   const store = await Store.open({ adapter, profile, device, clock, bus, channel: channel() });
   // the bounded outbox: acknowledged events older than 30 days move to the archive (data/archive.js), so later
   // starts load only what is pending or recent

@@ -17,7 +17,7 @@
 import { config } from '../../core/config.js';
 import * as GH from './github-b1exam.js';
 import * as B from './backup.js';
-import * as R from '../restore.js';
+import * as RJ from '../restore-journal.js';
 import { entries as logEntries } from '../../core/log.js';
 import { resultsRepo, githubToken, connected } from '../connection.js';
 
@@ -117,6 +117,9 @@ export function backup(store) {
 const locked = fn => (typeof navigator !== 'undefined' && /** @type {any} */ (navigator).locks?.request
   ? /** @type {Promise<T>} */ (/** @type {any} */ (navigator).locks.request('backup-restore', fn)) : fn());
 
+/** The merge engine, loaded on first use: it is not part of the boot graph (tests/unit/boot-graph.test.mjs). */
+const engine = () => import('../restore.js');
+
 /**
  * Restore from the backup and the automatic merge (data/restore.js), over one store.
  * @param {any} store @param {{fetch?: typeof fetch}} [o]
@@ -130,6 +133,7 @@ export function restore(store, { fetch: f } = {}) {
      * @param {(done: number, total: number) => void} [onProgress]
      */
     async find(onProgress) {
+      const R = await engine();
       const devices = await R.listBackups(files());
       const data = await R.readBackups(files(), devices, { onProgress });
       return { devices, data, plan: R.planRestore(store, data) };
@@ -137,16 +141,20 @@ export function restore(store, { fetch: f } = {}) {
     /**
      * Apply what find() read. The plan is made again now, from the cards as they are now, so an answer given
      * while the preview was open is never undone by it.
-     * @param {R.BackupData} data @param {string[]} [sources]
+     * @param {import('../restore.js').BackupData} data @param {string[]} [sources]
      */
-    apply: (data, sources) => locked(() => R.applyRestore(store, R.planRestore(store, data), { kind: 'restore', sources })),
-    undo: () => locked(() => R.undoRestore(store)),
-    last: () => R.lastRestore(store),
-    autoMergeOn: () => R.autoMergeOn(store),
+    apply: async (data, sources) => { const R = await engine(); return locked(() => R.applyRestore(store, R.planRestore(store, data), { kind: 'restore', sources })); },
+    undo: async () => { const R = await engine(); return locked(() => R.undoRestore(store)); },
+    last: async () => (await engine()).lastRestore(store),
+    autoMergeOn: () => RJ.autoMergeOn(store),
     /** @param {boolean} v */
-    setAutoMerge: v => R.setAutoMerge(store, v),
+    setAutoMerge: v => RJ.setAutoMerge(store, v),
     /** The automatic merge (only after the opt-in, at most every 30 minutes unless forced). @param {{force?: boolean}} [o] */
-    merge: (o = {}) => (backup(store).linked() ? locked(() => R.autoMerge(store, files(), o)) : Promise.resolve(null)),
-    span: R.span,
+    merge: async (o = {}) => {
+      if (!backup(store).linked()) return null;
+      const R = await engine();
+      return locked(() => R.autoMerge(store, files(), o));
+    },
+    span: RJ.span,
   };
 }
