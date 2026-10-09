@@ -1,0 +1,28 @@
+/* Fluentish components (src/ui/). Loaded after components.css. Rules: src/ui/index.js.
+   One section per component; a component lane edits only its own section. Class names start with ui- (parts) or is-
+   (states). Tokens from tokens.css, motion tokens and keyframes from motion.css; no new colours. Reduced motion is
+   handled per section (--move is 0 there; anything --move cannot reach gets its own rule). */
+
+/* ---- core/pulse (motion.js pulse(): a one-shot "look here", set as [data-pulse=<kind>]) ---- */
+/* ---- end core/pulse ---- */
+
+/* ---- ui/answer-diff ---- */
+/* ---- end ui/answer-diff ---- */
+
+/* ---- ui/meter ---- */
+/* ---- end ui/meter ---- */
+
+/* ---- ui/count ---- */
+/* ---- end ui/count ---- */
+
+/* ---- ui/tile ---- */
+/* ---- end ui/tile ---- */
+
+/* ---- ui/sheet ---- */
+/* ---- end ui/sheet ---- */
+
+/* ---- ui/toast ---- */
+/* ---- end ui/toast ---- */
+
+/* ---- ui/skeleton ---- */
+/* ---- end ui/skeleton ---- */
