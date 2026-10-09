@@ -44,6 +44,8 @@ export async function mount(el, ctx) {
   let req = 0;
   /** What is on screen (the plan and the allowance it was drawn with), so the background compose redraws only on a change. */
   let drawnKey = '';
+  /** The features' prepare on this visit (set before the first draw), then a turn of the event loop. */
+  let prepared = /** @type {Promise<unknown>} */ (Promise.resolve());
   /** @param {any} day composeDay's result @param {any} allow */
   const keyOf = (day, allow) => JSON.stringify({ plan: day.plan, allow });
 
@@ -95,7 +97,9 @@ export async function mount(el, ctx) {
         requestAnimationFrame(() => requestAnimationFrame(() => panel.classList.add('is-open')));
       }
     }
-    if (stand) standingCounts(ctx, plan.modules).then(n => { if (alive && my === gen) stand.fill(n); });
+    // (after the features' prepare: both load the same pool, and counting in the same task as the plan's stats would make
+    // one long task of the two)
+    if (stand) prepared.then(() => (alive && my === gen ? standingCounts(ctx, plan.modules) : null)).then(n => { if (n && alive && my === gen) stand.fill(n); });
     reveal(page);
     for (const tr of page.querySelectorAll('.mbar .track')) fill(/** @type {HTMLElement} */ (tr), Number(/** @type {HTMLElement} */ (tr).dataset.p));
     if (oldAtmo) return;
@@ -389,9 +393,11 @@ export async function mount(el, ctx) {
   // it is drawn again only if it changed. On the day's first visit the page waits for it behind a quiet shell.
   const early = await composeDay(ctx, { prepare: false });
   const ready = statsFresh(store, early.c, early.settings);
+  /** @type {unknown} */ let failed = null;
+  prepared = prepareDay(ctx).catch(e => { failed = e || new Error('prepare'); }).then(() => new Promise(r => setTimeout(r)));
   if (ready) draw(early); else shell(early);
   const at = req;
-  prepareDay(ctx).then(() => composeDay(ctx, { prepare: false })).then(day => {
+  prepared.then(() => { if (failed) throw failed; return composeDay(ctx, { prepare: false }); }).then(day => {
     if (!alive || at !== req) return;   // a render since (settings, cards …) has drawn a newer plan
     if (!ready || keyOf(day, dayAllowance({ store, c: day.c, settings: day.settings })) !== drawnKey) draw(day);
   }).catch(e => {
