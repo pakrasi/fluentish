@@ -14,9 +14,10 @@ import { tokenize } from '../../domain/text/tokens.js';
 import { headOf, glossOf } from '../../domain/text/suggest.js';
 import * as C from '../../domain/conversation.js';
 import { glossPrompt, IDS } from './prompts.js';
-import { claudeKey, charge, money, monthSpent, convSettings, USED } from './data.js';
+import { charge, money, monthSpent, convSettings, USED } from './data.js';
 import * as R from '../shared/read-data.js';
 import { knowledgeDecks } from '../../data/knowledge.js';
+import { claude, canAskClaude } from '../../data/credentials.js';
 
 /**
  * @param {import('../contract.js').ViewCtx} ctx
@@ -85,14 +86,14 @@ export function glossSheet(ctx, { word, sentence, lang, sessionId }) {
   /** @type {HTMLButtonElement | null} */ let askBtn = null;
   const today = ctx.clock.ctx().today;
   const monthOver = C.monthLoad(monthSpent(store, today), convSettings(ctx.settings()).monthlyCapUsd).over;
-  if (!entry && claudeKey(store) && monthOver) out.replaceChildren(h('p', { class: 'caption' }, t('conv.gloss.month')));
-  else if (!entry && claudeKey(store)) {
+  if (!entry && canAskClaude(store) && monthOver) out.replaceChildren(h('p', { class: 'caption' }, t('conv.gloss.month')));
+  else if (!entry && canAskClaude(store)) {
     const b = /** @type {HTMLButtonElement} */ (h('button', { type: 'button', class: 'btn pressable' }, t('conv.gloss.ask')));
     b.onclick = async () => {
       b.disabled = true;
       out.replaceChildren(h('p', { class: 'caption' }, t('conv.gloss.asking')));
       try {
-        const r = await ask({ key: claudeKey(store), user: glossPrompt(lang.conv, word, sentence), model: config.anthropic.models.check, maxTokens: 300, effort: null, fallback: false,
+        const r = await ask({ cred: claude(store), user: glossPrompt(lang.conv, word, sentence), model: config.anthropic.models.check, maxTokens: 300, effort: null, fallback: false,
           format: { type: 'json_schema', schema: GLOSS_SCHEMA } });
         charge(store, sessionId, ctx.clock.ctx().today, config.anthropic.models.check, C.usageOf(r.usage));
         const j = JSON.parse(r.text);

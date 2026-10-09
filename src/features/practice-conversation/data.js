@@ -154,8 +154,5 @@ export async function loadTopics(ctx) {
   try { return await ctx.content.load(contentId); } catch { return null; }
 }
 
-/** The Claude key on this device, or null. @param {any} store */
-export const claudeKey = store => (store.get('secrets', {}) || {}).anthropicKey || null;
-
 /** A new session id (UUIDv7). */
 export const newId = () => uuidv7();
