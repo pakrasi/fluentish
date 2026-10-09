@@ -35,6 +35,8 @@ jobs:
         with: { node-version: 22 }
       - uses: actions/setup-python@v7
         with: { python-version: '3.12' }   # test_b1/test_match compare against the Python reference checkers
+      - name: Install dev dependencies (fake-indexeddb for the adapter conformance suite)
+        run: npm ci --ignore-scripts
       - name: Unit tests (TZ=${{ matrix.tz }})
         env: { TZ: '${{ matrix.tz }}' }
         run: node --test 'tests/unit/*.test.mjs'
