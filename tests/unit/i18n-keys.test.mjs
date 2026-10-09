@@ -18,6 +18,7 @@ const EN_FILE = path.join(ROOT, 'src/i18n/en.js');
 /* Prefixes of template-built keys: the text before the first ${ in t(`...`). A new t(`prefix.${x}`) adds its prefix
    here, and en.js must hold at least one key with that prefix. */
 const DYNAMIC_PREFIXES = [
+  'account.err.', 'accounts.provider.', 'accounts.why.',
   'build.cls.', 'build.family.by.', 'build.family.kind.', 'build.family.legend.', 'build.family.state.',
   'build.family.type.', 'build.form.', 'build.grade.', 'build.grade.g', 'build.how.', 'build.state.',
   'build.today.key.', 'build.today.learn.end.', 'build.today.slot.', 'build.today.sq.',
