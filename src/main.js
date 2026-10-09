@@ -7,7 +7,7 @@ import { t, setLocale } from './core/i18n.js';
 import { h, replace, $ } from './core/dom.js';
 import { icon } from './core/icons.js';
 import { markNode } from './core/brand.js';
-import { swap, toast as kitToast } from './core/motion.js';
+import { swap, toast as kitToast, reduced } from './core/motion.js';
 import { startKeyboard } from './core/keyboard.js';
 import { createRouter } from './core/router.js';
 import { createScrollKeeper } from './core/scroll.js';
@@ -139,7 +139,15 @@ async function main() {
     // the Exam tab: an exam goal with mock tests (a date-only goal such as 'other' has the countdown, not the tab)
     const tabs = TABS.filter(tb => !tb.needsExam || hasMockExam(s));
     return h('nav', { class: `tabs tabs-${where}`, 'aria-label': t('nav.main'), style: { '--n': tabs.length } },
-      tabs.map(tb => h('a', { href: tb.href, dataset: { tab: tb.id }, class: 'pressable' }, icon(tb.icon, { size: 22 }), h('span', null, t(tb.label)))));
+      tabs.map(tb => h('a', { href: tb.href, dataset: { tab: tb.id }, class: 'pressable', onclick: retap }, icon(tb.icon, { size: 22 }), h('span', null, t(tb.label)))));
+  };
+  /* a tap on the tab you are on, at its root: back to the top (iOS convention; the Home Screen app has no browser
+     Back). At a page inside the tab the link is a new navigation to the tab's root, which starts at the top. */
+  const retap = (/** @type {MouseEvent} */ e) => {
+    const a = /** @type {HTMLAnchorElement} */ (e.currentTarget);
+    if (a.getAttribute('href') !== location.hash || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    e.preventDefault();
+    scrollTo({ top: 0, behavior: reduced() ? 'instant' : 'smooth' });
   };
   async function refreshShell() {
     const bar = /** @type {HTMLElement} */ ($('#bar-inner'));
