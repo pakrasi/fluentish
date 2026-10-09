@@ -127,6 +127,16 @@ export async function mount(el, ctx) {
 ```
 `mount` may return nothing, a cleanup function, or `{ unmount, canLeave }`. Focus moves to your `<h1>` after mount.
 
+`el` is a fresh element for this mount only (the router puts it inside `#view`). `ctx.signal` is aborted when the router leaves the view, before `unmount` runs, and also when a newer navigation overtakes a mount that is still awaiting something; `canLeave()` false keeps it live. Tie global listeners, timers and fetches to it instead of a `hashchange` stop (which misses `go(path, {replace: true})`):
+
+```js
+const s = scope(ctx.signal);                 // src/core/scope.js
+s.on(document, 'keydown', onKey);            // or document.addEventListener('keydown', onKey, { signal: ctx.signal })
+s.timeout(hint, 800); s.interval(tick, 1000); s.raf(draw);
+if (ctx.signal.aborted) return;              // after an await: this mount was overtaken
+```
+`tests/unit/listener-lint.test.mjs` fails on a new `document`/`window` listener in `src/features` without a signal.
+
 `ViewCtx`:
 
 | Field | What |
@@ -140,6 +150,7 @@ export async function mount(el, ctx) {
 | `go(path, {replace})`, `toast(text, {action, onAction})`, `refreshShell()` | navigation, the kit toast, re-render header and tabs |
 | `params`, `query` | `params.rest` = your sub-path |
 | `app` | `{ hlc, device, profile, adapter }` for writers that need them (`setSetting`, migrations) |
+| `signal` | `AbortSignal` aborted when the view is left (before `unmount`) or its mount is overtaken |
 
 ### Full-screen flows
 
