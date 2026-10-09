@@ -161,10 +161,6 @@ Small, safe and useful this week.
 - **Add to my next round** for a form not seen (the family card), inside the allowance.
 - The content lane's families (40 roots, clues, examples, non-words): the model reads FAMILY-SCHEMA's full shape as
   it is; check each batch's boards on a phone (long clues wrap the clue card to three lines).
-- **One family file at a time** (UI lane): the families are per-root lazy files with an index in de.json (round 7,
-  second pass). `features/build/family-data.js ensureFamilies` still loads all 40 where a family is needed; the plan
-  can pick the day's root from the index (`pickRoot`) and load one file, the family view its own root, and the service
-  worker can carry cached family files across deploys (FAMILY-SCHEMA "Where the families live").
 
 ## Later
 

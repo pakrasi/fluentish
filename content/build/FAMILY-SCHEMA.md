@@ -61,10 +61,14 @@ root `boardFor` would (boardFor calls it), so the plan loads one file. The pure 
 `families` is absent (`lemmaMaps`, `pfIds`, `cardIds`, `lexiconOf`, `familyLexicon`; `lemmaIndexOf` is
 `familyIndex(familyModel(…))` for word pages), with the same answers (tests/unit/build-family-files.test.mjs).
 
-**Until the per-root loader lands** (the UI lane), `src/features/build/family-data.js ensureFamilies` loads all 40
-files once a session through `src/data/build-content.js loadBuild`, and only where a family is needed: Today's plan
-when it makes the day's board, the Word building hub, a Word building round, the family view and Today's family.
-Today, knowledge, word pages and the Map read the index only.
+**The loader** (`src/features/build/family-files.js`, `family-data.js familiesFor`) loads one file per root: Today's
+plan picks the day's root from the index and loads that file to make the board; Today's family loads the day's root,
+the family view the root it opens (a chip loads its root, Browse by prefix or ending loads the rest); a Word building
+round loads the roots of its PF cards; the hub only the day's root. After a screen's first paint the other files are
+fetched in idle moments, two at a time (not on a save-data connection). The service worker's install copies forward
+any family file an older version cached under the same hash. Today, knowledge, word pages and the Map read the index
+only. `src/data/build-content.js loadBuild` (all files merged) is kept for node use and its test; the app does not
+call it.
 
 ## Board rules (round 7, second pass)
 
