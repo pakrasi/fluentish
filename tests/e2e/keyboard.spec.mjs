@@ -373,6 +373,19 @@ const layoutOf = (page, field, primary, prompt) => page.evaluate(([f, b, p]) => 
     off: Math.round((r(p).top + r(p).bottom) / 2 - (zoneTop + r(f).top) / 2) };
 }, [field, primary, prompt]);
 
+test('a short prompt is visible with no keyboard up (it is never hidden like a keyboard-only label)', async ({ page }) => {
+  await setup(page);
+  await seed(page, { examInDays: 10 });
+  await open(page, '#/practice/round');
+  const prompt = page.locator('.pr-promptbox .prompt');
+  await expect(prompt).toHaveClass(/kb-prompt-short/);
+  await expect(page.locator('body')).not.toHaveClass(/(^|\s)kb(\s|$)/);
+  await expect(prompt).toBeVisible();
+  expect((await prompt.innerText()).trim().length, 'the prompt shows its text').toBeGreaterThan(0);
+  await page.locator('#pr-input').blur();
+  await expect(prompt).toBeVisible();
+});
+
 test('a short prompt uses the empty band: larger, in the middle above the field; the field and its row do not move', async ({ page }) => {
   await setup(page);
   await seed(page, { examInDays: 10 });
@@ -380,7 +393,7 @@ test('a short prompt uses the empty band: larger, in the middle above the field;
   await expect(page.locator('#pr-input')).toBeFocused();
   for (const h of [460, 400]) {
     await keyboard(page, h);
-    await expect(page.locator('.pr-promptbox .prompt')).toHaveClass(/kb-short/);
+    await expect(page.locator('.pr-promptbox .prompt')).toHaveClass(/kb-prompt-short/);
     const a = await layoutOf(page, '#pr-input', '.pr-primary', '.pr-promptbox .prompt');
     expect(a.font, `@${h}: a short prompt grows toward the prompt size`).toBeGreaterThanOrEqual(28);
     expect(Math.abs(a.off), `@${h}: the prompt sits near the middle of the band`).toBeLessThan(90);

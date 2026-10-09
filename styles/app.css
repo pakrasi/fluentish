@@ -411,21 +411,21 @@ body.kb .rs-start { position: sticky; bottom: 0; z-index: 1; box-shadow: 0 0 0 6
    type keep their room. The field and its row stay where they are on every card (the field keeps the bottom of the
    column); a long prompt keeps 22 px and three lines. Nothing animates: the size follows the variables, and a card
    change is the card's own transition. */
-body.kb .pr-card:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok), .pr-typecheck)) .prompt.kb-short,
-body.kb .wb-rcard:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok))) .prompt.kb-short,
-body.kb .qs-round.is-produce .qs-stage:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok))) .qs-prompt.kb-short {
+body.kb .pr-card:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok), .pr-typecheck)) .prompt.kb-prompt-short,
+body.kb .wb-rcard:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok))) .prompt.kb-prompt-short,
+body.kb .qs-round.is-produce .qs-stage:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok))) .qs-prompt.kb-prompt-short {
   font-size: clamp(22px, calc(var(--vv-h, 100dvh) * 0.075), var(--fs-prompt)); line-height: 1.18; letter-spacing: -0.012em; }
 /* the typed rounds (round, reading, script words): the prompt box takes the band and centres what it holds */
-body.kb .pr-card:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok), .pr-typecheck)) > .pr-promptbox:has(> .prompt.kb-short) { flex: 1 0 auto; display: flex; flex-direction: column; justify-content: center; padding-bottom: var(--s-4); }
+body.kb .pr-card:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok), .pr-typecheck)) > .pr-promptbox:has(> .prompt.kb-prompt-short) { flex: 1 0 auto; display: flex; flex-direction: column; justify-content: center; padding-bottom: var(--s-4); }
 /* the spot check (task, prompt and field are the card's own children): auto margins centre the task and the prompt */
-body.kb .pr-card:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok))):has(> .prompt.kb-short) > .pr-task { margin-top: auto; }
-body.kb .pr-card:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok))) > .prompt.kb-short { margin-bottom: auto; padding-bottom: var(--s-4); }
-body.kb .pr-card:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok))):has(> .prompt.kb-short) > .answer { margin-top: 0; }
+body.kb .pr-card:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok))):has(> .prompt.kb-prompt-short) > .pr-task { margin-top: auto; }
+body.kb .pr-card:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok))) > .prompt.kb-prompt-short { margin-bottom: auto; padding-bottom: var(--s-4); }
+body.kb .pr-card:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok))):has(> .prompt.kb-prompt-short) > .answer { margin-top: 0; }
 /* Quick sort: the word's line, the task and the prompt in the middle of the band */
-body.kb .qs-round.is-produce .qs-stage:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok))):has(.qs-prompt.kb-short) .qs-level { margin-top: auto; }
-body.kb .qs-round.is-produce .qs-stage:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok))) .qs-prompt.kb-short { margin-bottom: auto; padding-bottom: var(--s-4); }
-body.kb .qs-round.is-produce .qs-stage:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok))):has(.qs-prompt.kb-short) .qs-answer { margin-top: 0; }
+body.kb .qs-round.is-produce .qs-stage:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok))):has(.qs-prompt.kb-prompt-short) .qs-level { margin-top: auto; }
+body.kb .qs-round.is-produce .qs-stage:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok))) .qs-prompt.kb-prompt-short { margin-bottom: auto; padding-bottom: var(--s-4); }
+body.kb .qs-round.is-produce .qs-stage:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok))):has(.qs-prompt.kb-prompt-short) .qs-answer { margin-top: 0; }
 /* Word building: the card's meta stays at the top, the prompt and its hint take the middle of the band */
-body.kb .wb-rscroll > .wb-rcard:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok))) > .wb-cbody:has(> .prompt.kb-short) { flex: 1 0 auto; display: flex; flex-direction: column; padding-bottom: var(--s-4); }
-body.kb .wb-rcard:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok))) .wb-cbody > .prompt.kb-short { margin-top: auto; }
-body.kb .wb-rcard:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok))) .wb-cbody:has(> .prompt.kb-short) > :last-child { margin-bottom: auto; }
+body.kb .wb-rscroll > .wb-rcard:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok))) > .wb-cbody:has(> .prompt.kb-prompt-short) { flex: 1 0 auto; display: flex; flex-direction: column; padding-bottom: var(--s-4); }
+body.kb .wb-rcard:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok))) .wb-cbody > .prompt.kb-prompt-short { margin-top: auto; }
+body.kb .wb-rcard:not(:has(.reveal-answer.is-open :is(.pr-fb, .wb-fb) > :not(.pr-res.is-ok, .wb-res.is-ok))) .wb-cbody:has(> .prompt.kb-prompt-short) > :last-child { margin-bottom: auto; }
