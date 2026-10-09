@@ -2,8 +2,9 @@
 // parts the router touches (location.hash, history.replaceState, hashchange, document.body, the view element) lets
 // node drive real navigations, including two that overlap.
 //
-// Round 8 step 1 records today's behaviour as it is, including the overlap race: a slow mount that a newer navigation
-// overtook still writes into the live #view, and the view it replaced is unmounted twice.
+// Round 8 step 1 recorded the behaviour before the fix: a slow mount that a newer navigation overtook wrote into the
+// live #view, and the view it replaced was unmounted twice. Step 2 gives each mount a fresh host and ctx.signal; the
+// tests below pin the fixed behaviour, and the old one is kept in comments where it differs.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { createRouter } from '../../src/core/router.js';
@@ -250,7 +251,7 @@ test('mount throws: onError shows the error, the next navigation still works and
   assert.equal(X.mounts, 2);
 });
 
-test('load fails: onError runs; today the old view is not unmounted although its DOM is gone', async () => {
+test('load fails: onError runs and the old view, whose DOM the error view replaces, is left once', async () => {
   const view = reset();
   const X = viewModule('X');
   const views = { '/x': X, '/y': viewModule('Y') };
@@ -262,7 +263,14 @@ test('load fails: onError runs; today the old view is not unmounted although its
   await settle();
   assert.equal(errors.length, 1);
   assert.equal(shown(view), 'error');
-  assert.equal(X.unmounts, 0, 'today: X keeps running behind the error view');
+  // before round 8, X was not unmounted and kept running behind the error view
+  assert.equal(X.unmounts, 1);
+  assert.deepEqual(X.log, ['unmount signal=true']);
+  assert.equal(router.path, null);
+  router.go('/x');
+  await settle();
+  assert.equal(shown(view), 'X');
+  assert.equal(X.unmounts, 1);
 });
 
 // ---------- replace navigations ----------
@@ -276,6 +284,7 @@ test('go(path, {replace: true}) fires no hashchange, but the old view is still u
   await settle();
   assert.equal(env.hashchanges, 0, 'a view that stops on hashchange never stops here (arch F2)');
   assert.equal(X.unmounts, 1);
+  assert.equal(X.ctxs[0].signal.aborted, true, 'ctx.signal does stop it');
   assert.equal(shown(view), 'Y');
 });
 
@@ -301,7 +310,7 @@ test('a navigation that is still loading its module when a newer one starts neve
 });
 
 for (const withVT of [false, true]) {
-  test(`overlap${withVT ? ' inside view transitions' : ''}: today the slow mount writes into the live view and the old view is unmounted twice`, async () => {
+  test(`overlap${withVT ? ' inside view transitions' : ''}: the slow mount never writes into the live view and every view is left once`, async () => {
     const view = reset();
     const gate = deferred();
     const X = viewModule('X'), A = viewModule('A', { gate: gate.promise }), B = viewModule('B');
@@ -310,17 +319,116 @@ for (const withVT of [false, true]) {
     router.go('/a');           // slow: its mount awaits content
     await settle();
     assert.equal(A.mounts, 1);
+    assert.equal(A.ctxs[0].signal.aborted, false);
     router.go('/b');           // fast
     await settle();
     assert.equal(shown(view), 'B');
+    assert.equal(A.ctxs[0].signal.aborted, true, 'A hears at once that it will not be shown');
+    assert.equal(A.unmounts, 0, 'A has not returned its cleanup yet');
     gate.resolve();            // A's content arrives after B is on screen
     await settle();
     assert.equal(router.path, '/b');
     assert.deepEqual(mounted, ['/x', '/b']);
-    assert.equal(A.unmounts, 1, 'A stops once');
-    // the race (arch F1): A and B were given the same element, so A's late write lands in the live view
-    assert.equal(A.els[0], B.els[0]);
-    assert.equal(shown(view), 'BA');
-    assert.equal(X.unmounts, 2, 'X is unmounted by A and again by B');
+    assert.deepEqual(A.log, ['unmount signal=true'], 'A stops once, signal first');
+    // before round 8 A and B shared #view, so A's late write showed 'BA' and X was unmounted by A and again by B
+    assert.notEqual(A.els[0], B.els[0]);
+    assert.equal(A.els[0].parentNode, null, "A's host is detached");
+    assert.equal(shown(view), 'B');
+    assert.equal(X.unmounts, 1);
+    assert.equal(B.ctxs[0].signal.aborted, false);
   });
 }
+
+// ---------- ctx.signal and the host ----------
+
+test('each mount gets a fresh host inside the view, and ctx.signal is aborted before unmount', async () => {
+  const view = reset();
+  const X = viewModule('X'), Y = viewModule('Y');
+  const { router } = makeRouter(view, { '/x': X, '/y': Y });
+  await router.start();
+  assert.equal(view.children.length, 1);
+  assert.equal(X.els[0].parentNode, view);
+  assert.equal(X.els[0].className, 'view-host');
+  assert.ok(X.ctxs[0].signal instanceof AbortSignal);
+  assert.equal(X.ctxs[0].route, '/x', 'makeCtx output is kept');
+  router.go('/y');
+  await settle();
+  assert.deepEqual(X.log, ['unmount signal=true']);
+  assert.equal(X.els[0].parentNode, null);
+  assert.equal(Y.els[0].parentNode, view);
+  assert.notEqual(X.ctxs[0].signal, Y.ctxs[0].signal);
+  assert.equal(Y.ctxs[0].signal.aborted, false);
+});
+
+test('canLeave false keeps the signal live (a hashchange stop has already fired by then)', async () => {
+  const view = reset();
+  const X = viewModule('X', { canLeave: () => false }), Y = viewModule('Y');
+  const { router } = makeRouter(view, { '/x': X, '/y': Y });
+  await router.start();
+  router.go('/y');
+  await settle();
+  assert.equal(X.ctxs[0].signal.aborted, false);
+  assert.equal(X.unmounts, 0);
+});
+
+test('a mount that throws is still left through its signal on the next navigation', async () => {
+  const view = reset();
+  const B = viewModule('B', { throws: true }), X = viewModule('X');
+  const { router } = makeRouter(view, { '/x': X, '/b': B });
+  await router.start();
+  router.go('/b');
+  await settle();
+  assert.equal(B.ctxs[0].signal.aborted, false);
+  router.go('/x');
+  await settle();
+  assert.equal(B.ctxs[0].signal.aborted, true);
+});
+
+test('an overtaken mount that throws does not show its error over the live view', async () => {
+  const view = reset();
+  const gate = deferred();
+  const X = viewModule('X'), A = viewModule('A', { gate: gate.promise, throws: true }), B = viewModule('B');
+  const { router, errors } = makeRouter(view, { '/x': X, '/a': A, '/b': B });
+  await router.start();
+  router.go('/a');
+  await settle();
+  router.go('/b');
+  await settle();
+  gate.resolve();
+  await settle();
+  assert.equal(errors.length, 0);
+  assert.equal(shown(view), 'B');
+});
+
+test('a view transition that runs its update after a newer navigation started leaves the screen alone', async () => {
+  const view = reset();
+  const X = viewModule('X'), A = viewModule('A'), B = viewModule('B');
+  /** @type {(() => any)[]} */ const held = [];
+  const transition = async (/** @type {() => any} */ update) => { held.push(update); };
+  const { router } = makeRouter(view, { '/x': X, '/a': A, '/b': B }, { transition });
+  await router.start();
+  router.go('/a');
+  await settle();
+  router.go('/b');
+  await settle();
+  assert.equal(held.length, 2);
+  await held[1]();   // B's swap runs first
+  await held[0]();   // A's stale swap runs late
+  assert.equal(A.mounts, 0);
+  assert.equal(shown(view), 'B');
+  assert.equal(X.unmounts, 1);
+});
+
+test('unmount that throws is logged and does not stop the next view', async () => {
+  const view = reset();
+  const X = { async mount(/** @type {El} */ el) { el.append(new El('h1', 'X')); return () => { throw new Error('boom'); }; } };
+  const Y = viewModule('Y');
+  const { router } = makeRouter(view, { '/x': X, '/y': Y });
+  await router.start();
+  const err = console.error;
+  /** @type {any[]} */ const logged = [];
+  console.error = (/** @type {any} */ e) => { logged.push(e); };
+  try { router.go('/y'); await settle(); } finally { console.error = err; }
+  assert.equal(logged.length, 1);
+  assert.equal(shown(view), 'Y');
+});

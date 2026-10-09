@@ -39,6 +39,10 @@
  *                                                          feature that owns more than one path prefix
  * @property {{ hlc: {tick: () => string}, device: any, profile: any, adapter: any }} app
  * @property {() => Promise<void>} refreshShell             re-render header and tabs (after a goal change)
+ * @property {AbortSignal} signal                           aborted when the router leaves this view (before unmount runs)
+ *                                                          or when a newer navigation overtakes a mount still in flight.
+ *                                                          Pass it to addEventListener({signal}) and fetch.
+ *                                                          canLeave() false keeps it live.
  */
 
 export {};
