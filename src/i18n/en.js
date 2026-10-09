@@ -2907,6 +2907,44 @@ export default {
   // ---- R8 S2 ----
   // ---- end of R8 S2 ----
   // ---- R8 ACC0 ----
+  // Profile › Account (docs/ACCOUNTS.md): shown only when an account provider is on for this page
+  'account.title': 'Account',
+  'account.email': 'Email',
+  'account.email.hint': 'A 6-digit sign-in code is sent to this address.',
+  'account.sendCode': 'Send code',
+  'account.codeSent': 'A code was sent to {email}.',
+  'account.code': '6-digit code',
+  'account.signIn': 'Sign in',
+  'account.resend': 'Send a new code',
+  'account.otherEmail': 'Use another email',
+  'account.signedIn': 'Signed in as {email}.',
+  'account.signOut': 'Sign out',
+  'account.signOutAll': 'Sign out on all devices',
+  'account.signedOutToast': 'Signed out.',
+  'account.offline': 'No connection. Your progress is saved on this device either way.',
+  'account.fake': 'Test accounts on this computer. Nothing is sent. The code is always 123456.',
+  'account.err.off': 'Accounts are off.',
+  'account.err.badEmail': 'Enter an email address.',
+  'account.err.noAccount': 'There is no account for this email.',
+  'account.err.badCode': 'That code is wrong or has run out. Check it, or send a new one.',
+  'account.err.rateLimited': 'Too many tries. Wait a minute, then try again.',
+  'account.err.offline': 'No connection. Try again when you are online.',
+  'account.err.signedOut': 'You are signed out. Sign in again.',
+  'account.err.failed': 'That did not work. Try again.',
+  // Profile › Diagnostics: shown only when accounts are configured or on
+  'diag.accounts': 'Accounts',
+  'diag.accounts.on': 'On ({provider})',
+  'diag.accounts.off': 'Off: {why}',
+  'accounts.provider.fake': 'test accounts, this computer only',
+  'accounts.provider.supabase': 'Supabase',
+  'accounts.why.unknownProvider': 'the provider is not known',
+  'accounts.why.badUrl': 'the project address is not valid',
+  'accounts.why.badKey': 'the key is not a publishable key',
+  'accounts.why.legacyKey': 'legacy keys are refused',
+  'accounts.why.secretKey': 'secret keys are refused',
+  'accounts.why.badOrigins': 'the list of allowed addresses is not valid',
+  'accounts.why.sharedOrigin': 'this address is shared with other sites',
+  'accounts.why.originNotAllowed': 'this address is not on the allowed list',
   // ---- end of R8 ACC0 ----
   // ---- R8 A1 ----
   // ---- end of R8 A1 ----
