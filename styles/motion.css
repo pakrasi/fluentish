@@ -149,6 +149,16 @@
 .reveal-answer > * { overflow: hidden; }
 .reveal-answer.is-open { grid-template-rows: 1fr; opacity: 1; }
 
+/* Reduced motion (DESIGN: "the check and underline appear without sweeping", "fills jump"): what --move cannot reach.
+   The answer reveal opens at once (wrong() and Show me add .is-open directly, not through disclose()), the check's
+   stroke and the round segments jump to their end, and the segmented thumb (a translateX set from JS) does not slide. */
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-motion="full"]) :is(.reveal-answer, .is-correct .check path, .seg-thumb),
+  :root:not([data-motion="full"]) .segments i::after { transition: none; }
+}
+:root[data-motion="reduce"] :is(.reveal-answer, .is-correct .check path, .seg-thumb),
+:root[data-motion="reduce"] .segments i::after { transition: none; }
+
 /* ---------- round progress segments ---------- */
 .segments i::after { transform: scaleX(0); transform-origin: left; transition: transform var(--dur-base) var(--spring-snappy); }
 .segments i.is-done::after, .segments i.is-miss::after, .segments i.is-seen::after, .segments i.is-now::after { transform: scaleX(1); }

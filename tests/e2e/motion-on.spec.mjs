@@ -113,3 +113,23 @@ test('a named element only the old view has leaves with the page; a pair that mo
     }
   }
 });
+
+test('reduced motion: the answer reveal, the check stroke, round segments and the segmented thumb do not animate', async ({ page }) => {
+  await seed(page, { veteran: true });   // the default seed: motion 'reduce'
+  await open(page, '#/profile');
+  await expect(page.locator('.seg-thumb').first()).toBeAttached();
+  const durations = await page.evaluate(() => {
+    const mk = (/** @type {string} */ tag, /** @type {string} */ cls, /** @type {Element} */ parent) => { const e = document.createElement(tag); e.setAttribute('class', cls); parent.append(e); return e; };
+    const box = mk('div', '', /** @type {Element} */ (document.getElementById('view')));
+    const reveal = mk('div', 'reveal-answer', box);
+    const answer = mk('div', 'answer is-correct', box);
+    const svg = document.createElementNS('http://www.w3.org/2000/svg', 'svg'); svg.setAttribute('class', 'check'); answer.append(svg);
+    const path = document.createElementNS('http://www.w3.org/2000/svg', 'path'); svg.append(path);
+    const seg = mk('i', 'is-done', mk('div', 'segments', box));
+    const d = (/** @type {Element} */ e, /** @type {string | null} */ pseudo = null) => getComputedStyle(e, pseudo).transitionDuration;
+    const out = { reveal: d(reveal), check: d(path), segment: d(seg, '::after'), thumb: d(/** @type {Element} */ (document.querySelector('.seg-thumb'))) };
+    box.remove();
+    return out;
+  });
+  for (const [what, v] of Object.entries(durations)) expect(v.split(',').every(x => parseFloat(x) === 0), `${what}: ${v}`).toBe(true);
+});
