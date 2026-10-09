@@ -73,6 +73,40 @@ export function animate(el, frames, o = {}) {
 }
 
 /* ------------------------------------------------------------------ */
+/* Tracked moves: play, finishAll, nudge, pop (from build/fx.js)        */
+/* ------------------------------------------------------------------ */
+
+/** Moves started by play() that are still running, so a new moment can finish the last one at once. @type {Set<Animation>} */
+const running = new Set();
+
+/**
+ * Animate unless motion is reduced, through animate() (safe easing); resolves when the move is done, finished or
+ * cancelled, or at once under reduced motion. `fill` defaults to 'backwards'. Every move is tracked for finishAll().
+ * DESIGN.md: keyframes are transform and opacity only.
+ * @param {Element | null | undefined} el @param {Keyframe[]} frames @param {KeyframeAnimationOptions} [o]
+ * @returns {Promise<void>}
+ */
+export function play(el, frames, o = {}) {
+  if (!el || reduced()) return Promise.resolve();
+  const a = animate(el, frames, { fill: 'backwards', ...o });
+  if (!a) return Promise.resolve();
+  running.add(a);
+  return a.finished.then(() => { running.delete(a); }, () => { running.delete(a); });
+}
+
+/** Jump every move play() started to its end (a tap during a flight, Enter to skip, an unmount). */
+export function finishAll() { for (const a of [...running]) { try { a.finish(); } catch { /* already gone */ } } running.clear(); }
+
+/** The damped nudge of a wrong pick: -7, 5, -2, 0 px over 300 ms; nothing under reduced motion. @param {Element | null | undefined} el */
+export const nudge = el => play(el, [{ transform: 'translateX(0)' }, { transform: 'translateX(-7px)' }, { transform: 'translateX(5px)' }, { transform: 'translateX(-2px)' }, { transform: 'none' }], { duration: 300 });
+
+/**
+ * The pop of a right pick: 1 → 1.12 → 1 on the pop spring (420 ms); nothing under reduced motion.
+ * @param {Element | null | undefined} el @param {string} [base] the element's own transform, kept under the scale
+ */
+export const pop = (el, base = '') => play(el, [{ transform: `${base} scale(1)` }, { transform: `${base} scale(1.12)` }, { transform: `${base} scale(1)` }], { duration: 420, easing: '--spring-pop' });
+
+/* ------------------------------------------------------------------ */
 /* Transitions                                                          */
 /* ------------------------------------------------------------------ */
 
