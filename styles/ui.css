@@ -36,6 +36,11 @@
 /* ---- end ui/sheet ---- */
 
 /* ---- ui/toast ---- */
+/* The pill keeps the shell's .toast look and place (components.css; app.css lifts it over the dock and wraps long
+   text). Here: drags belong to the pill (swipe-away), and with the keyboard up (is-kb, set from body.kb) it sits at
+   the top of the visible screen, under its pan (--vv-top), clear of the field and the keyboard's action row. */
+.ui-toast { touch-action: none; user-select: none; -webkit-user-select: none; cursor: default; }
+:root .ui-toast.is-kb { top: calc(var(--vv-top, 0px) + var(--s-3) + env(safe-area-inset-top)); bottom: auto; }
 /* ---- end ui/toast ---- */
 
 /* ---- ui/skeleton ---- */
