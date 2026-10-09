@@ -31,8 +31,10 @@ import { mergeMonth } from '../domain/progress.js';
 import { joinChecks } from '../domain/checks.js';
 import { joinFamily } from '../domain/wordbuild-family.js';
 import * as B from './sync/backup.js';
+import { JOURNAL_KV, readJournal, autoMergeOn, setAutoMerge } from './restore-journal.js';
 
-export const JOURNAL_KV = 'backup.journal';
+// the light half lives in restore-journal.js (boot and the Profile screen read it without loading this module)
+export { JOURNAL_KV, autoMergeOn, setAutoMerge, span } from './restore-journal.js';
 export const MERGE_EVERY_MS = 30 * 60e3;
 const keep = (/** @type {string} */ deck) => !B.PRIVATE_DECKS.has(deck);
 const hash = (/** @type {any} */ v) => fnv1a(canon(v ?? null));
@@ -70,12 +72,6 @@ export async function listBackups(files) {
   const out = [...devs.values()];
   for (const d of out) { d.events.sort((a, b) => (a.day < b.day ? -1 : 1)); d.snapshots.sort((a, b) => (a.day < b.day ? -1 : a.day > b.day ? 1 : a.path < b.path ? 1 : -1)); }
   return out.sort((a, b) => (a.deviceId < b.deviceId ? -1 : 1));
-}
-
-/** A device's first and last day, and how many days of events. @param {DeviceBackup} d */
-export function span(d) {
-  const days = [...new Set([...d.events, ...d.snapshots].map(f => f.day))].sort();
-  return { first: days[0] || null, last: days[days.length - 1] || null, eventDays: d.events.length, snapshot: d.snapshots[d.snapshots.length - 1]?.day || null };
 }
 
 /**
@@ -243,9 +239,6 @@ export function planRestore(store, { snapshots, events }) {
 
 /* ---------- applying, with a journal ---------- */
 
-/** @param {any} adapter */
-const readJournal = async adapter => (await adapter.loadScope('device'))[JOURNAL_KV] || null;
-
 /**
  * Write the journal's before-image back (a cut-off restore, or a failed read-back).
  * @param {any} adapter @param {any} j
@@ -300,6 +293,7 @@ export async function applyRestore(store, plan, { kind = 'restore', sources = nu
 
 /**
  * At start, before the store opens: a restore that was cut off is rolled back; an undo that was cut off is finished.
+ * Boot reaches it through data/restore-journal.js recoverIfCutOff, which loads this module only when it is needed.
  * @param {any} adapter @param {string} profileId
  * @returns {Promise<'rolledBack' | 'undone' | null>}
  */
@@ -374,11 +368,6 @@ async function reloadInto(store, j) {
 }
 
 /* ---------- the automatic merge ---------- */
-
-/** @param {any} store */
-export const autoMergeOn = store => !!B.state(store).autoMerge;
-/** @param {any} store @param {boolean} on @param {() => number} [now] */
-export const setAutoMerge = (store, on, now = Date.now) => B.setState(store, { autoMerge: on ? { since: new Date(now()).toISOString() } : null });
 
 /**
  * Merge what the other devices backed up since the last merge. Only after the opt-in; at most every MERGE_EVERY_MS

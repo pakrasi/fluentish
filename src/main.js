@@ -18,7 +18,6 @@ import { openSession } from './data/session.js';
 import { normalizeSettings, defaultPrefs, examDate } from './data/settings.js';
 import { createContent } from './data/content.js';
 import { sync, restore, backup, backupFiles } from './data/sync/index.js';
-import { startProgress } from './data/progress.js';
 import { TABS, routes, startFeatures } from './features/registry.js';
 import { createSw } from './services/sw.js';
 import { loadRecordSchemas, recordChecker } from './data/records.js';
@@ -225,8 +224,11 @@ async function main() {
 
   // ---------- progress log ----------
   // one record per study day (data/progress.js): the past once per device (with the backup when this device is
-  // linked), missed days, then today after study
-  startProgress({ store, clock, content, bus, log, files: () => (backup(store).linked() && backup(store).allowed() && navigator.onLine ? backupFiles(store) : null) });
+  // linked), missed days, then today after study. Loaded after the first screen: it is not part of the boot graph
+  // (tests/unit/boot-graph.test.mjs)
+  import('./data/progress.js')
+    .then(({ startProgress }) => startProgress({ store, clock, content, bus, log, files: () => (backup(store).linked() && backup(store).allowed() && navigator.onLine ? backupFiles(store) : null) }))
+    .catch((/** @type {any} */ e) => log('progress', e));
 
   // ---------- results sync ----------
   // On start and whenever the page becomes visible again, at most once a minute. sync() skips by itself when
