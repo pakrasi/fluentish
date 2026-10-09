@@ -2,7 +2,7 @@
 // arrival lands, and restore() waiting for a view that draws its content after an async step.
 import { test } from 'node:test';
 import assert from 'node:assert/strict';
-import { createMemo, landing, restore, newKey } from '../../src/core/scroll.js';
+import { createMemo, landing, restore, newKey, budget } from '../../src/core/scroll.js';
 
 test('memo: keeps y per key, rounds, never negative, ignores a missing key or a bad number', () => {
   const m = createMemo();
@@ -156,4 +156,14 @@ test('restore: a newer navigation (the signal) and the time limit stop it', asyn
   h.fire(2500);
   assert.equal(await q, 'timeout');
   assert.equal(h.listening, 0);
+});
+
+test('budget: at most n in any window; room again once the oldest is out of it', () => {
+  let t = 0;
+  const may = budget(3, 10_000, () => t);
+  assert.deepEqual([may(), may(), may(), may()], [true, true, true, false]);
+  t = 9_999;
+  assert.equal(may(), false);
+  t = 10_000;
+  assert.deepEqual([may(), may(), may(), may()], [true, true, true, false]);
 });

@@ -35,6 +35,23 @@ export function createMemo(max = 60) {
   };
 }
 
+/**
+ * At most `n` calls in any `ms` (pure, `now` injected). Safari throws on the 101st replaceState in 10 s, and the router
+ * and the views use replaceState too, so this module keeps to a share of that and skips a write past it (that entry
+ * then starts at the top on Back, which is what every entry did before).
+ * @param {number} n @param {number} ms @param {() => number} now
+ */
+export function budget(n, ms, now) {
+  /** @type {number[]} */ const at = [];
+  return () => {
+    const t = now();
+    while (at.length && t - at[0] >= ms) at.shift();
+    if (at.length >= n) return false;
+    at.push(t);
+    return true;
+  };
+}
+
 /** A key for a new history entry. */
 export const newKey = () => Math.random().toString(36).slice(2, 10);
 
@@ -130,50 +147,56 @@ export function browserEnv() {
 }
 
 /**
- * The browser side the router uses: keys on history entries, the y of the entry on screen kept in its state while
- * the page scrolls (at most every 300 ms: Safari limits replaceState to 100 calls in 10 s).
+ * The browser side the router uses. An entry gets its key in history.state only once its page has been scrolled (a
+ * page left at the top needs nothing kept), together with its y, at most every 300 ms and right before a tap or a
+ * key press that may navigate. That keeps this module's replaceState calls few: Safari throws on the 101st in 10 s,
+ * and the router and the views use it too.
  */
 export function createScrollKeeper() {
   const memo = createMemo();
   /** the key of the entry whose view is on screen */
   let shown = /** @type {string | null} */ (null);
+  /** a navigation has started and its view is not on screen yet: the current entry is not the shown view's */
+  let moving = false;
   let timer = 0;
   /* the y of the view on screen, from its scroll events. leave() uses this, not scrollY at the time: on Back and
      Forward WebKit has already moved the page (to the top) when hashchange fires. */
   let lastY = 0;
+  const may = budget(40, 10_000, () => performance.now());
   const write = () => {
-    timer = 0;
+    if (timer) { clearTimeout(timer); timer = 0; }
     const st = history.state;
-    if (!shown || !st || st.k !== shown) return;   // the entry changed under us: never write one view's y into another
-    try { history.replaceState({ ...st, y: lastY }, ''); } catch { /* rate limit or sandbox: memory has it */ }
+    const k = st && typeof st === 'object' && typeof st.k === 'string' ? st.k : null;
+    if (!shown || moving || (k && k !== shown)) return;   // never one view's y into another entry
+    if (k && st.y === lastY) return;
+    if (!k && lastY === 0) return;
+    if (!may()) return;
+    try { history.replaceState({ ...(st && typeof st === 'object' ? st : {}), k: shown, y: lastY }, ''); } catch { /* sandbox: memory has it */ }
   };
   return {
     start() {
       try { history.scrollRestoration = 'manual'; } catch { /* old browser */ }
       addEventListener('scroll', () => {
-        if (!shown) return;
+        if (!shown || moving) return;
         lastY = Math.round(scrollY);
         if (!timer) timer = /** @type {any} */ (setTimeout(write, 300));
       }, { passive: true });
-      // a tab that iOS puts away keeps its history.state: write the last y before it goes
-      addEventListener('pagehide', () => { if (timer) { clearTimeout(timer); write(); } });
+      // before a tap or a key that may navigate, and before iOS puts the tab away: the y written now
+      const flush = () => { if (timer) write(); };
+      for (const type of ['pointerdown', 'keydown', 'pagehide']) addEventListener(type, flush, { capture: true, passive: true });
     },
     /** The view on screen is being left: keep its y. */
     leave() { if (shown) memo.save(shown, lastY); },
-    /** Give the current entry a key (a new entry has none) and say where it lands. @returns {{key: string, y: number | null}} */
+    /** The key of the current entry (a new one for an entry that has none yet) and where it lands. @returns {{key: string, y: number | null}} */
     arrive() {
       if (timer) { clearTimeout(timer); timer = 0; }
+      moving = true;
       const st = history.state;
-      let key = st && typeof st.k === 'string' ? st.k : null;
-      const y = landing({ state: st, shownKey: shown, memo });
-      if (!key) {
-        key = newKey();
-        try { history.replaceState({ ...(st && typeof st === 'object' ? st : {}), k: key }, ''); } catch { /* sandbox */ }
-      }
-      return { key, y };
+      const key = st && typeof st === 'object' && typeof st.k === 'string' ? st.k : newKey();
+      return { key, y: landing({ state: st, shownKey: shown, memo }) };
     },
     /** A view is on screen now for this key. @param {string} key */
-    shown(key) { shown = key; lastY = Math.round(scrollY); },
+    shown(key) { shown = key; moving = false; lastY = Math.round(scrollY); },
     /** Scroll back to y once the view has drawn (see restore()). @param {number} y @param {AbortSignal} signal */
     restore(y, signal) { return restore(y, { signal }); },
     /** No view is on screen (the error view, or a mount in flight). */

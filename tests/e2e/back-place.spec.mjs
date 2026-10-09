@@ -33,7 +33,7 @@ async function backKeepsPlace(page, hash, linkHref) {
   const listTitle = await page.locator('#view h1').first().textContent();
   // the tab bar is sticky: Playwright's click would first scroll the page to the bar's place in the flow, which a
   // finger never does, so the tab is clicked in the page
-  if (typeof linkHref === 'string') await page.locator(`.tabs a[data-tab="${linkHref}"]:visible`).first().evaluate(a => /** @type {HTMLElement} */ (a).click());
+  if (typeof linkHref === 'string') await page.locator(`.tabs a[data-tab="${linkHref}"]:visible`).first().evaluate(a => { a.dispatchEvent(new PointerEvent('pointerdown', { bubbles: true })); /** @type {HTMLElement} */ (a).click(); });
   else await page.locator(`#view a[href="${href}"]`).first().click();
   await expect(page.locator('#view h1').first()).not.toHaveText(String(listTitle));
   await settle(page);
