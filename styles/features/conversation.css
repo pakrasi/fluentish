@@ -246,7 +246,8 @@ body.kb .cv-helpers { padding-bottom: 6px; }
    keyboard it is the form's row (.kb-dock wins over the dock's "hidden with the keyboard up") ---- */
 @media (max-width: 899px) { .cv-startbar.dock .cv-start { width: 100%; } }
 @media (min-width: 900px) {
-  .cv-startbar.dock { display: grid; position: static; padding: 0; background: none; }
-  .cv-startbar.dock .btn { box-shadow: none; }
+  /* the setup is longer than a laptop screen: Start sticks to the bottom of the page column, as the feedback's dock does */
+  .cv-startbar.dock { display: grid; position: sticky; bottom: 0; inset-inline: auto; z-index: 2; margin: 0 calc(-1 * var(--s-2)); padding: var(--s-4) var(--s-2) var(--s-3);
+    background: linear-gradient(to bottom, transparent, var(--canvas) 30%); }
 }
 body.kb .cv-startbar.kb-dock { display: flex; }
