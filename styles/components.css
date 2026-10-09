@@ -65,7 +65,7 @@
 .answer.is-wrong .answer-input { color: var(--ink-2); text-decoration: line-through; text-decoration-color: var(--bad); text-decoration-thickness: 1.5px; }
 
 /* ---------- study card ---------- */
-.card { position: relative; background: var(--surface); border-radius: var(--r-card); box-shadow: var(--shadow-card); padding: var(--s-6) var(--s-5) var(--s-5); view-transition-name: fx-card; }
+.card { position: relative; background: var(--surface); border-radius: var(--r-card); box-shadow: var(--shadow-card); padding: var(--s-6) var(--s-5) var(--s-5); }
 .card-meta { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-3); }
 .prompt { margin-top: var(--s-4); font: 400 var(--fs-prompt)/1.18 var(--font-display); letter-spacing: -0.012em; text-wrap: pretty; }
 .prompt-hint { margin-top: var(--s-2); color: var(--ink-2); font-size: 14px; }
