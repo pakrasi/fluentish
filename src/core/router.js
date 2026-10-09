@@ -131,6 +131,20 @@ export function mapLegacy(hash) {
  */
 
 /**
+ * A deep link kept through onboarding (#/welcome?next=…): only a path inside this app, never another site, never
+ * Welcome itself. Returns the path with its query, or null.
+ * @param {string | null | undefined} next
+ * @returns {string | null}
+ */
+export function safeNext(next) {
+  const n = String(next ?? '');
+  if (!n || n.length > 512 || !n.startsWith('/') || n.startsWith('//') || /[\\\s]/.test(n) || /[\u0000-\u001f]/.test(n)) return null;
+  const { path } = parseHash(n);
+  if (path === '/' || path === '/welcome' || path.startsWith('/welcome/')) return null;
+  return n;
+}
+
+/**
  * @typedef {{leave(): void, arrive(): {key: string, y: number | null}, shown(key: string): void, clear(): void,
  *   restore(y: number, signal: AbortSignal): Promise<unknown>}} ScrollKeeper
  */

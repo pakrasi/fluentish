@@ -9,7 +9,7 @@ import { icon } from './core/icons.js';
 import { markNode } from './core/brand.js';
 import { swap, toast as kitToast, reduced } from './core/motion.js';
 import { startKeyboard } from './core/keyboard.js';
-import { createRouter } from './core/router.js';
+import { createRouter, safeNext } from './core/router.js';
 import { createScrollKeeper } from './core/scroll.js';
 import { avatar } from './core/ui.js';
 import { log, installErrorLog, attachLogStore } from './core/log.js';
@@ -205,7 +205,11 @@ async function main() {
     home: '/today',
     guard: (path) => {
       const onboarded = !!settings().onboarded;
-      if (!onboarded && path !== '/welcome') return '/welcome';
+      if (!onboarded && path !== '/welcome') {
+        // a link opened before onboarding (the site is shared) opens once Welcome is done
+        const next = path === '/today' ? null : safeNext(location.hash.replace(/^#/, ''));
+        return next ? `/welcome?next=${encodeURIComponent(next)}` : '/welcome';
+      }
       if (onboarded && path === '/welcome') return '/today';
       return null;
     },
@@ -226,7 +230,11 @@ async function main() {
     },
     onError: (err, path) => {
       log('route', err);
-      replace(/** @type {HTMLElement} */ ($('#view')), h('div', { class: 'stack page-pad' }, h('h1', null, t('error.title')), h('p', null, t('error.view', { path })), h('a', { class: 'btn', href: '#/today' }, t('error.home'))));
+      // Try again loads the page again (a module a bad connection cut off is fetched anew); Today is the way out
+      replace(/** @type {HTMLElement} */ ($('#view')), h('div', { class: 'stack page-pad error-view' }, h('h1', null, t('error.title')), h('p', null, t('error.view', { path })),
+        h('div', { class: 'error-actions' },
+          h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => location.reload() }, t('error.retry')),
+          h('a', { class: 'btn btn-quiet pressable', href: '#/today' }, t('error.home')))));
     },
   });
   await router.start();

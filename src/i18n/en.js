@@ -2913,6 +2913,7 @@ export default {
   // ---- R8 F1 ----
   // ---- end of R8 F1 ----
   // ---- R8 U1 ----
+  'error.retry': 'Try again',
   // ---- end of R8 U1 ----
   // ---- R8 U2 ----
   // ---- end of R8 U2 ----
