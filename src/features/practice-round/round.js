@@ -48,6 +48,7 @@ import { courseRound } from '../shared/course.js';
 import { scopeItem } from '../../domain/itemids.js';
 import { keep, fitToKeyboard, reveal as revealEl, fitPrompt } from '../../core/keyboard.js';
 import { createAnswerDiff } from '../../ui/answer-diff.js';
+import { describe as describeDiff } from '../../domain/letterdiff.js';
 
 const TEIL = /** @type {Record<string, string>} */ ({ S1: 'Teil 1', S2: 'Teil 2', S3: 'Teil 3', W1: 'Aufgabe 1', W2: 'Aufgabe 2', W3: 'Aufgabe 3', L2: 'Teil 2', L3: 'Teil 3', L5: 'Teil 5' });
 const fmtS = (/** @type {number} */ ms) => `${(ms / 1000).toFixed(1).replace(/\.0$/, '')} s`;
@@ -71,42 +72,14 @@ function highlight(text, part) {
   if (i < 0 || !part || part.length >= s.replace(/[.!?…\s]+$/, '').length - 1) return [s];   // the whole prompt: nothing to point at
   return [s.slice(0, i), h('mark', { class: 'pr-hl' }, s.slice(i, i + part.length)), s.slice(i + part.length)];
 }
-/** "You:" with wrong words boxed, "Right:" with the words he missed marked. @param {string} typed @param {string} right */
-function diffLines(typed, right) {
-  const d = Match.diffWords(typed, right);
-  /** @type {any[]} */ const you = []; let pos = 0;
-  for (const w of d.wrong) { you.push(typed.slice(pos, w.start), h('s', { class: 'pr-wrongword' }, typed.slice(w.start, w.end))); pos = w.end; }
-  you.push(typed.slice(pos));
-  const miss = new Set(d.missing); /** @type {any[]} */ const rt = []; let p2 = 0;
-  d.right.forEach((/** @type {any} */ w, /** @type {number} */ k) => { if (!miss.has(k)) return; rt.push(right.slice(p2, w.start), h('mark', null, right.slice(w.start, w.end))); p2 = w.end; });
-  rt.push(right.slice(p2));
-  return { you, right: rt };
-}
-
-/** Text with ranges wrapped: marks → <mark>, struck → <s>. @param {string} text @param {{start: number, end: number}[]} ranges @param {'mark'|'s'} tag */
-function wrapRanges(text, ranges, tag) {
-  /** @type {any[]} */ const out = []; let p = 0;
-  for (const r of [...ranges].sort((a, b) => a.start - b.start)) {
-    if (r.start < p) continue;
-    out.push(text.slice(p, r.start), h(tag, tag === 's' ? { class: 'pr-wrongword' } : null, text.slice(r.start, r.end))); p = r.end;
-  }
-  out.push(text.slice(p));
-  return out;
-}
-
 /**
- * A situation's lines: what he typed, plain (only one phrase is graded), and the answer with that phrase's words marked.
- * @param {string} typed @param {string} right @param {string} pattern the accepted pattern that was checked
+ * A situation grades one phrase, not the whole sentence: the indexes of the answer's words that belong to the accepted
+ * pattern that was checked (marked in the Right line; his line stays plain).
+ * @param {string} right @param {string} pattern
  */
-function phraseLines(typed, right, pattern) {
+function phraseWords(right, pattern) {
   const want = new Set(Match.words(String(pattern).replace(/…/g, ' ')).map((/** @type {any} */ w) => w.n));
-  /** @type {any[]} */ const rt = []; let p = 0;
-  for (const w of Match.words(right)) {
-    if (!want.has(w.n)) continue;
-    rt.push(right.slice(p, w.start), h('mark', null, right.slice(w.start, w.end))); p = w.end;
-  }
-  rt.push(right.slice(p));
-  return { you: [typed], right: rt };
+  return Match.words(right).map((/** @type {any} */ w, /** @type {number} */ i) => (want.has(w.n) ? i : -1)).filter((/** @type {number} */ i) => i >= 0);
 }
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
@@ -484,14 +457,18 @@ export async function mountRound(el, ctx) {
     linesAc = new AbortController();
     return createAnswerDiff({ ...o, lang: langAttr(), dir: dirAttr(), signal: linesAc.signal }).el;
   }
+  const LINES = { you: 'pr-diff', right: 'pr-diff answer-key', label: 'caption', caption: 'caption' };
+  /** One line about a near miss, when the diff can say it (a missing ending). @param {import('../../domain/letterdiff.js').AnswerDiff} d */
+  const diffCaption = d => { const x = describeDiff(d); return x ? t('practice.diff.endingMissing', { part: x.part, word: x.word }) : null; };
 
   // right
   // the phrase is right, the rest of the sentence is not: "<phrase> is right.", the rest with its differences, Hard
   function restLines(/** @type {any} */ g) {
     const r = g.rest, kids = [];
     if (r.junk) kids.push(h('p', { class: 'caption' }, t('practice.partial.junk')));
-    else if (r.ref) kids.push(h('p', { class: 'pr-diff answer-key pr-rest', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, isSituation(entry.item) ? t('practice.partial.situation') : t('practice.partial.rest')), ' ', wrapRanges(r.ref, r.marks || [], 'mark')));
-    if ((r.wrong || []).length) kids.push(h('p', { class: 'pr-diff', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, t('practice.you')), ' ', wrapRanges(g.input, r.wrong, 's')));
+    // the grader's ranges, letter by letter where his word is close to the right one
+    else if (r.ref) kids.push(lines({ kind: 'partial', typed: (r.wrong || []).length ? g.input : '', right: r.ref, ranges: { typed: r.wrong || [], right: r.marks || [] },
+      labels: { you: t('practice.you'), right: isSituation(entry.item) ? t('practice.partial.situation') : t('practice.partial.rest'), caption: diffCaption }, classes: { ...LINES, right: 'pr-diff answer-key pr-rest' } }));
     // his errors in the whole answer: a comma, a capital (also in the phrase: kontakt), the item's note on a word
     const nb = notesBox(g, null);
     if (nb) kids.push(nb);
@@ -571,10 +548,9 @@ export async function mountRound(el, ctx) {
     const right = g.target || g.right;   // the whole sentence he types once, the same one shown here
     // a situation grades one phrase, not the whole sentence: only that phrase is marked, the rest is shown plain
     const situation = it.kind === 'topic' || it.kind === 'reply';
-    const df = situation && g.pattern ? phraseLines(full(typed), right, g.pattern) : diffLines(full(typed), right);
+    const marked = situation && g.pattern ? phraseWords(right, g.pattern) : undefined;
     const kids = [h('p', { class: 'pr-res is-bad' }, t('practice.wrong')),
-      h('p', { class: 'pr-diff', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, t('practice.you')), ' ', df.you),
-      h('p', { class: 'pr-diff answer-key', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, t('practice.rightIs')), ' ', df.right),
+      lines({ kind: 'wrong', typed: full(typed), right, marked, capMiss: g.capMiss, labels: { you: t('practice.you'), right: t('practice.rightIs'), caption: diffCaption }, classes: LINES }),
       situation ? h('p', { class: 'caption' }, t('practice.checkedPhrase')) : null];
     if (g.alsoCorrect?.length) kids.push(h('p', { class: 'pr-also' }, alsoMore(g.alsoCorrect, t('practice.otherWays') + ' ')));
     // his errors, each from his answer, and a rule only when it is about one of them (a detector's always: g.rule);
@@ -639,9 +615,8 @@ export async function mountRound(el, ctx) {
     record({ ok: false, ms: elapsed() });
     const kids = [];
     if (typed) {
-      const df = diffLines(full(typed), (g.target || g.right));
-      kids.push(h('p', { class: 'pr-diff', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, t('practice.you')), ' ', df.you),
-        h('p', { class: ['answer-key', 'pr-study', String(g.target || g.right).length > 90 && 'is-long'], lang: langAttr(), dir: dirAttr() }, df.right));
+      kids.push(lines({ kind: 'study', typed: full(typed), right: g.target || g.right, capMiss: g.capMiss, labels: { you: t('practice.you'), caption: diffCaption },
+        classes: { ...LINES, right: ['answer-key', 'pr-study', String(g.target || g.right).length > 90 ? 'is-long' : ''].join(' ').trim() } }));
     } else kids.push(h('p', { class: ['answer-key', 'pr-study', String(g.target || g.right).length > 90 && 'is-long'], lang: langAttr(), dir: dirAttr() }, (g.target || g.right)));
     if (g.alsoCorrect?.length) kids.push(h('p', { class: 'pr-also' }, h('span', { class: 'caption' }, t('practice.alsoCorrect')), ' ', h('span', { lang: langAttr(), dir: dirAttr() }, g.alsoCorrect.slice(0, 2).join(' · ')), g.alsoCorrect.length > 2 ? alsoMore(g.alsoCorrect.slice(2)) : null));
     // a typed attempt: his errors and the rule when it is about one; Show me: the item's rule, the lesson

@@ -48,7 +48,7 @@
 .ui-ad-m.is-extra { color: var(--ink-3); }
 .ui-ad-m.is-extra::after { background: var(--bad); }
 .ui-ad.is-right-slip .ui-ad-m.is-extra::after { background: var(--ink-3); }
-.ui-ad-m.is-ghost { color: var(--ink-3); opacity: 0.75; transition: opacity var(--dur-base) var(--ease-out); }
+.ui-ad-m.is-ghost { color: var(--ink-3); opacity: 0.8; text-decoration: underline dotted 1.5px; text-underline-offset: 0.22em; text-decoration-skip-ink: none; transition: opacity var(--dur-base) var(--ease-out); }
 .ui-ad-m.is-ghost::after { content: none; }
 .ui-ad.is-pending .ui-ad-m:not(.is-on)::after { transform: scaleX(0); }
 .ui-ad.is-pending .ui-ad-m.is-ghost:not(.is-on) { opacity: 0; }
