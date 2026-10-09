@@ -16,7 +16,7 @@ One app that replaces two: Igloo (chunk bank, drill, the B1 trainer) and the B1 
 index.html            the only shell: header, view, tab bar, live region; strict CSP; no inline script or style
 404.html              /fluentish/<path> → /fluentish/#/<path> (src/redirect-404.js)
 assets/               favicon (the mark)
-styles/               tokens.css, motion.css, components.css (design kit, unchanged), paper-shaders.css, app.css
+styles/               tokens.css, motion.css, components.css (design kit, unchanged), ui.css (src/ui), paper-shaders.css, app.css
 src/
   main.js             boot: storage → profile (+ one-time migration) → prefs → shell → router
   boot.js             pre-paint theme/motion (classic script)
@@ -37,6 +37,9 @@ src/
                       practice-write/, practice-speak/, practice-script/, practice-clusters/ (clusters, Quick sort),
                       build/ (Word building), practice-read/ (the Reader), practice-conversation/; shared/ is the
                       practice runtime they share (a library). Features never import each other (§2.1)
+  ui/                 self-contained DOM components (round 8): mountX(el, opts) / createX(opts) → {update, destroy};
+                      import ui, core, domain and lang only, never call t(), motion through core/motion.js. The rules
+                      are in src/ui/index.js and tests/unit/ui-lint.test.mjs; styles in styles/ui.css
   i18n/               en.js, de.js (partial; falls back to English)
   vendor/paper-shaders/   @paper-design/shaders 0.0.81, vendored (VENDOR.md)
   vendor/newsreader-map/  the map font (OFL) and its advance widths; vendor/palace-sdf/ its prebuilt SDF text atlas for 3D

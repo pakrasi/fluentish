@@ -1,0 +1,42 @@
+/* Fluentish components (src/ui/). Loaded after components.css. Rules: src/ui/index.js.
+   One section per component; a component lane edits only its own section. Class names start with ui- (parts) or is-
+   (states). Tokens from tokens.css, motion tokens and keyframes from motion.css; no new colours. Reduced motion is
+   handled per section (--move is 0 there; anything --move cannot reach gets its own rule). */
+
+/* ---- core/pulse (motion.js pulse(): a one-shot "look here", set as [data-pulse=<kind>]) ---- */
+/* locus: an accent underline draws from the start side (240 ms ease-out of 1.44 s), holds, and goes with the attribute.
+   Reduced motion: no draw, the underline holds 1.2 s. look: one swell on the `scale` property (keeps the element's own
+   transform), 420 ms, eased in and out per half; --move makes it still under reduced motion. */
+[data-pulse="locus"] {
+  background-image: linear-gradient(var(--accent), var(--accent)); background-repeat: no-repeat; background-position: left bottom;
+  background-size: 100% 2px; animation: pulse-locus 1440ms linear both;
+}
+[data-pulse="locus"]:dir(rtl) { background-position: right bottom; }
+@keyframes pulse-locus { 0% { background-size: 0% 2px; animation-timing-function: var(--ease-out); } 16.7%, 100% { background-size: 100% 2px; } }
+@keyframes pulse-locus-still { from, to { background-size: 100% 2px; } }
+@media (prefers-reduced-motion: reduce) { :root:not([data-motion="full"]) [data-pulse="locus"] { animation: pulse-locus-still 1200ms linear both; } }
+:root[data-motion="reduce"] [data-pulse="locus"] { animation: pulse-locus-still 1200ms linear both; }
+[data-pulse="look"] { animation: pulse-look 420ms var(--ease-inout) both; }
+@keyframes pulse-look { 0%, 100% { scale: 1; } 40% { scale: calc(1 + 0.06 * var(--move)); } }
+/* ---- end core/pulse ---- */
+
+/* ---- ui/answer-diff ---- */
+/* ---- end ui/answer-diff ---- */
+
+/* ---- ui/meter ---- */
+/* ---- end ui/meter ---- */
+
+/* ---- ui/count ---- */
+/* ---- end ui/count ---- */
+
+/* ---- ui/tile ---- */
+/* ---- end ui/tile ---- */
+
+/* ---- ui/sheet ---- */
+/* ---- end ui/sheet ---- */
+
+/* ---- ui/toast ---- */
+/* ---- end ui/toast ---- */
+
+/* ---- ui/skeleton ---- */
+/* ---- end ui/skeleton ---- */

@@ -1,6 +1,7 @@
 // Fluentish motion helpers. ES module, no dependencies. About 5 kB gzipped.
 // Every export works under reduced motion: movement is dropped, state still changes. Haptics: services/haptics.js.
 import { tap } from '../services/haptics.js';
+import { log } from './log.js';
 
 const root = document.documentElement;
 root.classList.add('js');
@@ -14,11 +15,14 @@ export function reduced() {
   return mq.matches;
 }
 
+/** A duration token in ms. @param {string} name @param {number} fallback */
 const cssMs = (name, fallback) => {
   const v = getComputedStyle(root).getPropertyValue(name).trim();
   return v ? parseFloat(v) : fallback;
 };
+/** @param {number} ms @returns {Promise<void>} */
 const wait = ms => new Promise(r => setTimeout(r, ms));
+/** @returns {Promise<number>} */
 const raf = () => new Promise(r => requestAnimationFrame(r));
 
 /* ------------------------------------------------------------------ */
@@ -73,6 +77,220 @@ export function animate(el, frames, o = {}) {
 }
 
 /* ------------------------------------------------------------------ */
+/* Tracked moves: play, finishAll, nudge, pop (from build/fx.js)        */
+/* ------------------------------------------------------------------ */
+
+/** Moves started by play() that are still running, so a new moment can finish the last one at once. @type {Set<Animation>} */
+const running = new Set();
+
+/**
+ * Animate unless motion is reduced, through animate() (safe easing); resolves when the move is done, finished or
+ * cancelled, or at once under reduced motion. `fill` defaults to 'backwards'. Every move is tracked for finishAll().
+ * DESIGN.md: keyframes are transform and opacity only.
+ * @param {Element | null | undefined} el @param {Keyframe[]} frames @param {KeyframeAnimationOptions} [o]
+ * @returns {Promise<void>}
+ */
+export function play(el, frames, o = {}) {
+  if (!el || reduced()) return Promise.resolve();
+  const a = animate(el, frames, { fill: 'backwards', ...o });
+  if (!a) return Promise.resolve();
+  running.add(a);
+  return a.finished.then(() => { running.delete(a); }, () => { running.delete(a); });
+}
+
+/** Jump every move play() started to its end (a tap during a flight, Enter to skip, an unmount). */
+export function finishAll() { for (const a of [...running]) { try { a.finish(); } catch { /* already gone */ } } running.clear(); }
+
+/** The damped nudge of a wrong pick: -7, 5, -2, 0 px over 300 ms; nothing under reduced motion. @param {Element | null | undefined} el */
+export const nudge = el => play(el, [{ transform: 'translateX(0)' }, { transform: 'translateX(-7px)' }, { transform: 'translateX(5px)' }, { transform: 'translateX(-2px)' }, { transform: 'none' }], { duration: 300 });
+
+/**
+ * The pop of a right pick: 1 → 1.12 → 1 on the pop spring (420 ms); nothing under reduced motion.
+ * @param {Element | null | undefined} el @param {string} [base] the element's own transform, kept under the scale
+ */
+export const pop = (el, base = '') => play(el, [{ transform: `${base} scale(1)` }, { transform: `${base} scale(1.12)` }, { transform: `${base} scale(1)` }], { duration: 420, easing: '--spring-pop' });
+
+/* ------------------------------------------------------------------ */
+/* Choreography: sequence()                                             */
+/* ------------------------------------------------------------------ */
+
+/**
+ * When a step starts: ms from the start of the sequence, '<' with the previous step, '>' when the previous step ends
+ * (its start + dur), '+=n' / '-=n' n ms after / before the previous step ends. Default '>'.
+ * @typedef {number | '<' | '>' | `+=${number}` | `-=${number}`} SeqAt
+ */
+/**
+ * What a step's run() may hand back: an Animation (or several) that finish() jumps to its end, or nothing.
+ * @typedef {Animation | null | undefined | void | Promise<unknown> | (Animation | null | undefined)[]} SeqResult
+ */
+/**
+ * One step. run(instant) does the step's work; with instant true (finish(), reduced motion) it must set the step's end
+ * state with no motion. dur (ms, default 0) only places the next '>' or '+=n' step; it does not stop anything.
+ * @typedef {{ at?: SeqAt, dur?: number, run: (instant: boolean) => SeqResult }} SeqStep
+ */
+/**
+ * The handle sequence() returns. finish(): every step not run yet runs now with instant = true, in order, and the
+ * Animations steps handed back jump to their end. cancel(): no further step runs (what already runs is left alone).
+ * Both are idempotent, and neither does anything once the sequence is over. done resolves true once every step has
+ * run (on time or through finish()), false when cancelled.
+ * @typedef {{ finish: () => void, cancel: () => void, done: Promise<boolean> }} Sequence
+ */
+
+/**
+ * The start time of each step in ms (pure; tested in node). Throws a TypeError on an `at` it does not know.
+ * @param {readonly Pick<SeqStep, 'at' | 'dur'>[]} steps @returns {number[]}
+ */
+export function seqTimes(steps) {
+  /** @type {number[]} */ const out = [];
+  let prevStart = 0, prevEnd = 0;
+  for (const s of steps) {
+    const at = s.at ?? '>';
+    let start;
+    if (typeof at === 'number' && Number.isFinite(at)) start = at;
+    else if (at === '<') start = prevStart;
+    else if (at === '>') start = prevEnd;
+    else {
+      const m = typeof at === 'string' ? /^([+-])=(\d+(?:\.\d+)?)$/.exec(at) : null;
+      if (!m) throw new TypeError(`sequence: unknown at ${String(at)}`);
+      start = prevEnd + (m[1] === '-' ? -1 : 1) * Number(m[2]);
+    }
+    start = Math.max(0, start);
+    out.push(start);
+    prevStart = start;
+    prevEnd = start + Math.max(0, s.dur ?? 0);
+  }
+  return out;
+}
+
+/**
+ * A skippable timeline of steps (GSAP's position parameter, without the library). Steps at 0 run at once, inside
+ * this call; the others on timers, steps with the same start in their order. Under reduced motion every step runs at
+ * once with instant = true. A step that throws is logged and the others still run.
+ * signal (the view's ctx.signal): when it aborts the sequence is cancelled, so nothing runs after an unmount.
+ * Use finish() for Enter-to-skip, and cancel() (or the signal) when the elements are gone.
+ * @param {readonly SeqStep[]} steps @param {{ signal?: AbortSignal }} [o] @returns {Sequence}
+ */
+export function sequence(steps, { signal } = {}) {
+  const times = seqTimes(steps);
+  const ran = steps.map(() => false);
+  /** @type {Animation[]} */ const anims = [];
+  /** @type {ReturnType<typeof setTimeout>[]} */ const timers = [];
+  let over = false;
+  /** @type {(v: boolean) => void} */ let settle = () => {};
+  /** @type {Promise<boolean>} */ const done = new Promise(r => { settle = r; });
+  const onAbort = () => cancel();
+
+  /** @param {boolean} ok */
+  const end = ok => {
+    if (over) return;
+    over = true;
+    for (const t of timers) clearTimeout(t);
+    signal?.removeEventListener('abort', onAbort);
+    settle(ok);
+  };
+  /** @param {number} i @param {boolean} instant */
+  const runStep = (i, instant) => {
+    if (ran[i]) return;
+    ran[i] = true;
+    /** @type {SeqResult} */ let r;
+    try { r = steps[i].run(instant); } catch (e) { log('motion.sequence', e); }
+    if (r instanceof Promise) r.catch(e => log('motion.sequence', e));
+    for (const a of Array.isArray(r) ? r : [r]) if (a && typeof (/** @type {Animation} */ (a)).finish === 'function') anims.push(/** @type {Animation} */ (a));
+  };
+  function finish() {
+    if (over) return;
+    for (const t of timers) clearTimeout(t);
+    const order = steps.map((_, i) => i).sort((a, b) => times[a] - times[b] || a - b);
+    for (const i of order) runStep(i, true);
+    for (const a of anims) { try { a.finish(); } catch { /* gone, or infinite */ } }
+    end(true);
+  }
+  function cancel() { end(false); }
+
+  /** @type {Sequence} */ const handle = { finish, cancel, done };
+  if (signal?.aborted) { end(false); return handle; }
+  signal?.addEventListener('abort', onAbort, { once: true });
+  if (reduced()) { finish(); return handle; }
+  /** @type {Map<number, number[]>} */ const at = new Map();
+  steps.forEach((_, i) => at.set(times[i], [...(at.get(times[i]) || []), i]));
+  for (const [ms, idx] of [...at].sort((a, b) => a[0] - b[0])) {
+    if (over) break;   // a step at 0 aborted the signal or cancelled
+    const fire = () => {
+      for (const i of idx) { if (over) return; runStep(i, false); }
+      if (!over && ran.every(Boolean)) end(true);
+    };
+    if (ms === 0) fire(); else timers.push(setTimeout(fire, ms));
+  }
+  if (!steps.length) end(true);
+  return handle;
+}
+
+/* ------------------------------------------------------------------ */
+/* One-shot attention: pulse()                                          */
+/* ------------------------------------------------------------------ */
+
+/**
+ * The pulses styles/ui.css defines (section core/pulse):
+ *   'locus' an accent underline draws under the element, start to end (240 ms ease-out), holds, and goes (1.44 s in
+ *           all): where a retype differs. Reduced motion: it appears at once and still holds 1.2 s (it is information).
+ *   'look'  the element swells once, 1 → 1.06 → 1 (420 ms, eased in and out), on the `scale` property so the
+ *           element's own transform is kept: a clue, a landing. Reduced motion: no swell.
+ * @typedef {'locus' | 'look'} PulseKind
+ */
+
+/** The running pulse per element: ends it early. @type {WeakMap<HTMLElement, () => void>} */
+const pulsing = new WeakMap();
+
+/** Total length in ms of the animations a computed style lists (delay + duration × iterations, the longest). @param {CSSStyleDeclaration} cs */
+function animationMs(cs) {
+  const list = (/** @type {string} */ v) => String(v || '').split(',').map(x => x.trim());
+  const ms = (/** @type {string} */ v) => (v.endsWith('ms') ? parseFloat(v) : parseFloat(v) * 1000) || 0;
+  const names = list(cs.animationName), durs = list(cs.animationDuration), delays = list(cs.animationDelay), its = list(cs.animationIterationCount);
+  let total = 0;
+  names.forEach((n, i) => {
+    if (!n || n === 'none') return;
+    const it = its[i % its.length] === 'infinite' ? 1 : parseFloat(its[i % its.length]) || 1;
+    total = Math.max(total, ms(delays[i % delays.length] || '0s') + ms(durs[i % durs.length] || '0s') * it);
+  });
+  return total;
+}
+
+/**
+ * A one-shot "look here": sets data-pulse=<kind> on the element and takes it off when the pulse's animation ends
+ * (or at once when the style gives it none). A new pulse on the same element ends the running one first. Resolves
+ * when the pulse is over, or at once when signal (the view's) aborts, which also takes the pulse off.
+ * @param {HTMLElement | null | undefined} el @param {PulseKind} kind @param {{ signal?: AbortSignal }} [o]
+ * @returns {Promise<void>}
+ */
+export function pulse(el, kind, { signal } = {}) {
+  if (!el || signal?.aborted) return Promise.resolve();
+  const again = pulsing.has(el) || !!el.dataset.pulse;
+  pulsing.get(el)?.();
+  if (again) { delete el.dataset.pulse; void el.offsetWidth; }   // off for one style pass, so the same pulse restarts
+  el.dataset.pulse = kind;
+  const total = animationMs(getComputedStyle(el));
+  return new Promise(resolve => {
+    /** @type {ReturnType<typeof setTimeout> | undefined} */ let timer;
+    /** @param {AnimationEvent} e */
+    const onEnd = e => { if (e.target === el && e.animationName.startsWith(`pulse-${kind}`)) stop(); };
+    function stop() {
+      if (pulsing.get(/** @type {HTMLElement} */ (el)) !== stop) return;
+      pulsing.delete(/** @type {HTMLElement} */ (el));
+      clearTimeout(timer);
+      el?.removeEventListener('animationend', onEnd);
+      signal?.removeEventListener('abort', stop);
+      if (el?.dataset.pulse === kind) delete el.dataset.pulse;
+      resolve();
+    }
+    pulsing.set(el, stop);
+    if (!total) { stop(); return; }
+    el.addEventListener('animationend', onEnd);
+    signal?.addEventListener('abort', stop, { once: true });
+    timer = setTimeout(stop, total + 100);   // animationend never comes for an element that left the page
+  });
+}
+
+/* ------------------------------------------------------------------ */
 /* Transitions                                                          */
 /* ------------------------------------------------------------------ */
 
@@ -84,6 +302,8 @@ export function animate(el, frames, o = {}) {
  *       'view' (route/tab change, element needs view-transition-name: fx-view)
  * fallbackEl: element to animate with WAAPI-by-class when View Transitions are missing.
  * Resolves when the new state is on screen (not when the animation ends), so input is never blocked.
+ * @param {() => unknown} update
+ * @param {{ kind?: 'forward' | 'back' | 'lift' | 'view', fallbackEl?: HTMLElement | null }} [o]
  */
 export async function swap(update, { kind = 'forward', fallbackEl = null } = {}) {
   if (reduced() || !document.startViewTransition) {
@@ -93,7 +313,8 @@ export async function swap(update, { kind = 'forward', fallbackEl = null } = {})
     await update();
     const inCls = kind === 'back' ? 'fx-in-left' : kind === 'view' ? 'fx-rise' : kind === 'lift' ? 'fx-in-up' : 'fx-in-right';
     fallbackEl.classList.add(inCls);
-    fallbackEl.addEventListener('animationend', () => fallbackEl.classList.remove(inCls), { once: true });
+    const el = fallbackEl;
+    el.addEventListener('animationend', () => el.classList.remove(inCls), { once: true });
     return;
   }
   // A route change can start while the last transition is still running (a tap right after arriving). Each swap
@@ -123,7 +344,7 @@ let vtGen = 0;
    group's disc expanding into its page header). Only inside a view transition: reduced motion or a browser without
    View Transitions gets the route's usual change, and the names are taken off again when the transition ends. */
 /** @type {ViewTransition | null} */ let lastVT = null;
-const handing = new Set();
+/** @type {Set<string>} */ const handing = new Set();
 /**
  * Name the element the next route's view transition starts from. Returns false when nothing will move.
  * @param {HTMLElement | null} el @param {string} name
@@ -152,16 +373,18 @@ export function receive(el, name) {
  * copy is fixed, moves by transform and opacity only, shrinks into the target, and the target then lands with the
  * pop spring. The element itself is free at once, so the caller can put the next word in it while the copy flies.
  * Reduced motion: no flight; the target only changes state. Resolves when the copy has landed.
+ * @param {HTMLElement | null | undefined} el @param {HTMLElement | null | undefined} toEl @param {{ duration?: number }} [o]
+ * @returns {Promise<void>}
  */
 export function fling(el, toEl, { duration = 440 } = {}) {
   if (reduced() || !el || !toEl || !el.animate) return Promise.resolve();
   const a = el.getBoundingClientRect(), b = toEl.getBoundingClientRect();
   if (!a.width || !b.width) return Promise.resolve();
   const cs = getComputedStyle(el);
-  const ghost = el.cloneNode(true);
+  const ghost = /** @type {HTMLElement} */ (el.cloneNode(true));
   ghost.removeAttribute('id');
   ghost.setAttribute('aria-hidden', 'true');
-  for (const k of ['fontFamily', 'fontSize', 'fontWeight', 'fontStyle', 'lineHeight', 'letterSpacing', 'color', 'textAlign', 'whiteSpace']) ghost.style[k] = cs[k];
+  for (const k of /** @type {const} */ (['fontFamily', 'fontSize', 'fontWeight', 'fontStyle', 'lineHeight', 'letterSpacing', 'color', 'textAlign', 'whiteSpace'])) ghost.style[k] = cs[k];
   Object.assign(ghost.style, { position: 'fixed', left: `${a.left}px`, top: `${a.top}px`, width: `${a.width}px`, height: `${a.height}px`, margin: '0',
     pointerEvents: 'none', zIndex: '80', transformOrigin: '50% 50%', willChange: 'transform, opacity' });
   document.body.append(ghost);
@@ -180,6 +403,7 @@ export function fling(el, toEl, { duration = 440 } = {}) {
   });
 }
 
+/** @param {Element} el */
 function crossfade(el) {
   el.animate([{ opacity: 0.4 }, { opacity: 1 }], { duration: 140, easing: 'ease-out' });
 }
@@ -187,16 +411,17 @@ function crossfade(el) {
 /**
  * FLIP: animate elements from their old box to their new box after mutate() runs.
  * Use for list reorders, a chip moving into a sentence, a tile snapping into a slot.
+ * @param {Iterable<Element>} items @param {() => unknown} mutate @param {{ duration?: number, easing?: string }} [o]
  */
-export async function flip(els, mutate, { duration, easing: curve = 'var(--spring-snappy)' } = {}) {
-  els = [...els];
+export async function flip(items, mutate, { duration, easing: curve = 'var(--spring-snappy)' } = {}) {
+  const els = [...items];
   const first = new Map(els.map(el => [el, el.getBoundingClientRect()]));
   await mutate();
   if (reduced()) return;
   const dur = duration ?? cssMs('--dur-card', 380);
   const ease = easing(curve);
   for (const el of els) {
-    const a = first.get(el), b = el.getBoundingClientRect();
+    const a = /** @type {DOMRect} */ (first.get(el)), b = el.getBoundingClientRect();
     const dx = a.left - b.left, dy = a.top - b.top, sx = a.width / (b.width || 1), sy = a.height / (b.height || 1);
     if (!dx && !dy && sx === 1 && sy === 1) continue;
     el.animate([
@@ -254,14 +479,15 @@ export function disclose(trigger, panel, open) {
 /**
  * Reveal elements marked [data-reveal] as they enter the viewport. Siblings stagger by --i
  * (set automatically per container, capped at 8). Returns a disconnect function.
+ * @param {ParentNode} [scope] @returns {() => void}
  */
 export function reveal(scope = document) {
-  const els = [...scope.querySelectorAll('[data-reveal]:not(.is-in)')];
+  const els = [...scope.querySelectorAll(/** @type {'div'} */ ('[data-reveal]:not(.is-in)'))];
   if (reduced() || !('IntersectionObserver' in window)) { els.forEach(el => el.classList.add('is-in')); return () => {}; }
-  const groups = new Map();
+  /** @type {Map<Element | null, number>} */ const groups = new Map();
   els.forEach(el => {
     const k = el.parentElement; const n = groups.get(k) || 0; groups.set(k, n + 1);
-    el.style.setProperty('--i', Math.min(n, 8));
+    el.style.setProperty('--i', String(Math.min(n, 8)));
   });
   const io = new IntersectionObserver(entries => {
     for (const e of entries) if (e.isIntersecting) { e.target.classList.add('is-in'); io.unobserve(e.target); }
@@ -278,13 +504,14 @@ export function reveal(scope = document) {
  * Mark an .answer as correct: underline sweeps in green, the check draws, a light haptic.
  * Resolves after `hold` ms (default 420), or sooner on skip(), so the caller can auto-advance.
  * The input stays usable.
+ * @param {HTMLElement} answerEl @param {{ hold?: number, haptics?: boolean }} [o]
  */
 export async function correct(answerEl, { hold = 420, haptics = true } = {}) {
   answerEl.classList.remove('is-wrong');
   answerEl.classList.add('is-correct');
   answerEl.setAttribute('data-state', 'correct');
   if (haptics) haptic();
-  await new Promise(r => { skipHold = r; setTimeout(r, reduced() ? Math.min(hold, 300) : hold); });
+  await new Promise(r => { skipHold = () => r(undefined); setTimeout(r, reduced() ? Math.min(hold, 300) : hold); });
   skipHold = () => {};
 }
 
@@ -295,6 +522,7 @@ export function skip() { skipHold(); }
 /**
  * Mark an .answer as wrong: underline sweeps in red, the input nudges once (not a shake).
  * Pass revealEl (.reveal-answer) to open the correct answer underneath.
+ * @param {HTMLElement} answerEl @param {{ revealEl?: HTMLElement | null, haptics?: boolean }} [o]
  */
 export function wrong(answerEl, { revealEl = null, haptics = true } = {}) {
   answerEl.classList.remove('is-correct', 'is-wrong');
@@ -305,7 +533,7 @@ export function wrong(answerEl, { revealEl = null, haptics = true } = {}) {
   if (haptics) haptic();
 }
 
-/** Clear correct/wrong state (call before rendering the next card into the same answer field). */
+/** Clear correct/wrong state (call before rendering the next card into the same answer field). @param {HTMLElement} answerEl @param {HTMLElement | null} [revealEl] */
 export function resetAnswer(answerEl, revealEl) {
   answerEl.classList.remove('is-correct', 'is-wrong');
   answerEl.removeAttribute('data-state');
@@ -322,29 +550,38 @@ export function haptic() { tap(); }
 /**
  * Count a number up/down in place (rAF, ease-out). For small numbers next to text.
  * format: (n) => string. Writes the final value immediately under reduced motion.
+ * @param {HTMLElement} el @param {number} to
+ * @param {{ from?: number, duration?: number, decimals?: number, format?: (n: number) => string }} [o]
+ * @returns {Promise<void>}
  */
 export function countTo(el, to, { from, duration = 700, decimals = 0, format } = {}) {
-  const fmt = format || (n => n.toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals }));
+  const fmt = format || ((/** @type {number} */ n) => n.toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals }));
   const start = from ?? (parseFloat(String(el.dataset.value ?? el.textContent).replace(/[^\d.-]/g, '')) || 0);
-  el.dataset.value = to;
+  el.dataset.value = String(to);
   if (reduced() || start === to) { el.textContent = fmt(to); return Promise.resolve(); }
-  cancelAnimationFrame(el._count);
+  cancelAnimationFrame(counting.get(el) ?? 0);
   return new Promise(resolve => {
     const t0 = performance.now();
-    const tick = now => {
+    const tick = (/** @type {number} */ now) => {
       const k = Math.min(1, (now - t0) / duration), e = 1 - Math.pow(1 - k, 4);
       el.textContent = fmt(start + (to - start) * e);
-      if (k < 1) el._count = requestAnimationFrame(tick); else resolve();
+      if (k < 1) counting.set(el, requestAnimationFrame(tick)); else resolve();
     };
-    el._count = requestAnimationFrame(tick);
+    counting.set(el, requestAnimationFrame(tick));
   });
 }
+/** The running countTo() frame per element. @type {WeakMap<HTMLElement, number>} */
+const counting = new WeakMap();
 
 /**
  * Odometer: each digit rolls on its own column with the snappy spring.
  * For the one big numeral per screen (days left, readiness). Keeps an accessible label.
+ * from: the number the columns start at before they roll to value (the day ticking over: from N + 1 to N, so only
+ * the columns that change move). Digits line up from the right; a column from has no digit for starts at 0. Without
+ * from, existing columns roll from where they are and new ones from 0. Reduced motion: value at once, no roll.
+ * @param {HTMLElement} el @param {number | string} value @param {{ label?: string, from?: number | string }} [o]
  */
-export function odometer(el, value, { label } = {}) {
+export function odometer(el, value, { label, from } = {}) {
   const str = String(value);
   el.setAttribute('role', 'img');
   el.setAttribute('aria-label', label ?? str);
@@ -357,18 +594,25 @@ export function odometer(el, value, { label } = {}) {
       if (!/\d/.test(ch)) { const s = document.createElement('span'); s.className = 'odo-sep'; s.textContent = ch; s.setAttribute('aria-hidden', 'true'); el.append(s); return; }
       const col = document.createElement('span');
       col.className = 'odo-col'; col.setAttribute('aria-hidden', 'true');
-      col.style.setProperty('--i', str.length - 1 - i);
-      for (let d = 0; d <= 9; d++) { const s = document.createElement('span'); s.textContent = d; col.append(s); }
+      col.style.setProperty('--i', String(str.length - 1 - i));
+      for (let d = 0; d <= 9; d++) { const s = document.createElement('span'); s.textContent = String(d); col.append(s); }
       // start from 0 so the first render rolls up
       col.style.transform = 'translateY(0)';
       el.append(col);
     });
   }
-  const set = () => [...el.children].forEach((col, i) => {
+  const kids = () => /** @type {HTMLElement[]} */ ([...el.children]);
+  const set = () => kids().forEach((col, i) => {
     if (col.classList.contains('odo-col')) col.style.transform = `translateY(${-Number(str[i])}em)`;
   });
-  if (reduced()) { [...el.children].forEach(c => c.style.transition = 'none'); set(); return; }
-  [...el.children].forEach(c => c.style.transition = '');
+  if (reduced()) { kids().forEach(c => c.style.transition = 'none'); set(); return; }
+  if (from != null) {
+    const cols = kids().filter(c => c.classList.contains('odo-col'));
+    const start = String(from).replace(/\D/g, '').slice(-cols.length).padStart(cols.length, '0');
+    cols.forEach((c, i) => { c.style.transition = 'none'; c.style.transform = `translateY(${-Number(start[i])}em)`; });
+    void el.offsetWidth;   // the columns stand at `from` before the transition comes back
+  }
+  kids().forEach(c => c.style.transition = '');
   requestAnimationFrame(() => requestAnimationFrame(set));
 }
 
@@ -376,23 +620,24 @@ export function odometer(el, value, { label } = {}) {
 /* Progress                                                             */
 /* ------------------------------------------------------------------ */
 
-/** Set a .track .fill (or any .fill) to p in 0..1. The spring does the rest. */
+/** Set a .track .fill (or any .fill) to p in 0..1. The spring does the rest. @param {HTMLElement} el @param {number} p */
 export function fill(el, p) {
-  const f = el.classList.contains('fill') ? el : el.querySelector('.fill');
-  f.style.setProperty('--p', Math.max(0, Math.min(1, p)));
+  const f = /** @type {HTMLElement} */ (el.classList.contains('fill') ? el : el.querySelector('.fill'));
+  f.style.setProperty('--p', String(Math.max(0, Math.min(1, p))));
   // aria-valuenow only where it is allowed: on a progressbar (axe aria-allowed-attr; the Today and Exam module bars are
   // plain tracks inside a labelled link)
-  if (el.getAttribute?.('role') === 'progressbar') el.setAttribute('aria-valuenow', Math.round(p * 100));
+  if (el.getAttribute?.('role') === 'progressbar') el.setAttribute('aria-valuenow', String(Math.round(p * 100)));
 }
 
 /**
  * Round progress: n segments; states is an array of 'done' | 'miss' | 'now' | ''.
  * Builds the segments on first call.
+ * @param {HTMLElement} el @param {string[]} states
  */
 export function segments(el, states) {
   if (el.children.length !== states.length) {
     el.textContent = '';
-    el.style.setProperty('--n', states.length);
+    el.style.setProperty('--n', String(states.length));
     states.forEach(() => el.append(document.createElement('i')));
   }
   [...el.children].forEach((seg, i) => {
@@ -400,45 +645,51 @@ export function segments(el, states) {
   });
   const done = states.filter(s => s === 'done' || s === 'miss' || s === 'seen').length;
   el.setAttribute('role', 'progressbar');
-  el.setAttribute('aria-valuemin', 0); el.setAttribute('aria-valuemax', states.length); el.setAttribute('aria-valuenow', done);
+  el.setAttribute('aria-valuemin', '0'); el.setAttribute('aria-valuemax', String(states.length)); el.setAttribute('aria-valuenow', String(done));
 }
 
 /**
  * Readiness ring. arcs: [{ value: 0..1, today: 0..1 (optional gain shown in accent) }].
  * Draws one arc per module with gaps between, all from one SVG. Returns an update(arcs) function.
+ * @typedef {{ value: number, today?: number }} RingArc
+ * @param {Element} el @param {RingArc[]} arcs @param {{ stroke?: number, gapDeg?: number }} [o]
+ * @returns {(next: RingArc[]) => void}
  */
 export function ring(el, arcs, { stroke = 5.5, gapDeg = 5 } = {}) {
   const ns = 'http://www.w3.org/2000/svg';
   const r = 50 - stroke / 2, C = 2 * Math.PI * r;
   const n = arcs.length, gap = n > 1 ? (gapDeg / 360) * C : 0, seg = C / n - gap;
   const inner = seg;                                   // butt caps: arcs end exactly at the gaps
-  const start = i => -(i * (seg + gap));
-  let svg = el.querySelector('svg');
-  if (!svg) {
-    svg = document.createElementNS(ns, 'svg');
+  const start = (/** @type {number} */ i) => -(i * (seg + gap));
+  let found = el.querySelector('svg');
+  if (!found) {
+    const svg = document.createElementNS(ns, 'svg');
     svg.setAttribute('viewBox', '0 0 100 100'); svg.setAttribute('aria-hidden', 'true');
     arcs.forEach((_, i) => {
       for (const cls of ['ring-track', 'ring-arc today', 'ring-arc main']) {
         const c = document.createElementNS(ns, 'circle');
-        c.setAttribute('cx', 50); c.setAttribute('cy', 50); c.setAttribute('r', r);
-        c.setAttribute('fill', 'none'); c.setAttribute('stroke-width', stroke); c.setAttribute('stroke-linecap', 'butt');
+        c.setAttribute('cx', '50'); c.setAttribute('cy', '50'); c.setAttribute('r', String(r));
+        c.setAttribute('fill', 'none'); c.setAttribute('stroke-width', String(stroke)); c.setAttribute('stroke-linecap', 'butt');
         c.setAttribute('class', cls);
-        c.style.strokeDashoffset = start(i);
+        c.style.strokeDashoffset = String(start(i));
         c.style.strokeDasharray = cls === 'ring-track' ? `${inner} ${C}` : `0 ${C}`;
-        if (cls !== 'ring-track') c.style.opacity = 0;
+        if (cls !== 'ring-track') c.style.opacity = '0';
         svg.append(c);
       }
     });
     el.prepend(svg);
+    found = svg;
   }
-  const clamp = v => Math.max(0, Math.min(1, v || 0));
+  const svg = found;
+  const clamp = (/** @type {number | undefined} */ v) => Math.max(0, Math.min(1, v || 0));
+  /** @param {RingArc[]} next */
   const update = next => {
     const circles = [...svg.querySelectorAll('circle')];
     next.forEach((a, i) => {
       const today = circles[i * 3 + 1], main = circles[i * 3 + 2];
       const total = clamp(a.value), base = clamp(a.value - (a.today || 0));
-      main.style.strokeDasharray = `${base * inner} ${C}`; main.style.opacity = base > 0 ? 1 : 0;
-      today.style.strokeDasharray = `${total * inner} ${C}`; today.style.opacity = total > base ? 1 : 0;
+      main.style.strokeDasharray = `${base * inner} ${C}`; main.style.opacity = base > 0 ? '1' : '0';
+      today.style.strokeDasharray = `${total * inner} ${C}`; today.style.opacity = total > base ? '1' : '0';
     });
   };
   if (reduced()) update(arcs); else requestAnimationFrame(() => requestAnimationFrame(() => update(arcs)));
@@ -453,11 +704,14 @@ export function ring(el, arcs, { stroke = 5.5, gapDeg = 5 } = {}) {
  * Wire a .seg: moves the thumb under the pressed button. Calls onChange(value).
  * Only a press slides the thumb (transform, on the CSS transition). Its width and every placement that is not a press
  * (mount, fonts arriving, a resize) are set with the transition off, so the control never moves by itself.
+ * @param {HTMLElement} el @param {(value: string) => void} [onChange] @returns {ResizeObserver}
  */
 export function segmented(el, onChange) {
-  let thumb = el.querySelector('.seg-thumb');
-  if (!thumb) { thumb = document.createElement('span'); thumb.className = 'seg-thumb'; el.prepend(thumb); }
+  let has = /** @type {HTMLElement | null} */ (el.querySelector('.seg-thumb'));
+  if (!has) { has = document.createElement('span'); has.className = 'seg-thumb'; el.prepend(has); }
+  const thumb = has;
   let pressedAt = -Infinity;
+  /** @param {HTMLElement} btn @param {boolean} [slide] */
   const place = (btn, slide = false) => {
     const at = `translateX(${btn.offsetLeft}px)`, w = btn.offsetWidth + 'px';
     if (slide) { thumb.style.width = w; thumb.style.transform = at; return; }
@@ -468,9 +722,9 @@ export function segmented(el, onChange) {
   const btns = [...el.querySelectorAll('button')];
   const current = () => btns.find(b => b.getAttribute('aria-pressed') === 'true') || btns[0];
   btns.forEach(b => b.addEventListener('click', () => {
-    btns.forEach(x => x.setAttribute('aria-pressed', x === b));
+    btns.forEach(x => x.setAttribute('aria-pressed', String(x === b)));
     pressedAt = performance.now();
-    place(b, true); onChange?.(b.value || b.textContent.trim());
+    place(b, true); onChange?.(b.value || (b.textContent || '').trim());
   }));
   place(current());
   // the control is rebuilt on every settings change: stop observing once it has left the page. A resize during a
@@ -487,7 +741,10 @@ export function segmented(el, onChange) {
 /* Toast                                                                */
 /* ------------------------------------------------------------------ */
 
-/** Show a toast with optional action. Returns a close function. Auto-closes after `ms`. */
+/**
+ * Show a toast with optional action. Returns a close function. Auto-closes after `ms`.
+ * @param {string} text @param {{ action?: string, onAction?: () => void, ms?: number }} [o] @returns {() => void}
+ */
 export function toast(text, { action, onAction, ms = 4000 } = {}) {
   const t = document.createElement('div');
   t.className = 'toast'; t.setAttribute('role', 'status');
