@@ -10,6 +10,7 @@ import { markNode } from './core/brand.js';
 import { swap, toast as kitToast } from './core/motion.js';
 import { startKeyboard } from './core/keyboard.js';
 import { createRouter } from './core/router.js';
+import { createScrollKeeper } from './core/scroll.js';
 import { avatar } from './core/ui.js';
 import { log, installErrorLog, attachLogStore } from './core/log.js';
 import { createIdbAdapter } from './data/adapters/idb.js';
@@ -186,7 +187,11 @@ async function main() {
   startKeyboard({ bus });
 
   // ---------- router ----------
+  // Back and Forward return to where the page was (core/scroll.js)
+  const scrollKeeper = createScrollKeeper();
+  scrollKeeper.start();
   const router = createRouter({
+    scroll: scrollKeeper,
     routes: routes(),
     view: /** @type {HTMLElement} */ ($('#view')),
     home: '/today',

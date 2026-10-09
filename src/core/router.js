@@ -131,6 +131,11 @@ export function mapLegacy(hash) {
  */
 
 /**
+ * @typedef {{leave(): void, arrive(): {key: string, y: number | null}, shown(key: string): void, clear(): void,
+ *   restore(y: number, signal: AbortSignal): Promise<unknown>}} ScrollKeeper
+ */
+
+/**
  * @param {object} o
  * @param {Route[]} o.routes
  * @param {HTMLElement} o.view                       the element views mount into (each mount gets a fresh child of it)
@@ -140,8 +145,10 @@ export function mapLegacy(hash) {
  * @param {(update: () => any) => Promise<void>} [o.transition]
  * @param {(info: {path: string, route: Route, params: Record<string,string>}) => void} [o.onMounted]
  * @param {(err: unknown, path: string) => void} [o.onError]
+ * @param {ScrollKeeper} [o.scroll]                  Back returns to where you were (core/scroll.js); without it
+ *                                                   every view starts at the top
  */
-export function createRouter({ routes, view, makeCtx, guard, home, transition, onMounted, onError }) {
+export function createRouter({ routes, view, makeCtx, guard, home, transition, onMounted, onError, scroll }) {
   /** the view on screen; null between leaving one view and the next mount resolving @type {Shown | null} */
   let current = null;
   /** the mount in flight; aborted as soon as a newer navigation starts @type {AbortController | null} */
@@ -160,7 +167,15 @@ export function createRouter({ routes, view, makeCtx, guard, home, transition, o
   }
 
   async function render() {
-    if (restoring) { restoring = false; return; }
+    if (restoring) {
+      // canLeave kept the view: the hash went back in a new entry, which is the view's entry now
+      restoring = false;
+      if (scroll && current) scroll.shown(scroll.arrive().key);
+      return;
+    }
+    // the view on screen is being left: keep its scroll position for Back (only while a view is on screen; during a
+    // mount in flight the page shows the new host, not the old view)
+    if (scroll && current) scroll.leave();
     const mine = ++token;
     // a mount still in flight will never be shown now: tell it to stop at once
     if (pending) { pending.abort(); pending = null; }
@@ -176,12 +191,16 @@ export function createRouter({ routes, view, makeCtx, guard, home, transition, o
       const ok = await current.cleanup.canLeave();
       if (!ok) { restoring = true; location.hash = current.hash; return; }
     }
+    // a key on this history entry, and where it lands: Back and Forward return to the y it was left at
+    const land = scroll ? scroll.arrive() : null;
     let mod;
     try { mod = await hit.route.load(); } catch (e) {
       if (mine !== token) return;
       // the error view replaces the old view's DOM, so the old view stops too
       const prev = current; current = null; leave(prev);
+      scroll?.clear();
       onError?.(e, path);
+      window.scrollTo(0, 0);
       return;
     }
     if (mine !== token) return;   // a newer navigation started while this one was loading
@@ -193,6 +212,7 @@ export function createRouter({ routes, view, makeCtx, guard, home, transition, o
       // a newer navigation started before this ran (a view transition calls it a frame later): the screen is its now
       if (mine !== token) return;
       const prev = current; current = null; leave(prev);
+      scroll?.clear();
       // a fresh host per mount: a mount that a newer navigation overtakes writes into a detached node, never the live view
       const host = document.createElement('div');
       host.className = 'view-host';
@@ -206,12 +226,15 @@ export function createRouter({ routes, view, makeCtx, guard, home, transition, o
       if (mine !== token) { leave({ ctrl, cleanup }); return; }
       if (pending === ctrl) pending = null;
       current = { path, hash: location.hash, cleanup, ctrl };
+      // inside the update, so a view transition's new state already shows the place; restore() keeps trying while
+      // the view draws the rest after its first async step
+      if (land && land.y != null) void scroll?.restore(land.y, ctrl.signal); else window.scrollTo(0, 0);
+      if (land) scroll?.shown(land.key);
     };
     if (transition && current) await transition(update); else await update();
     if (mine !== token) return;
     const h1 = view.querySelector('h1');
     if (h1) { h1.setAttribute('tabindex', '-1'); h1.focus({ preventScroll: true }); }
-    window.scrollTo(0, 0);
     onMounted?.({ path, route, params });
   }
 
