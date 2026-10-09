@@ -73,6 +73,8 @@ test('the ring never overlaps: every root at 360 px, the rest of a dense family 
     await page.goto(`/fluentish/#/practice/build/family/${r}`);
     await expect(page.getByRole('heading', { level: 1, name: r, exact: true })).toBeVisible();
     await expect(page.locator('.fv-node').first()).toBeVisible();
+    // the squares are placed again from the tiles' measured size in the frame after the ring is drawn
+    await page.evaluate(() => new Promise(res => requestAnimationFrame(() => requestAnimationFrame(res))));
     expect(await overlaps(page, '.fv-node, .fv-node-root, .fv-kid, .fv-node .fv-gr'), r).toEqual([]);
     const outside = await page.evaluate(() => { const c = /** @type {Element} */ (document.querySelector('.fv-ring-card')).getBoundingClientRect(); return [...document.querySelectorAll('.fv-node, .fv-kid')].filter(e => { const b = e.getBoundingClientRect(); return b.left < c.left || b.right > c.right || b.top < c.top || b.bottom > c.bottom; }).length; });
     expect(outside, r).toBe(0);
