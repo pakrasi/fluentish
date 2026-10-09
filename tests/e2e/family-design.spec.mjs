@@ -126,7 +126,9 @@ test("a find says what its parts mean; the done screen lists the board's prefixe
   await expect(page.locator('.pz-next')).toContainText('Tomorrow:');
   const next2 = await page.evaluate(() => new Promise(resolve => {
     const r = indexedDB.open('fluentish');
-    r.onsuccess = () => { const q = r.result.transaction('kv').objectStore('kv').openCursor(); /** @type {any} */ let out = null; q.onsuccess = () => { const c = q.result; if (!c) { r.result.close(); resolve(out); return; } if (/** @type {any[]} */ (c.key)[1] === 'build.family') out = c.value.next || null; c.continue(); }; };
+    /** @type {any} */
+    let out = null;
+    r.onsuccess = () => { const q = r.result.transaction('kv').objectStore('kv').openCursor(); q.onsuccess = () => { const c = q.result; if (!c) { r.result.close(); resolve(out); return; } if (/** @type {any[]} */ (c.key)[1] === 'build.family') out = c.value.next || null; c.continue(); }; };
   }));
   expect(next2).toMatchObject({ root: expect.any(String) });
   await expect(page.locator('.pz-next')).toContainText(/** @type {any} */ (next2).root);
