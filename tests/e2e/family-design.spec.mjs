@@ -62,7 +62,7 @@ for (const [level, size] of /** @type {const} */ ([['A2', PHONE], ['B1', PHONE],
       expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
       await expect(page.locator('.pz-hive .hx.is-centre')).toBeVisible();
       expect(await overlaps(page, '.pz-hive .hx, .pz-ends .hx')).toEqual([]);
-      expect(await shortTargets(page, '.pz-hive .hx.pressable, .pz-ends .hx'), 'tiles: 44 px tall targets').toEqual([]);
+      expect(await shortTargets(page, '.pz-hive .ui-tile, .pz-ends .ui-tile'), 'tiles: 44 px tall targets').toEqual([]);
       await page.locator('.pz-meaning').click();
       await page.keyboard.press('ArrowDown');
     }
@@ -212,6 +212,7 @@ test('the family view: a few tab stops to the first word, a skip link, the tree 
 
 // Round 8: a tile pressed shrinks in place. The ring's tiles keep their centring translate under the press scale (a
 // bare .pressable:active dropped it, so the tile jumped by half its size), the rows' tiles get the scale at all.
+// src/ui/tile.js: the face takes the press (0.94), the button (the hit box) does not move or shrink.
 for (const [level, layout] of /** @type {const} */ ([['A2', 'ring'], ['B1', 'rows']])) {
   test(`a hive tile pressed shrinks in place (${layout})`, async ({ page, isMobile }) => {
     test.skip(!!isMobile, 'a mouse press holds :active');
@@ -220,18 +221,24 @@ for (const [level, layout] of /** @type {const} */ ([['A2', 'ring'], ['B1', 'row
     await expect.poll(() => page.evaluate(() => !!(/** @type {any} */ (window).__family))).toBe(true);
     await expect(page.locator('.pz-hive')).toHaveClass(layout === 'rows' ? /is-rows/ : /^(?!.*is-rows)/);
     await settle(page);
-    for (const sel of ['.pz-hive .hx.pressable', '.pz-ends .hx']) {
-      const tile = page.locator(sel).first();
-      const rest = /** @type {{x: number, y: number, width: number, height: number}} */ (await tile.boundingBox());
+    for (const sel of ['.pz-hive .ui-tile', '.pz-ends .ui-tile']) {
+      const tile = page.locator(sel).first(), face = tile.locator('.ui-tile-face');
+      const box = () => /** @type {Promise<{x: number, y: number, width: number, height: number}>} */ (face.boundingBox());
+      const rest = await box(), hit = await tile.boundingBox();
       await page.mouse.move(rest.x + rest.width / 2, rest.y + rest.height / 2);
       await page.mouse.down();
       await page.waitForTimeout(150);
-      const held = /** @type {{x: number, y: number, width: number, height: number}} */ (await tile.boundingBox());
+      const held = await box();
+      expect(await tile.boundingBox(), `${sel}: the hit box stays`).toEqual(hit);
       await page.mouse.move(0, 0);
       await page.mouse.up();
       expect(Math.abs(held.x + held.width / 2 - (rest.x + rest.width / 2)), `${sel}: centre stays`).toBeLessThan(1);
       expect(Math.abs(held.y + held.height / 2 - (rest.y + rest.height / 2)), `${sel}: centre stays`).toBeLessThan(1);
-      expect(held.width / rest.width, `${sel}: pressed`).toBeCloseTo(0.97, 2);
+      expect(held.width / rest.width, `${sel}: pressed`).toBeCloseTo(0.94, 2);
+      // released: back to its size on the spring, no jump
+      await page.waitForTimeout(400);
+      const back = await box();
+      expect(Math.abs(back.width - rest.width), `${sel}: released`).toBeLessThan(0.5);
     }
   });
 }
