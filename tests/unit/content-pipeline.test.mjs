@@ -184,3 +184,24 @@ print(json.dumps({
   assert.deepEqual(out.translit, [true, true, false]);
   assert.equal(out.ar, 'احمد');
 });
+
+test('install copies forward the word families an older version cached under the same hash, and fetches none', async () => {
+  const base = 'https://pakrasi.github.io/fluentish/sw.js';
+  const { ctx, listeners } = loadSw(base);
+  const manifest = { files: [{ id: 'build.de', path: 'build/de.json', sha256: 'aaaaaaaa11' }, { id: 'build.family.stellen', path: 'build/family/stellen.json', sha256: 'bbbbbbbb22', lazy: true },
+    { id: 'build.family.legen', path: 'build/family/legen.json', sha256: 'cccccccc33', lazy: true }] };
+  assert.deepEqual([...ctx.lazyList(manifest)], ['content/build/family/stellen.json?h=bbbbbbbb', 'content/build/family/legen.json?h=cccccccc']);
+  const root = 'https://pakrasi.github.io/fluentish/';
+  /** @type {Map<string, any>} */ const fresh = new Map();
+  const old = new Map([[`${root}content/build/family/stellen.json?h=bbbbbbbb`, 'stellen'], [`${root}content/build/family/legen.json?h=00000000`, 'legen, older']]);
+  ctx.caches = { open: async () => ({ put: async (/** @type {string} */ k, /** @type {any} */ v) => { fresh.set(k, v); }, match: async (/** @type {string} */ k) => (k.endsWith('content/manifest.json') ? { json: async () => manifest } : null) }),
+    match: async (/** @type {string} */ k) => old.get(k) || null };
+  /** @type {string[]} */ const fetched = [];
+  ctx.fetch = async (/** @type {string} */ href) => { fetched.push(href); return { ok: true }; };
+  /** @type {Promise<any> | null} */ let done = null;
+  listeners.install({ waitUntil: (/** @type {Promise<any>} */ p) => { done = p; } });
+  await done;
+  assert.equal(fresh.get(`${root}content/build/family/stellen.json?h=bbbbbbbb`), 'stellen');
+  assert.equal([...fresh.keys()].some(k => k.includes('legen')), false, 'a changed file is not copied');
+  assert.equal(fetched.some(f => f.includes('build/family/')), false);
+});

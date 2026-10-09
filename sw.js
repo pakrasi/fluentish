@@ -16,6 +16,8 @@
      version.json (the update check and the kill switch).
    - Updates: a new version installs and then waits. The page tells it to take over only while Today is showing
      (src/services/sw.js), never mid-round or mid-exam.
+   - Lazy content (the word families, manifest lazy: true) is not precached; install copies forward any lazy file an
+     older version cached under the same hash (content/manifest.json lists them), so a deploy keeps them offline.
    - activate deletes only this app's old caches (fluentish-*), never another app's. */
 const VERSION = 'dev'; // stamp:version
 const PRECACHE = []; // stamp:precache
@@ -70,8 +72,27 @@ self.addEventListener('install', e => {
       if (!r.ok) throw new Error(`precache ${href}: HTTP ${r.status}`);
       await c.put(href, r);
     }));
+    await copyLazy(c);
   })());
 });
+
+/** The lazy content files of a manifest (the word families, one file per root): never precached, cached on first use. Pure; tests run it. */
+function lazyList(manifest) {
+  return ((manifest && manifest.files) || []).filter(f => f.lazy && f.path && f.sha256).map(f => `content/${f.path}?h=${String(f.sha256).slice(0, 8)}`);
+}
+
+/** A lazy file an older version cached under the same hash is copied forward, so a deploy keeps what he opened offline. */
+async function copyLazy(c) {
+  try {
+    const m = await c.match(new URL('content/manifest.json', ROOT_URL).href);
+    if (!m) return;
+    await Promise.all(lazyList(await m.json()).map(async p => {
+      const href = new URL(p, ROOT_URL).href;
+      const old = await caches.match(href);
+      if (old) await c.put(href, old);
+    }));
+  } catch { /* the copy is a saving, never a reason to fail the install */ }
+}
 
 self.addEventListener('activate', e => {
   e.waitUntil((async () => {
