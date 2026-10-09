@@ -106,10 +106,9 @@ body.pr-in-round #view { max-width: none; padding: 0; }
 .pr-res.is-bad { color: var(--bad); }
 .pr-res.is-warn { color: var(--ink); }
 .pr-yours { font-size: 17px; }
-.pr-slip { text-decoration: underline 2px var(--bad); text-underline-offset: 4px; }
 .pr-fix { color: var(--ink-2); }
-/* a capital or umlaut on a right answer: the changed letters underlined in accent, never red */
-.pr-capfix { text-decoration: underline 2px var(--accent); text-underline-offset: 4px; text-decoration-skip-ink: none; }
+/* a typo, a capital or an umlaut on a right answer: the letters to fix underlined in accent, never red */
+.pr-slip, .pr-capfix { text-decoration: underline 2px var(--accent); text-underline-offset: 4px; text-decoration-skip-ink: none; }
 .pr-diff { font-size: 17px; line-height: 1.4; }
 .pr-diff.answer-key { font: 400 20px/1.35 var(--font-display); margin-top: 0; }
 .pr-diff .caption { font-family: var(--font-ui); }
