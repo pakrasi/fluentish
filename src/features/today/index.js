@@ -56,15 +56,10 @@ export async function mount(el, ctx) {
 
   /** @param {Awaited<ReturnType<typeof composeDay>>} day */
   function draw(day) {
-    const { plan, exam, lang, c, settings: s, activity } = day;
+    const { plan, c, settings: s } = day;
     const my = ++gen;
-    const allow = dayAllowance({ store, c, settings: s });
+    const { hero, allow, examName, primary } = heroOf(day);
     drawnKey = keyOf(day, allow);
-
-    const examName = exam ? exam.short : t('exam.generic');
-    // an Off day in maintenance has no rows to start (Study anyway brings them)
-    const primary = !COUNTDOWN.has(c.phase) && allow.plan?.kind === 'off' ? null : plan.primary;
-    const hero = renderHero({ s, c, plan, activity, examName, lang, allow, primary });
     const feedbackSec = plan.feedback.length ? section(t('today.feedback'),
       h('ul', { class: 'list' }, plan.feedback.map(f => h('li', { class: 'list-item' },
         h('div', { class: 'row-main' }, h('span', { class: 'row-title' }, f.title), h('span', { class: 'row-detail' }, f.status)),
@@ -107,6 +102,15 @@ export async function mount(el, ctx) {
     const atmoEl = /** @type {HTMLElement | null} */ (page.querySelector('.atmo'));
     if (atmo) { atmo.destroy(); atmo = null; }
     if (atmoEl) atmosphere(atmoEl).then(a => { if (alive) atmo = a; else a.destroy(); }).catch(() => {});
+  }
+
+  /** The hero of a composed day, with the allowance it reads. @param {Awaited<ReturnType<typeof composeDay>>} day */
+  function heroOf({ plan, exam, lang, c, settings: s, activity }) {
+    const allow = dayAllowance({ store, c, settings: s });
+    const examName = exam ? exam.short : t('exam.generic');
+    // an Off day in maintenance has no rows to start (Study anyway brings them)
+    const primary = !COUNTDOWN.has(c.phase) && allow.plan?.kind === 'off' ? null : plan.primary;
+    return { hero: renderHero({ s, c, plan, activity, examName, lang, allow, primary }), allow, examName, primary };
   }
 
   /** @param {any} o */
@@ -347,18 +351,36 @@ export async function mount(el, ctx) {
       paused, laterEl);
   }
 
-  /** The day's first visit (the stats are yesterday's): the page head, and the hero and plan's space held, until the
-   *  plan is composed. Nothing to tap: no row can show a count that is about to change. @param {any} c */
-  function shell(c) {
-    const countdown = COUNTDOWN.has(c.phase);
+  /**
+   * The day's first visit (the stats are yesterday's): the page head and notices, the hero drawn from the stats it has
+   * but hidden (it only holds its height: the week strip and runway are drawn, nothing can be read or tapped), and the
+   * plan's first rows as empty space, until the plan is composed. @param {Awaited<ReturnType<typeof composeDay>>} day
+   */
+  function shell(day) {
+    const { c, settings: s } = day;
+    const { hero, allow } = heroOf(day);
+    // Today's family line: the day's board is made by prepare (build/plan.js), so on the day's first visit it is not
+    // in the hero yet; hold its line where it comes as a rule (German, past the first week, no exam in its window: with
+    // one, the board waits until he has seen six forms of a root, which only the content can tell)
+    if (s.language === 'german' && !COUNTDOWN.has(c.phase) && allow.mode !== 'start' && !hero.el.querySelector('.hero-fam')) {
+      hero.el.append(h('div', { class: 'hero-fam' }, h('span', { class: 'hero-fam-t' }, '\u00a0'), h('span', { class: 'hero-fam-d' }, '\u00a0')));
+    }
+    hero.el.classList.add('is-wait');
+    hero.el.setAttribute('aria-hidden', 'true');
+    hero.el.inert = true;
+    hero.el.style.visibility = 'hidden';
     // rows the height of a plan row (app.css .plan-row: 60 px and a hairline), held by the CSSOM, never a .plan-row
     const row = () => h('div', { 'aria-hidden': 'true', style: { minHeight: '60px', borderBottom: '1px solid var(--hairline)' } });
     replace(el, h('div', { class: 'today is-loading', 'aria-busy': 'true' },
       h('header', { class: 'page-head' }, h('h1', null, t('today.title')), h('p', { class: 'caption' }, label(c.today))),
       h('p', { class: 'sr-only', role: 'status' }, t('today.loading')),
       h('div', { class: 'today-grid' },
-        h('div', { class: 'today-a' }, h('section', { class: 'hero today-hero', 'aria-hidden': 'true', style: { minHeight: countdown ? '300px' : '340px' } })),
+        h('div', { class: 'today-a' }, hero.el, phaseNotice(c), importNotice()),
         h('div', { class: 'today-b' }, section(t('today.plan'), h('p', { class: 'caption section-sub', 'aria-hidden': 'true' }, '\u00a0'), h('div', { class: 'today-wait' }, [row(), row(), row(), row()]))))));
+    // the strip and runway take their height; what the hero remembers for the real draw's motion is left as it was
+    const keep = { ...shown, ratios: [...shown.ratios] };
+    hero.after(null);
+    Object.assign(shown, keep);
   }
 
   const rerender = () => { if (!pending) pending = render().finally(() => { pending = null; }); };
@@ -367,7 +389,7 @@ export async function mount(el, ctx) {
   // it is drawn again only if it changed. On the day's first visit the page waits for it behind a quiet shell.
   const early = await composeDay(ctx, { prepare: false });
   const ready = statsFresh(store, early.c, early.settings);
-  if (ready) draw(early); else shell(early.c);
+  if (ready) draw(early); else shell(early);
   const at = req;
   prepareDay(ctx).then(() => composeDay(ctx, { prepare: false })).then(day => {
     if (!alive || at !== req) return;   // a render since (settings, cards …) has drawn a newer plan
