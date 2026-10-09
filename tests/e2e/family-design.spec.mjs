@@ -236,3 +236,29 @@ for (const [level, layout] of /** @type {const} */ ([['A2', 'ring'], ['B1', 'row
   });
 }
 
+// Round 8: the status line keeps its two lines when quiet, so a build that names another clue does not move the tiles
+for (const level of ['A2', 'B2']) {
+  test(`a message does not move the ${level} board`, async ({ page, isMobile }) => {
+    test.skip(!isMobile, 'a phone layout');
+    await page.setViewportSize(PHONE);
+    await seed(page, { examInDays: null, veteran: true, level });
+    await open(page, '#/practice/build/today');
+    await expect.poll(() => page.evaluate(() => !!(/** @type {any} */ (window).__family))).toBe(true);
+    await settle(page);
+    const tops = () => page.evaluate(() => [...document.querySelectorAll('.pz-hive .hx, .pz-ends .hx')].map(e => Math.round(e.getBoundingClientRect().top)));
+    const before = await tops();
+    const msg = page.locator('.pz-msg');
+    await expect(msg).toBeEmpty();
+    // build the word of the next meaning
+    const s = await page.evaluate(() => { const x = /** @type {any} */ (window).__family; const f = x.forms[(x.idx + 1) % x.forms.length]; return { pre: [...f.pre].reverse(), suf: [...f.suf], art: f.art || null }; });
+    const box = page.getByRole('region', { name: "Today's family" });
+    for (const p of s.pre) await box.getByRole('button', { name: `Prefix ${p}-`, exact: true }).click();
+    for (const x of s.suf) await box.locator(`button[data-suf="${x}"]`).click();
+    if (s.art) await box.getByRole('button', { name: `Article ${s.art}`, exact: true }).click();
+    await box.getByRole('button', { name: /^Check/ }).click();
+    await expect(msg).toContainText('is on the board, for another meaning');
+    expect(await tops()).toEqual(before);
+    const check = await page.locator('.pz-check').boundingBox();
+    expect(check && check.y + check.height).toBeLessThanOrEqual(PHONE.height);
+  });
+}

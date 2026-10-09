@@ -244,8 +244,9 @@
 .pz-shown { display: block; width: 100%; text-align: center; margin-top: 6px; }
 .pz-weld { position: absolute; bottom: 2px; inset-inline-start: 50%; width: 46%; margin-inline-start: -23%; height: 2px; border-radius: 1px; background: var(--ink); transform-origin: left; }
 
-.pz-msg { margin: 8px 6px 0; font: 400 14px/1.4 var(--font-ui); color: var(--ink-2); text-align: center; text-wrap: balance; }
+.pz-msg { margin: 8px 6px 0; min-height: 2.8em; font: 400 14px/1.4 var(--font-ui); color: var(--ink-2); text-align: center; text-wrap: balance; }
 .pz-de, .pz-ex { font: 400 16px/1.4 var(--font-display); color: var(--ink); }
+.pz-msg .pz-de { line-height: 1; }   /* the German word in a message keeps the line's height: two lines fit the reserve */
 .pz-ex u { text-decoration-color: var(--accent); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
 
 /* the hive: the root in the middle, the prefixes round it */
@@ -300,7 +301,8 @@
 .pz-grade { display: inline-flex; align-items: center; gap: 6px; color: var(--ink-3); }
 .pz-learn-ex .pz-ex { font-size: 17px; }
 .pz-exen { margin-top: -6px; font: 400 13px/1.35 var(--font-ui); color: var(--ink-3); }
-.pz-msg:empty { margin: 0; }   /* kept in the tree: a live region must exist before it speaks */
+/* the status line keeps its two lines when quiet, so a message never moves the tiles under his thumb (it is kept in
+   the tree anyway: a live region must exist before it speaks); typing hides it while it is empty */
 .pz-acts.is-next { grid-template-columns: 1fr; }
 .pz-acts.is-next > .btn:not(.pz-check) { display: none; }
 

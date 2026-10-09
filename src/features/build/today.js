@@ -101,7 +101,10 @@ export async function mountToday(el, ctx) {
   // to keep Check in view (the head goes first; the meaning stays)
   const say = (/** @type {any[]} */ ...parts) => {
     replace(msg, ...parts);
-    if (!parts.length || S.typing) return;
+    if (!parts.length) return;
+    // a new message rises 6 px into its reserved lines (reduced motion: it is just there)
+    play(msg, [{ opacity: 0, transform: 'translateY(6px)' }, { opacity: 1, transform: 'none' }], { duration: 240, easing: css('--ease-out') });
+    if (S.typing) return;
     requestAnimationFrame(() => { const r = acts.getBoundingClientRect(); if (alive && r.height && r.bottom > innerHeight) box.scrollBy({ top: r.bottom - innerHeight, behavior: 'instant' }); });
   };
   const de = (/** @type {string} */ s) => h('span', { class: 'pz-de', lang: langAttr(), dir: dirAttr() }, s);
