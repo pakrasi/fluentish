@@ -129,7 +129,33 @@ test('progress backup to the (mock) results repository, Delete all, Restore from
   await quiet(page);
   await page.reload();
   expect(Object.keys(await storedCards(page, 'b1')).sort()).toEqual(Object.keys(before).sort());
+
+  // a restore cut off mid-way: the journal still says 'applying' at the next start. Boot loads data/restore.js for it
+  // (data/restore-journal.js) and puts the before-image back, here the empty profile of before the restore.
+  await quiet(page);
+  expect(await journalStage(page, 'applying')).toBe('done');
+  await page.reload();
+  await expect(page.locator('html.booted')).toHaveCount(1);
+  expect(await storedCards(page, 'b1')).toEqual({});
+  expect(await journalStage(page)).toBe('rolledBack');
 });
+
+/** The restore journal's stage (device kv backup.journal), after setting it when `to` is given; returns the stage
+   found. @param {import('@playwright/test').Page} page @param {string} [to] */
+async function journalStage(page, to) {
+  return page.evaluate(to => new Promise((resolve, reject) => {
+    const r = indexedDB.open('fluentish');
+    r.onerror = () => reject(r.error);
+    r.onsuccess = () => {
+      const db = r.result, t = db.transaction('kv', 'readwrite'), kv = t.objectStore('kv');
+      const q = kv.get(['device', 'backup.journal']);
+      let stage = null;
+      q.onsuccess = () => { stage = q.result?.stage ?? null; if (to && q.result) kv.put({ ...q.result, stage: to }, ['device', 'backup.journal']); };
+      t.oncomplete = () => { db.close(); resolve(stage); };
+      t.onerror = () => reject(t.error);
+    };
+  }), to);
+}
 
 test('export file, Delete all, import the file', async ({ page }) => {
   // the file itself is what this test is about: no share sheet (a phone's Export opens one, services/share.js; the
