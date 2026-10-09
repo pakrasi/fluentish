@@ -1,6 +1,7 @@
 // Fluentish motion helpers. ES module, no dependencies. About 5 kB gzipped.
 // Every export works under reduced motion: movement is dropped, state still changes. Haptics: services/haptics.js.
 import { tap } from '../services/haptics.js';
+import { log } from './log.js';
 
 const root = document.documentElement;
 root.classList.add('js');
@@ -108,6 +109,121 @@ export const nudge = el => play(el, [{ transform: 'translateX(0)' }, { transform
  * @param {Element | null | undefined} el @param {string} [base] the element's own transform, kept under the scale
  */
 export const pop = (el, base = '') => play(el, [{ transform: `${base} scale(1)` }, { transform: `${base} scale(1.12)` }, { transform: `${base} scale(1)` }], { duration: 420, easing: '--spring-pop' });
+
+/* ------------------------------------------------------------------ */
+/* Choreography: sequence()                                             */
+/* ------------------------------------------------------------------ */
+
+/**
+ * When a step starts: ms from the start of the sequence, '<' with the previous step, '>' when the previous step ends
+ * (its start + dur), '+=n' / '-=n' n ms after / before the previous step ends. Default '>'.
+ * @typedef {number | '<' | '>' | `+=${number}` | `-=${number}`} SeqAt
+ */
+/**
+ * What a step's run() may hand back: an Animation (or several) that finish() jumps to its end, or nothing.
+ * @typedef {Animation | null | undefined | void | Promise<unknown> | (Animation | null | undefined)[]} SeqResult
+ */
+/**
+ * One step. run(instant) does the step's work; with instant true (finish(), reduced motion) it must set the step's end
+ * state with no motion. dur (ms, default 0) only places the next '>' or '+=n' step; it does not stop anything.
+ * @typedef {{ at?: SeqAt, dur?: number, run: (instant: boolean) => SeqResult }} SeqStep
+ */
+/**
+ * The handle sequence() returns. finish(): every step not run yet runs now with instant = true, in order, and the
+ * Animations steps handed back jump to their end. cancel(): no further step runs (what already runs is left alone).
+ * Both are idempotent, and neither does anything once the sequence is over. done resolves true once every step has
+ * run (on time or through finish()), false when cancelled.
+ * @typedef {{ finish: () => void, cancel: () => void, done: Promise<boolean> }} Sequence
+ */
+
+/**
+ * The start time of each step in ms (pure; tested in node). Throws a TypeError on an `at` it does not know.
+ * @param {readonly Pick<SeqStep, 'at' | 'dur'>[]} steps @returns {number[]}
+ */
+export function seqTimes(steps) {
+  /** @type {number[]} */ const out = [];
+  let prevStart = 0, prevEnd = 0;
+  for (const s of steps) {
+    const at = s.at ?? '>';
+    let start;
+    if (typeof at === 'number' && Number.isFinite(at)) start = at;
+    else if (at === '<') start = prevStart;
+    else if (at === '>') start = prevEnd;
+    else {
+      const m = typeof at === 'string' ? /^([+-])=(\d+(?:\.\d+)?)$/.exec(at) : null;
+      if (!m) throw new TypeError(`sequence: unknown at ${String(at)}`);
+      start = prevEnd + (m[1] === '-' ? -1 : 1) * Number(m[2]);
+    }
+    start = Math.max(0, start);
+    out.push(start);
+    prevStart = start;
+    prevEnd = start + Math.max(0, s.dur ?? 0);
+  }
+  return out;
+}
+
+/**
+ * A skippable timeline of steps (GSAP's position parameter, without the library). Steps at 0 run at once, inside
+ * this call; the others on timers, steps with the same start in their order. Under reduced motion every step runs at
+ * once with instant = true. A step that throws is logged and the others still run.
+ * signal (the view's ctx.signal): when it aborts the sequence is cancelled, so nothing runs after an unmount.
+ * Use finish() for Enter-to-skip, and cancel() (or the signal) when the elements are gone.
+ * @param {readonly SeqStep[]} steps @param {{ signal?: AbortSignal }} [o] @returns {Sequence}
+ */
+export function sequence(steps, { signal } = {}) {
+  const times = seqTimes(steps);
+  const ran = steps.map(() => false);
+  /** @type {Animation[]} */ const anims = [];
+  /** @type {ReturnType<typeof setTimeout>[]} */ const timers = [];
+  let over = false;
+  /** @type {(v: boolean) => void} */ let settle = () => {};
+  /** @type {Promise<boolean>} */ const done = new Promise(r => { settle = r; });
+  const onAbort = () => cancel();
+
+  /** @param {boolean} ok */
+  const end = ok => {
+    if (over) return;
+    over = true;
+    for (const t of timers) clearTimeout(t);
+    signal?.removeEventListener('abort', onAbort);
+    settle(ok);
+  };
+  /** @param {number} i @param {boolean} instant */
+  const runStep = (i, instant) => {
+    if (ran[i]) return;
+    ran[i] = true;
+    /** @type {SeqResult} */ let r;
+    try { r = steps[i].run(instant); } catch (e) { log('motion.sequence', e); }
+    if (r instanceof Promise) r.catch(e => log('motion.sequence', e));
+    for (const a of Array.isArray(r) ? r : [r]) if (a && typeof (/** @type {Animation} */ (a)).finish === 'function') anims.push(/** @type {Animation} */ (a));
+  };
+  function finish() {
+    if (over) return;
+    for (const t of timers) clearTimeout(t);
+    const order = steps.map((_, i) => i).sort((a, b) => times[a] - times[b] || a - b);
+    for (const i of order) runStep(i, true);
+    for (const a of anims) { try { a.finish(); } catch { /* gone, or infinite */ } }
+    end(true);
+  }
+  function cancel() { end(false); }
+
+  /** @type {Sequence} */ const handle = { finish, cancel, done };
+  if (signal?.aborted) { end(false); return handle; }
+  signal?.addEventListener('abort', onAbort, { once: true });
+  if (reduced()) { finish(); return handle; }
+  /** @type {Map<number, number[]>} */ const at = new Map();
+  steps.forEach((_, i) => at.set(times[i], [...(at.get(times[i]) || []), i]));
+  for (const [ms, idx] of [...at].sort((a, b) => a[0] - b[0])) {
+    if (over) break;   // a step at 0 aborted the signal or cancelled
+    const fire = () => {
+      for (const i of idx) { if (over) return; runStep(i, false); }
+      if (!over && ran.every(Boolean)) end(true);
+    };
+    if (ms === 0) fire(); else timers.push(setTimeout(fire, ms));
+  }
+  if (!steps.length) end(true);
+  return handle;
+}
 
 /* ------------------------------------------------------------------ */
 /* Transitions                                                          */
