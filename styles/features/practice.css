@@ -98,6 +98,9 @@ body.pr-in-round #view { max-width: none; padding: 0; }
 .pr-prefill { flex: none; padding: 14px 0 12px; color: var(--ink-2); font: 400 var(--fs-input)/24px var(--font-ui); max-width: 45%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .answer.is-retype .answer-input { text-decoration: none; color: var(--ink); animation: none; }
 .answer.is-shake .answer-input { animation: nudge 300ms var(--ease-out); }
+/* the verdict sweep (motion.css) lies on the field's rule: the 1px border and the 1px focus shadow under it, so a
+   checked answer shows one 2px line in green or red, not a coloured line over a black one */
+.answer::after { bottom: -2px; }
 .pr-moves { display: grid; gap: var(--s-2); margin-top: var(--s-5); }
 .pr-moves .btn { justify-content: flex-start; min-height: 52px; }
 .pr-fb { display: grid; gap: var(--s-2); padding-top: var(--s-4); }
