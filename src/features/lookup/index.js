@@ -47,6 +47,9 @@ export async function mount(el, ctx) {
   let alive = true;
   const cleanup = () => { alive = false; stop(); offs.forEach(f => f()); pagers.forEach(p => p.stop()); };
   const today = () => ctx.clock.ctx();
+  // the word map loads first (one content file): still rows meanwhile, invisible when it is already cached (ui/skeleton.js)
+  const mountAt = performance.now();
+  replace(el, h('div', { class: 'lookup', 'aria-busy': 'true' }, h('p', { class: 'sr-only', role: 'status' }, t('lookup.loading')), createSkeleton({ shape: 'rows', count: 4 }).el));
   /** lemma → [word id, level], for the card ids of captured words (shared with Practice through domain/itemids.js) */
   const wordmap = await D.wordmap(ctx.content);
   const testsTotal = (await ctx.content.manifest().catch(() => null))?.exams?.find((/** @type {any} */ e) => e.language === lang)?.tests?.length || 14;
@@ -184,7 +187,8 @@ export async function mount(el, ctx) {
   const langOpt = () => (lang !== 'german' ? { lang } : {});
   // still blocks in the shape of the rows (ui/skeleton.js: nothing for 150 ms, a band from 400 ms), and the status text
   // for a screen reader; the region being filled carries aria-busy until it is replaced
-  const loading = (wait = 150) => h('div', { class: 'lk-loading' }, h('p', { class: 'sr-only', role: 'status' }, t('lookup.loading')), createSkeleton({ shape: 'rows', count: 3, wait }).el);
+  // the wait counts from the mount, so a skeleton that follows the first one shows at once instead of blinking out
+  const loading = (wait = Math.max(0, 150 - (performance.now() - mountAt))) => h('div', { class: 'lk-loading' }, h('p', { class: 'sr-only', role: 'status' }, t('lookup.loading')), createSkeleton({ shape: 'rows', count: 3, wait }).el);
   /** @param {() => void} retry */
   const failed = retry => notice({ kind: 'warning', children: [h('p', null, t('lookup.loadError')), h('div', { class: 'notice-actions' }, h('button', { type: 'button', class: 'btn pressable', onclick: retry }, t('lookup.retry')))] });
   const moreText = (/** @type {number} */ n, /** @type {number} */ left) => t('lookup.more', { n: num(n), left: num(left) });
