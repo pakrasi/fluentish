@@ -21,10 +21,9 @@ export function familyLink(ctx, wordId, { inRound = false, from = '', keep } = {
     const hit = ix.get(id);
     if (!hit) return;
     const kids = [h('span', { class: 'fam-link-label' }, t('build.family.linkLabel')), ' ', h('span', { class: 'fam-link-root', lang: langAttr(), dir: dirAttr() }, hit.root), icon('next', { size: 16 })];
-    const name = t('build.family.linkAria', { root: hit.root });
     slot.replaceChildren(inRound && ctx.bus
-      ? h('button', { type: 'button', class: 'fam-link pressable', 'aria-label': name, 'aria-haspopup': 'dialog', onpointerdown: keep || null, onclick: () => ctx.bus?.emit('family:open', hit) }, kids)
-      : h('a', { class: 'fam-link pressable', 'aria-label': name, href: familyHref(hit, from) }, kids));
+      ? h('button', { type: 'button', class: 'fam-link pressable', 'aria-haspopup': 'dialog', onpointerdown: keep || null, onclick: () => ctx.bus?.emit('family:open', hit) }, kids)
+      : h('a', { class: 'fam-link pressable', href: familyHref(hit, from) }, kids));
   }).catch(() => {});
   return slot;
 }

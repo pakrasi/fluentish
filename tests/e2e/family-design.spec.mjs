@@ -19,9 +19,10 @@ const overlaps = (page, sel) => page.evaluate(sel => {
   return hits;
 }, sel);
 
-/** WCAG 2.5.3 (axe's label-content-name-mismatch is experimental, so it is asked for by name). @param {import('@playwright/test').Page} page */
-async function labelInName(page) {
-  const res = await new AxeBuilder({ page }).withRules(['label-content-name-mismatch']).options({ preload: false }).analyze();
+/** WCAG 2.5.3 (axe's label-content-name-mismatch is experimental, so it is asked for by name). @param {import('@playwright/test').Page} page @param {string} [only] a selector to check alone */
+async function labelInName(page, only = '') {
+  const ax = new AxeBuilder({ page }).withRules(['label-content-name-mismatch']).options({ preload: false });
+  const res = await (only ? ax.include(only) : ax).analyze();
   return res.violations.flatMap(v => v.nodes.map(n => n.target.join(' ')));
 }
 
@@ -190,5 +191,5 @@ test('the family view: a few tab stops to the first word, a skip link, the tree 
   // the word page's "Family: stellen" link
   await open(page, '#/lookup/words/die_Ausstellung');
   await expect(page.getByRole('link', { name: /^Family: stellen/ })).toBeVisible();
-  expect(await labelInName(page)).toEqual([]);
+  expect(await labelInName(page, '.fam-link')).toEqual([]);   // the word page's other names are Look up's
 });
