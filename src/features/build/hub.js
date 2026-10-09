@@ -12,7 +12,7 @@ import { dayAllowance } from '../../domain/allowance.js';
 import { backLink } from './compass.js';
 import { loadContent, knowledge, today as todayOf } from './data.js';
 import { writeStats } from './plan.js';
-import { familiesOf, todayBoard, ensureFamilies } from './family-data.js';
+import { todayBoard } from './family-data.js';
 import { foundCount } from '../../domain/wordbuild-family.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
 
@@ -28,7 +28,7 @@ export async function mountHub(el, ctx) {
   let d;
   /** @type {any} */
   let k;
-  try { [d, k] = await Promise.all([loadContent(ctx).then(x => ensureFamilies(ctx, x)), knowledge(ctx).catch(() => null)]); } catch {
+  try { [d, k] = await Promise.all([loadContent(ctx), knowledge(ctx).catch(() => null)]); } catch {
     replace(el, h('div', { class: 'wb stack' }, backLink('#/practice', t('practice.title')), h('div', { class: 'page-head' }, h('h1', null, t('build.title'))), h('p', null, t('build.loadFailed'))));
     return () => {};
   }
@@ -71,7 +71,7 @@ export async function mountHub(el, ctx) {
     const start = b.n ? h('a', { class: 'btn btn-primary btn-wide pressable', href: '#/practice/build/round?kind=review' }, t('build.hub.review', { what, min: b.minutes })) : null;
     const dueEl = h('b', { class: 'tnum' }, '0');
     // round 7: Today's family at the top (the day's root, how much of it he knows, play and see)
-    const fday = todayBoard(ctx, d, familiesOf(d), k);
+    const fday = famDay;
     const fdone = fday ? fday.cards.every(id => (fday.done || {})[id]) : false;
     const famTop = fday ? h('section', { class: 'wb-famtop', 'aria-labelledby': 'wb-famtop-h' },
       h('p', { class: 'label', id: 'wb-famtop-h' }, t('build.hub.familyTitle')),
@@ -95,7 +95,9 @@ export async function mountHub(el, ctx) {
       start ? h('div', { class: 'dock' }, start) : null));
     countTo(dueEl, b.n, { from: 0, duration: 600 });
   }
+  // Today's family: the root from the index, then its one file (family-data.js)
+  /** @type {Awaited<ReturnType<typeof todayBoard>>} */ let famDay = await todayBoard(ctx, d, k).catch(() => null);
   draw();
-  const off = ctx.bus.on('settings:changed', () => { if (alive) draw(); });
+  const off = ctx.bus.on('settings:changed', async () => { if (!alive) return; famDay = await todayBoard(ctx, d, k).catch(() => null); if (alive) draw(); });
   return () => { alive = false; fields.forEach(f => f.destroy()); if (typeof off === 'function') off(); };
 }

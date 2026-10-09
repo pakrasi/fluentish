@@ -19,9 +19,9 @@ import { h, replace, announce } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
 import { freq } from '../../domain/wordcard.js';
-import { kidsOf, piecesOf, dayOf, TILE_ENDINGS } from '../../domain/wordbuild-family.js';
-import { loadFamilies, familyRoots, logOf, stateOf, todayOf, todayBoard, reportWord, unreportWord, reportsOf } from './family-data.js';
-import { knowledge } from './data.js';
+import { kidsOf, piecesOf, TILE_ENDINGS } from '../../domain/wordbuild-family.js';
+import { familiesFor, allFamilies, loadedFamilies, familyRoots, warmFamilies, stateOf, todayOf, todayBoard, reportWord, unreportWord, reportsOf } from './family-data.js';
+import { loadContent, knowledge } from './data.js';
 import { formWord, stressed, stressedAt, stressPlace } from './fword.js';
 import { play, css, reduced, wait, finishAll } from './fx.js';
 
@@ -94,20 +94,28 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
   let fams;
   /** @type {any} */
   let k;
-  /** @type {Promise<{d: any, fams: Map<string, Family>}> | null} */ let full = null;
-  let partial = false;
+  /** @type {any} */ let today = null;
+  let root = '';
   try {
-    // this root's family first when the families are their own files; the rest come after the first paint
-    const [x, kk] = await Promise.all([loadFamilies(ctx, { root: rootArg || null }), knowledge(ctx).catch(() => null)]);
-    d = x.d; fams = x.fams; k = kk; partial = x.partial; full = x.full;
+    // the content (the index says which roots exist), today's board, then only this root's family file
+    [d, k] = await Promise.all([loadContent(ctx), knowledge(ctx).catch(() => null)]);
+    const roots = familyRoots(ctx, d);
+    today = sheet ? null : await todayBoard(ctx, d, k).catch(() => null);
+    root = rootArg && roots.includes(rootArg) ? rootArg : today ? today.root : /** @type {string} */ (roots[0]);
+    fams = await familiesFor(ctx, d, [root]);
+    if (!fams.has(root)) throw new Error('family file');
+    fams = loadedFamilies(d);
   } catch {
     replace(el, h('div', { class: 'wb fv' }, back(), h('h1', null, t('build.family.title')), h('p', null, t('build.loadFailed'))));
     return () => {};
   }
   if (!alive) return () => {};
-  // a partial model holds one root: it reads today's board but never makes one
-  let today = sheet ? null : partial ? dayOf(logOf(store), ctx.clock.today()) : todayBoard(ctx, d, fams, k);
-  let root = rootArg && fams.has(rootArg) ? rootArg : today ? today.root : /** @type {string} */ ([...fams.keys()][0]);
+  /** Load roots' files (a chip, Browse by prefix or ending), then draw; a file that fails leaves the page as it is. @param {string[] | null} roots null: every root */
+  const need = async (/** @type {string[] | null} */ roots) => {
+    await (roots ? familiesFor(ctx, d, roots) : allFamilies(ctx, d)).catch(() => null);
+    fams = loadedFamilies(d);
+    if (alive) draw();
+  };
   // the map's family groups (content/clusters/de.json): "On the map" only where the group exists
   /** @type {Set<string>} */ let mapGroups = new Set();
   ctx.content.load('clusters.de').then((/** @type {any} */ c) => { mapGroups = new Set((c.families || []).map((/** @type {any} */ f) => f.id)); if (alive && !sheet) draw(); }).catch(() => {});
@@ -455,7 +463,7 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
     const side = h('div', { class: 'fv-side' });
     const main = h('div', { class: 'fv-main' });
     const seg = h('div', { class: 'seg fv-seg', role: 'group', 'aria-label': t('build.family.by') },
-      /** @type {const} */ (['root', 'prefix', 'ending']).map(x => h('button', { type: 'button', 'aria-pressed': String(by === x), onclick: () => { by = x; openId = null; draw(); } }, t(`build.family.by.${x}`))));
+      /** @type {const} */ (['root', 'prefix', 'ending']).map(x => h('button', { type: 'button', 'aria-pressed': String(by === x), onclick: () => { by = x; openId = null; draw(); if (x !== 'root' && fams.size < familyRoots(ctx, d).length) need(null); } }, t(`build.family.by.${x}`))));
     if (by === 'root') {
       const fam = /** @type {Family} */ (fams.get(root));
       const r0 = fam.forms[0];
@@ -471,7 +479,7 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
           // the Map's group of this family, in view at the top (it was only at the end of the tree)
           !sheet && mapGroups.has(root) ? h('a', { class: 'fv-maplink pressable', href: `#/lookup/map/family/${encodeURIComponent(root)}` }, t('build.family.onMap'), icon('next', { size: 14 })) : null),
         seg,
-        chipRow(t('build.family.roots'), [...new Set([...familyRoots(ctx, d), ...fams.keys()])].map(x => [x, x]), root, v => { root = v; openId = null; if (fams.has(v)) draw(); else full?.then(() => { if (alive && root === v) draw(); }); }),
+        chipRow(t('build.family.roots'), familyRoots(ctx, d).map(x => [x, x]), root, v => { if (fams.has(v)) { root = v; openId = null; draw(); } else need([v]).then(() => { if (alive && fams.has(v)) { root = v; openId = null; draw(); } }); }),
         h('div', { class: 'fv-ring-card' }, ring(fam), summary(fam), legend()));
       main.append(...sections(fam));
       const cta = [];
@@ -502,16 +510,8 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
 
   draw();
   if (openId && by === 'root') { const id = openId; requestAnimationFrame(() => toggle(id, true)); }
-  // every family, once the first paint is done: the chips and the browse views need them (the service worker keeps
-  // the files); the open card stays open
-  if (full) full.then(x => {
-    if (!alive) return;
-    d = x.d; fams = x.fams; partial = false;
-    if (!sheet) today = todayBoard(ctx, d, fams, k);
-    const keep = openId;
-    draw();
-    if (keep && by === 'root') requestAnimationFrame(() => toggle(keep, false));
-  }).catch(() => {});
+  // the other roots' files after the first paint, in idle moments (offline later; Browse needs them)
+  if (!sheet) warmFamilies(ctx, d);
   // in a sheet, Esc is the dialog's own (it closes after the round's key handlers have seen the dialog open)
   return () => { alive = false; finishAll(); };
 }

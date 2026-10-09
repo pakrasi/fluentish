@@ -17,8 +17,8 @@ import { langAttr, dirAttr } from '../../core/lang.js';
 import { countTo } from '../../core/motion.js';
 import { fitToKeyboard, keep, reveal as revealEl } from '../../core/keyboard.js';
 import { ARTICLES, TRIES, judge, judgeTyped, doneOf, pointsOf, foundCount, piecesOf, spell, partsOf, tapTile, dropLast, endingChains, buildOf } from '../../domain/wordbuild-family.js';
-import { loadFamilies, todayBoard, saveDay, answerClue, stateOf, tomorrowRoot } from './family-data.js';
-import { knowledge, cardsOf, addActivity } from './data.js';
+import { familiesFor, todayBoard, saveDay, answerClue, stateOf, tomorrowRoot, warmFamilies } from './family-data.js';
+import { loadContent, knowledge, cardsOf, addActivity } from './data.js';
 import { formWord } from './fword.js';
 import { play, css, reduced, wait, nudge, finishAll } from './fx.js';
 import { sheet as openSheet } from '../shared/textview.js';
@@ -54,13 +54,19 @@ export async function mountToday(el, ctx) {
   const backLink = () => h('a', { class: 'pz-back pressable', href: backHref, onpointerdown: keep }, icon('prev', { size: 16 }), backText);
   replace(el, h('div', { class: 'pz' }, h('div', { class: 'pz-main' }, h('div', { class: 'pz-head' }, backLink(), h('h1', null, t('build.today.title'))), h('p', { class: 'caption' }, t('build.loading')))));
   /** @type {any} */ let d;
-  /** @type {Map<string, Family>} */ let fams;
+  /** @type {Map<string, Family>} */ let fams = new Map();
   /** @type {any} */ let k;
-  try { const [x, kk] = await Promise.all([loadFamilies(ctx), knowledge(ctx).catch(() => null)]); d = x.d; fams = x.fams; k = kk; } catch {
+  /** @type {any} */ let found0;
+  // the content and the day's board; then only the day's root's family file (family-data.js)
+  try {
+    [d, k] = await Promise.all([loadContent(ctx), knowledge(ctx).catch(() => null)]);
+    found0 = await todayBoard(ctx, d, k);
+    fams = found0 ? await familiesFor(ctx, d, [found0.root]) : new Map();
+  } catch { found0 = undefined; }
+  if (found0 === undefined || (found0 && !fams.has(found0.root))) {
     replace(el, h('div', { class: 'wb stack page-pad' }, backLink(), h('h1', null, t('build.today.title')), h('p', null, t('build.loadFailed'))));
     return restore;
   }
-  const found0 = todayBoard(ctx, d, fams, k);
   const famOf = found0 ? fams.get(found0.root) : null;
   if (!found0 || !famOf) {
     restore();
@@ -645,8 +651,8 @@ export async function mountToday(el, ctx) {
     const grid = h('div', { class: 'pz-grid', role: 'img', 'aria-label': t('build.today.doneGrid', { f1: c('f1'), f2: c('f2'), shown: c('shown') }) }, day.cards.map(id => h('i', { class: `is-${day.done[id]}` })));
     const fig = h('span', { class: 'figure tnum pz-fig' }, '0');
     // the reason to come back: tomorrow's root, named now and kept (family-data.js tomorrowRoot); count only, no streak
-    const next = tomorrowRoot(ctx, d, fams, k);
-    const nextFam = next ? fams.get(next) : null;
+    const next = tomorrowRoot(ctx, d, k);
+    const nextFam = next ? ((d.c.familyIndex && d.c.familyIndex.roots.find((/** @type {any} */ r) => r.root === next)) || fams.get(next) || null) : null;
     const famLink = (/** @type {Form} */ f) => `#/practice/build/family/${encodeURIComponent(fam.root)}?w=${encodeURIComponent(f.id)}&from=today`;
     /** A word of the board (or an extra word): its state, the word, its meaning; a link to its card in the family. @param {Form} f @param {string | null} dn */
     const wordRow = (f, dn) => h('li', null, h('a', { class: 'pz-dw pressable', href: famLink(f) },
@@ -711,6 +717,7 @@ export async function mountToday(el, ctx) {
 
   drawTiles();
   if (allDone()) done(); else drawClue();
+  warmFamilies(ctx, d);   // the other roots' files, after the first paint (offline later)
   // test hook (localhost only)
   if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) /** @type {any} */ (window).__family = { get day() { return day; }, get forms() { return forms; }, get idx() { return S.idx; } };
   return () => { alive = false; finishAll(); document.removeEventListener('keydown', onKey); unfit(); sh?.close?.(); restore(); };

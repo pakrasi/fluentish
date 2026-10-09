@@ -29,7 +29,7 @@ import { drawTree, landArticle } from './chain.js';
 import { play, css, nudge, pop, reduced, finishAll } from './fx.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
 import { fitToKeyboard, keep, reveal as revealEl, fitPrompt } from '../../core/keyboard.js';
-import { familiesOf, ensureFamilies } from './family-data.js';
+import { familiesFor, rootsOfCards } from './family-data.js';
 import { formWord } from './fword.js';
 import { familyLink } from '../shared/family-link.js';
 
@@ -49,7 +49,7 @@ export async function mountRound(el, ctx) {
   let d;
   /** @type {any} */
   let k;
-  try { [d, k] = await Promise.all([loadContent(ctx).then(x => ensureFamilies(ctx, x)), knowledge(ctx).catch(() => null)]); } catch {
+  try { [d, k] = await Promise.all([loadContent(ctx), knowledge(ctx).catch(() => null)]); } catch {
     replace(el, h('div', { class: 'wb stack page-pad' }, h('h1', null, t('build.round')), h('p', null, t('build.loadFailed')), h('a', { class: 'btn pressable', href: '#/practice/build' }, t('build.back'))));
     return restore;
   }
@@ -64,6 +64,10 @@ export async function mountRound(el, ctx) {
     if (!ids.length) { drawNothing(); return restore; }
     round = { slot, kind, day: c.today, startedAt: Date.now(), queue: ids.map(id => ({ id })), i: 0, results: [], planned: ids.length };
   }
+  // the families of the round's PF: cards (one file per root; a root whose file fails only loses its cards)
+  /** @type {Map<string, any>} */ let pfFams = new Map();
+  const pfIdsIn = round.queue.map((/** @type {any} */ q) => q.id).filter((/** @type {string} */ id) => id.startsWith('PF:'));
+  if (pfIdsIn.length) pfFams = await familiesFor(ctx, d, rootsOfCards(d, pfIdsIn)).catch(() => new Map());
   const saveRound = () => store.update(KV, (/** @type {any} */ s) => ({ ...(s || {}), round }), {});
   saveRound();
   const t0 = performance.now();
@@ -164,7 +168,7 @@ export async function mountRound(el, ctx) {
   }
   /** A family form by its PF: card (round 7). @param {string} id */
   function pfForm(id) {
-    for (const fam of familiesOf(d).values()) { const f = fam.byCard.get(id); if (f) return { f, fam }; }
+    for (const fam of pfFams.values()) { const f = fam.byCard.get(id); if (f) return { f, fam }; }
     return null;
   }
   const meta = (/** @type {boolean} */ isNew, /** @type {string} */ what) => h('div', { class: 'card-meta' }, h('span', { class: 'label' }, isNew ? h('span', { class: 'wb-newtag' }, t('build.new')) : t('build.review'), ` · ${what}`));

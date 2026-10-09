@@ -35,9 +35,9 @@ export async function prepare(ctx) {
     const c = ctx.clock.ctx();
     if (c.phase === 'day' || dayOf(ctx.store.get(FAMILY, null), c.today)) return;
     if (dayAllowance({ store: ctx.store, c, settings: ctx.settings() }).mode === 'start') return;
-    const [{ familiesOf, todayBoard, ensureFamilies }, { knowledge }] = await Promise.all([import('./family-data.js'), import('./data.js')]);
-    await ensureFamilies(ctx, d);
-    todayBoard(ctx, d, familiesOf(d), await knowledge(ctx).catch(() => null));
+    // the root from the index, then that one family file (family-data.js todayBoard)
+    const [{ todayBoard }, { knowledge }] = await Promise.all([import('./family-data.js'), import('./data.js')]);
+    await todayBoard(ctx, d, await knowledge(ctx).catch(() => null));
   } catch { /* offline: Today plans from the last stats */ }
 }
 

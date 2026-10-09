@@ -24,36 +24,22 @@ export const KV = 'build';
 export const GAME = 'build.game';
 
 /** @type {Promise<any> | null} */ let memo = null;
-/** @type {Promise<any> | null} */ let coreMemo = null;
 /** @type {ReturnType<typeof createFamilyFiles> | null} */ let files = null;
 
-/** The families' files of this session (family-files.js): inline in build.de, or one file per root. @param {{content: any}} ctx */
+/** The word families' files of this session (family-files.js): one per root, fetched when a screen needs it. @param {{content: any}} ctx */
 export function familyFiles(ctx) {
   if (!files) files = createFamilyFiles({ load: id => ctx.content.load(id) });
   return files;
 }
 
-/** build.de and the word list, without waiting for families kept in their own files. @param {{content: any}} ctx */
-export function loadCore(ctx) {
-  if (!coreMemo) {
-    coreMemo = Promise.all([ctx.content.load('build.de'), ctx.content.load('igloo.words.de').catch(() => [])]).then(([c, words]) => indexes(c, words));
-    coreMemo.catch(() => { coreMemo = null; });
-  }
-  return coreMemo;
-}
-
 /**
- * The content and its indexes (once a session), with every family: when the families are their own files they are
- * fetched (in parallel; the service worker keeps them) and put in c.families, so every reader sees one shape.
+ * build.de and the word list and their indexes (once a session). The word families are not in it (one file per root,
+ * family-data.js familiesFor); the index in build.de answers the plan, the resolver and the typed lexicon.
  * @param {{content: any}} ctx
  */
 export function loadContent(ctx) {
   if (!memo) {
-    memo = loadCore(ctx).then(async core => {
-      const ff = familyFiles(ctx);
-      if (!ff.split(core.c)) return core;
-      return indexes({ ...core.c, families: await ff.all(core.c) }, core.words);
-    });
+    memo = Promise.all([ctx.content.load('build.de'), ctx.content.load('igloo.words.de').catch(() => [])]).then(([c, words]) => indexes(c, words));
     memo.catch(() => { memo = null; });
   }
   return memo;
