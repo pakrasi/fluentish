@@ -38,7 +38,9 @@ function s(tag, attrs = {}, ...kids) {
 }
 /** Compass places of the separable prefixes (degrees, 0 = forward/right, -90 = up). */
 const ANG = /** @type {Record<string, number>} */ ({ auf: -90, vor: -45, ein: 0, an: 45, ab: 90, nach: 135, aus: 180, zu: -135 });
-const W = 360, H = 316, CX = 180, CY = 158;
+const W = 360, H = 344, CX = 180, CY = 172;
+/** The ring is taller than wide (1.3), so a tile and the derivability bar under it clear the tile below at 360 px. */
+const RY = 1.3;
 /** The ring's other places: beside the side compass points, where labels clear their neighbours at 360 px (e2e
    family.spec measures every root). 8 compass places + these 4 = at most 12 verbs on the ring. */
 const BETWEEN = [-22.5, 157.5, 22.5, -157.5];
@@ -176,7 +178,7 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
     const order = [...onRing].sort((a, b) => (((/** @type {number} */ (place.get(a.id)) + 90) + 360) % 360) - (((/** @type {number} */ (place.get(b.id)) + 90) + 360) % 360));
     for (const v of order) {
       const a = /** @type {number} */ (place.get(v.id)) * Math.PI / 180;
-      const p = pos(a, r);
+      const p = pos(a, r, RY);
       const c0 = pos(a, 50, 0.5);
       svg.append(s('line', { class: ['fv-spoke', v.join === 'i' && 'is-i'].filter(Boolean).join(' '), x1: c0.x, y1: c0.y, x2: p.x - 22 * Math.cos(a), y2: p.y - 14 * Math.sin(a) }));
       const ks = kidsOf(fam, v.id);
