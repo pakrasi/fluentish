@@ -149,7 +149,7 @@ async function journalStage(page, to) {
     r.onsuccess = () => {
       const db = r.result, t = db.transaction('kv', 'readwrite'), kv = t.objectStore('kv');
       const q = kv.get(['device', 'backup.journal']);
-      let stage = null;
+      /** @type {string | null} */ let stage = null;
       q.onsuccess = () => { stage = q.result?.stage ?? null; if (to && q.result) kv.put({ ...q.result, stage: to }, ['device', 'backup.journal']); };
       t.oncomplete = () => { db.close(); resolve(stage); };
       t.onerror = () => reject(t.error);
