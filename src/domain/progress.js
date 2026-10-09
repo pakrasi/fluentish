@@ -33,6 +33,7 @@ import * as D8 from './days.js';
 import * as FS from './fsrs.js';
 import { KNOWN_S, KNOWN_D } from './known.js';
 import { replay, joinCards, itemsOf, eventOrder, canon, compare } from './cardmerge.js';
+import { MONTH_KEY } from './progress-key.js';
 
 export const V = 1;
 export const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
@@ -223,8 +224,7 @@ const sortKeys = o => Object.fromEntries(Object.entries(o).sort(([a], [b]) => (a
 
 /* ---------- keys ---------- */
 
-/** A month of the log: 'progress.<course id>.<YYYY-MM>' (the backup's prefix rule, data/sync/backup.js). */
-export const MONTH_KEY = /^progress\.([a-z0-9-]+)\.(\d{4}-\d\d)$/;
+export { MONTH_KEY };
 /** @param {string} course @param {string} day */
 export const monthKey = (course, day) => `progress.${course}.${day.slice(0, 7)}`;
 /** Whether a kv name is a month of the log. @param {string} name */

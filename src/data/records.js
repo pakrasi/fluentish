@@ -14,7 +14,7 @@
      profile    a profile record written to the adapter       profile@1
    Pure apart from loadRecordSchemas (a fetch); the validator is core/schema.js, the same one CI uses for content. */
 import { validate } from '../core/schema.js';
-import { MONTH_KEY } from '../domain/progress.js';
+import { MONTH_KEY } from '../domain/progress-key.js';
 
 /** Schema files under schemas/records/, by the name the checker uses. */
 export const RECORD_SCHEMAS = /** @type {const} */ (['event', 'settings', 'prefs', 'profile', 'feedback', 'progress']);

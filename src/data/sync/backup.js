@@ -24,7 +24,7 @@
    been seen), not a preview profile, at most one flush a minute, stopped by a connection or token error. The
    learner can turn the backup off in Profile › Data (kv 'backup'.on === false). */
 import { fnv1a, isoWithOffset } from '../ids.js';
-import { MONTH_KEY } from '../../domain/progress.js';
+import { MONTH_KEY } from '../../domain/progress-key.js';
 
 /** Event types that carry learning state (review B4: card events carry base and post). */
 export const BACKUP_TYPES = new Set(['card.reviewed', 'card.marked_known', 'card.unmarked_known', 'card.checked', 'settings.changed']);
