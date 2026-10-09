@@ -47,6 +47,7 @@ import { langAttr, languageName } from '../../core/lang.js';
 import { courseRound } from '../shared/course.js';
 import { scopeItem } from '../../domain/itemids.js';
 import { keep, fitToKeyboard, reveal as revealEl, fitPrompt } from '../../core/keyboard.js';
+import { createAnswerDiff } from '../../ui/answer-diff.js';
 
 const TEIL = /** @type {Record<string, string>} */ ({ S1: 'Teil 1', S2: 'Teil 2', S3: 'Teil 3', W1: 'Aufgabe 1', W2: 'Aufgabe 2', W3: 'Aufgabe 3', L2: 'Teil 2', L3: 'Teil 3', L5: 'Teil 5' });
 const fmtS = (/** @type {number} */ ms) => `${(ms / 1000).toFixed(1).replace(/\.0$/, '')} s`;
@@ -475,29 +476,13 @@ export async function mountRound(el, ctx) {
   /** The device voice reads a text (the first of "a / b" alternatives). @param {string} text */
   function readAloud(text) { voice.say(String(text).replace(/\s*\/\s*.*$/, ''), bcp47(), { rate: 0.9 }); }
   function sayAnswer(/** @type {string} */ text) { if (settings.practice.readAloud) readAloud(text); }
-  // his answer with typo, capital and umlaut slips marked and the right spelling after each
-  function markSlips(/** @type {any} */ g) {
-    const s = g.input, marks = [...g.typos.map((/** @type {any} */ x) => ({ ...x, k: 'typo' })), ...g.capMiss.map((/** @type {any} */ x) => ({ ...x, k: 'cap' })), ...g.umlautMiss.map((/** @type {any} */ x) => ({ ...x, k: 'uml' }))].sort((a, b) => a.start - b.start);
-    /** @type {any[]} */ const out = []; let p = 0;
-    for (const m of marks) {
-      if (m.start < p) continue;
-      // a capital or an umlaut: the word once, in its right spelling, with the letters that changed underlined in accent
-      // (it was graded right, so nothing here is red); a typo keeps its mark and the right spelling after it
-      if (m.k === 'typo') out.push(s.slice(p, m.start), h('span', { class: 'pr-slip' }, s.slice(m.start, m.end)), h('span', { class: 'pr-fix' }, ` ${m.expected}`));
-      else out.push(s.slice(p, m.start), changedLetters(s.slice(m.start, m.end), m.expected));
-      p = m.end;
-    }
-    out.push(s.slice(p));
-    return out;
-  }
-
-  /** "damen" → "Damen" with the D underlined. @param {string} typed @param {string} right */
-  function changedLetters(typed, right) {
-    /** @type {any[]} */ const out = [];
-    const a = [...typed], b = [...String(right)];
-    if (a.length !== b.length) return h('span', { class: 'pr-capfix' }, right);
-    b.forEach((ch, k) => out.push(ch === a[k] ? ch : h('span', { class: 'pr-capfix' }, ch)));
-    return h('span', null, out);
+  // the lines under a verdict (ui/answer-diff.js), one set at a time: the next set ends the last one's motion
+  /** @type {AbortController | null} */ let linesAc = null;
+  /** @param {Omit<import('../../ui/answer-diff.js').AnswerDiffOpts, 'signal' | 'lang' | 'dir'>} o */
+  function lines(o) {
+    linesAc?.abort();
+    linesAc = new AbortController();
+    return createAnswerDiff({ ...o, lang: langAttr(), dir: dirAttr(), signal: linesAc.signal }).el;
   }
 
   // right
@@ -545,7 +530,8 @@ export async function mountRound(el, ctx) {
     if (it.area === 'mistakes' && it.rule) kids.push(h('p', { class: 'pr-rule' }, it.rule));
     // a preposition gap: the usage note is the point, so it shows after a right answer too
     if (it.usage) kids.push(h('p', { class: 'pr-rule' }, it.usage));
-    if (g.typos.length || capSlip || umlaut) kids.push(h('p', { class: 'pr-yours', lang: langAttr(), dir: dirAttr() }, markSlips(g)));
+    // his answer once, in its right spelling, the letters to fix underlined in accent (it counts: nothing here is red)
+    if (g.typos.length || capSlip || umlaut) kids.push(lines({ kind: 'right-slip', typed: g.input, slips: [...g.typos, ...g.capMiss, ...g.umlautMiss], labels: {}, classes: { you: 'pr-yours' } }));
     const capHead = !isNew && !veryLate && !late && !umlaut && capSlip;
     if (capSlip && !capHead) kids.push(h('p', { class: 'caption' }, t('practice.capsNote', { list: [...new Set(g.capMiss.map((/** @type {any} */ x) => x.expected))].join(', ') })));
     if (situation) kids.push(h('p', { class: 'caption' }, t('practice.checkedPhrase')));
@@ -729,6 +715,7 @@ export async function mountRound(el, ctx) {
 
   function cleanup() {
     alive = false;
+    linesAc?.abort();
     strip?.destroy();
     clearInterval(tick); clearTimeout(auto);
     document.removeEventListener('visibilitychange', onVis);
