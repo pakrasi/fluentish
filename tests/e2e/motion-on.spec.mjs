@@ -127,9 +127,12 @@ test('segmented control: no slide on mount; a press slides transform only, never
   await settle(page);
   await page.waitForTimeout(400);
   expect(await page.evaluate(() => /** @type {any} */ (window).__seg), 'the thumb moved on its own on mount').toEqual([]);
-  const seg = page.locator('.seg').first();
-  await seg.locator('button[aria-pressed="false"]').first().click();
-  await expect.poll(() => page.evaluate(() => /** @type {any} */ (window).__seg)).toContain('transform');
+  // Theme: Auto and Light look the same here (light colour scheme), so the page does not change under the press
+  const seg = page.getByRole('group', { name: 'Theme' });
+  await expect(seg.getByRole('button', { name: 'Light' })).toHaveAttribute('aria-pressed', 'true');
+  await seg.getByRole('button', { name: 'Auto' }).click();
+  await expect(seg.getByRole('button', { name: 'Auto' })).toHaveAttribute('aria-pressed', 'true');
+  await expect.poll(() => page.evaluate(() => /** @type {any} */ (window).__seg), { message: 'a press slides the thumb' }).toContain('transform');
   expect(await page.evaluate(() => /** @type {any} */ (window).__seg)).not.toContain('width');
 });
 
