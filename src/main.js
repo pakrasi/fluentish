@@ -138,7 +138,9 @@ async function main() {
     // the Exam tab: an exam goal with mock tests (a date-only goal such as 'other' has the countdown, not the tab)
     const tabs = TABS.filter(tb => !tb.needsExam || hasMockExam(s));
     return h('nav', { class: `tabs tabs-${where}`, 'aria-label': t('nav.main'), style: { '--n': tabs.length } },
-      tabs.map(tb => h('a', { href: tb.href, dataset: { tab: tb.id }, class: 'pressable' }, icon(tb.icon, { size: 22 }), h('span', null, t(tb.label)))));
+      tabs.map(tb => h('a', { href: tb.href, dataset: { tab: tb.id }, class: 'pressable' }, icon(tb.icon, { size: 22 }), h('span', null, t(tb.label)))),
+      // the phone tab bar's accent dash is one element that slides under the current tab (styles/components.css)
+      where === 'bottom' ? h('i', { class: 'tabs-dash', 'aria-hidden': 'true' }) : null);
   };
   async function refreshShell() {
     const bar = /** @type {HTMLElement} */ ($('#bar-inner'));
