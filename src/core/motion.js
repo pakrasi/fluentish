@@ -226,6 +226,71 @@ export function sequence(steps, { signal } = {}) {
 }
 
 /* ------------------------------------------------------------------ */
+/* One-shot attention: pulse()                                          */
+/* ------------------------------------------------------------------ */
+
+/**
+ * The pulses styles/ui.css defines (section core/pulse):
+ *   'locus' an accent underline draws under the element, start to end (240 ms ease-out), holds, and goes (1.44 s in
+ *           all): where a retype differs. Reduced motion: it appears at once and still holds 1.2 s (it is information).
+ *   'look'  the element swells once, 1 → 1.06 → 1 (420 ms, eased in and out), on the `scale` property so the
+ *           element's own transform is kept: a clue, a landing. Reduced motion: no swell.
+ * @typedef {'locus' | 'look'} PulseKind
+ */
+
+/** The running pulse per element: ends it early. @type {WeakMap<HTMLElement, () => void>} */
+const pulsing = new WeakMap();
+
+/** Total length in ms of the animations a computed style lists (delay + duration × iterations, the longest). @param {CSSStyleDeclaration} cs */
+function animationMs(cs) {
+  const list = (/** @type {string} */ v) => String(v || '').split(',').map(x => x.trim());
+  const ms = (/** @type {string} */ v) => (v.endsWith('ms') ? parseFloat(v) : parseFloat(v) * 1000) || 0;
+  const names = list(cs.animationName), durs = list(cs.animationDuration), delays = list(cs.animationDelay), its = list(cs.animationIterationCount);
+  let total = 0;
+  names.forEach((n, i) => {
+    if (!n || n === 'none') return;
+    const it = its[i % its.length] === 'infinite' ? 1 : parseFloat(its[i % its.length]) || 1;
+    total = Math.max(total, ms(delays[i % delays.length] || '0s') + ms(durs[i % durs.length] || '0s') * it);
+  });
+  return total;
+}
+
+/**
+ * A one-shot "look here": sets data-pulse=<kind> on the element and takes it off when the pulse's animation ends
+ * (or at once when the style gives it none). A new pulse on the same element ends the running one first. Resolves
+ * when the pulse is over, or at once when signal (the view's) aborts, which also takes the pulse off.
+ * @param {HTMLElement | null | undefined} el @param {PulseKind} kind @param {{ signal?: AbortSignal }} [o]
+ * @returns {Promise<void>}
+ */
+export function pulse(el, kind, { signal } = {}) {
+  if (!el || signal?.aborted) return Promise.resolve();
+  const again = pulsing.has(el) || !!el.dataset.pulse;
+  pulsing.get(el)?.();
+  if (again) { delete el.dataset.pulse; void el.offsetWidth; }   // off for one style pass, so the same pulse restarts
+  el.dataset.pulse = kind;
+  const total = animationMs(getComputedStyle(el));
+  return new Promise(resolve => {
+    /** @type {ReturnType<typeof setTimeout> | undefined} */ let timer;
+    /** @param {AnimationEvent} e */
+    const onEnd = e => { if (e.target === el && e.animationName.startsWith(`pulse-${kind}`)) stop(); };
+    function stop() {
+      if (pulsing.get(/** @type {HTMLElement} */ (el)) !== stop) return;
+      pulsing.delete(/** @type {HTMLElement} */ (el));
+      clearTimeout(timer);
+      el?.removeEventListener('animationend', onEnd);
+      signal?.removeEventListener('abort', stop);
+      if (el?.dataset.pulse === kind) delete el.dataset.pulse;
+      resolve();
+    }
+    pulsing.set(el, stop);
+    if (!total) { stop(); return; }
+    el.addEventListener('animationend', onEnd);
+    signal?.addEventListener('abort', stop, { once: true });
+    timer = setTimeout(stop, total + 100);   // animationend never comes for an element that left the page
+  });
+}
+
+/* ------------------------------------------------------------------ */
 /* Transitions                                                          */
 /* ------------------------------------------------------------------ */
 
@@ -511,9 +576,12 @@ const counting = new WeakMap();
 /**
  * Odometer: each digit rolls on its own column with the snappy spring.
  * For the one big numeral per screen (days left, readiness). Keeps an accessible label.
- * @param {HTMLElement} el @param {number | string} value @param {{ label?: string }} [o]
+ * from: the number the columns start at before they roll to value (the day ticking over: from N + 1 to N, so only
+ * the columns that change move). Digits line up from the right; a column from has no digit for starts at 0. Without
+ * from, existing columns roll from where they are and new ones from 0. Reduced motion: value at once, no roll.
+ * @param {HTMLElement} el @param {number | string} value @param {{ label?: string, from?: number | string }} [o]
  */
-export function odometer(el, value, { label } = {}) {
+export function odometer(el, value, { label, from } = {}) {
   const str = String(value);
   el.setAttribute('role', 'img');
   el.setAttribute('aria-label', label ?? str);
@@ -538,6 +606,12 @@ export function odometer(el, value, { label } = {}) {
     if (col.classList.contains('odo-col')) col.style.transform = `translateY(${-Number(str[i])}em)`;
   });
   if (reduced()) { kids().forEach(c => c.style.transition = 'none'); set(); return; }
+  if (from != null) {
+    const cols = kids().filter(c => c.classList.contains('odo-col'));
+    const start = String(from).replace(/\D/g, '').slice(-cols.length).padStart(cols.length, '0');
+    cols.forEach((c, i) => { c.style.transition = 'none'; c.style.transform = `translateY(${-Number(start[i])}em)`; });
+    void el.offsetWidth;   // the columns stand at `from` before the transition comes back
+  }
   kids().forEach(c => c.style.transition = '');
   requestAnimationFrame(() => requestAnimationFrame(set));
 }

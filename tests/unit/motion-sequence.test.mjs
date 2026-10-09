@@ -1,12 +1,47 @@
-// motion.js choreography (round 8, design A13): sequence() with fake timers: the position parameter, order, finish()
-// (Enter to skip), cancel and the view's signal (unmount), the reduced-motion path, a throwing step.
+// motion.js primitives of round 8 (design A13), in node with fake timers and a small fake DOM:
+//   sequence(): the position parameter, order, finish() (Enter to skip), cancel and the view's signal (unmount), the
+//               reduced-motion path, a throwing step;
+//   pulse():    the attribute on and off, animationend, the fallback timer, a restart, the signal, no animation;
+//   odometer({from}): the columns stand at `from` before they roll, digits from the right, reduced motion.
 import { test, mock } from 'node:test';
 import assert from 'node:assert/strict';
 
 const dataset = /** @type {Record<string, string>} */ ({});
-globalThis.document = /** @type {any} */ ({ documentElement: { classList: { add() {} }, dataset } });
+/** Just enough of an element for pulse() and odometer(). */
+class FakeEl {
+  constructor(tag = 'span') {
+    this.tag = tag;
+    /** @type {FakeEl[]} */ this.children = [];
+    /** @type {Record<string, string>} */ this.dataset = {};
+    /** @type {Record<string, string>} */ this.attrs = {};
+    /** @type {Record<string, any>} */ this.style = { transition: '', transform: '', setProperty(/** @type {string} */ k, /** @type {string} */ v) { this[k] = v; } };
+    this.cls = new Set();
+    this.classList = { add: (/** @type {string} */ c) => this.cls.add(c), contains: (/** @type {string} */ c) => this.cls.has(c) };
+    /** @type {Map<string, Set<Function>>} */ this.on = new Map();
+    this.reflows = 0;
+    this.text = '';
+  }
+  set className(v) { this.cls = new Set(String(v).split(' ').filter(Boolean)); }
+  get className() { return [...this.cls].join(' '); }
+  set textContent(v) { this.children = []; this.text = String(v); }
+  get textContent() { return this.text; }
+  get offsetWidth() { this.reflows++; return 100; }
+  setAttribute(/** @type {string} */ k, /** @type {string} */ v) { this.attrs[k] = v; }
+  /** @param {...FakeEl} c */ append(...c) { this.children.push(...c); }
+  addEventListener(/** @type {string} */ t, /** @type {Function} */ f) { if (!this.on.has(t)) this.on.set(t, new Set()); this.on.get(t)?.add(f); }
+  removeEventListener(/** @type {string} */ t, /** @type {Function} */ f) { this.on.get(t)?.delete(f); }
+  /** @param {string} t @param {Record<string, any>} e */ fire(t, e) { for (const f of [...(this.on.get(t) || [])]) f({ target: this, ...e }); }
+}
+/** @type {Function[]} */ let frames = [];
+const flushFrames = () => { for (let k = 0; k < 4; k++) { const f = frames; frames = []; f.forEach(x => x(0)); } };
+globalThis.document = /** @type {any} */ ({ documentElement: { classList: { add() {} }, dataset }, createElement: (/** @type {string} */ t) => new FakeEl(t) });
 globalThis.matchMedia = /** @type {any} */ (() => ({ matches: false }));
-const { sequence, seqTimes } = await import('../../src/core/motion.js');
+globalThis.requestAnimationFrame = /** @type {any} */ ((/** @type {Function} */ f) => { frames.push(f); return frames.length; });
+/** The pulse's computed animation: what styles/ui.css gives [data-pulse] here. @type {Record<string, string>} */
+const pulseStyle = { animationName: 'pulse-locus', animationDuration: '1.44s', animationDelay: '0s', animationIterationCount: '1' };
+globalThis.getComputedStyle = /** @type {any} */ ((/** @type {FakeEl} */ el) => (el.dataset?.pulse
+  ? pulseStyle : { animationName: 'none', animationDuration: '0s', animationDelay: '0s', animationIterationCount: '1', getPropertyValue: () => '' }));
+const { sequence, seqTimes, pulse, odometer } = await import('../../src/core/motion.js');
 
 /** A recorder: steps that write `name` or `name!` (instant) into log. @param {string[]} log */
 const rec = log => (/** @type {string} */ name) => (/** @type {boolean} */ instant) => { log.push(instant ? `${name}!` : name); };
@@ -128,4 +163,106 @@ test('a step that throws is logged and the others still run; an empty sequence i
     assert.equal(quiet.mock.callCount(), 1);
     assert.equal(await sequence([]).done, true);
   } finally { quiet.mock.restore(); mock.timers.reset(); }
+});
+
+test('pulse(): on until its animation ends, then off; other animations do not end it', async () => {
+  const el = new FakeEl();
+  let over = false;
+  const p = pulse(/** @type {any} */ (el), 'locus').then(() => { over = true; });
+  assert.equal(el.dataset.pulse, 'locus');
+  el.fire('animationend', { animationName: 'nudge' });
+  el.fire('animationend', { animationName: 'pulse-locus', target: new FakeEl() });   // a child's animation bubbling up
+  await Promise.resolve();
+  assert.equal(over, false);
+  assert.equal(el.dataset.pulse, 'locus');
+  el.fire('animationend', { animationName: 'pulse-locus' });
+  await p;
+  assert.equal(el.dataset.pulse, undefined);
+  assert.equal(el.on.get('animationend')?.size, 0, 'the listener is gone');
+});
+
+test('pulse(): the fallback timer ends it when animationend never comes; the same pulse again restarts it', async () => {
+  mock.timers.enable({ apis: ['setTimeout'] });
+  try {
+    const el = new FakeEl();
+    let first = false;
+    pulse(/** @type {any} */ (el), 'locus').then(() => { first = true; });
+    const reflows = el.reflows;
+    const second = pulse(/** @type {any} */ (el), 'locus');
+    await Promise.resolve();
+    assert.equal(first, true, 'a new pulse ends the running one');
+    assert.ok(el.reflows > reflows, 'the attribute comes off with a reflow in between, so the animation restarts');
+    assert.equal(el.dataset.pulse, 'locus');
+    mock.timers.tick(1539);
+    assert.equal(el.dataset.pulse, 'locus');
+    mock.timers.tick(1);
+    await second;
+    assert.equal(el.dataset.pulse, undefined);
+  } finally { mock.timers.reset(); }
+});
+
+test('pulse(): the signal ends it; a style with no animation (or no element) ends at once', async () => {
+  const el = new FakeEl();
+  const ac = new AbortController();
+  const p = pulse(/** @type {any} */ (el), 'look', { signal: ac.signal });
+  assert.equal(el.dataset.pulse, 'look');
+  ac.abort();
+  await p;
+  assert.equal(el.dataset.pulse, undefined);
+  await pulse(/** @type {any} */ (el), 'look', { signal: AbortSignal.abort() });
+  assert.equal(el.dataset.pulse, undefined, 'an aborted signal sets nothing');
+  const keep = pulseStyle.animationName;
+  pulseStyle.animationName = 'none';
+  try {
+    await pulse(/** @type {any} */ (el), 'look');
+    assert.equal(el.dataset.pulse, undefined);
+  } finally { pulseStyle.animationName = keep; }
+  await pulse(null, 'look');
+});
+
+/** The columns' transforms. @param {FakeEl} el */
+const cols = el => el.children.filter(c => c.classList.contains('odo-col')).map(c => c.style.transform);
+
+test('odometer({from}): the columns stand at from, then roll to the value; digits line up from the right', () => {
+  const el = new FakeEl();
+  odometer(/** @type {any} */ (el), 41, { from: 42, label: '41 days' });
+  assert.deepEqual(cols(el), ['translateY(-4em)', 'translateY(-2em)'], 'at from before the roll');
+  assert.ok(el.reflows >= 1, 'a reflow sets from before the transition comes back');
+  assert.ok(el.children.every(c => c.style.transition === ''), 'the transition is back for the roll');
+  assert.equal(el.attrs['aria-label'], '41 days');
+  flushFrames();
+  assert.deepEqual(cols(el), ['translateY(-4em)', 'translateY(-1em)']);
+
+  const ten = new FakeEl();
+  odometer(/** @type {any} */ (ten), 10, { from: 9 });
+  assert.deepEqual(cols(ten), ['translateY(0em)', 'translateY(-9em)'], 'a column from has no digit for starts at 0');
+  flushFrames();
+  assert.deepEqual(cols(ten), ['translateY(-1em)', 'translateY(0em)']);
+
+  const nine = new FakeEl();
+  odometer(/** @type {any} */ (nine), 9, { from: 10 });
+  assert.deepEqual(cols(nine), ['translateY(0em)']);
+  flushFrames();
+  assert.deepEqual(cols(nine), ['translateY(-9em)']);
+});
+
+test('odometer(): without from it rolls from where the columns are; reduced motion writes the value at once', () => {
+  const el = new FakeEl();
+  odometer(/** @type {any} */ (el), 7);
+  assert.deepEqual(cols(el), ['translateY(0)'], 'a new column starts at 0');
+  flushFrames();
+  assert.deepEqual(cols(el), ['translateY(-7em)']);
+  odometer(/** @type {any} */ (el), 3);
+  assert.deepEqual(cols(el), ['translateY(-7em)'], 'an existing column rolls from where it is');
+  flushFrames();
+  assert.deepEqual(cols(el), ['translateY(-3em)']);
+
+  dataset.motion = 'reduce';
+  try {
+    const r = new FakeEl();
+    odometer(/** @type {any} */ (r), 12, { from: 13 });
+    assert.deepEqual(cols(r), ['translateY(-1em)', 'translateY(-2em)']);
+    assert.ok(r.children.every(c => c.style.transition === 'none'));
+    assert.equal(frames.length, 0, 'nothing waits for a frame');
+  } finally { delete dataset.motion; }
 });
