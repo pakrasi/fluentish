@@ -35,8 +35,8 @@
 
 /* charts */
 .pg-frame { position: relative; width: 100%; min-width: 0; margin-top: var(--s-3); }
-/* Today's Progress row and this chart share the name: the route's view transition morphs the one into the other */
-.pg-known-frame { view-transition-name: pg-known; }
+/* Today's Progress row hands its sparkline to this chart (motion.js handoff/receive name both pg-known only for that
+   route change): the route's view transition morphs the one into the other */
 ::view-transition-group(pg-known) { animation-duration: 520ms; animation-timing-function: var(--spring-snappy); }
 ::view-transition-old(pg-known), ::view-transition-new(pg-known) { height: 100%; object-fit: fill; }
 .pg-chart { display: block; overflow: visible; font-family: var(--font-ui); -webkit-tap-highlight-color: transparent; touch-action: pan-y; }

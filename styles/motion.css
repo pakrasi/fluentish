@@ -91,6 +91,25 @@
 :root[data-vt="view"]::view-transition-old(fx-view) { animation: vt-fade-out var(--dur-quick) var(--ease-in) both; }
 :root[data-vt="view"]::view-transition-new(fx-view) { animation: vt-rise var(--dur-card) var(--ease-out) 30ms both; }
 
+/* The app bar and the phone tab bar are their own layers in every view transition (fx-bar, fx-tabs), so the page
+   moves under them and they hold still. Their new picture is live: the tab dash slides inside it (components.css).
+   Where a view hides them (a round, the exam runner, any full-screen flow) the old picture slides off its edge with
+   a fade in 160 ms; where they come back the new one slides in on the card duration. Reduced motion: no view
+   transition, so they appear and go at once. */
+.bar { view-transition-name: fx-bar; }
+.tabs-bottom { view-transition-name: fx-tabs; }
+::view-transition-group(fx-bar), ::view-transition-group(fx-tabs) { animation: none; }
+::view-transition-old(fx-bar), ::view-transition-old(fx-tabs) { animation: none; opacity: 0; }
+::view-transition-new(fx-bar), ::view-transition-new(fx-tabs) { animation: none; }
+:root::view-transition-old(fx-tabs):only-child { opacity: 1; animation: vt-off-down var(--dur-quick) var(--ease-in) both; }
+:root::view-transition-old(fx-bar):only-child { opacity: 1; animation: vt-off-up var(--dur-quick) var(--ease-in) both; }
+:root::view-transition-new(fx-tabs):only-child { animation: vt-on-up var(--dur-card) var(--ease-out) 30ms both; }
+:root::view-transition-new(fx-bar):only-child { animation: vt-on-down var(--dur-card) var(--ease-out) 30ms both; }
+@keyframes vt-off-down { to { opacity: 0; transform: translateY(calc(100% * var(--move))); } }
+@keyframes vt-off-up   { to { opacity: 0; transform: translateY(calc(-100% * var(--move))); } }
+@keyframes vt-on-up    { from { opacity: 0; transform: translateY(calc(100% * var(--move))); } }
+@keyframes vt-on-down  { from { opacity: 0; transform: translateY(calc(-100% * var(--move))); } }
+
 /* a shared element across a route (motion.js handoff/receive): a map group's disc grows into its page's header on
    the snappy spring, the old picture fading as the new one comes in (both kept to their own aspect) */
 ::view-transition-group(fx-disc) { animation-duration: 520ms; animation-timing-function: var(--spring-snappy); z-index: 2; }
@@ -153,10 +172,10 @@
    The answer reveal opens at once (wrong() and Show me add .is-open directly, not through disclose()), the check's
    stroke and the round segments jump to their end, and the segmented thumb (a translateX set from JS) does not slide. */
 @media (prefers-reduced-motion: reduce) {
-  :root:not([data-motion="full"]) :is(.reveal-answer, .is-correct .check path, .seg-thumb),
+  :root:not([data-motion="full"]) :is(.reveal-answer, .is-correct .check path, .seg-thumb, .tabs-dash),
   :root:not([data-motion="full"]) .segments i::after { transition: none; }
 }
-:root[data-motion="reduce"] :is(.reveal-answer, .is-correct .check path, .seg-thumb),
+:root[data-motion="reduce"] :is(.reveal-answer, .is-correct .check path, .seg-thumb, .tabs-dash),
 :root[data-motion="reduce"] .segments i::after { transition: none; }
 
 /* ---------- round progress segments ---------- */
