@@ -22,6 +22,10 @@ import { EVIDENCE_KV, evidenceOf } from '../../src/data/knowledge.js';
 import { SOURCE_GROUPS } from '../../src/domain/atlas.js';
 import { ask } from '../../src/services/claude.js';
 import * as D8 from '../../src/domain/days.js';
+import { keyCredential } from '../../src/data/credentials.js';
+
+/** A synthetic key credential. */
+const CRED = keyCredential('k');
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const SCHEMA = JSON.parse(readFileSync(path.join(ROOT, 'schemas/records/settings.schema.json'), 'utf8'));
@@ -220,12 +224,12 @@ test('knowledge: evidence by origin; seen is evidence.lookup, with the same resu
 test('ask: format goes to output_config.format beside effort; without it the request is as before', async () => {
   /** @type {any} */ let body = null;
   const f = /** @type {any} */ (async (/** @type {string} */ _u, /** @type {any} */ init) => { body = JSON.parse(init.body); return new Response(JSON.stringify({ model: 'm', stop_reason: 'end_turn', content: [{ type: 'text', text: '{"a":1}' }] }), { status: 200 }); });
-  await ask({ key: 'k', user: 'u', fetch: f });
+  await ask({ cred: CRED, user: 'u', fetch: f });
   assert.deepEqual(body.output_config, { effort: 'medium' });
   const format = { type: /** @type {const} */ ('json_schema'), schema: { type: 'object', properties: { a: { type: 'integer' } }, required: ['a'], additionalProperties: false } };
-  const r = await ask({ key: 'k', user: 'u', format, fetch: f });
+  const r = await ask({ cred: CRED, user: 'u', format, fetch: f });
   assert.deepEqual(body.output_config, { effort: 'medium', format });
   assert.equal(r.text, '{"a":1}');
-  await ask({ key: 'k', user: 'u', effort: null, fallback: false, format, fetch: f });
+  await ask({ cred: CRED, user: 'u', effort: null, fallback: false, format, fetch: f });
   assert.deepEqual(body.output_config, { format }, 'the small model: format without effort');
 });

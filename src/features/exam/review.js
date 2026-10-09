@@ -11,6 +11,7 @@ import { feedbackFor, markSeen, saveCorrection, learnerNotes, queueMistakes, mis
 import { at } from '../../domain/examdef.js';
 import { nextModule, scoreReader } from './plan.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
+import { claude, canAskClaude } from '../../data/credentials.js';
 
 /** "Sat 3 Oct, 20:15" for a stamp (local time). @param {string} iso @param {boolean} [utc] */
 export function when(iso, utc = false) {
@@ -109,10 +110,9 @@ async function runCorrection(ctx, exam, attempt, ex) {
   job.status = 'running'; job.error = null; jobs.set(k, job);
   job.subs.forEach(f => f());
   try {
-    const key = (store.get('secrets', {}) || {}).anthropicKey;
     const test = ex || await ctx.content.load(`exam.${exam.id}.${String(attempt.day).padStart(2, '0')}`);
     const texts = Object.fromEntries((attempt.writings || []).map((/** @type {any} */ w) => [w.aufgabe, w.text]));
-    const res = await correctSchreiben({ key, ex: test, texts, learnerNotes: learnerNotes(store) });
+    const res = await correctSchreiben({ cred: claude(store), ex: test, texts, learnerNotes: learnerNotes(store) });
     saveCorrection(ctx, { attempt, body: res.body, model: res.model, promptVersion: res.promptVersion });
     job.status = 'done';
     if (!location.hash.includes(`/review/${attempt.id}`)) ctx.toast(t('exam.correct.done', { n: attempt.day }));
@@ -138,7 +138,7 @@ export function correctionBlock({ ctx, exam, attempt, ex = null, again = false, 
   const sub = () => { if (!box.isConnected && job.status !== 'running') { job.subs.delete(sub); return; } draw(); };
   job.subs.add(sub);
   const draw = () => {
-    const hasKey = !!(store.get('secrets', {}) || {}).anthropicKey;
+    const hasKey = canAskClaude(store);
     const running = job.status === 'running';
     if (job.status === 'done' && !again) { replace(box); return; }   // the store change re-renders the review with the feedback
     if (again) {
@@ -159,7 +159,7 @@ export function correctionBlock({ ctx, exam, attempt, ex = null, again = false, 
       running ? h('p', { class: 'caption' }, t('exam.correct.canLeave')) : null);
   };
   draw();
-  if (auto && job.status === 'idle' && (store.get('secrets', {}) || {}).anthropicKey) {
+  if (auto && job.status === 'idle' && canAskClaude(store)) {
     history.replaceState(history.state, '', location.hash.replace(/[?&]correct=1/, ''));
     runCorrection(ctx, exam, attempt, ex);
   }

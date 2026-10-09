@@ -23,12 +23,13 @@ import { correctTask, ClaudeError } from '../../services/claude.js';
 import { addMistakes, freeWriteMistakes, listMistakes, backfillContext, COLLECTION as MISTAKES } from '../../data/mistakes.js';
 import * as B from './build.js';
 import * as S from '../shared/session.js';
-import { loadData, stateFor, session, secrets } from '../shared/data.js';
+import { loadData, stateFor, session } from '../shared/data.js';
 import { recallBar } from '../shared/recall-bar.js';
 import { checkMark } from '../shared/check-mark.js';
 import { doneHero } from '../shared/done-hero.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
 import { keep } from '../../core/keyboard.js';
+import { claude, canAskClaude } from '../../data/credentials.js';
 
 export const COLLECTION = 'practice.write';
 const pct = (/** @type {number} */ x) => new Intl.NumberFormat('en-GB', { style: 'percent', maximumFractionDigits: 0 }).format(x || 0);
@@ -499,7 +500,7 @@ function drawFree(el, ctx, task, aufgabe) {
     ...(words() >= Math.round(target * 0.7) ? { written: { ...(v.written || {}), [task.id]: today } } : {}) }));
   const wc = h('p', { class: 'caption tnum', 'aria-live': 'polite' });
   const result = h('div', { class: 'wr-correction', 'aria-live': 'polite' });
-  const hasKey = !!secrets(store).anthropicKey;
+  const hasKey = canAskClaude(store);
   const btn = /** @type {HTMLButtonElement} */ (h('button', { type: 'button', class: 'btn btn-primary pressable', disabled: !hasKey, onclick: () => run() }, t('feedback.correct')));
   // with the keyboard up: one slim row on the keyboard with the word count, the clock and Correct (its twin)
   const wcKb = h('span', { class: 'caption tnum wr-kbcount', 'aria-hidden': 'true' });
@@ -523,7 +524,7 @@ function drawFree(el, ctx, task, aufgabe) {
     btn.disabled = true; btn.textContent = t('exam.correct.running'); btnKb.disabled = true; btnKb.textContent = btn.textContent;
     replace(result, h('p', { class: 'caption' }, t('practice.build.correcting')));
     try {
-      const res = await correctTask({ key: secrets(store).anthropicKey, task, text, words: target });
+      const res = await correctTask({ cred: claude(store), task, text, words: target });
       const at = Date.now();
       putKv(store, v => ({ ...v, drafts: { ...(v.drafts || {}), [task.id]: area.value }, corrections: { ...(v.corrections || {}), [task.id]: { body: res.body, text, at } },
         written: { ...(v.written || {}), [task.id]: today } }));

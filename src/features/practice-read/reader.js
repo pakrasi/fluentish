@@ -37,6 +37,7 @@ import * as L from './logic.js';
 import { language, knowledgeNow, otherDecks, sectionsFor, gradedText } from './load.js';
 import { back, pct, errLine } from './ui.js';
 import { levelRank } from '../../domain/text/estimate.js';
+import { claude, canAskClaude } from '../../data/credentials.js';
 
 /** Minutes a visit to the reader counts at most (a phone left open on the page is not an hour of reading). */
 const VISIT_MAX_MIN = 45;
@@ -183,7 +184,6 @@ export async function mountReader(el, ctx, read0, given) {
   const entryOf = lemma => /** @type {any} */ ((idx.lemmas.get(String(lemma).toLowerCase()) || [])[0] || null);
   /** A listed word without its article ("die Branche" → "Branche"). @param {any} e */
   const own = e => String(e.w).replace(/^(der|die|das)\s+/i, '').trim();
-  const secretKey = () => (store.get('secrets', {}) || {}).anthropicKey || null;
 
   /** @param {number} si @param {number} ti @param {HTMLElement} btn */
   function openWord(si, ti, btn) {
@@ -264,11 +264,11 @@ export async function mountReader(el, ctx, read0, given) {
     const cached = ((store.get(R.CACHE, {}) || {})[read.id] || {}).tr?.[sid] || null;
     const graded = /** @type {any} */ (sentences[si]).en || null;
     if (cached || graded) { replace(slot, h('p', { class: 'rd-en' }, cached || graded)); return null; }
-    if (!secretKey()) return null;
+    if (!canAskClaude(store)) return null;
     const b = /** @type {HTMLButtonElement} */ (h('button', { type: 'button', class: 'btn pressable', onclick: async () => {
       b.disabled = true; b.textContent = t('read.sheet.translating');
       try {
-        const res = await ask({ key: secretKey(), user: fill(TEMPLATES['read-translate@1'], { language: pack.name, sentence: sentences[si].de }), model: config.anthropic.models.check, maxTokens: 300, effort: null, fallback: false });
+        const res = await ask({ cred: claude(store), user: fill(TEMPLATES['read-translate@1'], { language: pack.name, sentence: sentences[si].de }), model: config.anthropic.models.check, maxTokens: 300, effort: null, fallback: false });
         const en = res.text.replace(/\s+/g, ' ').trim().slice(0, 400);
         store.update(R.CACHE, (/** @type {any} */ m) => { const cur = (m || {})[read.id] || {}; return { ...(m || {}), [read.id]: { ...cur, tr: { ...(cur.tr || {}), [sid]: en } } }; }, {});
         replace(slot, h('p', { class: 'rd-en' }, en));
@@ -335,7 +335,7 @@ export async function mountReader(el, ctx, read0, given) {
       const list = fromHere();
       const missing = list.filter(x => !x.w.gloss);
       const cards = store.cards(deck) || {};
-      const key = !!secretKey();
+      const key = canAskClaude(store);
       const st = h('p', { class: 'caption', 'aria-live': 'polite' });
       replace(body,
         list.length ? null : h('p', { class: 'lead' }, t('read.tray.empty')),
@@ -364,7 +364,7 @@ export async function mountReader(el, ctx, read0, given) {
     const ctxs = store.get(R.CTX, {}) || {};
     const list = missing.map((m, i) => `${i + 1}. word: ${(ctxs[m.id] || [])[0]?.surface || m.w.lemma} | sentence: ${(ctxs[m.id] || [])[0]?.de || ''}`).join('\n');
     try {
-      const res = await ask({ key: secretKey(), user: fill(TEMPLATES['read-gloss@1'], { language: pack.name, words: list }), model: config.anthropic.models.check, maxTokens: 80 + 40 * missing.length, effort: null, fallback: false });
+      const res = await ask({ cred: claude(store), user: fill(TEMPLATES['read-gloss@1'], { language: pack.name, words: list }), model: config.anthropic.models.check, maxTokens: 80 + 40 * missing.length, effort: null, fallback: false });
       const j = (() => { try { const m = String(res.text).match(/\[[\s\S]*\]/); return m ? JSON.parse(m[0]) : []; } catch { return []; } })();
       (Array.isArray(j) ? j : []).forEach((/** @type {any} */ r, /** @type {number} */ i) => {
         const n = Number.isInteger(r?.n) ? r.n - 1 : i;

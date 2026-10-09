@@ -23,6 +23,7 @@ import { language, usedIds } from './lang.js';
 import { addActivity } from '../shared/data.js';
 import { baseSystem, sessionSystem, levelNote, closingNote } from './prompts.js';
 import { glossSheet, sentSheet } from './sheets.js';
+import { claude, canAskClaude } from '../../data/credentials.js';
 
 /** Waits before retrying a request that failed for a passing reason (rate, overloaded, offline, a broken stream). */
 const RETRY_MS = [1000, 3000, 8000];
@@ -201,7 +202,7 @@ export async function mountChat(el, ctx, s0) {
     const c = ctx.clock.ctx();
     const load = C.sessionLoad({ turns: s.turns, startedAt: s.startedAt, usage: s.usage }, Date.now());
     const month = C.monthLoad(D.monthSpent(store, c.today), D.convSettings(ctx.settings()).monthlyCapUsd);
-    const why = !D.claudeKey(store) ? 'key' : load.closed ? 'session' : month.over ? 'month' : null;
+    const why = !canAskClaude(store) ? 'key' : load.closed ? 'session' : month.over ? 'month' : null;
     const hadFocus = document.activeElement === field;
     const closing = !!why && why !== lastWhy && lastWhy !== undefined;
     lastWhy = why;
@@ -237,11 +238,11 @@ export async function mountChat(el, ctx, s0) {
    */
   async function send(user) {
     if (busy || !alive) return;
-    const key = D.claudeKey(store);
+    const cred = claude(store);
     if (!tr.system || !conv) { status.replaceChildren(h('p', { class: 'caption' }, t('conv.noPack'))); return; }
     // closed at a limit: no request at all, the opening's "Try again" included (audit P1-3)
     if (drawComposer()) return;
-    if (!key) return;
+    if (!cred) return;
     const s = sess();
     const load = C.sessionLoad({ turns: s.turns, startedAt: s.startedAt, usage: s.usage }, Date.now());
     /** @type {string[]} */ const systems = [];
@@ -268,7 +269,7 @@ export async function mountChat(el, ctx, s0) {
     for (let attempt = 0; ; attempt++) {
       ctl = new AbortController();
       try {
-        res = await stream({ key, body, signal: ctl.signal, onText: text => { lineEl.textContent = C.visibleText(text); } });
+        res = await stream({ cred, body, signal: ctl.signal, onText: text => { lineEl.textContent = C.visibleText(text); } });
         break;
       } catch (e) {
         // a request the API took is billed even when it failed, was stopped or the page was left: count it now

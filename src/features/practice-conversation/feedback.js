@@ -15,6 +15,7 @@ import * as C from '../../domain/conversation.js';
 import * as F from '../../domain/conversation-feedback.js';
 import * as D from './data.js';
 import { feedbackSystem, IDS } from './prompts.js';
+import { claude } from '../../data/credentials.js';
 
 /** Sessions whose feedback request is out now: one at a time per conversation (a reopened page waits for it). */
 const inflight = new Set();
@@ -52,9 +53,9 @@ export async function mountFeedback(el, ctx, s0) {
   /** Ask for the review (once; again on "Try again"). */
   async function run() {
     const tr = D.getTranscript(store, id);
-    const key = D.claudeKey(store);
+    const cred = claude(store);
     if (!tr || !conv) { drawError('gone'); return; }
-    if (!key) { drawError('nokey'); return; }
+    if (!cred) { drawError('nokey'); return; }
     const today = ctx.clock.ctx().today;
     const month = C.monthLoad(D.monthSpent(store, today), D.convSettings(ctx.settings()).monthlyCapUsd);
     const tries = D.getSession(store, id)?.feedbackTries || 0;
@@ -70,7 +71,7 @@ export async function mountFeedback(el, ctx, s0) {
     };
     const s = /** @type {D.Session} */ (D.getSession(store, id));
     try {
-      const r = await ask({ key, system: feedbackSystem(conv, s.level, s.partnerLevel), user: C.feedbackTranscript(tr.turns), model: s.models.feedback, maxTokens: 16000, effort: 'medium',
+      const r = await ask({ cred, system: feedbackSystem(conv, s.level, s.partnerLevel), user: C.feedbackTranscript(tr.turns), model: s.models.feedback, maxTokens: 16000, effort: 'medium',
         format: { type: 'json_schema', schema: F.feedbackSchema() } });
       billed(r.model || s.models.feedback, C.usageOf(r.usage));
       /** @type {any} */ let raw;

@@ -21,7 +21,7 @@ import { roundMinutes } from '../../domain/today.js';
 import * as C from '../shared/compose.js';
 import * as S from '../shared/session.js';
 import { gradeAnswer, isSituation, retypeOk } from '../shared/grade.js';
-import { loadData, stateFor, session, saveAnswer, saveLogs, forecaster, tz, addActivity, secrets } from '../shared/data.js';
+import { loadData, stateFor, session, saveAnswer, saveLogs, forecaster, tz, addActivity } from '../shared/data.js';
 import { checkAnswer } from '../../services/claude.js';
 import { play as playAudio, stop as stopAudio, prefetchAudio } from '../../services/audio.js';
 import * as voice from '../../services/voice.js';
@@ -47,6 +47,7 @@ import { langAttr, languageName } from '../../core/lang.js';
 import { courseRound } from '../shared/course.js';
 import { scopeItem } from '../../domain/itemids.js';
 import { keep, fitToKeyboard, reveal as revealEl, fitPrompt } from '../../core/keyboard.js';
+import { claude, canAskClaude } from '../../data/credentials.js';
 
 const TEIL = /** @type {Record<string, string>} */ ({ S1: 'Teil 1', S2: 'Teil 2', S3: 'Teil 3', W1: 'Aufgabe 1', W2: 'Aufgabe 2', W3: 'Aufgabe 3', L2: 'Teil 2', L3: 'Teil 3', L5: 'Teil 5' });
 const fmtS = (/** @type {number} */ ms) => `${(ms / 1000).toFixed(1).replace(/\.0$/, '')} s`;
@@ -603,14 +604,14 @@ export async function mountRound(el, ctx) {
     toRetype(right, 360);
   }
   // the answer check's prompt is German B1's (services/claude.js): not offered in another course
-  const claudeOk = () => !cr && !!secrets(store).anthropicKey && settings.practice.claudeCheck && navigator.onLine;
+  const claudeOk = () => !cr && canAskClaude(store) && settings.practice.claudeCheck && navigator.onLine;
   function claudeBox(/** @type {string} */ typed) {
     const boxEl = h('div', { class: 'pr-claude' });
     const btn = /** @type {HTMLButtonElement} */ (h('button', { type: 'button', class: 'btn pressable', onpointerdown: keep, onclick: async () => {
       btn.disabled = true; btn.textContent = t('practice.claude.checking');
       const cur = entry;
       try {
-        const v = await checkAnswer({ key: secrets(store).anthropicKey, item: cur.item, answer: full(typed) });
+        const v = await checkAnswer({ cred: claude(store), item: cur.item, answer: full(typed) });
         if (cur !== entry) return;
         if (v.verdict === 'correct' || v.verdict === 'minor') {
           const cards = store.cards(deck);

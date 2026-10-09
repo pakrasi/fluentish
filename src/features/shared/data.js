@@ -8,7 +8,8 @@
      activity          { [day]: { minutes, rounds } } for Today's runway and study days
    and appends card.reviewed events to the outbox. */
 import { config } from '../../core/config.js';
-import { resultsRepo, githubToken } from '../../data/connection.js';
+import { resultsRepo } from '../../data/connection.js';
+import { github } from '../../data/credentials.js';
 import { listMistakes, backfillContext } from '../../data/mistakes.js';
 import * as RD from '../../domain/b1ready.js';
 import { buildPool } from './pool.js';
@@ -285,9 +286,6 @@ export { addActivity } from '../../data/activity.js';
 /** The last exam-word refresh this session: 'ok' | 'cached' | 'no-token' | 'error' | null (not tried yet). */
 export let wordsState = /** @type {string | null} */ (null);
 
-/** @param {any} store */
-export const secrets = store => store.get('secrets', {}) || {};
-
 /**
  * Refresh the exam words from the private repository (at most once per 10 minutes). Writes the cache when it changed.
  * @param {import('../contract.js').ViewCtx} ctx @param {{force?: boolean}} [o]
@@ -295,7 +293,7 @@ export const secrets = store => store.get('secrets', {}) || {};
 export async function refreshWords(ctx, { force = false } = {}) {
   const wordmap = await ctx.content.load('b1.wordmap').catch(() => ({}));
   const cached = ctx.store.get(WORDS, null);
-  const res = await fetchWords({ token: githubToken(ctx.store), cached, wordmap, url: vocabUrl(ctx.store) || '', fetch: (...a) => fetch(...a), has: (/** @type {string} */ id) => !!ctx.store.cards('b1')[id]?.reps,
+  const res = await fetchWords({ token: github(ctx.store), cached, wordmap, url: vocabUrl(ctx.store) || '', fetch: (...a) => fetch(...a), has: (/** @type {string} */ id) => !!ctx.store.cards('b1')[id]?.reps,
     now: Date.now(), online: navigator.onLine, force });
   if (res.cache && res.cache !== cached) ctx.store.set(WORDS, res.cache);
   wordsState = res.state;
