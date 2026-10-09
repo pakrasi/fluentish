@@ -427,3 +427,36 @@ test('another tab signing out or in reaches this tab through the store kv', asyn
   const fp = fakeProvider();
   assert.equal(fp.network, false);
 });
+
+/* ---------- backup.js takes its state kv and pending selector (stage 2's account target) ---------- */
+
+test('backupProgress with a second target: its own state kv and selector; the results repository state and event.synced untouched', async () => {
+  const { backupProgress, pendingEvents } = await import('../../src/data/sync/backup.js');
+  const { store } = await newStore();
+  store.putCards('b1', [['W:Haus.n', { S: 3, D: 5, due: '2026-10-25', reps: 1, lapses: 0, last: DAY, first: DAY, stage: 1, streak: 0, learn: null, relearn: false, u: 1, hist: [] }]]);
+  store.append('card.reviewed', { deck: 'b1', itemId: 'W:Haus.n', g: 3, ms: 900, flags: [], mode: 'typed', ctx: { exam: null, phase: 'none', tz: 'Europe/Berlin' }, base: { u: 0, reps: 0 }, post: null }, { day: DAY });
+  // a signed-in session on this device: it must not reach any uploaded file
+  kvSessionStore(store).write({ accessToken: 'fake-access-42', refreshToken: 'fake-refresh-42', expiresAt: Date.now() + 3600e3, userId: 'u42', email: 'learner@example.com' });
+  /** @type {Map<string, string>} */ const disk = new Map();
+  let n = 0;
+  const files = {
+    read: async (/** @type {string} */ p) => (disk.has(p) ? { sha: `s${p}`, bytes: new TextEncoder().encode(/** @type {string} */ (disk.get(p))) } : null),
+    write: async (/** @type {string} */ p, /** @type {any} */ body) => { disk.set(p, typeof body === 'string' ? body : Buffer.from(body).toString('latin1')); return `sha${++n}`; },
+    list: async () => [],
+  };
+  /** @type {string[]} */ const sent = [];
+  const before = pendingEvents(store).length;
+  assert.equal(before, 1);
+  const r = await backupProgress(store, /** @type {any} */ (files), { force: true, stateKv: 'backup.account', pending: s => s.pending(), markSent: (_s, evs) => { sent.push(...evs.map(e => e.id)); } });
+  assert.equal(r.error, null);
+  assert.equal(r.ok, 1);
+  assert.equal(sent.length, 1);
+  assert.equal(pendingEvents(store).length, 1, 'event.synced untouched: the results repository still sends it');
+  assert.equal(store.get('backup', null), null, 'the results repository state untouched');
+  assert.ok(store.get('backup.account')?.at, 'the target state in its own kv');
+  const zlib = await import('node:zlib');
+  for (const [p, body] of disk) {
+    const text = p.endsWith('.gz') ? zlib.gunzipSync(Buffer.from(body, 'latin1')).toString('utf8') : body;
+    assert.ok(!/fake-(access|refresh)-42|account\.session|backup\.account/.test(text), `${p} carries no account data`);
+  }
+});
