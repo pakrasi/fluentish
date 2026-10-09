@@ -109,9 +109,6 @@ body.pr-in-round #view { max-width: none; padding: 0; }
 .pr-res.is-bad { color: var(--bad); }
 .pr-res.is-warn { color: var(--ink); }
 .pr-yours { font-size: 17px; }
-.pr-fix { color: var(--ink-2); }
-/* a typo, a capital or an umlaut on a right answer: the letters to fix underlined in accent, never red */
-.pr-slip, .pr-capfix { text-decoration: underline 2px var(--accent); text-underline-offset: 4px; text-decoration-skip-ink: none; }
 .pr-diff { font-size: 17px; line-height: 1.4; }
 .pr-diff.answer-key { font: 400 20px/1.35 var(--font-display); margin-top: 0; }
 .pr-diff .caption { font-family: var(--font-ui); }
@@ -521,17 +518,6 @@ mark.sim-chunk { background: repeating-linear-gradient(90deg, var(--ink-3) 0 2px
 
 /* ---------- the round size picker (picker.js): a bottom sheet on a phone, a card from 720px ---------- */
 .has-picker a[href^="#/practice/round"], .has-picker a[href^="#/practice/situations/round"] { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
-.rs-sheet { --rs-out: 160; position: fixed; inset: auto 0 0 0; width: 100%; max-width: 100%; max-height: min(92dvh, 640px); margin: 0; padding: 0; border: 0; background: transparent; color: var(--ink); overflow: visible; }
-.rs-sheet::backdrop { background: rgb(12 14 20 / 0.36); animation: rs-fade var(--dur-base) var(--ease-out) both; }
-.rs-panel { display: grid; gap: var(--s-3); max-height: min(92dvh, 640px); overflow-y: auto; overscroll-behavior: contain; padding: var(--s-2) var(--gutter, 16px) calc(var(--s-4) + env(safe-area-inset-bottom));
-  border-radius: var(--r-card) var(--r-card) 0 0; background: var(--surface); box-shadow: var(--shadow-sheet);
-  animation: rs-in var(--dur-card) var(--spring-snappy) both; }
-.rs-sheet.is-out .rs-panel { animation: rs-outk calc(var(--rs-out) * 1ms) var(--ease-in) both; }
-.rs-sheet.is-out::backdrop { animation: rs-fade calc(var(--rs-out) * 1ms) var(--ease-in) reverse both; }
-@keyframes rs-in { from { transform: translateY(calc(100% * var(--move))); opacity: calc(1 - var(--move)); } to { transform: none; opacity: 1; } }
-@keyframes rs-outk { to { transform: translateY(calc(40% * var(--move))); opacity: 0; } }
-@keyframes rs-fade { from { opacity: 0; } to { opacity: 1; } }
-.rs-grab { justify-self: center; width: 36px; height: 4px; border-radius: 2px; background: var(--hairline-strong); margin-bottom: var(--s-1); }
 .rs-title { margin: 0; font: 400 var(--fs-h2)/1.15 var(--font-display); }
 .rs-sub { margin: -6px 0 var(--s-1); }
 .rs-opts { display: grid; gap: var(--s-2); }
@@ -568,11 +554,6 @@ mark.sim-chunk { background: repeating-linear-gradient(90deg, var(--ink-3) 0 2px
 .rs-start { min-height: 52px; }
 .rs-tip { margin: 0; text-align: center; }
 @media (hover: none) { .rs-key { display: none; } }
-@media (min-width: 720px) {
-  .rs-sheet { inset: 0; margin: auto; width: min(440px, calc(100% - 32px)); height: fit-content; }
-  .rs-panel { border-radius: var(--r-card); padding: var(--s-4) var(--s-5) var(--s-5); box-shadow: var(--shadow-lift), 0 0 0 1px var(--hairline); }
-  @keyframes rs-in { from { transform: translateY(calc(24px * var(--move))) scale(calc(1 - 0.02 * var(--move))); opacity: 0; } to { transform: none; opacity: 1; } }
-  .rs-grab { display: none; }
 }
 @media (hover: hover) and (pointer: fine) { .rs-tip { display: none; } }
 
