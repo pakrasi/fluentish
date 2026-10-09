@@ -276,6 +276,22 @@ test('Delete all gives the device a new id, so a fresh start never writes into t
   assert.equal(b.store.get('backup'), undefined, 'the backup state starts over');
 });
 
+test('Delete all clears the account kv (session, claim, account backup) with the rest of the device state', async () => {
+  const { ACCOUNT_DEVICE_KV } = await import('../../src/data/account/session-store.js');
+  const adapter = createMemoryAdapter();
+  const clock = { today: () => D2 };
+  const a = await openSession({ adapter, legacyStorage: null, clock });
+  for (const k of ACCOUNT_DEVICE_KV) a.store.set(k, { synthetic: k });
+  await a.store.flush();
+  const before = await adapter.loadScope('device');
+  for (const k of ACCOUNT_DEVICE_KV) assert.deepEqual(before[k], { synthetic: k }, `${k} is device scope`);
+  await deleteProfile(adapter, a.device, a.profile);
+  const dev = await adapter.loadScope('device');
+  for (const k of ACCOUNT_DEVICE_KV) assert.equal(dev[k], undefined, `${k} is gone`);
+  const b = await openSession({ adapter, legacyStorage: null, clock });
+  for (const k of ACCOUNT_DEVICE_KV) assert.equal(b.store.get(k), undefined);
+});
+
 test('NDJSON: torn lines are skipped on read and kept on rewrite; lines sort by seq', () => {
   const t = B.mergeLines('{"id":"b","seq":2}\n{"id":"a","se', [{ id: 'c', v: 1, seq: 1, type: 'card.reviewed', payload: {} }]);
   assert.deepEqual(t.split('\n').filter(Boolean), ['{"id":"a","se', '{"id":"c","v":1,"seq":1,"type":"card.reviewed","payload":{}}', '{"id":"b","seq":2}']);

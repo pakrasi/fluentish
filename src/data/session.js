@@ -265,6 +265,11 @@ export async function deleteProfile(adapter, device, profile) {
   await adapter.putKV('device', 'backup', undefined);
   await adapter.putKV('device', 'backup.journal', undefined);
   await adapter.putKV('device', 'progress.device', undefined);
+  // accounts (round 8): the session's tokens, the claim journal and the account backup's state (the names are
+  // data/account/session-store.js ACCOUNT_DEVICE_KV; not imported, so boot does not load the account module)
+  await adapter.putKV('device', 'account.session', undefined);
+  await adapter.putKV('device', 'account.claim', undefined);
+  await adapter.putKV('device', 'backup.account', undefined);
   device.previousDeviceIds = [...new Set([...(device.previousDeviceIds || []), device.deviceId])].slice(-8);
   device.deviceId = newDeviceId();
   device.activeProfile = null;
