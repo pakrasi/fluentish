@@ -96,12 +96,27 @@ export async function swap(update, { kind = 'forward', fallbackEl = null } = {})
     fallbackEl.addEventListener('animationend', () => fallbackEl.classList.remove(inCls), { once: true });
     return;
   }
+  // A route change can start while the last transition is still running (a tap right after arriving). Each swap
+  // takes a generation number, and only the newest one may take data-vt and the handoff names off again: the old
+  // transition's late `finished` would otherwise strip them from the new one, which then falls back to the browser's
+  // default crossfade. The old one is skipped first, so it cannot finish late at all. A skipped transition rejects
+  // `ready`; that is expected, so it is caught here instead of surfacing as an unhandled rejection.
+  const gen = ++vtGen;
+  try { lastVT?.skipTransition(); } catch { /* already finished */ }
   root.dataset.vt = kind;
   const t = document.startViewTransition(update);
   lastVT = t;
-  t.finished.finally(() => { if (root.dataset.vt === kind) delete root.dataset.vt; handing.clear(); });
+  t.ready.catch(() => {});
+  t.finished.catch(() => {}).finally(() => {
+    if (gen !== vtGen) return;
+    delete root.dataset.vt;
+    handing.clear();
+    lastVT = null;
+  });
   await t.updateCallbackDone;
 }
+/** Generation of the newest swap() view transition (see swap()). */
+let vtGen = 0;
 
 /* A shared element across a route change: the old view names one element (handoff) and the new view names the
    element it becomes (receive); the route's view transition then moves and resizes the one into the other (a map
