@@ -2915,6 +2915,7 @@ export default {
   // ---- R8 U1 ----
   // ---- end of R8 U1 ----
   // ---- R8 U2 ----
+  'exam.upNextLine': '{module} · Test {n}',
   // ---- end of R8 U2 ----
   // ---- R8 M1 ----
   // ---- end of R8 M1 ----

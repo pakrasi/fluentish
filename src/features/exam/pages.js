@@ -59,6 +59,7 @@ export async function examHome(el, ctx, exam) {
   const mods = s.exam.modules?.length ? s.exam.modules : modulesOf(exam);
   const topics = /** @type {Record<number, string>} */ ({});
   const readScore = scoreReader(store, exam.id);
+  let risen = false;
   const fills = () => { for (const tr of el.querySelectorAll('.mbar .track')) fill(/** @type {HTMLElement} */ (tr), Number(/** @type {HTMLElement} */ (tr).dataset.p)); };
   const draw = () => { draw0(); fills(); };
   const draw0 = () => {
@@ -100,13 +101,23 @@ export async function examHome(el, ctx, exam) {
         trail ? h('span', { class: 'row-trail tnum' }, trail) : null);
     });
     const after = c.phase === 'after';
-    replace(el, h('div', { class: 'ex-home' },
+    // the one Start sits in the shared bottom dock on a phone (fixed above the tab bar, in the thumb zone) and inline
+    // under "Up next" on a desktop: one element, placed by CSS (design B3). It rises in once per visit (fx-rise).
+    const dock = (/** @type {any} */ btn) => {
+      const d = h('div', { class: ['dock', 'ex-dock', !risen && 'fx-rise'] }, btn);
+      risen = true;
+      return d;
+    };
+    const upNext = !after && next && nextDef && c.mocks;
+    replace(el, h('div', { class: ['ex-home', (after || upNext) && 'has-dock'] },
       h('header', { class: 'page-head' }, h('h1', null, t('tab.exam')), h('p', { class: 'caption' }, [exam.short, c.exam ? (after ? t('exam.wasOn', { date: label(c.exam) }) : label(c.exam)) : null].filter(Boolean).join(' · '))),
-      after ? h('div', { class: 'ex-upnext' }, h('a', { class: 'btn btn-primary btn-wide pressable', href: '#/profile/goal' }, t('plan.nextExam')))
-      : next && nextDef && c.mocks
+      after ? h('div', { class: 'ex-upnext' }, dock(h('a', { class: 'btn btn-primary btn-wide pressable', href: '#/profile/goal' }, t('plan.nextExam'))))
+      : upNext
         ? h('div', { class: 'ex-upnext' }, h('p', { class: 'label' }, t('exam.upNext')),
-          h('a', { class: 'btn btn-primary btn-wide pressable', href: `#/exam/${next.test}/${next.module}` },
-            isStarted(store, next.test, next.module) ? t('exam.continueModule', { module: nextDef.name, n: next.test }) : t('exam.startModule', { module: nextDef.name, n: next.test, min: planMinutes(nextDef) })))
+          // what Up next is, as text at the top on a phone (the button itself is in the dock)
+          h('p', { class: 'ex-upnext-title', lang: langAttr(), dir: dirAttr() }, t('exam.upNextLine', { module: nextDef.name, n: next.test })),
+          dock(h('a', { class: 'btn btn-primary btn-wide pressable', href: `#/exam/${next.test}/${next.module}`, id: 'ex-start' },
+            isStarted(store, next.test, next.module) ? t('exam.continueModule', { module: nextDef.name, n: next.test }) : t('exam.startModule', { module: nextDef.name, n: next.test, min: planMinutes(nextDef) }))))
         : !c.mocks ? notice({ children: [h('p', null, c.phase === 'day' ? t('exam.noMockDay') : t('exam.noMockEve'))] }) : null,
       fit != null ? h('p', { class: 'caption ex-fit' }, fit > 0 ? t('exam.fit', { n: fit }) : t('exam.fitNone')) : null,
       syncLine(ctx, draw),
