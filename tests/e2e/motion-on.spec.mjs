@@ -91,7 +91,7 @@ test('a named element only the old view has leaves with the page; a pair that mo
   await page.goto(`${APP}version.json`);
   const today = await page.evaluate(async sha => (await import(`/fluentish/v/${sha}/src/core/clock.js`)).createClock({ exam: () => null }).today(), SHA);
   await seed(page, { examInDays: null, kv: syntheticLog(today, { days: 90 }), motion: 'full' });
-  for (const [target, alone] of [['#/lookup/words', true], ['#/today/progress', false]]) {
+  for (const [target, alone] of /** @type {[string, boolean][]} */ ([['#/lookup/words', true], ['#/today/progress', false]])) {
     await open(page, '#/today');
     await settle(page);
     await expect(page.locator('.stand-spark')).toHaveCount(1);
