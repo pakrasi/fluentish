@@ -16,8 +16,7 @@
                  (Explore's encoding), and the known count ticks up from the last one shown. */
 import { wordMeta, wordPanel } from '../../core/wordpanel.js';
 import { h, replace, announce } from '../../core/dom.js';
-import { notice } from '../../core/ui.js';
-import { icon } from '../../core/icons.js';
+import { notice, backLink } from '../../core/ui.js';
 import { countTo, reduced, swap, haptic } from '../../core/motion.js';
 import { gradeRow } from '../shared/selfgrade.js';
 import { progressOf, drawProgress, againRow } from '../shared/progress.js';
@@ -38,7 +37,7 @@ import { drawClusterDone } from '../shared/cluster-layout.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
 import { fitToKeyboard, reveal as revealEl } from '../../core/keyboard.js';
 
-const back = (/** @type {string} */ href, /** @type {string} */ text) => h('a', { class: 'pr-backlink pressable', href }, icon('prev', { size: 16 }), text);
+const back = (/** @type {string} */ href, /** @type {string} */ text) => backLink({ href, label: text });
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx @param {string[]} rest */
 export function mountClusters(el, ctx, rest) {

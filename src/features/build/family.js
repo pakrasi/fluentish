@@ -17,6 +17,7 @@
    then by frequency. */
 import { h, replace, announce } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
+import { backLink } from '../../core/ui.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
 import { freq } from '../../domain/wordcard.js';
 import { kidsOf, piecesOf, TILE_ENDINGS } from '../../domain/wordbuild-family.js';
@@ -88,8 +89,8 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
       : from === 'today' ? ['#/practice/build/today', t('build.today.title')]
       : from === 'lookup' || from === 'read' ? ['javascript-back', t(from === 'read' ? 'build.family.backRead' : 'lookup.title')]
       : ['#/practice/build', t('build.title')];
-    if (href === 'javascript-back') return h('button', { type: 'button', class: 'pr-backlink pressable', onclick: () => history.back() }, icon('prev', { size: 16 }), label);
-    return h('a', { class: 'pr-backlink pressable', href }, icon('prev', { size: 16 }), label);
+    if (href === 'javascript-back') return backLink({ label, onclick: () => history.back() });
+    return backLink({ href, label });
   };
   replace(el, h('div', { class: ['wb', 'fv', sheet && 'fv-sheet'] }, back(), h('p', { class: 'label' }, t('build.family.label')), h('h1', { lang: langAttr(), dir: dirAttr() }, rootArg || t('build.family.title')), h('p', { class: 'caption' }, t('build.loading'))));
   /** @type {any} */

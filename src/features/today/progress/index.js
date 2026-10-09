@@ -10,8 +10,7 @@
    switch crossfades and does not draw again. Reduced motion shows the end state. */
 import { h, replace } from '../../../core/dom.js';
 import { label } from '../../../core/clock.js';
-import { icon } from '../../../core/icons.js';
-import { section, seg, field } from '../../../core/ui.js';
+import { section, seg, field, backLink } from '../../../core/ui.js';
 import { countTo, reduced, toast } from '../../../core/motion.js';
 import { activeCourse, normalizeSettings, setSetting, langIdOf } from '../../../data/settings.js';
 import { recorded } from '../../../data/progress.js';
@@ -50,7 +49,7 @@ export async function mount(el, ctx) {
   const signed = (/** @type {number} */ n) => `${n > 0 ? '+' : n < 0 ? '−' : ''}${nf.format(Math.abs(n))}`;
   const monthOf = (/** @type {string} */ d) => (D8.parse(d).getDate() <= 7 ? new Intl.DateTimeFormat('en-GB', { month: 'short' }).format(D8.parse(d)).replace(/^Sept$/, 'Sep') : null);
 
-  const back = h('a', { class: 'pg-back pressable', href: '#/today' }, icon('back', { size: 16 }), t('pg.back'));
+  const back = backLink({ href: '#/today', label: t('pg.back') });
   const page = h('div', { class: 'progress' });
   const body = h('div', { class: 'pg-body' });
 

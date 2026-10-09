@@ -11,8 +11,7 @@
    sent). Builds, the free text and its correction stay on this device (kv practice.write). The correction's lines
    become mistake cards (data/mistakes.js, F:W-<task>-<time>), reviewed in the mistakes round like an exam's. */
 import { h, replace, announce } from '../../core/dom.js';
-import { linkRow, notice, section, seg } from '../../core/ui.js';
-import { icon } from '../../core/icons.js';
+import { linkRow, notice, section, seg, backLink } from '../../core/ui.js';
 import { correct as fxCorrect, wrong as fxWrong, resetAnswer, segments, swap, reduced, countTo, haptic, wait, easing } from '../../core/motion.js';
 import { label } from '../../core/clock.js';
 import * as Match from '../../domain/match.js';
@@ -32,7 +31,7 @@ import { keep } from '../../core/keyboard.js';
 
 export const COLLECTION = 'practice.write';
 const pct = (/** @type {number} */ x) => new Intl.NumberFormat('en-GB', { style: 'percent', maximumFractionDigits: 0 }).format(x || 0);
-const back = (/** @type {string} */ href, /** @type {string} */ text) => h('a', { class: 'pr-backlink pressable', href }, icon('prev', { size: 16 }), text);
+const back = (/** @type {string} */ href, /** @type {string} */ text) => backLink({ href, label: text });
 
 /** @param {any} store */
 const kv = store => store.get(COLLECTION, {}) || {};

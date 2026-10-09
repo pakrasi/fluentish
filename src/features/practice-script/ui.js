@@ -1,6 +1,7 @@
 /* Script mode: small view pieces shared by the screens. Kit classes and tokens only; motion from core/motion.js. */
 import { h, replace } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
+import { backLink } from '../../core/ui.js';
 import { reduced } from '../../core/motion.js';
 import { label } from '../../core/clock.js';
 import { t as tr } from '../../core/i18n.js';
@@ -8,7 +9,7 @@ import * as D8 from '../../domain/days.js';
 import { stepsFor, blank } from '../../domain/script/ladder.js';
 
 /** "‹ Scripts" back link. @param {string} href @param {string} text */
-export const back = (href, text) => h('a', { class: 'pr-backlink pressable', href }, icon('prev', { size: 16 }), text);
+export const back = (href, text) => backLink({ href, label: text });
 
 /** "1,940" in the interface locale. @param {number} n */
 export const num = n => new Intl.NumberFormat('en-GB').format(n);

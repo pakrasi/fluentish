@@ -13,6 +13,7 @@
    das, ← → Splits / Stays. */
 import { h, replace, announce } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
+import { backLink as uiBack } from '../../core/ui.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
 import { countTo } from '../../core/motion.js';
 import { fitToKeyboard, keep, reveal as revealEl } from '../../core/keyboard.js';
@@ -51,7 +52,7 @@ export async function mountToday(el, ctx) {
   document.body.dataset.chrome = 'off';
   document.body.classList.add('wb-in-round');
   const restore = () => { document.body.dataset.chrome = 'on'; document.body.classList.remove('wb-in-round'); };
-  const backLink = () => h('a', { class: 'pz-back pressable', href: backHref, onpointerdown: keep }, icon('prev', { size: 16 }), backText);
+  const backLink = () => uiBack({ href: backHref, label: backText, onpointerdown: keep });
   replace(el, h('div', { class: 'pz' }, h('div', { class: 'pz-main' }, h('div', { class: 'pz-head' }, backLink(), h('h1', null, t('build.today.title'))), h('p', { class: 'caption' }, t('build.loading')))));
   /** @type {any} */ let d;
   /** @type {Map<string, Family>} */ let fams = new Map();
@@ -70,7 +71,7 @@ export async function mountToday(el, ctx) {
   const famOf = found0 ? fams.get(found0.root) : null;
   if (!found0 || !famOf) {
     restore();
-    replace(el, h('div', { class: 'wb stack' }, h('a', { class: 'pr-backlink pressable', href: backHref }, icon('prev', { size: 16 }), backText),
+    replace(el, h('div', { class: 'wb stack' }, uiBack({ href: backHref, label: backText }),
       h('div', { class: 'page-head' }, h('h1', null, t('build.today.none'))), h('p', { class: 'lead' }, t('build.today.noneDetail')),
       h('a', { class: 'btn pressable', href: '#/practice/build/family' }, t('build.today.seeFamily'))));
     return () => {};

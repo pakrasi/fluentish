@@ -10,6 +10,7 @@
    and its tokens (80 %: Claude is asked to close the conversation; 100 %: the composer closes); the month at his cap. */
 import { h, replace, announce } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
+import { backLink } from '../../core/ui.js';
 import { reduced, haptic } from '../../core/motion.js';
 import { fitToKeyboard, keep, reveal as revealEl } from '../../core/keyboard.js';
 import { langAttr, dirAttr, bcp47 } from '../../core/lang.js';
@@ -83,7 +84,7 @@ export async function mountChat(el, ctx, s0) {
   const composer = h('div', { class: 'cv-composer' }, h('div', { class: 'cv-wrap' }, chips, closedBox, h('div', { class: 'cv-field' }, field, sendBtn), count));
   const view = h('div', { class: 'cv cv-chat' },
     h('header', { class: 'cv-bar' }, h('div', { class: 'cv-wrap cv-bar-row' },
-      h('a', { class: 'btn btn-quiet pressable cv-back', href: '#/practice/conversation' }, icon('back', { size: 18 }), t('conv.back')),
+      backLink({ href: '#/practice/conversation', label: t('conv.back') }),
       h('h1', { class: 'cv-bar-title', tabindex: '-1' }, t('conv.chat')), endBtn)),
     // a column sized to the visible screen (core/keyboard.js): the bar, the conversation (the one scroller) and the
     // composer, which sits on the keyboard. iOS has nothing to pan, so the bar never leaves the screen.

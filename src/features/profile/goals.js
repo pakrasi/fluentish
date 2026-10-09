@@ -10,8 +10,7 @@
 import { h } from '../../core/dom.js';
 import { label, windowStart, parse } from '../../core/clock.js';
 import { config } from '../../core/config.js';
-import { icon } from '../../core/icons.js';
-import { section, seg, field, nextId } from '../../core/ui.js';
+import { section, seg, field, nextId, backLink } from '../../core/ui.js';
 import { setSetting, setExamDate, setCourse, examDate, activeCourse, MODULES } from '../../data/settings.js';
 import { defaultWeek, weekMinutes, courseWeek } from '../../domain/week.js';
 import { courseGoal } from '../../domain/levels.js';
@@ -74,7 +73,7 @@ export function goalsPage(ctx, { exams, languages }) {
   function parts() {
     const s = ctx.settings();
     return [
-      h('a', { class: 'goals-back pressable', href: '#/profile' }, icon('back', { size: 16 }), t('goals.back')),
+      backLink({ href: '#/profile', label: t('goals.back') }),
       h('header', { class: 'page-head' }, h('h1', null, t('goals.title'))),
       goals(s), weekPlan(s)];
   }

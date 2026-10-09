@@ -12,8 +12,6 @@
 :root[data-theme="dark"] .progress { --pg-k1: #5c5f68; --pg-k2: #8b8e97; --pg-k3: #d6d7dc; --pg-col: #8b8e97; }
 
 .progress > * { min-width: 0; }
-.pg-back { display: inline-flex; align-items: center; gap: 6px; min-height: var(--tap); padding-top: var(--s-2); color: var(--ink-2); text-decoration: none; font-size: 14px; }
-.pg-back + .page-head { padding-top: 0; }
 .pg-empty { max-width: 60ch; margin-top: var(--s-4); font: 400 15px/1.55 var(--font-ui); color: var(--ink-2); }
 .pg-empty-sec { margin-top: var(--s-6); }
 .pg-empty-title { margin: 0; font: 600 13px/1.35 var(--font-ui); color: var(--ink-3); }

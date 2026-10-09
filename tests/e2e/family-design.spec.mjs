@@ -165,7 +165,7 @@ test('the family view: a few tab stops to the first word, a skip link, the tree 
   await open(page, '#/practice/build/family/bringen');
   await expect(page.locator('.fv-node').first()).toBeVisible();
   // from the back link to the first word of the tree
-  await page.locator('.fv .pr-backlink').focus();
+  await page.locator('.fv .back-link').focus();
   let stops = 0;
   for (; stops < 40; stops++) {
     if (await page.evaluate(() => !!document.activeElement?.matches('.fv-rowbtn'))) break;
@@ -173,7 +173,7 @@ test('the family view: a few tab stops to the first word, a skip link, the tree 
   }
   expect(stops).toBeLessThanOrEqual(10);
   // the skip link is the next stop after the back link
-  await page.locator('.fv .pr-backlink').focus();
+  await page.locator('.fv .back-link').focus();
   await page.keyboard.press('Tab');
   await expect(page.locator('.fv-skip')).toBeFocused();
   await page.keyboard.press('Enter');

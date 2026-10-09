@@ -6,6 +6,7 @@
    (motion.js reveal; at once with reduced motion). */
 import { h, replace } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
+import { backLink } from '../../core/ui.js';
 import { reveal, countTo, reduced } from '../../core/motion.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
 import { ask, ClaudeError } from '../../services/claude.js';
@@ -46,7 +47,7 @@ export async function mountFeedback(el, ctx, s0) {
   const back = ctx.query.get('from') === 'today' ? '#/today' : '#/practice';
 
   const frame = (/** @type {any[]} */ ...kids) => h('div', { class: 'practice stack cv cv-fb' },
-    h('a', { class: 'btn btn-quiet pressable cv-back', href: '#/practice/conversation' }, icon('back', { size: 18 }), t('conv.title')),
+    backLink({ href: '#/practice/conversation', label: t('conv.title') }),
     ...kids);
 
   /** Ask for the review (once; again on "Try again"). */

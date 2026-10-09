@@ -34,12 +34,7 @@ body.ex-page { overscroll-behavior: none; }
   .explore { --ex-top: 0px; }
   .ex-head { min-height: calc(48px + env(safe-area-inset-top)); padding-top: env(safe-area-inset-top); gap: var(--s-2); }
 }
-@media (max-width: 719px) {
-  .ex-back { width: var(--tap); justify-content: center; margin-inline-start: -12px; padding: 0; }
-  .ex-back-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
-}
 .ex-head { display: flex; align-items: center; gap: var(--s-3); padding: var(--s-1) max(var(--gutter), env(safe-area-inset-left)) 0; padding-inline-end: max(var(--gutter), env(safe-area-inset-right)); max-width: var(--page-max); width: 100%; margin: 0 auto; }
-.ex-back { display: inline-flex; align-items: center; gap: 2px; min-height: var(--tap); margin-inline-start: -6px; padding: 0 6px; border-radius: var(--r-ctl); color: var(--ink-2); font: 500 var(--fs-label)/1 var(--font-ui); text-decoration: none; }
 .ex-title { font: 400 28px/1.1 var(--font-display); letter-spacing: -0.015em; margin-inline-end: auto; }
 @media (max-width: 719px) { .ex-title { font-size: 21px; } }
 /* the view control: Map · 3D · List with Find at its end, one control */

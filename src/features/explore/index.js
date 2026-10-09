@@ -22,7 +22,7 @@
    'explore' keeps the mode, the gaps filter, what it already showed, the group a study round started from and the
    count each group page showed last. */
 import { h, replace, announce } from '../../core/dom.js';
-import { seg, notice } from '../../core/ui.js';
+import { seg, notice, backLink as uiBack } from '../../core/ui.js';
 import { icon } from '../../core/icons.js';
 import { reduced, handoff } from '../../core/motion.js';
 import { label as dayLabel } from '../../core/clock.js';
@@ -931,7 +931,7 @@ function clusterGroup(A, cluster) {
 }
 
 /** The way back to Look up (a chevron on a phone). @param {(k: string) => string} t */
-const backLink = t => h('a', { class: 'ex-back pressable', href: '#/lookup', 'aria-label': t('explore.back') }, icon('prev', { size: 16 }), h('span', { class: 'ex-back-text' }, t('explore.back')));
+const backLink = t => uiBack({ href: '#/lookup', label: t('explore.back'), narrow: true });
 
 /** Is WebGL2 there (without loading the 3D module)? */
 function webgl2() {

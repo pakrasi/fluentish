@@ -83,6 +83,20 @@ export function linkRow({ href, title, detail = null, trail = null, lead = null 
 }
 
 /**
+ * The back control at the top of a page, the same everywhere (round 8, B8): a chevron and the name of the page it
+ * goes back to, on one line (an ellipsis when it is long), at least 44 px tall and wide. `narrow`: in a header that
+ * shares its row with controls (the exam runner, the Map), below 400 px only the chevron shows and the name stays
+ * the link's accessible name. Without href it is a button (onclick decides where it goes).
+ * Style: styles/components.css "Back link".
+ * @param {{href?: string, label: string, narrow?: boolean, onclick?: (e: MouseEvent) => void, onpointerdown?: (e: PointerEvent) => void}} o
+ */
+export function backLink({ href, label, narrow = false, onclick, onpointerdown }) {
+  const attrs = { class: ['back-link', 'pressable', narrow && 'back-link-narrow'], 'aria-label': narrow ? label : null, onclick, onpointerdown };
+  const kids = [icon('prev', { size: 16 }), h('span', { class: 'back-link-text' }, label)];
+  return href ? h('a', { ...attrs, href }, ...kids) : h('button', { ...attrs, type: 'button' }, ...kids);
+}
+
+/**
  * A quiet inline notice with an icon (phase notes, import summary).
  * @param {{kind?: 'info' | 'warning', children: any[], id?: string}} o
  */

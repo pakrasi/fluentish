@@ -6,6 +6,7 @@
    Pure rules: domain/conversation.js and domain/conversation-feedback.js. Prompts: services/prompts/conversation.js.
    Storage: data.js. Transcripts stay on this device. */
 import { h, replace } from '../../core/dom.js';
+import { backLink } from '../../core/ui.js';
 import { practicePage, restParts } from '../shared/page.js';
 import { closeSheets } from '../shared/textview.js';
 import { getSession, getTranscript } from './data.js';
@@ -28,7 +29,7 @@ async function view(el, ctx, parts) {
   const s = a === 'c' && id ? getSession(ctx.store, id) : null;
   if (!s || s.deletedAt || (!getTranscript(ctx.store, id) && b !== 'feedback')) {
     replace(el, h('div', { class: 'practice stack cv' },
-      h('a', { class: 'btn btn-quiet pressable cv-back', href: '#/practice/conversation' }, ctx.t('conv.title')),
+      backLink({ href: '#/practice/conversation', label: ctx.t('conv.title') }),
       h('div', { class: 'page-head' }, h('h1', null, ctx.t('conv.gone'))),
       h('a', { class: 'btn pressable', href: '#/practice/conversation' }, ctx.t('conv.toSetup'))));
     return undefined;
