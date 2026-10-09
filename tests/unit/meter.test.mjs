@@ -95,3 +95,106 @@ test('countAt: the endpoints are exact, the middle is rounded to the decimals, d
   assert.ok(countAt(42, 41, 0.5) >= 41 && countAt(42, 41, 0.5) <= 42);
   assert.equal(countAt(0.1, 0.3, 1, 1), 0.3);
 });
+
+/* ---- countTo (core/motion.js) and mountCount (ui/count.js) in node, with fake frames and a small fake DOM ---- */
+class FakeEl {
+  constructor() {
+    /** @type {Record<string, string>} */ this.dataset = {};
+    /** @type {Record<string, string>} */ this.attrs = {};
+    this.cls = new Set();
+    this.classList = { add: (/** @type {string} */ c) => this.cls.add(c), remove: (/** @type {string} */ c) => this.cls.delete(c), contains: (/** @type {string} */ c) => this.cls.has(c) };
+    this.textContent = '';
+    this.className = '';
+    /** @type {FakeEl[]} */ this.children = [];
+  }
+  setAttribute(/** @type {string} */ k, /** @type {string} */ v) { this.attrs[k] = v; }
+  /** @param {...FakeEl} c */ replaceChildren(...c) { this.children = c; }
+  getAnimations() { return []; }
+}
+/** @type {Map<number, Function>} */ const frames = new Map();
+let nextId = 1, clockMs = 0;
+/** Advance the fake clock by ms, one frame per 16 ms. @param {number} ms */
+const runFrames = ms => {
+  for (const end = clockMs + ms; clockMs < end;) {
+    clockMs = Math.min(end, clockMs + 16);
+    const due = [...frames]; frames.clear();
+    for (const [, f] of due) f(clockMs);
+  }
+};
+const reducedFlag = { on: false };
+globalThis.document = /** @type {any} */ ({ documentElement: { classList: { add() {} }, dataset: {} }, createElement: () => new FakeEl() });
+globalThis.matchMedia = /** @type {any} */ (() => ({ get matches() { return reducedFlag.on; } }));
+globalThis.getComputedStyle = /** @type {any} */ (() => ({ getPropertyValue: () => '' }));
+globalThis.requestAnimationFrame = /** @type {any} */ ((/** @type {Function} */ f) => { const id = nextId++; frames.set(id, f); return id; });
+globalThis.cancelAnimationFrame = /** @type {any} */ ((/** @type {number} */ id) => { frames.delete(id); });
+globalThis.performance = /** @type {any} */ ({ now: () => clockMs });
+const { countTo } = await import('../../src/core/motion.js');
+const { mountCount } = await import('../../src/ui/count.js');
+const el = () => /** @type {any} */ (new FakeEl());
+
+test('countTo ticks from `from` to the exact target and resolves', async () => {
+  const e = el();
+  const p = countTo(e, 42, { from: 0, duration: 700 });
+  runFrames(320);
+  const mid = Number(e.textContent);
+  assert.ok(mid > 21 && mid < 42, `past halfway at 320 ms on ease-out quart, got ${mid}`);
+  runFrames(400);
+  await p;
+  assert.equal(e.textContent, '42');
+  assert.equal(frames.size, 0, 'no frame left running');
+});
+
+test('countTo: the signal aborting stops the frames, resolves, and leaves the text where it was', async () => {
+  const e = el(), ac = new AbortController();
+  const p = countTo(e, 100, { from: 0, duration: 700, signal: ac.signal });
+  runFrames(100);
+  const at = e.textContent;
+  ac.abort();
+  await p;
+  runFrames(800);
+  assert.equal(e.textContent, at);
+  assert.equal(frames.size, 0);
+});
+
+test('countTo: a second count on the element takes over; reduced motion writes the value at once', async () => {
+  const e = el();
+  countTo(e, 100, { from: 0, duration: 700 });
+  runFrames(100);
+  const q = countTo(e, 10, { duration: 300 });
+  runFrames(400);
+  await q;
+  assert.equal(e.textContent, '10');
+  assert.equal(frames.size, 0, 'the first count stopped');
+  reducedFlag.on = true;
+  try { await countTo(e, 77, { from: 0 }); assert.equal(e.textContent, '77'); } finally { reducedFlag.on = false; }
+});
+
+test('mountCount: the final text is in the hidden sibling from the start, the number ticks with tabular figures, prefix', async () => {
+  const root = el();
+  const c = mountCount(root, { value: 1407, from: 0, prefix: '+', format: n => String(Math.round(n)) });
+  const [num, sr] = root.children;
+  assert.equal(num.attrs['aria-hidden'], 'true');
+  assert.equal(sr.textContent, '+1407');
+  assert.ok(root.cls.has('is-ticking'));
+  runFrames(800);
+  await c.done();
+  assert.equal(num.textContent, '+1407');
+  assert.ok(!root.cls.has('is-ticking'));
+});
+
+test('mountCount: no from stands still; update ticks from the shown value; destroy stops it mid-count', async () => {
+  const root = el();
+  const c = mountCount(root, { value: 7, format: n => String(Math.round(n)) });
+  assert.equal(root.children[0].textContent, '7');
+  assert.equal(frames.size, 0, 'a number that did not change does not move');
+  c.update({ value: 10 });
+  runFrames(100);
+  const mid = Number(root.children[0].textContent);
+  assert.ok(mid >= 7 && mid < 10);
+  c.destroy();
+  c.destroy();
+  runFrames(800);
+  assert.equal(Number(root.children[0].textContent), mid, 'destroy leaves the number where it was');
+  assert.equal(frames.size, 0);
+  assert.ok(!root.cls.has('is-ticking'));
+});
