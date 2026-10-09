@@ -12,13 +12,15 @@ export async function start(app) {
     if (open || !hit || !hit.root) return;
     const host = document.createElement('div');
     /** @type {any} */ let cleanup = null;
-    const sh = sheet({ title: app.t('build.family.title'), cls: 'fam-sheet', children: [host], onClose: () => { open = null; if (typeof cleanup === 'function') cleanup(); } });
+    // the view's ctx.signal (features/contract.js): this sheet is the view's lifetime, so closing it aborts first
+    const ctrl = new AbortController();
+    const sh = sheet({ title: app.t('build.family.title'), cls: 'fam-sheet', children: [host], onClose: () => { open = null; ctrl.abort(); if (typeof cleanup === 'function') cleanup(); } });
     open = sh.close;
     try {
       const { mountFamily } = await import('./family.js');
       const query = new URLSearchParams(hit.form ? { w: hit.form } : {});
       const ctx = { store: app.store, clock: app.clock, settings: app.settings, content: app.content, bus: app.bus, t: app.t, toast: app.toast, app: app.app,
-        params: { rest: hit.root }, query, go: () => {}, refreshShell: () => {}, route: '/practice/build/*' };
+        params: { rest: hit.root }, query, go: () => {}, refreshShell: () => {}, route: '/practice/build/*', signal: ctrl.signal };
       cleanup = await mountFamily(host, /** @type {any} */ (ctx), hit.root, { sheet: true, close: sh.close });
     } catch (e) { app.log('family sheet', e); sh.close(); }
   });
