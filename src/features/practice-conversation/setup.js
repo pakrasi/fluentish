@@ -23,7 +23,7 @@ export async function mountSetup(el, ctx) {
   const ui = /** @type {{mode: 'free' | 'roleplay', pick: string | null, own: string}} */ ({ mode: 'free', pick: null, own: '' });
   const remembered = (store.get('ui', {}) || {}).convMode;
   if (remembered === 'roleplay' || remembered === 'free') ui.mode = remembered;
-  let alive = true;
+  let alive = true, risen = false;
   /** The scene whose goal is open (it opens once, when picked). @type {string | null} */ let shownGoal = null;
 
   function draw() {
@@ -95,7 +95,8 @@ export async function mountSetup(el, ctx) {
     syncStart();
 
     const earlier = all.slice(0, 5);
-    const view = h('div', { class: 'practice stack cv cv-setup' },
+    const chosen = !!(ui.pick || ui.own.trim());
+    const view = h('div', { class: ['practice', 'stack', 'cv', 'cv-setup', chosen && 'has-dock'] },
       h('a', { class: 'btn btn-quiet pressable cv-back', href: '#/practice' }, icon('back', { size: 18 }), t('practice.title')),
       h('div', { class: 'page-head' }, h('h1', null, t('conv.title'))),
       h('p', { class: 'cv-lede' }, t('conv.lead', { lang: conv?.language || '' })),
@@ -110,8 +111,10 @@ export async function mountSetup(el, ctx) {
       h('p', { class: ['caption', 'cv-month', month.warn && 'is-warn'] }, month.over ? t('conv.month.over', { cap: D.money(month.cap) })
         : month.warn ? t('conv.month.warn', { spent: D.money(spent), cap: D.money(month.cap) }) : t('conv.month', { spent: D.money(spent), cap: D.money(month.cap) })),
       why ? h('p', { class: 'caption cv-why', role: 'status' }, why) : null,
-      // with the keyboard up (his own topic) Start sits on the keyboard (styles/app.css .kb-dock)
-      h('div', { class: 'cv-startbar kb-dock' }, startBtn),
+      // with a topic or scene chosen (one is chosen for him) Start sits in the shared bottom dock on a phone, in the
+      // thumb zone, and inline on a desktop (design B3); it rises in once per visit. With the keyboard up (his own
+      // topic) it sits on the keyboard (styles/app.css .kb-dock).
+      h('div', { class: ['cv-startbar', 'kb-dock', chosen && 'dock', chosen && !risen && 'fx-rise'] }, startBtn),
       earlier.length ? h('section', { class: 'cv-earlier' }, h('h2', { class: 'cv-h' }, t('conv.earlier')),
         h('ul', { class: 'cv-earlier-list' }, earlier.map(s => {
           const tr = D.getTranscript(store, s.id);
@@ -122,6 +125,7 @@ export async function mountSetup(el, ctx) {
             icon('next', { size: 16 })));
         }))) : null);
     replace(el, view);
+    if (chosen) risen = true;
     // the topic and scene lists: one tab stop each, arrow keys choose (core/radiogroup.js)
     for (const g of el.querySelectorAll('.cv-choices[role="radiogroup"]')) radioKeys(g, { root: el });
   }

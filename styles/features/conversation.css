@@ -241,3 +241,12 @@ body.kb .cv-helpers { padding-bottom: 6px; }
   .cv-recast { background: none; text-decoration: underline dotted; text-decoration-thickness: 2px; text-underline-offset: 3px; }
   .cv-recast[aria-expanded="true"] { outline: 1px solid Highlight; }
 }
+
+/* ---- R8 U2: the setup's Start in the shared dock (styles/app.css .dock) on a phone, inline on a desktop; on the
+   keyboard it is the form's row (.kb-dock wins over the dock's "hidden with the keyboard up") ---- */
+@media (max-width: 899px) { .cv-startbar.dock .cv-start { width: 100%; } }
+@media (min-width: 900px) {
+  .cv-startbar.dock { display: grid; position: static; padding: 0; background: none; }
+  .cv-startbar.dock .btn { box-shadow: none; }
+}
+body.kb .cv-startbar.kb-dock { display: flex; }
