@@ -75,6 +75,7 @@ test('?accounts=fake: sign in with an email code, sign out; 44 px targets; the s
   await code.fill('123456');
   await code.press('Enter');
   await expect(sec).toContainText('Signed in as learner@example.com.');
+  expect(await page.locator('#profile-account').innerText()).not.toMatch(/\b(null|undefined)\b/);
   const session = /** @type {any} */ (await storedSession(page));
   expect(session.refreshToken).toMatch(/^fake-refresh-/);
   // no token on the page

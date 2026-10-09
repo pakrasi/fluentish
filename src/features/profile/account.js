@@ -46,8 +46,8 @@ export function accountSection(ctx, account, ui) {
     } }, t('account.signOutAll')));
     sec.append(
       h('p', null, t('account.signedIn', { email: session?.email || '' })),
-      st === 'offline' ? notice({ kind: 'warning', children: [h('p', null, t('account.offline'))] }) : null,
-      h('div', { class: 'row-actions' }, out, all), status);
+      ...(st === 'offline' ? [notice({ kind: 'warning', children: [h('p', null, t('account.offline'))] })] : []),
+      h('div', { class: 'row-actions wrap' }, out, all), status);
     return sec;
   }
 
@@ -78,7 +78,7 @@ export function accountSection(ctx, account, ui) {
     } },
     h('p', null, t('account.codeSent', { email: account.pendingEmail() || '' })),
     codeField,
-    h('div', { class: 'row-actions' }, signIn, resend, other)), status);
+    h('div', { class: 'row-actions wrap' }, signIn, resend, other)), status);
     return sec;
   }
 
