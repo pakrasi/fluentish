@@ -338,10 +338,6 @@ input[type="date"].input { min-height: var(--tap); }
 .chip[aria-pressed="true"] .week-later { color: inherit; opacity: 0.8; }
 .chip.is-later:not([aria-pressed="true"]) { border-style: dashed; }
 .week-kind-line { margin: 0; color: var(--ink-2); }
-.week-sheet { gap: var(--s-3); }
-.week-sheet-head { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); }
-.week-sheet-title:focus { outline: none; }
-.week-sheet-x { flex: none; width: var(--tap); padding: 0; }
 .week-sheet-body { display: grid; gap: var(--s-2); }
 .week-sheet-body .field-label { margin: var(--s-2) 0 0; }
 .week-steps { display: flex; justify-content: space-between; gap: var(--s-3); padding-top: var(--s-2); border-top: 1px solid var(--hairline); }

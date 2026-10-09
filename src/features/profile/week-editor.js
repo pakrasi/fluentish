@@ -7,13 +7,14 @@
      - from 720 px no sheet: the strip's columns are the days (a tab list) and the selected day's editor sits under it.
    A change writes at once and moves that column of the strip (brand.js weekStripUpdate: height on spring-soft, the
    label crossing over). Keyboard: the rows (or the columns) are one tab stop, the arrow keys move between days
-   (roving tabindex), Home and End jump; Enter opens a day. The sheet is a modal <dialog>: Esc, the backdrop and × close
-   it and the focus returns to the day's row. Every write goes through the page's setDay (data/settings.js). */
+   (roving tabindex), Home and End jump; Enter opens a day. The sheet is ui/sheet.js: Esc, the backdrop, ×, the handle
+   and a drag down close it, so does leaving the page (signal), and the focus returns to the day's row. Every write
+   goes through the page's setDay (data/settings.js). */
 import { h, replace, announce } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
-import { reduced } from '../../core/motion.js';
 import { weekStrip, weekStripUpdate } from '../../core/brand.js';
 import { DAY_KINDS, LIVE_SLOTS, weekMinutes } from '../../domain/week.js';
+import { createSheet } from '../../ui/sheet.js';
 
 /** The minute choices (a day's own value is added when it is not one of them). */
 export const MINS = [0, 15, 20, 30, 45, 60, 90];
@@ -21,12 +22,14 @@ const WIDE = '(min-width: 720px)';
 
 /**
  * @param {{t: (k: string, v?: any) => string, days: string[], week: () => {min: number[], kind: string[]},
- *   setDay: (i: number, change: {min?: number, kind?: string}) => void, fmt: (n: number) => string, onDone: () => void}} o
+ *   setDay: (i: number, change: {min?: number, kind?: string}) => void, fmt: (n: number) => string, onDone: () => void,
+ *   signal?: AbortSignal}} o
  *   days: the weekday names, Monday first; week(): the week as stored now; setDay writes one day; onDone: the editor's
- *   changes are settled (the sheet closed, or a change on a wide screen), so the page may refresh what depends on them
+ *   changes are settled (the sheet closed, or a change on a wide screen), so the page may refresh what depends on them;
+ *   signal: the view's ctx.signal (an open day sheet closes when the page is left)
  * @returns {{el: HTMLElement, stop: () => void}}
  */
-export function weekEditor({ t, days, week, setDay, fmt, onDone }) {
+export function weekEditor({ t, days, week, setDay, fmt, onDone, signal }) {
   const mq = matchMedia(WIDE);
   const later = (/** @type {string} */ k) => (k === 'read' || k === 'write' || k === 'talk') && !(/** @type {readonly string[]} */ (LIVE_SLOTS)).includes(k);
   const kindOf = (/** @type {{min: number[], kind: string[]}} */ w, /** @type {number} */ i) => (w.kind[i] === 'off' || !w.min[i] ? 'off' : w.kind[i]);
@@ -116,16 +119,11 @@ export function weekEditor({ t, days, week, setDay, fmt, onDone }) {
 
   /** The day's sheet (phone). @param {number} i0 */
   function openSheet(i0) {
-    let i = i0, closing = false;
-    const opener = rows[i0];
-    const title = h('h2', { class: 'rs-title week-sheet-title', id: 'wk-sheet-t', tabindex: '-1' });
+    let i = i0;
+    const title = h('h2', { class: 'week-sheet-title' });
     const content = h('div', { class: 'week-sheet-body' });
     const prev = h('button', { type: 'button', class: 'btn btn-quiet pressable week-step', onclick: () => step(-1) });
     const next = h('button', { type: 'button', class: 'btn btn-quiet pressable week-step', onclick: () => step(1) });
-    const x = h('button', { type: 'button', class: 'btn btn-quiet pressable week-sheet-x', 'aria-label': t('read.close'), onclick: () => close() }, icon('close', { size: 18 }));
-    const panelEl = h('div', { class: 'rs-panel week-sheet' }, h('div', { class: 'rs-grab', 'aria-hidden': 'true' }),
-      h('div', { class: 'week-sheet-head' }, title, x), content, h('div', { class: 'week-steps' }, prev, next));
-    const dlg = /** @type {HTMLDialogElement} */ (h('dialog', { class: 'rs-sheet', 'aria-labelledby': 'wk-sheet-t' }, panelEl));
     function fill() {
       title.textContent = days[i];
       replace(content, ...dayControls(i, () => fill()).filter(Boolean));
@@ -138,19 +136,10 @@ export function weekEditor({ t, days, week, setDay, fmt, onDone }) {
       fill();
       announce(`${days[i]}: ${dayText(week(), i)}`);
     }
-    function close() {
-      if (closing) return;
-      closing = true;
-      dlg.classList.add('is-out');
-      const done = () => { dlg.close(); dlg.remove(); (rows[i] || opener)?.focus({ preventScroll: true }); onDone(); };
-      setTimeout(done, reduced() ? 0 : 160);
-    }
-    dlg.addEventListener('cancel', e => { e.preventDefault(); close(); });
-    dlg.addEventListener('click', e => { if (e.target === dlg) close(); });
     fill();
-    document.body.append(dlg);
-    dlg.showModal();
-    title.focus({ preventScroll: true });
+    createSheet({ title, className: 'week-sheet', closeButton: true, labels: { close: t('read.close') }, signal,
+      body: content, actions: h('div', { class: 'week-steps' }, prev, next),
+      opener: () => rows[i] || rows[i0], onClose: reason => { if (reason !== 'route') onDone(); } });
   }
 
   /* ---------- from 720 px: the strip's columns are the days, the editor under it ---------- */

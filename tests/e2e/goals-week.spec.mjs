@@ -60,7 +60,7 @@ test('a week set on Goals and week: Today names the kind of day and draws the we
   await expect(page.getByText('Read days are coming later. Until then this is a normal day.')).toHaveCount(0);
   await expect(page.locator('button[name="week:1:kind:read"]')).not.toHaveClass(/is-later/);
   await checkA11y(page, phone ? 'Goals and week, day sheet' : 'Goals and week');
-  if (phone) { await page.keyboard.press('Escape'); await expect(page.locator('dialog.rs-sheet')).toHaveCount(0); await checkA11y(page, 'Goals and week'); }
+  if (phone) { await page.keyboard.press('Escape'); await expect(page.locator('dialog.ui-sheet')).toHaveCount(0); await checkA11y(page, 'Goals and week'); }
   // every day light: on a phone in one sheet, stepping from day to day
   if (phone) await openDay(0);
   for (let i = 0; i < 7; i++) {
@@ -69,7 +69,7 @@ test('a week set on Goals and week: Today names the kind of day and draws the we
     await page.locator(`button[name="week:${i}:kind:light"]`).click();
     if (phone && i < 6) await page.getByRole('button', { name: `Go to ${['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'][i + 1]}` }).click();
   }
-  if (phone) await page.keyboard.press('Escape');
+  if (phone) { await page.keyboard.press('Escape'); await expect(page.locator('dialog.ui-sheet')).toHaveCount(0); }
   // the rows (or the columns) are one tab stop; the arrow keys move between days
   if (phone) {
     await page.locator('button[name="week:day:0"]').focus();
