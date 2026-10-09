@@ -324,7 +324,7 @@ export function goalsPage(ctx, { exams, languages }) {
     };
     // the goals above show the week's total: refresh them when the editor's changes settle
     const refreshGoals = () => { const old = page.querySelector('#profile-goal'); if (old) old.replaceWith(goals(ctx.settings())); };
-    editor = weekEditor({ t, days: DAYS, week: () => /** @type {any} */ (courseWeek(ctx.settings())) || week, setDay, fmt: n => fmtMin(t, n), onDone: refreshGoals });
+    editor = weekEditor({ t, days: DAYS, week: () => /** @type {any} */ (courseWeek(ctx.settings())) || week, setDay, fmt: n => fmtMin(t, n), onDone: refreshGoals, signal: ctx.signal });
     sec.append(...[
       inWindow ? h('p', { class: 'caption' }, t('week.examNote')) : null,
       editor.el,
