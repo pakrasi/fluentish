@@ -26,7 +26,7 @@ import { activePack } from '../lang/registry.js';
 /**
  * @typedef {object} AnswerDiffOpts
  * @property {AnswerDiffKind} kind
- * @property {string} right        the right answer (right-slip: unused, the line is built from typed and slips)
+ * @property {string} [right]      the right answer (right-slip: unused, the line is built from typed and slips)
  * @property {string} [typed]      his answer; for right-slip the grader's input (the slips' offsets point into it)
  * @property {Slip[]} [slips]      right-slip: the grader's typos, capMiss and umlautMiss, each {start, end, expected}
  * @property {{ typed: string }[]} [capMiss]   wrong/study: words the grader found in the wrong case (marked as fixes)
@@ -65,14 +65,14 @@ const START = 120, STAGGER = 28, MAX_STAGGER = 8, NUDGE_AT = 200;
 
 /** The diff for these options. @param {AnswerDiffOpts} o @returns {AnswerDiff} */
 function diffOf(o) {
-  const typed = o.typed || '';
+  const typed = o.typed || '', rightText = o.right || '';
   if (o.kind === 'right-slip') {
     const segs = slipSegs(typed, o.slips || []);
     return { typed: segs, right: [], mode: segs.some(s => s.k !== 'eq') ? 'letters' : 'words', stats: { near: 0, missing: 0, extra: 0, words: 0 } };
   }
-  if (o.kind === 'partial') return rangeDiff(typed, o.right, o.ranges?.typed || [], o.ranges?.right || []);
+  if (o.kind === 'partial') return rangeDiff(typed, rightText, o.ranges?.typed || [], o.ranges?.right || []);
   if (o.marked) {   // a situation: the phrase's words marked in the answer, his sentence plain
-    const want = new Set(o.marked), r = String(o.right);
+    const want = new Set(o.marked), r = rightText;
     /** @type {Seg[]} */ const right = [];
     let p = 0;
     activePack().text.tokenize(r).forEach((tok, word) => {
@@ -83,7 +83,7 @@ function diffOf(o) {
     if (p < r.length) right.push({ text: r.slice(p), k: 'eq' });
     return { typed: typed ? [{ text: typed, k: 'eq' }] : [], right, mode: 'words', stats: { near: 0, missing: want.size, extra: 0, words: right.filter(x => x.word != null).length } };
   }
-  const d = answerDiff(typed, o.right, { capMiss: o.capMiss });
+  const d = answerDiff(typed, rightText, { capMiss: o.capMiss });
   return o.plainYou ? { ...d, typed: typed ? [{ text: typed, k: 'eq' }] : [] } : d;
 }
 
@@ -194,7 +194,7 @@ export function createAnswerDiff(opts) {
    * @param {string} attempt
    */
   function locus(attempt) {
-    const j = firstDiffWord(attempt, o.kind === 'right-slip' ? spoken(diff.typed) : o.right);
+    const j = firstDiffWord(attempt, o.kind === 'right-slip' ? spoken(diff.typed) : o.right || '');
     const line = el.querySelector(o.kind === 'right-slip' ? '.ui-ad-you' : '.ui-ad-right');
     const w = j < 0 ? null : /** @type {HTMLElement | null} */ (line?.querySelector(`.ui-ad-w[data-w="${j}"]`) || null);
     return w ? pulse(w, 'locus', { signal: o.signal }) : Promise.resolve();
