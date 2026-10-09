@@ -2902,4 +2902,36 @@ export default {
   'pg.log.none': 'No study.',
   'pg.log.more': { one: 'Show {n} more week', other: 'Show {n} more weeks' },
   // ---- end of Progress ----
+  // ---- R8 S1 ----
+  // ---- end of R8 S1 ----
+  // ---- R8 S2 ----
+  // ---- end of R8 S2 ----
+  // ---- R8 ACC0 ----
+  // ---- end of R8 ACC0 ----
+  // ---- R8 A1 ----
+  // ---- end of R8 A1 ----
+  // ---- R8 F1 ----
+  // ---- end of R8 F1 ----
+  // ---- R8 U1 ----
+  // ---- end of R8 U1 ----
+  // ---- R8 U2 ----
+  // ---- end of R8 U2 ----
+  // ---- R8 M1 ----
+  // ---- end of R8 M1 ----
+  // ---- R8 M2 ----
+  // ---- end of R8 M2 ----
+  // ---- R8 M3 ----
+  // ---- end of R8 M3 ----
+  // ---- R8 U3 ----
+  // ---- end of R8 U3 ----
+  // ---- R8 C1 ----
+  // ---- end of R8 C1 ----
+  // ---- R8 C2 ----
+  // ---- end of R8 C2 ----
+  // ---- R8 C3 ----
+  // ---- end of R8 C3 ----
+  // ---- R8 C4 ----
+  // ---- end of R8 C4 ----
+  // ---- R8 C5 ----
+  // ---- end of R8 C5 ----
 };
