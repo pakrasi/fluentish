@@ -319,7 +319,10 @@ async function rebuild(ctx, envOf, { events, snapshots, days, resume = {}, onDay
 /**
  * Missed days: study days of the last CATCH_UP_DAYS before today with no record, or one written before the day ended.
  * The days are worked out first, from the cards, the activity and the log; with none missing (most opens) it returns
- * before reading the event archive or any content (lane P2).
+ * before reading the event archive or any content (lane P2). With a day missing it reads the whole archive, not only
+ * the window: the walk replays every earlier event, and a card answered before the window and again after the day is
+ * known on that day only through its old events (a time slice would turn exact days into estimates; see
+ * tests/unit/progress-io-equivalence.test.mjs).
  * @param {Ctx} ctx @returns {Promise<number>} records written
  */
 export async function catchUp(ctx) {
