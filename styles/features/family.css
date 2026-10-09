@@ -66,7 +66,7 @@
 .fv-kid.is-unseen { stroke-dasharray: 1.5 2; }
 .fv-node { position: absolute; transform: translate(-50%, -50%); min-width: 40px; height: 26px; padding: 0 5px; border: 0; border-radius: var(--r-tile); background: var(--surface);
   box-shadow: inset 0 0 0 1.5px var(--x-box); color: var(--ink); font: 400 15px/1 var(--font-display); cursor: pointer; display: grid; place-items: center; }
-.fv-node::before { content: ""; position: absolute; inset: -9px -2px; }   /* a 44 px tap target */
+.fv-node::before { content: ""; position: absolute; inset: -9px -4px; }   /* a 44 px tap target */
 .fv-node.is-known { background: var(--ink); color: var(--on-ink); box-shadow: none; }
 .fv-node.is-shaky { background: var(--ink-3); color: var(--on-ink); box-shadow: none; }
 .fv-node.is-unseen { box-shadow: none; outline: 1.5px dotted var(--x-box); outline-offset: -1.5px; font-style: italic; color: var(--x-new); }
@@ -244,8 +244,9 @@
 .pz-shown { display: block; width: 100%; text-align: center; margin-top: 6px; }
 .pz-weld { position: absolute; bottom: 2px; inset-inline-start: 50%; width: 46%; margin-inline-start: -23%; height: 2px; border-radius: 1px; background: var(--ink); transform-origin: left; }
 
-.pz-msg { margin: 8px 6px 0; font: 400 14px/1.4 var(--font-ui); color: var(--ink-2); text-align: center; text-wrap: balance; }
+.pz-msg { margin: 8px 6px 0; min-height: 2.8em; font: 400 14px/1.4 var(--font-ui); color: var(--ink-2); text-align: center; text-wrap: balance; }
 .pz-de, .pz-ex { font: 400 16px/1.4 var(--font-display); color: var(--ink); }
+.pz-msg .pz-de { line-height: 1; }   /* the German word in a message keeps the line's height: two lines fit the reserve */
 .pz-ex u { text-decoration-color: var(--accent); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
 
 /* the hive: the root in the middle, the prefixes round it */
@@ -255,6 +256,10 @@
 .hx { position: absolute; transform: translate(-50%, -50%); min-width: 52px; padding: 0 8px; height: 40px; border: 1px solid var(--hairline-strong); border-radius: var(--r-tile); background: var(--surface); color: var(--ink);
   font: 500 18px/1 var(--font-display); cursor: pointer; display: grid; place-items: center; }
 .hx::before { content: ""; position: absolute; inset: -3px -1px; }
+/* press: the ring's tiles keep their centring translate under the press scale, the rows' and the endings' tiles
+   (transform: none) get it at all; .pressable:active alone dropped the one and lost to the other */
+.pz-hive:not(.is-rows) .hx.pressable:active { transform: translate(-50%, -50%) scale(calc(1 - 0.03 * var(--move))); }
+.pz-hive.is-rows .hx.pressable:active, .pz-ends .hx.pressable:active { transform: scale(calc(1 - 0.03 * var(--move))); }
 .hx[aria-pressed="true"] { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
 .hx:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .hx.is-centre { inset-inline-start: 50%; top: 50%; width: 88px; height: 56px; background: var(--ink); color: var(--on-ink); border-color: var(--ink); font-size: 23px; cursor: default; align-content: center; gap: 2px; }
@@ -296,7 +301,8 @@
 .pz-grade { display: inline-flex; align-items: center; gap: 6px; color: var(--ink-3); }
 .pz-learn-ex .pz-ex { font-size: 17px; }
 .pz-exen { margin-top: -6px; font: 400 13px/1.35 var(--font-ui); color: var(--ink-3); }
-.pz-msg:empty { margin: 0; }   /* kept in the tree: a live region must exist before it speaks */
+/* the status line keeps its two lines when quiet, so a message never moves the tiles under his thumb (it is kept in
+   the tree anyway: a live region must exist before it speaks); typing hides it while it is empty */
 .pz-acts.is-next { grid-template-columns: 1fr; }
 .pz-acts.is-next > .btn:not(.pz-check) { display: none; }
 
