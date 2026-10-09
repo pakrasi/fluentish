@@ -39,7 +39,7 @@
    duration), closes in --ui-sheet-ms (160 ms ease-in; a flick sets its own time on ease-out). Reduced motion
    (.is-rm): a 140 ms fade, and a drag's release snaps. */
 .ui-sheet { position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0;
-  background: transparent; color: var(--ink); overflow: hidden; overscroll-behavior: contain; }
+  background: transparent; color: var(--ink); overflow: hidden; overflow: clip; overscroll-behavior: contain; }
 .ui-sheet::backdrop { background: transparent; }
 .ui-sheet-scrim { position: absolute; inset: 0; background: rgb(12 14 20 / 0.36); opacity: var(--ui-sheet-o, 1);
   transition: opacity var(--dur-base) var(--ease-out); -webkit-tap-highlight-color: transparent; }
@@ -47,8 +47,8 @@
   padding-bottom: calc(var(--s-3) + env(safe-area-inset-bottom)); border-radius: var(--r-card) var(--r-card) 0 0;
   background: var(--surface); box-shadow: var(--shadow-sheet); transform: translate3d(0, var(--ui-sheet-y, 0px), 0);
   transition: transform var(--dur-card) var(--spring-snappy), opacity var(--dur-card) var(--ease-out); }
-/* the panel's colour continues under its bottom edge, so the rubber band never shows a gap */
-.ui-sheet-panel::after { content: ""; position: absolute; inset: 100% 0 auto 0; height: 50vh; background: var(--surface); pointer-events: none; }
+/* the panel's colour continues under its bottom edge (a shadow: no scrollable overflow), so the rubber band shows no gap */
+.ui-sheet:not(.is-modeless) .ui-sheet-panel { box-shadow: var(--shadow-sheet), 0 120px 0 60px var(--surface); }
 .ui-sheet.is-detents .ui-sheet-panel { height: min(92dvh, 640px); }
 .ui-sheet:not(.is-shown) .ui-sheet-panel { transform: translate3d(0, 100%, 0); }
 .ui-sheet:not(.is-shown) .ui-sheet-scrim { opacity: 0; }
@@ -83,9 +83,8 @@
 .ui-sheet.is-modeless { pointer-events: none; z-index: 40; }
 .ui-sheet.is-modeless .ui-sheet-panel { pointer-events: auto; }
 @media (min-width: 720px) {
-  .ui-sheet-panel, .ui-sheet.is-detents .ui-sheet-panel { inset: 0; margin: auto; width: min(440px, calc(100% - 32px)); height: fit-content; padding: var(--s-4) 0 var(--s-5);
+  .ui-sheet-panel, .ui-sheet.is-detents .ui-sheet-panel, .ui-sheet:not(.is-modeless) .ui-sheet-panel { inset: 0; margin: auto; width: min(440px, calc(100% - 32px)); height: fit-content; padding: var(--s-4) 0 var(--s-5);
     border-radius: var(--r-card); box-shadow: var(--shadow-lift), 0 0 0 1px var(--hairline); }
-  .ui-sheet-panel::after { content: none; }
   .ui-sheet-grab { display: none; }
   .ui-sheet-head, .ui-sheet-body, .ui-sheet-actions { padding-inline: var(--s-5); }
   .ui-sheet.is-side .ui-sheet-panel { inset: var(--s-4) var(--s-4) auto auto; margin: 0; width: min(380px, calc(100% - 32px)); }

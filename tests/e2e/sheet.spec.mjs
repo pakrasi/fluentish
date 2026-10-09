@@ -101,6 +101,12 @@ test('the size picker opens as a sheet; Esc closes it and the focus goes back to
   const { link, sheet } = await openPicker(page);
   await expect(sheet.getByRole('heading', { level: 2 })).toBeVisible();
   await expect(sheet.locator('.rs-start')).toBeFocused();
+  // on the bottom edge (phone) or in the middle (desktop), never scrolled inside its dialog
+  await settled(page);
+  const box = await where(page), vh = page.viewportSize()?.height || 0;
+  if ((page.viewportSize()?.width || 0) < 720) expect(Math.abs(box.bottom - vh)).toBeLessThan(2);
+  else expect(Math.abs(box.bottom - box.h / 2 - vh / 2)).toBeLessThan(2);
+  expect(await sheet.evaluate(d => d.scrollTop)).toBe(0);
   await page.keyboard.press('Escape');
   await expect(sheet).toHaveCount(0);
   await expect(link).toBeFocused();
