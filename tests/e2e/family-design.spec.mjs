@@ -19,6 +19,13 @@ const overlaps = (page, sel) => page.evaluate(sel => {
   return hits;
 }, sel);
 
+/** The targets of these elements a tap 22 px above or below the centre misses (a 44 px tall hit box; the box may be
+ * drawn smaller and grown with a ::before, as .hx and .fv-node do). @param {import('@playwright/test').Page} page @param {string} sel */
+const shortTargets = (page, sel) => page.evaluate(sel => [...document.querySelectorAll(sel)].filter(e => {
+  const r = e.getBoundingClientRect(), x = r.left + r.width / 2, y = r.top + r.height / 2;
+  return r.width && [y - 21.5, y + 21.5].some(yy => document.elementFromPoint(x, yy)?.closest(sel) !== e);
+}).map(e => e.textContent), sel);
+
 /** WCAG 2.5.3 (axe's label-content-name-mismatch is experimental, so it is asked for by name). @param {import('@playwright/test').Page} page @param {string} [only] a selector to check alone */
 async function labelInName(page, only = '') {
   await settle(page);   // a half-faded frame is not what is measured
@@ -55,6 +62,7 @@ for (const [level, size] of /** @type {const} */ ([['A2', PHONE], ['B1', PHONE],
       expect(await page.evaluate(() => document.documentElement.scrollWidth - innerWidth)).toBe(0);
       await expect(page.locator('.pz-hive .hx.is-centre')).toBeVisible();
       expect(await overlaps(page, '.pz-hive .hx, .pz-ends .hx')).toEqual([]);
+      expect(await shortTargets(page, '.pz-hive .hx.pressable, .pz-ends .hx'), 'tiles: 44 px tall targets').toEqual([]);
       await page.locator('.pz-meaning').click();
       await page.keyboard.press('ArrowDown');
     }
@@ -76,6 +84,9 @@ test('the ring never overlaps: every root at 360 px, the rest of a dense family 
     // the squares are placed again from the tiles' measured size in the frame after the ring is drawn
     await page.evaluate(() => new Promise(res => requestAnimationFrame(() => requestAnimationFrame(res))));
     expect(await overlaps(page, '.fv-node, .fv-node-root, .fv-kid, .fv-node .fv-gr'), r).toEqual([]);
+    // ring nodes are about 40 px apart, so neighbouring hit areas may overlap: measure the ::before hit box itself
+    const short = await page.evaluate(() => [...document.querySelectorAll('.fv-node')].filter(e => { const b = getComputedStyle(e, '::before'); return e.getBoundingClientRect().height - parseFloat(b.top) - parseFloat(b.bottom) < 44; }).map(e => e.textContent));
+    expect(short, `${r}: 44 px tall targets`).toEqual([]);
     const outside = await page.evaluate(() => { const c = /** @type {Element} */ (document.querySelector('.fv-ring-card')).getBoundingClientRect(); return [...document.querySelectorAll('.fv-node, .fv-kid')].filter(e => { const b = e.getBoundingClientRect(); return b.left < c.left || b.right > c.right || b.top < c.top || b.bottom > c.bottom; }).length; });
     expect(outside, r).toBe(0);
     expect(await page.locator('.fv-node').count(), r).toBeLessThanOrEqual(12);
@@ -198,3 +209,30 @@ test('the family view: a few tab stops to the first word, a skip link, the tree 
   await expect(page.getByRole('link', { name: /^Family: stellen/ })).toBeVisible();
   expect(await labelInName(page, '.fam-link')).toEqual([]);   // the word page's other names are Look up's
 });
+
+// Round 8: a tile pressed shrinks in place. The ring's tiles keep their centring translate under the press scale (a
+// bare .pressable:active dropped it, so the tile jumped by half its size), the rows' tiles get the scale at all.
+for (const [level, layout] of /** @type {const} */ ([['A2', 'ring'], ['B1', 'rows']])) {
+  test(`a hive tile pressed shrinks in place (${layout})`, async ({ page, isMobile }) => {
+    test.skip(!!isMobile, 'a mouse press holds :active');
+    await seed(page, { examInDays: null, veteran: true, level, motion: 'full' });
+    await open(page, '#/practice/build/today');
+    await expect.poll(() => page.evaluate(() => !!(/** @type {any} */ (window).__family))).toBe(true);
+    await expect(page.locator('.pz-hive')).toHaveClass(layout === 'rows' ? /is-rows/ : /^(?!.*is-rows)/);
+    await settle(page);
+    for (const sel of ['.pz-hive .hx.pressable', '.pz-ends .hx']) {
+      const tile = page.locator(sel).first();
+      const rest = /** @type {{x: number, y: number, width: number, height: number}} */ (await tile.boundingBox());
+      await page.mouse.move(rest.x + rest.width / 2, rest.y + rest.height / 2);
+      await page.mouse.down();
+      await page.waitForTimeout(150);
+      const held = /** @type {{x: number, y: number, width: number, height: number}} */ (await tile.boundingBox());
+      await page.mouse.move(0, 0);
+      await page.mouse.up();
+      expect(Math.abs(held.x + held.width / 2 - (rest.x + rest.width / 2)), `${sel}: centre stays`).toBeLessThan(1);
+      expect(Math.abs(held.y + held.height / 2 - (rest.y + rest.height / 2)), `${sel}: centre stays`).toBeLessThan(1);
+      expect(held.width / rest.width, `${sel}: pressed`).toBeCloseTo(0.97, 2);
+    }
+  });
+}
+

@@ -66,7 +66,7 @@
 .fv-kid.is-unseen { stroke-dasharray: 1.5 2; }
 .fv-node { position: absolute; transform: translate(-50%, -50%); min-width: 40px; height: 26px; padding: 0 5px; border: 0; border-radius: var(--r-tile); background: var(--surface);
   box-shadow: inset 0 0 0 1.5px var(--x-box); color: var(--ink); font: 400 15px/1 var(--font-display); cursor: pointer; display: grid; place-items: center; }
-.fv-node::before { content: ""; position: absolute; inset: -9px -2px; }   /* a 44 px tap target */
+.fv-node::before { content: ""; position: absolute; inset: -9px -4px; }   /* a 44 px tap target */
 .fv-node.is-known { background: var(--ink); color: var(--on-ink); box-shadow: none; }
 .fv-node.is-shaky { background: var(--ink-3); color: var(--on-ink); box-shadow: none; }
 .fv-node.is-unseen { box-shadow: none; outline: 1.5px dotted var(--x-box); outline-offset: -1.5px; font-style: italic; color: var(--x-new); }
@@ -255,6 +255,10 @@
 .hx { position: absolute; transform: translate(-50%, -50%); min-width: 52px; padding: 0 8px; height: 40px; border: 1px solid var(--hairline-strong); border-radius: var(--r-tile); background: var(--surface); color: var(--ink);
   font: 500 18px/1 var(--font-display); cursor: pointer; display: grid; place-items: center; }
 .hx::before { content: ""; position: absolute; inset: -3px -1px; }
+/* press: the ring's tiles keep their centring translate under the press scale, the rows' and the endings' tiles
+   (transform: none) get it at all; .pressable:active alone dropped the one and lost to the other */
+.pz-hive:not(.is-rows) .hx.pressable:active { transform: translate(-50%, -50%) scale(calc(1 - 0.03 * var(--move))); }
+.pz-hive.is-rows .hx.pressable:active, .pz-ends .hx.pressable:active { transform: scale(calc(1 - 0.03 * var(--move))); }
 .hx[aria-pressed="true"] { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
 .hx:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .hx.is-centre { inset-inline-start: 50%; top: 50%; width: 88px; height: 56px; background: var(--ink); color: var(--on-ink); border-color: var(--ink); font-size: 23px; cursor: default; align-content: center; gap: 2px; }
