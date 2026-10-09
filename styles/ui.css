@@ -63,7 +63,36 @@
 /* ---- end ui/sheet ---- */
 
 /* ---- ui/toast ---- */
+/* The pill keeps the shell's .toast look and place (components.css; app.css lifts it over the dock and wraps long
+   text). Here: drags belong to the pill (swipe-away), and with the keyboard up (is-kb, set from body.kb) it sits at
+   the top of the visible screen, under its pan (--vv-top), clear of the field and the keyboard's action row. */
+.ui-toast { touch-action: none; user-select: none; -webkit-user-select: none; cursor: default; }
+:root .ui-toast.is-kb { top: calc(var(--vv-top, 0px) + var(--s-3) + env(safe-area-inset-top)); bottom: auto; }
 /* ---- end ui/toast ---- */
 
 /* ---- ui/skeleton ---- */
+/* Blocks that hold the final layout while content loads (design C §8). Hidden for the first --ui-skel-wait (150 ms)
+   so a fast load shows nothing, then still blocks; from 400 ms one band sweeps each block (1400 ms, linear), the one
+   loop allowed, and only while loading. Reduced motion: still blocks, no sweep. aria-hidden: the caller keeps its
+   "Loading" status text and sets aria-busy on the region. */
+.ui-skel { display: grid; gap: var(--s-4); padding-block: var(--s-4); animation: ui-skel-in var(--dur-quick) var(--ease-out) var(--ui-skel-wait, 150ms) both; }
+@keyframes ui-skel-in { from { opacity: 0; } to { opacity: 1; } }
+.ui-skel-row { display: grid; gap: var(--s-2); }
+.ui-skel-block { position: relative; overflow: hidden; background: var(--surface-2); border-radius: 4px; }
+.ui-skel-line { height: 12px; border-radius: 4px; }
+.ui-skel-line.is-title { height: 18px; }
+.ui-skel-card { height: 132px; border-radius: 20px; }
+.ui-skel-chart { height: 180px; border-radius: 12px; }
+.ui-skel-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: var(--s-2); }
+.ui-skel-tile { aspect-ratio: 1; border-radius: 6px; }
+.ui-skel-block::after {
+  content: ""; position: absolute; inset: 0; transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent calc(50% - 60px), color-mix(in oklab, var(--surface-2), var(--surface) 60%) 50%, transparent calc(50% + 60px));
+  animation: ui-skel-sweep 1400ms linear 400ms infinite;
+}
+.ui-skel-block:dir(rtl)::after { animation-direction: reverse; }
+@keyframes ui-skel-sweep { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
+@media (prefers-reduced-motion: reduce) { :root:not([data-motion="full"]) .ui-skel-block::after { display: none; animation: none; } }
+:root[data-motion="reduce"] .ui-skel-block::after { display: none; animation: none; }
+@media (forced-colors: active) { .ui-skel-block { background: GrayText; } .ui-skel-block::after { display: none; } }
 /* ---- end ui/skeleton ---- */

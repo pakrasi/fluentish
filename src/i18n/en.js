@@ -2971,5 +2971,6 @@ export default {
   // ---- R8 C4 ----
   // ---- end of R8 C4 ----
   // ---- R8 C5 ----
+  'read.lib.loading': 'Loading the texts…',
   // ---- end of R8 C5 ----
 };
