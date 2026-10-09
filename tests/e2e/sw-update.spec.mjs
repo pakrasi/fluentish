@@ -26,9 +26,9 @@ const TYPES = /** @type {Record<string, string>} */ ({ '.html': 'text/html; char
   '.json': 'application/json; charset=utf-8', '.svg': 'image/svg+xml', '.png': 'image/png', '.woff2': 'font/woff2' });
 
 /**
- * @typedef {{sha: string, shell?: string, broken?: boolean, off?: 'page+worker' | 'worker'}} Deploy
- *   shell: the sha index.html names (default sha); broken: main.js throws; off: the kill switch (version.json and sw.js,
- *   or only sw.js)
+ * @typedef {{sha: string, shell?: string, broken?: boolean, now?: boolean, off?: 'page+worker' | 'worker'}} Deploy
+ *   shell: the sha index.html names (default sha); broken: main.js throws; now: stamped sw=now (takes over once
+ *   installed); off: the kill switch (version.json and sw.js, or only sw.js)
  */
 
 /** A Pages-like server for the stamped site, as the deploy `d` (switchable), each answer `delay` ms late. */
@@ -41,7 +41,11 @@ async function deployServer() {
     if (rel.startsWith('schemas/records/')) return { type: TYPES['.json'], body: await readFile(path.join(REPO, rel)) };   // as tests/e2e/server.mjs
     if (rel === '' || rel === 'index.html') return { type: TYPES['.html'], body: as(await readFile(path.join(SITE, 'index.html'), 'utf8'), d.shell || d.sha) };
     if (rel === '404.html') return { type: TYPES['.html'], body: as(await readFile(path.join(SITE, '404.html'), 'utf8'), d.sha) };
-    if (rel === 'sw.js') return { type: TYPES['.js'], body: d.off ? killSw() : as(await readFile(path.join(SITE, 'sw.js'), 'utf8'), d.sha) };
+    if (rel === 'sw.js') {
+      const js = as(await readFile(path.join(SITE, 'sw.js'), 'utf8'), d.sha);
+      if (d.now && !js.includes("const TAKEOVER = 'today'; // stamp:takeover")) throw new Error('sw.js: no takeover line');
+      return { type: TYPES['.js'], body: d.off ? killSw() : d.now ? js.replace("const TAKEOVER = 'today';", "const TAKEOVER = 'now';") : js };
+    }
     if (rel === 'version.json') {
       const v = JSON.parse(await readFile(path.join(SITE, 'version.json'), 'utf8'));
       return { type: TYPES['.json'], body: JSON.stringify({ ...v, sha: d.sha, sw: d.off === 'page+worker' ? 'off' : 'on' }) };
@@ -229,4 +233,33 @@ test('kill switch: after a deploy that breaks the page, a deploy with sw=off rem
   const broken = consoleErrors.filter(e => /e2e: a broken deploy/.test(e));
   expect(broken.length).toBeGreaterThan(0);
   for (const e of broken) consoleErrors.splice(consoleErrors.indexOf(e), 1);
+});
+
+test('sw=now: after a deploy that breaks the page, a fix stamped sw=now takes over without the page and keeps the worker', async ({ page, consoleErrors }) => {
+  const srv = await deployServer();
+  try {
+    await install(page, srv.origin);
+    srv.deploy({ sha: B, broken: true });
+    await page.reload();
+    await expect.poll(() => pageSha(page), { timeout: 60_000 }).toBe(B);
+    await expect(page.locator('html.booted')).toHaveCount(0);
+    // the fix, stamped sw=now: the browser's own check installs it, and it takes over at once (no Today needed)
+    srv.deploy({ sha: C, now: true });
+    await page.reload();
+    await expect.poll(() => page.evaluate(async () => {
+      const reg = await navigator.serviceWorker.getRegistration();
+      return !reg?.waiting && !reg?.installing && (await caches.keys()).filter(k => k.startsWith('fluentish-')).join(',');
+    }), { timeout: 60_000 }).toBe(`fluentish-${C.slice(0, 12)}`);
+    // the next launch runs the fix, from its worker (offline too)
+    await srv.stop();
+    await page.reload();
+    await expect(page.locator('html.booted')).toHaveCount(1);
+    expect(await pageSha(page)).toBe(C);
+    expect(await page.evaluate(() => !!navigator.serviceWorker.controller)).toBe(true);
+  } finally {
+    await srv.stop();
+  }
+  const broken = consoleErrors.filter(e => /e2e: a broken deploy/.test(e));
+  for (const e of broken) consoleErrors.splice(consoleErrors.indexOf(e), 1);
+  dropNetworkErrors(consoleErrors);
 });

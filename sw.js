@@ -234,7 +234,7 @@ async function font(e) {
     return r;
   });
   if (!hit) return net;
-  e.waitUntil(net.catch(() => {}));
+  try { e.waitUntil(net.catch(() => {})); } catch { /* the refresh still runs while the worker is awake */ }
   return hit;
 }
 
