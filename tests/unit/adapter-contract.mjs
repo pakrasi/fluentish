@@ -171,6 +171,35 @@ export function adapterContract({ label, create }) {
     assert.deepEqual((await ad.loadArchive(A)).find((/** @type {any} */ e) => e.id === event(A, 2).id), event(A, 2), 'the archived copy is the whole event');
   });
 
+  T('bulk reads (lane P2): hundreds of records each come back under their own key, none lost, none from a neighbour', async () => {
+    const { ad } = await fresh();
+    await fill(ad);
+    // written in a shuffled order, with ids whose key order differs from the write order; each value names its key
+    const n = 240, order = Array.from({ length: n }, (_, i) => (i * 97) % n);
+    const decks = ['de-b1', 'de-b1:read', 'fr:a1'];
+    for (const p of [A, B]) {
+      for (const i of order) await ad.putKV(p, `bulk.${String(i).padStart(3, '0')}`, { p, i });
+      for (const d of decks) await ad.putCards(p, d, order.map(i => [`W:w${i}`, { ...card(i), p, d, i }]));
+      await ad.putEvents(p, order.map(i => event(p, 1000 + i, { p, i })));
+      await ad.archiveEvents(p, order.filter(i => i % 3 === 0).map(i => event(p, 1000 + i, { p, i })));
+    }
+    for (const p of [A, B]) {
+      const kv = await ad.loadScope(p);
+      for (let i = 0; i < n; i++) assert.deepEqual(kv[`bulk.${String(i).padStart(3, '0')}`], { p, i });
+      assert.equal(Object.keys(kv).length, n + 2, 'the bulk keys and fill()\'s two');
+      const prof = await ad.loadProfile(p);
+      for (const d of decks) {
+        const recs = prof.cards[d];
+        assert.equal(Object.keys(recs).filter(k => k.startsWith('W:w')).length, n, `${d}: every card`);
+        for (let i = 0; i < n; i++) assert.deepEqual([recs[`W:w${i}`].p, recs[`W:w${i}`].d, recs[`W:w${i}`].i], [p, d, i], `${d} W:w${i}`);
+      }
+      const out = prof.outbox.filter((/** @type {any} */ e) => e.seq >= 1000), arch = (await ad.loadArchive(p)).filter((/** @type {any} */ e) => e.seq >= 1000);
+      assert.deepEqual(out.map((/** @type {any} */ e) => e.i).sort((x, y) => x - y), order.filter(i => i % 3).sort((x, y) => x - y));
+      assert.deepEqual(arch.map((/** @type {any} */ e) => e.i).sort((x, y) => x - y), order.filter(i => i % 3 === 0).sort((x, y) => x - y));
+      for (const e of [...out, ...arch]) assert.equal(e.id, event(p, 1000 + e.i).id, 'each event is the one its key names');
+    }
+  });
+
   T('archiveEvents that fails part-way leaves every event in exactly one place (outbox or archive), never neither', async () => {
     const { ad } = await fresh();
     await ad.putEvents(A, [event(A, 1), event(A, 2), event(A, 3)]);

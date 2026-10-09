@@ -92,6 +92,21 @@ test('idb: opening a version 1 database (no archive store) upgrades it and keeps
   assert.deepEqual(await ad.loadArchive(A), [{ id: 'ev-old', seq: 9, synced: true }]);
 });
 
+test('idb: bulk reads list a range in key order, as the cursor did (lane P2: getAll + getAllKeys)', async () => {
+  const ad = await createIdbAdapter(new IDBFactory());
+  const n = 150, order = Array.from({ length: n }, (_, i) => (i * 61) % n);
+  const id = (/** @type {number} */ i) => `0192a3b4-c5d6-7e8f-9a0b-${String(i).padStart(12, '0')}`;
+  await ad.putEvents(A, order.map(i => ({ id: id(i), i })));
+  await ad.archiveEvents(A, order.filter(i => i % 2).map(i => ({ id: id(i), i })));
+  await ad.putCards(A, 'de-b1', order.map(i => [`W:${String(i).padStart(3, '0')}`, { i }]));
+  const inOrder = (/** @type {any[]} */ list) => list.map(x => x.i).join() === [...list].sort((x, y) => x.i - y.i).map(x => x.i).join();
+  const prof = await ad.loadProfile(A);
+  assert.ok(inOrder(prof.outbox) && prof.outbox.length === n / 2, 'outbox in key order');
+  const arch = await ad.loadArchive(A);
+  assert.ok(inOrder(arch) && arch.length === n / 2, 'archive in key order');
+  assert.deepEqual(Object.keys(prof.cards['de-b1']), order.map(i => `W:${String(i).padStart(3, '0')}`).sort(), 'cards in key order');
+});
+
 test('idb: a recording stored as a Blob (before bytes were stored) still reads', async () => {
   const factory = new IDBFactory();
   const ad = await createIdbAdapter(factory);

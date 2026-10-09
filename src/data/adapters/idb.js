@@ -63,14 +63,17 @@ export async function createIdbAdapter(factory = indexedDB) {
     }
   }
 
-  /** All [key, value] pairs whose array key starts with prefix. @param {IDBObjectStore} s @param {any[]} prefix */
-  function range(s, prefix) {
-    return new Promise((res, rej) => {
-      /** @type {[any, any][]} */ const out = [];
-      const r = s.openCursor(IDBKeyRange.bound(prefix, [...prefix, []]));
-      r.onsuccess = () => { const c = r.result; if (!c) return res(out); out.push([c.key, c.value]); c.continue(); };
-      r.onerror = () => rej(r.error);
-    });
+  /**
+   * All [key, value] pairs whose array key starts with prefix, in key order. One getAllKeys and one getAll on the same
+   * range in the same transaction (two requests instead of a cursor's callback per record; perf finding 4): both list
+   * the range in key order, so the i-th key belongs to the i-th value.
+   * @param {IDBObjectStore} s @param {any[]} prefix @returns {Promise<[any, any][]>}
+   */
+  async function range(s, prefix) {
+    const r = IDBKeyRange.bound(prefix, [...prefix, []]);
+    const [keys, values] = await Promise.all([req(s.getAllKeys(r)), req(s.getAll(r))]);
+    if (keys.length !== values.length) throw new Error(`idb range: ${keys.length} keys, ${values.length} values`);
+    return keys.map((k, i) => /** @type {[any, any]} */ ([k, values[i]]));
   }
 
   db = await open();
