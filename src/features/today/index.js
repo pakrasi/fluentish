@@ -356,9 +356,9 @@ export async function mount(el, ctx) {
   }
 
   /**
-   * The day's first visit (the stats are yesterday's): the page head and notices, the hero drawn from the stats it has
-   * but hidden (it only holds its height: the week strip and runway are drawn, nothing can be read or tapped), and the
-   * plan's first rows as empty space, until the plan is composed. @param {Awaited<ReturnType<typeof composeDay>>} day
+   * The day's first visit (the stats are yesterday's): the page head and notices, the hero's card drawn from the stats
+   * it has with its contents hidden (it only holds its height: the week strip and runway are drawn, nothing can be read
+   * or tapped), and the plan's first rows as empty space, until the plan is composed. @param {Awaited<ReturnType<typeof composeDay>>} day
    */
   function shell(day) {
     const { c, settings: s } = day;
@@ -372,7 +372,8 @@ export async function mount(el, ctx) {
     hero.el.classList.add('is-wait');
     hero.el.setAttribute('aria-hidden', 'true');
     hero.el.inert = true;
-    hero.el.style.visibility = 'hidden';
+    // the card shows, empty: what is in it is hidden (the atmosphere starts with the real draw)
+    for (const child of hero.el.children) /** @type {HTMLElement} */ (child).style.visibility = 'hidden';
     // rows the height of a plan row (app.css .plan-row: 60 px and a hairline), held by the CSSOM, never a .plan-row
     const row = () => h('div', { 'aria-hidden': 'true', style: { minHeight: '60px', borderBottom: '1px solid var(--hairline)' } });
     replace(el, h('div', { class: 'today is-loading', 'aria-busy': 'true' },
