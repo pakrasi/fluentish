@@ -346,7 +346,7 @@ test('the round size picker, the spot check and Profile: the action is in reach;
   // the picker's custom number
   await open(page, '#/lookup/map/topic/food');
   await page.locator('.cl-dock .btn-primary').first().click();
-  const sheet = page.locator('dialog.rs-sheet');
+  const sheet = page.locator('dialog.ui-sheet');
   if (await sheet.count()) {
     await sheet.locator('.rs-opt[data-k=custom]').click();
     await sheet.locator('input.rs-input').focus();

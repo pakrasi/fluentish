@@ -45,7 +45,7 @@ test('Sprechen holds its phrases; the size picker keeps Practice all behind More
   const phrases = page.locator('a[href="#/practice/round?kind=area:speaking"]');
   await expect(phrases).toBeVisible();
   await phrases.click();
-  const sheet = page.locator('dialog.rs-sheet');
+  const sheet = page.locator('dialog.ui-sheet');
   await expect(sheet).toBeVisible();
   await expect(sheet.getByRole('radio', { name: /Practice all/ })).toBeHidden();
   await sheet.getByRole('button', { name: 'More choices' }).click();
