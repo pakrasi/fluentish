@@ -2916,6 +2916,8 @@ export default {
   // ---- end of R8 U1 ----
   // ---- R8 U2 ----
   'exam.upNextLine': '{module} · Test {n}',
+  'practice.reviewRow': 'Review round · {n} questions',
+  'practice.reviewRow.detail': 'About {min} min',
   // ---- end of R8 U2 ----
   // ---- R8 M1 ----
   // ---- end of R8 M1 ----

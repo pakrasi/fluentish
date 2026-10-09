@@ -1,7 +1,7 @@
 /* Practice hub (#/practice, UX §4.2; round 3, journey #8): what to do now, then three groups.
      the now card: the next row of today's plan (features/day.js composes it for Today and here, from the one daily
        allowance in domain/allowance.js) with its button; reviews due today in every deck and new items left today;
-       the review round one tap away when the plan's next row is something else; a half-done round comes first
+       the one Start (the dock) is the plan's next row; a half-done round comes first (the review round as a second Start: SECOND_START)
      Exam modules ("Skills" without an exam goal): Schreiben, Sprechen, Lesen phrases, grammar (the old Areas; the
        Sprechen phrases moved to the Sprechen page), then misses and mistakes from corrections when there are any
      Words: word clusters, Word building, exam words (a round; the list itself is in Look up)
@@ -29,6 +29,15 @@ import { COLLECTION as WORDS } from '../shared/words.js';
 import { hubRow as scriptsRow } from '../shared/script-row.js';
 import { readRow, listReads } from '../shared/read-data.js';
 import * as St from '../../domain/script/store.js';
+
+/**
+ * The review round when the plan's next row is something else (design B2, owner decision 7). One Start per screen:
+ *   'drop' (recommended): no second button; the dock starts the plan's next row and Today's plan lists the round.
+ *   'row': the round stays one tap away as a plain row under "Next in today's plan", named "Review round · N questions".
+ * Swapping is this one line.
+ * @type {'drop' | 'row'}
+ */
+const SECOND_START = 'drop';
 
 const pct = (/** @type {number} */ x) => new Intl.NumberFormat('en-GB', { style: 'percent', maximumFractionDigits: 0 }).format(x || 0);
 
@@ -88,8 +97,10 @@ export async function mountHub(el, ctx) {
       h('div', { class: 'pr-queue-top' },
         h('p', { class: 'pr-due' }, dueEl, h('span', { class: 'label' }, fresh ? t('practice.newFirst', { n: newN }) : t('practice.dueAll', { n: dueN }))),
         fresh ? null : h('p', { class: 'label pr-new' }, c.newItems ? t('practice.newLeft', { n: newN }) : t('practice.noNew'))),
-      // the review round stays one tap away when the plan's next row is something else
-      lead && nRound ? h('a', { class: 'btn btn-quiet pressable pr-round-link', href: '#/practice/round', id: 'pr-start' }, roundLabel) : null,
+      // when the plan's next row is something else, the review round is not a second Start button (design B2): with
+      // SECOND_START 'row' it is a plain row that names it, under the due count
+      lead && nRound && SECOND_START === 'row' ? h('div', { class: 'pr-round-row' },
+        linkRow({ href: '#/practice/round', title: t('practice.reviewRow', { n: nRound }), detail: t('practice.reviewRow.detail', { min: roundMinutes(nRound) }) })) : null,
       nRound ? null : h('p', { class: 'pr-empty' }, nextDue ? t('practice.nothingNext', { date: label(nextDue) }) : t('practice.nothing')),
       // the one primary button: in the card on a wide screen, docked above the tab bar on a phone (CSS only, one element)
       startBtn ? h('div', { class: 'pr-queue-btn' }, startBtn) : null);
