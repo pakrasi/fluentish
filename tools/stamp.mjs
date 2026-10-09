@@ -22,6 +22,8 @@ import { cpSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFi
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { build as buildManifest } from './build-manifest.mjs';
+import { config } from '../src/core/config.js';
+import { connectHost } from '../src/data/account/config.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const BASE = '/fluentish/';
@@ -79,6 +81,20 @@ export function stampIndex(/** @type {string} */ html, /** @type {string} */ sha
   const left = /\s(?:src|href)="(?:src|styles)\//.exec(out);
   if (left) throw new Error(`index.html: unversioned reference left at ${left.index}`);
   return out;
+}
+
+/**
+ * index.html with the accounts project added to connect-src, only when config.accounts could turn accounts on
+ * (data/account/config.js connectHost; docs/ACCOUNTS.md). Off, the page is returned unchanged. No wss: (no Realtime)
+ * and no script, frame or image host: the client is plain fetch.
+ * @param {string} html @param {any} accounts config.accounts
+ */
+export function withConnectSrc(html, accounts) {
+  const host = connectHost(accounts);
+  if (!host) return html;
+  const re = /(<meta http-equiv="Content-Security-Policy" content="[^"]*?\bconnect-src [^;"]*)/;
+  if (!re.test(html)) throw new Error('index.html: connect-src not found in the CSP');
+  return html.replace(re, `$1 ${host}`);
 }
 
 /** sw.js with its VERSION, PRECACHE and PACKS lines filled in. */
@@ -150,7 +166,7 @@ async function main() {
   for (const f of walk(path.join(ROOT, 'content'))) if (f.endsWith('.json')) cpSync(path.join(ROOT, 'content', f), path.join(o.out, 'content', f));
 
   const graph = importGraph('src/main.js', p => readFileSync(path.join(ROOT, p), 'utf8'));
-  writeFileSync(path.join(o.out, 'index.html'), stampIndex(readFileSync(path.join(ROOT, 'index.html'), 'utf8'), sha, graph));
+  writeFileSync(path.join(o.out, 'index.html'), withConnectSrc(stampIndex(readFileSync(path.join(ROOT, 'index.html'), 'utf8'), sha, graph), config.accounts));
   const nf = readFileSync(path.join(ROOT, '404.html'), 'utf8').replace(`${BASE}src/`, `${BASE}${v}/src/`);
   if (!nf.includes(`${BASE}${v}/src/redirect-404.js`)) throw new Error('404.html: redirect script reference not found');
   writeFileSync(path.join(o.out, '404.html'), nf);

@@ -37,7 +37,9 @@ import { uuidv7, isoWithOffset } from './ids.js';
 import { deckLang } from '../domain/decks.js';
 import { joinActivity } from '../domain/activity.js';
 
-export const DEVICE_SCOPE = new Set(['prefs', 'secrets', 'palace', 'backup', 'progress.device', 'hours.external', 'speech.log', 'connection.check']);
+// accounts (round 8, data/account/session-store.js ACCOUNT_DEVICE_KV): account.session, account.claim, backup.account
+export const DEVICE_SCOPE = new Set(['prefs', 'secrets', 'palace', 'backup', 'progress.device', 'hours.external', 'speech.log', 'connection.check',
+  'account.session', 'account.claim', 'backup.account']);
 const DEBOUNCED = new Set(['settings', 'prefs', 'ui', 'activity']);
 const DEBOUNCE_MS = 250;
 

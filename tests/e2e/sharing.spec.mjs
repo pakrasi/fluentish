@@ -28,7 +28,8 @@ function requestGuard(page) {
   /** @type {string[]} */ const hits = [];
   page.context().on('request', req => {
     const u = new URL(req.url());
-    if (u.hostname === 'api.github.com' || (u.hostname === 'pakrasi.github.io' && !u.pathname.startsWith('/b1-exam/audio/') && !/\.(mp3|m4a|wav|ogg|webm)$/.test(u.pathname))) hits.push(`${req.method()} ${u.hostname}${u.pathname}`);
+    // accounts (round 8): LocalOnly is the default, so no request may reach a Supabase project either
+    if (u.hostname === 'api.github.com' || /(^|\.)supabase\.co$/i.test(u.hostname) || (u.hostname === 'pakrasi.github.io' && !u.pathname.startsWith('/b1-exam/audio/') && !/\.(mp3|m4a|wav|ogg|webm)$/.test(u.pathname))) hits.push(`${req.method()} ${u.hostname}${u.pathname}`);
   });
   return hits;
 }
@@ -66,6 +67,8 @@ test('a visitor: every tab works locally, nothing reaches GitHub or the hours fi
     ['#/profile', async p => {
       await expect(p.locator('#profile-sync')).toContainText('Not connected. Your progress stays in this browser.');
       await expect(p.getByRole('button', { name: 'Disconnect this device' })).toHaveCount(0);
+      // accounts (round 8): no Account section while no provider is configured
+      await expect(p.locator('#profile-account')).toHaveCount(0);
       // Profile › Data: where the progress is, how to keep it, no backup or restore
       const data = p.locator('#profile-data');
       await expect(data).toContainText('Your progress is saved in this browser, on this device only.');

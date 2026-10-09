@@ -27,6 +27,8 @@ import { summary as progressSummary } from '../../data/progress.js';
 import { activeCourse } from '../../data/settings.js';
 import { newPerDayChosen, buildShare, steadyFor } from '../../domain/budget.js';
 import * as Conv from '../../domain/conversation.js';
+import { openAccount } from '../../data/account/index.js';
+import { accountSection, accountsDiagnostics } from './account.js';
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
 export async function mount(el, ctx) {
@@ -34,6 +36,9 @@ export async function mount(el, ctx) {
   const manifest = await ctx.content.manifest().catch(() => null);
   const languages = manifest ? manifest.languages : [];
   const exams = manifest ? manifest.exams : [];
+  // accounts (round 8, docs/ACCOUNTS.md): made here, lazily, once per store. LocalOnly (the default) draws nothing
+  const account = await openAccount({ store });
+  const accountUi = { sentAt: 0 };
   const write = (/** @type {string} */ path, /** @type {any} */ v) => setSetting({ store, hlc: app.hlc, bus }, path, v);
 
   /** Rebuild one section in place and keep keyboard focus on the same control (matched by name). @param {HTMLElement} sec */
@@ -58,7 +63,7 @@ export async function mount(el, ctx) {
         avatar(app.profile, ''),
         h('div', null, h('h1', null, t('profile.title')), h('p', { class: 'caption' }, goalLine(s)))),
       nameField(),
-      courses(s), goalRow(s), practice(s), connections(), appearance(), data(), diagnostics());
+      courses(s), goalRow(s), practice(s), account.available() ? accountSection(ctx, account, accountUi) : null, connections(), appearance(), data(), diagnostics());
     replace(el, page);
     const target = ctx.params.rest;
     if (target) requestAnimationFrame(() => document.getElementById(`profile-${target}`)?.scrollIntoView({ block: 'start' }));
@@ -425,12 +430,20 @@ export async function mount(el, ctx) {
       h('dt', null, t('diag.events')), h('dd', null, t('diag.eventsVal', { n: store.pending().length })),
       h('dt', null, t('diag.progress')), h('dd', null, t('diag.progressVal', { n: log.days, m: log.estimated })),
       h('dt', null, t('diag.errors')), h('dd', null, errs.length ? errs.slice(-3).map(e => h('span', { class: 'mono block' }, `${e.where}: ${e.message}`)) : t('diag.none')),
-      h('dt', null, t('diag.reports')), reportsDd));
+      h('dt', null, t('diag.reports')), reportsDd,
+      accountsDiagnostics(t, { provider: account.provider(), reason: account.reason() })));
     return sec;
   }
 
   render();
   // the start's token check (main.js) may finish after this page is drawn: its expiry and warnings show when it does
   const off = store.subscribe(CHECK_KV, () => { if (document.getElementById('profile-sync')) swapSection(connections()); });
-  return { unmount: off };
+  // the account's state changed (here or in another tab): its section is drawn again, focus on its first control
+  const offAccount = account.onChange(() => {
+    if (!document.getElementById('profile-account')) return;
+    swapSection(accountSection(ctx, account, accountUi));
+    const sec = document.getElementById('profile-account');
+    if (sec && !sec.contains(document.activeElement)) /** @type {HTMLElement | null} */ (sec.querySelector('input, button'))?.focus();
+  });
+  return { unmount: () => { off(); offAccount(); } };
 }

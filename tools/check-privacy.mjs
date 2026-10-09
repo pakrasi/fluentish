@@ -35,6 +35,9 @@ const PATH_RULES = [
 const TEXT_RULES = [
   { id: 'github-token', re: /\b(ghp_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9_]{30,}|gho_[A-Za-z0-9]{30,})\b/, why: 'GitHub token' },
   { id: 'anthropic-key', re: /sk-ant-[A-Za-z0-9_-]{20,}/, why: 'Anthropic API key' },
+  // accounts (round 8, docs/ACCOUNTS.md): only the publishable key (sb_publishable_…) may be committed
+  { id: 'supabase-secret', re: /sb_secret_[A-Za-z0-9_-]{16,}/, why: 'Supabase secret key' },
+  { id: 'jwt', re: /\beyJ[A-Za-z0-9_-]{10,}\.eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}/, why: 'a JWT (a Supabase legacy anon or service_role key, or a session token)' },
   { id: 'local-path', re: /(~\/Library\/|Application Support\/|\/Users\/[a-z][\w.-]*\/)/, why: 'local file-system path' },
   { id: 'mined-item', re: /"src"\s*:\s*"mine|:mine-/, why: 'item mined from one learner\'s own exams' },
   { id: 'grader-profile', re: /(seine|ihre|deine) bekannten Schwächen/, why: 'grader prompt that describes the learner' },
