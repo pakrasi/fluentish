@@ -21,9 +21,10 @@ const overlaps = (page, sel) => page.evaluate(sel => {
 
 /** WCAG 2.5.3 (axe's label-content-name-mismatch is experimental, so it is asked for by name). @param {import('@playwright/test').Page} page @param {string} [only] a selector to check alone */
 async function labelInName(page, only = '') {
+  await settle(page);   // a half-faded frame is not what is measured
   const ax = new AxeBuilder({ page }).withRules(['label-content-name-mismatch']).options({ preload: false });
   const res = await (only ? ax.include(only) : ax).analyze();
-  return res.violations.flatMap(v => v.nodes.map(n => n.target.join(' ')));
+  return res.violations.filter(v => v.id === 'label-content-name-mismatch').flatMap(v => v.nodes.map(n => n.target.join(' ')));
 }
 
 /** Build the open clue with its tiles (and answer Splits or Stays). @param {import('@playwright/test').Page} page */
