@@ -11,7 +11,7 @@ import { icon } from '../../core/icons.js';
 import { notice, section, nextId } from '../../core/ui.js';
 import { odometer, fill, reveal, countTo, reduced } from '../../core/motion.js';
 import { runway, weekStrip, weekStripUpdate, atmosphere } from '../../core/brand.js';
-import { composeDay } from '../day.js';
+import { composeDay, prepareDay, statsFresh } from '../day.js';
 import { summaryText } from '../../data/migrate.js';
 import { examDate, activeCourse } from '../../data/settings.js';
 import { previewText } from '../../data/cutover.js';
@@ -39,11 +39,27 @@ export async function mount(el, ctx) {
   /** "Study anyway" was just tapped: the next render changes the hero in place instead of drawing it again. */
   let anywayNext = false;
 
+  /** Every compose that draws (render, or the first visit's) takes a number; the background one draws only if none
+   *  started after it. */
+  let req = 0;
+  /** What is on screen (the plan and the allowance it was drawn with), so the background compose redraws only on a change. */
+  let drawnKey = '';
+  /** @param {any} day composeDay's result @param {any} allow */
+  const keyOf = (day, allow) => JSON.stringify({ plan: day.plan, allow });
+
   async function render() {
-    const { plan, exam, lang, c, settings: s, activity } = await composeDay(ctx);
+    ++req;
+    const day = await composeDay(ctx);
     if (!alive) return;
+    draw(day);
+  }
+
+  /** @param {Awaited<ReturnType<typeof composeDay>>} day */
+  function draw(day) {
+    const { plan, exam, lang, c, settings: s, activity } = day;
     const my = ++gen;
     const allow = dayAllowance({ store, c, settings: s });
+    drawnKey = keyOf(day, allow);
 
     const examName = exam ? exam.short : t('exam.generic');
     // an Off day in maintenance has no rows to start (Study anyway brings them)
@@ -331,8 +347,35 @@ export async function mount(el, ctx) {
       paused, laterEl);
   }
 
+  /** The day's first visit (the stats are yesterday's): the page head, and the hero and plan's space held, until the
+   *  plan is composed. Nothing to tap: no row can show a count that is about to change. @param {any} c */
+  function shell(c) {
+    const countdown = COUNTDOWN.has(c.phase);
+    // rows the height of a plan row (app.css .plan-row: 60 px and a hairline), held by the CSSOM, never a .plan-row
+    const row = () => h('div', { 'aria-hidden': 'true', style: { minHeight: '60px', borderBottom: '1px solid var(--hairline)' } });
+    replace(el, h('div', { class: 'today is-loading', 'aria-busy': 'true' },
+      h('header', { class: 'page-head' }, h('h1', null, t('today.title')), h('p', { class: 'caption' }, label(c.today))),
+      h('p', { class: 'sr-only', role: 'status' }, t('today.loading')),
+      h('div', { class: 'today-grid' },
+        h('div', { class: 'today-a' }, h('section', { class: 'hero today-hero', 'aria-hidden': 'true', style: { minHeight: countdown ? '300px' : '340px' } })),
+        h('div', { class: 'today-b' }, section(t('today.plan'), h('p', { class: 'caption section-sub', 'aria-hidden': 'true' }, '\u00a0'), h('div', { class: 'today-wait' }, [row(), row(), row(), row()]))))));
+  }
+
   const rerender = () => { if (!pending) pending = render().finally(() => { pending = null; }); };
-  await render();
+  // Draw at once from the stats the features wrote today (no content loaded), then let the features refresh them
+  // (prepareDay loads the content) and compose again: the plan then is the one composeDay(ctx) gives in one call, and
+  // it is drawn again only if it changed. On the day's first visit the page waits for it behind a quiet shell.
+  const early = await composeDay(ctx, { prepare: false });
+  const ready = statsFresh(store, early.c, early.settings);
+  if (ready) draw(early); else shell(early.c);
+  const at = req;
+  prepareDay(ctx).then(() => composeDay(ctx, { prepare: false })).then(day => {
+    if (!alive || at !== req) return;   // a render since (settings, cards …) has drawn a newer plan
+    if (!ready || keyOf(day, dayAllowance({ store, c: day.c, settings: day.settings })) !== drawnKey) draw(day);
+  }).catch(e => {
+    console.error('today: prepare', e);
+    if (alive && at === req && !ready) draw(early);   // as offline: the plan from the last stats
+  });
   const offs = [
     bus.on('settings:changed', rerender),
     store.subscribe('cards:b1', rerender), store.subscribe('attempts', rerender), store.subscribe('activity', rerender), store.subscribe('mistakes', rerender),

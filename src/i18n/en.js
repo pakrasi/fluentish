@@ -2934,4 +2934,7 @@ export default {
   // ---- end of R8 C4 ----
   // ---- R8 C5 ----
   // ---- end of R8 C5 ----
+  // ---- R8 P3 ----
+  'today.loading': 'Loading today’s plan…',
+  // ---- end of R8 P3 ----
 };
