@@ -27,6 +27,7 @@ import { familyLink } from '../shared/family-link.js';
 import { connected, resultsRepo } from '../../data/connection.js';
 import { COLLECTION as EXAM_WORDS, inQueue } from '../shared/words.js';
 import { recheckCount } from '../shared/recheck.js';
+import { createSkeleton } from '../../ui/skeleton.js';
 
 const UI_KEY = 'lookup.ui';
 const DEBOUNCE_MS = 120;
@@ -181,7 +182,9 @@ export async function mount(el, ctx) {
   }
 
   const langOpt = () => (lang !== 'german' ? { lang } : {});
-  const loading = () => h('p', { class: 'caption lk-loading', role: 'status' }, t('lookup.loading'));
+  // still blocks in the shape of the rows (ui/skeleton.js: nothing for 150 ms, a band from 400 ms), and the status text
+  // for a screen reader; the region being filled carries aria-busy until it is replaced
+  const loading = (wait = 150) => h('div', { class: 'lk-loading' }, h('p', { class: 'sr-only', role: 'status' }, t('lookup.loading')), createSkeleton({ shape: 'rows', count: 3, wait }).el);
   /** @param {() => void} retry */
   const failed = retry => notice({ kind: 'warning', children: [h('p', null, t('lookup.loadError')), h('div', { class: 'notice-actions' }, h('button', { type: 'button', class: 'btn pressable', onclick: retry }, t('lookup.retry')))] });
   const moreText = (/** @type {number} */ n, /** @type {number} */ left) => t('lookup.more', { n: num(n), left: num(left) });
@@ -193,7 +196,7 @@ export async function mount(el, ctx) {
 
   if (route.tab === 'words' && route.id) {
     const id = route.id;
-    replace(el, h('div', { class: 'lookup lk-sheet' }, back(hashFor({ tab: 'words', opts: langOpt() })), h('h1', null, de(id)), loading()));
+    replace(el, h('div', { class: 'lookup lk-sheet', 'aria-busy': 'true' }, back(hashFor({ tab: 'words', opts: langOpt() })), h('h1', null, de(id)), loading()));
     const [mine, dict] = await Promise.all([D.myWords(store), D.dictionary(ctx.content, lang).catch(() => null)]);
     if (!alive) return cleanup;
     const rows = dict ? dict.rows : [];
@@ -282,7 +285,7 @@ export async function mount(el, ctx) {
 
   if (route.tab === 'grammar' && route.id) {
     const id = route.id;
-    replace(el, h('div', { class: 'lookup lk-sheet' }, back(hashFor({ tab: 'grammar', opts: langOpt() })), h('h1', null, t('lookup.grammar.topics')), loading()));
+    replace(el, h('div', { class: 'lookup lk-sheet', 'aria-busy': 'true' }, back(hashFor({ tab: 'grammar', opts: langOpt() })), h('h1', null, t('lookup.grammar.topics')), loading()));
     let gr;
     try { gr = await D.grammar(ctx.content, lang); } catch { if (alive) replace(el, h('div', { class: 'lookup' }, h('h1', null, t('lookup.title')), failed(() => ctx.go(`/lookup/grammar/${id}`)))); return cleanup; }
     if (!alive) return cleanup;
@@ -384,12 +387,14 @@ export async function mount(el, ctx) {
   async function draw() {
     const mine = ++token;
     pagers.forEach(p => p.stop()); pagers = [];
-    const slow = setTimeout(() => { if (mine === token) replace(body, loading()); }, 150);
+    // after 150 ms the skeleton shows at once (wait 0): the timer here already held it back
+    const slow = setTimeout(() => { if (mine === token) { body.setAttribute('aria-busy', 'true'); replace(body, loading(0)); } }, 150);
     let out;
     try { out = st.q ? await drawSearch() : await drawSection(); }
     catch (e) { console.error('lookup', e); out = failed(() => draw()); }
     clearTimeout(slow);
     if (!alive || mine !== token) return;
+    body.removeAttribute('aria-busy');
     replace(body, out);
     drawNav();
   }
