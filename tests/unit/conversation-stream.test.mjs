@@ -4,6 +4,10 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { sseParser, accumulate, stream, ClaudeError } from '../../src/services/claude.js';
 import { sse } from '../fixtures/conversation-sse.mjs';
+import { keyCredential } from '../../src/data/credentials.js';
+
+/** A synthetic key credential. */
+const CRED = keyCredential('k');
 
 const TEXT = 'Oh, am Samstag <r was="ich bin">bist du</r> ins Kino gegangen? Was hast du gesehen? Grüße – „schön“!';
 
@@ -66,7 +70,7 @@ test('stream(): text arrives in pieces, the whole message comes back, the reques
   const { f, calls } = fakeFetch(sse(TEXT), { split: 5 });
   /** @type {string[]} */ const seen = [];
   const body = { model: 'claude-sonnet-5-5', max_tokens: 1200, messages: [{ role: 'user', content: '<start/>' }] };
-  const r = await stream({ key: 'sk-test', body, onText: t => seen.push(t), fetch: /** @type {any} */ (f) });
+  const r = await stream({ cred: keyCredential('sk-test'), body, onText: t => seen.push(t), fetch: /** @type {any} */ (f) });
   assert.equal(r.text, TEXT, 'umlauts and quotes split across chunks decode whole');
   assert.ok(seen.length > 5 && seen[seen.length - 1] === TEXT && seen.every((s, i) => !i || s.startsWith(seen[i - 1])));
   assert.equal(r.content.length, 2);
@@ -79,16 +83,16 @@ test('stream(): text arrives in pieces, the whole message comes back, the reques
 
 test('stream(): errors', async () => {
   const err = async (/** @type {Promise<any>} */ p) => { try { await p; return null; } catch (e) { assert.ok(e instanceof ClaudeError); return /** @type {any} */ (e).code; } };
-  assert.equal(await err(stream({ key: '', body: {} })), 'nokey');
-  assert.equal(await err(stream({ key: 'k', body: {}, fetch: /** @type {any} */ (fakeFetch('', { status: 401 }).f) })), 'key');
-  assert.equal(await err(stream({ key: 'k', body: {}, fetch: /** @type {any} */ (fakeFetch('', { status: 529 }).f) })), 'overloaded');
-  assert.equal(await err(stream({ key: 'k', body: {}, fetch: /** @type {any} */ (fakeFetch('', { status: 400, json: { error: { message: 'Your credit balance is too low' } } }).f) })), 'credit');
-  assert.equal(await err(stream({ key: 'k', body: {}, fetch: /** @type {any} */ (fakeFetch(sse('Hallo', { error: 'overloaded_error' })).f) })), 'overloaded', 'an error event mid-stream');
-  assert.equal(await err(stream({ key: 'k', body: {}, fetch: /** @type {any} */ (fakeFetch(sse('Hallo', { cut: true })).f) })), 'stream', 'the connection ended before message_stop');
-  assert.equal(await err(stream({ key: 'k', body: {}, fetch: async () => { throw new TypeError('Failed to fetch'); } })), 'offline');
+  assert.equal(await err(stream({ cred: null, body: {} })), 'nokey');
+  assert.equal(await err(stream({ cred: CRED, body: {}, fetch: /** @type {any} */ (fakeFetch('', { status: 401 }).f) })), 'key');
+  assert.equal(await err(stream({ cred: CRED, body: {}, fetch: /** @type {any} */ (fakeFetch('', { status: 529 }).f) })), 'overloaded');
+  assert.equal(await err(stream({ cred: CRED, body: {}, fetch: /** @type {any} */ (fakeFetch('', { status: 400, json: { error: { message: 'Your credit balance is too low' } } }).f) })), 'credit');
+  assert.equal(await err(stream({ cred: CRED, body: {}, fetch: /** @type {any} */ (fakeFetch(sse('Hallo', { error: 'overloaded_error' })).f) })), 'overloaded', 'an error event mid-stream');
+  assert.equal(await err(stream({ cred: CRED, body: {}, fetch: /** @type {any} */ (fakeFetch(sse('Hallo', { cut: true })).f) })), 'stream', 'the connection ended before message_stop');
+  assert.equal(await err(stream({ cred: CRED, body: {}, fetch: async () => { throw new TypeError('Failed to fetch'); } })), 'offline');
   const ac = new AbortController(); ac.abort();
-  assert.equal(await err(stream({ key: 'k', body: {}, signal: ac.signal, fetch: /** @type {any} */ (fakeFetch(sse('x')).f) })), 'aborted');
+  assert.equal(await err(stream({ cred: CRED, body: {}, signal: ac.signal, fetch: /** @type {any} */ (fakeFetch(sse('x')).f) })), 'aborted');
   // a refusal is returned, not thrown: the conversation goes on
-  const r = await stream({ key: 'k', body: {}, fetch: /** @type {any} */ (fakeFetch(sse('', { stop: 'refusal' })).f) });
+  const r = await stream({ cred: CRED, body: {}, fetch: /** @type {any} */ (fakeFetch(sse('', { stop: 'refusal' })).f) });
   assert.equal(r.stop, 'refusal');
 });

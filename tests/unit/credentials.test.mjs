@@ -62,15 +62,25 @@ test('github() is the connected repository token: none without a repository', ()
   assert.equal(github(store(REPO)), null);
 });
 
-test('services/claude.js: a key credential sends the same request a key did', async () => {
-  const a = recorder(), b = recorder();
-  await ask({ cred: keyCredential(KEY), system: 's', user: 'u', fetch: a.f });
-  await ask({ key: KEY, system: 's', user: 'u', fetch: b.f });
+test('services/claude.js: a key credential sends the request a key always sent', async () => {
+  const a = recorder();
+  await ask({ cred: keyCredential(KEY), system: 's', user: 'u', effort: null, fallback: false, fetch: a.f });
   assert.equal(a.calls[0].url, config.anthropic.api);
-  assert.deepEqual(a.calls[0].init.headers, b.calls[0].init.headers);
-  assert.equal(a.calls[0].init.body, b.calls[0].init.body);
-  assert.equal(a.calls[0].init.headers['x-api-key'], KEY);
-  assert.equal(a.calls[0].init.headers['anthropic-dangerous-direct-browser-access'], 'true');
+  assert.equal(a.calls[0].init.method, 'POST');
+  assert.deepEqual(a.calls[0].init.headers, {
+    'content-type': 'application/json',
+    'x-api-key': KEY,
+    'anthropic-version': config.anthropic.version,
+    'anthropic-dangerous-direct-browser-access': 'true',
+  });
+  assert.deepEqual(JSON.parse(a.calls[0].init.body), { model: config.anthropic.models.grade, max_tokens: 16000, messages: [{ role: 'user', content: 'u' }], system: [{ type: 'text', text: 's', cache_control: { type: 'ephemeral' } }] });
+});
+
+test('services/claude.js: a bare key string is not a credential', async () => {
+  const r = recorder();
+  await assert.rejects(ask({ cred: /** @type {any} */ (KEY), user: 'u', fetch: r.f }), e => e instanceof ClaudeError && e.code === 'nokey');
+  await assert.rejects(ask(/** @type {any} */ ({ key: KEY, user: 'u', fetch: r.f })), e => e instanceof ClaudeError && e.code === 'nokey');
+  assert.equal(r.calls.length, 0);
 });
 
 test('services/claude.js: no credential is ClaudeError nokey, and nothing is sent', async () => {
