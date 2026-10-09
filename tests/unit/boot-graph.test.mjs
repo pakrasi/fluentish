@@ -14,8 +14,16 @@ import { importGraph } from '../../tools/stamp.mjs';
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const read = (/** @type {string} */ p) => readFileSync(path.join(ROOT, p));
 
-// ceilings (9 Oct 2026, before round 8 P1: 81 modules, 1,116 KB raw, 378 KB gzip)
-const BUDGET = { modules: 81, rawKB: 1117, gzipKB: 379 };
+// ceilings: 64 modules, 700 KB raw, 241 KB gzip after round 8 P1 (before it: 81, 1,116 KB, 378 KB), plus a little room
+// for strings and small modules that later work adds. The language packs are the next large part (lang/registry.js).
+const BUDGET = { modules: 66, rawKB: 725, gzipKB: 250 };
+
+// rarely needed at start, each loaded with import() where it is used
+const NEVER = [
+  'src/data/restore.js', 'src/data/migrate.js', 'src/data/cutover.js', 'src/data/progress.js',
+  'src/domain/match.js', 'src/domain/wordbuild-family.js', 'src/domain/wordbuild-grade.js', 'src/domain/atlas.js',
+  'src/domain/progress.js', 'src/domain/cardmerge.js',
+];
 
 const graph = () => importGraph('src/main.js', p => read(p).toString('utf8'));
 
@@ -27,6 +35,11 @@ test('the boot graph stays within its budget', () => {
   assert.ok(now.modules <= BUDGET.modules, `boot graph has ${now.modules} modules, budget ${BUDGET.modules}`);
   assert.ok(now.rawKB <= BUDGET.rawKB, `boot graph is ${now.rawKB} KB raw, budget ${BUDGET.rawKB} KB`);
   assert.ok(now.gzipKB <= BUDGET.gzipKB, `boot graph is ${now.gzipKB} KB gzip, budget ${BUDGET.gzipKB} KB`);
+});
+
+test('the boot graph reaches none of the modules that load on demand', () => {
+  const g = new Set(graph());
+  assert.deepEqual(NEVER.filter(f => g.has(f)), []);
 });
 
 /* ---------- the restore journal at start (data/restore-journal.js) ----------
