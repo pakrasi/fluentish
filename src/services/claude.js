@@ -94,6 +94,32 @@ export function errorCode(status, msg) {
   return 'other';
 }
 
+/* ---------- the credential (data/credentials.js) ----------
+   Every call takes `cred`, what data/credentials.js claude(store) returned. A key credential posts to the Messages API
+   from the browser with the key in x-api-key; a proxy credential (accounts, later) posts the same body to its own url
+   through its own fetch, which adds the session, so no key or token is ever handled here. `key` is the older form of
+   a key credential, kept for the callers' unit tests only. */
+
+/** @typedef {import('../data/credentials.js').ClaudeCredential} ClaudeCredential */
+/** @typedef {{cred?: ClaudeCredential | null, key?: string | null, fetch?: typeof fetch}} Auth */
+
+/**
+ * Where a request goes and how: the url, the auth headers and the transport. Throws ClaudeError 'nokey' without one.
+ * @param {Auth} o @returns {{url: string, headers: Record<string, string>, send: typeof fetch}}
+ */
+export function endpoint({ cred = null, key = null, fetch: f }) {
+  const c = cred || (key ? { mode: /** @type {const} */ ('key'), key } : null);
+  if (c?.mode === 'proxy' && c.url && typeof c.fetch === 'function') return { url: c.url, headers: {}, send: f || c.fetch };
+  if (c?.mode === 'key' && c.key) {
+    return {
+      url: config.anthropic.api,
+      headers: { 'x-api-key': c.key, 'anthropic-dangerous-direct-browser-access': 'true' },
+      send: f || ((...a) => fetch(...a)),
+    };
+  }
+  throw new ClaudeError('nokey');
+}
+
 /**
  * A structured-output format (output_config.format): the reply is JSON that matches the schema. Every object in the
  * schema needs additionalProperties: false. The text ask() returns is that JSON; the caller parses and validates it.
@@ -106,17 +132,16 @@ export function errorCode(status, msg) {
  * has no server-side fallback, so that caller passes `effort: null, fallback: false`. An empty `system` is left out.
  * `format` (round 4, C0) asks for structured output: it is passed through as output_config.format, beside effort;
  * without it the request is exactly what it was before.
- * @param {{ key: string, system?: string, user: string, model?: string, maxTokens?: number, effort?: string | null, fallback?: boolean, format?: OutputFormat | null, fetch?: typeof fetch }} o
+ * @param {Auth & { system?: string, user: string, model?: string, maxTokens?: number, effort?: string | null, fallback?: boolean, format?: OutputFormat | null, fetch?: typeof fetch }} o
  * @returns {Promise<{ text: string, model: string, usage: any }>}
  */
-export async function ask({ key, system = '', user, model = config.anthropic.models.grade, maxTokens = 16000, effort = 'medium', fallback = true, format = null, fetch: f = (...a) => fetch(...a) }) {
-  if (!key) throw new ClaudeError('nokey');
+export async function ask({ cred, key, system = '', user, model = config.anthropic.models.grade, maxTokens = 16000, effort = 'medium', fallback = true, format = null, fetch: f }) {
+  const to = endpoint({ cred, key, fetch: f });
   /** @type {Record<string, string>} */
   const headers = {
     'content-type': 'application/json',
-    'x-api-key': key,
+    ...to.headers,
     'anthropic-version': config.anthropic.version,
-    'anthropic-dangerous-direct-browser-access': 'true',
   };
   if (fallback) headers['anthropic-beta'] = config.anthropic.fallbackBeta;
   /** @type {Record<string, any>} */
@@ -128,7 +153,7 @@ export async function ask({ key, system = '', user, model = config.anthropic.mod
   let r;
   const t0 = Date.now();
   try {
-    r = await f(config.anthropic.api, { method: 'POST', headers, body: JSON.stringify(body) });
+    r = await to.send(to.url, { method: 'POST', headers, body: JSON.stringify(body) });
   } catch (e) { throw new ClaudeError('offline', '', Date.now() - t0 >= LOST_MS ? billedEstimate(body) : null); }
   /** @type {any} */ let j = null;
   try { j = await r.json(); } catch { /* not json */ }
@@ -265,24 +290,23 @@ const streamErrorCode = type => (type === 'overloaded_error' || type === 'api_er
  * here. onText gets the reply's text so far after each piece. Throws a ClaudeError: the HTTP codes of ask(), 'aborted'
  * when the signal fired, 'stream' when the connection ended before the message did, and the SSE error event's code.
  * A refusal or a cut-off reply is returned (stop), not thrown: the caller decides what the conversation does.
- * @param {{key: string, body: Record<string, any>, beta?: string | null, signal?: AbortSignal, onText?: (text: string) => void, fetch?: typeof fetch}} o
+ * @param {Auth & {body: Record<string, any>, beta?: string | null, signal?: AbortSignal, onText?: (text: string) => void, fetch?: typeof fetch}} o
  * @returns {Promise<{content: any[], text: string, stop: string | null, stopDetails: any, usage: Usage, model: string}>}
  */
-export async function stream({ key, body, beta = null, signal, onText, fetch: f = (...a) => fetch(...a) }) {
-  if (!key) throw new ClaudeError('nokey');
+export async function stream({ cred, key, body, beta = null, signal, onText, fetch: f }) {
+  const to = endpoint({ cred, key, fetch: f });
   /** @type {Record<string, string>} */
   const headers = {
     'content-type': 'application/json',
     accept: 'text/event-stream',
-    'x-api-key': key,
+    ...to.headers,
     'anthropic-version': config.anthropic.version,
-    'anthropic-dangerous-direct-browser-access': 'true',
   };
   if (beta) headers['anthropic-beta'] = beta;
   let r;
   const t0 = Date.now();
   try {
-    r = await f(config.anthropic.api, { method: 'POST', headers, body: JSON.stringify({ ...body, stream: true }), signal });
+    r = await to.send(to.url, { method: 'POST', headers, body: JSON.stringify({ ...body, stream: true }), signal });
   } catch (e) {
     throw new ClaudeError(signal?.aborted ? 'aborted' : 'offline', '', Date.now() - t0 >= LOST_MS ? billedEstimate(body) : null);
   }
@@ -350,10 +374,10 @@ export function isCorrection(text) {
 /**
  * Correct one Schreiben attempt. Throws ClaudeError('format') when the reply is not a correction, so the attempt
  * stays "not corrected" and the learner can try again.
- * @param {{ key: string, ex: any, texts: Record<string, string>, learnerNotes?: string | null, fetch?: typeof fetch }} o
+ * @param {Auth & { ex: any, texts: Record<string, string>, learnerNotes?: string | null, fetch?: typeof fetch }} o
  */
-export async function correctSchreiben({ key, ex, texts, learnerNotes, fetch: f }) {
-  const res = await ask({ key, system: graderSystem(learnerNotes), user: graderMessage(ex, texts), fetch: f });
+export async function correctSchreiben({ cred, key, ex, texts, learnerNotes, fetch: f }) {
+  const res = await ask({ cred, key, system: graderSystem(learnerNotes), user: graderMessage(ex, texts), fetch: f });
   const body = res.text.replace(/^```[a-z]*\n?|\n?```$/g, '').trim();
   if (!isCorrection(body)) throw new ClaudeError('format');   // never the reply itself: it can quote his writing, and errors reach the log
   return { body, model: res.model, promptVersion: PROMPTS.schreibenExam };
@@ -393,10 +417,10 @@ export function isTaskCorrection(text) {
 
 /**
  * Correct one practice text. Throws ClaudeError('format') when the reply is not a correction.
- * @param {{ key: string, task: any, text: string, words: number, fetch?: typeof fetch }} o
+ * @param {Auth & { task: any, text: string, words: number, fetch?: typeof fetch }} o
  */
-export async function correctTask({ key, task, text, words, fetch: f }) {
-  const res = await ask({ key, system: TASK_GRADER, user: taskMessage(task, text, words), maxTokens: 6000, fetch: f });
+export async function correctTask({ cred, key, task, text, words, fetch: f }) {
+  const res = await ask({ cred, key, system: TASK_GRADER, user: taskMessage(task, text, words), maxTokens: 6000, fetch: f });
   const body = res.text.replace(/^```[a-z]*\n?|\n?```$/g, '').trim();
   if (!isTaskCorrection(body)) throw new ClaudeError('format');
   return { body, model: res.model, promptVersion: PROMPTS.schreibenTask };
@@ -429,9 +453,9 @@ export function parseVerdict(text) {
 
 /**
  * Check one typed answer with the small model. Errors are ClaudeErrors (code: key, offline, rate, …).
- * @param {{ key: string, item: any, answer: string, fetch?: typeof fetch }} o
+ * @param {Auth & { item: any, answer: string, fetch?: typeof fetch }} o
  */
-export async function checkAnswer({ key, item, answer, fetch: f }) {
-  const res = await ask({ key, user: checkPrompt(item, answer), model: config.anthropic.models.check, maxTokens: 200, effort: null, fallback: false, fetch: f });
+export async function checkAnswer({ cred, key, item, answer, fetch: f }) {
+  const res = await ask({ cred, key, user: checkPrompt(item, answer), model: config.anthropic.models.check, maxTokens: 200, effort: null, fallback: false, fetch: f });
   return parseVerdict(res.text);
 }
