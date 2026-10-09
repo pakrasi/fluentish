@@ -155,7 +155,9 @@ export function mergeLines(existing, events) {
 
 /* ---------- what must never leave the device ---------- */
 
-const TOKEN = /github_pat_[A-Za-z0-9_]{20,}|\bgh[opsur]_[A-Za-z0-9]{20,}|sk-ant-[A-Za-z0-9_-]{16,}|-----BEGIN [A-Z ]*PRIVATE KEY-----/;
+// accounts (round 8, docs/ACCOUNTS.md): a Supabase secret key, and a JWT (a session token or a legacy anon or
+// service_role key); the same shapes tools/check-privacy.mjs blocks
+const TOKEN = /github_pat_[A-Za-z0-9_]{20,}|\bgh[opsur]_[A-Za-z0-9]{20,}|sk-ant-[A-Za-z0-9_-]{16,}|-----BEGIN [A-Z ]*PRIVATE KEY-----|sb_secret_[A-Za-z0-9_-]{16,}|\beyJ[A-Za-z0-9_-]{10,}\.eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}/;
 const SCRIPT_MARKS = /"deck":"script"|"local":true|"(?:SR|SW):|"script:/;
 
 /**

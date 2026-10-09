@@ -240,6 +240,14 @@ test('privacy: an upload that would carry a key or token is blocked, and nothing
   assert.equal(B.leakIn(`x ${TOKEN} y`, { githubToken: TOKEN }), 'a key or token of this device');
   assert.equal(B.leakIn('{"deck":"b1","itemId":"BP:a"}', { githubToken: TOKEN }), null);
   assert.equal(B.leakIn(`sk-ant-${'b'.repeat(30)}`), 'something shaped like a key or token');
+  // accounts (round 8): a Supabase secret key and a JWT (session token, legacy key) are refused too; built from parts
+  // so the privacy check does not flag this file
+  const sbSecret = ['sb', 'secret', 'Q'.repeat(24)].join('_');
+  const jwt = ['eyJhbGciOiJIUzI1NiJ9', 'eyJzdWIiOiJ0ZXN0LXVzZXIifQ', 'c2lnbmF0dXJlLXBhcnQtb25l'].join('.');
+  assert.equal(B.leakIn(`{"note":"${sbSecret}"}`), 'something shaped like a key or token');
+  assert.equal(B.leakIn(`{"access_token":"${jwt}"}`), 'something shaped like a key or token');
+  // learning data that only starts like one is not blocked
+  assert.equal(B.leakIn('{"wrong":"eyJ ist kein Wort","right":"sb_secret"}'), null);
 });
 
 test('the GitHub files API: read with sha, write with sha (conflict on a stale one), list folders', async () => {
