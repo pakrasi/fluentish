@@ -21,6 +21,47 @@
 /* ---- end core/pulse ---- */
 
 /* ---- ui/answer-diff ---- */
+/* src/ui/answer-diff.js: the You / Right lines under a verdict. Every mark is a ::after bar that draws from the start
+   side (scaleX, --dur-base ease-out, 28 ms apart from +120 ms); .is-pending holds the undrawn ones at 0 and .is-on
+   draws one. Colour never carries a mark alone: changed letters are heavier, whole words are struck or underlined.
+   fix   accent underline, a right answer's letters to correct (never red)
+   miss  green bar under the right letters (500 on Newsreader); a whole word: a 2px green underline
+   wrong red underline under letters he typed (600); a whole word: struck through in red, ink-2
+   extra struck through, ink-3 (red strike on a wrong answer, ink-3 on a right one)
+   ghost letters he left out, faint, in his word (drawn lines are aria-hidden) */
+.ui-ad { display: grid; gap: var(--s-2); }
+.ui-ad-line { margin: 0; overflow-wrap: anywhere; }
+.ui-ad-w.is-nudge { display: inline-block; }
+.ui-ad-m { position: relative; }
+.ui-ad-m::after {
+  content: ""; position: absolute; inset-inline: 0; bottom: -0.06em; height: 2px; border-radius: 1px; pointer-events: none;
+  background: var(--accent); transform: scaleX(1); transform-origin: left; transition: transform var(--dur-base) var(--ease-out);
+}
+.ui-ad-m:dir(rtl)::after { transform-origin: right; }
+.ui-ad-m.is-miss { font-weight: 500; }
+.ui-ad-m.is-miss::after { background: var(--ok); }
+.ui-ad-m.is-miss.is-word { font-weight: inherit; }
+.ui-ad-m.is-wrong { font-weight: 600; color: var(--ink); }
+.ui-ad-m.is-wrong::after { background: var(--bad); }
+.ui-ad-m.is-wrong.is-word { font-weight: inherit; color: var(--ink-2); }
+.ui-ad-m:is(.is-wrong.is-word, .is-extra)::after { bottom: auto; top: 54%; height: 1.5px; }
+.ui-ad-m.is-extra { color: var(--ink-3); }
+.ui-ad-m.is-extra::after { background: var(--bad); }
+.ui-ad.is-right-slip .ui-ad-m.is-extra::after { background: var(--ink-3); }
+.ui-ad-m.is-ghost { color: var(--ink-3); opacity: 0.75; transition: opacity var(--dur-base) var(--ease-out); }
+.ui-ad-m.is-ghost::after { content: none; }
+.ui-ad.is-pending .ui-ad-m:not(.is-on)::after { transform: scaleX(0); }
+.ui-ad.is-pending .ui-ad-m.is-ghost:not(.is-on) { opacity: 0; }
+.ui-ad.is-instant .ui-ad-m, .ui-ad.is-instant .ui-ad-m::after { transition: none; }
+.ui-ad-caption { margin: 0; }
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-motion="full"]) .ui-ad-m, :root:not([data-motion="full"]) .ui-ad-m::after { transition: none; }
+}
+:root[data-motion="reduce"] .ui-ad-m, :root[data-motion="reduce"] .ui-ad-m::after { transition: none; }
+@media (forced-colors: active) {
+  .ui-ad-m::after { forced-color-adjust: none; background: CanvasText; }
+  .ui-ad-m.is-fix::after { background: Highlight; }
+}
 /* ---- end ui/answer-diff ---- */
 
 /* ---- ui/meter ---- */
