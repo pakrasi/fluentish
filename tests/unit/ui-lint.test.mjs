@@ -43,7 +43,10 @@ export function uiViolations(file, src) {
   const top = file.split('/')[0];
   const imports = importsOf(file, src);
   if (top !== 'ui') {
-    if (file.split('/').length > 1 && BELOW_UI.includes(top) && imports.some(p => p.startsWith('ui/'))) bad.push(`${top} never imports src/ui`);
+    // one exception (C5, design C §9): core/motion.js re-exports the toast that moved to ui/toast.js, so every
+    // motion.toast() call keeps working; nothing else under core may reach into src/ui
+    const reach = imports.filter(p => p.startsWith('ui/') && !(file === 'core/motion.js' && p === 'ui/toast.js'));
+    if (file.split('/').length > 1 && BELOW_UI.includes(top) && reach.length) bad.push(`${top} never imports src/ui`);
     return bad;
   }
   for (const p of imports) {
@@ -109,6 +112,9 @@ test('the rules catch what they are meant to catch', () => {
   // below the features: no src/ui
   assert.equal(uiViolations('core/router.js', "import { mountSheet } from '../ui/sheet.js';").length, 1);
   assert.equal(uiViolations('domain/x.js', "import { mountSheet } from '../ui/sheet.js';").length, 1);
+  assert.deepEqual(uiViolations('core/motion.js', "export { toast } from '../ui/toast.js';"), []);
+  assert.equal(uiViolations('core/motion.js', "import { mountSheet } from '../ui/sheet.js';").length, 1);
+  assert.equal(uiViolations('core/dom.js', "export { toast } from '../ui/toast.js';").length, 1);
   assert.deepEqual(uiViolations('features/shared/picker.js', "import { mountSheet } from '../../ui/sheet.js';"), []);
   // the stylesheet
   assert.deepEqual(uiCssViolations('/* ---- ui/tile ---- */\n.ui-tile.is-picked > .ui-tile-face { background: url(a.b); }\n/* ---- end ui/tile ---- */'), []);

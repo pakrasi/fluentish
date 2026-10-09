@@ -741,30 +741,8 @@ export function segmented(el, onChange) {
 /* Toast                                                                */
 /* ------------------------------------------------------------------ */
 
-/**
- * Show a toast with optional action. Returns a close function. Auto-closes after `ms`.
- * @param {string} text @param {{ action?: string, onAction?: () => void, ms?: number }} [o] @returns {() => void}
- */
-export function toast(text, { action, onAction, ms = 4000 } = {}) {
-  const t = document.createElement('div');
-  t.className = 'toast'; t.setAttribute('role', 'status');
-  t.append(Object.assign(document.createElement('span'), { textContent: text }));
-  // a status node inserted with its text is often skipped by VoiceOver: say it through the shell's live region too
-  const live = document.getElementById('live');
-  if (live) { live.textContent = ''; requestAnimationFrame(() => { live.textContent = text; }); }
-  if (action) {
-    const b = Object.assign(document.createElement('button'), { className: 'btn pressable', textContent: action });
-    b.addEventListener('click', () => { onAction?.(); close(); });
-    t.append(b);
-  }
-  document.body.append(t);
-  requestAnimationFrame(() => requestAnimationFrame(() => t.classList.add('is-in')));
-  let timer = setTimeout(close, ms);
-  function close() {
-    clearTimeout(timer); t.classList.remove('is-in');
-    setTimeout(() => t.remove(), reduced() ? 0 : 300);
-  }
-  return close;
-}
+// The toast lives in src/ui/toast.js since round 8 (design C §9: a queue of one, swipe-away, a choice of live region);
+// this re-export keeps every motion.toast(text, { action, onAction, ms }) call as it was.
+export { toast } from '../ui/toast.js';
 
 export { wait, raf };
