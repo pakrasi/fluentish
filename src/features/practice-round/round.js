@@ -48,6 +48,8 @@ import { courseRound } from '../shared/course.js';
 import { scopeItem } from '../../domain/itemids.js';
 import { keep, fitToKeyboard, reveal as revealEl, fitPrompt } from '../../core/keyboard.js';
 import { claude, canAskClaude } from '../../data/credentials.js';
+import { createAnswerDiff } from '../../ui/answer-diff.js';
+import { describe as describeDiff } from '../../domain/letterdiff.js';
 
 const TEIL = /** @type {Record<string, string>} */ ({ S1: 'Teil 1', S2: 'Teil 2', S3: 'Teil 3', W1: 'Aufgabe 1', W2: 'Aufgabe 2', W3: 'Aufgabe 3', L2: 'Teil 2', L3: 'Teil 3', L5: 'Teil 5' });
 const fmtS = (/** @type {number} */ ms) => `${(ms / 1000).toFixed(1).replace(/\.0$/, '')} s`;
@@ -71,42 +73,14 @@ function highlight(text, part) {
   if (i < 0 || !part || part.length >= s.replace(/[.!?…\s]+$/, '').length - 1) return [s];   // the whole prompt: nothing to point at
   return [s.slice(0, i), h('mark', { class: 'pr-hl' }, s.slice(i, i + part.length)), s.slice(i + part.length)];
 }
-/** "You:" with wrong words boxed, "Right:" with the words he missed marked. @param {string} typed @param {string} right */
-function diffLines(typed, right) {
-  const d = Match.diffWords(typed, right);
-  /** @type {any[]} */ const you = []; let pos = 0;
-  for (const w of d.wrong) { you.push(typed.slice(pos, w.start), h('s', { class: 'pr-wrongword' }, typed.slice(w.start, w.end))); pos = w.end; }
-  you.push(typed.slice(pos));
-  const miss = new Set(d.missing); /** @type {any[]} */ const rt = []; let p2 = 0;
-  d.right.forEach((/** @type {any} */ w, /** @type {number} */ k) => { if (!miss.has(k)) return; rt.push(right.slice(p2, w.start), h('mark', null, right.slice(w.start, w.end))); p2 = w.end; });
-  rt.push(right.slice(p2));
-  return { you, right: rt };
-}
-
-/** Text with ranges wrapped: marks → <mark>, struck → <s>. @param {string} text @param {{start: number, end: number}[]} ranges @param {'mark'|'s'} tag */
-function wrapRanges(text, ranges, tag) {
-  /** @type {any[]} */ const out = []; let p = 0;
-  for (const r of [...ranges].sort((a, b) => a.start - b.start)) {
-    if (r.start < p) continue;
-    out.push(text.slice(p, r.start), h(tag, tag === 's' ? { class: 'pr-wrongword' } : null, text.slice(r.start, r.end))); p = r.end;
-  }
-  out.push(text.slice(p));
-  return out;
-}
-
 /**
- * A situation's lines: what he typed, plain (only one phrase is graded), and the answer with that phrase's words marked.
- * @param {string} typed @param {string} right @param {string} pattern the accepted pattern that was checked
+ * A situation grades one phrase, not the whole sentence: the indexes of the answer's words that belong to the accepted
+ * pattern that was checked (marked in the Right line; his line stays plain).
+ * @param {string} right @param {string} pattern
  */
-function phraseLines(typed, right, pattern) {
+function phraseWords(right, pattern) {
   const want = new Set(Match.words(String(pattern).replace(/…/g, ' ')).map((/** @type {any} */ w) => w.n));
-  /** @type {any[]} */ const rt = []; let p = 0;
-  for (const w of Match.words(right)) {
-    if (!want.has(w.n)) continue;
-    rt.push(right.slice(p, w.start), h('mark', null, right.slice(w.start, w.end))); p = w.end;
-  }
-  rt.push(right.slice(p));
-  return { you: [typed], right: rt };
+  return Match.words(right).map((/** @type {any} */ w, /** @type {number} */ i) => (want.has(w.n) ? i : -1)).filter((/** @type {number} */ i) => i >= 0);
 }
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
@@ -476,38 +450,26 @@ export async function mountRound(el, ctx) {
   /** The device voice reads a text (the first of "a / b" alternatives). @param {string} text */
   function readAloud(text) { voice.say(String(text).replace(/\s*\/\s*.*$/, ''), bcp47(), { rate: 0.9 }); }
   function sayAnswer(/** @type {string} */ text) { if (settings.practice.readAloud) readAloud(text); }
-  // his answer with typo, capital and umlaut slips marked and the right spelling after each
-  function markSlips(/** @type {any} */ g) {
-    const s = g.input, marks = [...g.typos.map((/** @type {any} */ x) => ({ ...x, k: 'typo' })), ...g.capMiss.map((/** @type {any} */ x) => ({ ...x, k: 'cap' })), ...g.umlautMiss.map((/** @type {any} */ x) => ({ ...x, k: 'uml' }))].sort((a, b) => a.start - b.start);
-    /** @type {any[]} */ const out = []; let p = 0;
-    for (const m of marks) {
-      if (m.start < p) continue;
-      // a capital or an umlaut: the word once, in its right spelling, with the letters that changed underlined in accent
-      // (it was graded right, so nothing here is red); a typo keeps its mark and the right spelling after it
-      if (m.k === 'typo') out.push(s.slice(p, m.start), h('span', { class: 'pr-slip' }, s.slice(m.start, m.end)), h('span', { class: 'pr-fix' }, ` ${m.expected}`));
-      else out.push(s.slice(p, m.start), changedLetters(s.slice(m.start, m.end), m.expected));
-      p = m.end;
-    }
-    out.push(s.slice(p));
-    return out;
+  // the lines under a verdict (ui/answer-diff.js), one set at a time: the next set ends the last one's motion
+  /** @type {AbortController | null} */ let linesAc = null;
+  /** @param {Omit<import('../../ui/answer-diff.js').AnswerDiffOpts, 'signal' | 'lang' | 'dir'>} o */
+  function lines(o) {
+    linesAc?.abort();
+    linesAc = new AbortController();
+    return createAnswerDiff({ ...o, lang: langAttr(), dir: dirAttr(), signal: linesAc.signal }).el;
   }
-
-  /** "damen" → "Damen" with the D underlined. @param {string} typed @param {string} right */
-  function changedLetters(typed, right) {
-    /** @type {any[]} */ const out = [];
-    const a = [...typed], b = [...String(right)];
-    if (a.length !== b.length) return h('span', { class: 'pr-capfix' }, right);
-    b.forEach((ch, k) => out.push(ch === a[k] ? ch : h('span', { class: 'pr-capfix' }, ch)));
-    return h('span', null, out);
-  }
+  const LINES = { you: 'pr-diff', right: 'pr-diff answer-key', label: 'caption', caption: 'caption' };
+  /** One line about a near miss, when the diff can say it (a missing ending). @param {import('../../domain/letterdiff.js').AnswerDiff} d */
+  const diffCaption = d => { const x = describeDiff(d); return x ? t('practice.diff.endingMissing', { part: x.part, word: x.word }) : null; };
 
   // right
   // the phrase is right, the rest of the sentence is not: "<phrase> is right.", the rest with its differences, Hard
   function restLines(/** @type {any} */ g) {
     const r = g.rest, kids = [];
     if (r.junk) kids.push(h('p', { class: 'caption' }, t('practice.partial.junk')));
-    else if (r.ref) kids.push(h('p', { class: 'pr-diff answer-key pr-rest', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, isSituation(entry.item) ? t('practice.partial.situation') : t('practice.partial.rest')), ' ', wrapRanges(r.ref, r.marks || [], 'mark')));
-    if ((r.wrong || []).length) kids.push(h('p', { class: 'pr-diff', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, t('practice.you')), ' ', wrapRanges(g.input, r.wrong, 's')));
+    // the grader's ranges, letter by letter where his word is close to the right one
+    else if (r.ref) kids.push(lines({ kind: 'partial', typed: (r.wrong || []).length ? g.input : '', right: r.ref, ranges: { typed: r.wrong || [], right: r.marks || [] },
+      labels: { you: t('practice.you'), right: isSituation(entry.item) ? t('practice.partial.situation') : t('practice.partial.rest'), caption: diffCaption }, classes: { ...LINES, right: 'pr-diff answer-key pr-rest' } }));
     // his errors in the whole answer: a comma, a capital (also in the phrase: kontakt), the item's note on a word
     const nb = notesBox(g, null);
     if (nb) kids.push(nb);
@@ -546,7 +508,8 @@ export async function mountRound(el, ctx) {
     if (it.area === 'mistakes' && it.rule) kids.push(h('p', { class: 'pr-rule' }, it.rule));
     // a preposition gap: the usage note is the point, so it shows after a right answer too
     if (it.usage) kids.push(h('p', { class: 'pr-rule' }, it.usage));
-    if (g.typos.length || capSlip || umlaut) kids.push(h('p', { class: 'pr-yours', lang: langAttr(), dir: dirAttr() }, markSlips(g)));
+    // his answer once, in its right spelling, the letters to fix underlined in accent (it counts: nothing here is red)
+    if (g.typos.length || capSlip || umlaut) kids.push(lines({ kind: 'right-slip', typed: g.input, slips: [...g.typos, ...g.capMiss, ...g.umlautMiss], labels: {}, classes: { you: 'pr-yours' } }));
     const capHead = !isNew && !veryLate && !late && !umlaut && capSlip;
     if (capSlip && !capHead) kids.push(h('p', { class: 'caption' }, t('practice.capsNote', { list: [...new Set(g.capMiss.map((/** @type {any} */ x) => x.expected))].join(', ') })));
     if (situation) kids.push(h('p', { class: 'caption' }, t('practice.checkedPhrase')));
@@ -586,10 +549,9 @@ export async function mountRound(el, ctx) {
     const right = g.target || g.right;   // the whole sentence he types once, the same one shown here
     // a situation grades one phrase, not the whole sentence: only that phrase is marked, the rest is shown plain
     const situation = it.kind === 'topic' || it.kind === 'reply';
-    const df = situation && g.pattern ? phraseLines(full(typed), right, g.pattern) : diffLines(full(typed), right);
+    const marked = situation && g.pattern ? phraseWords(right, g.pattern) : undefined;
     const kids = [h('p', { class: 'pr-res is-bad' }, t('practice.wrong')),
-      h('p', { class: 'pr-diff', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, t('practice.you')), ' ', df.you),
-      h('p', { class: 'pr-diff answer-key', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, t('practice.rightIs')), ' ', df.right),
+      lines({ kind: 'wrong', typed: full(typed), right, marked, capMiss: g.capMiss, labels: { you: t('practice.you'), right: t('practice.rightIs'), caption: diffCaption }, classes: LINES }),
       situation ? h('p', { class: 'caption' }, t('practice.checkedPhrase')) : null];
     if (g.alsoCorrect?.length) kids.push(h('p', { class: 'pr-also' }, alsoMore(g.alsoCorrect, t('practice.otherWays') + ' ')));
     // his errors, each from his answer, and a rule only when it is about one of them (a detector's always: g.rule);
@@ -654,9 +616,8 @@ export async function mountRound(el, ctx) {
     record({ ok: false, ms: elapsed() });
     const kids = [];
     if (typed) {
-      const df = diffLines(full(typed), (g.target || g.right));
-      kids.push(h('p', { class: 'pr-diff', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, t('practice.you')), ' ', df.you),
-        h('p', { class: ['answer-key', 'pr-study', String(g.target || g.right).length > 90 && 'is-long'], lang: langAttr(), dir: dirAttr() }, df.right));
+      kids.push(lines({ kind: 'study', typed: full(typed), right: g.target || g.right, capMiss: g.capMiss, labels: { you: t('practice.you'), caption: diffCaption },
+        classes: { ...LINES, right: ['answer-key', 'pr-study', String(g.target || g.right).length > 90 ? 'is-long' : ''].join(' ').trim() } }));
     } else kids.push(h('p', { class: ['answer-key', 'pr-study', String(g.target || g.right).length > 90 && 'is-long'], lang: langAttr(), dir: dirAttr() }, (g.target || g.right)));
     if (g.alsoCorrect?.length) kids.push(h('p', { class: 'pr-also' }, h('span', { class: 'caption' }, t('practice.alsoCorrect')), ' ', h('span', { lang: langAttr(), dir: dirAttr() }, g.alsoCorrect.slice(0, 2).join(' · ')), g.alsoCorrect.length > 2 ? alsoMore(g.alsoCorrect.slice(2)) : null));
     // a typed attempt: his errors and the rule when it is about one; Show me: the item's rule, the lesson
@@ -730,6 +691,7 @@ export async function mountRound(el, ctx) {
 
   function cleanup() {
     alive = false;
+    linesAc?.abort();
     strip?.destroy();
     clearInterval(tick); clearTimeout(auto);
     document.removeEventListener('visibilitychange', onVis);
