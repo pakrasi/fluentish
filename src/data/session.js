@@ -14,11 +14,14 @@
    anything is written, so a boot that was cut off resumes, and a finished cutover leaves nothing to do. */
 import { Store } from './store.js';
 import { uuidv7, isoWithOffset, newDeviceId, createHlc } from './ids.js';
-import { readLegacy, hasLegacyProgress, planMigration, applyMigration } from './migrate.js';
-import { planPreviewMerge, legacyChangedSince, deviceMerge, purgeArchived, canon } from './cutover.js';
 import { recoverIfCutOff } from './restore-journal.js';
 import { archiveOld } from './archive.js';
 import { normalizeSettings } from './settings.js';
+
+// The legacy import and the cutover run on a first start, a cut-off one, or with a preview profile; they load only
+// then, so an everyday start does not fetch them (tests/unit/boot-graph.test.mjs).
+const migrateJs = () => import('./migrate.js');
+const cutoverJs = () => import('./cutover.js');
 
 /**
  * @param {object} o
@@ -36,7 +39,9 @@ export async function openSession({ adapter, legacyStorage, clock, bus, channel 
   if (!device) { device = { deviceId: newDeviceId(), activeProfile: null, seq: 0, createdAt: isoWithOffset(now()) }; await adapter.putDevice(device); }
 
   // archived preview profiles (kept 30 days after the cutover) are never opened; the expired ones are purged
-  let profiles = (await purgeArchived(adapter, await adapter.listProfiles(), now())).filter((/** @type {any} */ p) => !p.archivedAt);
+  const listed = await adapter.listProfiles();
+  let profiles = (listed.some((/** @type {any} */ p) => p.archivedAt) ? await (await cutoverJs()).purgeArchived(adapter, listed, now()) : listed)
+    .filter((/** @type {any} */ p) => !p.archivedAt);
   // A migration that was cut off (the tab closed, iOS killed it, the disk was full) left a half-filled profile. If
   // nothing was done in it since, it is removed and the migration runs again from the legacy keys, which it never
   // touched. A profile that was used is kept as it is.
@@ -67,6 +72,7 @@ export async function openSession({ adapter, legacyStorage, clock, bus, channel 
 
   if (!profile) {
     // once per device (until "Delete all", which forgets the marker so a fresh import is possible)
+    const { readLegacy, hasLegacyProgress, planMigration, applyMigration } = await migrateJs();
     const snap = legacyStorage && !device.migratedAt ? readLegacy(legacyStorage) : {};
     profile = { id: uuidv7(now().getTime()), name: '', kind, createdAt: isoWithOffset(now()), remoteId: null };
     const legacy = hasLegacyProgress(snap);
@@ -116,6 +122,7 @@ export async function openSession({ adapter, legacyStorage, clock, bus, channel 
  * @returns {Promise<{kept: any, migration: any, error: string | null}>}
  */
 async function keepPreview({ adapter, device, profiles, legacyStorage, now }) {
+  const [{ readLegacy, hasLegacyProgress, planMigration, applyMigration }, { planPreviewMerge, legacyChangedSince, deviceMerge, canon }] = await Promise.all([migrateJs(), cutoverJs()]);
   const byCreated = (/** @type {any} */ a, /** @type {any} */ b) => String(a.createdAt || '').localeCompare(String(b.createdAt || ''));
   /** @type {any} */ let c = device.cutover;
   if (!c) {

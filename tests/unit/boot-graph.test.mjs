@@ -63,14 +63,23 @@ async function restoredDevice(/** @type {'applying' | 'undoing' | 'done'} */ sta
   return { adapter, pid, openSession, JOURNAL_KV };
 }
 
-test('a start with a finished restore in the journal does not load restore.js', { skip: NO_HOOKS }, async () => {
-  const { adapter, pid, openSession, JOURNAL_KV } = await restoredDevice('done');
+test('an everyday start (a finished restore in the journal) loads none of restore, migrate or cutover', { skip: NO_HOOKS }, async () => {
+  const { adapter, openSession, JOURNAL_KV } = await restoredDevice('done');
+  // the first start of restoredDevice ran the (empty) legacy import; from here on only this start counts
+  loaded.clear();
   const s = await openSession({ adapter, legacyStorage: null, clock });
   assert.equal(s.restoreRecovered, null);
   assert.equal(s.store.cards('b1')['BP:a'].u, 2, 'a finished restore stays');
   assert.equal((await adapter.loadScope('device'))[JOURNAL_KV].stage, 'done');
   assert.equal(restoreLoaded(), false, 'restore.js stays out of an everyday start');
-  assert.ok(pid);
+  for (const m of ['migrate.js', 'cutover.js']) assert.ok(![...loaded].some(u => u.endsWith(`/src/data/${m}`)), `${m} stays out of an everyday start`);
+});
+
+test('the module hook sees a module imported again (so the test above can see a lazy import)', { skip: NO_HOOKS }, async () => {
+  await import('../../src/data/migrate.js');
+  loaded.clear();
+  await import('../../src/data/migrate.js');
+  assert.ok([...loaded].some(u => u.endsWith('/src/data/migrate.js')));
 });
 
 test('a restore cut off mid-way (applying) is put back at the next start, through the lazy import', { skip: NO_HOOKS }, async () => {
