@@ -45,9 +45,9 @@ export function parseMeanings(text, count) {
 }
 
 /**
- * @param {{key: string, words: {surface: string, lemma: string, sentence: string}[], fetch?: typeof fetch}} o
+ * @param {{cred: import('../../data/credentials.js').ClaudeCredential | null, words: {surface: string, lemma: string, sentence: string}[], fetch?: typeof fetch}} o
  */
-export async function getMeanings({ key, words, fetch: f }) {
-  const res = await ask({ key, user: meaningsPrompt(words), model: config.anthropic.models.check, maxTokens: 60 + 40 * words.length, effort: null, fallback: false, fetch: f });
+export async function getMeanings({ cred, words, fetch: f }) {
+  const res = await ask({ cred, user: meaningsPrompt(words), model: config.anthropic.models.check, maxTokens: 60 + 40 * words.length, effort: null, fallback: false, fetch: f });
   return parseMeanings(res.text, words.length);
 }

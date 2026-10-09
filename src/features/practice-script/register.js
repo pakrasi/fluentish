@@ -10,6 +10,7 @@ import { h, replace, announce } from '../../core/dom.js';
 import { ask } from '../../services/claude.js';
 import { config } from '../../core/config.js';
 import * as St from '../../data/scripts.js';
+import { claude, canAskClaude } from '../../data/credentials.js';
 
 /** Informal plural address (ihr) and formal address (Sie) markers. */
 const INFORMAL = /\b(ihr|euch|euer|eure[nmrs]?)\b/g;
@@ -97,7 +98,7 @@ export function variantBox({ ctx, script, section, onChange }) {
     el.hidden = !both || step !== 'cue';
     if (el.hidden) return;
     const v = cached();
-    const key = (store.get('secrets', {}) || {}).anthropicKey;
+    const key = canAskClaude(store);
     if (v) {
       const btn = (/** @type {string} */ f) => h('button', { type: 'button', class: 'chip pressable', 'aria-pressed': String((f === other) === showOther),
         onclick: () => { showOther = f === other; draw(); onChange(); announce(t('practice.script.variant.now', { form: name(f) })); } }, name(f));
@@ -117,7 +118,7 @@ export function variantBox({ ctx, script, section, onChange }) {
     b.disabled = true; b.textContent = t('practice.script.variant.making');
     try {
       const src = section.sentences.map((/** @type {any} */ x) => x.de);
-      const res = await ask({ key: store.get('secrets', {}).anthropicKey, user: variantPrompt(src, other), model: config.anthropic.models.check,
+      const res = await ask({ cred: claude(store), user: variantPrompt(src, other), model: config.anthropic.models.check,
         maxTokens: 200 + 60 * src.length, effort: null, fallback: false });
       const out = parseVariant(res.text, src.length);
       if (!out || !checkVariant(out, other)) throw Object.assign(new Error('bad'), { code: 'variant' });
