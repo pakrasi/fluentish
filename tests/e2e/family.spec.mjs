@@ -1,8 +1,11 @@
 // Word families and Today's family (round 7): Today's row → the puzzle → the done screen, a word sheet → its family,
 // the Map's family group → the family and back, and typing a word in the puzzle. Synthetic learner and cards only.
 import { test, expect, seed, open, checkA11y, storedCards, settle } from './fixtures.mjs';
+import { DEFAULT_CUTOFF } from '../../src/core/clock.js';
 
-const today = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Berlin' }).format(new Date());
+// the app's study day, not the calendar day: the browser runs in Berlin (playwright.config timezoneId) and the day
+// turns at the clock's cutoff (4 o'clock), so between midnight and 4 the board is still the day before's
+const today = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Berlin' }).format(new Date(Date.now() - DEFAULT_CUTOFF * 3600e3));
 const shift = (/** @type {string} */ day, /** @type {number} */ n) => new Date(Date.parse(`${day}T12:00:00Z`) + n * 864e5).toISOString().slice(0, 10);
 /** A card answered before: S days of stability, due on `due`. @param {string} due @param {number} S */
 const rec = (due, S) => { const t = today(); return { S, D: 5, due, reps: 4, lapses: 0, last: shift(t, -5), first: shift(t, -40), stage: 1, streak: 0, learn: null, relearn: false, u: 1, hist: [[shift(t, -5), 3, 2000, 't', '']] }; };

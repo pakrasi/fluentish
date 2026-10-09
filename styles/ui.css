@@ -98,6 +98,31 @@
 /* ---- end ui/count ---- */
 
 /* ---- ui/tile ---- */
+/* src/ui/tile.js. The button is the hit box its container places; the face draws the tile and takes every move, so
+   press, swell, nudge and flip never overwrite the button's own transform. Base rules sit in :where() (no specificity):
+   a feature sizes and places its tiles with one class. Press is on `scale` (it composes with the face's transform
+   moves) as a CSS transition, so the release keeps the snappy spring in WebKit too; --move makes it still under
+   reduced motion. The fill crossfades in 160 ms (a colour change, also under reduced motion). */
+:where(.ui-tile) { position: relative; display: inline-grid; padding: 0; border: 0; background: none; color: var(--ink); font: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+:where(.ui-tile)::before { content: ""; position: absolute; inset: -2px; }   /* 44 px to touch on a 40 px tile */
+:where(.ui-tile-face) { display: inline-flex; align-items: center; justify-content: center; min-width: 0; height: 100%; padding: 0 10px; border: 1px solid var(--hairline-strong);
+  border-radius: var(--r-tile); background: var(--surface); color: var(--ink); white-space: nowrap; pointer-events: none;
+  transition-property: scale, background-color, color, border-color; transition-duration: 240ms, var(--dur-quick), var(--dur-quick), var(--dur-quick);
+  transition-timing-function: var(--spring-snappy), var(--ease-out), var(--ease-out), var(--ease-out); }
+.ui-tile.is-pressed > .ui-tile-face { scale: calc(1 - 0.06 * var(--move)); transition-duration: 60ms, var(--dur-quick), var(--dur-quick), var(--dur-quick); transition-timing-function: var(--ease-out); }
+.ui-tile[aria-pressed="true"] > .ui-tile-face, .ui-tile.is-ok > .ui-tile-face { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+.ui-tile.is-other > .ui-tile-face { background: var(--surface); border: 1.5px dashed var(--ink); }
+.ui-tile.is-no > .ui-tile-face { color: var(--ink-3); text-decoration: line-through; text-decoration-thickness: 1.5px; text-decoration-color: var(--ink-3); }
+.ui-tile:disabled { cursor: default; }
+.ui-tile:disabled > .ui-tile-face { opacity: 0.38; }
+.ui-tile:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: var(--r-tile); }
+/* the copy that lands on a slot (settleInto): the picked tile, above everything, never in the way of a tap */
+.ui-tile-ghost { position: fixed; z-index: var(--z-fx); margin: 0; background: var(--ink); color: var(--on-ink); border-color: var(--ink); transition: none; }
+.ui-tile-ghost kbd { display: none; }
+@media (forced-colors: active) {
+  .ui-tile[aria-pressed="true"] > .ui-tile-face, .ui-tile.is-ok > .ui-tile-face, .ui-tile-ghost { background: CanvasText; color: Canvas; border-color: CanvasText; forced-color-adjust: none; }
+  .ui-tile > .ui-tile-face { border-color: CanvasText; }
+}
 /* ---- end ui/tile ---- */
 
 /* ---- ui/sheet ---- */
