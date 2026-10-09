@@ -16,6 +16,7 @@ import { recordCheck } from '../../data/checks.js';
 import { itemOf } from '../../domain/known.js';
 export { typedItem as situationItem } from '../../domain/sim.js';
 import { keep } from '../../core/keyboard.js';
+import { createAnswerDiff } from '../../ui/answer-diff.js';
 
 
 /**
@@ -63,9 +64,10 @@ export function typeCheck({ ctx, deck, id, item, data, onKnown, onClose }) {
     }
     state = 'wrong';   // the field stays writable and focused, so the keyboard stays up; Enter goes on
     fxWrong(answerEl);
-    replace(fb, h('p', { class: 'pr-res is-bad' }, t('practice.wrong')),
-      h('p', { class: 'pr-diff answer-key', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, t('practice.rightIs')), ' ', g.right || item.model),
-      h('p', { class: 'caption' }, t('practice.typecheck.notMarked')));
+    // what he typed against the answer, letter by letter where it is close (ui/answer-diff.js; display only)
+    const lines = createAnswerDiff({ kind: 'wrong', typed: input.value.trim(), right: g.right || item.model, capMiss: g.capMiss, lang: langAttr(), dir: dirAttr(),
+      labels: { you: t('practice.you'), right: t('practice.rightIs') }, classes: { you: 'pr-diff', right: 'pr-diff answer-key', label: 'caption' } });
+    replace(fb, h('p', { class: 'pr-res is-bad' }, t('practice.wrong')), lines.el, h('p', { class: 'caption' }, t('practice.typecheck.notMarked')));
     checkBtn.hidden = true; plainBtn.hidden = true; typoBtn.hidden = false;
     replace(backBtn, t('practice.typecheck.goOn'), h('kbd', null, 'Enter'));
     announce(`${t('practice.wrong')}. ${t('practice.rightIs')} ${g.right || item.model}. ${t('practice.typecheck.notMarked')}`);
