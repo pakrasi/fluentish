@@ -16,7 +16,10 @@ const read = (/** @type {string} */ p) => readFileSync(path.join(ROOT, p));
 
 // ceilings: 64 modules, 700 KB raw, 241 KB gzip after round 8 P1 (before it: 81, 1,116 KB, 378 KB), plus a little room
 // for strings and small modules that later work adds. The language packs are the next large part (lang/registry.js).
-const BUDGET = { modules: 66, rawKB: 725, gzipKB: 250 };
+// Round 8 integration: 66 modules, 742 KB raw, 256 KB gzip once F1, ACC0 and the ui lanes are in (core/motion.js
+// +14 KB raw, ui/toast.js +15.5 KB through motion.js's toast re-export, domain/meter.js +4 KB through ring(), en.js
+// +2.4 KB, ACC0's config/log/backup/store/idb +3 KB). Next saving: load ui/toast.js on the first toast.
+const BUDGET = { modules: 68, rawKB: 760, gzipKB: 262 };
 
 // rarely needed at start, each loaded with import() where it is used
 const NEVER = [
