@@ -24,9 +24,36 @@
 /* ---- end ui/answer-diff ---- */
 
 /* ---- ui/meter ---- */
+/* mountRing / mountBar (src/ui/meter.js). Track surface-2, ink before today, accent for today's gain, the second lap past
+   the goal 40 % ink on an inner ring. Arcs and bars move over --dur-fill on --spring-soft; reduced motion sets them. */
+.ui-ring { position: relative; display: inline-grid; place-items: center; width: var(--size, 72px); aspect-ratio: 1; flex: none; vertical-align: middle; }
+.ui-ring-svg { grid-area: 1 / 1; width: 100%; height: 100%; overflow: visible; transform: rotate(-90deg); }
+.ui-ring-track { stroke: var(--surface-2); }
+.ui-ring-arc { transition: stroke-dasharray var(--dur-fill) var(--spring-soft); }
+.ui-ring-base { stroke: var(--ink); }
+.ui-ring-today { stroke: var(--accent); }
+.ui-ring-over { stroke: var(--ink); stroke-opacity: 0.4; }
+.ui-ring-label { grid-area: 1 / 1; font: 300 calc(var(--size, 72px) * 0.34)/1 var(--font-display); letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums lining-nums; color: var(--ink); }
+.ui-bar { position: relative; display: block; height: var(--h, 4px); border-radius: 999px; background: var(--surface-2); overflow: hidden; }
+.ui-bar-today, .ui-bar-base { position: absolute; inset: 0; border-radius: inherit; transform-origin: left; transform: scaleX(var(--p, 0));
+  transition: transform var(--dur-fill) var(--spring-soft); }
+.ui-bar-today { background: var(--accent); }
+.ui-bar-base { background: var(--ink); }
+.ui-bar-today:dir(rtl), .ui-bar-base:dir(rtl) { transform-origin: right; }
+@media (prefers-reduced-motion: reduce) { :root:not([data-motion="full"]) :is(.ui-ring-arc, .ui-bar-today, .ui-bar-base) { transition: none; } }
+:root[data-motion="reduce"] :is(.ui-ring-arc, .ui-bar-today, .ui-bar-base) { transition: none; }
+@media (forced-colors: active) {
+  .ui-ring-track { stroke: GrayText; } .ui-ring-base, .ui-ring-over { stroke: CanvasText; } .ui-ring-today { stroke: Highlight; }
+  .ui-bar { background: GrayText; forced-color-adjust: none; } .ui-bar-base { background: CanvasText; } .ui-bar-today { background: Highlight; }
+}
 /* ---- end ui/meter ---- */
 
 /* ---- ui/count ---- */
+/* mountCount (src/ui/count.js): tabular figures while the number ticks, so its width holds; the context's own figures
+   (proportional for a big numeral) once it lands. The pop is on the number span, so it needs a box. */
+.ui-count-num { display: inline-block; }
+.ui-count.is-ticking { font-variant-numeric: tabular-nums lining-nums; }
 /* ---- end ui/count ---- */
 
 /* ---- ui/tile ---- */

@@ -2,6 +2,7 @@
 // Every export works under reduced motion: movement is dropped, state still changes. Haptics: services/haptics.js.
 import { tap } from '../services/haptics.js';
 import { log } from './log.js';
+import { clamp01, countAt, dash, ringGeometry } from '../domain/meter.js';
 
 const root = document.documentElement;
 root.classList.add('js');
@@ -548,29 +549,42 @@ export function haptic() { tap(); }
 /* ------------------------------------------------------------------ */
 
 /**
- * Count a number up/down in place (rAF, ease-out). For small numbers next to text.
- * format: (n) => string. Writes the final value immediately under reduced motion.
+ * Count a number up/down in place (rAF, ease-out quart: domain/meter.js countAt). For small numbers next to text.
+ * format: (n) => string. Writes the final value immediately under reduced motion. Destroy-safe: `signal` aborting (the
+ * view unmounting) stops the frames and resolves the promise, leaving the text where it was. A new countTo on the same
+ * element takes over from the running one, whose promise then stays pending as before (textview waits on it for the
+ * noun). The element keeps the target in data-value, so the next count starts from it.
  * @param {HTMLElement} el @param {number} to
- * @param {{ from?: number, duration?: number, decimals?: number, format?: (n: number) => string }} [o]
+ * @param {{ from?: number, duration?: number, decimals?: number, format?: (n: number) => string, signal?: AbortSignal }} [o]
  * @returns {Promise<void>}
  */
-export function countTo(el, to, { from, duration = 700, decimals = 0, format } = {}) {
+export function countTo(el, to, { from, duration = 700, decimals = 0, format, signal } = {}) {
   const fmt = format || ((/** @type {number} */ n) => n.toLocaleString(undefined, { minimumFractionDigits: decimals, maximumFractionDigits: decimals }));
   const start = from ?? (parseFloat(String(el.dataset.value ?? el.textContent).replace(/[^\d.-]/g, '')) || 0);
+  counting.get(el)?.stop(false);
   el.dataset.value = String(to);
-  if (reduced() || start === to) { el.textContent = fmt(to); return Promise.resolve(); }
-  cancelAnimationFrame(counting.get(el) ?? 0);
+  if (reduced() || start === to || signal?.aborted || !(duration > 0)) { el.textContent = fmt(to); return Promise.resolve(); }
   return new Promise(resolve => {
     const t0 = performance.now();
-    const tick = (/** @type {number} */ now) => {
-      const k = Math.min(1, (now - t0) / duration), e = 1 - Math.pow(1 - k, 4);
-      el.textContent = fmt(start + (to - start) * e);
-      if (k < 1) counting.set(el, requestAnimationFrame(tick)); else resolve();
+    let id = 0;
+    const end = (settle = true) => {
+      cancelAnimationFrame(id); signal?.removeEventListener('abort', onAbort);
+      if (counting.get(el) === run) counting.delete(el);
+      if (settle) resolve();
     };
-    counting.set(el, requestAnimationFrame(tick));
+    const onAbort = () => end();
+    const run = { stop: end };
+    const tick = (/** @type {number} */ now) => {
+      const k = (now - t0) / duration;
+      el.textContent = fmt(countAt(start, to, k, decimals + 2));
+      if (k < 1) id = requestAnimationFrame(tick); else end();
+    };
+    counting.set(el, run);
+    signal?.addEventListener('abort', onAbort, { once: true });
+    id = requestAnimationFrame(tick);
   });
 }
-/** The running countTo() frame per element. @type {WeakMap<HTMLElement, number>} */
+/** The running countTo() per element: stop(settle) cancels its frames and, with settle, resolves its promise. @type {WeakMap<HTMLElement, { stop: (settle?: boolean) => void }>} */
 const counting = new WeakMap();
 
 /**
@@ -649,49 +663,42 @@ export function segments(el, states) {
 }
 
 /**
- * Readiness ring. arcs: [{ value: 0..1, today: 0..1 (optional gain shown in accent) }].
- * Draws one arc per module with gaps between, all from one SVG. Returns an update(arcs) function.
+ * Readiness ring (the kit API; src/ui/meter.js mountRing is the component, with the same drawing rules from
+ * domain/meter.js). arcs: [{ value: 0..1, today: 0..1 (optional gain shown in accent) }]. One arc per module with gaps
+ * between, all from one SVG. Returns an update(arcs) function. core cannot import src/ui, so this stays a small
+ * drawing of its own over the shared geometry.
  * @typedef {{ value: number, today?: number }} RingArc
  * @param {Element} el @param {RingArc[]} arcs @param {{ stroke?: number, gapDeg?: number }} [o]
  * @returns {(next: RingArc[]) => void}
  */
 export function ring(el, arcs, { stroke = 5.5, gapDeg = 5 } = {}) {
   const ns = 'http://www.w3.org/2000/svg';
-  const r = 50 - stroke / 2, C = 2 * Math.PI * r;
-  const n = arcs.length, gap = n > 1 ? (gapDeg / 360) * C : 0, seg = C / n - gap;
-  const inner = seg;                                   // butt caps: arcs end exactly at the gaps
-  const start = (/** @type {number} */ i) => -(i * (seg + gap));
-  let found = el.querySelector('svg');
-  if (!found) {
-    const svg = document.createElementNS(ns, 'svg');
+  const g = ringGeometry({ stroke, arcs: arcs.length, gapDeg });
+  let svg = el.querySelector('svg');
+  if (!svg) {
+    svg = document.createElementNS(ns, 'svg');
     svg.setAttribute('viewBox', '0 0 100 100'); svg.setAttribute('aria-hidden', 'true');
-    arcs.forEach((_, i) => {
+    for (let i = 0; i < arcs.length; i++) {
       for (const cls of ['ring-track', 'ring-arc today', 'ring-arc main']) {
         const c = document.createElementNS(ns, 'circle');
-        c.setAttribute('cx', '50'); c.setAttribute('cy', '50'); c.setAttribute('r', String(r));
-        c.setAttribute('fill', 'none'); c.setAttribute('stroke-width', String(stroke)); c.setAttribute('stroke-linecap', 'butt');
-        c.setAttribute('class', cls);
-        c.style.strokeDashoffset = String(start(i));
-        c.style.strokeDasharray = cls === 'ring-track' ? `${inner} ${C}` : `0 ${C}`;
+        for (const [k, v] of [['cx', '50'], ['cy', '50'], ['r', String(g.r)], ['fill', 'none'], ['stroke-width', String(stroke)], ['stroke-linecap', 'butt'], ['class', cls]]) c.setAttribute(k, v);
+        c.style.strokeDashoffset = String(g.offset(i));
+        c.style.strokeDasharray = dash(cls === 'ring-track' ? 1 : 0, g.seg, g.C);
         if (cls !== 'ring-track') c.style.opacity = '0';
         svg.append(c);
       }
-    });
+    }
     el.prepend(svg);
-    found = svg;
   }
-  const svg = found;
-  const clamp = (/** @type {number | undefined} */ v) => Math.max(0, Math.min(1, v || 0));
+  const circles = [...svg.querySelectorAll('circle')];
   /** @param {RingArc[]} next */
-  const update = next => {
-    const circles = [...svg.querySelectorAll('circle')];
-    next.forEach((a, i) => {
-      const today = circles[i * 3 + 1], main = circles[i * 3 + 2];
-      const total = clamp(a.value), base = clamp(a.value - (a.today || 0));
-      main.style.strokeDasharray = `${base * inner} ${C}`; main.style.opacity = base > 0 ? '1' : '0';
-      today.style.strokeDasharray = `${total * inner} ${C}`; today.style.opacity = total > base ? '1' : '0';
-    });
-  };
+  const update = next => next.forEach((a, i) => {
+    const today = circles[i * 3 + 1], main = circles[i * 3 + 2];
+    if (!today || !main) return;
+    const total = clamp01(a.value), base = clamp01((a.value || 0) - (a.today || 0));
+    main.style.strokeDasharray = dash(base, g.seg, g.C); main.style.opacity = base > 0 ? '1' : '0';
+    today.style.strokeDasharray = dash(total, g.seg, g.C); today.style.opacity = total > base ? '1' : '0';
+  });
   if (reduced()) update(arcs); else requestAnimationFrame(() => requestAnimationFrame(() => update(arcs)));
   return update;
 }
