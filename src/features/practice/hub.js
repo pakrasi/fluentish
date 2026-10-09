@@ -1,7 +1,7 @@
 /* Practice hub (#/practice, UX §4.2; round 3, journey #8): what to do now, then three groups.
      the now card: the next row of today's plan (features/day.js composes it for Today and here, from the one daily
        allowance in domain/allowance.js) with its button; reviews due today in every deck and new items left today;
-       the one Start (the dock) is the plan's next row; a half-done round comes first (the review round as a second Start: SECOND_START)
+       the one Start (the dock) is the plan's next row; a half-done round comes first (the review round row: SECOND_START)
      Exam modules ("Skills" without an exam goal): Schreiben, Sprechen, Lesen phrases, grammar (the old Areas; the
        Sprechen phrases moved to the Sprechen page), then misses and mistakes from corrections when there are any
      Words: word clusters, Word building, exam words (a round; the list itself is in Look up)

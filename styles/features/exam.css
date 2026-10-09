@@ -94,7 +94,7 @@
 @media (min-width: 960px) { .ex-split { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: start; } .ex-split > .ex-text { position: sticky; top: 72px; max-height: calc(100vh - 96px); overflow: auto; } }
 .ex-text, .ex-block { padding: var(--s-5); border-radius: var(--r-card); background: var(--surface); box-shadow: var(--shadow-card); }
 .ex-block { margin-top: var(--s-4); }
-.ex-text h3 { margin-top: var(--s-1); font: 400 22px/1.2 var(--font-display); }
+.ex-text :is(h2, h3) { margin-top: var(--s-1); font: 400 22px/1.2 var(--font-display); }
 .ex-prose { font: 400 18px/1.55 var(--font-display); color: var(--ink); max-width: var(--measure); }
 .ex-prose p + p { margin-top: 0.7em; }
 .ex-text .ex-prose { margin-top: var(--s-3); }
