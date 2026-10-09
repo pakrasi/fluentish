@@ -63,15 +63,21 @@ export async function createIdbAdapter(factory = indexedDB) {
     }
   }
 
-  /** All [key, value] pairs whose array key starts with prefix. @param {IDBObjectStore} s @param {any[]} prefix */
-  function range(s, prefix) {
-    return new Promise((res, rej) => {
-      /** @type {[any, any][]} */ const out = [];
-      const r = s.openCursor(IDBKeyRange.bound(prefix, [...prefix, []]));
-      r.onsuccess = () => { const c = r.result; if (!c) return res(out); out.push([c.key, c.value]); c.continue(); };
-      r.onerror = () => rej(r.error);
-    });
+  /**
+   * All [key, value] pairs whose array key starts with prefix, in key order. One getAllKeys and one getAll on the same
+   * range in the same transaction (two requests instead of a cursor's callback per record; perf finding 4): both list
+   * the range in key order, so the i-th key belongs to the i-th value.
+   * @param {IDBObjectStore} s @param {any[]} prefix @returns {Promise<[any, any][]>}
+   */
+  async function range(s, prefix) {
+    const r = IDBKeyRange.bound(prefix, [...prefix, []]);
+    const [keys, values] = await Promise.all([req(s.getAllKeys(r)), req(s.getAll(r))]);
+    if (keys.length !== values.length) throw new Error(`idb range: ${keys.length} keys, ${values.length} values`);
+    return keys.map((k, i) => /** @type {[any, any]} */ ([k, values[i]]));
   }
+
+  /** The values only of range(), for stores whose records hold their own id (attempts, outbox, archive). @param {IDBObjectStore} s @param {any[]} prefix */
+  const values = (s, prefix) => req(s.getAll(IDBKeyRange.bound(prefix, [...prefix, []])));
 
   db = await open();
 
@@ -97,8 +103,8 @@ export async function createIdbAdapter(factory = indexedDB) {
     loadProfile: (/** @type {string} */ p) => tx(['cards', 'attempts', 'outbox'], 'readonly', async t => {
       /** @type {Record<string, Record<string, any>>} */ const cards = {};
       for (const [k, v] of /** @type {[any[], any][]} */ (await range(t.objectStore('cards'), [p]))) (cards[k[1]] ||= {})[k[2]] = v;
-      const attempts = (/** @type {[any, any][]} */ (await range(t.objectStore('attempts'), [p]))).map(([, v]) => v);
-      const outbox = (/** @type {[any, any][]} */ (await range(t.objectStore('outbox'), [p]))).map(([, v]) => v);
+      const attempts = await values(t.objectStore('attempts'), [p]);
+      const outbox = await values(t.objectStore('outbox'), [p]);
       return { cards, attempts, outbox };
     }),
     putCards: (/** @type {string} */ p, /** @type {string} */ deck, /** @type {[string, any][]} */ entries) => tx(['cards'], 'readwrite', t => {
@@ -111,7 +117,7 @@ export async function createIdbAdapter(factory = indexedDB) {
     archiveEvents: (/** @type {string} */ p, /** @type {any[]} */ list) => tx(['outbox', 'archive'], 'readwrite', t => {
       for (const e of list) { t.objectStore('archive').put(e, [p, e.id]); t.objectStore('outbox').delete([p, e.id]); }
     }),
-    loadArchive: (/** @type {string} */ p) => tx(['archive'], 'readonly', async t => (/** @type {[any, any][]} */ (await range(t.objectStore('archive'), [p]))).map(([, v]) => v)),
+    loadArchive: (/** @type {string} */ p) => tx(['archive'], 'readonly', t => values(t.objectStore('archive'), [p])),
     // Bytes, not the Blob itself: WebKit refuses Blobs in IndexedDB in private windows (and older iOS everywhere),
     // while an ArrayBuffer is stored by every engine. The bytes are read before the transaction opens.
     putBlob: async (/** @type {string} */ id, /** @type {Blob} */ b) => {
