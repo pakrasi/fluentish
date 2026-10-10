@@ -194,11 +194,14 @@ export function createScrollKeeper() {
     /** The key of the current entry (a new one for an entry that has none yet) and where it lands. @returns {{key: string, y: number | null}} */
     arrive() {
       if (timer) { clearTimeout(timer); timer = 0; }
+      // Back while the last navigation was still mounting (it never showed): the view on screen is mounted again, so
+      // it is an arrival like any other and gets its y back, not "the same one shown again"
+      const abandoned = moving;
       moving = true;
       const st = history.state;
       fresh = !(st && typeof st === 'object' && typeof st.k === 'string');
       const key = fresh ? newKey() : st.k;
-      return { key, y: landing({ state: st, shownKey: shown, memo }) };
+      return { key, y: landing({ state: st, shownKey: abandoned ? null : shown, memo }) };
     },
     /**
      * A view is on screen now for this key. A new entry remembers the hash of the view it was opened from: an in-app

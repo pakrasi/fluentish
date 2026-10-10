@@ -167,3 +167,28 @@ test('budget: at most n in any window; room again once the oldest is out of it',
   t = 10_000;
   assert.deepEqual([may(), may(), may(), may()], [true, true, true, false]);
 });
+
+// Fix pass (CI flake on back-place:76): Back pressed while a Forward was still mounting lands at the list's place
+test('keeper: Back during a navigation that never showed returns the view on screen to its y', async () => {
+  const g = /** @type {any} */ (globalThis);
+  const saved = { history: g.history, scrollY: g.scrollY, location: g.location };
+  g.history = { state: null, replaceState() {} };
+  g.scrollY = 0; g.location = { hash: '#/list' };
+  try {
+    const { createScrollKeeper } = await import('../../src/core/scroll.js');
+    const k = createScrollKeeper();
+    const a = k.arrive();          // the list
+    g.history.state = { k: a.key };
+    g.scrollY = 700;
+    k.shown(a.key);                // on screen at 700 (shown() reads scrollY)
+    k.leave();                     // Forward starts: the list's y is kept
+    g.history.state = { k: 'item' };
+    k.arrive();                    // the item's mount is still in flight...
+    g.history.state = { k: a.key };
+    if (k.leave) k.leave();        // ...and Back starts (the router leaves the list view again)
+    assert.equal(k.arrive().y, 700);
+    // a plain re-render of the view on screen (the same address again) still starts at the top
+    k.shown(a.key);
+    assert.equal(k.arrive().y, null);
+  } finally { Object.assign(g, saved); }
+});
