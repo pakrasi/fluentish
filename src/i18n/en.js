@@ -2917,6 +2917,12 @@ export default {
   // ---- R8 U2 ----
   // ---- end of R8 U2 ----
   // ---- R8 M1 ----
+  // the round done screen: a round of new items only (figure = new items), of "I know this" only, and the exam items
+  // known after the round with what it added in accent
+  'practice.done.newOnly': { one: 'new item studied', other: 'new items studied' },
+  'practice.done.knownOnly': { one: 'marked as known', other: 'marked as known' },
+  'practice.done.knownNow': '{a} of {n}',
+  'practice.done.gain': '+{n}',
   // ---- end of R8 M1 ----
   // ---- R8 M2 ----
   // ---- end of R8 M2 ----

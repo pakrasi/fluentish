@@ -11,9 +11,9 @@
    with the differing words marked), then "type it once". Scheduling is session.js; saving is data.js. */
 import { h, replace, announce } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
-import { correct as fxCorrect, wrong as fxWrong, resetAnswer, swap, skip as skipHold, reduced, fill } from '../../core/motion.js';
+import { correct as fxCorrect, wrong as fxWrong, resetAnswer, swap, skip as skipHold, reduced, countTo } from '../../core/motion.js';
 import { progressOf, drawProgress, againRow } from '../shared/progress.js';
-import { doneHero, againLink } from '../shared/done-hero.js';
+import { doneHero, againLink, arrive, ROLL_AT } from '../shared/done-hero.js';
 import { label, add } from '../../core/clock.js';
 import * as Match from '../../domain/match.js';
 import * as RD from '../../domain/b1ready.js';
@@ -26,7 +26,6 @@ import { checkAnswer } from '../../services/claude.js';
 import { play as playAudio, stop as stopAudio, prefetchAudio } from '../../services/audio.js';
 import * as voice from '../../services/voice.js';
 import { bcp47, dirAttr } from '../../core/lang.js';
-import { recallBar } from '../shared/recall-bar.js';
 import { Field } from '../../core/brand.js';
 import { readinessView } from './field.js';
 import { loadKnowledge } from '../../data/knowledge.js';
@@ -762,37 +761,40 @@ function drawDone(el, ctx, data, round, backTo) {
   const { t, store } = ctx;
   const st = stateFor(ctx, data), c = st.c;
   const sum = S.summary(round, data.byId);
-  // readiness before = the same store with only this round's items rolled back
   const pool = data.pool.filter((/** @type {any} */ it) => it.area !== 'mistakes');
-  const rd = (/** @type {any} */ cards) => RD.compute({ pool, store: cards, today: c.today, exam: c.exam, phase: c.phase });
   const cr = data.course ? courseRound(data.course) : null;
-  const now = store.cards(cr ? cr.deck : 'b1'), before = { ...now };
-  for (const [id, r] of Object.entries(round.prev || {})) { if (r) before[id] = r; else delete before[id]; }
-  const a = rd(now).overall, b = rd(before).overall;
+  const now = store.cards(cr ? cr.deck : 'b1');
   // a Schreiben round goes on with Schreiben phrases: their own due and new counts
   const write = round.kind === 'write';
   const wDue = write ? pool.filter((/** @type {any} */ it) => it.area === 'writing' && RD.isDue(now[it.id], c.today, c)).length : 0;
   const more = write ? wDue > 0 || C.newLeftOf(st, 'w') > 0 : st.dueN > 0 || C.newLeft(st) > 0;
   const tomorrow = RD.forecast(now, c.today, 2, c)[1]?.n || 0;
-  const p1 = (/** @type {number} */ x) => (100 * (x || 0)).toFixed(1);
   const short = (/** @type {any} */ it) => it.model || it.prompt;
   const list = (/** @type {string} */ title, /** @type {any[]} */ items) => items.length ? h('section', { class: 'pr-list' }, h('h2', null, title),
     h('ul', { class: 'list' }, items.map(it => h('li', { class: 'list-item', lang: langAttr(), dir: dirAttr() }, short(it))))) : null;
-  // the exam items known before and after the round: the one definition of known (domain/knowledge.js, Where you
-  // stand), which a round never lowers; filled in once the knowledge score is loaded
-  const bar = recallBar(0, a.coverage, t('practice.area.bar', { recall: '', seen: `${p1(a.coverage)} %` }));
+  // the exam items known after the round and what the round added (+N, in accent): the one definition of known
+  // (domain/knowledge.js, Where you stand), which a round never lowers; filled in once the knowledge score is loaded.
+  // A round moves the share of a ~1,000-item pool by a fraction of a percent, so there is no bar: the number says it
+  // and the field below shows where (design A4)
   const knownEl = h('b', { class: 'tnum' }, '…');
+  const gainEl = h('span', { class: 'pr-gain tnum', hidden: true });
   const anotherHref = round.kind === 'today' || round.kind === 'mistakes' || round.kind === 'missed' ? '#/practice/round' : S.roundHref(round);
   // the brand moment: the atmosphere breathes once behind the result, and the field shows the round's right answers
   // landing in the exam pool
   const view = round.kind === 'mistakes' ? null : readinessView(st);
   const fieldEl = view ? h('canvas', { class: 'field pr-done-field' }) : null;
-  const hero = doneHero({ label: t('practice.roundDone'), figure: sum.right, of: t('practice.ofRight', { n: sum.total }),
+  // a round of new items only (or of "I know this" only) has no first answers to count: "0 of 0 right first time"
+  // said nothing. Its figure is then the new items studied, or the items marked as known.
+  const fig = sum.total ? { figure: sum.right, of: t('practice.ofRight', { n: sum.total }) }
+    : sum.news.length ? { figure: sum.news.length, of: t('practice.done.newOnly', { n: sum.news.length }) }
+    : sum.known.length ? { figure: sum.known.length, of: t('practice.done.knownOnly', { n: sum.known.length }) }
+    : { figure: 0, of: t('practice.ofRight', { n: 0 }) };
+  const hero = doneHero({ label: t('practice.roundDone'), ...fig,
     lines: [sum.late ? t('practice.late', { n: sum.late }) : null, sum.partial ? t('practice.partialN', { n: sum.partial }) : null, sum.fixedLast ? t('practice.lastFixed') : null,
-      sum.known.length ? t('practice.know.inRound', { n: sum.known.length }) : null],
+      sum.known.length && (sum.total || sum.news.length) ? t('practice.know.inRound', { n: sum.known.length }) : null],
     data: view ? h('div', { class: 'pr-ready' },
-      h('p', { class: 'pr-ready-top' }, h('span', { class: 'label' }, t(cr ? 'course.knownItems' : 'practice.knownItems')), knownEl), bar, fieldEl) : null });
-  replace(el, h('div', { class: 'practice pr-done stack' },
+      h('p', { class: 'pr-ready-top' }, h('span', { class: 'label' }, t(cr ? 'course.knownItems' : 'practice.knownItems')), h('span', { class: 'pr-ready-n' }, knownEl, gainEl)), fieldEl) : null });
+  const page = h('div', { class: 'practice pr-done stack' },
     hero.el,
     h('p', { class: 'pr-next' }, more ? t(write ? (wDue ? 'practice.write.nextUp' : 'practice.write.nextNew') : 'practice.nextUp', write ? { due: wDue, n: C.newLeftOf(st, 'w') } : { due: st.dueN, n: C.newLeft(st) }) : t('practice.allDone', { n: tomorrow })),
     h('div', { class: 'pr-done-actions' },
@@ -801,7 +803,35 @@ function drawDone(el, ctx, data, round, backTo) {
     sum.back.length ? h('section', { class: 'pr-list' }, h('h2', null, t('practice.list.back')), h('p', { class: 'caption' }, t('practice.list.backSub')),
       h('ul', { class: 'list' }, sum.back.map((/** @type {any} */ it) => h('li', { class: 'list-item' }, h('span', { lang: langAttr(), dir: dirAttr() }, short(it)),
         sum.fixed.includes(it) ? h('span', { class: 'caption' }, t('practice.list.fixedTag')) : null)))) : null,
-    list(t('practice.list.new'), sum.news)));
+    list(t('practice.list.new'), sum.news));
+  // the round's card lifts away and the done page rises in its place, the bars slide back (done-hero.js arrive());
+  // its timeline starts once the page is on screen
+  arrive(() => replace(el, page), el).then(() => doneTimeline(el, ctx, { round, view, fieldEl, knownEl, gainEl, hero, more, anotherHref, backTo, pool, cr }));
+}
+
+/**
+ * The done page's arrival after the hero's own steps (done-hero.js: the figure rolls and the atmosphere breathes at
+ * 120 ms): the cells answered right land in the field one after another from 500 ms, 90 ms apart, and "+N" (the exam
+ * items this round added) ticks up in accent with the first of them. A tap skips to the end state.
+ * @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx @param {any} o
+ */
+function doneTimeline(el, ctx, { round, view, fieldEl, knownEl, gainEl, hero, more, anotherHref, backTo, pool, cr }) {
+  const { t } = ctx;
+  /** @type {{ nb: number, na: number } | null} */ let counts = null;
+  let gainDue = false, gainInstant = false, gainShown = false;
+  /** "+N" once the counts are in and its moment has come. @param {boolean} instant */
+  const gain = instant => {
+    if (instant) gainInstant = true;
+    if (!counts || !gainDue) return;
+    const d = counts.na - counts.nb;
+    if (d <= 0) return;
+    const fmt = (/** @type {number} */ n) => t('practice.done.gain', { n: Math.round(n) });
+    gainEl.hidden = false;
+    // a skip mid-count: a 1 ms count takes the running one over and ends on the number (countTo has no stop)
+    if (gainInstant) { if (gainShown) countTo(gainEl, d, { from: 0, duration: 1, format: fmt }); else { gainEl.textContent = fmt(d); gainEl.dataset.value = String(d); } }
+    else if (!gainShown) countTo(gainEl, d, { from: 0, duration: 600, format: fmt });
+    gainShown = true;
+  };
   if (view) {
     /** @type {Record<string, any>} */ const patch = {};
     for (const [id, r] of Object.entries(round.prev || {})) patch[id] = r || null;
@@ -810,23 +840,29 @@ function drawDone(el, ctx, data, round, backTo) {
       // a course's items are scoped by its language (domain/itemids.js); German's never are
       const itemOf = (/** @type {any} */ k, /** @type {string} */ id) => cr ? scopeItem(cr.lang, k.maps.resolve(id, 'core') || id) : k.maps.resolve(id, 'b1') || id;
       const known = (/** @type {any} */ k) => knownOf(ids, id => k.get(itemOf(k, id))).known;
-      const nb = known(kb), na = known(ka), n = ids.length || 1;
-      knownEl.textContent = t('practice.knownOf', { b: nb, a: na, n: ids.length });
-      requestAnimationFrame(() => fill(bar, nb / n));
-      setTimeout(() => fill(bar, na / n), reduced() ? 0 : 380);
+      const nb = known(kb), na = known(ka);
+      knownEl.textContent = t('practice.done.knownNow', { a: na, n: ids.length });
+      counts = { nb, na };
+      gain(reduced());
     }).catch(() => { knownEl.textContent = ''; });
   }
   /** @type {Field | null} */ let field = null;
+  /** @type {import('../../core/motion.js').SeqStep[]} */ const steps = [];
+  const LAND_AT = 500;
   if (view && fieldEl) {
     const rightIds = new Set(round.results.filter((/** @type {any} */ r) => r.first && r.ok).map((/** @type {any} */ r) => r.id));
-    const cells = view.ids.map((id, i) => (rightIds.has(id) ? i : -1)).filter(i => i >= 0);
+    const cells = view.ids.map((/** @type {string} */ id, /** @type {number} */ i) => (rightIds.has(id) ? i : -1)).filter((/** @type {number} */ i) => i >= 0);
     // the cells answered right start in their earlier state and land one after another
-    const start = view.states.map((x, i) => (rightIds.has(view.ids[i]) ? Math.min(x, 1) : x));
-    field = new Field(/** @type {HTMLCanvasElement} */ (fieldEl), start, { cell: 5, gap: 1, label: null });
-    cells.slice(0, 24).forEach((i, k) => setTimeout(() => field?.ripple(i, { state: Math.max(2, view.states[i]) }), reduced() ? 0 : 500 + k * 90));
-    cells.slice(24).forEach(i => field?.set(i, Math.max(2, view.states[i])));
+    const start = view.states.map((/** @type {number} */ x, /** @type {number} */ i) => (rightIds.has(view.ids[i]) ? Math.min(x, 1) : x));
+    const f = new Field(/** @type {HTMLCanvasElement} */ (fieldEl), start, { cell: 5, gap: 1, label: null });
+    field = f;
+    const to = (/** @type {number} */ i) => Math.max(2, view.states[i]);
+    cells.slice(0, 24).forEach((/** @type {number} */ i, /** @type {number} */ k) => steps.push({ at: LAND_AT + k * 90, run: instant => { if (instant) f.set(i, to(i)); else f.ripple(i, { state: to(i) }); } }));
+    cells.slice(24).forEach((/** @type {number} */ i) => f.set(i, to(i)));
   }
-  const stopHero = hero.start();
+  // "+N" with the first cell that lands (or at that moment when no cell does)
+  steps.push({ at: LAND_AT, run: instant => { gainDue = true; gain(instant); } });
+  const stopHero = hero.start({ steps });
   const doneEl = el.firstElementChild;
   const onKey = (/** @type {KeyboardEvent} */ e) => {
     if (!doneEl || !doneEl.isConnected) { stop(); return; }   // another round mounted on the same address
