@@ -9,7 +9,7 @@
    Content and the search index are built once per session (data.js); long lists render in pages (ui.js paged). */
 import { h, replace, on, announce, append } from '../../core/dom.js';
 import { label } from '../../core/clock.js';
-import { notice, seg } from '../../core/ui.js';
+import { notice, seg, backLink } from '../../core/ui.js';
 import { icon } from '../../core/icons.js';
 import { num } from '../../core/i18n.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
@@ -195,7 +195,7 @@ export async function mount(el, ctx) {
   const moreText = (/** @type {number} */ n, /** @type {number} */ left) => t('lookup.more', { n: num(n), left: num(left) });
   /** @param {any[]} items @param {(x: any) => Node} row @param {string} [tag] */
   const list = (items, row, tag = 'ul') => { const p = paged(items, row, { more: moreText, tag }); pagers.push(p); return p.el; };
-  const back = (/** @type {string} */ href) => h('a', { class: 'lk-back pressable', href }, glyph('caret', 16), t('lookup.back'));
+  const back = (/** @type {string} */ href) => backLink({ href, label: t('lookup.back') });
 
   /* ---------- word sheet: #/lookup/words/<lemma or id> ---------- */
 

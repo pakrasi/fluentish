@@ -2,7 +2,7 @@
    month's spend against his cap, Start. Earlier conversations of this device are listed under it. */
 import { h, replace } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
-import { seg, notice } from '../../core/ui.js';
+import { seg, notice, backLink } from '../../core/ui.js';
 import { reduced } from '../../core/motion.js';
 import { label } from '../../core/clock.js';
 import { add } from '../../domain/days.js';
@@ -97,7 +97,7 @@ export async function mountSetup(el, ctx) {
 
     const earlier = all.slice(0, 5);
     const view = h('div', { class: 'practice stack cv cv-setup' },
-      h('a', { class: 'btn btn-quiet pressable cv-back', href: '#/practice' }, icon('back', { size: 18 }), t('practice.title')),
+      backLink({ href: '#/practice', label: t('practice.title') }),
       h('div', { class: 'page-head' }, h('h1', null, t('conv.title'))),
       h('p', { class: 'cv-lede' }, t('conv.lead', { lang: conv?.language || '' })),
       !canAsk ? notice({ kind: 'warning', children: [h('p', { class: 'notice-title' }, t('conv.noKey')), h('p', null, h('a', { href: '#/profile/connections' }, t('conv.noKey.link')))] }) : null,

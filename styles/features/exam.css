@@ -2,8 +2,6 @@
    motion.css, components.css); no new colours. Reading texts use the display face like the study card prompt. */
 
 /* ---------- shared ---------- */
-.ex-back { display: inline-flex; align-items: center; gap: 6px; min-height: var(--tap); padding-inline-end: var(--s-2); color: var(--ink-2); text-decoration: none; font: 500 14px/1 var(--font-ui); }
-.ex-back:hover { color: var(--ink); }
 .ex-new { display: inline-flex; align-items: center; margin-inline-start: var(--s-2); padding: 2px 8px; border-radius: var(--r-pill); background: var(--accent-soft); color: var(--accent-ink); font: 500 11px/1.4 var(--font-ui); vertical-align: 2px; }
 .ex-status { font-size: 14px; color: var(--ink-2); }
 .ex-status.is-pass { color: var(--ink); }
@@ -265,4 +263,4 @@ body.kb .ex-runhead.kb-stick { margin: 0; padding-top: 6px; }
 body.kb .ex-run:has(> .kb-stick) { padding-top: 57px; }
 body.kb .ex-write { min-height: 140px; max-height: calc(var(--vv-h, 100dvh) - 150px); }
 /* the back link keeps its name for a screen reader but shows only its chevron, so the row fits a phone */
-body.kb .ex-runhead.kb-stick .ex-back span { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+body.kb .ex-runhead.kb-stick .back-link-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }

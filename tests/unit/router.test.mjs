@@ -5,7 +5,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { parseHash, matchRoute, mapLegacy } from '../../src/core/router.js';
+import { parseHash, matchRoute, mapLegacy, safeNext } from '../../src/core/router.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 
@@ -67,4 +67,13 @@ test('no markup sinks in src (outside the vendored shaders)', () => {
     });
   }
   assert.deepEqual(bad, []);
+});
+
+test('safeNext: a deep link kept through Welcome is a path inside the app only', () => {
+  assert.equal(safeNext('/practice/build/family/fahren'), '/practice/build/family/fahren');
+  assert.equal(safeNext('/lookup/words?q=Haus'), '/lookup/words?q=Haus');
+  for (const bad of [null, undefined, '', 'practice', '//evil.example/x', 'https://evil.example', 'javascript:alert(1)',
+    '/welcome', '/welcome?next=/today', '/', '/a b', '/a\\b', '/x\u0000', '/' + 'a'.repeat(600)]) {
+    assert.equal(safeNext(bad), null, String(bad));
+  }
 });

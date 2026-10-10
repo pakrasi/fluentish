@@ -15,7 +15,7 @@
    Motion is the kit's: swap() between cards, the .reveal-answer unfold, segments(), Field ripples, haptic(); the
    rest is CSS on the kit's tokens, so reduced motion turns every move into a fade or a jump. */
 import { h, replace, announce } from '../../core/dom.js';
-import { notice, section } from '../../core/ui.js';
+import { notice, section, backLink } from '../../core/ui.js';
 import { icon } from '../../core/icons.js';
 import { swap, reduced, countTo } from '../../core/motion.js';
 import { gradeRow } from '../shared/selfgrade.js';
@@ -39,7 +39,7 @@ import { meter, holdable, logAttempt } from './mic.js';
 import { fitToKeyboard, keep, reveal as revealEl } from '../../core/keyboard.js';
 
 const pct = (/** @type {number} */ x) => new Intl.NumberFormat('en-GB', { style: 'percent', maximumFractionDigits: 0 }).format(x || 0);
-const back = (/** @type {string} */ href, /** @type {string} */ text) => h('a', { class: 'pr-backlink pressable', href }, icon('prev', { size: 16 }), text);
+const back = (/** @type {string} */ href, /** @type {string} */ text) => backLink({ href, label: text });
 const roundMin = (/** @type {number} */ n) => Math.max(1, Math.ceil(n * 0.2));
 const fnName = (/** @type {any} */ bank, /** @type {string} */ fn) => bank.functions?.[fn] || fn;
 

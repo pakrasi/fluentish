@@ -212,7 +212,7 @@ export function runObjective(el, ctx, { exam, n, module, ex, def }) {
     confirmSlot.scrollIntoView({ block: 'nearest' });
   }
   const head = h('header', { class: 'ex-runhead' },
-    backLink(`#/exam/${n}`, t('exam.backTest', { n })),
+    backLink(`#/exam/${n}`, t('exam.backTest', { n }), { narrow: true }),
     h('div', { class: 'ex-runhead-end' }, clock.el, h('button', { type: 'button', class: 'btn btn-primary pressable ex-submit-top', lang: langAttr(), dir: dirAttr(), onclick: askSubmit }, tx('submit'))));
   replace(el, h('div', { class: 'ex-run', lang: langAttr(), dir: dirAttr() },
     head, over,

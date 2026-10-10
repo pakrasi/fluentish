@@ -5,7 +5,7 @@
    cards stay in the typed rounds.
    Every microphone and recogniser call goes through services/speech.js, so the iOS app can swap the implementation. */
 import { h, replace, announce } from '../../core/dom.js';
-import { linkRow, notice } from '../../core/ui.js';
+import { linkRow, notice, backLink } from '../../core/ui.js';
 import { icon } from '../../core/icons.js';
 import { fill, reduced } from '../../core/motion.js';
 import * as Sp from '../../domain/speech.js';
@@ -45,7 +45,7 @@ function errorText(err, t) {
   return t('practice.speak.err.other');
 }
 
-const back = (/** @type {string} */ href, /** @type {string} */ text) => h('a', { class: 'pr-backlink pressable', href }, icon('prev', { size: 16 }), text);
+const back = (/** @type {string} */ href, /** @type {string} */ text) => backLink({ href, label: text });
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx @param {string[]} parts rest after 'speak' */
 export async function mountSpeak(el, ctx, parts) {

@@ -7,9 +7,10 @@ import { t, setLocale } from './core/i18n.js';
 import { h, replace, $ } from './core/dom.js';
 import { icon } from './core/icons.js';
 import { markNode } from './core/brand.js';
-import { swap, toast as kitToast } from './core/motion.js';
+import { swap, toast as kitToast, reduced } from './core/motion.js';
 import { startKeyboard } from './core/keyboard.js';
-import { createRouter } from './core/router.js';
+import { createRouter, safeNext } from './core/router.js';
+import { createScrollKeeper } from './core/scroll.js';
 import { avatar } from './core/ui.js';
 import { log, installErrorLog, attachLogStore } from './core/log.js';
 import { createIdbAdapter } from './data/adapters/idb.js';
@@ -137,7 +138,15 @@ async function main() {
     // the Exam tab: an exam goal with mock tests (a date-only goal such as 'other' has the countdown, not the tab)
     const tabs = TABS.filter(tb => !tb.needsExam || hasMockExam(s));
     return h('nav', { class: `tabs tabs-${where}`, 'aria-label': t('nav.main'), style: { '--n': tabs.length } },
-      tabs.map(tb => h('a', { href: tb.href, dataset: { tab: tb.id }, class: 'pressable' }, icon(tb.icon, { size: 22 }), h('span', null, t(tb.label)))));
+      tabs.map(tb => h('a', { href: tb.href, dataset: { tab: tb.id }, class: 'pressable', onclick: retap }, icon(tb.icon, { size: 22 }), h('span', null, t(tb.label)))));
+  };
+  /* a tap on the tab you are on, at its root: back to the top (iOS convention; the Home Screen app has no browser
+     Back). At a page inside the tab the link is a new navigation to the tab's root, which starts at the top. */
+  const retap = (/** @type {MouseEvent} */ e) => {
+    const a = /** @type {HTMLAnchorElement} */ (e.currentTarget);
+    if (a.getAttribute('href') !== location.hash || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    e.preventDefault();
+    scrollTo({ top: 0, behavior: reduced() ? 'instant' : 'smooth' });
   };
   async function refreshShell() {
     const bar = /** @type {HTMLElement} */ ($('#bar-inner'));
@@ -185,13 +194,21 @@ async function main() {
   startKeyboard({ bus });
 
   // ---------- router ----------
+  // Back and Forward return to where the page was (core/scroll.js)
+  const scrollKeeper = createScrollKeeper();
+  scrollKeeper.start();
   const router = createRouter({
+    scroll: scrollKeeper,
     routes: routes(),
     view: /** @type {HTMLElement} */ ($('#view')),
     home: '/today',
     guard: (path) => {
       const onboarded = !!settings().onboarded;
-      if (!onboarded && path !== '/welcome') return '/welcome';
+      if (!onboarded && path !== '/welcome') {
+        // a link opened before onboarding (the site is shared) opens once Welcome is done
+        const next = path === '/today' ? null : safeNext(location.hash.replace(/^#/, ''));
+        return next ? `/welcome?next=${encodeURIComponent(next)}` : '/welcome';
+      }
       if (onboarded && path === '/welcome') return '/today';
       return null;
     },
@@ -212,7 +229,11 @@ async function main() {
     },
     onError: (err, path) => {
       log('route', err);
-      replace(/** @type {HTMLElement} */ ($('#view')), h('div', { class: 'stack page-pad' }, h('h1', null, t('error.title')), h('p', null, t('error.view', { path })), h('a', { class: 'btn', href: '#/today' }, t('error.home'))));
+      // Try again loads the page again (a module a bad connection cut off is fetched anew); Today is the way out
+      replace(/** @type {HTMLElement} */ ($('#view')), h('div', { class: 'stack page-pad error-view' }, h('h1', null, t('error.title')), h('p', null, t('error.view', { path })),
+        h('div', { class: 'error-actions' },
+          h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => location.reload() }, t('error.retry')),
+          h('a', { class: 'btn btn-quiet pressable', href: '#/today' }, t('error.home')))));
     },
   });
   await router.start();

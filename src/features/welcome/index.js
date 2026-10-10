@@ -4,6 +4,7 @@
 import { h, replace } from '../../core/dom.js';
 import { context, label, parse } from '../../core/clock.js';
 import { config } from '../../core/config.js';
+import { safeNext } from '../../core/router.js';
 import { markNode, runway, studyDays } from '../../core/brand.js';
 import { segments } from '../../core/motion.js';
 import { field, nextId } from '../../core/ui.js';
@@ -118,7 +119,9 @@ export async function mount(el, ctx) {
     w('onboarded', isoWithOffset(new Date()));
     store.flush();
     ctx.refreshShell();
-    ctx.go('/today');
+    // a link opened before onboarding (#/welcome?next=…) opens now, in Welcome's place in the history
+    const next = safeNext(ctx.query.get('next'));
+    if (next) ctx.go(next, { replace: true }); else ctx.go('/today');
   }
 
   function render() {

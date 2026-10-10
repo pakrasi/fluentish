@@ -111,7 +111,7 @@ function viewModule(name, o = {}) {
 
 /**
  * @param {El} view @param {Record<string, any>} views path → view module
- * @param {{transition?: (u: () => any) => Promise<void>, loads?: Record<string, Promise<any>>}} [o]
+ * @param {{transition?: (u: () => any) => Promise<void>, loads?: Record<string, Promise<any>>, scroll?: any}} [o]
  */
 function makeRouter(view, views, o = {}) {
   const errors = /** @type {{err: any, path: string}[]} */ ([]);
@@ -125,6 +125,7 @@ function makeRouter(view, views, o = {}) {
     routes, view: /** @type {any} */ (view), home: '/x',
     makeCtx: (route, params, query) => ({ route: route.path, params, query }),
     transition: o.transition,
+    scroll: o.scroll,
     onMounted: ({ path }) => { mounted.push(path); },
     onError: (err, path) => { errors.push({ err, path }); view.replaceChildren(new El('h1', 'error')); },
   });
@@ -431,4 +432,91 @@ test('unmount that throws is logged and does not stop the next view', async () =
   try { router.go('/y'); await settle(); } finally { console.error = err; }
   assert.equal(logged.length, 1);
   assert.equal(shown(view), 'Y');
+});
+
+// ---------- scroll: Back returns to where you were (round 8, lane U1; core/scroll.js) ----------
+
+/** A fake keeper: the entry of each hash is scripted (y null = a new entry); it records what the router asks. */
+function fakeKeeper(/** @type {El} */ view, /** @type {Record<string, number | null>} */ ys = {}) {
+  const k = {
+    /** @type {string[]} */ log: [],
+    leave() { k.log.push('leave'); },
+    arrive() { const y = ys[env.hash] ?? null; k.log.push(`arrive ${env.hash}`); return { key: env.hash, y }; },
+    shown(/** @type {string} */ key) { k.log.push(`shown ${key}`); },
+    clear() { k.log.push('clear'); },
+    restore(/** @type {number} */ y, /** @type {AbortSignal} */ signal) { k.log.push(`restore ${y} content=${shown(view)} aborted=${signal.aborted}`); return Promise.resolve(); },
+  };
+  return k;
+}
+
+test('scroll: a new entry starts at the top; Back to a kept entry restores its y after the view drew', async () => {
+  const view = reset();
+  const X = viewModule('X'), Y = viewModule('Y');
+  const keeper = fakeKeeper(view, { '#/x?back': 807 });
+  const { router } = makeRouter(view, { '/x': X, '/y': Y }, { scroll: keeper });
+  await router.start();
+  assert.equal(env.scrolls, 1, 'the first view starts at the top');
+  assert.deepEqual(keeper.log, ['arrive #/x', 'clear', 'shown #/x'], 'nothing on screen to leave yet');
+  keeper.log.length = 0;
+  location.hash = '#/y';
+  await settle();
+  assert.deepEqual(keeper.log, ['leave', 'arrive #/y', 'clear', 'shown #/y']);
+  assert.equal(env.scrolls, 2);
+  keeper.log.length = 0;
+  location.hash = '#/x?back';
+  await settle();
+  assert.deepEqual(keeper.log, ['leave', 'arrive #/x?back', 'clear', 'restore 807 content=X aborted=false', 'shown #/x?back']);
+  assert.equal(env.scrolls, 2, 'no scroll to the top on Back');
+});
+
+test('scroll: with a view transition the restore runs inside the update, after the mount', async () => {
+  const view = reset();
+  const X = viewModule('X'), Y = viewModule('Y');
+  const keeper = fakeKeeper(view, { '#/y': 300 });
+  /** @type {string[]} */ const order = [];
+  const transition = async (/** @type {() => any} */ u) => { order.push('vt start'); await vt(u); order.push(`vt done ${keeper.log.filter(l => l.startsWith('restore')).length}`); };
+  const { router } = makeRouter(view, { '/x': X, '/y': Y }, { scroll: keeper, transition });
+  await router.start();
+  location.hash = '#/y';
+  await settle();
+  assert.deepEqual(order, ['vt start', 'vt done 1']);
+  assert.ok(keeper.log.includes('restore 300 content=Y aborted=false'));
+});
+
+test('scroll: a slow mount overtaken by a newer navigation never restores; the error view starts at the top', async () => {
+  const view = reset();
+  const gate = deferred();
+  const X = viewModule('X'), S = viewModule('S', { gate: gate.promise }), Y = viewModule('Y');
+  const keeper = fakeKeeper(view, { '#/s': 500 });
+  const offline = Promise.reject(new Error('offline'));
+  offline.catch(() => {});   // handled where the router awaits it
+  const { router } = makeRouter(view, { '/x': X, '/s': S, '/y': Y }, { scroll: keeper, loads: { '/y': offline } });
+  await router.start();
+  location.hash = '#/s';
+  await settle();
+  keeper.log.length = 0;
+  location.hash = '#/x';
+  await settle();
+  gate.resolve();
+  await settle();
+  assert.ok(!keeper.log.some(l => l.startsWith('restore')), keeper.log.join(' | '));
+  assert.equal(keeper.log.filter(l => l === 'leave').length, 0, 'no view was on screen while S was mounting');
+  const before = env.scrolls;
+  location.hash = '#/y';
+  await settle();
+  assert.ok(keeper.log.includes('clear'));
+  assert.equal(env.scrolls, before + 1);
+});
+
+test('scroll: canLeave false keeps the view and gives the entry it went back to the view\'s key', async () => {
+  const view = reset();
+  const X = viewModule('X', { canLeave: () => false }), Y = viewModule('Y');
+  const keeper = fakeKeeper(view);
+  const { router } = makeRouter(view, { '/x': X, '/y': Y }, { scroll: keeper });
+  await router.start();
+  keeper.log.length = 0;
+  location.hash = '#/y';
+  await settle();
+  assert.equal(shown(view), 'X');
+  assert.deepEqual(keeper.log, ['leave', 'arrive #/x', 'shown #/x']);
 });

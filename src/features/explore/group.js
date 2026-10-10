@@ -15,6 +15,7 @@
    shown (kv 'explore'.pageShown). Reduced motion gets the final state at once. */
 import { h, replace } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
+import { backLink as uiBack } from '../../core/ui.js';
 import { countTo, receive } from '../../core/motion.js';
 import { num } from '../../core/i18n.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
@@ -49,7 +50,7 @@ export async function mountGroup(el, ctx, type, id) {
   const cleanup = () => { alive = false; offs.forEach(f => f()); };
   const onMap = MODES.includes(/** @type {any} */ (type));
   const isCluster = TYPES.includes(/** @type {any} */ (type));
-  const backLink = (/** @type {string} */ href, /** @type {string} */ text) => h('a', { class: 'pr-backlink pressable', href }, icon('prev', { size: 16 }), text);
+  const backLink = (/** @type {string} */ href, /** @type {string} */ text) => uiBack({ href, label: text });
   const back0 = onMap ? backLink(mapHref(key), t('explore.title')) : backLink(`#/practice/clusters/${type}`, t('practice.clusters.title'));
   replace(el, h('div', { class: 'practice cl cl-page gp stack' }, back0, h('h1', null, id), h('p', { class: 'caption', role: 'status' }, t('explore.loading'))));
 

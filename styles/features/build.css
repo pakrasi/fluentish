@@ -7,8 +7,6 @@
 .wb.stack { display: grid; gap: var(--s-4); align-content: start; }
 .wb .page-head { margin-bottom: 0; }
 .wb.has-dock { padding-bottom: 92px; }
-.wb-back { display: inline-flex; align-items: center; gap: 6px; min-height: var(--tap); padding-top: var(--s-2); color: var(--ink-2); text-decoration: none; font-size: 14px; justify-self: start; }
-.wb-back + .page-head { padding-top: 0; }
 .wb-lead { color: var(--ink-2); max-width: 60ch; }
 .wb-card { position: relative; background: var(--surface); border-radius: var(--r-card); box-shadow: var(--shadow-card); padding: var(--s-5); }
 .wb-field { display: grid; gap: var(--s-2); }

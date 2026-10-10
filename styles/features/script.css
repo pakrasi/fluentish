@@ -296,7 +296,6 @@ body.sc-full #view { padding-top: env(safe-area-inset-top); }
 :root[data-motion="reduce"] .sc-w::after, :root[data-motion="reduce"] .is-listen .sc-sent { transition: none; }
 :root[data-motion="reduce"] .sc-cell.is-land, :root[data-motion="reduce"] .sc-cell.is-fill { animation: none; }
 :root[data-motion="reduce"] .sc-wdone.is-in .sc-wdone-w { transition-delay: 0ms; }
-.sc-headrow .pr-backlink { padding-top: 0; }
 /* a marked word: the accent underline of the mark screen in Listen and Parts; where its letters are hidden, its blank
    is an accent rule; the letters themselves stay ink */
 .is-listen .sc-rw.is-mark .sc-t, .is-parts .sc-rw.is-mark .sc-t, .sc-rtext:not(.is-letters):not(.is-gaps):not(.is-hidden):not(.is-parts) .sc-rw.is-mark .sc-t { text-decoration: underline 2px var(--accent); text-underline-offset: 0.22em; text-decoration-skip-ink: none; }
