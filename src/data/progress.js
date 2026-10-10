@@ -406,6 +406,9 @@ export function summary(store, course) {
   return { days: list.length, estimated: list.filter(([, r]) => r.estimated).length };
 }
 
+/** How long a failure waits before it is logged (startProgress). */
+export const LOG_DELAY_MS = 1000;
+
 /**
  * Start recording: the backfill when it has not run, the missed days, today; then today again after study and on the
  * first open of a new day. One tab at a time (Web Locks where the browser has them).
@@ -426,7 +429,10 @@ export function startProgress(ctx) {
       await catchUp(ctx);
     }
     await recordToday(ctx);
-  }).catch(e => log('progress', e));
+    // logged a moment later (LOG_DELAY_MS): a reload or a navigation while this still loads content cancels the fetch
+    // ("TypeError: Load failed"), and the leaving page's timers never run, so only a failure on a page that stays is
+    // logged. Nothing is lost: the next open runs it again
+  }).catch(e => { setTimeout(() => log('progress', e), LOG_DELAY_MS); });
   ctx.bus.on('store:changed', ({ name } = {}) => {
     if (name !== 'activity' && !String(name || '').startsWith('cards:')) return;
     if (timer) clearTimeout(timer);
