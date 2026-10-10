@@ -18,14 +18,14 @@ const read = (/** @type {string} */ p) => readFileSync(path.join(ROOT, p));
 // for strings and small modules that later work adds. The language packs are the next large part (lang/registry.js).
 // Round 8 integration: 66 modules, 742 KB raw, 256 KB gzip once F1, ACC0 and the ui lanes are in (core/motion.js
 // +14 KB raw, ui/toast.js +15.5 KB through motion.js's toast re-export, domain/meter.js +4 KB through ring(), en.js
-// +2.4 KB, ACC0's config/log/backup/store/idb +3 KB). Next saving: load ui/toast.js on the first toast.
+// +2.4 KB, ACC0's config/log/backup/store/idb +3 KB). Fix pass: ui/toast.js loads on the first toast (motion.js).
 const BUDGET = { modules: 68, rawKB: 760, gzipKB: 262 };
 
 // rarely needed at start, each loaded with import() where it is used
 const NEVER = [
   'src/data/restore.js', 'src/data/migrate.js', 'src/data/cutover.js', 'src/data/progress.js',
   'src/domain/match.js', 'src/domain/wordbuild-family.js', 'src/domain/wordbuild-grade.js', 'src/domain/atlas.js',
-  'src/domain/progress.js', 'src/domain/cardmerge.js',
+  'src/domain/progress.js', 'src/domain/cardmerge.js', 'src/ui/toast.js',
 ];
 
 const graph = () => importGraph('src/main.js', p => read(p).toString('utf8'));

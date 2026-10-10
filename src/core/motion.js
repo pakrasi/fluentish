@@ -749,7 +749,19 @@ export function segmented(el, onChange) {
 /* ------------------------------------------------------------------ */
 
 // The toast lives in src/ui/toast.js since round 8 (design C §9: a queue of one, swipe-away, a choice of live region);
-// this re-export keeps every motion.toast(text, { action, onAction, ms }) call as it was.
-export { toast } from '../ui/toast.js';
+// motion.toast(text, { action, onAction, ms, signal }) keeps every call as it was. ui/toast.js loads on the first toast,
+// not at start (the boot graph's budget): calls keep their order, and the close function works before it has loaded.
+/** @type {Promise<typeof import('../ui/toast.js')> | null} */ let toastMod = null;
+/**
+ * Show a toast (ui/toast.js toast()). Returns its close function.
+ * @param {string} text @param {import('../ui/toast.js').ToastOpts} [o] @returns {() => void}
+ */
+export function toast(text, o = {}) {
+  /** @type {(() => void) | null} */ let close = null;
+  let closed = false;
+  toastMod ??= import('../ui/toast.js');
+  toastMod.then(m => { if (!closed) close = m.toast(text, o); }, e => { toastMod = null; console.warn('toast', e); });
+  return () => { closed = true; close?.(); };
+}
 
 export { wait, raf };
