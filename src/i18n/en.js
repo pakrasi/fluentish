@@ -2985,4 +2985,7 @@ export default {
   // ---- R8 C5 ----
   'read.lib.loading': 'Loading the texts…',
   // ---- end of R8 C5 ----
+  // ---- R8 P3 ----
+  'today.loading': 'Loading today’s plan…',
+  // ---- end of R8 P3 ----
 };

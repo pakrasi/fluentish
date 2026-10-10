@@ -5,7 +5,7 @@ import { composeToday } from '../domain/today.js';
 import { planProviders } from './registry.js';
 import { todayPlan } from '../domain/allowance.js';
 import FS from '../domain/fsrs.js';
-import { courseLang, inLang, LEGACY_DECKS, namedDecks, deckName, examDeck } from '../domain/decks.js';
+import { courseLang, inLang, LEGACY_DECKS, namedDecks, deckName, examDeck, DECK_STATS_KV } from '../domain/decks.js';
 import { dayPlan } from '../domain/week.js';
 import { REVIEW_COST, WINDOW_REVIEW_SHARE, EVE_REVIEW_SHARE } from '../domain/budget.js';
 import { context as clockContext } from '../core/clock.js';
@@ -190,8 +190,41 @@ export function setupRows(s, c, manifest, t) {
 }
 
 /**
+ * Let every feature refresh the stats its plan rows read without content (Practice's pool stats, Word building's open
+ * cards and the day's family board, the situations' bank, reading's next text). This is the slow part of the day:
+ * it loads the content. Never throws (each prepare() catches its own errors; offline, the plan reads the last stats).
+ * Call it after a composeDay (which keeps the exam window first), then compose again: the plan is then the one
+ * composeDay(ctx) gives in one call.
+ * @param {import('./contract.js').ViewCtx} ctx @param {any[]} [providers] planProviders(), when already loaded
+ */
+export async function prepareDay(ctx, providers) {
+  const ps = providers || /** @type {any[]} */ (await planProviders());
+  await Promise.all(ps.map(p => p.mod.prepare?.(ctx)));
+}
+
+/**
+ * Whether the stats the plan reads without content were written today (pure over the store): German's trainer stats
+ * in 'b1.session' and Word building's open count, or for a course in another language its decks' 'deck.stats'. Today
+ * draws its plan before prepareDay only then; on the day's first visit the counts would be yesterday's. With no
+ * language there is nothing to prepare.
+ * @param {any} store @param {{today: string}} c @param {any} settings normalised settings
+ */
+export function statsFresh(store, c, settings) {
+  if (!settings || !settings.language) return true;
+  const lang = courseLang(settings);
+  if (!lang || LEGACY_DECKS.some(d => inLang(d, lang))) {
+    const b1 = (store.get('b1.session', {}) || {}).stats;
+    const build = (store.get('build', {}) || {}).stats;
+    return !!b1 && b1.day === c.today && (settings.language !== 'german' || (!!build && build.day === c.today));
+  }
+  const ds = store.get(DECK_STATS_KV, {}) || {};
+  return Object.entries(ds).some(([d, x]) => inLang(d, lang) && !!x && x.day === c.today);
+}
+
+/**
  * @param {import('./contract.js').ViewCtx} ctx @param {{prepare?: boolean}} [o] prepare: let features refresh their
- *   cached stats first (Today does; Practice has just built its own)
+ *   cached stats first (prepareDay; Practice has just built its own). Today composes without it to draw at once, then
+ *   runs prepareDay and composes again (features/today/index.js).
  */
 export async function composeDay(ctx, { prepare = true } = {}) {
   const { store, t } = ctx;
@@ -204,7 +237,7 @@ export async function composeDay(ctx, { prepare = true } = {}) {
   try { examWindow({ store, c, settings: s }); } catch (e) { console.error('today: exam window', e); }
   /** @type {any[]} */ const items = [], feedback = [], modules = [];
   const providers = /** @type {any[]} */ (await planProviders());
-  if (prepare) await Promise.all(providers.map(p => p.mod.prepare?.(ctx)));   // e.g. Practice's pool stats, so both tabs read one budget
+  if (prepare) await prepareDay(ctx, providers);   // e.g. Practice's pool stats, so both tabs read one budget
   // today's plan from the week (domain/allowance.js todayPlan: the slot fitted to today's reviews, after the stats
   // above); the round 3 day without a week
   const pctx = { store, c, settings: s, exam, t, day: todayPlan({ store, c, settings: s }) };
