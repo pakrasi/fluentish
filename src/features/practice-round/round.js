@@ -464,7 +464,13 @@ export async function mountRound(el, ctx) {
   }
   const LINES = { you: 'pr-diff', right: 'pr-diff answer-key', label: 'caption', caption: 'caption' };
   /** One line about a near miss, when the diff can say it (a missing ending). @param {import('../../domain/letterdiff.js').AnswerDiff} d */
-  const diffCaption = d => { const x = describeDiff(d); return x ? t('practice.diff.endingMissing', { part: x.part, word: x.word }) : null; };
+  const diffCaption = d => {
+    const x = describeDiff(d);
+    if (!x) return null;
+    // the German word in italics and in its own language (a screen reader says it in a German voice)
+    const [a, b] = t('practice.diff.endingMissing', { part: x.part, word: '\u0000', n: [...x.part].length }).split('\u0000');
+    return h('span', null, a, h('i', { lang: langAttr(), dir: dirAttr() }, x.word), b ?? '');
+  };
 
   // right
   // the phrase is right, the rest of the sentence is not: "<phrase> is right.", the rest with its differences, Hard
@@ -560,9 +566,12 @@ export async function mountRound(el, ctx) {
     const marked = situation && g.pattern ? phraseWords(right, g.pattern) : undefined;
     // a gap card: on a far miss its word is still marked
     const gap = it.gap && !marked ? gapWords(it.prompt, right) : undefined;
-    const kids = [h('p', { class: 'pr-res is-bad' }, t('practice.wrong')),
-      lines({ kind: 'wrong', typed: full(typed), right, marked, gap, capMiss: g.capMiss, labels: { you: t('practice.you'), right: t('practice.rightIs'), caption: diffCaption }, classes: LINES }).el,
+    const diffLines = lines({ kind: 'wrong', typed: full(typed), right, marked, gap, capMiss: g.capMiss, labels: { you: t('practice.you'), right: t('practice.rightIs'), caption: diffCaption }, classes: LINES });
+    const kids = [h('p', { class: 'pr-res is-bad' }, t('practice.wrong')), diffLines.el,
       situation ? h('p', { class: 'caption' }, t('practice.checkedPhrase')) : null];
+    // the caption already says a word is cut short: "Check the spelling of <the cut word>" would say it again, wrongly
+    const cut = describeDiff(diffLines.diff);
+    if (cut) g = { ...g, notes: (g.notes || []).filter((/** @type {any} */ n) => !(n.code === 'unknown' && n.word && cut.word.toLowerCase().startsWith(String(n.word).toLowerCase()))) };
     if (g.alsoCorrect?.length) kids.push(h('p', { class: 'pr-also' }, alsoMore(g.alsoCorrect, t('practice.otherWays') + ' ')));
     // his errors, each from his answer, and a rule only when it is about one of them (a detector's always: g.rule);
     // after a self-repair, the trap's rule that was hinted

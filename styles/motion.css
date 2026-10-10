@@ -67,10 +67,10 @@
 :root[data-vt="lift"] :is(.pr-card, .wr-card, .wb-rcard) { view-transition-name: fx-card; }
 /* card: forward (next card) */
 :root[data-vt="forward"]::view-transition-old(fx-card) { animation: vt-out-left var(--dur-quick) var(--ease-in) both; }
-:root[data-vt="forward"]::view-transition-new(fx-card) { animation: vt-in-right var(--dur-card) var(--spring-snappy) 40ms both; }
+:root[data-vt="forward"]::view-transition-new(fx-card) { animation: vt-in-right var(--dur-card) var(--spring-snappy) 70ms both; }
 /* card: back (previous card) */
 :root[data-vt="back"]::view-transition-old(fx-card) { animation: vt-out-right var(--dur-quick) var(--ease-in) both; }
-:root[data-vt="back"]::view-transition-new(fx-card) { animation: vt-in-left var(--dur-card) var(--spring-snappy) 40ms both; }
+:root[data-vt="back"]::view-transition-new(fx-card) { animation: vt-in-left var(--dur-card) var(--spring-snappy) 70ms both; }
 /* "I know this": the card lifts away, softly, and the next one rises into its place */
 :root[data-vt="lift"]::view-transition-old(fx-card) { animation: vt-lift 300ms var(--ease-out) both; }
 :root[data-vt="lift"]::view-transition-new(fx-card) { animation: vt-in-up var(--dur-card) var(--spring-soft) 90ms both; }

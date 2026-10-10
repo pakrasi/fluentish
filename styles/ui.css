@@ -58,6 +58,8 @@
 .ui-ad.is-pending .ui-ad-m.is-ghost:not(.is-on) { opacity: 0; }
 .ui-ad.is-instant .ui-ad-m, .ui-ad.is-instant .ui-ad-m::after { transition: none; }
 .ui-ad-caption { margin: 0; }
+/* the retype locus (core/pulse) is the one underline on its word while it shows: the diff's own bars step aside */
+.ui-ad-w[data-pulse="locus"] .ui-ad-m::after { opacity: 0; }
 @media (prefers-reduced-motion: reduce) {
   :root:not([data-motion="full"]) .ui-ad-m, :root:not([data-motion="full"]) .ui-ad-m::after { transition: none; }
 }
@@ -115,7 +117,7 @@
   border-radius: var(--r-tile); background: var(--surface); color: var(--ink); white-space: nowrap; pointer-events: none;
   transition-property: scale, background-color, color, border-color; transition-duration: 240ms, var(--dur-quick), var(--dur-quick), var(--dur-quick);
   transition-timing-function: var(--spring-snappy), var(--ease-out), var(--ease-out), var(--ease-out); }
-.ui-tile.is-pressed > .ui-tile-face { scale: calc(1 - 0.06 * var(--move)); transition-duration: 60ms, var(--dur-quick), var(--dur-quick), var(--dur-quick); transition-timing-function: var(--ease-out); }
+.ui-tile.is-pressed > .ui-tile-face { scale: calc(1 - 0.06 * var(--move)); transition-duration: var(--dur-press), var(--dur-quick), var(--dur-quick), var(--dur-quick); transition-timing-function: var(--ease-out); }
 .ui-tile[aria-pressed="true"] > .ui-tile-face, .ui-tile.is-ok > .ui-tile-face { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
 .ui-tile.is-other > .ui-tile-face { background: var(--surface); border: 1.5px dashed var(--ink); }
 .ui-tile.is-no > .ui-tile-face { color: var(--ink-3); text-decoration: line-through; text-decoration-thickness: 1.5px; text-decoration-color: var(--ink-3); }

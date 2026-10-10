@@ -64,6 +64,11 @@ test('a near miss: letters marked, the Right line is the whole sentence, one sen
   await expect(ad.locator('.ui-ad-you .ui-ad-m.is-ghost')).toHaveCount(1);
   await expect(ad.locator('.ui-ad-right .ui-ad-m.is-miss')).toHaveCount(1);
   await expect(ad.locator('.ui-ad-caption')).toContainText('Letters missing at the end of');
+  // fix pass (German review N2, UX N3): the German word in italics and lang="de"; no doubled full stop for a screen reader
+  await expect(ad.locator('.ui-ad-caption i[lang="de"]')).toHaveCount(1);
+  expect(await ad.locator('.sr-only').textContent()).not.toMatch(/\.\./);
+  // German review N3: the caption says the word is cut short; no "Check the spelling" note about it as well
+  await expect(page.locator('.pr-fb .pr-notes', { hasText: 'Check the spelling' })).toHaveCount(0);
   const key = String(await page.locator('.pr-fb .answer-key').first().textContent()).replace(/\s+/g, ' ').replace(/^Right:\s*/, '').trim();
   expect(key).toBe(right.replace(/\s+/g, ' ').trim());
   for (const l of await ad.locator('.ui-ad-line').all()) await expect(l).toHaveAttribute('aria-hidden', 'true');

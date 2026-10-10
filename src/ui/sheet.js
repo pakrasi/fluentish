@@ -160,7 +160,8 @@ export function createSheet(opts) {
   setDetent(detent, true);
   void panel.offsetHeight;   // the closed position is drawn first, so the move to the detent is a transition
   el.classList.add('is-shown');
-  (opts.focus || titleEl).focus({ preventScroll: true });
+  // a tap opened it: the focus is there for Enter, with no ring on a touch screen (Safari shows one after a tap)
+  (opts.focus || titleEl).focus(/** @type {any} */ ({ preventScroll: true, focusVisible: opts.focus && matchMedia('(pointer: coarse)').matches ? false : undefined }));
 
   // ---------- close ----------
   /**

@@ -126,6 +126,8 @@ export function mountRing(el, opts) {
       shownState = meterParts({ value: fromValue, max: o.max }).state;
     }
     const before = shownState;
+    // an update replaces the last one's pending draw (the ids never pile up)
+    frames.forEach(cancelAnimationFrame); frames.length = 0;
     frames.push(requestAnimationFrame(() => frames.push(requestAnimationFrame(() => {
       if (!alive) return;
       const p = draw(target);
@@ -188,6 +190,7 @@ export function mountBar(el, opts) {
     const target = { value: o.value, max: o.max, today: o.today };
     if (mode === 'still' || reduced()) { still([gain, base], () => draw(target)); return; }
     if (mode === 'from' && fromValue != null) still([gain, base], () => draw({ value: fromValue, max: o.max, today: Math.max(0, fromValue - (o.value - (o.today || 0))) }));
+    frames.forEach(cancelAnimationFrame); frames.length = 0;
     frames.push(requestAnimationFrame(() => frames.push(requestAnimationFrame(() => { if (alive) draw(target); }))));
   };
   show(o.from == null ? 'still' : 'from', o.from);

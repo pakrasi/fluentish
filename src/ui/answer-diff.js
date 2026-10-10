@@ -36,7 +36,7 @@ import { activePack } from '../lang/registry.js';
  *   diff: a situation's phrase, his sentence plain
  * @property {number[]} [gap]      word indexes of right that fill a gap card's blank: on a far miss (no other marks) they
  *   are marked as whole-word `miss`, so the eye finds the word the card is about
- * @property {{ you?: string, right?: string, caption?: string | ((d: AnswerDiff) => string | null) }} labels
+ * @property {{ you?: string, right?: string, caption?: string | ((d: AnswerDiff) => string | Node | null) }} labels
  *   from the caller's en.js section; an empty label leaves its line without one
  * @property {{ root?: string, you?: string, right?: string, label?: string, caption?: string }} [classes]  the caller's
  *   classes for the parts (practice: pr-diff, answer-key, caption)
@@ -164,10 +164,13 @@ export function createAnswerDiff(opts) {
     }
     const cap = typeof o.labels.caption === 'function' ? o.labels.caption(diff) : o.labels.caption;
     if (cap) kids.push(h('p', { class: ['ui-ad-caption', c.caption] }, cap));
+    const capText = typeof cap === 'string' ? cap : cap ? cap.textContent || '' : '';
+    // a line that ends in its own punctuation gets no second full stop
+    const stop = (/** @type {string} */ x) => (/[.!?…]$/.test(x) ? x : `${x}.`);
     // one sentence form for a screen reader: labels with the text as written, without the drawn marks
     const say = right
       ? [o.labels.right, spoken(diff.typed.filter(s => s.k !== 'extra'))]
-      : [o.typed && diff.typed.length ? `${o.labels.you || ''} ${spoken(diff.typed)}.` : '', o.labels.right, spoken(diff.right), cap || ''];
+      : [o.typed && diff.typed.length ? `${o.labels.you || ''} ${stop(spoken(diff.typed))}` : '', o.labels.right, spoken(diff.right), capText];
     kids.push(h('p', { class: 'sr-only' }, say.filter(Boolean).join(' ').replace(/\s+/g, ' ').replace(/\.\.$/, '.').trim()));
     el.replaceChildren(...kids);
     draw();

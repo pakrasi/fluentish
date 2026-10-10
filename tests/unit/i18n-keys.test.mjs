@@ -165,3 +165,9 @@ test('i18n: keys nothing seems to use (a report, not a failure; I18N_UNUSED=1 li
   ctx.diagnostic(`${unused.length} of ${Object.keys(en).length} en.js keys are not used as a literal or under an allowed prefix`);
   if (process.env.I18N_UNUSED) for (const k of unused) ctx.diagnostic(`unused: ${k}`);
 });
+
+test('fix pass (German review N1): one missing letter is "Letter", more are "Letters"', () => {
+  const v = /** @type {any} */ (en)['practice.diff.endingMissing'];
+  assert.equal(v.one, 'Letter missing at the end of {word}: {part}.');
+  assert.equal(v.other, 'Letters missing at the end of {word}: {part}.');
+});

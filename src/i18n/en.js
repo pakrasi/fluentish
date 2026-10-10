@@ -2974,7 +2974,7 @@ export default {
   // ---- end of R8 U3 ----
   // ---- R8 C1 ----
   // answer feedback (ui/answer-diff.js): one line under a near miss whose only difference is a missing ending
-  'practice.diff.endingMissing': 'Letters missing at the end of {word}: {part}.',
+  'practice.diff.endingMissing': { one: 'Letter missing at the end of {word}: {part}.', other: 'Letters missing at the end of {word}: {part}.' },
   // ---- end of R8 C1 ----
   // ---- R8 C2 ----
   // ---- end of R8 C2 ----

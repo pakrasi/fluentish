@@ -122,6 +122,8 @@ body[data-chrome="off"] .bar, body[data-chrome="off"] #tabs-slot { display: none
 
 .dock { position: fixed; inset-inline-start: 0; inset-inline-end: 0; bottom: calc(57px + env(safe-area-inset-bottom)); z-index: calc(var(--z-bar) - 1); padding: var(--s-3) max(var(--gutter), env(safe-area-inset-left)) var(--s-2); background: linear-gradient(to bottom, transparent, var(--canvas) 34%); }
 .dock .btn { box-shadow: var(--shadow-lift); }
+/* a tablet (600 to 899 px): the dock's button keeps the content's width, centred */
+@media (min-width: 600px) { .dock { padding-inline: max(var(--gutter), calc((100% - 560px) / 2)); } }
 .today.has-dock { padding-bottom: 76px; }
 /* the sticky bars never cover what has focus or what a link scrolls to */
 html { scroll-padding-top: calc(52px + env(safe-area-inset-top) + var(--s-2)); scroll-padding-bottom: calc(57px + env(safe-area-inset-bottom) + var(--s-3)); }
