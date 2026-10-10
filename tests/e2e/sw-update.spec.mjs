@@ -82,6 +82,19 @@ async function shellToWorker(page, origin) {
   await page.route(u => u.origin === origin && (u.pathname === APP || u.pathname === `${APP}index.html`), r => r.continue());
 }
 
+/** Records, across reloads, the page's 'skipWaiting' requests to a worker (with the hash it was on). @param {import('@playwright/test').Page} page */
+async function recordAsks(page) {
+  await page.addInitScript(() => {
+    const post = ServiceWorker.prototype.postMessage;
+    ServiceWorker.prototype.postMessage = function (/** @type {any} */ m, /** @type {any} */ ...rest) {
+      if (m === 'skipWaiting') sessionStorage.setItem('e2e-asked', JSON.stringify([...JSON.parse(sessionStorage.getItem('e2e-asked') || '[]'), location.hash]));
+      return post.call(this, m, ...rest);
+    };
+  });
+}
+/** Where the page asked a worker to take over. @param {import('@playwright/test').Page} page @returns {Promise<string[]>} */
+const asked = page => page.evaluate(() => JSON.parse(sessionStorage.getItem('e2e-asked') || '[]')).catch(() => []);
+
 /** The sha of the code the page runs (its module script), or null mid-navigation. @param {import('@playwright/test').Page} page */
 const pageSha = page => page.evaluate(() => /\/v\/([0-9a-f]{40})\//.exec(/** @type {HTMLScriptElement} */ (document.querySelector('script[type="module"]'))?.src || '')?.[1] || null).catch(() => null);
 
@@ -134,6 +147,7 @@ function dropNetworkErrors(errors) {
 test('a new deploy installs in the background, waits off Today, takes over from Today, and starts offline after', async ({ page, context, consoleErrors }) => {
   const srv = await deployServer();
   try {
+    await recordAsks(page);
     await install(page, srv.origin);
     // the next launch, on Practice, with B deployed: the page is A, from the worker, and B installs behind it and waits
     await page.evaluate(() => { location.hash = '#/practice'; });
@@ -146,23 +160,25 @@ test('a new deploy installs in the background, waits off Today, takes over from 
     expect(await loadedShas(page), 'one version per page').toEqual([SHA]);
     await page.waitForTimeout(500);
     expect(await pageSha(page), 'no takeover off Today').toBe(SHA);
-    // Today: the waiting worker takes over and the page reloads once, as B, with only B's code and B's cache. WebKit (his
-    // Safari) always does. Chromium often holds the takeover until the window closes (the old worker counts as busy;
-    // the round-7 worker too): then the page stays A, whole, and the next window is B (below).
+    expect(await asked(page), 'no takeover asked for off Today').toEqual([]);
+    // Today: the page asks the waiting worker to take over once Today has settled, and reloads once, as B, with only
+    // B's code and B's cache. WebKit (his Safari) takes over at once. Chromium often keeps the new worker waiting
+    // (still 'installed' after skipWaiting) until the page navigates; it is not held by the app: the page has asked,
+    // and a plain reload, which never activates a waiting worker by itself, then lands on B.
     await page.evaluate(() => { location.hash = '#/today'; });
+    await expect.poll(async () => { const a = await asked(page); return a.length > 0 && a.every(h => h === '#/today'); }, { timeout: 15_000 }).toBe(true);
     const webkit = test.info().project.name.startsWith('webkit');
-    const tookOver = await expect.poll(() => pageSha(page), { timeout: webkit ? 30_000 : 15_000 }).toBe(B).then(() => true, e => { if (webkit) throw e; return false; });
-    if (tookOver) {
-      await expect(page.locator('html.booted')).toHaveCount(1);
-      await expect(page.locator('#view h1').first()).toBeVisible();
-      expect(await loadedShas(page), 'one version per page').toEqual([B]);
-      expect(await appCaches(page)).toEqual([`fluentish-${B.slice(0, 12)}`]);
-      expect(await page.evaluate(() => !!navigator.serviceWorker.controller)).toBe(true);
-    } else {
-      test.info().annotations.push({ type: 'chromium', description: 'the takeover waited for the next window' });
-      expect(await pageSha(page)).toBe(SHA);
-      expect(await loadedShas(page), 'one version per page').toEqual([SHA]);
+    const tookOver = await expect.poll(() => pageSha(page), { timeout: webkit ? 30_000 : 10_000 }).toBe(B).then(() => true, e => { if (webkit) throw e; return false; });
+    if (!tookOver) {
+      test.info().annotations.push({ type: 'chromium', description: 'the takeover completed on the next navigation' });
+      await page.evaluate(() => { location.reload(); }).catch(() => {});
+      await expect.poll(() => pageSha(page), { timeout: 30_000 }).toBe(B);
     }
+    await expect(page.locator('html.booted')).toHaveCount(1);
+    await expect(page.locator('#view h1').first()).toBeVisible();
+    expect(await loadedShas(page), 'one version per page').toEqual([B]);
+    expect(await appCaches(page)).toEqual([`fluentish-${B.slice(0, 12)}`]);
+    expect(await page.evaluate(() => !!navigator.serviceWorker.controller)).toBe(true);
   } finally {
     await srv.stop();
   }
@@ -183,6 +199,49 @@ test('a new deploy installs in the background, waits off Today, takes over from 
   const cut = consoleErrors.filter(e => /^console: \[route\] TypeError: Importing a module script failed\.$/.test(e));
   expect(cut.length).toBeLessThanOrEqual(1);
   for (const e of cut) consoleErrors.splice(consoleErrors.indexOf(e), 1);
+});
+
+// Round 8 fix pass (code review S7): the integration's rule, checked. Today prepares the day after its first draw; a
+// waiting version takes over only once that is done ('today:settled', main.js onMounted), never mid-prepare. Today's
+// content fetches are held at the page (a fetch wrapper: the worker serves them from its cache, out of a route's reach).
+test('a waiting version does not take over while Today is still preparing the day; it does once Today has settled', async ({ page }) => {
+  const srv = await deployServer();
+  try {
+    await install(page, srv.origin);
+    await page.addInitScript(() => {
+      if (sessionStorage.getItem('e2e-hold') !== '1') return;
+      const w = /** @type {any} */ (window);
+      w.__held = 0;
+      const gate = new Promise(r => { w.__release = r; });
+      const f = window.fetch.bind(window);
+      window.fetch = (input, init) => {
+        const u = typeof input === 'string' ? input : input instanceof Request ? input.url : String(input);
+        // the day's content (the manifest is read before the first draw)
+        if (/\/content\/(?!manifest\.json)/.test(u)) { w.__held++; return gate.then(() => f(input, init)); }
+        return f(input, init);
+      };
+    });
+    await page.evaluate(() => { location.hash = '#/practice'; });
+    await expect(page.locator('#view h1').first()).toBeVisible();
+    srv.deploy({ sha: B });
+    await page.reload();
+    await expect(page.locator('html.booted')).toHaveCount(1);
+    expect(await nextWorker(page)).toBe(true);
+    // the next launch opens on Today with the day's content held
+    await page.evaluate(() => { sessionStorage.setItem('e2e-hold', '1'); history.replaceState(null, '', '#/today'); });
+    await page.reload();
+    await expect(page.locator('html.booted')).toHaveCount(1);
+    await expect.poll(() => page.evaluate(() => /** @type {any} */ (window).__held || 0)).toBeGreaterThan(0);
+    await page.waitForTimeout(3_000);
+    expect(await pageSha(page), 'no takeover while Today prepares').toBe(SHA);
+    expect(await page.evaluate(() => location.hash)).toBe('#/today');
+    // the day is prepared: Today settles and the waiting version takes over
+    await page.evaluate(() => { sessionStorage.removeItem('e2e-hold'); /** @type {any} */ (window).__release(); });
+    await expect.poll(() => pageSha(page), { timeout: 30_000 }).toBe(B);
+    await expect(page.locator('html.booted')).toHaveCount(1);
+  } finally {
+    await srv.stop();
+  }
 });
 
 test('a warm launch never waits on the network: the app starts while the server has answered nothing', async ({ page, consoleErrors }) => {
