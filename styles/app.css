@@ -126,9 +126,14 @@ body[data-chrome="off"] .bar, body[data-chrome="off"] #tabs-slot { display: none
 /* the sticky bars never cover what has focus or what a link scrolls to */
 html { scroll-padding-top: calc(52px + env(safe-area-inset-top) + var(--s-2)); scroll-padding-bottom: calc(57px + env(safe-area-inset-bottom) + var(--s-3)); }
 :root:has(.dock) { scroll-padding-bottom: calc(57px + 84px + env(safe-area-inset-bottom)); }
+/* the error view: Try again and Back to Today in the dock on a phone, inline on a desktop */
+.error-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.error-actions.dock .btn { flex: 1; }
 @media (prefers-reduced-transparency: reduce) { .dock { background: var(--canvas); } }
 @media (min-width: 900px) {
   .dock { display: none; }
+  .error-actions.dock { display: flex; position: static; padding: 0; background: none; }
+  .error-actions.dock .btn { flex: none; box-shadow: none; }
   .today.has-dock { padding-bottom: 0; }
   .hero-btn { display: inline-flex; }
   html, :root:has(.dock) { scroll-padding-bottom: var(--s-4); }

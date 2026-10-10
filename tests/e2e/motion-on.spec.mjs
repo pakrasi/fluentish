@@ -221,6 +221,44 @@ test('tab change: the dash slides under the new tab, the bars hold still', async
   expect(log.filter(l => /\(fx-(tabs|bar)\)/.test(l))).toEqual([]);
 });
 
+test('the dock is chrome: between two pages with one it holds still, to a page without one it slides off', async ({ page }) => {
+  await seed(page, { veteran: true, examInDays: 10, motion: 'full' });
+  await open(page, '#/exam'); await settle(page);
+  await open(page, '#/today'); await settle(page);
+  test.skip(!(await phone(page)), 'the dock is the phone layout');
+  test.skip(!(await page.evaluate(() => typeof document.startViewTransition === 'function')), 'no View Transitions here');
+  await expect(page.locator('.dock').first()).toBeVisible();
+  expect(await page.locator('.dock').first().evaluate(d => getComputedStyle(d).viewTransitionName)).toBe('fx-dock');
+  // Today and Exam both have one: no fade, no slide (design review S1: it was a double image inside fx-view)
+  await listen(page);
+  await page.locator('.tabs-bottom a[data-tab="exam"]').click();
+  await expect(page).toHaveURL(/#\/exam/);
+  await settle(page);
+  const both = await heard(page);
+  expect(both.some(l => /\(fx-view\) vt-rise/.test(l)), 'a view transition ran').toBe(true);
+  expect(both.filter(l => /\(fx-dock\)/.test(l))).toEqual([]);
+  // Look up has none: the dock slides off its bottom edge
+  await listen(page);
+  await page.locator('.tabs-bottom a[data-tab="lookup"]').click();
+  await expect(page).toHaveURL(/#\/lookup/);
+  await settle(page);
+  expect(await heard(page)).toContain('::view-transition-old(fx-dock) vt-off-down');
+});
+
+test('a tapped tab is the current one at once, with its dash (the route confirms it)', async ({ page }) => {
+  await seed(page, { veteran: true });
+  await open(page, '#/today'); await settle(page);
+  const now = await page.evaluate(() => {
+    const bar = innerWidth < 900 ? 'bottom' : 'top';
+    const a = /** @type {HTMLElement} */ (document.querySelector(`.tabs-${bar} a[data-tab="practice"]`));
+    a.click();
+    // the same task as the tap: the router has not drawn anything yet
+    return [...document.querySelectorAll(`.tabs-${bar} a[aria-current="page"]`)].map(x => /** @type {HTMLElement} */ (x).dataset.tab);
+  });
+  expect(now).toEqual(['practice']);
+  await expect(page).toHaveURL(/#\/practice$/);
+});
+
 test('rapid tab taps during a transition: the dash ends under the last tab, nothing left behind', async ({ page }) => {
   await seed(page, { veteran: true, motion: 'full' });
   for (const hsh of ['#/practice', '#/lookup', '#/today']) { await open(page, hsh); await settle(page); }
@@ -253,6 +291,9 @@ test('a round takes the bars away and End gives them back, sliding off and on th
   let log = await heard(page);
   expect(log).toContain('::view-transition-old(fx-bar) vt-off-up');
   if (narrow) expect(log).toContain('::view-transition-old(fx-tabs) vt-off-down');
+  // fix pass (design review S2): the round's header and action row come in after the bar has gone
+  expect(log).toContain('::view-transition-new(fx-roundhead) vt-fade-in');
+  expect(log).toContain('::view-transition-new(fx-roundact) vt-rise');
   await expect(page.locator('.bar')).toBeHidden();
   await listen(page);
   await page.locator('.pr-end').click();
@@ -265,4 +306,34 @@ test('a round takes the bars away and End gives them back, sliding off and on th
   if (narrow) expect(log).toContain('::view-transition-new(fx-tabs) vt-on-up');
   await expect(page.locator('.bar')).toBeVisible();
   if (narrow) await expect.poll(async () => { const a = await dashAt(page); return a ? Math.abs(a.dash - a.tab) : 99; }).toBeLessThanOrEqual(1);
+});
+
+// Fix pass (design review S8): Today's figure rolls up once a day, not on every return
+test('back on Today the same day, its figure stands at its number (no roll from 0)', async ({ page }) => {
+  await seed(page, { examInDays: 10, motion: 'full' });
+  await open(page, '#/today'); await settle(page);
+  const fig = page.locator('#view .numeral.odo').first();
+  await expect(fig).toBeVisible();
+  const n = String(await fig.getAttribute('aria-label')).match(/\d+/)?.[0] || '';
+  expect(n).not.toBe('');
+  await page.evaluate(() => { location.hash = '#/lookup'; });
+  await expect(page).toHaveURL(/#\/lookup/);
+  await settle(page);
+  // the moment the figure is back in the page: where its columns stand
+  await page.evaluate(() => {
+    const mo = new MutationObserver(() => {
+      const el = document.querySelector('#view .numeral.odo');
+      if (!el) return;
+      mo.disconnect();
+      requestAnimationFrame(() => {
+        /** @type {any} */ (window).__at = [...el.querySelectorAll('.odo-col')].map(c => {
+          const m = new DOMMatrixReadOnly(getComputedStyle(c).transform);
+          return Math.round(-m.m42 / parseFloat(getComputedStyle(c).fontSize));
+        }).join('');
+      });
+    });
+    mo.observe(document.body, { childList: true, subtree: true });
+    location.hash = '#/today';
+  });
+  await expect.poll(() => page.evaluate(() => /** @type {any} */ (window).__at)).toBe(n);
 });

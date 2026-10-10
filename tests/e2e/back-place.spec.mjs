@@ -147,9 +147,53 @@ test('a page that could not load offers Try again, which loads it', async ({ pag
   await expect(page.locator('#view h1')).toHaveText('Something went wrong');
   await expect(page.getByRole('button', { name: 'Try again' })).toBeVisible();
   await expect(page.getByRole('link', { name: 'Back to Today' })).toBeVisible();
+  // fix pass (UX review S7): the page is named, never its path; its tab stays marked; on a phone the actions are in the
+  // dock, in thumb reach
+  await expect(page.locator('#view .error-view p').first()).toHaveText('Practice could not open.');
+  await expect(page.locator('.tabs a[aria-current="page"]:visible')).toHaveAttribute('data-tab', 'practice');
+  if (await page.evaluate(() => innerWidth < 900)) {
+    const box = await page.getByRole('button', { name: 'Try again' }).boundingBox();
+    expect(box && box.y, 'Try again sits low on the screen').toBeGreaterThan(await page.evaluate(() => innerHeight * 0.6));
+  }
   block = false;
   await page.getByRole('button', { name: 'Try again' }).click();
   await expect(page).toHaveURL(/#\/practice\/conversation$/);
   await expect(page.locator('#view h1').first()).not.toHaveText('Something went wrong');
   consoleErrors.length = 0;   // the blocked module is the test's doing
+});
+
+// Round 8 fix pass (UX review S5): the header's back link to the page this one was opened from goes Back, so that page
+// keeps its place, as the browser's Back does. Opened any other way (a reload, a deep link), it is a plain link.
+test('the in-app back link to the page it came from keeps that page\'s place', async ({ page }) => {
+  await seed(page, { veteran: true });
+  await open(page, '#/practice/read');
+  await settle(page);
+  const max = await page.evaluate(() => document.documentElement.scrollHeight - innerHeight);
+  const want = Math.min(700, max - 20);
+  expect(want).toBeGreaterThan(100);
+  await page.evaluate(y => window.scrollTo({ top: y, behavior: 'instant' }), want);
+  await expect.poll(() => scrollY(page)).toBe(want);
+  const href = await page.evaluate(() => [...document.querySelectorAll('#view a[href^="#/practice/read/"]')].find(a => {
+    const r = a.getBoundingClientRect();
+    return r.top > 80 && r.bottom < innerHeight - 100 && r.width > 0;
+  })?.getAttribute('href') || null);
+  expect(href).toBeTruthy();
+  const n0 = await page.evaluate(() => history.length);
+  await page.locator(`#view a[href="${href}"]`).first().click();
+  await expect(page).not.toHaveURL(/#\/practice\/read$/);
+  await settle(page);
+  const back = page.locator('#view .back-link').first();
+  await expect(back).toHaveAttribute('href', '#/practice/read');
+  await back.click();
+  await expect(page).toHaveURL(/#\/practice\/read$/);
+  await expect.poll(() => scrollY(page), { message: 'the list comes back at its place' }).toBe(want);
+  expect(await page.evaluate(() => history.length), 'Back, not a new entry').toBe(n0 + 1);
+  // a page opened any other way (a link from outside the app: no page it came from): a plain link
+  await page.goto(`${APP}version.json`);
+  await open(page, /** @type {string} */ (href));
+  await expect(page.locator('#view .back-link').first()).toBeVisible();
+  const n1 = await page.evaluate(() => history.length);
+  await page.locator('#view .back-link').first().click();
+  await expect(page).toHaveURL(/#\/practice\/read$/);
+  expect(await page.evaluate(() => history.length)).toBe(n1 + 1);
 });

@@ -158,6 +158,8 @@ export function createScrollKeeper() {
   let shown = /** @type {string | null} */ (null);
   /** a navigation has started and its view is not on screen yet: the current entry is not the shown view's */
   let moving = false;
+  /** the arriving entry is new (no key yet: a link or a tab, not Back or Forward), and the hash of the view before it */
+  let fresh = false, prevHash = /** @type {string | null} */ (null);
   let timer = 0;
   /* the y of the view on screen, from its scroll events. leave() uses this, not scrollY at the time: on Back and
      Forward WebKit has already moved the page (to the top) when hashchange fires. */
@@ -192,15 +194,32 @@ export function createScrollKeeper() {
       if (timer) { clearTimeout(timer); timer = 0; }
       moving = true;
       const st = history.state;
-      const key = st && typeof st === 'object' && typeof st.k === 'string' ? st.k : newKey();
+      fresh = !(st && typeof st === 'object' && typeof st.k === 'string');
+      const key = fresh ? newKey() : st.k;
       return { key, y: landing({ state: st, shownKey: shown, memo }) };
     },
-    /** A view is on screen now for this key. @param {string} key */
-    shown(key) { shown = key; moving = false; lastY = Math.round(scrollY); },
+    /**
+     * A view is on screen now for this key. A new entry gets its key now, with `from`, the hash of the view it was
+     * opened from: an in-app back link to that hash goes Back instead (core/ui.js backLink, cameFrom), and keeps its
+     * place. Back and Forward find the key and leave it as it is. @param {string} key
+     */
+    shown(key) {
+      shown = key; moving = false; lastY = Math.round(scrollY);
+      const st = history.state;
+      if (fresh && may()) try { history.replaceState({ ...(st && typeof st === 'object' ? st : {}), k: key, from: prevHash }, ''); } catch { /* sandbox */ }
+      fresh = false;
+      prevHash = location.hash;
+    },
     /** Scroll back to y once the view has drawn (see restore()). @param {number} y @param {AbortSignal} signal */
     restore(y, signal) { return restore(y, { signal }); },
     /** No view is on screen (the error view, or a mount in flight). */
     clear() { shown = null; },
     memo,
   };
+}
+
+/** True when the entry on screen was opened from `hash` (a link or a tab on that page): Back goes there. @param {string} hash */
+export function cameFrom(hash) {
+  const st = history.state;
+  return !!hash && !!st && typeof st === 'object' && st.from === hash && history.length > 1;
 }

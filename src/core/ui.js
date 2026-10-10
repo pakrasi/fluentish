@@ -2,6 +2,7 @@
 import { h } from './dom.js';
 import { icon } from './icons.js';
 import { segmented } from './motion.js';
+import { cameFrom } from './scroll.js';
 
 let uid = 0;
 /** A unique id for label/input pairs. @param {string} [p] */
@@ -91,7 +92,15 @@ export function linkRow({ href, title, detail = null, trail = null, lead = null 
  * @param {{href?: string, label: string, narrow?: boolean, onclick?: (e: MouseEvent) => void, onpointerdown?: (e: PointerEvent) => void}} o
  */
 export function backLink({ href, label, narrow = false, onclick, onpointerdown }) {
-  const attrs = { class: ['back-link', 'pressable', narrow && 'back-link-narrow'], 'aria-label': narrow ? label : null, onclick, onpointerdown };
+  // the page it leads to is the one this page was opened from: go Back, so it keeps its place (core/scroll.js); the
+  // href stays for a new tab, and for a page opened any other way
+  const back = (/** @type {MouseEvent} */ e) => {
+    onclick?.(e);
+    if (e.defaultPrevented || !href || e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || !cameFrom(href)) return;
+    e.preventDefault();
+    history.back();
+  };
+  const attrs = { class: ['back-link', 'pressable', narrow && 'back-link-narrow'], 'aria-label': narrow ? label : null, onclick: href ? back : onclick, onpointerdown };
   const kids = [icon('prev', { size: 16 }), h('span', { class: 'back-link-text' }, label)];
   return href ? h('a', { ...attrs, href }, ...kids) : h('button', { ...attrs, type: 'button' }, ...kids);
 }

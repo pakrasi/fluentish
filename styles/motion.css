@@ -81,6 +81,10 @@
 ::view-transition-old(fx-roundhead), ::view-transition-old(fx-roundact) { animation: none; display: none; }
 ::view-transition-new(fx-roundhead), ::view-transition-new(fx-roundact) { animation: none; }
 ::view-transition-group(fx-roundhead), ::view-transition-group(fx-roundact) { animation: none; }
+/* entering a round (only the new page has them): the header fades in and the action row rises, 120 ms late, once the
+   app bar has slid away, so neither lands on the departing bar (design review S2) */
+:root::view-transition-new(fx-roundhead):only-child { animation: vt-fade-in var(--dur-quick) var(--ease-out) 120ms both; }
+:root::view-transition-new(fx-roundact):only-child { animation: vt-rise var(--dur-quick) var(--ease-out) 120ms both; }
 :root[data-vt="forward"]::view-transition-old(fx-view), :root[data-vt="back"]::view-transition-old(fx-view) { animation: none; display: none; }
 :root[data-vt="forward"]::view-transition-new(fx-view), :root[data-vt="back"]::view-transition-new(fx-view) { animation: none; }
 /* view, safety net: any other named element that only the old view has (no partner to morph into) leaves with the
@@ -98,6 +102,14 @@
    transition, so they appear and go at once. */
 .bar { view-transition-name: fx-bar; }
 .tabs-bottom { view-transition-name: fx-tabs; }
+/* the phone dock (one per page) is chrome too: on both sides it holds still and its label just changes; on one side
+   it slides off or on its bottom edge like the tab bar (design review S1) */
+.dock { view-transition-name: fx-dock; }
+::view-transition-group(fx-dock) { animation: none; }
+::view-transition-old(fx-dock) { animation: none; opacity: 0; }
+::view-transition-new(fx-dock) { animation: none; }
+:root::view-transition-old(fx-dock):only-child { opacity: 1; animation: vt-off-down var(--dur-quick) var(--ease-in) both; }
+:root::view-transition-new(fx-dock):only-child { animation: vt-on-up var(--dur-card) var(--ease-out) 30ms both; }
 ::view-transition-group(fx-bar), ::view-transition-group(fx-tabs) { animation: none; }
 ::view-transition-old(fx-bar), ::view-transition-old(fx-tabs) { animation: none; opacity: 0; }
 ::view-transition-new(fx-bar), ::view-transition-new(fx-tabs) { animation: none; }

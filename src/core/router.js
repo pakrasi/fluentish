@@ -158,7 +158,7 @@ export function safeNext(next) {
  * @param {string} o.home                            path for '#/' and unknown paths
  * @param {(update: () => any) => Promise<void>} [o.transition]
  * @param {(info: {path: string, route: Route, params: Record<string,string>}) => void} [o.onMounted]
- * @param {(err: unknown, path: string) => void} [o.onError]
+ * @param {(err: unknown, path: string, route: Route) => void} [o.onError]   route: the route that failed (its tab)
  * @param {ScrollKeeper} [o.scroll]                  Back returns to where you were (core/scroll.js); without it
  *                                                   every view starts at the top
  */
@@ -213,7 +213,7 @@ export function createRouter({ routes, view, makeCtx, guard, home, transition, o
       // the error view replaces the old view's DOM, so the old view stops too
       const prev = current; current = null; leave(prev);
       scroll?.clear();
-      onError?.(e, path);
+      onError?.(e, path, hit.route);
       window.scrollTo(0, 0);
       return;
     }
@@ -233,7 +233,7 @@ export function createRouter({ routes, view, makeCtx, guard, home, transition, o
       view.replaceChildren(host);
       document.body.dataset.chrome = route.chrome === false ? 'off' : 'on';
       let ret;
-      try { ret = await mod.mount(host, ctx); } catch (e) { if (mine === token) onError?.(e, path); }
+      try { ret = await mod.mount(host, ctx); } catch (e) { if (mine === token) onError?.(e, path, route); }
       /** @type {Cleanup | null} */
       const cleanup = typeof ret === 'function' ? { unmount: ret } : ret || null;
       // a newer navigation took over while this mount was pending: its host is already detached, so it stops now

@@ -20,7 +20,7 @@ import { normalizeSettings, defaultPrefs, examDate } from './data/settings.js';
 import { createContent } from './data/content.js';
 import { sync, restore, backup, backupFiles } from './data/sync/index.js';
 import { TABS, routes, startFeatures } from './features/registry.js';
-import { createSw } from './services/sw.js';
+import { createSw, takeoverGate } from './services/sw.js';
 import { loadRecordSchemas, recordChecker } from './data/records.js';
 import { takeLink } from './core/link.js';
 import { migrateConnections, resultsRepo, validRepo, connect, applyOwnerLink, OWNER } from './data/connection.js';
@@ -146,7 +146,10 @@ async function main() {
      Back). At a page inside the tab the link is a new navigation to the tab's root, which starts at the top. */
   const retap = (/** @type {MouseEvent} */ e) => {
     const a = /** @type {HTMLAnchorElement} */ (e.currentTarget);
-    if (a.getAttribute('href') !== location.hash || e.metaKey || e.ctrlKey || e.shiftKey) return;
+    if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+    // another tab: it is the current one from the tap, so its label changes with the dash (the route confirms it;
+    // a page that keeps him, an exam asking first, puts the mark back: hashchange below)
+    if (a.getAttribute('href') !== location.hash) { markTab(a.dataset.tab || null); return; }
     e.preventDefault();
     scrollTo({ top: 0, behavior: reduced() ? 'instant' : 'smooth' });
   };
@@ -163,11 +166,13 @@ async function main() {
     markTab(currentTab);
   }
   let currentTab = /** @type {string | null} */ (null);
+  // the page on screen and its tab: a tab marked on a tap goes back to it when the page kept him (canLeave)
+  let mounted = { hash: '', tab: /** @type {string | null} */ (null) };
+  addEventListener('hashchange', () => { if (location.hash === mounted.hash && currentTab !== mounted.tab) markTab(mounted.tab); });
   // The automatic merge of the other devices' backups (after the opt-in in Profile › Data) changes cards, so it runs
   // only while the app is at rest on Today or Profile, never mid-round or mid-exam; at most every 30 minutes.
   let atRest = false;
-  let mountGen = 0;   // onMounted calls; a 'today:settled' from an earlier mount does not count
-  const TODAY_SETTLE_MS = 10_000;   // how long a takeover waits for Today's 'today:settled' at most (onMounted)
+  const takeover = takeoverGate({ bus, sw });   // onMounted: a new version takes over from Today once it has settled
   const autoMerge = () => {
     if (!atRest || !navigator.onLine || !restore(store).autoMergeOn()) return;
     restore(store).merge().then(r => {
@@ -223,17 +228,10 @@ async function main() {
     transition: update => swap(update, { kind: 'view', fallbackEl: /** @type {HTMLElement} */ ($('#view')) }),
     onMounted: ({ route }) => {
       markTab(route.tab || (route.path.startsWith('/profile') ? 'profile' : null));
-      // a new version applies only from Today, never mid-round or mid-exam, and only once Today has settled: since
-      // round 8 (P3) it draws first and prepares the day after (loading content, writing the day's stats), and the
-      // takeover is a reload. Today emits 'today:settled'; 10 s is the fallback so an update never stalls.
-      const mount = ++mountGen;
-      sw.atRest(false);
-      if (route.path === '/today') {
-        let done = false;
-        const ready = () => { if (!done && mount === mountGen) { done = true; sw.atRest(true); } };
-        const off = bus.once('today:settled', ready);
-        setTimeout(() => { off(); ready(); }, TODAY_SETTLE_MS);
-      }
+      mounted = { hash: location.hash, tab: currentTab };
+      // a new version applies only from Today, never mid-round or mid-exam, and only once Today has settled
+      // (services/sw.js takeoverGate)
+      takeover(route.path);
       atRest = route.path === '/today' || route.path.startsWith('/profile');
       if (atRest) autoMerge();
       const h1 = $('#view h1');
@@ -241,11 +239,16 @@ async function main() {
       const custom = $('#view [data-title]')?.getAttribute('data-title') || null;
       document.title = docTitle({ h1: h1 ? h1.textContent : null, custom, path: route.path, name: config.name });
     },
-    onError: (err, path) => {
+    onError: (err, path, route) => {
       log('route', err);
-      // Try again loads the page again (a module a bad connection cut off is fetched anew); Today is the way out
-      replace(/** @type {HTMLElement} */ ($('#view')), h('div', { class: 'stack page-pad error-view' }, h('h1', null, t('error.title')), h('p', null, t('error.view', { path })),
-        h('div', { class: 'error-actions' },
+      // the tab of the page that failed stays marked, and the page is named, never its path
+      const tab = route?.tab || (path.startsWith('/profile') ? 'profile' : null);
+      markTab(tab);
+      // Try again loads the page again (a module a bad connection cut off is fetched anew); Today is the way out. On a
+      // phone both sit in the dock, in thumb reach.
+      replace(/** @type {HTMLElement} */ ($('#view')), h('div', { class: 'stack page-pad error-view' }, h('h1', null, t('error.title')),
+        h('p', null, tab && tab !== 'profile' ? t('error.viewNamed', { page: t(`tab.${tab}`) }) : t('error.view')),
+        h('div', { class: 'error-actions dock' },
           h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => location.reload() }, t('error.retry')),
           h('a', { class: 'btn btn-quiet pressable', href: '#/today' }, t('error.home')))));
     },

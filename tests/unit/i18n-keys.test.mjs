@@ -33,7 +33,7 @@ const DYNAMIC_PREFIXES = [
   'practice.script.fmt.', 'practice.script.grade.', 'practice.script.how.', 'practice.script.kind.',
   'practice.script.register.', 'practice.script.step.', 'practice.sim.g',
   'read.band.', 'read.err.', 'read.paste.format.', 'read.sheet.from.', 'read.state.',
-  'stand.items.', 'week.day.', 'week.kind.', 'week.kindHint.', 'welcome.time.', 'word.freq.', 'word.type.',
+  'stand.items.', 'tab.', 'week.day.', 'week.kind.', 'week.kindHint.', 'welcome.time.', 'word.freq.', 'word.type.',
 ];
 
 /* Files whose t(...) is not the app's t. 'exam': the exam runner's t (exam.tx); a key there must be in en or in

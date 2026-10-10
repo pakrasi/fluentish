@@ -1600,7 +1600,8 @@ export default {
   // errors
   'error.title': 'Something went wrong',
   'error.notFound': 'No such page',
-  'error.view': 'This page could not open ({path}).',
+  'error.view': 'This page could not open.',
+  'error.viewNamed': '{page} could not open.',
   'error.boot': 'Fluentish could not start. Reload the page; your progress is kept.',
   'error.home': 'Back to Today',
   'error.save': 'Could not save ({what}). Your last change may be lost if you close the page.',

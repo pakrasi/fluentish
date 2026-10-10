@@ -25,7 +25,18 @@ import { connected, resultsRepo } from '../../data/connection.js';
 import { renderStanding, standingCounts, sparkOf } from './standing.js';
 
 /** What the hero showed last (kept across visits to Today in one session): the week strip fills from it. */
-const shown = /** @type {{week: string | null, ratios: number[], done: number | null, kind: string | null, welcome: string | null}} */ ({ week: null, ratios: [], done: null, kind: null, welcome: null });
+const shown = /** @type {{week: string | null, ratios: number[], done: number | null, kind: string | null, welcome: string | null, fig: Record<string, {day: string, value: number}>}} */ ({ week: null, ratios: [], done: null, kind: null, welcome: null, fig: {} });
+
+/**
+ * Today's figure rolls up once a day (design review S8): back on Today the same day it rolls from the number it showed
+ * last, so an unchanged count stands still and a changed one rolls only the difference.
+ * @param {HTMLElement} el @param {number} value @param {string} label @param {string} kind which figure @param {string} today
+ */
+function rollFigure(el, value, label, kind, today) {
+  const last = shown.fig[kind];
+  shown.fig[kind] = { day: today, value };
+  odometer(el, value, last && last.day === today ? { label, from: last.value } : { label });
+}
 const COUNTDOWN = new Set(['week', 'lastNew', 'eve', 'day']);
 /** "Wednesday" of a day. @param {string} d */
 const weekdayLong = d => new Intl.DateTimeFormat('en-GB', { weekday: 'long' }).format(parse(d));
@@ -157,7 +168,7 @@ export async function mount(el, ctx) {
             plan: d => planned(iso(d)), done: d => (activity[iso(d)]?.minutes || 0),
             examLabel: t('today.runway.exam'), minLabel: (d, p) => t('today.runway.min', { d, p }),
           });
-          if (c.phase !== 'day') odometer(num, c.daysLeft, { label: t('today.daysLeftLabel', { n: c.daysLeft }) });
+          if (c.phase !== 'day') rollFigure(num, c.daysLeft, t('today.daysLeftLabel', { n: c.daysLeft }), 'days', c.today);
         },
       };
     }
@@ -241,7 +252,7 @@ export async function mount(el, ctx) {
         if (dayOff) return;
         // the number is the odometer's only when it changes: Study anyway shows the count without a roll
         if (patch) { num.textContent = String(value); num.setAttribute('aria-label', fresh ? t('today.newLabel', { n: value }) : t('today.dueLabel', { n: value })); if (!reduced()) countEl.classList.add('is-new'); }
-        else odometer(num, value, { label: fresh ? t('today.newLabel', { n: value }) : t('today.dueLabel', { n: value }) });
+        else rollFigure(num, value, fresh ? t('today.newLabel', { n: value }) : t('today.dueLabel', { n: value }), fresh ? 'new' : 'due', c.today);
       },
     };
   }
