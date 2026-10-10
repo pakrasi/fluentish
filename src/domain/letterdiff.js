@@ -376,8 +376,9 @@ export function answerDiff(typed, right, { pack, maxMarkedShare = 0.6, capMiss =
       if (ta === t.raw || (caseOnly(ta, t.raw) && !caps.has(ta))) return [{ text: t.raw, k: 'eq' }];
       // the same word to the pack: only a spelling it counts as the same (ss for ß) or a listed capital is to fix;
       // a letter more or less that the pack allows (gern for gerne) is a right form, and stays plain
-      return letterChunks(ta, t.raw).flatMap(c => /** @type {Seg[]} */ (
-        c.a === c.b || !c.b ? [{ text: c.b, k: 'eq' }]
+      // letters compared case aside unless the grader listed the capital (STRASSE for Straße: only the ß)
+      return chunksBy(ta, t.raw, caps.has(ta) ? exact : caseless).flatMap(c => /** @type {Seg[]} */ (
+        c.eq || !c.b ? [{ text: c.b, k: 'eq' }]
         : caseOnly(c.a, c.b) ? [{ text: c.b, k: caps.has(ta) ? 'fix' : 'eq' }]
         : variant(P, c.a, c.b) ? [{ text: c.b, k: 'fix' }]
         : [{ text: c.b, k: 'eq' }]));

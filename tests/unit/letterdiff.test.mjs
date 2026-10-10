@@ -315,3 +315,9 @@ test('UX S4: gapWords finds the words that fill a gap prompt\'s blank', () => {
   const src = readFileSync(path.join(ROOT, 'src/features/practice-round/round.js'), 'utf8');
   assert.match(src, /const gap = it\.gap && !marked \? gapWords\(it\.prompt, right\) : undefined;/);
 });
+
+test('code N11: all-caps input marks only the spelling to fix, not every letter', () => {
+  assert.equal(show(answerDiff('ICH GEHE DIE STRASSE ENTLANG', 'Ich gehe die Straße entlang.').right), 'Ich gehe die Stra[fix:ß]e entlang.');
+  // a listed capital is still marked
+  assert.equal(show(answerDiff('ich habe keine zeit', 'Ich habe keine Zeit.', { capMiss: [{ typed: 'zeit' }] }).right), 'Ich habe keine [fix:Z]eit.');
+});
