@@ -162,10 +162,14 @@ export function createSheet(opts) {
 
   // ---------- close ----------
   /**
+   * Resolves once the sheet is gone, whatever ends it (its own animation, a route change or destroy()); `closed` says
+   * why. An instant close during the animation (the route is left: Back right after Start) ends it at once with its
+   * own reason, so the reason the animation began with ('start') never wins over the route.
    * @param {string} reason @param {{instant?: boolean, v?: number}} [o]
    * @returns {Promise<void>}
    */
   function close(reason = 'button', { instant = false, v = 0 } = {}) {
+    if (phase === 'closing' && instant) finish(reason);
     if (phase !== 'open') return closed.then(() => {});
     phase = 'closing';
     rm = reduced();
@@ -177,10 +181,8 @@ export function createSheet(opts) {
     el.classList.remove('is-dragging');
     el.classList.add('is-closing');
     el.classList.remove('is-shown');
-    return new Promise(resolve => {
-      const done = () => { finish(reason); resolve(); };
-      if (ms) timer = setTimeout(done, ms); else done();
-    });
+    if (ms) timer = setTimeout(() => finish(reason), ms); else finish(reason);
+    return closed.then(() => {});
   }
   /** @param {string} reason */
   function finish(reason) {

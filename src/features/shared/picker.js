@@ -150,12 +150,16 @@ export async function openPicker(ctx, href, opener = null) {
   });
   input.addEventListener('blur', () => { input.value = String(n); });
 
+  let starting = false;   // Enter during the close animation must not start it twice
   function start() {
     const cur = current();
-    if (!cur.ids.length) return;
+    if (!cur.ids.length || starting) return;
+    starting = true;
     remember(info?.type || 'list', { mode, n });
     const to = sizedHref(href, mode === 'rec' ? 'rec' : mode === 'all' ? 'all' : n).slice(1);
-    void sheet.close('start').then(() => ctx.go(to));
+    // only a sheet that closed for Start goes on: Back during its close animation leaves the page instead
+    void sheet.close('start');
+    void sheet.closed.then(why => { if (why === 'start' && !ctx.signal.aborted) ctx.go(to); });
   }
   dlg.addEventListener('keydown', e => {
     if (/** @type {HTMLElement} */ (e.target).closest?.('.ui-sheet-grab')) return;   // the handle is Close: Enter there closes

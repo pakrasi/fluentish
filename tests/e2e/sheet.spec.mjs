@@ -241,6 +241,59 @@ test('leaving the view closes the sheet (ctx.signal): the picker and the week ed
   await expect(page.locator('main, #view').first()).toBeVisible();
 });
 
+// Fix pass (code review S2, S3, N1): a route left during the close animation wins over the reason the close began
+// with, and close() resolves however the sheet ends.
+test('Back right after Start stays out of the round; Enter during the close starts nothing twice', async ({ page }) => {
+  await phone(page);
+  await seed(page, { examInDays: 30, veteran: true, motion: 'full' });
+  await open(page, '#/today');
+  await openPicker(page);
+  // Start, then the page is left within the close animation (160 ms)
+  await page.evaluate(() => {
+    /** @type {HTMLElement} */ (document.querySelector('.rs-start')).click();
+    setTimeout(() => { location.hash = '#/today'; }, 30);
+  });
+  await expect(page.locator('dialog.ui-sheet')).toHaveCount(0);
+  await page.waitForTimeout(600);
+  expect(await page.evaluate(() => location.hash)).toBe('#/today');
+  await expect(page.locator('.pr-round')).toHaveCount(0);
+  // Enter twice: one round, one history entry
+  await openPicker(page);
+  const n0 = await page.evaluate(() => history.length);
+  await page.evaluate(() => {
+    const dlg = /** @type {HTMLElement} */ (document.querySelector('dialog.ui-sheet'));
+    const enter = () => dlg.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true, cancelable: true }));
+    enter(); setTimeout(enter, 40);
+  });
+  await expect(page.locator('.pr-round')).toBeVisible();
+  await page.waitForTimeout(300);
+  expect(await page.evaluate(() => history.length)).toBe(n0 + 1);
+});
+
+test('a sheet ended during its close animation: the route reason wins and close() resolves on destroy', async ({ page }) => {
+  await phone(page);
+  await seed(page, { motion: 'full' });
+  await open(page, '#/today');
+  const out = await page.evaluate(async sha => {
+    const { createSheet } = await import(`/fluentish/v/${sha}/src/ui/sheet.js`);
+    /** @type {string[]} */ const reasons = [];
+    const ac = new AbortController();
+    const a = createSheet({ title: 'A', body: [], signal: ac.signal, labels: { close: 'Close' }, onClose: (/** @type {string} */ r) => reasons.push(r) });
+    await new Promise(r => setTimeout(r, 300));
+    const p1 = a.close('start');
+    ac.abort();   // the view is left while it slides out
+    const r1 = await Promise.race([p1.then(() => a.closed), new Promise(r => setTimeout(() => r('hung'), 1000))]);
+    const b = createSheet({ title: 'B', body: [], labels: { close: 'Close' }, onClose: (/** @type {string} */ r) => reasons.push(r) });
+    await new Promise(r => setTimeout(r, 300));
+    const p2 = b.close('button');
+    b.destroy();
+    const r2 = await Promise.race([p2.then(() => b.closed), new Promise(r => setTimeout(() => r('hung'), 1000))]);
+    await new Promise(r => setTimeout(r, 300));
+    return { r1, r2, reasons, left: document.querySelectorAll('dialog.ui-sheet').length };
+  }, SHA);
+  expect(out).toEqual({ r1: 'route', r2: 'destroy', reasons: ['route', 'destroy'], left: 0 });
+});
+
 test('the keyboard inside the sheet: it sits on the keyboard with Start in view, and goes back down after', async ({ page, browserName }) => {
   test.skip(browserName !== 'webkit', 'the on-screen keyboard is a phone matter (WebKit at 390 px)');
   // the iOS keyboard as keyboard.spec fakes it: the layout viewport keeps its height, visualViewport shrinks
