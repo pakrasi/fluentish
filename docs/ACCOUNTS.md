@@ -106,8 +106,15 @@ shapes the client depends on; re-record them from the real project at stage 2.
 2. **Accounts for the owner.** Fill `config.accounts`, run the SQL, email-code sign-in, the claim (a local export
    first, then this device's files up, read back and compared), the GitHub-to-account copy byte for byte, the account
    as a second backup target. Phone first, then the second device joins.
-   Code still to write then: `Delete all` must clear the three account kv (`data/session.js deleteProfile`, one line
-   per kv); `backup.js leakIn` should also refuse JWTs and `sb_secret_` keys in a body.
+   Done in round 8 integration: `Delete all` clears the three account kv (b5117d8); `backup.js leakIn` refuses JWTs
+   and `sb_secret_` keys (a4794c0).
+   Code still to write before stage 2 (round 8 code review S9): **a refresh across two tabs can burn the session.**
+   Tab A refreshes and writes the new pair with `store.set`; it posts to the BroadcastChannel only after the IndexedDB
+   write, but releases the `account-refresh` lock as soon as `run` returns. Tab B then takes the lock, reads its
+   in-memory kv (still the old refresh token) and sends the rotated one; outside Supabase's reuse interval that
+   revokes the token family and both tabs are signed out (`data/account/index.js` refresh, `store.js` set). Fix: inside
+   the lock read `account.session` from the adapter (`adapter.loadScope('device')`), not the store cache, or hold the
+   lock until the store write and the post have resolved. Test: two tabs in a unit test with a delayed channel.
 3. **Other people.** Invite-only or open sign-ups with custom SMTP; results to the account; `delete-account` Edge
    Function; "Download my data"; no `#token=` device links for account users.
 4. **Real sync, then GitHub retires.** An `events` table with a server sequence; the Claude proxy; `sync.py` and
