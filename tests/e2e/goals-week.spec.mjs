@@ -5,11 +5,15 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { test, expect, seed, open, checkA11y, storedCards } from './fixtures.mjs';
+import { DEFAULT_CUTOFF, add } from '../../src/core/clock.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 /** Content ids whose cards count as b1 reviews (phrases and grammar). */
 const IDS = readFileSync(path.join(ROOT, 'tests/fixtures/shipped-ids.txt'), 'utf8').split('\n').filter(l => /^(K|G):/.test(l));
-const day = (/** @type {number} */ n) => { const d = new Date(); d.setHours(12); d.setDate(d.getDate() + n); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+// days from the app's study day (Berlin, 04:00 cutoff: core/clock.js), not the test machine's calendar day: CI runs
+// node in UTC, so between 22:00 and 02:00 UTC (00:00 to 04:00 in Berlin) the two differ by one day
+const studyToday = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Berlin' }).format(new Date(Date.now() - DEFAULT_CUTOFF * 3600e3));
+const day = (/** @type {number} */ n) => add(studyToday(), n);
 /** n cards in deck b1, due yesterday. @param {number} n */
 function dueCards(n) {
   const back = day(-20), due = day(-1);
