@@ -99,7 +99,9 @@ export async function mount(el, ctx) {
     }
     // (after the features' prepare: both load the same pool, and counting in the same task as the plan's stats would make
     // one long task of the two)
-    if (stand) prepared.then(() => (alive && my === gen ? standingCounts(ctx, plan.modules) : null)).then(n => { if (n && alive && my === gen) stand.fill(n); });
+    // the counts are display only: if their content cannot load (offline, or a reload cancelled the fetch) the rows keep
+    // their quiet state; never an unhandled rejection
+    if (stand) prepared.then(() => (alive && my === gen ? standingCounts(ctx, plan.modules) : null)).then(n => { if (n && alive && my === gen) stand.fill(n); }).catch(() => {});
     reveal(page);
     for (const tr of page.querySelectorAll('.mbar .track')) fill(/** @type {HTMLElement} */ (tr), Number(/** @type {HTMLElement} */ (tr).dataset.p));
     if (oldAtmo) return;
@@ -404,7 +406,7 @@ export async function mount(el, ctx) {
   }).catch(e => {
     console.error('today: prepare', e);
     if (alive && at === req && !ready) draw(early);   // as offline: the plan from the last stats
-  });
+  }).finally(() => { if (alive) bus.emit('today:settled'); });   // main.js: a new version may take over from here
   const offs = [
     bus.on('settings:changed', rerender),
     store.subscribe('cards:b1', rerender), store.subscribe('attempts', rerender), store.subscribe('activity', rerender), store.subscribe('mistakes', rerender),

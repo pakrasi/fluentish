@@ -166,6 +166,8 @@ async function main() {
   // The automatic merge of the other devices' backups (after the opt-in in Profile › Data) changes cards, so it runs
   // only while the app is at rest on Today or Profile, never mid-round or mid-exam; at most every 30 minutes.
   let atRest = false;
+  let mountGen = 0;   // onMounted calls; a 'today:settled' from an earlier mount does not count
+  const TODAY_SETTLE_MS = 10_000;   // how long a takeover waits for Today's 'today:settled' at most (onMounted)
   const autoMerge = () => {
     if (!atRest || !navigator.onLine || !restore(store).autoMergeOn()) return;
     restore(store).merge().then(r => {
@@ -221,7 +223,17 @@ async function main() {
     transition: update => swap(update, { kind: 'view', fallbackEl: /** @type {HTMLElement} */ ($('#view')) }),
     onMounted: ({ route }) => {
       markTab(route.tab || (route.path.startsWith('/profile') ? 'profile' : null));
-      sw.atRest(route.path === '/today');   // a new version applies only from Today, never mid-round or mid-exam
+      // a new version applies only from Today, never mid-round or mid-exam, and only once Today has settled: since
+      // round 8 (P3) it draws first and prepares the day after (loading content, writing the day's stats), and the
+      // takeover is a reload. Today emits 'today:settled'; 10 s is the fallback so an update never stalls.
+      const mount = ++mountGen;
+      sw.atRest(false);
+      if (route.path === '/today') {
+        let done = false;
+        const ready = () => { if (!done && mount === mountGen) { done = true; sw.atRest(true); } };
+        const off = bus.once('today:settled', ready);
+        setTimeout(() => { off(); ready(); }, TODAY_SETTLE_MS);
+      }
       atRest = route.path === '/today' || route.path.startsWith('/profile');
       if (atRest) autoMerge();
       const h1 = $('#view h1');
