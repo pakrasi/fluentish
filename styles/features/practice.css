@@ -554,6 +554,11 @@ mark.sim-chunk { background: repeating-linear-gradient(90deg, var(--ink-3) 0 2px
 .rs-row > .rs-opt { flex: 1; min-width: 0; border: 0; background: transparent; }
 .rs-row > .rs-opt[aria-checked="true"] { box-shadow: none; }
 .rs-row.is-on { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+/* forced colours drop the inset shadow and the filled key: the chosen option gets a Highlight outline instead */
+@media (forced-colors: active) {
+  .rs-opt[aria-checked="true"], .rs-row.is-on { outline: 2px solid Highlight; outline-offset: -2px; }
+  .rs-row > .rs-opt[aria-checked="true"] { outline: none; }
+}
 .rs-stepper { flex: none; display: flex; align-items: center; gap: 6px; }
 .rs-step { flex: none; width: var(--tap); height: var(--tap); border-radius: var(--r-ctl); border: 1px solid var(--field-border); background: var(--surface); color: var(--ink); font: 400 22px/1 var(--font-ui); cursor: pointer; }
 .rs-step[disabled] { opacity: 0.4; cursor: default; }
