@@ -21,8 +21,22 @@
 .tabs a { position: relative; display: grid; place-items: center; gap: 2px; min-height: var(--tap); padding: 4px 0; color: var(--ink-3); text-decoration: none; font: 500 11px/1.2 var(--font-ui); }
 .tabs a svg { width: 22px; height: 22px; }
 .tabs a[aria-current="page"] { color: var(--ink); }
-.tabs a[aria-current="page"]::before { content: ""; position: absolute; top: -7px; width: 18px; height: 2px; border-radius: 2px; background: var(--accent); }
-@media (min-width: 900px) { .tabs { position: static; display: flex; gap: var(--s-6); background: none; border: 0; padding: 0; backdrop-filter: none; } .tabs a { grid-auto-flow: column; font-size: 14px; color: var(--ink-2); } .tabs a svg { display: none; } .tabs a[aria-current="page"]::before { top: auto; bottom: -2px; width: 100%; } }
+.tabs-top a[aria-current="page"]::before { content: ""; position: absolute; top: -7px; width: 18px; height: 2px; border-radius: 2px; background: var(--accent); }
+/* The phone tab bar's dash: one element, one column wide, that slides to the current tab (transform only, on the
+   snappy spring) instead of jumping. Its column comes from aria-current, so nothing else has to set it. During a
+   route's view transition the tab bar is its own live layer (fx-tabs, motion.css), so the slide shows there too.
+   Without a current tab (Profile) it is not drawn; when it comes back it fades in where it belongs. Reduced motion:
+   it moves at once. From 900px the tabs are top links with their own underline, and there is no dash. */
+.tabs-dash { position: absolute; top: -1px; inset-inline-start: max(8px, env(safe-area-inset-left)); width: calc((100% - 2 * max(8px, env(safe-area-inset-left))) / var(--n, 4)); height: 2px; pointer-events: none;
+  transform: translateX(calc(var(--tab-i, 0) * 100% * var(--dir, 1))); transition: transform var(--dur-card) var(--spring-snappy), opacity var(--dur-quick) var(--ease-out); }
+.tabs-dash::after { content: ""; display: block; width: 18px; height: 2px; margin-inline: auto; border-radius: 2px; background: var(--accent); }
+.tabs-dash:dir(rtl) { --dir: -1; }
+.tabs:has(> a:nth-of-type(2)[aria-current="page"]) { --tab-i: 1; }
+.tabs:has(> a:nth-of-type(3)[aria-current="page"]) { --tab-i: 2; }
+.tabs:has(> a:nth-of-type(4)[aria-current="page"]) { --tab-i: 3; }
+.tabs:not(:has(> a[aria-current="page"])) .tabs-dash { display: none; }
+@starting-style { .tabs-dash { opacity: 0; } }
+@media (min-width: 900px) { .tabs { position: static; display: flex; gap: var(--s-6); background: none; border: 0; padding: 0; backdrop-filter: none; } .tabs a { grid-auto-flow: column; font-size: 14px; color: var(--ink-2); } .tabs a svg { display: none; } .tabs a[aria-current="page"]::before { top: auto; bottom: -2px; width: 100%; } .tabs-dash { display: none; } }
 
 /* ---------- buttons ---------- */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: var(--tap); padding: 0 18px; border-radius: var(--r-ctl); border: 1px solid var(--hairline-strong); background: var(--surface); color: var(--ink); font: 500 15px/1 var(--font-ui); text-decoration: none; cursor: pointer; white-space: nowrap; user-select: none; -webkit-user-select: none; }

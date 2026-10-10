@@ -138,7 +138,9 @@ async function main() {
     // the Exam tab: an exam goal with mock tests (a date-only goal such as 'other' has the countdown, not the tab)
     const tabs = TABS.filter(tb => !tb.needsExam || hasMockExam(s));
     return h('nav', { class: `tabs tabs-${where}`, 'aria-label': t('nav.main'), style: { '--n': tabs.length } },
-      tabs.map(tb => h('a', { href: tb.href, dataset: { tab: tb.id }, class: 'pressable', onclick: retap }, icon(tb.icon, { size: 22 }), h('span', null, t(tb.label)))));
+      tabs.map(tb => h('a', { href: tb.href, dataset: { tab: tb.id }, class: 'pressable', onclick: retap }, icon(tb.icon, { size: 22 }), h('span', null, t(tb.label)))),
+      // the phone tab bar's accent dash is one element that slides under the current tab (styles/components.css)
+      where === 'bottom' ? h('i', { class: 'tabs-dash', 'aria-hidden': 'true' }) : null);
   };
   /* a tap on the tab you are on, at its root: back to the top (iOS convention; the Home Screen app has no browser
      Back). At a page inside the tab the link is a new navigation to the tab's root, which starts at the top. */

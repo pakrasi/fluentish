@@ -249,7 +249,7 @@ input[type="date"].input { min-height: var(--tap); }
   border-block: 1px solid var(--hairline); color: var(--ink); text-decoration: none; }
 .stand-progress .row-detail { color: var(--ink-3); }
 .stand-progress > svg:last-child { color: var(--ink-3); }
-.stand-spark { display: block; overflow: visible; view-transition-name: pg-known; }
+.stand-spark { display: block; overflow: visible; }
 .stand-spark-line { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
 .stand-spark-end { fill: var(--accent); stroke: var(--canvas); stroke-width: 1.5; }
 .stand-none { margin-top: var(--s-4); color: var(--ink-2); }

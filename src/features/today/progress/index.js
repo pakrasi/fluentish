@@ -11,7 +11,7 @@
 import { h, replace } from '../../../core/dom.js';
 import { label } from '../../../core/clock.js';
 import { section, seg, field, backLink } from '../../../core/ui.js';
-import { countTo, reduced, toast } from '../../../core/motion.js';
+import { countTo, reduced, toast, receive } from '../../../core/motion.js';
 import { activeCourse, normalizeSettings, setSetting, langIdOf } from '../../../data/settings.js';
 import { recorded } from '../../../data/progress.js';
 import { monthKey, LEVELS } from '../../../domain/progress.js';
@@ -127,8 +127,10 @@ export async function mount(el, ctx) {
     }));
     stops.push(fr.stop);
     if (animate) requestAnimationFrame(() => C.drawIn(fr.svg()));
-    // Today's Progress row and this chart share a name: opening the page morphs the small line into this one
+    // opened from Today's Progress row: its sparkline was handed off, and this chart receives it (the small line morphs
+    // into this one; motion.js takes the name off again when the route's transition ends)
     fr.el.classList.add('pg-known-frame');
+    receive(fr.el, 'pg-known');
     const est = inRange.some(p => p.est);
     const key = (/** @type {string} */ cls) => { const v = C.s('svg', { class: 'pg-key', viewBox: '0 0 22 10', width: 22, height: 10, 'aria-hidden': 'true' }); v.append(cls === 'est' ? C.s('line', { class: 'pg-line pg-est', x1: 2, x2: 20, y1: 5, y2: 5 }) : C.s('rect', { class: 'pg-diamond', x: 7, y: 1.5, width: 7, height: 7, transform: 'rotate(45 10.5 5)' })); return v; };
     const sec = section(t('pg.known.title'),
