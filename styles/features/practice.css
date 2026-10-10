@@ -52,8 +52,6 @@
 .pr-group-panel .pr-rows { margin-top: 0; }
 :root[data-motion="reduce"] .pr-group-head > .icon { transition: none; }
 @media (prefers-reduced-motion: reduce) { :root:not([data-motion="full"]) .pr-group-head > .icon { transition: none; } }
-.pr-backlink { display: inline-flex; align-items: center; gap: 6px; min-height: var(--tap); padding-top: var(--s-2); color: var(--ink-2); text-decoration: none; font-size: 14px; }
-.pr-backlink + .page-head { padding-top: 0; }
 @media (min-width: 900px) {
   .pr-queue-btn { display: block; }
   .pr-queue-btn .btn { width: auto; min-width: 280px; }

@@ -300,7 +300,6 @@ input[type="date"].input { min-height: var(--tap); }
 @media (forced-colors: active) { .lv-gain, .stand-key-swatch { background: Highlight; forced-color-adjust: none; } }
 
 /* ---------- Profile › Goals and week (round 4) ---------- */
-.goals-back { display: inline-flex; align-items: center; gap: var(--s-1); min-height: var(--tap); color: var(--ink-2); font-size: 14px; text-decoration: none; }
 .goals-page .page-head { padding-top: 0; }
 .goal-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--s-3); row-gap: 2px; padding: var(--s-4) 0; border-bottom: 1px solid var(--hairline); }
 .goal-card > * { grid-column: 1 / -1; margin: 0; }
