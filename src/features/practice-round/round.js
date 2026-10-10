@@ -11,9 +11,9 @@
    with the differing words marked), then "type it once". Scheduling is session.js; saving is data.js. */
 import { h, replace, announce } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
-import { correct as fxCorrect, wrong as fxWrong, resetAnswer, swap, skip as skipHold, reduced, fill } from '../../core/motion.js';
+import { correct as fxCorrect, wrong as fxWrong, resetAnswer, swap, skip as skipHold, reduced, countTo, haptic, pulse } from '../../core/motion.js';
 import { progressOf, drawProgress, againRow } from '../shared/progress.js';
-import { doneHero, againLink } from '../shared/done-hero.js';
+import { doneHero, againLink, arrive, ROLL_AT } from '../shared/done-hero.js';
 import { label, add } from '../../core/clock.js';
 import * as Match from '../../domain/match.js';
 import * as RD from '../../domain/b1ready.js';
@@ -26,7 +26,6 @@ import { checkAnswer } from '../../services/claude.js';
 import { play as playAudio, stop as stopAudio, prefetchAudio } from '../../services/audio.js';
 import * as voice from '../../services/voice.js';
 import { bcp47, dirAttr } from '../../core/lang.js';
-import { recallBar } from '../shared/recall-bar.js';
 import { Field } from '../../core/brand.js';
 import { readinessView } from './field.js';
 import { loadKnowledge } from '../../data/knowledge.js';
@@ -49,7 +48,8 @@ import { scopeItem } from '../../domain/itemids.js';
 import { keep, fitToKeyboard, reveal as revealEl, fitPrompt } from '../../core/keyboard.js';
 import { claude, canAskClaude } from '../../data/credentials.js';
 import { createAnswerDiff } from '../../ui/answer-diff.js';
-import { describe as describeDiff } from '../../domain/letterdiff.js';
+import { describe as describeDiff, firstDiffWord } from '../../domain/letterdiff.js';
+import { activePack } from '../../lang/registry.js';
 
 const TEIL = /** @type {Record<string, string>} */ ({ S1: 'Teil 1', S2: 'Teil 2', S3: 'Teil 3', W1: 'Aufgabe 1', W2: 'Aufgabe 2', W3: 'Aufgabe 3', L2: 'Teil 2', L3: 'Teil 3', L5: 'Teil 5' });
 const fmtS = (/** @type {number} */ ms) => `${(ms / 1000).toFixed(1).replace(/\.0$/, '')} s`;
@@ -452,12 +452,16 @@ export async function mountRound(el, ctx) {
   function sayAnswer(/** @type {string} */ text) { if (settings.practice.readAloud) readAloud(text); }
   // the lines under a verdict (ui/answer-diff.js), one set at a time: the next set ends the last one's motion
   /** @type {AbortController | null} */ let linesAc = null;
-  /** The handle, so a caller can reach locus(attempt) and finish() later (a retype miss, round 8 M1); .el is the node.
+  // the last set's handle and its right line: a retype miss points at its first missing word (handle.locus)
+  /** @type {{ handle: import('../../ui/answer-diff.js').AnswerDiffHandle, right: string } | null} */ let lastLines = null;
+  /** The handle, so a caller can reach locus(attempt) and finish() later; .el is the node.
    * @param {Omit<import('../../ui/answer-diff.js').AnswerDiffOpts, 'signal' | 'lang' | 'dir'>} o */
   function lines(o) {
     linesAc?.abort();
     linesAc = new AbortController();
-    return createAnswerDiff({ ...o, lang: langAttr(), dir: dirAttr(), signal: linesAc.signal });
+    const handle = createAnswerDiff({ ...o, lang: langAttr(), dir: dirAttr(), signal: linesAc.signal });
+    lastLines = { handle, right: o.right || '' };
+    return handle;
   }
   const LINES = { you: 'pr-diff', right: 'pr-diff answer-key', label: 'caption', caption: 'caption' };
   /** One line about a near miss, when the diff can say it (a missing ending). @param {import('../../domain/letterdiff.js').AnswerDiff} d */
@@ -561,7 +565,9 @@ export async function mountRound(el, ctx) {
     if (nb) kids.push(nb);
     if (claudeOk() && !d && !g.det) kids.push(claudeBox(typed));
     replace(fb, kids, wordCard(it));
-    fxWrong(answerEl, { revealEl: reveal });
+    // two ticks 70 ms apart (a right answer has one), so the verdict is felt before it is read (design A14)
+    fxWrong(answerEl, { revealEl: reveal, haptics: false });
+    haptic(); setTimeout(haptic, 70);
     announce(`${t('practice.wrong')}. ${t('practice.rightIs')} ${right}`);
     sayAnswer(right);
     toRetype(right, 360);
@@ -635,8 +641,18 @@ export async function mountRound(el, ctx) {
     tbar.hidden = true; secs.textContent = '';
     setButtons();
     // the sentence to type sits above the field: scroll it into view (it may be below the fold of the card)
-    const go = () => { if (state !== 'retype') return; input.value = ''; grow(); answerEl.classList.add('is-retype'); input.placeholder = t('practice.ph.retype'); focusInput(); showKey(); };
-    if (delay && !reduced()) setTimeout(go, delay); else go();
+    // with a delay (after a wrong answer) the struck answer fades out first and the empty field rises in (design A7)
+    const motion = !!delay && !reduced();
+    const go = () => {
+      answerEl.classList.remove('is-clearing');
+      if (state !== 'retype') return;
+      input.value = ''; grow(); answerEl.classList.add('is-retype'); input.placeholder = t('practice.ph.retype'); focusInput(); showKey();
+      if (motion) { answerEl.classList.add('is-arriving'); setTimeout(() => answerEl.classList.remove('is-arriving'), 260); }
+    };
+    if (motion) {
+      setTimeout(() => { if (state === 'retype') answerEl.classList.add('is-clearing'); }, Math.max(0, delay - 120));
+      setTimeout(go, delay);
+    } else go();
   }
   /** The answer key (the sentence to retype) into view, clear of the field pinned over the card's bottom. */
   function showKey() { showFb(fb.querySelector('.answer-key') || fb.lastElementChild); }
@@ -661,6 +677,61 @@ export async function mountRound(el, ctx) {
       return;
     }
     answerEl.classList.remove('is-shake'); void answerEl.offsetWidth; answerEl.classList.add('is-shake');
+    locus(typed);
+  }
+  /**
+   * A retype miss: the first word of the sentence to type that his copy does not have gets an accent underline that
+   * draws and holds (motion.js pulse 'locus', design A7), so he need not reread the whole sentence. The diff's own
+   * right line when it is the sentence (a wrong answer, a study card with his try); else the plain answer key's word.
+   * @param {string} typed
+   */
+  function locus(typed) {
+    const attempt = full(typed);
+    const line = lastLines && lastLines.right === entry.right && lastLines.handle.el.isConnected ? lastLines.handle.el.querySelector('.ui-ad-right') : null;
+    // a letter or word diff numbers its words (data-w): the diff finds the word itself
+    if (line?.querySelector('.ui-ad-w[data-w]')) { void lastLines?.handle.locus(attempt); return; }
+    const j = firstDiffWord(attempt, entry.right);
+    if (j < 0) return;
+    /** @type {HTMLElement | null} */ let w = null;
+    if (line) {
+      // a far miss draws the right line plain: one span per run of non-space text, in the sentence's order
+      const k = spaceWord(entry.right, j);
+      w = k < 0 ? null : /** @type {HTMLElement | null} */ (line.querySelectorAll('.ui-ad-w')[k] || null);
+    } else {
+      const key = /** @type {HTMLElement | null} */ ([...fb.querySelectorAll('.answer-key')].find(x => x.textContent === entry.right) || null);
+      w = key ? keyWord(key, j) : null;
+    }
+    if (w) void pulse(w, 'locus');
+  }
+  /**
+   * Which run of non-space text of s holds its j-th word (the pack's words skip punctuation that stands alone).
+   * @param {string} s @param {number} j @returns {number}
+   */
+  function spaceWord(s, j) {
+    const P = activePack().text, norm = P.normalize(s);
+    const tok = norm.length === s.length ? P.tokenize(norm)[j] : null;
+    if (!tok) return -1;
+    return (s.slice(0, tok.start).match(/\S+(?=\s)/g) || []).length;
+  }
+  /**
+   * The j-th word of a plain answer key as its own span (made once, on the first miss), or null.
+   * @param {HTMLElement} key @param {number} j
+   */
+  function keyWord(key, j) {
+    if (j < 0) return null;
+    const had = /** @type {HTMLElement | null} */ (key.querySelector(`.pr-kw[data-w="${j}"]`));
+    if (had) return had;
+    const text = key.firstChild;
+    if (!text || text.nodeType !== Node.TEXT_NODE || key.childNodes.length !== 1) return null;   // only a key that is one run of text
+    const P = activePack().text, raw = String(text.textContent), norm = P.normalize(raw);
+    if (norm.length !== raw.length) return null;   // offsets would not line up
+    const tok = P.tokenize(norm)[j];
+    if (!tok) return null;
+    const r = document.createRange();
+    r.setStart(text, tok.start); r.setEnd(text, tok.end);
+    const span = h('span', { class: 'pr-kw', 'data-w': String(j) });
+    r.surroundContents(span);
+    return span;
   }
   function skipRetype() { state = 'feedback'; next(); }
   function next() {
@@ -764,37 +835,40 @@ function drawDone(el, ctx, data, round, backTo) {
   const { t, store } = ctx;
   const st = stateFor(ctx, data), c = st.c;
   const sum = S.summary(round, data.byId);
-  // readiness before = the same store with only this round's items rolled back
   const pool = data.pool.filter((/** @type {any} */ it) => it.area !== 'mistakes');
-  const rd = (/** @type {any} */ cards) => RD.compute({ pool, store: cards, today: c.today, exam: c.exam, phase: c.phase });
   const cr = data.course ? courseRound(data.course) : null;
-  const now = store.cards(cr ? cr.deck : 'b1'), before = { ...now };
-  for (const [id, r] of Object.entries(round.prev || {})) { if (r) before[id] = r; else delete before[id]; }
-  const a = rd(now).overall, b = rd(before).overall;
+  const now = store.cards(cr ? cr.deck : 'b1');
   // a Schreiben round goes on with Schreiben phrases: their own due and new counts
   const write = round.kind === 'write';
   const wDue = write ? pool.filter((/** @type {any} */ it) => it.area === 'writing' && RD.isDue(now[it.id], c.today, c)).length : 0;
   const more = write ? wDue > 0 || C.newLeftOf(st, 'w') > 0 : st.dueN > 0 || C.newLeft(st) > 0;
   const tomorrow = RD.forecast(now, c.today, 2, c)[1]?.n || 0;
-  const p1 = (/** @type {number} */ x) => (100 * (x || 0)).toFixed(1);
   const short = (/** @type {any} */ it) => it.model || it.prompt;
   const list = (/** @type {string} */ title, /** @type {any[]} */ items) => items.length ? h('section', { class: 'pr-list' }, h('h2', null, title),
     h('ul', { class: 'list' }, items.map(it => h('li', { class: 'list-item', lang: langAttr(), dir: dirAttr() }, short(it))))) : null;
-  // the exam items known before and after the round: the one definition of known (domain/knowledge.js, Where you
-  // stand), which a round never lowers; filled in once the knowledge score is loaded
-  const bar = recallBar(0, a.coverage, t('practice.area.bar', { recall: '', seen: `${p1(a.coverage)} %` }));
+  // the exam items known after the round and what the round added (+N, in accent): the one definition of known
+  // (domain/knowledge.js, Where you stand), which a round never lowers; filled in once the knowledge score is loaded.
+  // A round moves the share of a ~1,000-item pool by a fraction of a percent, so there is no bar: the number says it
+  // and the field below shows where (design A4)
   const knownEl = h('b', { class: 'tnum' }, '…');
+  const gainEl = h('span', { class: 'pr-gain tnum', hidden: true });
   const anotherHref = round.kind === 'today' || round.kind === 'mistakes' || round.kind === 'missed' ? '#/practice/round' : S.roundHref(round);
   // the brand moment: the atmosphere breathes once behind the result, and the field shows the round's right answers
   // landing in the exam pool
   const view = round.kind === 'mistakes' ? null : readinessView(st);
   const fieldEl = view ? h('canvas', { class: 'field pr-done-field' }) : null;
-  const hero = doneHero({ label: t('practice.roundDone'), figure: sum.right, of: t('practice.ofRight', { n: sum.total }),
+  // a round of new items only (or of "I know this" only) has no first answers to count: "0 of 0 right first time"
+  // said nothing. Its figure is then the new items studied, or the items marked as known.
+  const fig = sum.total ? { figure: sum.right, of: t('practice.ofRight', { n: sum.total }) }
+    : sum.news.length ? { figure: sum.news.length, of: t('practice.done.newOnly', { n: sum.news.length }) }
+    : sum.known.length ? { figure: sum.known.length, of: t('practice.done.knownOnly', { n: sum.known.length }) }
+    : { figure: 0, of: t('practice.ofRight', { n: 0 }) };
+  const hero = doneHero({ label: t('practice.roundDone'), ...fig,
     lines: [sum.late ? t('practice.late', { n: sum.late }) : null, sum.partial ? t('practice.partialN', { n: sum.partial }) : null, sum.fixedLast ? t('practice.lastFixed') : null,
-      sum.known.length ? t('practice.know.inRound', { n: sum.known.length }) : null],
+      sum.known.length && (sum.total || sum.news.length) ? t('practice.know.inRound', { n: sum.known.length }) : null],
     data: view ? h('div', { class: 'pr-ready' },
-      h('p', { class: 'pr-ready-top' }, h('span', { class: 'label' }, t(cr ? 'course.knownItems' : 'practice.knownItems')), knownEl), bar, fieldEl) : null });
-  replace(el, h('div', { class: 'practice pr-done stack' },
+      h('p', { class: 'pr-ready-top' }, h('span', { class: 'label' }, t(cr ? 'course.knownItems' : 'practice.knownItems')), h('span', { class: 'pr-ready-n' }, knownEl, gainEl)), fieldEl) : null });
+  const page = h('div', { class: 'practice pr-done stack' },
     hero.el,
     h('p', { class: 'pr-next' }, more ? t(write ? (wDue ? 'practice.write.nextUp' : 'practice.write.nextNew') : 'practice.nextUp', write ? { due: wDue, n: C.newLeftOf(st, 'w') } : { due: st.dueN, n: C.newLeft(st) }) : t('practice.allDone', { n: tomorrow })),
     h('div', { class: 'pr-done-actions' },
@@ -803,7 +877,35 @@ function drawDone(el, ctx, data, round, backTo) {
     sum.back.length ? h('section', { class: 'pr-list' }, h('h2', null, t('practice.list.back')), h('p', { class: 'caption' }, t('practice.list.backSub')),
       h('ul', { class: 'list' }, sum.back.map((/** @type {any} */ it) => h('li', { class: 'list-item' }, h('span', { lang: langAttr(), dir: dirAttr() }, short(it)),
         sum.fixed.includes(it) ? h('span', { class: 'caption' }, t('practice.list.fixedTag')) : null)))) : null,
-    list(t('practice.list.new'), sum.news)));
+    list(t('practice.list.new'), sum.news));
+  // the round's card lifts away and the done page rises in its place, the bars slide back (done-hero.js arrive());
+  // its timeline starts once the page is on screen
+  arrive(() => replace(el, page), el).then(() => doneTimeline(el, ctx, { round, view, fieldEl, knownEl, gainEl, hero, more, anotherHref, backTo, pool, cr }));
+}
+
+/**
+ * The done page's arrival after the hero's own steps (done-hero.js: the figure rolls and the atmosphere breathes at
+ * 120 ms): the cells answered right land in the field one after another from 500 ms, 90 ms apart, and "+N" (the exam
+ * items this round added) ticks up in accent with the first of them. A tap skips to the end state.
+ * @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx @param {any} o
+ */
+function doneTimeline(el, ctx, { round, view, fieldEl, knownEl, gainEl, hero, more, anotherHref, backTo, pool, cr }) {
+  const { t } = ctx;
+  /** @type {{ nb: number, na: number } | null} */ let counts = null;
+  let gainDue = false, gainInstant = false, gainShown = false;
+  /** "+N" once the counts are in and its moment has come. @param {boolean} instant */
+  const gain = instant => {
+    if (instant) gainInstant = true;
+    if (!counts || !gainDue) return;
+    const d = counts.na - counts.nb;
+    if (d <= 0) return;
+    const fmt = (/** @type {number} */ n) => t('practice.done.gain', { n: Math.round(n) });
+    gainEl.hidden = false;
+    // a skip mid-count: a 1 ms count takes the running one over and ends on the number (countTo has no stop)
+    if (gainInstant) { if (gainShown) countTo(gainEl, d, { from: 0, duration: 1, format: fmt }); else { gainEl.textContent = fmt(d); gainEl.dataset.value = String(d); } }
+    else if (!gainShown) countTo(gainEl, d, { from: 0, duration: 600, format: fmt });
+    gainShown = true;
+  };
   if (view) {
     /** @type {Record<string, any>} */ const patch = {};
     for (const [id, r] of Object.entries(round.prev || {})) patch[id] = r || null;
@@ -812,23 +914,29 @@ function drawDone(el, ctx, data, round, backTo) {
       // a course's items are scoped by its language (domain/itemids.js); German's never are
       const itemOf = (/** @type {any} */ k, /** @type {string} */ id) => cr ? scopeItem(cr.lang, k.maps.resolve(id, 'core') || id) : k.maps.resolve(id, 'b1') || id;
       const known = (/** @type {any} */ k) => knownOf(ids, id => k.get(itemOf(k, id))).known;
-      const nb = known(kb), na = known(ka), n = ids.length || 1;
-      knownEl.textContent = t('practice.knownOf', { b: nb, a: na, n: ids.length });
-      requestAnimationFrame(() => fill(bar, nb / n));
-      setTimeout(() => fill(bar, na / n), reduced() ? 0 : 380);
+      const nb = known(kb), na = known(ka);
+      knownEl.textContent = t('practice.done.knownNow', { a: na, n: ids.length });
+      counts = { nb, na };
+      gain(reduced());
     }).catch(() => { knownEl.textContent = ''; });
   }
   /** @type {Field | null} */ let field = null;
+  /** @type {import('../../core/motion.js').SeqStep[]} */ const steps = [];
+  const LAND_AT = 500;
   if (view && fieldEl) {
     const rightIds = new Set(round.results.filter((/** @type {any} */ r) => r.first && r.ok).map((/** @type {any} */ r) => r.id));
-    const cells = view.ids.map((id, i) => (rightIds.has(id) ? i : -1)).filter(i => i >= 0);
+    const cells = view.ids.map((/** @type {string} */ id, /** @type {number} */ i) => (rightIds.has(id) ? i : -1)).filter((/** @type {number} */ i) => i >= 0);
     // the cells answered right start in their earlier state and land one after another
-    const start = view.states.map((x, i) => (rightIds.has(view.ids[i]) ? Math.min(x, 1) : x));
-    field = new Field(/** @type {HTMLCanvasElement} */ (fieldEl), start, { cell: 5, gap: 1, label: null });
-    cells.slice(0, 24).forEach((i, k) => setTimeout(() => field?.ripple(i, { state: Math.max(2, view.states[i]) }), reduced() ? 0 : 500 + k * 90));
-    cells.slice(24).forEach(i => field?.set(i, Math.max(2, view.states[i])));
+    const start = view.states.map((/** @type {number} */ x, /** @type {number} */ i) => (rightIds.has(view.ids[i]) ? Math.min(x, 1) : x));
+    const f = new Field(/** @type {HTMLCanvasElement} */ (fieldEl), start, { cell: 5, gap: 1, label: null });
+    field = f;
+    const to = (/** @type {number} */ i) => Math.max(2, view.states[i]);
+    cells.slice(0, 24).forEach((/** @type {number} */ i, /** @type {number} */ k) => steps.push({ at: LAND_AT + k * 90, run: instant => { if (instant) f.set(i, to(i)); else f.ripple(i, { state: to(i) }); } }));
+    cells.slice(24).forEach((/** @type {number} */ i) => f.set(i, to(i)));
   }
-  const stopHero = hero.start();
+  // "+N" with the first cell that lands (or at that moment when no cell does)
+  steps.push({ at: LAND_AT, run: instant => { gainDue = true; gain(instant); } });
+  const stopHero = hero.start({ steps });
   const doneEl = el.firstElementChild;
   const onKey = (/** @type {KeyboardEvent} */ e) => {
     if (!doneEl || !doneEl.isConnected) { stop(); return; }   // another round mounted on the same address

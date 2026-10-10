@@ -101,6 +101,11 @@ body.pr-in-round #view { max-width: none; padding: 0; }
 /* the verdict sweep (motion.css) lies on the field's rule: the 1px border and the 1px focus shadow under it, so a
    checked answer shows one 2px line in green or red, not a coloured line over a black one */
 .answer::after { bottom: -2px; }
+/* wrong → type it once (design A7): the struck answer fades (120 ms) before the field empties, then the empty field
+   rises 8 px into its new state (160 ms) instead of both changing in one frame. Reduced motion: no fade, no rise. */
+.answer.is-clearing .answer-input { opacity: 0; transition: opacity 120ms var(--ease-in); }
+.answer.is-retype.is-arriving .answer-input { animation: pr-retype-in var(--dur-quick) var(--ease-out) both; }
+@keyframes pr-retype-in { from { opacity: 0; transform: translateY(calc(8px * var(--move))); } }
 .pr-moves { display: grid; gap: var(--s-2); margin-top: var(--s-5); }
 .pr-moves .btn { justify-content: flex-start; min-height: 52px; }
 .pr-fb { display: grid; gap: var(--s-2); padding-top: var(--s-4); }
@@ -180,6 +185,20 @@ body.kb .pr-actions kbd { display: none; }
   margin-inline: calc(-1 * var(--s-2)); padding: var(--s-3) var(--s-2) var(--s-2); background: linear-gradient(to bottom, transparent, var(--canvas) 28%); }
 @media (min-width: 900px) { .pr-done .pr-done-actions, .wr-done .pr-done-actions { bottom: 0; } }
 @media (prefers-reduced-transparency: reduce) { .pr-done .pr-done-actions, .wr-done .pr-done-actions { background: var(--canvas); } }
+/* The done page's arrival (done-hero.js arrive(), design A3). html[data-arrive="done"] is set before the route's view
+   transition starts, so the old picture has the round card as its own layer: it lifts away (300 ms, as "I know this"
+   does) while the round's header and buttons fade with the page and the done page rises in its place on the soft
+   spring. The bars slide back on their own layers (motion.css fx-bar, fx-tabs). Reduced motion: no view transition,
+   a 140 ms crossfade. */
+:root[data-arrive="done"] .pr-round .pr-card { view-transition-name: pr-done-card; }
+:root[data-arrive="done"]::view-transition-old(pr-done-card) { animation: vt-lift 300ms var(--ease-out) both; }
+:root[data-arrive="done"]::view-transition-old(fx-roundhead), :root[data-arrive="done"]::view-transition-old(fx-roundact) { display: block; animation: vt-fade-out var(--dur-quick) var(--ease-in) both; }
+:root[data-arrive="done"][data-vt="view"]::view-transition-new(fx-view) { animation: vt-rise var(--dur-card) var(--spring-soft) 60ms both; }
+/* the figure is an odometer (done-hero.js): the next digit's serif is masked at the window's edges, as on Today */
+.pr-done-hero .figure.odo { -webkit-mask-image: linear-gradient(transparent 0, #000 12%, #000 84%, transparent 96%); mask-image: linear-gradient(transparent 0, #000 12%, #000 84%, transparent 96%); margin-bottom: -0.1em; }
+/* what the round added to the exam items known, in accent next to the count (design A4) */
+.pr-ready-n { display: inline-flex; align-items: baseline; gap: var(--s-2); }
+.pr-gain { color: var(--accent); font-weight: 600; font-size: 15px; }
 
 /* ---------- speaking ---------- */
 .pr-speak .pr-card { margin: var(--s-4) 0 0; max-width: none; }
