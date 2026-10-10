@@ -913,10 +913,11 @@ function doneTimeline(el, ctx, { round, view, fieldEl, knownEl, gainEl, hero, mo
     Promise.all([loadKnowledge(ctx, { patch: { [cr ? cr.deck : 'b1']: patch } }), loadKnowledge(ctx)]).then(([kb, ka]) => {
       // a course's items are scoped by its language (domain/itemids.js); German's never are
       const itemOf = (/** @type {any} */ k, /** @type {string} */ id) => cr ? scopeItem(cr.lang, k.maps.resolve(id, 'core') || id) : k.maps.resolve(id, 'b1') || id;
-      const known = (/** @type {any} */ k) => knownOf(ids, id => k.get(itemOf(k, id))).known;
-      const nb = known(kb), na = known(ka);
-      knownEl.textContent = t('practice.done.knownNow', { a: na, n: ids.length });
-      counts = { nb, na };
+      const known = (/** @type {any} */ k, /** @type {string[]} */ over) => knownOf(over, id => k.get(itemOf(k, id))).known;
+      knownEl.textContent = t('practice.done.knownNow', { a: known(ka, ids), n: ids.length });
+      // "+N" leaves out the items missed this round, so it never drops overnight (session.js gainIds)
+      const counted = S.gainIds(round, ids);
+      counts = { nb: known(kb, counted), na: known(ka, counted) };
       gain(reduced());
     }).catch(() => { knownEl.textContent = ''; });
   }

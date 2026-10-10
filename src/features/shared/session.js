@@ -175,6 +175,18 @@ export function spoken({ item, rec, o, c, forecast = () => 0, now, tz = 'UTC' })
 }
 
 /**
+ * The ids "+N" on the done screen counts over: the pool ids less the items missed first time this round. A miss is a
+ * lapse only from the next study day (domain/knowledge.js), so a missed item still counts as known tonight and would
+ * drop out tomorrow; counting it would make "+N" fall overnight with no study (LEARNINGS, Honest numbers). What is left
+ * is the items right first time, the new items studied and the items marked as known.
+ * @param {any} round @param {string[]} ids @returns {string[]}
+ */
+export function gainIds(round, ids) {
+  const missed = new Set(round.results.filter((/** @type {any} */ r) => r.first && !r.known && !r.study && !r.ok).map((/** @type {any} */ r) => r.id));
+  return ids.filter(id => !missed.has(id));
+}
+
+/**
  * What the done screen shows. @param {any} round @param {Map<string, any>} byId
  */
 export function summary(round, byId) {
@@ -191,6 +203,7 @@ export function summary(round, byId) {
   const known = uniq(round.results.filter((/** @type {any} */ r) => r.known).map((/** @type {any} */ r) => r.id));
   const back = uniq([...missedIds]);
   const last = round.results[round.results.length - 1];
-  return { total: firsts.length, right, late, partial, fixed, news, back, known, fixedLast: !!(last && !last.first && last.ok),
+  // "The last one was right this time." only when the last answer fixed a miss: a new item's second pass is not one
+  return { total: firsts.length, right, late, partial, fixed, news, back, known, fixedLast: !!(last && !last.first && last.ok && missedIds.has(last.id)),
     ms: round.results.reduce((/** @type {number} */ a, /** @type {any} */ r) => a + Math.min(r.ms || 0, 60000), 0) };
 }
