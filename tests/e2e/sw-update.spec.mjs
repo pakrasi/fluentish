@@ -214,9 +214,10 @@ test('a deploy whose shell is not its own version fails to install, and the inst
     await expect(page.locator('html.booted')).toHaveCount(1);
     expect(await pageSha(page)).toBe(SHA);
     expect(await loadedShas(page)).toEqual([SHA]);
-    // the next deploy is whole again: it installs
+    // the next deploy is whole again: it installs. The reload above may have started one more update check while B was
+    // still deployed; nextWorker can catch that install failing, so ask again until C's worker is waiting
     srv.deploy({ sha: C });
-    expect(await nextWorker(page)).toBe(true);
+    await expect.poll(() => nextWorker(page), { timeout: 20_000 }).toBe(true);
   } finally {
     await srv.stop();
   }
