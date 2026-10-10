@@ -115,7 +115,9 @@ export async function mountSetup(el, ctx) {
       // with a topic or scene chosen (one is chosen for him) Start sits in the shared bottom dock on a phone, in the
       // thumb zone, and inline on a desktop (design B3); it rises in once per visit. With the keyboard up (his own
       // topic) it sits on the keyboard (styles/app.css .kb-dock).
-      h('div', { class: ['cv-startbar', 'kb-dock', chosen && 'dock', chosen && !risen && 'fx-rise'] }, startBtn),
+      // no Claude key: the dock's action is the way to add one (the reason sits far up the page)
+      h('div', { class: ['cv-startbar', 'kb-dock', chosen && 'dock', chosen && !risen && 'fx-rise'] },
+        canAsk ? startBtn : h('a', { class: 'btn btn-primary btn-wide pressable cv-addkey', href: '#/profile/connections' }, t('conv.addKey'))),
       earlier.length ? h('section', { class: 'cv-earlier' }, h('h2', { class: 'cv-h' }, t('conv.earlier')),
         h('ul', { class: 'cv-earlier-list' }, earlier.map(s => {
           const tr = D.getTranscript(store, s.id);

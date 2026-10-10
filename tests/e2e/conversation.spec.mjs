@@ -138,11 +138,13 @@ test('conversation: setup, a streamed chat with a correction and a gloss, Slower
   expect(claude.calls.filter(c => JSON.stringify(c).includes(SENTINEL)).length).toBe(2);   // the third turn and the feedback
 });
 
-test('conversation: no key, the setup says so and Start is off', async ({ page }) => {
+test('conversation: no key, the setup says so and offers to add one instead of Start', async ({ page }) => {
   await seed(page, { veteran: true, examInDays: null });
   await open(page, '#/practice/conversation');
   await expect(page.locator('#view')).toContainText('Conversation needs a Claude key.');
-  await expect(page.getByRole('button', { name: /^Start/ })).toBeDisabled();
+  // fix pass (UX review N7): no grey Start; the action is the way to add a key
+  await expect(page.getByRole('button', { name: /^Start/ })).toHaveCount(0);
+  await expect(page.getByRole('link', { name: 'Add a Claude key' })).toHaveAttribute('href', '#/profile/connections');
 });
 
 /** A kv collection as IndexedDB holds it. @param {import('@playwright/test').Page} page @param {string} name */

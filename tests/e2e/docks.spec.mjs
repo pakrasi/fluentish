@@ -105,3 +105,13 @@ test('Lesen runner: headings go h1, then h2 (axe heading-order)', async ({ page 
   expect(res.violations.map(v => v.id)).toEqual([]);
   await checkA11y(page, 'Lesen runner');
 });
+
+// Fix pass (UX review N7): without a Claude key the dock's action is "Add a Claude key", to Profile › Connections
+test('Conversation setup without a key: the dock offers Add a Claude key', async ({ page }) => {
+  await seed(page, { veteran: true, examInDays: null });
+  await open(page, '#/practice/conversation');
+  const add = page.locator('.cv-startbar .cv-addkey');
+  await expect(add).toHaveText('Add a Claude key');
+  await expect(add).toHaveAttribute('href', '#/profile/connections');
+  await expect(page.locator('.cv-startbar .cv-start')).toHaveCount(0);
+});

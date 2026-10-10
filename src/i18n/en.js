@@ -2590,6 +2590,7 @@ export default {
   'conv.lead': 'Write with Claude in {lang}. Its replies quietly correct some of your mistakes. At the end you get feedback and pick up to 3 mistakes to review.',
   'conv.noKey': 'Conversation needs a Claude key.',
   'conv.noKey.link': 'Add it in Profile › Connections',
+  'conv.addKey': 'Add a Claude key',
   'conv.noPack': 'Conversation is not available for this language yet.',
   'conv.offline': 'You are offline. A conversation needs a connection.',
   'conv.mode': 'Kind of conversation',
