@@ -132,10 +132,8 @@ test('a new deploy installs in the background, waits off Today, takes over from 
   const srv = await deployServer();
   try {
     await install(page, srv.origin);
-    // the next launch, on Profile, with B deployed: the page is A, from the worker, and B installs behind it and waits.
-    // (Profile, not Practice: in Chromium, after Practice the old worker stays busy and a skipWaiting doesn't activate
-    // the new one until the tab closes; WebKit takes over either way. Seen with the round-7 worker too; lanes/perf-sw.md.)
-    await page.evaluate(() => { location.hash = '#/profile'; });
+    // the next launch, on Practice, with B deployed: the page is A, from the worker, and B installs behind it and waits
+    await page.evaluate(() => { location.hash = '#/practice'; });
     await expect(page.locator('#view h1').first()).toBeVisible();
     srv.deploy({ sha: B });
     await page.reload();
@@ -145,14 +143,23 @@ test('a new deploy installs in the background, waits off Today, takes over from 
     expect(await loadedShas(page), 'one version per page').toEqual([SHA]);
     await page.waitForTimeout(500);
     expect(await pageSha(page), 'no takeover off Today').toBe(SHA);
-    // Today: the waiting worker takes over and the page reloads once, as B, with only B's code and B's cache
+    // Today: the waiting worker takes over and the page reloads once, as B, with only B's code and B's cache. WebKit (his
+    // Safari) always does. Chromium often holds the takeover until the window closes (the old worker counts as busy;
+    // the round-7 worker too): then the page stays A, whole, and the next window is B (below).
     await page.evaluate(() => { location.hash = '#/today'; });
-    await expect.poll(() => pageSha(page), { timeout: 30_000 }).toBe(B);
-    await expect(page.locator('html.booted')).toHaveCount(1);
-    await expect(page.locator('#view h1').first()).toBeVisible();
-    expect(await loadedShas(page), 'one version per page').toEqual([B]);
-    expect(await appCaches(page)).toEqual([`fluentish-${B.slice(0, 12)}`]);
-    expect(await page.evaluate(() => !!navigator.serviceWorker.controller)).toBe(true);
+    const webkit = test.info().project.name.startsWith('webkit');
+    const tookOver = await expect.poll(() => pageSha(page), { timeout: webkit ? 30_000 : 15_000 }).toBe(B).then(() => true, e => { if (webkit) throw e; return false; });
+    if (tookOver) {
+      await expect(page.locator('html.booted')).toHaveCount(1);
+      await expect(page.locator('#view h1').first()).toBeVisible();
+      expect(await loadedShas(page), 'one version per page').toEqual([B]);
+      expect(await appCaches(page)).toEqual([`fluentish-${B.slice(0, 12)}`]);
+      expect(await page.evaluate(() => !!navigator.serviceWorker.controller)).toBe(true);
+    } else {
+      test.info().annotations.push({ type: 'chromium', description: 'the takeover waited for the next window' });
+      expect(await pageSha(page)).toBe(SHA);
+      expect(await loadedShas(page), 'one version per page').toEqual([SHA]);
+    }
   } finally {
     await srv.stop();
   }
@@ -163,9 +170,16 @@ test('a new deploy installs in the background, waits off Today, takes over from 
   await expect(fresh.locator('html.booted')).toHaveCount(1);
   await expect(fresh.locator('#view h1').first()).toBeVisible();
   expect(await pageSha(fresh)).toBe(B);
+  expect(await loadedShas(fresh), 'one version per page').toEqual([B]);
+  expect(await appCaches(fresh)).toEqual([`fluentish-${B.slice(0, 12)}`]);
   await fresh.evaluate(() => { location.hash = '#/practice/round'; });
   await expect(fresh.locator('.pr-card')).toBeVisible();
   dropNetworkErrors(consoleErrors);
+  // the takeover ends the old worker, and a module Today was still importing through it fails just before the page
+  // reloads (WebKit; the round-7 worker the same). Only that line, and only this once (lanes/perf-sw.md).
+  const cut = consoleErrors.filter(e => /^console: \[route\] TypeError: Importing a module script failed\.$/.test(e));
+  expect(cut.length).toBeLessThanOrEqual(1);
+  for (const e of cut) consoleErrors.splice(consoleErrors.indexOf(e), 1);
 });
 
 test('a warm launch never waits on the network: the app starts while the server has answered nothing', async ({ page, consoleErrors }) => {
