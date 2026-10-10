@@ -248,15 +248,18 @@ test('Back right after Start stays out of the round; Enter during the close star
   await seed(page, { examInDays: 30, veteran: true, motion: 'full' });
   await open(page, '#/today');
   await openPicker(page);
-  // Start, then the page is left within the close animation (160 ms)
+  // Start, then the page is left within the close animation (160 ms), for a page whose code loads slowly (a slow
+  // phone, a slow CI runner): the router aborts the old view only once the new one has loaded
+  await page.route(/\/src\/features\/lookup\/index\.js/, async r => { await new Promise(f => setTimeout(f, 600)); await r.fallback(); });
   await page.evaluate(() => {
     /** @type {HTMLElement} */ (document.querySelector('.rs-start')).click();
-    setTimeout(() => { location.hash = '#/today'; }, 30);
+    setTimeout(() => { location.hash = '#/lookup'; }, 30);
   });
   await expect(page.locator('dialog.ui-sheet')).toHaveCount(0);
-  await page.waitForTimeout(600);
-  expect(await page.evaluate(() => location.hash)).toBe('#/today');
+  await page.waitForTimeout(1200);
+  expect(await page.evaluate(() => location.hash)).toMatch(/^#\/lookup/);
   await expect(page.locator('.pr-round')).toHaveCount(0);
+  await page.unrouteAll({ behavior: 'ignoreErrors' });
   // Enter twice: one round, one history entry
   await openPicker(page);
   const n0 = await page.evaluate(() => history.length);

@@ -157,9 +157,12 @@ export async function openPicker(ctx, href, opener = null) {
     starting = true;
     remember(info?.type || 'list', { mode, n });
     const to = sizedHref(href, mode === 'rec' ? 'rec' : mode === 'all' ? 'all' : n).slice(1);
-    // only a sheet that closed for Start goes on: Back during its close animation leaves the page instead
+    // only a sheet that closed for Start goes on: Back during its close animation leaves the page instead. The router
+    // aborts the view's signal only once the next page has loaded (slow on a slow phone), so the address is checked
+    // too: he is still where the sheet was opened.
+    const here = location.hash;
     void sheet.close('start');
-    void sheet.closed.then(why => { if (why === 'start' && !ctx.signal.aborted) ctx.go(to); });
+    void sheet.closed.then(why => { if (why === 'start' && !ctx.signal.aborted && location.hash === here) ctx.go(to); });
   }
   dlg.addEventListener('keydown', e => {
     if (/** @type {HTMLElement} */ (e.target).closest?.('.ui-sheet-grab')) return;   // the handle is Close: Enter there closes

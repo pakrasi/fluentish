@@ -107,6 +107,9 @@ export function startKeyboard({ bus } = {}) {
       }
     }
     const open = isOpen(typing, m.screen);
+    // a press that took the focus from the field (a mouse, or a browser that blurs on press) must land where it began:
+    // the chrome comes back once the press is over, so the button under it does not move away before the click
+    if (!open && isKb && pressing) { afterPress = true; return; }
     if (open !== isKb) {
       isKb = open;
       // the one animated moment: chrome gives way (or comes back) on the snappy spring; reduced motion: at once
@@ -115,6 +118,11 @@ export function startKeyboard({ bus } = {}) {
     }
   };
   const schedule = () => { if (!frame) frame = requestAnimationFrame(update); };
+  let pressing = false, afterPress = false;
+  addEventListener('pointerdown', () => { pressing = true; }, { capture: true, passive: true });
+  const released = () => { pressing = false; if (afterPress) { afterPress = false; setTimeout(schedule, 0); } };
+  addEventListener('pointerup', released, { capture: true, passive: true });
+  addEventListener('pointercancel', released, { capture: true, passive: true });
   vv?.addEventListener('resize', schedule);
   vv?.addEventListener('scroll', schedule);
   addEventListener('resize', schedule);

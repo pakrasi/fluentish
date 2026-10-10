@@ -55,9 +55,14 @@ test('swap() started while the last one is still updating: the skipped one rejec
     if (typeof document.startViewTransition !== 'function') return null;
     const slow = swap(() => new Promise(r => setTimeout(r, 80)), { kind: 'view' });   // a view still rendering
     const fast = swap(() => {}, { kind: 'view' });                                      // the next tap
-    await Promise.allSettled([slow, fast]);
+    // the newest transition owns data-vt from its update until its own end: read it the moment its update is done
+    // (not after the slow one too: on a slow runner the fast transition can be over by then), then wait for the end
+    // (fix pass: a fixed 900 ms failed both ways under CI load, on a5e191e as well)
+    await fast;
     const during = document.documentElement.dataset.vt || null;
-    await new Promise(r => setTimeout(r, 900));
+    await Promise.allSettled([slow]);
+    const t0 = performance.now();
+    while (document.documentElement.dataset.vt && performance.now() - t0 < 5000) await new Promise(r => setTimeout(r, 50));
     return { during, after: document.documentElement.dataset.vt || null };
   }, SHA);
   test.skip(vt === null, 'no View Transitions here');
