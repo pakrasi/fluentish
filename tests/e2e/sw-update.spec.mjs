@@ -104,6 +104,9 @@ async function install(page, origin) {
     if (w && w.state !== 'activated') await new Promise(r => w.addEventListener('statechange', () => { if (w.state === 'activated') r(null); }));
     if (!navigator.serviceWorker.controller) await new Promise(r => navigator.serviceWorker.addEventListener('controllerchange', () => r(null), { once: true }));
   });
+  // Today prepares the day after its first draw (round 8 P3, loading content): let that finish, so the reloads below
+  // do not cancel it (WebKit reports each cancelled fetch as a page error), as fixtures.mjs leaveQuietly does
+  await page.waitForLoadState('networkidle');
   expect(await pageSha(page)).toBe(SHA);
 }
 
