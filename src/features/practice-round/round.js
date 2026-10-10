@@ -11,7 +11,7 @@
    with the differing words marked), then "type it once". Scheduling is session.js; saving is data.js. */
 import { h, replace, announce } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
-import { correct as fxCorrect, wrong as fxWrong, resetAnswer, swap, skip as skipHold, reduced, countTo } from '../../core/motion.js';
+import { correct as fxCorrect, wrong as fxWrong, resetAnswer, swap, skip as skipHold, reduced, countTo, haptic, pulse } from '../../core/motion.js';
 import { progressOf, drawProgress, againRow } from '../shared/progress.js';
 import { doneHero, againLink, arrive, ROLL_AT } from '../shared/done-hero.js';
 import { label, add } from '../../core/clock.js';
@@ -47,7 +47,8 @@ import { courseRound } from '../shared/course.js';
 import { scopeItem } from '../../domain/itemids.js';
 import { keep, fitToKeyboard, reveal as revealEl, fitPrompt } from '../../core/keyboard.js';
 import { createAnswerDiff } from '../../ui/answer-diff.js';
-import { describe as describeDiff } from '../../domain/letterdiff.js';
+import { describe as describeDiff, firstDiffWord } from '../../domain/letterdiff.js';
+import { activePack } from '../../lang/registry.js';
 
 const TEIL = /** @type {Record<string, string>} */ ({ S1: 'Teil 1', S2: 'Teil 2', S3: 'Teil 3', W1: 'Aufgabe 1', W2: 'Aufgabe 2', W3: 'Aufgabe 3', L2: 'Teil 2', L3: 'Teil 3', L5: 'Teil 5' });
 const fmtS = (/** @type {number} */ ms) => `${(ms / 1000).toFixed(1).replace(/\.0$/, '')} s`;
@@ -450,11 +451,15 @@ export async function mountRound(el, ctx) {
   function sayAnswer(/** @type {string} */ text) { if (settings.practice.readAloud) readAloud(text); }
   // the lines under a verdict (ui/answer-diff.js), one set at a time: the next set ends the last one's motion
   /** @type {AbortController | null} */ let linesAc = null;
+  // the last set's handle and its right line: a retype miss points at its first missing word (handle.locus)
+  /** @type {{ handle: import('../../ui/answer-diff.js').AnswerDiffHandle, right: string } | null} */ let lastLines = null;
   /** @param {Omit<import('../../ui/answer-diff.js').AnswerDiffOpts, 'signal' | 'lang' | 'dir'>} o */
   function lines(o) {
     linesAc?.abort();
     linesAc = new AbortController();
-    return createAnswerDiff({ ...o, lang: langAttr(), dir: dirAttr(), signal: linesAc.signal }).el;
+    const handle = createAnswerDiff({ ...o, lang: langAttr(), dir: dirAttr(), signal: linesAc.signal });
+    lastLines = { handle, right: o.right };
+    return handle.el;
   }
   const LINES = { you: 'pr-diff', right: 'pr-diff answer-key', label: 'caption', caption: 'caption' };
   /** One line about a near miss, when the diff can say it (a missing ending). @param {import('../../domain/letterdiff.js').AnswerDiff} d */
@@ -558,7 +563,9 @@ export async function mountRound(el, ctx) {
     if (nb) kids.push(nb);
     if (claudeOk() && !d && !g.det) kids.push(claudeBox(typed));
     replace(fb, kids, wordCard(it));
-    fxWrong(answerEl, { revealEl: reveal });
+    // two ticks 70 ms apart (a right answer has one), so the verdict is felt before it is read (design A14)
+    fxWrong(answerEl, { revealEl: reveal, haptics: false });
+    haptic(); setTimeout(haptic, 70);
     announce(`${t('practice.wrong')}. ${t('practice.rightIs')} ${right}`);
     sayAnswer(right);
     toRetype(right, 360);
@@ -632,8 +639,18 @@ export async function mountRound(el, ctx) {
     tbar.hidden = true; secs.textContent = '';
     setButtons();
     // the sentence to type sits above the field: scroll it into view (it may be below the fold of the card)
-    const go = () => { if (state !== 'retype') return; input.value = ''; grow(); answerEl.classList.add('is-retype'); input.placeholder = t('practice.ph.retype'); focusInput(); showKey(); };
-    if (delay && !reduced()) setTimeout(go, delay); else go();
+    // with a delay (after a wrong answer) the struck answer fades out first and the empty field rises in (design A7)
+    const motion = !!delay && !reduced();
+    const go = () => {
+      answerEl.classList.remove('is-clearing');
+      if (state !== 'retype') return;
+      input.value = ''; grow(); answerEl.classList.add('is-retype'); input.placeholder = t('practice.ph.retype'); focusInput(); showKey();
+      if (motion) { answerEl.classList.add('is-arriving'); setTimeout(() => answerEl.classList.remove('is-arriving'), 260); }
+    };
+    if (motion) {
+      setTimeout(() => { if (state === 'retype') answerEl.classList.add('is-clearing'); }, Math.max(0, delay - 120));
+      setTimeout(go, delay);
+    } else go();
   }
   /** The answer key (the sentence to retype) into view, clear of the field pinned over the card's bottom. */
   function showKey() { showFb(fb.querySelector('.answer-key') || fb.lastElementChild); }
@@ -658,6 +675,61 @@ export async function mountRound(el, ctx) {
       return;
     }
     answerEl.classList.remove('is-shake'); void answerEl.offsetWidth; answerEl.classList.add('is-shake');
+    locus(typed);
+  }
+  /**
+   * A retype miss: the first word of the sentence to type that his copy does not have gets an accent underline that
+   * draws and holds (motion.js pulse 'locus', design A7), so he need not reread the whole sentence. The diff's own
+   * right line when it is the sentence (a wrong answer, a study card with his try); else the plain answer key's word.
+   * @param {string} typed
+   */
+  function locus(typed) {
+    const attempt = full(typed);
+    const line = lastLines && lastLines.right === entry.right && lastLines.handle.el.isConnected ? lastLines.handle.el.querySelector('.ui-ad-right') : null;
+    // a letter or word diff numbers its words (data-w): the diff finds the word itself
+    if (line?.querySelector('.ui-ad-w[data-w]')) { void lastLines?.handle.locus(attempt); return; }
+    const j = firstDiffWord(attempt, entry.right);
+    if (j < 0) return;
+    /** @type {HTMLElement | null} */ let w = null;
+    if (line) {
+      // a far miss draws the right line plain: one span per run of non-space text, in the sentence's order
+      const k = spaceWord(entry.right, j);
+      w = k < 0 ? null : /** @type {HTMLElement | null} */ (line.querySelectorAll('.ui-ad-w')[k] || null);
+    } else {
+      const key = /** @type {HTMLElement | null} */ ([...fb.querySelectorAll('.answer-key')].find(x => x.textContent === entry.right) || null);
+      w = key ? keyWord(key, j) : null;
+    }
+    if (w) void pulse(w, 'locus');
+  }
+  /**
+   * Which run of non-space text of s holds its j-th word (the pack's words skip punctuation that stands alone).
+   * @param {string} s @param {number} j @returns {number}
+   */
+  function spaceWord(s, j) {
+    const P = activePack().text, norm = P.normalize(s);
+    const tok = norm.length === s.length ? P.tokenize(norm)[j] : null;
+    if (!tok) return -1;
+    return (s.slice(0, tok.start).match(/\S+(?=\s)/g) || []).length;
+  }
+  /**
+   * The j-th word of a plain answer key as its own span (made once, on the first miss), or null.
+   * @param {HTMLElement} key @param {number} j
+   */
+  function keyWord(key, j) {
+    if (j < 0) return null;
+    const had = /** @type {HTMLElement | null} */ (key.querySelector(`.pr-kw[data-w="${j}"]`));
+    if (had) return had;
+    const text = key.firstChild;
+    if (!text || text.nodeType !== Node.TEXT_NODE || key.childNodes.length !== 1) return null;   // only a key that is one run of text
+    const P = activePack().text, raw = String(text.textContent), norm = P.normalize(raw);
+    if (norm.length !== raw.length) return null;   // offsets would not line up
+    const tok = P.tokenize(norm)[j];
+    if (!tok) return null;
+    const r = document.createRange();
+    r.setStart(text, tok.start); r.setEnd(text, tok.end);
+    const span = h('span', { class: 'pr-kw', 'data-w': String(j) });
+    r.surroundContents(span);
+    return span;
   }
   function skipRetype() { state = 'feedback'; next(); }
   function next() {
