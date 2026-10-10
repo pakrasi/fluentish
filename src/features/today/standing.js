@@ -138,6 +138,12 @@ function sparkline(pts) {
   return svg;
 }
 
+/** The Progress row's click (a plain one, not a new tab): its sparkline is what Progress's known chart grows from. @param {MouseEvent} e */
+function handTo(e) {
+  if (e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  handoff(/** @type {HTMLElement | null} */ ((/** @type {Element} */ (e.currentTarget)).querySelector('.stand-spark')), 'pg-known');
+}
+
 /**
  * The section. Returns the element and a fill(counts) for the counts that come later.
  *   rows 'open' (an exam in its window, or up to 14 days after it): per module the latest mock score, the items known
@@ -150,12 +156,6 @@ function sparkline(pts) {
  *   spark: known over the last 12 weeks, for the Progress row; course: a course in another language
  *   than German, whose words line counts its course's items and opens Practice (there is no map for it)
  */
-/** The Progress row's click (a plain one, not a new tab): its sparkline is what Progress's known chart grows from. @param {MouseEvent} e */
-function handTo(e) {
-  if (e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
-  handoff(/** @type {HTMLElement | null} */ ((/** @type {Element} */ (e.currentTarget)).querySelector('.stand-spark')), 'pg-known');
-}
-
 export function renderStanding({ plan, c, t, course = false, rows: mode = 'open', goal = null, examName = '', spark = null }) {
   const ahead = !!c.exam && AHEAD.has(c.phase);
   const ms0 = modulesStanding({ modules: plan.modules, pool: [], get: () => ({ state: 'unseen' }) });
