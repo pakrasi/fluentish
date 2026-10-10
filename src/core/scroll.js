@@ -160,6 +160,8 @@ export function createScrollKeeper() {
   let moving = false;
   /** the arriving entry is new (no key yet: a link or a tab, not Back or Forward), and the hash of the view before it */
   let fresh = false, prevHash = /** @type {string | null} */ (null);
+  /** entry key -> the hash of the page it was opened from, in memory (no extra replaceState: Safari allows 100 in 10 s) */
+  const fromOf = new Map();
   let timer = 0;
   /* the y of the view on screen, from its scroll events. leave() uses this, not scrollY at the time: on Back and
      Forward WebKit has already moved the page (to the top) when hashchange fires. */
@@ -175,7 +177,7 @@ export function createScrollKeeper() {
     if (!may()) return;
     try { history.replaceState({ ...(st && typeof st === 'object' ? st : {}), k: shown, y: lastY }, ''); } catch { /* sandbox: memory has it */ }
   };
-  return {
+  const keeper = {
     start() {
       try { history.scrollRestoration = 'manual'; } catch { /* old browser */ }
       addEventListener('scroll', () => {
@@ -199,27 +201,31 @@ export function createScrollKeeper() {
       return { key, y: landing({ state: st, shownKey: shown, memo }) };
     },
     /**
-     * A view is on screen now for this key. A new entry gets its key now, with `from`, the hash of the view it was
-     * opened from: an in-app back link to that hash goes Back instead (core/ui.js backLink, cameFrom), and keeps its
-     * place. Back and Forward find the key and leave it as it is. @param {string} key
+     * A view is on screen now for this key. A new entry remembers the hash of the view it was opened from: an in-app
+     * back link to that hash goes Back instead (core/ui.js backLink, cameFrom), and keeps its place. A replace keeps the
+     * entry's key (router setHash keeps history.state), so it keeps its `from` too. @param {string} key
      */
     shown(key) {
       shown = key; moving = false; lastY = Math.round(scrollY);
-      const st = history.state;
-      if (fresh && may()) try { history.replaceState({ ...(st && typeof st === 'object' ? st : {}), k: key, from: prevHash }, ''); } catch { /* sandbox */ }
+      if (fresh && prevHash != null) fromOf.set(key, prevHash);
       fresh = false;
       prevHash = location.hash;
     },
+    /** The hash the entry on screen was opened from, when this session saw it opened. */
+    from() { return shown ? fromOf.get(shown) ?? null : null; },
     /** Scroll back to y once the view has drawn (see restore()). @param {number} y @param {AbortSignal} signal */
     restore(y, signal) { return restore(y, { signal }); },
     /** No view is on screen (the error view, or a mount in flight). */
     clear() { shown = null; },
     memo,
   };
+  active = keeper;
+  return keeper;
 }
 
+/** The app's keeper (main.js creates one). @type {{ from: () => string | null } | null} */
+let active = null;
 /** True when the entry on screen was opened from `hash` (a link or a tab on that page): Back goes there. @param {string} hash */
 export function cameFrom(hash) {
-  const st = history.state;
-  return !!hash && !!st && typeof st === 'object' && st.from === hash && history.length > 1;
+  return !!hash && active?.from() === hash && history.length > 1;
 }
