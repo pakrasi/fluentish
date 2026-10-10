@@ -10,7 +10,8 @@
      his registration never changes. A course in another language registers the other URL, which installs a worker
      with that pack; it takes over like any update (only on Today).
    - Kill switch: version.json {"sw":"off"} unregisters only the registration whose scope is this app's root and deletes
-     only caches named fluentish-*. Nothing here touches another app's service worker or caches. */
+     only caches named fluentish-*. Nothing here touches another app's service worker or caches. The same deploy
+     publishes a sw.js that does this by itself (tools/stamp.mjs killSw), for when the page can't run. */
 
 /**
  * @param {{ root: string, dev: boolean, devOptIn?: boolean, log?: (where: string, e: any) => void,
