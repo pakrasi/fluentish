@@ -207,6 +207,7 @@ test('a new deploy installs in the background, waits off Today, takes over from 
 test('a waiting version does not take over while Today is still preparing the day; it does once Today has settled', async ({ page }) => {
   const srv = await deployServer();
   try {
+    await recordAsks(page);
     await install(page, srv.origin);
     await page.addInitScript(() => {
       if (sessionStorage.getItem('e2e-hold') !== '1') return;
@@ -235,9 +236,19 @@ test('a waiting version does not take over while Today is still preparing the da
     await page.waitForTimeout(3_000);
     expect(await pageSha(page), 'no takeover while Today prepares').toBe(SHA);
     expect(await page.evaluate(() => location.hash)).toBe('#/today');
-    // the day is prepared: Today settles and the waiting version takes over
+    expect(await asked(page), 'not asked while Today prepares').toEqual([]);
+    // the day is prepared: Today settles and the page asks the waiting version to take over. WebKit takes over at
+    // once; Chromium may keep the worker waiting until the page navigates (see the first test), so there the page
+    // must have asked, and the next navigation lands on B
     await page.evaluate(() => { sessionStorage.removeItem('e2e-hold'); /** @type {any} */ (window).__release(); });
-    await expect.poll(() => pageSha(page), { timeout: 30_000 }).toBe(B);
+    await expect.poll(async () => (await asked(page)).includes('#/today'), { timeout: 15_000 }).toBe(true);
+    const webkit = test.info().project.name.startsWith('webkit');
+    const tookOver = await expect.poll(() => pageSha(page), { timeout: webkit ? 30_000 : 10_000 }).toBe(B).then(() => true, e => { if (webkit) throw e; return false; });
+    if (!tookOver) {
+      test.info().annotations.push({ type: 'chromium', description: 'the takeover completed on the next navigation' });
+      await page.evaluate(() => { location.reload(); }).catch(() => {});
+      await expect.poll(() => pageSha(page), { timeout: 30_000 }).toBe(B);
+    }
     await expect(page.locator('html.booted')).toHaveCount(1);
   } finally {
     await srv.stop();

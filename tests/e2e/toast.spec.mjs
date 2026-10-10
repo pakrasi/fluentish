@@ -187,12 +187,13 @@ test('I know this: the toast and its Undo are what #live says; Undo has a 44 px 
   await expect(pill).toBeVisible();
   await page.waitForTimeout(700);   // past its entrance (380 ms), so the pill stands still
   await expect(page.locator('#live')).toHaveText('Marked as known. One check in about 60 days. Undo');
-  // the hit box: 44 px, so 4.5 px above and below the 34 px button still land on Undo
-  const hit = await pill.getByRole('button', { name: 'Undo' }).evaluate(b => {
+  // the hit box: 44 px, so 4.5 px above and below the 34 px button still land on Undo (asked until the pill stands
+  // still: on a slow runner its entrance runs longer than the wait above)
+  const undo = pill.getByRole('button', { name: 'Undo' });
+  await expect.poll(() => undo.evaluate(b => {
     const r = b.getBoundingClientRect(), x = r.left + r.width / 2;
     return [r.top - 4.5, r.bottom + 4.5].map(y => b.contains(document.elementFromPoint(x, y)));
-  });
-  expect(hit).toEqual([true, true]);
+  })).toEqual([true, true]);
   // leave the round: its Undo does not follow to Today
   await page.evaluate(() => { location.hash = '#/today'; });
   await expect(page.locator('#view h1').first()).toBeVisible();
