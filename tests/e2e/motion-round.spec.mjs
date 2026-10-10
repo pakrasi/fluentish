@@ -153,3 +153,45 @@ for (const motion of /** @type {const} */ (['full', 'reduce'])) {
     await expect(page.locator('.answer.is-retype')).toBeVisible();
   });
 }
+
+// Fix pass (code review S1): "Another round" to the address already showing mounts the round again with no
+// hashchange. The done page's field (its observers) and its atmosphere (a WebGL context) end with the view's signal.
+test('"Another round" to the same address ends the done page: its field and atmosphere stop', async ({ page }) => {
+  await page.addInitScript(() => {
+    const w = /** @type {any} */ (window);
+    const live = new Map();
+    w.__roLive = (/** @type {Element} */ el) => [...live.values()].some(s => s.has(el));
+    const RO = window.ResizeObserver;
+    window.ResizeObserver = class extends RO {
+      /** @param {ResizeObserverCallback} cb */
+      constructor(cb) { super(cb); live.set(this, new Set()); }
+      /** @param {Element} el @param {ResizeObserverOptions} [o] */
+      observe(el, o) { live.get(this)?.add(el); super.observe(el, o); }
+      disconnect() { live.get(this)?.clear(); super.disconnect(); }
+    };
+  });
+  // more due than one round takes, so the done page offers another
+  await seed(page, { examInDays: 10, motion: 'full', cards: { b1: dueCards(24) } });
+  await open(page, '#/practice/round');
+  await expect(page.locator('.pr-round')).toBeVisible();
+  await runRound(page);
+  const again = page.locator('#pr-again');
+  await expect(again).toHaveAttribute('href', '#/practice/round');
+  await expect(page.locator('.pr-done .pr-done-field')).toBeVisible();
+  const before = await page.evaluate(() => {
+    const w = /** @type {any} */ (window);
+    w.__oldField = document.querySelector('.pr-done .pr-done-field');
+    w.__oldAtmo = document.querySelector('.pr-done .atmo');
+    return { field: w.__roLive(w.__oldField) };
+  });
+  expect(before.field).toBe(true);
+  // the atmosphere goes live once its shader lands (no WebGL: it never does, and there is nothing to stop)
+  await page.waitForTimeout(400);
+  await again.click();
+  await expect(page.locator('.pr-round')).toBeVisible();
+  await expect(page.locator('.pr-done')).toHaveCount(0);
+  await expect.poll(() => page.evaluate(() => {
+    const w = /** @type {any} */ (window);
+    return { field: w.__roLive(w.__oldField), atmo: w.__oldAtmo.classList.contains('is-live') };
+  })).toEqual({ field: false, atmo: false });
+});

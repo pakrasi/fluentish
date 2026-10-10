@@ -70,7 +70,7 @@ export function againLink(ctx, href, text, attrs = {}) {
  * @param {{label: string, figure: number, of: string, lines?: any[], data?: Node | null, atmo?: boolean, cls?: string, level?: 'h1' | 'h2', inFlow?: boolean}} o
  *   level: h2 when the hero sits inside a view that has its own h1 (a script step's done); inFlow: the hero is a step
  *   inside a full-screen flow, which keeps its own chrome (no leaveRound())
- * @returns {{el: HTMLElement, start: (o?: { steps?: import('../../core/motion.js').SeqStep[] }) => () => void, finish: () => void}}
+ * @returns {{el: HTMLElement, start: (o?: { steps?: import('../../core/motion.js').SeqStep[], signal?: AbortSignal }) => () => void, finish: () => void}}
  */
 export function doneHero({ label, figure, of, lines = [], data = null, atmo = true, cls, level = 'h1', inFlow = false }) {
   // the figure is an odometer (DESIGN motion rule 10); until it rolls its columns stand at 0 ("00" for a two-digit
@@ -95,10 +95,12 @@ export function doneHero({ label, figure, of, lines = [], data = null, atmo = tr
     el,
     /**
      * The arrival's timeline: the figure rolls and the atmosphere breathes at ROLL_AT, then the caller's steps (ms
-     * from now; their run(instant) sets the end state when instant). Focuses the heading. Returns the cleanup.
-     * @param {{ steps?: import('../../core/motion.js').SeqStep[] }} [o]
+     * from now; their run(instant) sets the end state when instant). Focuses the heading. Returns the cleanup, which
+     * also runs once when signal aborts (pass the view's ctx.signal: a done page left for the same address, "Another
+     * round", gets no hashchange, and its atmosphere's WebGL context would stay alive).
+     * @param {{ steps?: import('../../core/motion.js').SeqStep[], signal?: AbortSignal }} [o]
      */
-    start({ steps = [] } = {}) {
+    start({ steps = [], signal } = {}) {
       if (!inFlow) leaveRound();
       /** @type {any} */ let a = null, gone = false, rolled = false, breathed = false;
       const breathe = () => { if (a && rolled && !skipped && !breathed) { breathed = true; a.breathe(); } };
@@ -117,7 +119,13 @@ export function doneHero({ label, figure, of, lines = [], data = null, atmo = tr
       const skip = () => finish();
       page.addEventListener('pointerdown', skip);
       h1.focus({ preventScroll: true });
-      return () => { gone = true; seq?.cancel(); page.removeEventListener('pointerdown', skip); a?.destroy(); };
+      const stop = () => {
+        if (gone) return;
+        gone = true; seq?.cancel(); page.removeEventListener('pointerdown', skip); a?.destroy();
+        signal?.removeEventListener('abort', stop);
+      };
+      if (signal?.aborted) stop(); else signal?.addEventListener('abort', stop, { once: true });
+      return stop;
     },
     /** Every step of the arrival at its end state now (a tap; a test). */
     finish,

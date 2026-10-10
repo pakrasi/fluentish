@@ -32,7 +32,7 @@ test('every done screen starts its hero, and only a step inside a full-screen fl
   assert.ok(users.length >= 6, `done screens found: ${users.map(x => x.p).join(', ')}`);
   for (const { p, s } of users) {
     const heroes = s.match(/doneHero\(\{/g).length;
-    const starts = (s.match(/hero\.start\((?:\{ steps \})?\)/g) || []).length;
+    const starts = (s.match(/hero\.start\((?:\{ (?:steps|signal: ctx\.signal|steps, signal: ctx\.signal) \})?\)/g) || []).length;
     assert.ok(starts >= heroes, `${p}: every doneHero() is started (${starts} of ${heroes})`);
     if (/inFlow: true/.test(s)) assert.ok(p.endsWith('practice-script/rehearse.js'), `${p}: only a rehearsal step stays in its flow`);
   }

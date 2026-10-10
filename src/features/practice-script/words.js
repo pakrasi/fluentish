@@ -219,9 +219,8 @@ export async function mountWords(el, ctx) {
       lines: [t('practice.script.words.after'), knownIds.size ? t('practice.know.inRound', { n: knownIds.size }) : null], data: list });
     replace(el, h('div', { class: 'practice pr-done stack', 'data-title': t('practice.script.title') }, hero.el,
       h('div', { class: 'pr-done-actions' }, h('a', { class: 'btn btn-primary pressable', href: backTo }, script ? t('practice.script.toOverview') : t('practice.script.toLibrary')))));
-    const stopHero = hero.start();
+    hero.start({ signal: ctx.signal });   // its cleanup runs when the view is left
     requestAnimationFrame(() => list.classList.add('is-in'));
-    addEventListener('hashchange', stopHero, { once: true });
   }
   function end() { cleanup(); location.hash = backTo; }
   const onKey = (/** @type {KeyboardEvent} */ e) => {

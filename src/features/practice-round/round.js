@@ -937,7 +937,7 @@ function doneTimeline(el, ctx, { round, view, fieldEl, knownEl, gainEl, hero, mo
   }
   // "+N" with the first cell that lands (or at that moment when no cell does)
   steps.push({ at: LAND_AT, run: instant => { gainDue = true; gain(instant); } });
-  const stopHero = hero.start({ steps });
+  const stopHero = hero.start({ steps, signal: ctx.signal });
   const doneEl = el.firstElementChild;
   const onKey = (/** @type {KeyboardEvent} */ e) => {
     if (!doneEl || !doneEl.isConnected) { stop(); return; }   // another round mounted on the same address
@@ -945,6 +945,9 @@ function doneTimeline(el, ctx, { round, view, fieldEl, knownEl, gainEl, hero, mo
     if (e.key === 'Escape') { e.preventDefault(); ctx.go(backTo); }
   };
   document.addEventListener('keydown', onKey);
-  const stop = () => { document.removeEventListener('keydown', onKey); field?.destroy(); stopHero(); };
-  addEventListener('hashchange', stop, { once: true });
+  // the view's signal ends it: "Another round" to the same address mounts the round again with no hashchange, and the
+  // field's observers, the keydown listener and the atmosphere's WebGL context would stay behind on every repeat
+  let stopped = false;
+  const stop = () => { if (stopped) return; stopped = true; document.removeEventListener('keydown', onKey); field?.destroy(); stopHero(); };
+  if (ctx.signal.aborted) stop(); else ctx.signal.addEventListener('abort', stop, { once: true });
 }

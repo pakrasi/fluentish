@@ -176,9 +176,8 @@ export async function mountRound(el, ctx) {
     const hero = doneHero({ label: t('read.round.title'), figure: sum.right, of: t('practice.ofRight', { n: sum.total }), lines: [t('read.round.after')], data: list });
     replace(el, h('div', { class: 'practice pr-done stack', 'data-title': t('read.title') }, hero.el,
       h('div', { class: 'pr-done-actions' }, h('a', { class: 'btn btn-primary pressable', href: backTo }, t('read.toLibrary')))));
-    const stopHero = hero.start();
+    hero.start({ signal: ctx.signal });   // its cleanup runs when the view is left
     requestAnimationFrame(() => list.classList.add('is-in'));
-    addEventListener('hashchange', stopHero, { once: true });
   }
   function end() { cleanup(); location.hash = backTo; }
   const onKey = (/** @type {KeyboardEvent} */ e) => {
