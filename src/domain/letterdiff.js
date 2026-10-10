@@ -486,3 +486,33 @@ export function firstDiffWord(attempt, right, { pack } = {}) {
   }
   return j < m ? j : -1;
 }
+
+/**
+ * The word indexes of `right` that fill the blank (___) of a gap prompt: the words after the prompt's own words before
+ * the blank, up to the prompt's next word ("Mit dem ___ Auto" and "Mit dem neuen Auto …": [2]), or to the end when the
+ * blank ends the prompt. [] when the prompt has
+ * no blank or its start is not the start of right. @param {unknown} prompt @param {unknown} right
+ * @param {{ pack?: PackText }} [o] @returns {number[]}
+ */
+export function gapWords(prompt, right, { pack } = {}) {
+  const P = pack || /** @type {PackText} */ (/** @type {unknown} */ (activePack()));
+  const A = P.text.tokenize(P.text.normalize(prompt)), B = P.text.tokenize(P.text.normalize(right));
+  const k = A.findIndex(t => /^_+$/.test(t.raw));
+  if (k < 0 || k >= B.length) return [];
+  for (let i = 0; i < k; i++) if (B[i].n !== A[i].n) return [];
+  const next = A[k + 1];
+  // up to the prompt's next word; a blank at the end takes the rest of the answer
+  const j = next ? B.findIndex((t, i) => i > k && t.n === next.n) : B.length;
+  const end = j > k ? j : k + 1;
+  return Array.from({ length: end - k }, (_, i) => k + i);
+}
+
+/**
+ * True when two lines say the same words to the pack (case, punctuation and folded spellings aside): an "Also correct"
+ * line that only repeats the line already shown is left out. @param {unknown} a @param {unknown} b @param {{ pack?: PackText }} [o]
+ */
+export function sameWords(a, b, { pack } = {}) {
+  const P = pack || /** @type {PackText} */ (/** @type {unknown} */ (activePack()));
+  const key = (/** @type {unknown} */ s) => P.text.tokenize(P.text.normalize(s)).map(t => t.n).join(' ');
+  return key(a) === key(b);
+}

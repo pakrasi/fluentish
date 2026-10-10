@@ -6,7 +6,7 @@ import assert from 'node:assert/strict';
 import { readFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { graphemes, letterDiff, letterChunks, distance, near, answerDiff, rangeDiff, slipSegs, describe, firstDiffWord } from '../../src/domain/letterdiff.js';
+import { graphemes, letterDiff, letterChunks, distance, near, answerDiff, rangeDiff, slipSegs, describe, firstDiffWord, sameWords, gapWords } from '../../src/domain/letterdiff.js';
 import { importsOf } from './ui-lint.test.mjs';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
@@ -293,4 +293,25 @@ test('display only: letterdiff.js and ui/answer-diff.js never import the grader'
     }
     for (const g of GRADING) assert.ok(!seen.has(g), `${f} reaches ${g}`);
   }
+});
+
+test('UX S3: sameWords finds an "Also correct" line that repeats his corrected line', () => {
+  const fixed = show(slipSegs('Ich trnike einen heißen Kaffee.', [{ start: 4, end: 10, expected: 'trinke' }])).replace(/\[fix:([^\]]*)\]/g, '$1');
+  assert.equal(fixed, 'Ich trinke einen heißen Kaffee.');
+  assert.ok(sameWords('Ich trinke einen heißen Kaffee.', fixed));
+  assert.ok(sameWords('ich trinke einen heissen Kaffee', fixed), 'case, punctuation and ss aside');
+  assert.ok(!sameWords('Ich trinke einen heißen Tee.', fixed));
+  // round.js leaves those out of "Also correct"
+  const src = readFileSync(path.join(ROOT, 'src/features/practice-round/round.js'), 'utf8');
+  assert.match(src, /\.filter\(\(\/\*\* @type \{string\} \*\/ x\) => shown == null \|\| !sameWords\(x, shown\)\)/);
+});
+
+test('UX S4: gapWords finds the words that fill a gap prompt\'s blank', () => {
+  assert.deepEqual(gapWords('Mit dem ___ Auto fahren wir. (neu)', 'Mit dem neuen Auto fahren wir.'), [2]);
+  assert.deepEqual(gapWords('Ich ___ gestern ins Kino.', 'Ich bin gestern ins Kino gegangen.'), [1]);
+  assert.deepEqual(gapWords('Er wartet ___.', 'Er wartet auf den Bus.'), [2, 3, 4]);
+  assert.deepEqual(gapWords('Keine Lücke hier.', 'Keine Lücke hier.'), []);
+  assert.deepEqual(gapWords('Sie ___ Auto.', 'Er fährt ein Auto.'), [], 'the prompt\'s start is not the answer\'s');
+  const src = readFileSync(path.join(ROOT, 'src/features/practice-round/round.js'), 'utf8');
+  assert.match(src, /const gap = it\.gap && !marked \? gapWords\(it\.prompt, right\) : undefined;/);
 });

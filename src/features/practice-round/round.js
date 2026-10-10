@@ -48,7 +48,7 @@ import { scopeItem } from '../../domain/itemids.js';
 import { keep, fitToKeyboard, reveal as revealEl, fitPrompt } from '../../core/keyboard.js';
 import { claude, canAskClaude } from '../../data/credentials.js';
 import { createAnswerDiff } from '../../ui/answer-diff.js';
-import { describe as describeDiff, firstDiffWord } from '../../domain/letterdiff.js';
+import { describe as describeDiff, firstDiffWord, slipSegs, sameWords, gapWords } from '../../domain/letterdiff.js';
 import { activePack } from '../../lang/registry.js';
 
 const TEIL = /** @type {Record<string, string>} */ ({ S1: 'Teil 1', S2: 'Teil 2', S3: 'Teil 3', W1: 'Aufgabe 1', W2: 'Aufgabe 2', W3: 'Aufgabe 3', L2: 'Teil 2', L3: 'Teil 3', L5: 'Teil 5' });
@@ -513,12 +513,16 @@ export async function mountRound(el, ctx) {
     // a preposition gap: the usage note is the point, so it shows after a right answer too
     if (it.usage) kids.push(h('p', { class: 'pr-rule' }, it.usage));
     // his answer once, in its right spelling, the letters to fix underlined in accent (it counts: nothing here is red)
-    if (g.typos.length || capSlip || umlaut) kids.push(lines({ kind: 'right-slip', typed: g.input, slips: [...g.typos, ...g.capMiss, ...g.umlautMiss], labels: {}, classes: { you: 'pr-yours' } }).el);
+    const slips = [...g.typos, ...g.capMiss, ...g.umlautMiss];
+    const slipLine = g.typos.length || capSlip || umlaut;
+    if (slipLine) kids.push(lines({ kind: 'right-slip', typed: g.input, slips, labels: {}, classes: { you: 'pr-yours' } }).el);
     const capHead = !isNew && !veryLate && !late && !umlaut && capSlip;
     if (capSlip && !capHead) kids.push(h('p', { class: 'caption' }, t('practice.capsNote', { list: [...new Set(g.capMiss.map((/** @type {any} */ x) => x.expected))].join(', ') })));
     if (situation) kids.push(h('p', { class: 'caption' }, t('practice.checkedPhrase')));
     // a word card's other accepted form ("bewerben" for "sich bewerben") is not news after a right answer
-    const others = it.card?.type ? [] : g.alsoCorrect || [];
+    // nor is the line just shown: his answer in its right spelling (a typo makes the grader list the model again)
+    const shown = slipLine ? slipSegs(g.input, slips).filter(x => x.k !== 'extra').map(x => x.text).join('') : null;
+    const others = (it.card?.type ? [] : g.alsoCorrect || []).filter((/** @type {string} */ x) => shown == null || !sameWords(x, shown));
     if (others.length && !clean) kids.push(h('p', { class: 'pr-also' }, h('span', { class: 'caption' }, situation ? t('practice.otherWays') : t('practice.alsoCorrect')), ' ',
       h('span', { lang: langAttr(), dir: dirAttr() }, others.slice(0, 2).join(' · ')), others.length > 2 ? alsoMore(others.slice(2), '') : null));
     replace(fb, kids, wordCard(it));
@@ -554,8 +558,10 @@ export async function mountRound(el, ctx) {
     // a situation grades one phrase, not the whole sentence: only that phrase is marked, the rest is shown plain
     const situation = it.kind === 'topic' || it.kind === 'reply';
     const marked = situation && g.pattern ? phraseWords(right, g.pattern) : undefined;
+    // a gap card: on a far miss its word is still marked
+    const gap = it.gap && !marked ? gapWords(it.prompt, right) : undefined;
     const kids = [h('p', { class: 'pr-res is-bad' }, t('practice.wrong')),
-      lines({ kind: 'wrong', typed: full(typed), right, marked, capMiss: g.capMiss, labels: { you: t('practice.you'), right: t('practice.rightIs'), caption: diffCaption }, classes: LINES }).el,
+      lines({ kind: 'wrong', typed: full(typed), right, marked, gap, capMiss: g.capMiss, labels: { you: t('practice.you'), right: t('practice.rightIs'), caption: diffCaption }, classes: LINES }).el,
       situation ? h('p', { class: 'caption' }, t('practice.checkedPhrase')) : null];
     if (g.alsoCorrect?.length) kids.push(h('p', { class: 'pr-also' }, alsoMore(g.alsoCorrect, t('practice.otherWays') + ' ')));
     // his errors, each from his answer, and a rule only when it is about one of them (a detector's always: g.rule);

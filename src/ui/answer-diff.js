@@ -34,6 +34,8 @@ import { activePack } from '../lang/registry.js';
  * @property {boolean} [plainYou]  his line without marks (a situation grades one phrase, not his whole sentence)
  * @property {number[]} [marked]   word indexes (the pack's tokens of right) to mark as whole-word `miss` instead of a
  *   diff: a situation's phrase, his sentence plain
+ * @property {number[]} [gap]      word indexes of right that fill a gap card's blank: on a far miss (no other marks) they
+ *   are marked as whole-word `miss`, so the eye finds the word the card is about
  * @property {{ you?: string, right?: string, caption?: string | ((d: AnswerDiff) => string | null) }} labels
  *   from the caller's en.js section; an empty label leaves its line without one
  * @property {{ root?: string, you?: string, right?: string, label?: string, caption?: string }} [classes]  the caller's
@@ -72,19 +74,27 @@ function diffOf(o) {
   }
   if (o.kind === 'partial') return rangeDiff(typed, rightText, o.ranges?.typed || [], o.ranges?.right || []);
   if (o.marked) {   // a situation: the phrase's words marked in the answer, his sentence plain
-    const want = new Set(o.marked), r = rightText;
-    /** @type {Seg[]} */ const right = [];
-    let p = 0;
-    activePack().text.tokenize(r).forEach((tok, word) => {
-      if (tok.start > p) right.push({ text: r.slice(p, tok.start), k: 'eq' });
-      right.push({ text: tok.raw, k: want.has(word) ? 'miss' : 'eq', w: want.has(word), word });
-      p = tok.end;
-    });
-    if (p < r.length) right.push({ text: r.slice(p), k: 'eq' });
+    const want = new Set(o.marked);
+    const right = markedLine(rightText, want);
     return { typed: typed ? [{ text: typed, k: 'eq' }] : [], right, mode: 'words', stats: { near: 0, missing: want.size, extra: 0, words: right.filter(x => x.word != null).length } };
   }
   const d = answerDiff(typed, rightText, { capMiss: o.capMiss });
+  // a far miss on a gap card: both lines stay plain, but the word the card is about is marked
+  if (d.mode === 'plain' && o.gap?.length) return { ...d, right: markedLine(d.right.map(x => x.text).join(''), new Set(o.gap)), mode: 'words' };
   return o.plainYou ? { ...d, typed: typed ? [{ text: typed, k: 'eq' }] : [] } : d;
+}
+
+/** The right line with the words at `want` (token indexes) as whole-word `miss`, the rest plain. @param {string} r @param {Set<number>} want @returns {Seg[]} */
+function markedLine(r, want) {
+  /** @type {Seg[]} */ const right = [];
+  let p = 0;
+  activePack().text.tokenize(r).forEach((tok, word) => {
+    if (tok.start > p) right.push({ text: r.slice(p, tok.start), k: 'eq' });
+    right.push({ text: tok.raw, k: want.has(word) ? 'miss' : 'eq', w: want.has(word), word });
+    p = tok.end;
+  });
+  if (p < r.length) right.push({ text: r.slice(p), k: 'eq' });
+  return right;
 }
 
 /**
