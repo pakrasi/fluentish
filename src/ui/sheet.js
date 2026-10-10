@@ -47,7 +47,8 @@ let count = 0;
  * @property {HTMLElement | (() => HTMLElement | null | undefined) | null} [opener]  gets the focus back on close
  * @property {HTMLElement | null} [focus]         takes the focus on open (default: the title, with no ring)
  * @property {{close: string, expand?: string, collapse?: string}} labels
- * @property {boolean} [closeButton]              a × in the header as well (named labels.close)
+ * @property {boolean} [closeButton]              (kept for callers) every sheet has its × now: on a phone the handle
+ *                                                closes it and the × is hidden; from 720 px, where there is no handle, the × shows
  * @property {string} [className]                 the caller's class on the dialog
  * @property {(reason: string) => void} [onClose]
  * @property {AbortSignal} [signal]
@@ -96,7 +97,8 @@ export function createSheet(opts) {
   if (!titleEl.id) titleEl.id = `${id}-t`;
   titleEl.tabIndex = -1;
   const grab = h('button', { type: 'button', class: 'ui-sheet-grab', 'aria-label': labels.close }, h('span', { class: 'ui-sheet-grip', 'aria-hidden': 'true' }));
-  const x = opts.closeButton ? h('button', { type: 'button', class: 'btn btn-quiet pressable ui-sheet-x', 'aria-label': labels.close }, icon('close', { size: 18 })) : null;
+  // one close control per size: the handle on a phone, the × from 720 px (styles/ui.css)
+  const x = h('button', { type: 'button', class: 'btn btn-quiet pressable ui-sheet-x', 'aria-label': labels.close }, icon('close', { size: 18 }));
   const head = h('div', { class: 'ui-sheet-head' }, titleEl, x);
   const body = h('div', { class: 'ui-sheet-body' });
   const actions = h('div', { class: 'ui-sheet-actions' });

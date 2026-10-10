@@ -30,7 +30,7 @@
    miss  green bar under the right letters (500 on Newsreader); a whole word: a 2px green underline
    wrong red underline under letters he typed (600); a whole word: struck through in red, ink-2
    extra struck through, ink-3 (red strike on a wrong answer, ink-3 on a right one)
-   ghost letters he left out, faint, in his word (drawn lines are aria-hidden) */
+   ghost letters he left out, ink-3 in his word with a red dotted underline (drawn lines are aria-hidden) */
 .ui-ad { display: grid; gap: var(--s-2); }
 .ui-ad-line { margin: 0; overflow-wrap: anywhere; }
 .ui-ad-w.is-nudge { display: inline-block; }
@@ -50,7 +50,9 @@
 .ui-ad-m.is-extra { color: var(--ink-3); }
 .ui-ad-m.is-extra::after { background: var(--bad); }
 .ui-ad.is-right-slip .ui-ad-m.is-extra::after { background: var(--ink-3); }
-.ui-ad-m.is-ghost { color: var(--ink-3); opacity: 0.8; text-decoration: underline dotted 1.5px; text-underline-offset: 0.22em; text-decoration-skip-ink: none; transition: opacity var(--dur-base) var(--ease-out); }
+/* ghost: faint ink-3 at full opacity (5.8:1, never under 4.5:1) with the wrong line's red dotted underline, so the
+   letters read as part of the miss, never as typed (design review S6) */
+.ui-ad-m.is-ghost { color: var(--ink-3); opacity: 1; text-decoration: underline dotted 2px var(--bad); text-underline-offset: 0.22em; text-decoration-skip-ink: none; transition: opacity var(--dur-base) var(--ease-out); }
 .ui-ad-m.is-ghost::after { content: none; }
 .ui-ad.is-pending .ui-ad-m:not(.is-on)::after { transform: scaleX(0); }
 .ui-ad.is-pending .ui-ad-m.is-ghost:not(.is-on) { opacity: 0; }
@@ -64,6 +66,7 @@
   /* as specific as the coloured rules above (.is-right-slip .is-extra), so no green or red is left */
   :root .ui-ad .ui-ad-m:is(.is-miss, .is-wrong, .is-extra, .is-fix)::after { forced-color-adjust: none; background: CanvasText; }
   :root .ui-ad .ui-ad-m.is-fix::after { background: Highlight; }
+  .ui-ad-m.is-ghost { text-decoration-color: CanvasText; }
 }
 /* ---- end ui/answer-diff ---- */
 
@@ -139,6 +142,13 @@
 .ui-sheet::backdrop { background: transparent; }
 .ui-sheet-scrim { position: absolute; inset: 0; background: rgb(12 14 20 / 0.36); opacity: var(--ui-sheet-o, 1);
   transition: opacity var(--dur-base) var(--ease-out); -webkit-tap-highlight-color: transparent; }
+/* dark: a near-black page needs a deeper scrim to dim, and the panel an edge (design review S7) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .ui-sheet-scrim { background: rgb(0 0 0 / 0.58); }
+  :root:not([data-theme="light"]) .ui-sheet-panel { outline: 1px solid var(--hairline-strong); outline-offset: -1px; }
+}
+:root[data-theme="dark"] .ui-sheet-scrim { background: rgb(0 0 0 / 0.58); }
+:root[data-theme="dark"] .ui-sheet-panel { outline: 1px solid var(--hairline-strong); outline-offset: -1px; }
 .ui-sheet-panel { position: absolute; inset: auto 0 0 0; display: flex; flex-direction: column; max-height: min(92dvh, 640px);
   padding-bottom: calc(var(--s-3) + env(safe-area-inset-bottom)); border-radius: var(--r-card) var(--r-card) 0 0;
   background: var(--surface); box-shadow: var(--shadow-sheet); transform: translate3d(0, var(--ui-sheet-y, 0px), 0);
@@ -166,7 +176,7 @@
 .ui-sheet-head { flex: none; display: flex; align-items: center; gap: var(--s-3); padding: 0 var(--gutter, 16px) var(--s-1); touch-action: none; }
 .ui-sheet-title { flex: 1; min-width: 0; margin: 0; font: 400 var(--fs-h2)/1.15 var(--font-display); }
 .ui-sheet-title:focus { outline: none; }
-.ui-sheet-x { flex: none; width: var(--tap); padding: 0; margin-inline-end: calc(-1 * var(--s-2)); }
+.ui-sheet-x { flex: none; width: var(--tap); padding: 0; margin-inline-end: calc(-1 * var(--s-2)); display: none; }
 .ui-sheet-body { flex: 0 1 auto; min-height: 0; display: grid; align-content: start; gap: var(--s-3); padding: var(--s-2) var(--gutter, 16px) var(--s-3);
   overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
 .ui-sheet.is-detents .ui-sheet-body { flex-grow: 1; }
@@ -182,6 +192,7 @@
   .ui-sheet-panel, .ui-sheet.is-detents .ui-sheet-panel, .ui-sheet:not(.is-modeless) .ui-sheet-panel { inset: 0; margin: auto; width: min(440px, calc(100% - 32px)); height: fit-content; padding: var(--s-4) 0 var(--s-5);
     border-radius: var(--r-card); box-shadow: var(--shadow-lift), 0 0 0 1px var(--hairline); }
   .ui-sheet-grab { display: none; }
+  .ui-sheet-x { display: inline-flex; }
   .ui-sheet-head, .ui-sheet-body, .ui-sheet-actions { padding-inline: var(--s-5); }
   .ui-sheet.is-side .ui-sheet-panel { inset: var(--s-4) var(--s-4) auto auto; margin: 0; width: min(380px, calc(100% - 32px)); }
   .ui-sheet:not(.is-shown) .ui-sheet-panel { transform: translate3d(0, calc(24px * var(--move)), 0) scale(calc(1 - 0.02 * var(--move))); opacity: 0; }

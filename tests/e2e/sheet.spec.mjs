@@ -347,3 +347,25 @@ test('reduced motion: open and close fade in place; with motion on the panel sli
   await expect(page.locator('dialog.ui-sheet')).not.toHaveClass(/is-rm/);
   expect(await panel.evaluate(p => getComputedStyle(p).transitionProperty)).toContain('transform');
 });
+
+// Fix pass (design review S7, N4): one close control per size: the handle on a phone, a visible × from 720 px; in dark
+// the scrim dims the page and the panel has an edge
+test('desktop sheets show a × that closes them; phone sheets keep the handle only; dark dims', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 900 });
+  await page.emulateMedia({ colorScheme: 'dark' });
+  await seed(page, { examInDays: 30, veteran: true });
+  const { sheet } = await openPicker(page);
+  await page.evaluate(() => { document.documentElement.dataset.theme = 'dark'; });   // the seed may pin a theme
+  const x = sheet.locator('.ui-sheet-x');
+  await expect(x).toBeVisible();
+  const box = await x.boundingBox();
+  expect(box && box.width).toBeGreaterThanOrEqual(44);
+  expect(await page.locator('.ui-sheet-scrim').evaluate(s => getComputedStyle(s).backgroundColor)).toBe('rgba(0, 0, 0, 0.58)');
+  expect(await page.locator('.ui-sheet-panel').evaluate(p => getComputedStyle(p).outlineStyle)).toBe('solid');
+  await x.click();
+  await expect(page.locator('dialog.ui-sheet')).toHaveCount(0);
+  await phone(page);
+  await openPicker(page);
+  await expect(page.locator('.ui-sheet-x')).toBeHidden();
+  await expect(page.locator('.ui-sheet-grab')).toBeVisible();
+});

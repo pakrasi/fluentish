@@ -2,7 +2,7 @@
 // A right answer with a typo shows his answer once with accent marks and nothing red; a near miss marks letters, the
 // Right line still reads as the whole sentence (the retype and the helpers read it), and a screen reader gets one
 // sentence instead of the drawn marks. Synthetic learner only.
-import { test, expect, seed, open } from './fixtures.mjs';
+import { test, expect, seed, open, SHA } from './fixtures.mjs';
 
 /** @param {string[]} w */
 const longest = w => { let i = 0; w.forEach((x, k) => { if (x.replace(/\W/g, '').length > w[i].replace(/\W/g, '').length) i = k; }); return i; };
@@ -74,4 +74,46 @@ test('a near miss: letters marked, the Right line is the whole sentence, one sen
   await expect(page.locator('.pr-res.is-ok')).toBeVisible();
   await expect(ad.locator('.ui-ad-you')).toHaveCount(0);
   await expect(ad.locator('.ui-ad-right')).toBeVisible();
+});
+
+// Round 8 fix pass (UX review S4): a far miss on a gap card still marks the word the card is about
+test('a far miss on a gap card: both lines plain except the gap word, marked in the right line', async ({ page }) => {
+  await seed(page);
+  await open(page, '#/today');
+  const out = await page.evaluate(async sha => {
+    const { createAnswerDiff } = await import(`/fluentish/v/${sha}/src/ui/answer-diff.js`);
+    const { gapWords } = await import(`/fluentish/v/${sha}/src/domain/letterdiff.js`);
+    const right = 'Mit dem neuen Auto fahren wir nach Berlin.';
+    const gap = gapWords('Mit dem ___ Auto fahren wir nach Berlin. (neu)', right);
+    const d = createAnswerDiff({ kind: 'wrong', typed: 'keine Ahnung', right, gap, labels: { you: 'You', right: 'Right' } });
+    document.querySelector('#view')?.append(d.el);
+    d.finish();
+    return { gap, marked: [...d.el.querySelectorAll('.ui-ad-m')].map(m => `${m.className} ${m.textContent}`), mode: d.diff.mode };
+  }, SHA);
+  expect(out).toEqual({ gap: [2], marked: ['ui-ad-m is-miss is-word neuen'], mode: 'words' });
+});
+
+// Round 8 fix pass (design review S6): letters he left out never read as typed: full ink-3 (4.5:1 or more) with the
+// wrong line's red dotted underline
+test('ghost letters are part of the miss: red dotted underline, contrast 4.5:1 or more', async ({ page }) => {
+  await seed(page);
+  await open(page, '#/today');
+  const out = await page.evaluate(async sha => {
+    const { createAnswerDiff } = await import(`/fluentish/v/${sha}/src/ui/answer-diff.js`);
+    const d = createAnswerDiff({ kind: 'wrong', typed: 'Das ist ein interessante Buch.', right: 'Das ist ein interessantes Buch.', labels: { you: 'You', right: 'Right' } });
+    document.querySelector('#view')?.append(d.el);
+    d.finish();
+    const g = /** @type {HTMLElement} */ (d.el.querySelector('.ui-ad-m.is-ghost'));
+    const cs = getComputedStyle(g);
+    const probe = document.createElement('i'); probe.style.color = 'var(--bad)'; document.body.append(probe);
+    const bad = getComputedStyle(probe).color; probe.remove();
+    /** relative luminance of an rgb() string */
+    const lum = (/** @type {string} */ c) => { const [r, gg, b] = (c.match(/[\d.]+/g) || []).map(Number).map(v => { v /= 255; return v <= 0.03928 ? v / 12.92 : ((v + 0.055) / 1.055) ** 2.4; }); return 0.2126 * r + 0.7152 * gg + 0.0722 * b; };
+    let bg = 'rgb(255, 255, 255)';
+    for (let n = /** @type {HTMLElement | null} */ (g); n; n = n.parentElement) { const c = getComputedStyle(n).backgroundColor; if (!/rgba\(0, 0, 0, 0\)|transparent/.test(c)) { bg = c; break; } }
+    const [a, b2] = [lum(cs.color), lum(bg)].sort((x, y) => y - x);
+    return { text: g.textContent, opacity: cs.opacity, style: cs.textDecorationStyle, red: cs.textDecorationColor === bad, ratio: (a + 0.05) / (b2 + 0.05) };
+  }, SHA);
+  expect(out).toMatchObject({ text: 's', opacity: '1', style: 'dotted', red: true });
+  expect(out.ratio).toBeGreaterThanOrEqual(4.5);
 });
