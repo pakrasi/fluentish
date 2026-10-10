@@ -827,7 +827,6 @@ export default {
   'practice.know.toast': 'Marked as known. One check in about 60 days.',
   'practice.know.undo': 'Undo',
   'practice.know.undone': 'Back to new.',
-  'practice.know.announce': 'Marked as known. Next card.',
   'practice.know.inRound': { one: '{n} marked as known', other: '{n} marked as known' },
   'practice.sort.title': 'Quick sort',
   'practice.sort.titleOf': 'Quick sort · {name}',

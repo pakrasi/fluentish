@@ -263,7 +263,6 @@ export async function mountRound(el, ctx) {
     const k = stripIds.indexOf(id);
     if (strip && k >= 0) strip.set(k, 2);
     updateDots();
-    announce(t('practice.know.announce'));
     if (!S.advance(round)) { saveLogs(store, { round, slot }, kv); finish(); return; }
     saveLogs(store, { round, slot }, kv);
     drawCard(false, 'lift');

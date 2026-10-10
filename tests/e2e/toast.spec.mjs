@@ -177,3 +177,48 @@ test('a slow skeleton sweeps from 400 ms when motion is on', async ({ page }) =>
   await expect.poll(async () => (await sweep()).length).toBeGreaterThan(0);
   expect(new Set(await sweep())).toEqual(new Set([400]));
 });
+
+// Round 8 fix pass: code review S5, S6, N2; design review S3, S4
+test('I know this: the toast and its Undo are what #live says; Undo has a 44 px hit box; the toast stays on its page', async ({ page }) => {
+  await seed(page, { motion: 'system' });
+  await open(page, '#/practice/round');
+  await page.getByRole('button', { name: 'I know this' }).click();
+  const pill = page.locator('.toast').filter({ hasText: 'Marked as known' });
+  await expect(pill).toBeVisible();
+  await page.waitForTimeout(700);   // past its entrance (380 ms), so the pill stands still
+  await expect(page.locator('#live')).toHaveText('Marked as known. One check in about 60 days. Undo');
+  // the hit box: 44 px, so 4.5 px above and below the 34 px button still land on Undo
+  const hit = await pill.getByRole('button', { name: 'Undo' }).evaluate(b => {
+    const r = b.getBoundingClientRect(), x = r.left + r.width / 2;
+    return [r.top - 4.5, r.bottom + 4.5].map(y => b.contains(document.elementFromPoint(x, y)));
+  });
+  expect(hit).toEqual([true, true]);
+  // leave the round: its Undo does not follow to Today
+  await page.evaluate(() => { location.hash = '#/today'; });
+  await expect(page.locator('#view h1').first()).toBeVisible();
+  await expect(pills(page)).toHaveCount(0);
+});
+
+test('a repeat is spoken again; a replacement enters only after the old pill has left; keyboard Undo keeps the focus', async ({ page }) => {
+  await seed(page, { motion: 'system' });
+  await open(page, '#/today');
+  await toast(page, 'Saved again.');
+  await expect(page.locator('#live')).toHaveText('Saved again.');
+  await page.evaluate(() => { const l = /** @type {HTMLElement} */ (document.getElementById('live')); l.textContent = ''; });
+  await toast(page, 'Saved again.');
+  await expect(page.locator('#live')).toHaveText('Saved again.');
+  // a replacement after MIN_SHOW: its entrance is delayed by the old one's exit
+  await page.waitForTimeout(1300);
+  await toast(page, 'Next one.');
+  const delay = await page.locator('.toast').filter({ hasText: 'Next one.' }).evaluate(el => el.getAnimations().map(a => /** @type {any} */ (a.effect).getTiming().delay)[0]);
+  expect(delay).toBeGreaterThan(100);
+  // Undo from the keyboard: the focus goes back where it was
+  await page.evaluate(() => { const b = document.createElement('button'); b.id = 'was-here'; b.textContent = 'Here'; document.querySelector('#view')?.prepend(b); b.focus(); });
+  await toast(page, 'With undo.', { action: 'Undo', ms: 20000 });
+  await page.waitForTimeout(1300);
+  const undo = page.locator('.toast').filter({ hasText: 'With undo.' }).getByRole('button', { name: 'Undo' });
+  await expect(undo).toBeVisible();
+  await undo.focus();
+  await page.keyboard.press('Enter');
+  await expect(page.locator('#was-here')).toBeFocused();
+});

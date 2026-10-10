@@ -193,6 +193,10 @@
    the top of the visible screen, under its pan (--vv-top), clear of the field and the keyboard's action row. */
 .ui-toast { touch-action: none; user-select: none; -webkit-user-select: none; cursor: default; }
 :root .ui-toast.is-kb { top: calc(var(--vv-top, 0px) + var(--s-3) + env(safe-area-inset-top)); bottom: auto; }
+/* Undo is 34 px tall in the pill; its hit box reaches 44 px (5 px past the border, above and below) without
+   making the pill taller */
+.ui-toast .btn { position: relative; }
+.ui-toast .btn::before { content: ''; position: absolute; inset: -6px -5px; }
 /* ---- end ui/toast ---- */
 
 /* ---- ui/skeleton ---- */

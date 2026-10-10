@@ -306,7 +306,7 @@ export async function mountFamily(el, ctx, rootArg, { sheet = false, close } = {
     const replay = h('button', { type: 'button', class: 'btn btn-quiet pressable', onclick: () => build(stage, fam, f) }, t('build.family.again'));
     const reportBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable fv-report', onclick: () => {
       reportWord(store, { form: f.id, root: fam.root, word: `${f.art ? `${f.art} ` : ''}${f.word}`, day: ctx.clock.today() });
-      ctx.toast(t('build.family.reported'), { action: t('build.family.undo'), onAction: () => { unreportWord(store, f.id); draw(); } });
+      ctx.toast(t('build.family.reported'), { signal: ctx.signal, action: t('build.family.undo'), onAction: () => { unreportWord(store, f.id); draw(); } });
       draw();
     } }, t('build.family.report'));
     const practise = f.card && !sheet ? h('a', { class: 'btn pressable', href: `#/practice/build/round?kind=pick&ids=${encodeURIComponent(f.card)}` }, t('build.family.practise')) : null;

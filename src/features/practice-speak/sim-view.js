@@ -521,7 +521,6 @@ async function mountRound(el, ctx) {
     updateTop(true);
     const k = stripIds.indexOf(id);
     if (k >= 0) strip.set(k, 2);
-    announce(t('practice.know.announce'));
     stopLine();
     next('lift');
   }

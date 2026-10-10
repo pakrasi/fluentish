@@ -148,3 +148,29 @@ test('swipeOut: down or sideways past 40 px or fast; up and short drags spring b
   assert.equal(swipeOut(4, 3, 1), null, 'a tap that wobbled');
   assert.equal(swipeOut(0, -120, 100), null, 'never upward');
 });
+
+// Round 8 fix pass (code review S5, design review S4)
+test('the same text again is spoken again (again()), and a signal closes its toast, visible or waiting', () => {
+  let t = 0;
+  /** @type {string[]} */ const log = [];
+  const q = createToastQueue({
+    now: () => t, setTimer: () => 0, clearTimer: () => {},
+    show: it => log.push(`show ${it.text}`), hide: (it, how) => log.push(`hide ${it.text} ${how}`), again: it => log.push(`again ${it.text}`),
+  });
+  q.push('Saved.');
+  q.push('Saved.');
+  assert.deepEqual(log, ['show Saved.', 'again Saved.']);
+  const ac = new AbortController();
+  q.push('Marked as known.', { action: 'Undo', signal: ac.signal });
+  assert.equal(q.state().waiting, 1);
+  ac.abort();   // the page is left before it shows
+  assert.equal(q.state().waiting, 0);
+  q.clear(); log.length = 0;
+  const ac2 = new AbortController();
+  q.push('Marked as known.', { action: 'Undo', signal: ac2.signal });
+  ac2.abort();
+  assert.deepEqual(log, ['show Marked as known.', 'hide Marked as known. close']);
+  // an aborted signal: nothing shows
+  q.push('Late.', { signal: ac2.signal });
+  assert.equal(q.state().shown, null);
+});

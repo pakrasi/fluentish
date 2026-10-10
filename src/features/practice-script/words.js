@@ -171,7 +171,6 @@ export async function mountWords(el, ctx) {
     knownIds.add(cur.id);
     state = 'known';
     if (i < firstTotal) { states[i] = 'done'; segments(segs, states); }
-    announce(t('practice.know.announce'));
     if (i + 1 >= queue.length) { finish(); return; }
     i++;
     swap(() => draw(), { kind: 'lift', fallbackEl: card });

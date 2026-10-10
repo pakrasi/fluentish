@@ -221,7 +221,6 @@ async function mountSay(el, ctx, key) {
     knowCard(ctx, { deck: DECK, id });
     round.results.push(knownResult(id));
     top(true);
-    announce(t('practice.know.announce'));
     next('lift');
   }
   async function next(kind = 'forward') {

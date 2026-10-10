@@ -3,7 +3,11 @@
 // - Queue, one visible: a new toast replaces the visible one once that has been up MIN_SHOW ms (Undo, then Undone,
 //   never stacks; a burst of boot messages each gets a moment). Until then, and while the pointer rests on the pill or
 //   the focus is inside it, the new one waits. At most MAX_PENDING wait; the oldest goes first.
-// - The same text again (and the same action) restarts the visible one's timer instead of showing a second pill.
+// - The same text again (and the same action) restarts the visible one's timer instead of showing a second pill, and is
+//   spoken again.
+// - signal: the toast closes when it aborts (an Undo that belongs to one page passes the view's ctx.signal, so it does
+//   not follow him to the next page). Status toasts ("Round saved") pass none and outlive the route.
+// - A replacement waits for the old pill's exit (160 ms; 140 ms fade) before it enters: exits before entrances.
 // - ms: 4000, or 6000 when there is an action (time to reach Undo with a thumb). Hover or focus inside pauses it.
 // - Swipe down or sideways (> SWIPE_PX, or faster than SWIPE_V px/ms) dismisses; a short drag springs back.
 // - Spoken through the shell's live regions: #live (polite, the default) or #live-assertive. The pill itself carries
@@ -24,7 +28,7 @@ export const SWIPE_PX = 40;
 export const SWIPE_V = 0.5;
 
 /** @typedef {'polite' | 'assertive'} Politeness */
-/** @typedef {{ action?: string, onAction?: () => void, ms?: number, politeness?: Politeness }} ToastOpts */
+/** @typedef {{ action?: string, onAction?: () => void, ms?: number, politeness?: Politeness, signal?: AbortSignal }} ToastOpts */
 /**
  * @typedef {{ id: number, text: string, action?: string, onAction?: () => void, ms: number, politeness: Politeness,
  *   shownAt: number, left: number, startedAt: number, paused: boolean }} ToastItem
@@ -50,9 +54,10 @@ export function swipeOut(dx, dy, dt) {
 }
 
 /**
- * The toast queue: at most one visible, the rest waiting. Pure: `now`, timers and drawing come in.
+ * The toast queue: at most one visible, the rest waiting. Pure: `now`, timers and drawing come in. again(item): the
+ * visible toast was asked for once more (its clock restarted); the app speaks it again.
  * @param {{ now: () => number, setTimer: (f: () => void, ms: number) => any, clearTimer: (h: any) => void,
- *   show: (item: ToastItem) => void, hide: (item: ToastItem, how: ExitHow) => void }} io
+ *   show: (item: ToastItem) => void, hide: (item: ToastItem, how: ExitHow) => void, again?: (item: ToastItem) => void }} io
  */
 export function createToastQueue(io) {
   let ids = 0;
@@ -106,22 +111,26 @@ export function createToastQueue(io) {
     /** @param {string} text @param {ToastOpts} [o] @returns {() => void} close */
     push(text, o = {}) {
       text = String(text ?? '');
+      if (o.signal?.aborted) return () => {};
+      /** @param {number} id */
+      const bind = id => { o.signal?.addEventListener('abort', () => api.close(id), { once: true }); return () => api.close(id); };
       if (shown && same(shown, text, o)) {
         const it = shown;
         it.left = it.ms;
         if (o.onAction) it.onAction = o.onAction;
         run();
-        return () => api.close(it.id);
+        io.again?.(it);
+        return bind(it.id);
       }
       const dup = waiting.find(w => same(w, text, o));
-      if (dup) { if (o.onAction) dup.onAction = o.onAction; return () => api.close(dup.id); }
+      if (dup) { if (o.onAction) dup.onAction = o.onAction; return bind(dup.id); }
       const ms = toastMs(o);
       /** @type {ToastItem} */
       const it = { id: ++ids, text, action: o.action, onAction: o.onAction, ms, left: ms, politeness: o.politeness === 'assertive' ? 'assertive' : 'polite', shownAt: 0, startedAt: 0, paused: false };
       waiting.push(it);
       while (waiting.length > MAX_PENDING) waiting.shift();
       pump();
-      return () => api.close(it.id);
+      return bind(it.id);
     },
     /** Close a toast by id (visible or waiting); nothing if it is gone. @param {number} id @param {ExitHow} [how] */
     close(id, how = 'close') {
@@ -161,9 +170,11 @@ const ENTER_MS = 380, EXIT_MS = 160, FADE_MS = 140;
 
 /**
  * One toast pill: the text, the optional action button, swipe-away and pause on hover or focus. The caller (the queue
- * below) decides when it comes and goes; destroy() takes it off the page with its exit move.
+ * below) decides when it comes and goes; destroy() takes it off the page with its exit move. delay: ms before it
+ * enters (an old pill is still leaving). When it leaves with the focus inside (Undo from the keyboard), the focus goes
+ * back to where it was before the pill came.
  * @param {{ text: string, action?: string, onAction?: () => void, onDismiss?: (how: ExitHow) => void, onPause?: () => void,
- *   onResume?: () => void, signal?: AbortSignal }} opts
+ *   onResume?: () => void, signal?: AbortSignal, delay?: number }} opts
  * @returns {import('./index.js').UiCreated<{ text: string }> & { leave: (how: ExitHow) => void }}
  */
 export function createToast(opts) {
@@ -241,9 +252,11 @@ export function createToast(opts) {
   el.addEventListener('pointerup', e => up(e), sig);
   el.addEventListener('pointercancel', e => up(e, true), sig);
 
+  const before = /** @type {HTMLElement | null} */ (document.activeElement);
   document.body.append(el);
-  if (reduced()) animate(el, [{ opacity: 0 }, { opacity: 1 }], { duration: FADE_MS, easing: 'linear' });
-  else animate(el, [{ opacity: 0, translate: `0px ${16 * from()}px` }, { opacity: 1, translate: '0px 0px' }], { duration: ENTER_MS, easing: '--spring-snappy' });
+  const delay = Math.max(0, opts.delay || 0);
+  if (reduced()) animate(el, [{ opacity: 0 }, { opacity: 1 }], { duration: FADE_MS, delay, easing: 'linear', fill: 'backwards' });
+  else animate(el, [{ opacity: 0, translate: `0px ${16 * from()}px` }, { opacity: 1, translate: '0px 0px' }], { duration: ENTER_MS, delay, easing: '--spring-snappy', fill: 'backwards' });
 
   let leaving = false;
   /**
@@ -253,6 +266,7 @@ export function createToast(opts) {
   function leave(how, way) {
     if (leaving) return;
     leaving = true;
+    if (el.contains(document.activeElement) && before?.isConnected && before !== document.body) before.focus({ preventScroll: true });
     ac.abort();
     el.style.pointerEvents = 'none';
     el.setAttribute('aria-hidden', 'true');
@@ -292,6 +306,8 @@ function announce(text, p) {
 
 /** @type {Map<number, ReturnType<typeof createToast>>} */ const pills = new Map();
 /** @type {ReturnType<typeof createToastQueue> | null} */ let queue = null;
+/** When the last pill to leave is off the screen (performance.now()): the next one enters after it. */
+let clearAt = 0;
 function q() {
   if (queue) return queue;
   const qq = createToastQueue({
@@ -301,13 +317,18 @@ function q() {
     show(it) {
       announce(it.action ? `${it.text} ${it.action}` : it.text, it.politeness);
       pills.set(it.id, createToast({
-        text: it.text, action: it.action,
+        text: it.text, action: it.action, delay: clearAt - performance.now(),
         onAction: () => it.onAction?.(),
         onDismiss: how => qq.close(it.id, how),
         onPause: () => qq.pause(it.id), onResume: () => qq.resume(it.id),
       }));
     },
-    hide(it, how) { const p = pills.get(it.id); pills.delete(it.id); p?.leave(how); },
+    hide(it, how) {
+      const p = pills.get(it.id); pills.delete(it.id);
+      if (p) clearAt = performance.now() + (reduced() ? FADE_MS : EXIT_MS);
+      p?.leave(how);
+    },
+    again(it) { announce(it.action ? `${it.text} ${it.action}` : it.text, it.politeness); },
   });
   queue = qq;
   return qq;

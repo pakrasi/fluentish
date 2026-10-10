@@ -33,7 +33,8 @@ export function isKnowKey(e, typed) {
  */
 export function knowCard(ctx, entry, { onUndo } = {}) {
   const res = markCards(ctx, [entry], { spread: false });
-  ctx.toast(ctx.t('practice.know.toast'), { action: ctx.t('practice.know.undo'), onAction: () => { res.undo(); onUndo?.(); ctx.toast(ctx.t('practice.know.undone')); } });
+  // the toast speaks for itself (no second announcement over it), and its Undo stays on this page (signal)
+  ctx.toast(ctx.t('practice.know.toast'), { signal: ctx.signal, action: ctx.t('practice.know.undo'), onAction: () => { res.undo(); onUndo?.(); ctx.toast(ctx.t('practice.know.undone')); } });
   return res;
 }
 

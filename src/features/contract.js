@@ -32,7 +32,7 @@
  * @property {import('../core/bus.js').Bus} bus
  * @property {(key: string, vars?: Record<string, any>) => string} t
  * @property {(path: string, o?: {replace?: boolean}) => void} go
- * @property {(text: string, o?: {action?: string, onAction?: () => void}) => void} toast
+ * @property {(text: string, o?: {action?: string, onAction?: () => void, ms?: number, signal?: AbortSignal}) => void} toast   pass signal: ctx.signal when the action belongs to this page
  * @property {Record<string, string>} params                route params; params.rest is the sub-path under the feature
  * @property {URLSearchParams} query
  * @property {string} route                               the registry path that matched ('/practice/situations/*'), for a
