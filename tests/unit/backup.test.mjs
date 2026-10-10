@@ -240,6 +240,14 @@ test('privacy: an upload that would carry a key or token is blocked, and nothing
   assert.equal(B.leakIn(`x ${TOKEN} y`, { githubToken: TOKEN }), 'a key or token of this device');
   assert.equal(B.leakIn('{"deck":"b1","itemId":"BP:a"}', { githubToken: TOKEN }), null);
   assert.equal(B.leakIn(`sk-ant-${'b'.repeat(30)}`), 'something shaped like a key or token');
+  // accounts (round 8): a Supabase secret key and a JWT (session token, legacy key) are refused too; built from parts
+  // so the privacy check does not flag this file
+  const sbSecret = ['sb', 'secret', 'Q'.repeat(24)].join('_');
+  const jwt = ['eyJhbGciOiJIUzI1NiJ9', 'eyJzdWIiOiJ0ZXN0LXVzZXIifQ', 'c2lnbmF0dXJlLXBhcnQtb25l'].join('.');
+  assert.equal(B.leakIn(`{"note":"${sbSecret}"}`), 'something shaped like a key or token');
+  assert.equal(B.leakIn(`{"access_token":"${jwt}"}`), 'something shaped like a key or token');
+  // learning data that only starts like one is not blocked
+  assert.equal(B.leakIn('{"wrong":"eyJ ist kein Wort","right":"sb_secret"}'), null);
 });
 
 test('the GitHub files API: read with sha, write with sha (conflict on a stale one), list folders', async () => {
@@ -274,6 +282,22 @@ test('Delete all gives the device a new id, so a fresh start never writes into t
   assert.notEqual(b.device.deviceId, old);
   assert.deepEqual(b.device.previousDeviceIds, [old]);
   assert.equal(b.store.get('backup'), undefined, 'the backup state starts over');
+});
+
+test('Delete all clears the account kv (session, claim, account backup) with the rest of the device state', async () => {
+  const { ACCOUNT_DEVICE_KV } = await import('../../src/data/account/session-store.js');
+  const adapter = createMemoryAdapter();
+  const clock = { today: () => D2 };
+  const a = await openSession({ adapter, legacyStorage: null, clock });
+  for (const k of ACCOUNT_DEVICE_KV) a.store.set(k, { synthetic: k });
+  await a.store.flush();
+  const before = await adapter.loadScope('device');
+  for (const k of ACCOUNT_DEVICE_KV) assert.deepEqual(before[k], { synthetic: k }, `${k} is device scope`);
+  await deleteProfile(adapter, a.device, a.profile);
+  const dev = await adapter.loadScope('device');
+  for (const k of ACCOUNT_DEVICE_KV) assert.equal(dev[k], undefined, `${k} is gone`);
+  const b = await openSession({ adapter, legacyStorage: null, clock });
+  for (const k of ACCOUNT_DEVICE_KV) assert.equal(b.store.get(k), undefined);
 });
 
 test('NDJSON: torn lines are skipped on read and kept on rewrite; lines sort by seq', () => {

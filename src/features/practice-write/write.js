@@ -11,8 +11,7 @@
    sent). Builds, the free text and its correction stay on this device (kv practice.write). The correction's lines
    become mistake cards (data/mistakes.js, F:W-<task>-<time>), reviewed in the mistakes round like an exam's. */
 import { h, replace, announce } from '../../core/dom.js';
-import { linkRow, notice, section, seg } from '../../core/ui.js';
-import { icon } from '../../core/icons.js';
+import { linkRow, notice, section, seg, backLink } from '../../core/ui.js';
 import { correct as fxCorrect, wrong as fxWrong, resetAnswer, segments, swap, reduced, countTo, haptic, wait, easing } from '../../core/motion.js';
 import { label } from '../../core/clock.js';
 import * as Match from '../../domain/match.js';
@@ -23,16 +22,17 @@ import { correctTask, ClaudeError } from '../../services/claude.js';
 import { addMistakes, freeWriteMistakes, listMistakes, backfillContext, COLLECTION as MISTAKES } from '../../data/mistakes.js';
 import * as B from './build.js';
 import * as S from '../shared/session.js';
-import { loadData, stateFor, session, secrets } from '../shared/data.js';
+import { loadData, stateFor, session } from '../shared/data.js';
 import { recallBar } from '../shared/recall-bar.js';
 import { checkMark } from '../shared/check-mark.js';
 import { doneHero } from '../shared/done-hero.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
 import { keep } from '../../core/keyboard.js';
+import { claude, canAskClaude } from '../../data/credentials.js';
 
 export const COLLECTION = 'practice.write';
 const pct = (/** @type {number} */ x) => new Intl.NumberFormat('en-GB', { style: 'percent', maximumFractionDigits: 0 }).format(x || 0);
-const back = (/** @type {string} */ href, /** @type {string} */ text) => h('a', { class: 'pr-backlink pressable', href }, icon('prev', { size: 16 }), text);
+const back = (/** @type {string} */ href, /** @type {string} */ text) => backLink({ href, label: text });
 
 /** @param {any} store */
 const kv = store => store.get(COLLECTION, {}) || {};
@@ -499,7 +499,7 @@ function drawFree(el, ctx, task, aufgabe) {
     ...(words() >= Math.round(target * 0.7) ? { written: { ...(v.written || {}), [task.id]: today } } : {}) }));
   const wc = h('p', { class: 'caption tnum', 'aria-live': 'polite' });
   const result = h('div', { class: 'wr-correction', 'aria-live': 'polite' });
-  const hasKey = !!secrets(store).anthropicKey;
+  const hasKey = canAskClaude(store);
   const btn = /** @type {HTMLButtonElement} */ (h('button', { type: 'button', class: 'btn btn-primary pressable', disabled: !hasKey, onclick: () => run() }, t('feedback.correct')));
   // with the keyboard up: one slim row on the keyboard with the word count, the clock and Correct (its twin)
   const wcKb = h('span', { class: 'caption tnum wr-kbcount', 'aria-hidden': 'true' });
@@ -523,7 +523,7 @@ function drawFree(el, ctx, task, aufgabe) {
     btn.disabled = true; btn.textContent = t('exam.correct.running'); btnKb.disabled = true; btnKb.textContent = btn.textContent;
     replace(result, h('p', { class: 'caption' }, t('practice.build.correcting')));
     try {
-      const res = await correctTask({ key: secrets(store).anthropicKey, task, text, words: target });
+      const res = await correctTask({ cred: claude(store), task, text, words: target });
       const at = Date.now();
       putKv(store, v => ({ ...v, drafts: { ...(v.drafts || {}), [task.id]: area.value }, corrections: { ...(v.corrections || {}), [task.id]: { body: res.body, text, at } },
         written: { ...(v.written || {}), [task.id]: today } }));

@@ -388,3 +388,24 @@ test('size: a year of daily records stays small (raw and in the gzip snapshot)',
   assert.ok(raw < 250_000, `raw ${raw}`);
   assert.ok(gz < 40_000, `gzip ${gz}`);
 });
+
+// round 8 integration: startProgress loads after the first screen (P1), so a reload while it still fetches content
+// cancels that fetch. Its failure is logged a moment later, which a leaving page never reaches, and never at once.
+test('startProgress logs a failure only after LOG_DELAY_MS (a page that reloads in between logs nothing)', async t => {
+  const { startProgress, LOG_DELAY_MS } = await import('../../src/data/progress.js');
+  t.mock.timers.enable({ apis: ['setTimeout'] });
+  /** @type {any[]} */ const logged = [];
+  const ctx = {
+    store: { profile: { kind: 'local' }, deleted: false },
+    clock: { today: () => { throw new TypeError('Load failed'); } },
+    bus: { on: () => {} },
+    log: (/** @type {string} */ where, /** @type {any} */ e) => logged.push([where, e.message]),
+  };
+  await startProgress(/** @type {any} */ (ctx));
+  await new Promise(r => setImmediate(r));
+  assert.deepEqual(logged, [], 'not logged at once');
+  t.mock.timers.tick(LOG_DELAY_MS - 1);
+  assert.deepEqual(logged, []);
+  t.mock.timers.tick(1);
+  assert.deepEqual(logged, [['progress', 'Load failed']]);
+});

@@ -10,7 +10,8 @@
      his registration never changes. A course in another language registers the other URL, which installs a worker
      with that pack; it takes over like any update (only on Today).
    - Kill switch: version.json {"sw":"off"} unregisters only the registration whose scope is this app's root and deletes
-     only caches named fluentish-*. Nothing here touches another app's service worker or caches. */
+     only caches named fluentish-*. Nothing here touches another app's service worker or caches. The same deploy
+     publishes a sw.js that does this by itself (tools/stamp.mjs killSw), for when the page can't run. */
 
 /**
  * @param {{ root: string, dev: boolean, devOptIn?: boolean, log?: (where: string, e: any) => void,
@@ -108,5 +109,31 @@ export function createSw({ root, dev, devOptIn = false, log = () => {}, nav = gl
     kill: () => (container ? kill() : Promise.resolve()),
     /** The active course's language changed: precache its pack (a no-op while the worker is off or already has it). */
     repack() { if (enabled && started) ensure(); },
+  };
+}
+
+/**
+ * When a new version may take over (main.js onMounted): only from Today, and only once Today has settled. Since round 8
+ * (P3) Today draws first and prepares the day after (loading content, writing the day's stats), and a takeover is a
+ * reload, so it waits for Today's 'today:settled'; `ms` is the fallback so an update never stalls. Every mount closes
+ * the window first: a settle or a fallback from an earlier mount does nothing, and leaving Today cancels the wait.
+ * Not covered (docs/ARCHITECTURE.md): Today's later redraws prepare again without closing the window.
+ * @param {{ bus: { once: (name: string, f: () => void) => () => void }, sw: { atRest: (today: boolean) => void },
+ *   ms?: number, later?: (f: () => void, ms: number) => any, cancel?: (h: any) => void }} o
+ * @returns {(path: string) => void} call on every mount with the route's path
+ */
+export function takeoverGate({ bus, sw, ms = 10_000, later = (f, t) => setTimeout(f, t), cancel = h => clearTimeout(h) }) {
+  let gen = 0;
+  /** @type {(() => void) | null} */ let off = null;
+  /** @type {any} */ let timer = null;
+  const stop = () => { off?.(); off = null; if (timer != null) cancel(timer); timer = null; };
+  return path => {
+    const mine = ++gen;
+    stop();
+    sw.atRest(false);
+    if (path !== '/today') return;
+    const ready = () => { if (mine !== gen) return; stop(); sw.atRest(true); };
+    off = bus.once('today:settled', ready);
+    timer = later(ready, ms);
   };
 }

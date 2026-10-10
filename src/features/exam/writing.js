@@ -108,7 +108,7 @@ export function runSchreiben(el, ctx, { exam, n, ex, def }) {
   addEventListener('pagehide', flushText);
   document.addEventListener('visibilitychange', onVis);
   replace(el, h('div', { class: 'ex-run', lang: langAttr(), dir: dirAttr() },
-    h('header', { class: 'ex-runhead kb-stick' }, backLink(`#/exam/${n}`, t('exam.backTest', { n })),
+    h('header', { class: 'ex-runhead kb-stick' }, backLink(`#/exam/${n}`, t('exam.backTest', { n }), { narrow: true }),
       h('div', { class: 'ex-runhead-end' }, kbWc, clock.el, h('button', { type: 'button', class: 'btn btn-primary pressable ex-submit-top', onclick: () => askSubmit() }, tx('submit')))),
     over, h('h1', { class: 'ex-run-title' }, def.name, h('span', { class: 'caption' }, ` · ${ex.topic}`)), cover, body));
   return {

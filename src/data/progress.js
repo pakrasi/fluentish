@@ -87,23 +87,37 @@ export function poolOf(ctx, course) {
 }
 
 /**
- * What the counts read besides the cards, once a run.
- * @param {Ctx} ctx
+ * What deciding which days to count reads: the store only, no content (lane P2: a profile with nothing to count loads
+ * no content and reads no events).
+ * @param {any} store
  */
-async function environment(ctx) {
-  const store = ctx.store;
-  const maps = await itemMaps(/** @type {any} */ (ctx.content));
+function basics(store) {
   const meta = store.get('meta', {}) || {};
   const migrated = !!meta.migratedAt;
   const placement = (store.get('known', {}) || {}).placement || null;
   // Igloo's results join the picture on the day they were imported (the placement), else the migration's day
   const jumpDay = migrated ? (D8.isDay(placement) ? placement : typeof meta.migratedAt === 'string' && D8.isDay(meta.migratedAt.slice(0, 10)) ? meta.migratedAt.slice(0, 10) : null) : null;
+  return { migrated, jumpDay, activity: /** @type {Record<string, any>} */ (store.get('activity', {}) || {}), legacyLang: LEGACY_DECK_LANG.b1, deviceId: /** @type {string} */ (store.device.deviceId) };
+}
+/** @typedef {ReturnType<typeof basics>} Basics */
+
+/**
+ * What the counts read besides the cards, once a run, only when a day is counted: the basics plus the item maps
+ * (content), the exam words, the legacy results and the evidence without a card.
+ * @param {Ctx} ctx @param {Basics} [base]
+ */
+async function environment(ctx, base = basics(ctx.store)) {
+  const store = ctx.store;
+  const maps = await itemMaps(/** @type {any} */ (ctx.content));
   const wc = store.get('words.exam', null);
   const examWords = wc && Array.isArray(wc.words) ? wc.words.map((/** @type {any} */ w) => maps.resolve(w.id, 'b1')).filter(Boolean) : [];
-  return { maps, migrated, jumpDay, know: migrated ? legacy('doors.know.v1') : {}, srs: migrated ? legacy('doors.srs.v1') : {}, examWords,
-    evidence: /** @type {Record<string, Record<string, any>>} */ (evidenceOf(store)), activity: store.get('activity', {}) || {}, legacyLang: LEGACY_DECK_LANG.b1, deviceId: store.device.deviceId };
+  return { ...base, maps, know: base.migrated ? legacy('doors.know.v1') : {}, srs: base.migrated ? legacy('doors.srs.v1') : {}, examWords,
+    evidence: /** @type {Record<string, Record<string, any>>} */ (evidenceOf(store)) };
 }
 /** @typedef {Awaited<ReturnType<typeof environment>>} Env */
+
+/** The environment loaded on first use and shared after. @param {Ctx} ctx @param {Basics} base @returns {() => Promise<Env>} */
+const lazyEnv = (ctx, base) => { /** @type {Promise<Env> | null} */ let p = null; return () => (p ||= environment(ctx, base)); };
 
 /**
  * Count one day: the pool's states from the cards as they were at its end.
@@ -167,12 +181,49 @@ export const recorded = (store, course) => P.records(store.kv, course);
 
 /**
  * Whether a day was a study day for a course: minutes in its language, or a card of it answered or marked.
- * @param {Env} env @param {{lang: string}} course @param {Record<string, Record<string, any>>} decks @param {string} day
+ * @param {Basics} env @param {{lang: string}} course @param {Record<string, Record<string, any>>} decks @param {string} day
  * @param {Set<string>} [cardDays] the days a card was answered or marked (P.studyDays({}, decks)), when known
  */
 function studied(env, course, decks, day, cardDays) {
   if (minutesFor(env.activity[day], course.lang, env.legacyLang).total > 0) return true;
-  return (cardDays || new Set(P.studyDays({}, decks))).has(day);
+  return cardDays ? cardDays.has(day) : cardOn(decks, day);
+}
+
+/**
+ * Whether a card was answered or marked on a day: P.studyDays({}, decks).includes(day), without parsing every answer's
+ * date (lane P2: that was 220 ms of a boot at 4x CPU). @param {Record<string, Record<string, any>>} decks @param {string} day
+ */
+export function cardOn(decks, day) {
+  if (!D8.isDay(day)) return false;
+  for (const cards of Object.values(decks || {})) {
+    for (const rec of Object.values(cards || {})) {
+      if (!rec) continue;
+      for (const h of rec.hist || []) if (h[0] === day) return true;
+      if (rec.known && rec.known.on === day) return true;
+    }
+  }
+  return false;
+}
+
+/**
+ * The study days in [from, to): P.studyDays(activity, decks) filtered to the window, with only the answers inside the
+ * window checked as dates (the rest are compared as strings and dropped). Sorted.
+ * @param {Record<string, any>} activity @param {Record<string, Record<string, any>>} decks @param {string} from @param {string} to
+ * @returns {{all: string[], cards: Set<string>}} all: the study days; cards: the days a card was answered or marked
+ */
+export function studyDaysIn(activity, decks, from, to) {
+  const inside = (/** @type {unknown} */ d) => typeof d === 'string' && d >= from && d < to && D8.isDay(d);
+  /** @type {Set<string>} */ const cards = new Set();
+  for (const recs of Object.values(decks || {})) {
+    for (const rec of Object.values(recs || {})) {
+      if (!rec) continue;
+      for (const h of rec.hist || []) if (inside(h[0])) cards.add(h[0]);
+      if (rec.known && inside(rec.known.on)) cards.add(rec.known.on);
+    }
+  }
+  /** @type {Record<string, any>} */ const act = {};
+  for (const [d, a] of Object.entries(activity || {})) if (inside(d)) act[d] = a;
+  return { all: [...new Set([...P.studyDays(act, {}), ...cards])].sort(), cards };
 }
 
 /** Work this long, then let the page breathe (a backfill of a year runs on the main thread). */
@@ -195,11 +246,12 @@ function breather() {
  */
 export async function recordToday(ctx) {
   const store = ctx.store, day = ctx.clock.today();
-  const env = await environment(ctx);
+  const base = basics(store), envOf = lazyEnv(ctx, base);
   let n = 0;
   for (const course of coursesOf(store)) {
     const decks = courseDecks(store, course);
-    if (!studied(env, course, decks, day)) continue;
+    if (!studied(base, course, decks, day)) continue;
+    const env = await envOf();   // content only once a day is counted
     const pool = await poolOf(ctx, course);
     if (writeDay(store, course.id, day, computeDay(env, pool, course, day, decks, { src: 'live', fin: false }))) n++;
   }
@@ -218,11 +270,12 @@ async function localEvents(store) {
  * forward per course (domain/progress.js walkDays): linear in the days, each snapshot read when the walk reaches its
  * day and let go after, a pause for the page every BUDGET_MS. resume: per course, the last day already done (the
  * walk starts there from each device's newest snapshot up to it); onDay runs after each day written (the checkpoint).
- * @param {Ctx} ctx @param {Env} env
+ * The environment (content) is loaded only when a course has a day to count.
+ * @param {Ctx} ctx @param {() => Promise<Env>} envOf
  * @param {{events: any[], snapshots: SnapRef[], days: (course: any, decks: any) => string[], resume?: Record<string, string>,
  *   onDay?: (course: {id: string}, day: string, totals: {written: number, estimated: number, first: string | null, total: number, failed: number}) => void}} src
  */
-async function rebuild(ctx, env, { events, snapshots, days, resume = {}, onDay }) {
+async function rebuild(ctx, envOf, { events, snapshots, days, resume = {}, onDay }) {
   const store = ctx.store;
   const breathe = breather();
   const snaps = [...snapshots].sort((a, b) => (a.day < b.day ? -1 : a.day > b.day ? 1 : 0));
@@ -231,6 +284,7 @@ async function rebuild(ctx, env, { events, snapshots, days, resume = {}, onDay }
     const decks = courseDecks(store, course), keep = keepFor(course);
     const list = days(course, decks);
     if (!list.length) continue;
+    const env = await envOf();
     const pool = await poolOf(ctx, course);
     const walk = P.walkDays({ decks, events, keep, jumpDay: env.jumpDay });
     let si = 0;
@@ -264,17 +318,25 @@ async function rebuild(ctx, env, { events, snapshots, days, resume = {}, onDay }
 
 /**
  * Missed days: study days of the last CATCH_UP_DAYS before today with no record, or one written before the day ended.
+ * The days are worked out first, from the cards, the activity and the log; with none missing (most opens) it returns
+ * before reading the event archive or any content (lane P2). With a day missing it reads the whole archive, not only
+ * the window: the walk replays every earlier event, and a card answered before the window and again after the day is
+ * known on that day only through its old events (a time slice would turn exact days into estimates; see
+ * tests/unit/progress-io-equivalence.test.mjs).
  * @param {Ctx} ctx @returns {Promise<number>} records written
  */
 export async function catchUp(ctx) {
   const store = ctx.store, today = ctx.clock.today(), from = D8.add(today, -CATCH_UP_DAYS);
-  const env = await environment(ctx);
-  const events = await localEvents(store);
-  const res = await rebuild(ctx, env, { events, snapshots: [], days: (course, decks) => {
+  const base = basics(store);
+  /** @param {{id: string, lang: string}} course @param {Record<string, Record<string, any>>} decks */
+  const days = (course, decks) => {
     const have = new Map(recorded(store, course.id));
-    const cardDays = new Set(P.studyDays({}, decks));
-    return P.studyDays(env.activity, decks).filter(d => d >= from && d < today && !have.get(d)?.fin && studied(env, course, decks, d, cardDays));
-  } });
+    const { all, cards } = studyDaysIn(base.activity, decks, from, today);
+    return all.filter(d => !have.get(d)?.fin && studied(base, course, decks, d, cards));
+  };
+  if (!coursesOf(store).some(course => days(course, courseDecks(store, course)).length)) return 0;
+  const events = await localEvents(store);
+  const res = await rebuild(ctx, lazyEnv(ctx, base), { events, snapshots: [], days });
   return res.written;
 }
 
@@ -309,7 +371,7 @@ export async function backfill(ctx, { files = null, force = false } = {}) {
       withBackup = !data.failed.length;
     } catch { /* offline or no access: this device's events only, and again once the backup can be read */ }
   }
-  const env = await environment(ctx);
+  const basis = basics(store);
   const exactFrom = snapshots.map(s => s.day).sort()[0] || null;
   const resumed = !force && st && st.partial && !!st.withBackup === withBackup && st.cursor && typeof st.cursor === 'object' ? st : null;
   const base = resumed ? { estimated: Number(resumed.estimated) || 0, total: Number(resumed.days) || 0, first: resumed.from || null } : { estimated: 0, total: 0, first: null };
@@ -317,19 +379,19 @@ export async function backfill(ctx, { files = null, force = false } = {}) {
   /** @type {Record<string, string>} */ const cursor = { ...(resumed ? resumed.cursor : {}) };
   /** @param {{estimated: number, total: number, first: string | null}} r */
   const sums = r => ({ from: [base.first, r.first].filter(Boolean).sort()[0] || null, days: base.total + r.total, estimated: base.estimated + r.estimated });
-  const res = await rebuild(ctx, env, { events, snapshots, resume: cursor, days: (course, decks) => {
+  const res = await rebuild(ctx, lazyEnv(ctx, basis), { events, snapshots, resume: cursor, days: (course, decks) => {
     const keep = keepFor(course);
     const evDays = new Set(events.filter(e => e.day && e.payload && keep(e.payload.deck)).map(e => e.day));
     const cardDays = new Set(P.studyDays({}, decks));
-    const all = [...new Set([...P.studyDays(env.activity, decks), ...evDays])].filter(d => d < today && (evDays.has(d) || studied(env, course, decks, d, cardDays)));
+    const all = [...new Set([...P.studyDays(basis.activity, decks), ...evDays])].filter(d => d < today && (evDays.has(d) || studied(basis, course, decks, d, cardDays)));
     return all.sort();
   }, onDay: (course, day, totals) => {
     cursor[course.id] = day;
-    store.set(DEVICE_KV, { profileId: store.profile.id, at: isoNow(), partial: true, startedAt, cursor: { ...cursor }, exactFrom, jumpDay: env.jumpDay, withBackup, ...sums(totals) });
+    store.set(DEVICE_KV, { profileId: store.profile.id, at: isoNow(), partial: true, startedAt, cursor: { ...cursor }, exactFrom, jumpDay: basis.jumpDay, withBackup, ...sums(totals) });
   } });
   // a snapshot that could not be read leaves the run without the backup (it runs again when the backup can be read)
   if (res.failed) withBackup = false;
-  const rec = { profileId: store.profile.id, at: isoNow(), exactFrom, jumpDay: env.jumpDay, withBackup, ...sums(res) };
+  const rec = { profileId: store.profile.id, at: isoNow(), exactFrom, jumpDay: basis.jumpDay, withBackup, ...sums(res) };
   store.set(DEVICE_KV, rec);
   return rec;
 }
@@ -343,6 +405,9 @@ export function summary(store, course) {
   const list = recorded(store, course);
   return { days: list.length, estimated: list.filter(([, r]) => r.estimated).length };
 }
+
+/** How long a failure waits before it is logged (startProgress). */
+export const LOG_DELAY_MS = 1000;
 
 /**
  * Start recording: the backfill when it has not run, the missed days, today; then today again after study and on the
@@ -364,7 +429,10 @@ export function startProgress(ctx) {
       await catchUp(ctx);
     }
     await recordToday(ctx);
-  }).catch(e => log('progress', e));
+    // logged a moment later (LOG_DELAY_MS): a reload or a navigation while this still loads content cancels the fetch
+    // ("TypeError: Load failed"), and the leaving page's timers never run, so only a failure on a page that stays is
+    // logged. Nothing is lost: the next open runs it again
+  }).catch(e => { setTimeout(() => log('progress', e), LOG_DELAY_MS); });
   ctx.bus.on('store:changed', ({ name } = {}) => {
     if (name !== 'activity' && !String(name || '').startsWith('cards:')) return;
     if (timer) clearTimeout(timer);

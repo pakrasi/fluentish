@@ -285,7 +285,7 @@ export function runSprechen(el, ctx, { exam, n, ex, def }) {
   // a take cut off by a reload is kept as a recording
   recoverTake(ctx).then(info => { if (info) { ctx.toast(tx('rec.recovered')); draw(); } }).catch(() => {});
   replace(el, h('div', { class: 'ex-run', lang: langAttr(), dir: dirAttr() },
-    h('header', { class: 'ex-runhead' }, backLink(`#/exam/${n}`, t('exam.backTest', { n })), h('div', { class: 'ex-runhead-end' }, clock.el)),
+    h('header', { class: 'ex-runhead' }, backLink(`#/exam/${n}`, t('exam.backTest', { n }), { narrow: true }), h('div', { class: 'ex-runhead-end' }, clock.el)),
     h('h1', { class: 'ex-run-title' }, def.name, h('span', { class: 'caption' }, ` · ${ex.topic}`)),
     tabs, content));
   draw();

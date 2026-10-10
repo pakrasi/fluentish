@@ -1,0 +1,33 @@
+{
+  "synthetic": true,
+  "about": "Request and response shapes of Supabase Auth (GoTrue) that src/data/account/providers/supabase.js relies on. Written from the GoTrue README (github.com/supabase/auth) on 2026-10-09; not recorded from a live project (none exists yet). Re-record from the owner's project at stage 2 and keep the shapes. Every token and id here is made up.",
+  "project": { "url": "https://abcdefghijklmnopqrst.supabase.co", "publishableKey": "sb_publishable_fixtureKeyNotReal0001" },
+  "otp": {
+    "request": { "method": "POST", "path": "/auth/v1/otp", "body": { "email": "learner@example.com", "create_user": false } },
+    "ok": { "status": 200, "body": {} },
+    "noAccount": { "status": 422, "body": { "code": 422, "error_code": "otp_disabled", "msg": "Signups not allowed for otp" } },
+    "rateLimited": { "status": 429, "body": { "code": 429, "error_code": "over_email_send_rate_limit", "msg": "email rate limit exceeded" } }
+  },
+  "verify": {
+    "request": { "method": "POST", "path": "/auth/v1/verify", "body": { "type": "email", "email": "learner@example.com", "token": "123456" } },
+    "ok": { "status": 200, "body": {
+      "access_token": "fixture-access-token-1", "token_type": "bearer", "expires_in": 3600, "expires_at": 1800000000,
+      "refresh_token": "fixture-refresh-token-1",
+      "user": { "id": "00000000-0000-4000-8000-00000000a001", "aud": "authenticated", "role": "authenticated", "email": "learner@example.com" }
+    } },
+    "expired": { "status": 403, "body": { "code": 403, "error_code": "otp_expired", "msg": "Token has expired or is invalid" } }
+  },
+  "refresh": {
+    "request": { "method": "POST", "path": "/auth/v1/token?grant_type=refresh_token", "body": { "refresh_token": "fixture-refresh-token-1" } },
+    "ok": { "status": 200, "body": {
+      "access_token": "fixture-access-token-2", "token_type": "bearer", "expires_in": 3600, "expires_at": 1800003600,
+      "refresh_token": "fixture-refresh-token-2",
+      "user": { "id": "00000000-0000-4000-8000-00000000a001", "aud": "authenticated", "role": "authenticated", "email": "learner@example.com" }
+    } },
+    "used": { "status": 400, "body": { "code": 400, "error_code": "refresh_token_already_used", "msg": "Invalid Refresh Token: Already Used" } }
+  },
+  "logout": {
+    "request": { "method": "POST", "path": "/auth/v1/logout?scope=local" },
+    "ok": { "status": 204 }
+  }
+}

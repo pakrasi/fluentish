@@ -1,0 +1,243 @@
+/* Fluentish components (src/ui/). Loaded after components.css. Rules: src/ui/index.js.
+   One section per component; a component lane edits only its own section. Class names start with ui- (parts) or is-
+   (states). Tokens from tokens.css, motion tokens and keyframes from motion.css; no new colours. Reduced motion is
+   handled per section (--move is 0 there; anything --move cannot reach gets its own rule). */
+
+/* ---- core/pulse (motion.js pulse(): a one-shot "look here", set as [data-pulse=<kind>]) ---- */
+/* locus: an accent underline draws from the start side (240 ms ease-out of 1.44 s), holds, and goes with the attribute.
+   Reduced motion: no draw, the underline holds 1.2 s. look: one swell on the `scale` property (keeps the element's own
+   transform), 420 ms, eased in and out per half; --move makes it still under reduced motion. */
+[data-pulse="locus"] {
+  background-image: linear-gradient(var(--accent), var(--accent)); background-repeat: no-repeat; background-position: left bottom;
+  background-size: 100% 2px; animation: pulse-locus 1440ms linear both;
+}
+[data-pulse="locus"]:dir(rtl) { background-position: right bottom; }
+@keyframes pulse-locus { 0% { background-size: 0% 2px; animation-timing-function: var(--ease-out); } 16.7%, 100% { background-size: 100% 2px; } }
+@keyframes pulse-locus-still { from, to { background-size: 100% 2px; } }
+@media (prefers-reduced-motion: reduce) { :root:not([data-motion="full"]) [data-pulse="locus"] { animation: pulse-locus-still 1200ms linear both; } }
+:root[data-motion="reduce"] [data-pulse="locus"] { animation: pulse-locus-still 1200ms linear both; }
+/* forced colours remove background images: the locus is a Highlight underline there */
+@media (forced-colors: active) { [data-pulse="locus"] { text-decoration: underline 2px Highlight; text-underline-offset: 0.2em; } }
+[data-pulse="look"] { animation: pulse-look 420ms var(--ease-inout) both; }
+@keyframes pulse-look { 0%, 100% { scale: 1; } 40% { scale: calc(1 + 0.06 * var(--move)); } }
+/* ---- end core/pulse ---- */
+
+/* ---- ui/answer-diff ---- */
+/* src/ui/answer-diff.js: the You / Right lines under a verdict. Every mark is a ::after bar that draws from the start
+   side (scaleX, --dur-base ease-out, 28 ms apart from +120 ms); .is-pending holds the undrawn ones at 0 and .is-on
+   draws one. Colour never carries a mark alone: changed letters are heavier, whole words are struck or underlined.
+   fix   accent underline, a right answer's letters to correct (never red)
+   miss  green bar under the right letters (500 on Newsreader); a whole word: a 2px green underline
+   wrong red underline under letters he typed (600); a whole word: struck through in red, ink-2
+   extra struck through, ink-3 (red strike on a wrong answer, ink-3 on a right one)
+   ghost letters he left out, ink-3 in his word with a red dotted underline (drawn lines are aria-hidden) */
+.ui-ad { display: grid; gap: var(--s-2); }
+.ui-ad-line { margin: 0; overflow-wrap: anywhere; }
+.ui-ad-w.is-nudge { display: inline-block; }
+.ui-ad-m { position: relative; }
+.ui-ad-m::after {
+  content: ""; position: absolute; inset-inline: 0; bottom: -0.06em; height: 2px; border-radius: 1px; pointer-events: none;
+  background: var(--accent); transform: scaleX(1); transform-origin: left; transition: transform var(--dur-base) var(--ease-out);
+}
+.ui-ad-m:dir(rtl)::after { transform-origin: right; }
+.ui-ad-m.is-miss { font-weight: 500; }
+.ui-ad-m.is-miss::after { background: var(--ok); }
+.ui-ad-m.is-miss.is-word { font-weight: inherit; }
+.ui-ad-m.is-wrong { font-weight: 600; color: var(--ink); }
+.ui-ad-m.is-wrong::after { background: var(--bad); }
+.ui-ad-m.is-wrong.is-word { font-weight: inherit; color: var(--ink-2); }
+.ui-ad-m:is(.is-wrong.is-word, .is-extra)::after { bottom: auto; top: 54%; height: 1.5px; }
+.ui-ad-m.is-extra { color: var(--ink-3); }
+.ui-ad-m.is-extra::after { background: var(--bad); }
+.ui-ad.is-right-slip .ui-ad-m.is-extra::after { background: var(--ink-3); }
+/* ghost: faint ink-3 at full opacity (5.8:1, never under 4.5:1) with the wrong line's red dotted underline, so the
+   letters read as part of the miss, never as typed (design review S6) */
+.ui-ad-m.is-ghost { color: var(--ink-3); opacity: 1; text-decoration: underline dotted 2px var(--bad); text-underline-offset: 0.22em; text-decoration-skip-ink: none; transition: opacity var(--dur-base) var(--ease-out); }
+.ui-ad-m.is-ghost::after { content: none; }
+.ui-ad.is-pending .ui-ad-m:not(.is-on)::after { transform: scaleX(0); }
+.ui-ad.is-pending .ui-ad-m.is-ghost:not(.is-on) { opacity: 0; }
+.ui-ad.is-instant .ui-ad-m, .ui-ad.is-instant .ui-ad-m::after { transition: none; }
+.ui-ad-caption { margin: 0; }
+/* the retype locus (core/pulse) is the one underline on its word while it shows: the diff's own bars step aside */
+.ui-ad-w[data-pulse="locus"] .ui-ad-m::after { opacity: 0; }
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-motion="full"]) .ui-ad-m, :root:not([data-motion="full"]) .ui-ad-m::after { transition: none; }
+}
+:root[data-motion="reduce"] .ui-ad-m, :root[data-motion="reduce"] .ui-ad-m::after { transition: none; }
+@media (forced-colors: active) {
+  /* as specific as the coloured rules above (.is-right-slip .is-extra), so no green or red is left */
+  :root .ui-ad .ui-ad-m:is(.is-miss, .is-wrong, .is-extra, .is-fix)::after { forced-color-adjust: none; background: CanvasText; }
+  :root .ui-ad .ui-ad-m.is-fix::after { background: Highlight; }
+  .ui-ad-m.is-ghost { text-decoration-color: CanvasText; }
+}
+/* ---- end ui/answer-diff ---- */
+
+/* ---- ui/meter ---- */
+/* mountRing / mountBar (src/ui/meter.js). Track surface-2, ink before today, accent for today's gain, the second lap past
+   the goal 40 % ink on an inner ring. Arcs and bars move over --dur-fill on --spring-soft; reduced motion sets them. */
+.ui-ring { position: relative; display: inline-grid; place-items: center; width: var(--size, 72px); aspect-ratio: 1; flex: none; vertical-align: middle; }
+.ui-ring-svg { grid-area: 1 / 1; width: 100%; height: 100%; overflow: visible; transform: rotate(-90deg); }
+.ui-ring-track { stroke: var(--surface-2); }
+.ui-ring-arc { transition: stroke-dasharray var(--dur-fill) var(--spring-soft); }
+.ui-ring-base { stroke: var(--ink); }
+.ui-ring-today { stroke: var(--accent); }
+.ui-ring-over { stroke: var(--ink); stroke-opacity: 0.4; }
+.ui-ring-label { grid-area: 1 / 1; font: 300 calc(var(--size, 72px) * 0.34)/1 var(--font-display); letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums lining-nums; color: var(--ink); }
+.ui-bar { position: relative; display: block; height: var(--h, 4px); border-radius: 999px; background: var(--surface-2); overflow: hidden; }
+.ui-bar-today, .ui-bar-base { position: absolute; inset: 0; border-radius: inherit; transform-origin: left; transform: scaleX(var(--p, 0));
+  transition: transform var(--dur-fill) var(--spring-soft); }
+.ui-bar-today { background: var(--accent); }
+.ui-bar-base { background: var(--ink); }
+.ui-bar-today:dir(rtl), .ui-bar-base:dir(rtl) { transform-origin: right; }
+@media (prefers-reduced-motion: reduce) { :root:not([data-motion="full"]) :is(.ui-ring-arc, .ui-bar-today, .ui-bar-base) { transition: none; } }
+:root[data-motion="reduce"] :is(.ui-ring-arc, .ui-bar-today, .ui-bar-base) { transition: none; }
+@media (forced-colors: active) {
+  .ui-ring-track { stroke: GrayText; } .ui-ring-base, .ui-ring-over { stroke: CanvasText; } .ui-ring-today { stroke: Highlight; }
+  .ui-bar { background: GrayText; forced-color-adjust: none; } .ui-bar-base { background: CanvasText; } .ui-bar-today { background: Highlight; }
+}
+/* ---- end ui/meter ---- */
+
+/* ---- ui/count ---- */
+/* mountCount (src/ui/count.js): tabular figures while the number ticks, so its width holds; the context's own figures
+   (proportional for a big numeral) once it lands. The pop is on the number span, so it needs a box. */
+.ui-count-num { display: inline-block; }
+.ui-count.is-ticking { font-variant-numeric: tabular-nums lining-nums; }
+/* ---- end ui/count ---- */
+
+/* ---- ui/tile ---- */
+/* src/ui/tile.js. The button is the hit box its container places; the face draws the tile and takes every move, so
+   press, swell, nudge and flip never overwrite the button's own transform. Base rules sit in :where() (no specificity):
+   a feature sizes and places its tiles with one class. Press is on `scale` (it composes with the face's transform
+   moves) as a CSS transition, so the release keeps the snappy spring in WebKit too; --move makes it still under
+   reduced motion. The fill crossfades in 160 ms (a colour change, also under reduced motion). */
+:where(.ui-tile) { position: relative; display: inline-grid; padding: 0; border: 0; background: none; color: var(--ink); font: inherit; cursor: pointer; -webkit-tap-highlight-color: transparent; }
+:where(.ui-tile)::before { content: ""; position: absolute; inset: -2px; }   /* 44 px to touch on a 40 px tile */
+:where(.ui-tile-face) { display: inline-flex; align-items: center; justify-content: center; min-width: 0; height: 100%; padding: 0 10px; border: 1px solid var(--hairline-strong);
+  border-radius: var(--r-tile); background: var(--surface); color: var(--ink); white-space: nowrap; pointer-events: none;
+  transition-property: scale, background-color, color, border-color; transition-duration: 240ms, var(--dur-quick), var(--dur-quick), var(--dur-quick);
+  transition-timing-function: var(--spring-snappy), var(--ease-out), var(--ease-out), var(--ease-out); }
+.ui-tile.is-pressed > .ui-tile-face { scale: calc(1 - 0.06 * var(--move)); transition-duration: var(--dur-press), var(--dur-quick), var(--dur-quick), var(--dur-quick); transition-timing-function: var(--ease-out); }
+.ui-tile[aria-pressed="true"] > .ui-tile-face, .ui-tile.is-ok > .ui-tile-face { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
+.ui-tile.is-other > .ui-tile-face { background: var(--surface); border: 1.5px dashed var(--ink); }
+.ui-tile.is-no > .ui-tile-face { color: var(--ink-3); text-decoration: line-through; text-decoration-thickness: 1.5px; text-decoration-color: var(--ink-3); }
+.ui-tile:disabled { cursor: default; }
+.ui-tile:disabled > .ui-tile-face { opacity: 0.38; }
+.ui-tile:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-radius: var(--r-tile); }
+/* the copy that lands on a slot (settleInto): the picked tile, above everything, never in the way of a tap */
+.ui-tile-ghost { position: fixed; z-index: var(--z-fx); margin: 0; background: var(--ink); color: var(--on-ink); border-color: var(--ink); transition: none; }
+.ui-tile-ghost kbd { display: none; }
+@media (forced-colors: active) {
+  .ui-tile[aria-pressed="true"] > .ui-tile-face, .ui-tile.is-ok > .ui-tile-face, .ui-tile-ghost { background: CanvasText; color: Canvas; border-color: CanvasText; forced-color-adjust: none; }
+  .ui-tile > .ui-tile-face { border-color: CanvasText; }
+}
+/* ---- end ui/tile ---- */
+
+/* ---- ui/sheet (src/ui/sheet.js: the one sheet; design C "### 6", DESIGN.md sheet-open) ---- */
+/* The dialog covers the screen and is transparent: its scrim is the backdrop (it follows a drag, which ::backdrop
+   cannot), its panel the sheet. The panel's place is --ui-sheet-y (px down from its top detent, set by sheet.js);
+   .is-shown is open. Phone: the bottom edge; from 720 px a card in the middle. Opens on spring-snappy (card
+   duration), closes in --ui-sheet-ms (160 ms ease-in; a flick sets its own time on ease-out). Reduced motion
+   (.is-rm): a 140 ms fade, and a drag's release snaps. */
+.ui-sheet { position: fixed; inset: 0; width: 100%; height: 100%; max-width: none; max-height: none; margin: 0; padding: 0; border: 0;
+  background: transparent; color: var(--ink); overflow: hidden; overflow: clip; overscroll-behavior: contain; }
+.ui-sheet::backdrop { background: transparent; }
+.ui-sheet-scrim { position: absolute; inset: 0; background: rgb(12 14 20 / 0.36); opacity: var(--ui-sheet-o, 1);
+  transition: opacity var(--dur-base) var(--ease-out); -webkit-tap-highlight-color: transparent; }
+/* dark: a near-black page needs a deeper scrim to dim, and the panel an edge (design review S7) */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .ui-sheet-scrim { background: rgb(0 0 0 / 0.58); }
+  :root:not([data-theme="light"]) .ui-sheet-panel { outline: 1px solid var(--hairline-strong); outline-offset: -1px; }
+}
+:root[data-theme="dark"] .ui-sheet-scrim { background: rgb(0 0 0 / 0.58); }
+:root[data-theme="dark"] .ui-sheet-panel { outline: 1px solid var(--hairline-strong); outline-offset: -1px; }
+.ui-sheet-panel { position: absolute; inset: auto 0 0 0; display: flex; flex-direction: column; max-height: min(92dvh, 640px);
+  padding-bottom: calc(var(--s-3) + env(safe-area-inset-bottom)); border-radius: var(--r-card) var(--r-card) 0 0;
+  background: var(--surface); box-shadow: var(--shadow-sheet); transform: translate3d(0, var(--ui-sheet-y, 0px), 0);
+  transition: transform var(--dur-card) var(--spring-snappy), opacity var(--dur-card) var(--ease-out); }
+/* the panel's colour continues under its bottom edge (a shadow: no scrollable overflow), so the rubber band shows no gap */
+.ui-sheet:not(.is-modeless) .ui-sheet-panel { box-shadow: var(--shadow-sheet), 0 120px 0 60px var(--surface); }
+.ui-sheet.is-detents .ui-sheet-panel { height: min(92dvh, 640px); }
+.ui-sheet:not(.is-shown) .ui-sheet-panel { transform: translate3d(0, 100%, 0); }
+.ui-sheet:not(.is-shown) .ui-sheet-scrim { opacity: 0; }
+.ui-sheet.is-closing .ui-sheet-panel { transition: transform var(--ui-sheet-ms, 160ms) var(--ui-sheet-ease, var(--ease-in)), opacity var(--ui-sheet-ms, 160ms) var(--ease-in); }
+.ui-sheet.is-closing .ui-sheet-scrim { transition: opacity var(--ui-sheet-ms, 160ms) var(--ease-in); }
+.ui-sheet.is-dragging .ui-sheet-panel { transition: none; will-change: transform; }
+.ui-sheet.is-dragging .ui-sheet-scrim { transition: none; }
+.ui-sheet.is-rm .ui-sheet-panel { transition: opacity 140ms linear; }
+.ui-sheet.is-rm .ui-sheet-scrim { transition: opacity 140ms linear; }
+.ui-sheet.is-rm:not(.is-shown) .ui-sheet-panel { transform: translate3d(0, var(--ui-sheet-y, 0px), 0); opacity: 0; }
+.ui-sheet.is-rm.is-dragging .ui-sheet-panel, .ui-sheet.is-rm.is-dragging .ui-sheet-scrim { transition: none; }
+/* the handle: a 36 x 4 grip on a 44 px button; it and the header take the drag */
+.ui-sheet-grab { flex: none; display: grid; place-items: center; width: 100%; height: var(--tap); padding: 0; border: 0; border-radius: var(--r-card) var(--r-card) 0 0;
+  background: transparent; cursor: grab; touch-action: none; -webkit-tap-highlight-color: transparent; }
+.ui-sheet-grip { width: 36px; height: 4px; border-radius: 2px; background: color-mix(in srgb, var(--ink-3) 40%, transparent); }
+.ui-sheet-grab:focus-visible { outline: none; }
+.ui-sheet-grab:focus-visible .ui-sheet-grip { outline: 2px solid var(--accent); outline-offset: 4px; }
+.ui-sheet.is-dragging .ui-sheet-grab { cursor: grabbing; }
+.ui-sheet-head { flex: none; display: flex; align-items: center; gap: var(--s-3); padding: 0 var(--gutter, 16px) var(--s-1); touch-action: none; }
+.ui-sheet-title { flex: 1; min-width: 0; margin: 0; font: 400 var(--fs-h2)/1.15 var(--font-display); }
+.ui-sheet-title:focus { outline: none; }
+.ui-sheet-x { flex: none; width: var(--tap); padding: 0; margin-inline-end: calc(-1 * var(--s-2)); display: none; }
+.ui-sheet-body { flex: 0 1 auto; min-height: 0; display: grid; align-content: start; gap: var(--s-3); padding: var(--s-2) var(--gutter, 16px) var(--s-3);
+  overflow-y: auto; overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+.ui-sheet.is-detents .ui-sheet-body { flex-grow: 1; }
+.ui-sheet-actions { flex: none; display: grid; gap: var(--s-2); padding: var(--s-1) var(--gutter, 16px) 0; }
+.ui-sheet-actions[hidden] { display: none; }
+/* the keyboard is up (body.kb, core/keyboard.js): on the keyboard, no taller than the visible screen */
+.ui-sheet.is-kb .ui-sheet-panel { bottom: var(--kb, 0px); max-height: var(--vv-h, 100dvh); padding-bottom: var(--s-2); }
+.ui-sheet.is-kb.is-detents .ui-sheet-panel { height: var(--vv-h, 100dvh); }
+/* modal: false (a peek sheet over a page that stays usable): no scrim, only the panel takes touches */
+.ui-sheet.is-modeless { pointer-events: none; z-index: 40; }
+.ui-sheet.is-modeless .ui-sheet-panel { pointer-events: auto; }
+@media (min-width: 720px) {
+  .ui-sheet-panel, .ui-sheet.is-detents .ui-sheet-panel, .ui-sheet:not(.is-modeless) .ui-sheet-panel { inset: 0; margin: auto; width: min(440px, calc(100% - 32px)); height: fit-content; padding: var(--s-4) 0 var(--s-5);
+    border-radius: var(--r-card); box-shadow: var(--shadow-lift), 0 0 0 1px var(--hairline); }
+  .ui-sheet-grab { display: none; }
+  .ui-sheet-x { display: inline-flex; }
+  .ui-sheet-head, .ui-sheet-body, .ui-sheet-actions { padding-inline: var(--s-5); }
+  .ui-sheet.is-side .ui-sheet-panel { inset: var(--s-4) var(--s-4) auto auto; margin: 0; width: min(380px, calc(100% - 32px)); }
+  .ui-sheet:not(.is-shown) .ui-sheet-panel { transform: translate3d(0, calc(24px * var(--move)), 0) scale(calc(1 - 0.02 * var(--move))); opacity: 0; }
+  .ui-sheet.is-rm:not(.is-shown) .ui-sheet-panel { transform: none; }
+}
+@media (forced-colors: active) { .ui-sheet-panel { border: 1px solid CanvasText; } .ui-sheet-grip { background: CanvasText; } }
+/* ---- end ui/sheet ---- */
+
+/* ---- ui/toast ---- */
+/* The pill keeps the shell's .toast look and place (components.css; app.css lifts it over the dock and wraps long
+   text). Here: drags belong to the pill (swipe-away), and with the keyboard up (is-kb, set from body.kb) it sits at
+   the top of the visible screen, under its pan (--vv-top), clear of the field and the keyboard's action row. */
+.ui-toast { touch-action: none; user-select: none; -webkit-user-select: none; cursor: default; }
+:root .ui-toast.is-kb { top: calc(var(--vv-top, 0px) + var(--s-3) + env(safe-area-inset-top)); bottom: auto; }
+/* Undo is 34 px tall in the pill; its hit box reaches 44 px (5 px past the border, above and below) without
+   making the pill taller */
+.ui-toast button { position: relative; }
+.ui-toast button::before { content: ''; position: absolute; inset: -6px -5px; }
+/* ---- end ui/toast ---- */
+
+/* ---- ui/skeleton ---- */
+/* Blocks that hold the final layout while content loads (design C §8). Hidden for the first --ui-skel-wait (150 ms)
+   so a fast load shows nothing, then still blocks; from 400 ms one band sweeps each block (1400 ms, linear), the one
+   loop allowed, and only while loading. Reduced motion: still blocks, no sweep. aria-hidden: the caller keeps its
+   "Loading" status text and sets aria-busy on the region. */
+.ui-skel { display: grid; gap: var(--s-4); padding-block: var(--s-4); animation: ui-skel-in var(--dur-quick) var(--ease-out) var(--ui-skel-wait, 150ms) both; }
+@keyframes ui-skel-in { from { opacity: 0; } to { opacity: 1; } }
+.ui-skel-row { display: grid; gap: var(--s-2); }
+.ui-skel-block { position: relative; overflow: hidden; background: var(--surface-2); border-radius: 4px; }
+.ui-skel-line { height: 12px; border-radius: 4px; }
+.ui-skel-line.is-title { height: 18px; }
+.ui-skel-card { height: 132px; border-radius: 20px; }
+.ui-skel-chart { height: 180px; border-radius: 12px; }
+.ui-skel-tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(64px, 1fr)); gap: var(--s-2); }
+.ui-skel-tile { aspect-ratio: 1; border-radius: 6px; }
+.ui-skel-block::after {
+  content: ""; position: absolute; inset: 0; transform: translateX(-100%);
+  background: linear-gradient(90deg, transparent calc(50% - 60px), color-mix(in oklab, var(--surface-2), var(--surface) 60%) 50%, transparent calc(50% + 60px));
+  animation: ui-skel-sweep 1400ms linear 400ms infinite;
+}
+.ui-skel-block:dir(rtl)::after { animation-direction: reverse; }
+@keyframes ui-skel-sweep { from { transform: translateX(-100%); } to { transform: translateX(100%); } }
+@media (prefers-reduced-motion: reduce) { :root:not([data-motion="full"]) .ui-skel-block::after { display: none; animation: none; } }
+:root[data-motion="reduce"] .ui-skel-block::after { display: none; animation: none; }
+@media (forced-colors: active) { .ui-skel-block { background: GrayText; } .ui-skel-block::after { display: none; } }
+/* ---- end ui/skeleton ---- */

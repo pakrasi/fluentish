@@ -3,25 +3,35 @@
 //
 //   node tools/stamp.mjs [--out _site] [--sha <commit>] [--keep <sha,sha>] [--live <url of the live version.json>] [--sw on|off]
 //
-// The service worker switch in version.json comes from --sw, else the FLUENTISH_SW environment variable, else "on".
-// deploy.yml sets FLUENTISH_SW from its "sw" input or the repository variable FLUENTISH_SW, so the kill switch is a
-// workflow run or a variable, never a code change.
+// The service worker switch comes from --sw, else the FLUENTISH_SW environment variable, else "on". deploy.yml sets
+// FLUENTISH_SW from its "sw" input or the repository variable FLUENTISH_SW, so the kill switch is a workflow run or a
+// variable, never a code change:
+//   on    the normal worker; a new version waits and takes over from Today
+//   now   the normal worker, but it takes over as soon as it is installed (a fix for a deploy that broke the page;
+//         use it as the input of one run, never as the variable)
+//   off   version.json says "sw": "off" (the page unregisters the worker) and sw.js is killSw(), a worker that takes
+//         over at once, deletes this app's caches and unregisters itself, which works even when the page can't run
 //
 // Layout (the app root is /fluentish/ on Pages):
-//   index.html             network first; loads v/<sha>/src/main.js, with modulepreload for the static import graph
+//   index.html             loads v/<sha>/src/main.js, with modulepreload for the static import graph, and names the
+//                          content manifest's hash (meta fluentish-manifest); the worker serves its own copy at once
 //   404.html               deep paths → #/<path>
 //   sw.js                  stamped with the version and the precache list
 //   version.json           { sha, content, kept, sw } — the update check and the kill switch ("sw": "off")
-//   assets/  content/      unversioned; content files are fetched as path?h=<sha256[:8]> from the manifest
+//   assets/  content/      unversioned; content files are fetched as path?h=<sha256[:8]> from the manifest, and the
+//                          manifest itself as manifest.json?h=<sha256[:8]> (the hash index.html names)
 //   v/<sha>/src, v/<sha>/styles   this commit's code, immutable
 //   v/<old>/src, v/<old>/styles   the two previously deployed versions, so a cached old index.html still finds its
 //                                 modules within Pages' 10-minute cache window
 // Only these are published; tools/, tests/, authoring/, docs/, schemas/ never are.
 import { execFileSync } from 'node:child_process';
+import { createHash } from 'node:crypto';
 import { cpSync, mkdirSync, readFileSync, readdirSync, rmSync, statSync, writeFileSync, existsSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { build as buildManifest } from './build-manifest.mjs';
+import { config } from '../src/core/config.js';
+import { connectHost } from '../src/data/account/config.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
 const BASE = '/fluentish/';
@@ -81,6 +91,20 @@ export function stampIndex(/** @type {string} */ html, /** @type {string} */ sha
   return out;
 }
 
+/**
+ * index.html with the accounts project added to connect-src, only when config.accounts could turn accounts on
+ * (data/account/config.js connectHost; docs/ACCOUNTS.md). Off, the page is returned unchanged. No wss: (no Realtime)
+ * and no script, frame or image host: the client is plain fetch.
+ * @param {string} html @param {any} accounts config.accounts
+ */
+export function withConnectSrc(html, accounts) {
+  const host = connectHost(accounts);
+  if (!host) return html;
+  const re = /(<meta http-equiv="Content-Security-Policy" content="[^"]*?\bconnect-src [^;"]*)/;
+  if (!re.test(html)) throw new Error('index.html: connect-src not found in the CSP');
+  return html.replace(re, `$1 ${host}`);
+}
+
 /** sw.js with its VERSION, PRECACHE and PACKS lines filled in. */
 export function stampSw(/** @type {string} */ js, /** @type {string} */ sha, /** @type {string[]} */ precache, /** @type {Record<string, string[]>} */ packs = {}) {
   const lines = /** @type {const} */ ([['VERSION', `'${sha.slice(0, 12)}'`, 'version'], ['PRECACHE', JSON.stringify(precache), 'precache'], ['PACKS', JSON.stringify(packs), 'packs']]);
@@ -113,14 +137,48 @@ async function liveVersion(/** @type {string | undefined} */ url) {
 }
 
 /**
- * The "sw" value of version.json: --sw, else FLUENTISH_SW, else 'on'. Anything but on/off is an error, so a typo can
+ * The "sw" value of version.json: --sw, else FLUENTISH_SW, else 'on'. Anything but on/now/off is an error, so a typo can
  * never switch the worker off (or fail to).
- * @param {string | undefined} flag @param {string | undefined} env @returns {'on' | 'off'}
+ * @param {string | undefined} flag @param {string | undefined} env @returns {'on' | 'off' | 'now'}
  */
 export function swSetting(flag, env) {
   const v = String(flag || env || 'on').trim().toLowerCase();
-  if (v !== 'on' && v !== 'off') throw new Error(`sw must be "on" or "off", not "${flag || env}"`);
+  if (v !== 'on' && v !== 'off' && v !== 'now') throw new Error(`sw must be "on", "now" or "off", not "${flag || env}"`);
   return v;
+}
+
+/** sw.js with its TAKEOVER line filled in: 'now' (sw=now) takes over once installed, else 'today'. */
+export function stampTakeover(/** @type {string} */ js, /** @type {'on' | 'now' | 'off'} */ sw) {
+  const re = /^const TAKEOVER = .*\/\/ stamp:takeover$/m;
+  if (!re.test(js)) throw new Error('sw.js: stamp marker takeover not found');
+  return js.replace(re, `const TAKEOVER = '${sw === 'now' ? 'now' : 'today'}'; // stamp:takeover`);
+}
+
+/**
+ * The sw.js a deploy with sw=off publishes, instead of the real worker. The browser checks sw.js on every launch (and
+ * the page asks again when it becomes visible), so this reaches a device even when the page itself is broken. It takes
+ * over at once, deletes this app's caches (fluentish-*, never another app's) and unregisters itself; it has no fetch
+ * handler, so until the next launch every request goes to the network, and after it there is no worker at all. The page
+ * reads "sw": "off" in version.json and does not register again until a deploy turns the switch back on.
+ */
+export function killSw() {
+  return `/* Fluentish service worker, switched off by a deploy with sw=off (tools/stamp.mjs killSw; docs/ARCHITECTURE.md §7). */
+self.addEventListener('install', () => { self.skipWaiting(); });
+self.addEventListener('activate', e => {
+  e.waitUntil((async () => {
+    for (const k of await caches.keys()) if (k.startsWith('fluentish-')) await caches.delete(k);
+    await self.registration.unregister();
+  })());
+});
+`;
+}
+
+/** index.html naming the content manifest's hash, which the page fetches as content/manifest.json?h=<hash>. */
+export function withManifestHash(/** @type {string} */ html, /** @type {string} */ hash) {
+  if (!/^[0-9a-f]{8}$/.test(hash)) throw new Error(`manifest hash ${hash}: not 8 hex digits`);
+  const re = /(<meta charset="utf-8">\n)/;
+  if (!re.test(html)) throw new Error('index.html: <meta charset="utf-8"> not found');
+  return html.replace(re, `$1<meta name="fluentish-manifest" content="${hash}">\n`);
 }
 
 function opts() {
@@ -150,22 +208,27 @@ async function main() {
   for (const f of walk(path.join(ROOT, 'content'))) if (f.endsWith('.json')) cpSync(path.join(ROOT, 'content', f), path.join(o.out, 'content', f));
 
   const graph = importGraph('src/main.js', p => readFileSync(path.join(ROOT, p), 'utf8'));
-  writeFileSync(path.join(o.out, 'index.html'), stampIndex(readFileSync(path.join(ROOT, 'index.html'), 'utf8'), sha, graph));
+  writeFileSync(path.join(o.out, 'index.html'), withConnectSrc(stampIndex(readFileSync(path.join(ROOT, 'index.html'), 'utf8'), sha, graph), config.accounts));
   const nf = readFileSync(path.join(ROOT, '404.html'), 'utf8').replace(`${BASE}src/`, `${BASE}${v}/src/`);
   if (!nf.includes(`${BASE}${v}/src/redirect-404.js`)) throw new Error('404.html: redirect script reference not found');
   writeFileSync(path.join(o.out, '404.html'), nf);
 
   const content = contentPrecache(manifest);
+  // the manifest by hash: index.html names it, the page fetches manifest.json?h=, the worker keeps it cache first
+  const manifestHash = createHash('sha256').update(readFileSync(path.join(o.out, 'content/manifest.json'))).digest('hex').slice(0, 8);
+  const shell = path.join(o.out, 'index.html');
+  writeFileSync(shell, withManifestHash(readFileSync(shell, 'utf8'), manifestHash));
   const precache = [
     './',
     // code, styles and the vendored map font (the map's layout was built with its widths, so it must be there offline),
     // with its metrics and the 3D view's text atlas
     ...walk(path.join(o.out, v)).filter(f => /\.(js|css|woff2)$/.test(f) || /^src\/vendor\/(newsreader-map|palace-sdf)\/[^/]+\.(json|png)$/.test(f)).map(f => `${v}/${f}`),
     ...walk(path.join(o.out, 'assets')).map(f => `assets/${f}`),
-    'content/manifest.json',
+    `content/manifest.json?h=${manifestHash}`,
     ...content.shared,
   ];
-  writeFileSync(path.join(o.out, 'sw.js'), stampSw(readFileSync(path.join(ROOT, 'sw.js'), 'utf8'), sha, precache, content.packs));
+  writeFileSync(path.join(o.out, 'sw.js'), o.sw === 'off' ? killSw()
+    : stampTakeover(stampSw(readFileSync(path.join(ROOT, 'sw.js'), 'utf8'), sha, precache, content.packs), o.sw));
 
   // earlier versions, so an index.html still in a browser or CDN cache finds its own modules
   const live = await liveVersion(o.live);

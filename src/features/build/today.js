@@ -13,6 +13,7 @@
    das, ← → Splits / Stays. */
 import { h, replace, announce } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
+import { backLink as uiBack } from '../../core/ui.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
 import { countTo } from '../../core/motion.js';
 import { fitToKeyboard, keep, reveal as revealEl } from '../../core/keyboard.js';
@@ -22,6 +23,7 @@ import { loadContent, knowledge, cardsOf, addActivity } from './data.js';
 import { formWord } from './fword.js';
 import { play, css, reduced, wait, nudge, finishAll } from './fx.js';
 import { sheet as openSheet } from '../shared/textview.js';
+import { createTile, flipAll } from '../../ui/tile.js';
 
 /** From this many prefix tiles the hive is three rows round the root instead of a ring. */
 const ROWS_FROM = 10;
@@ -51,7 +53,7 @@ export async function mountToday(el, ctx) {
   document.body.dataset.chrome = 'off';
   document.body.classList.add('wb-in-round');
   const restore = () => { document.body.dataset.chrome = 'on'; document.body.classList.remove('wb-in-round'); };
-  const backLink = () => h('a', { class: 'pz-back pressable', href: backHref, onpointerdown: keep }, icon('prev', { size: 16 }), backText);
+  const backLink = () => uiBack({ href: backHref, label: backText, onpointerdown: keep });
   replace(el, h('div', { class: 'pz' }, h('div', { class: 'pz-main' }, h('div', { class: 'pz-head' }, backLink(), h('h1', null, t('build.today.title'))), h('p', { class: 'caption' }, t('build.loading')))));
   /** @type {any} */ let d;
   /** @type {Map<string, Family>} */ let fams = new Map();
@@ -70,7 +72,7 @@ export async function mountToday(el, ctx) {
   const famOf = found0 ? fams.get(found0.root) : null;
   if (!found0 || !famOf) {
     restore();
-    replace(el, h('div', { class: 'wb stack' }, h('a', { class: 'pr-backlink pressable', href: backHref }, icon('prev', { size: 16 }), backText),
+    replace(el, h('div', { class: 'wb stack' }, uiBack({ href: backHref, label: backText }),
       h('div', { class: 'page-head' }, h('h1', null, t('build.today.none'))), h('p', { class: 'lead' }, t('build.today.noneDetail')),
       h('a', { class: 'btn pressable', href: '#/practice/build/family' }, t('build.today.seeFamily'))));
     return () => {};
@@ -101,7 +103,10 @@ export async function mountToday(el, ctx) {
   // to keep Check in view (the head goes first; the meaning stays)
   const say = (/** @type {any[]} */ ...parts) => {
     replace(msg, ...parts);
-    if (!parts.length || S.typing) return;
+    if (!parts.length) return;
+    // a new message rises 6 px into its reserved lines (reduced motion: it is just there)
+    play(msg, [{ opacity: 0, transform: 'translateY(6px)' }, { opacity: 1, transform: 'none' }], { duration: 240, easing: css('--ease-out') });
+    if (S.typing) return;
     requestAnimationFrame(() => { const r = acts.getBoundingClientRect(); if (alive && r.height && r.bottom > innerHeight) box.scrollBy({ top: r.bottom - innerHeight, behavior: 'instant' }); });
   };
   const de = (/** @type {string} */ s) => h('span', { class: 'pz-de', lang: langAttr(), dir: dirAttr() }, s);
@@ -140,13 +145,18 @@ export async function mountToday(el, ctx) {
   const box = h('div', { class: 'pz', role: 'region', 'aria-label': t('build.today.title') }, main, aside);
   replace(el, box);
   const unfit = fitToKeyboard(box);
+  // input never waits: a touch anywhere on the board jumps every running move (a landing copy, a flip, a swell) to its end
+  box.addEventListener('pointerdown', () => finishAll(), { capture: true });
 
   /* ---------------- the tiles ---------------- */
-  /** @type {Map<string, HTMLElement>} */ const tileEls = new Map();
+  /** The board's tiles (src/ui/tile.js): the button is placed here, its face takes press, pick, settle and nudge. @type {Map<string, import('../../ui/tile.js').Tile>} */
+  const tileEls = new Map();
   const tileKey = (/** @type {Part} */ part, /** @type {string} */ v) => `${part}:${v}`;
   function drawTiles() {
     const pre = day.tiles.pre;
     const n = pre.length;
+    for (const x of tileEls.values()) x.destroy();
+    tileEls.clear();
     replace(hive);
     // up to 9 short prefixes on a ring round the root. From 10 (B2, some B1 boards), with a long prefix (wieder,
     // zurück), or when the endings take two rows: three rows round the root, laid out by the browser, so no tile
@@ -154,11 +164,13 @@ export async function mountToday(el, ctx) {
     // off a 664 px phone). The shortest prefixes sit beside the root.
     const rows = n >= ROWS_FROM || pre.some(p => p.length > 4) || (n >= 6 && day.tiles.suf.length > 2 && nouns);
     hive.classList.toggle('is-rows', rows);
-    const tile = (/** @type {string} */ p, /** @type {Record<string, string> | null} */ style) => {
-      const b = h('button', { type: 'button', class: 'hx pressable', lang: langAttr(), dir: dirAttr(), 'aria-pressed': 'false', 'aria-label': t('build.today.prefixTile', { p }), onpointerdown: keep, onclick: () => pick('pre', p, b), style }, p);
-      tileEls.set(tileKey('pre', p), b);
-      return b;
+    /** A tile of the board: part, value, the label, the face's content, more. @param {Part} part @param {string} v @param {string} label @param {any[]} children @param {Partial<import('../../ui/tile.js').TileOpts>} [more] */
+    const mk = (part, v, label, children, more = {}) => {
+      const x = createTile({ children, label, lang: langAttr(), dir: dirAttr(), pressed: false, className: 'hx', onDown: keep, onPick: () => pick(part, v, x), ...more });
+      tileEls.set(tileKey(part, v), x);
+      return x.el;
     };
+    const tile = (/** @type {string} */ p, /** @type {Record<string, string> | null} */ style) => mk('pre', p, t('build.today.prefixTile', { p }), [p], { style });
     const centre = h('div', { class: 'hx is-centre', lang: langAttr(), dir: dirAttr(), role: 'img', 'aria-label': t('build.today.rootTile', { root: fam.root }) }, STEM, h('small', null, fam.root));
     if (rows) {
       const g = rowGroups(pre);
@@ -174,8 +186,8 @@ export async function mountToday(el, ctx) {
     }
     replace(ends);
     const sufRow = h('div', { class: 'pz-ends-row' }), artRow = h('div', { class: 'pz-ends-row' });
-    for (const x of day.tiles.suf) { const b = h('button', { type: 'button', class: 'hx pressable', lang: langAttr(), dir: dirAttr(), 'aria-pressed': 'false', 'aria-label': t('build.today.endingTile', { s: endLabel(x) }), 'data-suf': x, onpointerdown: keep, onclick: () => pick('suf', x, b) }, endLabel(x)); tileEls.set(tileKey('suf', x), b); sufRow.append(b); }
-    if (nouns) ARTICLES.forEach((x, i) => { const b = h('button', { type: 'button', class: 'hx is-art pressable', lang: langAttr(), dir: dirAttr(), 'aria-pressed': 'false', 'aria-label': t('build.today.articleTile', { a: x }), onpointerdown: keep, onclick: () => pick('art', x, b) }, x, h('kbd', null, String(i + 1))); tileEls.set(tileKey('art', x), b); artRow.append(b); });
+    for (const x of day.tiles.suf) sufRow.append(mk('suf', x, t('build.today.endingTile', { s: endLabel(x) }), [endLabel(x)], { attrs: { 'data-suf': x } }));
+    if (nouns) ARTICLES.forEach((x, i) => artRow.append(mk('art', x, t('build.today.articleTile', { a: x }), [x, h('kbd', null, String(i + 1))], { className: 'hx is-art' })));
     // two endings and the articles share a row with a rule between them; more endings take a row of their own, so
     // nothing wraps on its own (the rule ended up alone at the end of a line)
     const two = day.tiles.suf.length > 2 && nouns;
@@ -195,7 +207,7 @@ export async function mountToday(el, ctx) {
     return x === 'pp' ? t('build.today.pp') : x === 'ppr' ? t('build.today.ppr') : x === 'inf' ? t('build.today.inf') : sx && /^-/.test(sx.label) ? sx.label.split(',')[0] : sx ? sx.label : `-${x}`;
   }
   function syncTiles() {
-    for (const [key, b] of tileEls) { const [part, v] = key.split(':'); b.setAttribute('aria-pressed', String(part === 'art' ? S.b.art === v : partsOf(S.b[/** @type {Part} */ (part)]).includes(v))); }
+    for (const [key, x] of tileEls) { const [part, v] = key.split(':'); x.set({ pressed: part === 'art' ? S.b.art === v : partsOf(S.b[/** @type {Part} */ (part)]).includes(v) }); }
   }
 
   /* ---------------- the clue ---------------- */
@@ -288,7 +300,7 @@ export async function mountToday(el, ctx) {
   }
 
   /* ---------------- input ---------------- */
-  /** @param {Part} part @param {string} v @param {HTMLElement | null} from */
+  /** @param {Part} part @param {string} v @param {import('../../ui/tile.js').Tile | null} from the tile tapped */
   async function pick(part, v, from) {
     if (S.splitting || S.over) return;
     finishAll();
@@ -300,15 +312,8 @@ export async function mountToday(el, ctx) {
     if (!on || !from || reduced()) return;
     const to = /** @type {HTMLElement | null} */ (build.querySelector(`[data-part="${part}"][data-v="${v}"]`));
     if (!to) return;
-    // a copy of the tile flies to its slot on a 14 px arc; a prefix settles against the stem, an ending snaps on
-    const a = from.getBoundingClientRect(), b2 = to.getBoundingClientRect();
-    const ghost = h('span', { class: 'pz-fly', 'aria-hidden': 'true', lang: langAttr(), dir: dirAttr(), style: { left: `${a.left}px`, top: `${a.top}px`, width: `${a.width}px`, height: `${a.height}px` } }, from.firstChild?.textContent || v);
-    document.body.append(ghost);
-    to.style.opacity = '0';
-    const dx = b2.left + b2.width / 2 - (a.left + a.width / 2), dy = b2.top + b2.height / 2 - (a.top + a.height / 2);
-    await play(ghost, [{ transform: 'none' }, { transform: `translate(${dx * 0.5}px, ${dy * 0.5 - 14}px)`, offset: 0.55 }, { transform: `translate(${dx}px, ${dy}px)` }], { duration: 300, easing: css('--ease-out') });
-    ghost.remove(); to.style.opacity = '';
-    play(to, part === 'suf' ? [{ transform: 'translateX(10px)' }, { transform: 'none' }] : [{ transform: 'translateY(-3px)' }, { transform: 'none' }], { duration: 260, easing: css('--spring-snappy') });
+    // a copy of the tile lands on its slot and grows to its size; a prefix drops onto the stem, an ending snaps on from the side
+    await from.settleInto(to, { from: part === 'suf' ? 'side' : 'top' });
   }
   function del() {
     if (S.splitting || S.over) return;
@@ -421,14 +426,8 @@ export async function mountToday(el, ctx) {
     drawBuild();
     // only the parts he picked flip; an empty slot and the root never do
     const parts = /** @type {HTMLElement[]} */ ([...build.querySelectorAll('.pt[data-part]:not(.is-empty)')]).filter(p => p.dataset.part !== 'root' && states[/** @type {string} */ (p.dataset.part)]);
-    await Promise.all(parts.map(async (p, i) => {
-      const st = states[/** @type {string} */ (p.dataset.part)];
-      if (reduced()) { p.classList.add(`is-${st}`); return; }
-      await play(p, [{ transform: 'rotateX(0)' }, { transform: 'rotateX(90deg)' }], { duration: 130, delay: i * 110, easing: css('--ease-in'), fill: 'forwards' });
-      p.classList.add(`is-${st}`);
-      p.getAnimations().forEach(a => a.cancel());
-      await play(p, [{ transform: 'rotateX(-90deg)' }, { transform: 'rotateX(0)' }], { duration: 240, easing: css('--spring-snappy') });
-    }));
+    // src/ui/tile.js flipAll: each turns away, takes its state edge-on, and turns back, 110 ms after the one before
+    await flipAll(parts.map(p => ({ el: p, apply: () => p.classList.add(`is-${states[/** @type {string} */ (p.dataset.part)]}`) })));
   }
 
   /* ---------------- splits or stays ---------------- */
@@ -710,7 +709,7 @@ export async function mountToday(el, ctx) {
     if (e.key === 'Escape') { if (S.over) return; e.preventDefault(); clear(); return; }
     if (e.key === 'ArrowUp') { e.preventDefault(); go(S.idx - 1); return; }
     if (e.key === 'ArrowDown') { e.preventDefault(); go(S.idx + 1); return; }
-    if (/^[1-3]$/.test(e.key) && nouns && !S.over) { const a = ARTICLES[Number(e.key) - 1]; pick('art', a, tileEls.get(tileKey('art', a)) || null); return; }
+    if (/^[1-3]$/.test(e.key) && nouns && !S.over) { const a = ARTICLES[Number(e.key) - 1]; tileEls.get(tileKey('art', a))?.el.click(); return; }
     if (/^[a-zäöüß]$/i.test(e.key) && !S.over) { e.preventDefault(); if (S.learning) { if (allDone()) return; nextOpen(); } setTyping(true, e.key); }
   }
   document.addEventListener('keydown', onKey);

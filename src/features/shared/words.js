@@ -1,5 +1,5 @@
 /* Practice: exam words. The words he saved in mock exams live in the private results repository (data/vocab.json).
-   Practice reads that file at runtime with the GitHub token from the store (secrets.githubToken), keeps a trimmed copy
+   Practice reads that file at runtime with the GitHub token from data/credentials.js github(), keeps a trimmed copy
    in the profile's 'words.exam' collection, and turns each word into a round item that tests the word: its meaning in
    English and its type, answered with the dictionary form, then its key forms and one example sentence.
    Ported from Igloo's b1more.js. trimWords/toItem/inQueue are pure and tested in node; fetchWords takes its fetch. */

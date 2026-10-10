@@ -45,6 +45,13 @@ export const config = {
       'claude-haiku-4-5': { in: 1, out: 5, cacheWrite: 1.25, cacheRead: 0.1 },
     }),
   },
+  /** Accounts (docs/ACCOUNTS.md). Off: LocalOnly, no request, no account UI. They turn on only when the guard in
+     data/account/config.js passes: provider 'supabase', the project URL, its publishable key (sb_publishable_…, public
+     by design; never a secret or legacy key) and the exact https origins allowed, none on github.io. All of these are
+     public values. tools/stamp.mjs adds the project to connect-src only then. */
+  accounts: /** @type {{provider: string, url: string | null, publishableKey: string | null, origins: string[]}} */ ({
+    provider: 'local', url: null, publishableKey: null, origins: [],
+  }),
   defaults: { minutesPerDay: 60, cutoffHour: 4 },
   /** Options offered in onboarding and Profile. */
   minutesOptions: [15, 30, 60, 90],

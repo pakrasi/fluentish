@@ -244,7 +244,9 @@ test('Reading round and Script words: docked, Check on the keyboard', async ({ p
   await page.getByRole('textbox', { name: 'Title' }).fill('Fahrrad');
   await page.getByRole('textbox', { name: 'Your script' }).fill('# Einleitung\n\nHallo zusammen, heute erkläre ich euch, wie ein Fahrrad funktioniert. Das Herz jedes Fahrrads ist der Rahmen.\n\n# Bremsen\n\nScheibenbremsen funktionieren auch bei Regen zuverlässig. Vielen Dank fürs Zuhören!');
   await expect(page.locator('.sc-detect')).toContainText('2 sections');   // the text is read first (a slow runner)
-  await page.getByRole('button', { name: 'Continue' }).click();
+  // a press that lasts (120 ms between down and up, as on a slow runner): the focus leaves the field on the press, and
+  // the chrome must not come back under the finger before the click (fix pass; core/keyboard.js waits for the press)
+  await page.getByRole('button', { name: 'Continue' }).click({ delay: 120 });
   await expect(page).toHaveURL(/\/mark/);
   await page.getByRole('button', { name: 'Rahmen', exact: true }).click();
   await page.keyboard.press('Escape');
@@ -346,7 +348,7 @@ test('the round size picker, the spot check and Profile: the action is in reach;
   // the picker's custom number
   await open(page, '#/lookup/map/topic/food');
   await page.locator('.cl-dock .btn-primary').first().click();
-  const sheet = page.locator('dialog.rs-sheet');
+  const sheet = page.locator('dialog.ui-sheet');
   if (await sheet.count()) {
     await sheet.locator('.rs-opt[data-k=custom]').click();
     await sheet.locator('input.rs-input').focus();

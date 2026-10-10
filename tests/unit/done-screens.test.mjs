@@ -24,7 +24,7 @@ test('the shared done hero brings the bars back and unlocks the page unless it i
   assert.ok(leave, 'done-hero.js exports leaveRound()');
   assert.match(leave[1], /dataset\.chrome = 'on'/);
   assert.match(leave[1], /classList\.remove\([^)]*'pr-in-round'/);
-  assert.match(s, /start\(\) \{\s*if \(!inFlow\) leaveRound\(\);/);
+  assert.match(s, /start\([^)]*\) \{\s*if \(!inFlow\) leaveRound\(\);/);
 });
 
 test('every done screen starts its hero, and only a step inside a full-screen flow keeps the bars hidden', () => {
@@ -32,7 +32,7 @@ test('every done screen starts its hero, and only a step inside a full-screen fl
   assert.ok(users.length >= 6, `done screens found: ${users.map(x => x.p).join(', ')}`);
   for (const { p, s } of users) {
     const heroes = s.match(/doneHero\(\{/g).length;
-    const starts = (s.match(/hero\.start\(\)/g) || []).length;
+    const starts = (s.match(/hero\.start\((?:\{ (?:steps|signal: ctx\.signal|steps, signal: ctx\.signal) \})?\)/g) || []).length;
     assert.ok(starts >= heroes, `${p}: every doneHero() is started (${starts} of ${heroes})`);
     if (/inFlow: true/.test(s)) assert.ok(p.endsWith('practice-script/rehearse.js'), `${p}: only a rehearsal step stays in its flow`);
   }
@@ -74,4 +74,41 @@ test('every round that hides the bars gives them back when it is left', () => {
     assert.match(s, /dataset\.chrome = 'on'/, `${p} restores the chrome`);
     if (/classList\.add\('pr-in-round'\)/.test(s)) assert.match(s, /classList\.remove\('pr-in-round'\)/, `${p} unlocks the page`);
   }
+});
+
+// Round 8 (M1, design A3/A4): the end of a round is one timeline, not a hard cut
+test('a round\'s done page arrives inside a view transition that also brings the bars back', () => {
+  const s = read('src/features/shared/done-hero.js');
+  const fn = /export async function arrive\([\s\S]*?\n\}/.exec(s);
+  assert.ok(fn, 'done-hero.js exports arrive()');
+  assert.match(fn[0], /swap\(\(\) => \{ update\(\); leaveRound\(\); \}, \{ kind: 'view'/, 'the page and the bars change in the same view transition');
+  assert.match(fn[0], /dataset\.arrive = 'done'/);
+  const round = read('src/features/practice-round/round.js');
+  assert.match(round, /arrive\(\(\) => replace\(el, page\), el\)\.then\(/, 'the B1 round draws its done page through arrive()');
+  const css = read('styles/features/practice.css');
+  assert.match(css, /:root\[data-arrive="done"\] \.pr-round \.pr-card \{ view-transition-name: pr-done-card; \}/, 'the card is its own layer and lifts away');
+});
+
+test('the done hero is a skippable timeline: the figure is an odometer, a tap finishes it, reduced motion is the end state', () => {
+  const s = read('src/features/shared/done-hero.js');
+  assert.match(s, /seq = sequence\(\[/, 'the arrival runs on sequence()');
+  assert.match(s, /odometer\(fig, text, \{ label: text \}\)/, 'the figure rolls on an odometer');
+  assert.doesNotMatch(s, /countTo\(fig/, 'the figure no longer counts up from 0');
+  assert.match(s, /addEventListener\('pointerdown', skip\)/, 'a tap skips');
+  assert.match(s, /if \(instant\) \{ skipped = true; settle\(\); return; \}/, 'a skipped roll stands at the number, no breath');
+});
+
+test('the round done screen says what the round added as +N, with no bar that moves by a fraction of a percent', () => {
+  const s = read('src/features/practice-round/round.js');
+  const fn = /function doneTimeline[\s\S]*?\n\}\n/.exec(s)[0];
+  assert.doesNotMatch(s, /recallBar\(/, 'no exam-items bar on the done screen');
+  assert.match(fn, /t\('practice\.done\.gain'/);
+  assert.match(fn, /steps\.push\(\{ at: LAND_AT, run: instant => \{ gainDue = true; gain\(instant\); \} \}\)/, '+N lands with the first cell');
+  const en = read('src/i18n/en.js');
+  assert.match(en, /'practice\.done\.gain': '\+\{n\}'/);
+});
+
+test('a round of new items only never says "0 of 0 right first time"', () => {
+  const s = read('src/features/practice-round/round.js');
+  assert.match(s, /sum\.total \? \{ figure: sum\.right[\s\S]*?sum\.news\.length \? \{ figure: sum\.news\.length, of: t\('practice\.done\.newOnly'/);
 });

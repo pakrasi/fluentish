@@ -10,6 +10,7 @@
    and its tokens (80 %: Claude is asked to close the conversation; 100 %: the composer closes); the month at his cap. */
 import { h, replace, announce } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
+import { backLink } from '../../core/ui.js';
 import { reduced, haptic } from '../../core/motion.js';
 import { fitToKeyboard, keep, reveal as revealEl } from '../../core/keyboard.js';
 import { langAttr, dirAttr, bcp47 } from '../../core/lang.js';
@@ -23,6 +24,7 @@ import { language, usedIds } from './lang.js';
 import { addActivity } from '../shared/data.js';
 import { baseSystem, sessionSystem, levelNote, closingNote } from './prompts.js';
 import { glossSheet, sentSheet } from './sheets.js';
+import { claude, canAskClaude } from '../../data/credentials.js';
 
 /** Waits before retrying a request that failed for a passing reason (rate, overloaded, offline, a broken stream). */
 const RETRY_MS = [1000, 3000, 8000];
@@ -83,7 +85,7 @@ export async function mountChat(el, ctx, s0) {
   const composer = h('div', { class: 'cv-composer' }, h('div', { class: 'cv-wrap' }, chips, closedBox, h('div', { class: 'cv-field' }, field, sendBtn), count));
   const view = h('div', { class: 'cv cv-chat' },
     h('header', { class: 'cv-bar' }, h('div', { class: 'cv-wrap cv-bar-row' },
-      h('a', { class: 'btn btn-quiet pressable cv-back', href: '#/practice/conversation' }, icon('back', { size: 18 }), t('conv.back')),
+      backLink({ href: '#/practice/conversation', label: t('conv.back') }),
       h('h1', { class: 'cv-bar-title', tabindex: '-1' }, t('conv.chat')), endBtn)),
     // a column sized to the visible screen (core/keyboard.js): the bar, the conversation (the one scroller) and the
     // composer, which sits on the keyboard. iOS has nothing to pan, so the bar never leaves the screen.
@@ -201,7 +203,7 @@ export async function mountChat(el, ctx, s0) {
     const c = ctx.clock.ctx();
     const load = C.sessionLoad({ turns: s.turns, startedAt: s.startedAt, usage: s.usage }, Date.now());
     const month = C.monthLoad(D.monthSpent(store, c.today), D.convSettings(ctx.settings()).monthlyCapUsd);
-    const why = !D.claudeKey(store) ? 'key' : load.closed ? 'session' : month.over ? 'month' : null;
+    const why = !canAskClaude(store) ? 'key' : load.closed ? 'session' : month.over ? 'month' : null;
     const hadFocus = document.activeElement === field;
     const closing = !!why && why !== lastWhy && lastWhy !== undefined;
     lastWhy = why;
@@ -237,11 +239,11 @@ export async function mountChat(el, ctx, s0) {
    */
   async function send(user) {
     if (busy || !alive) return;
-    const key = D.claudeKey(store);
+    const cred = claude(store);
     if (!tr.system || !conv) { status.replaceChildren(h('p', { class: 'caption' }, t('conv.noPack'))); return; }
     // closed at a limit: no request at all, the opening's "Try again" included (audit P1-3)
     if (drawComposer()) return;
-    if (!key) return;
+    if (!cred) return;
     const s = sess();
     const load = C.sessionLoad({ turns: s.turns, startedAt: s.startedAt, usage: s.usage }, Date.now());
     /** @type {string[]} */ const systems = [];
@@ -268,7 +270,7 @@ export async function mountChat(el, ctx, s0) {
     for (let attempt = 0; ; attempt++) {
       ctl = new AbortController();
       try {
-        res = await stream({ key, body, signal: ctl.signal, onText: text => { lineEl.textContent = C.visibleText(text); } });
+        res = await stream({ cred, body, signal: ctl.signal, onText: text => { lineEl.textContent = C.visibleText(text); } });
         break;
       } catch (e) {
         // a request the API took is billed even when it failed, was stopped or the page was left: count it now

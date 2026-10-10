@@ -8,7 +8,7 @@
 import { h } from '../../core/dom.js';
 import { section } from '../../core/ui.js';
 import { icon } from '../../core/icons.js';
-import { disclose, fill as fillTo } from '../../core/motion.js';
+import { disclose, fill as fillTo, handoff } from '../../core/motion.js';
 import { label, diff } from '../../core/clock.js';
 import { modulesStanding, weakest, week, knownOf } from '../../domain/standing.js';
 import { loadKnowledge, knowledgeDecks } from '../../data/knowledge.js';
@@ -115,8 +115,9 @@ export function sparkOf(store, today) {
 }
 
 /**
- * A 96×28 sparkline: a 2 px ink line, the accent end dot. It shares a view-transition name with the Progress page's
- * known line, so opening Progress morphs the one into the other (reduced motion: the route's crossfade).
+ * A 96×28 sparkline: a 2 px ink line, the accent end dot. Opening Progress from its row hands it off to the Progress
+ * page's known chart (motion.js handoff/receive, name pg-known), so the one morphs into the other; it has no name of
+ * its own, so leaving Today any other way it goes with the page (reduced motion: the route's crossfade).
  * @param {{day: string, v: number}[]} pts
  */
 function sparkline(pts) {
@@ -135,6 +136,12 @@ function sparkline(pts) {
   for (const [k, v] of Object.entries({ cx: X(last.day).toFixed(1), cy: Y(last.v).toFixed(1), r: 2.75, class: 'stand-spark-end' })) end.setAttribute(k, String(v));
   svg.append(line, end);
   return svg;
+}
+
+/** The Progress row's click (a plain one, not a new tab): its sparkline is what Progress's known chart grows from. @param {MouseEvent} e */
+function handTo(e) {
+  if (e.button || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+  handoff(/** @type {HTMLElement | null} */ ((/** @type {Element} */ (e.currentTarget)).querySelector('.stand-spark')), 'pg-known');
 }
 
 /**
@@ -172,7 +179,7 @@ export function renderStanding({ plan, c, t, course = false, rows: mode = 'open'
   const def = h('p', { class: 'caption stand-def' }, t('stand.def'));
   // Today › Progress (L5): the long view from the progress log. A 64 px row: the title, the last 4 weeks' change, a
   // sparkline of known over 12 weeks and the chevron the plan rows use (design review round 4, P1-8)
-  const progress = () => h('a', { class: 'stand-progress pressable', href: '#/today/progress' },
+  const progress = () => h('a', { class: 'stand-progress pressable', href: '#/today/progress', onclick: handTo },
     h('span', { class: 'row-main' }, h('span', { class: 'row-title' }, t('pg.link')),
       spark && spark.gain != null ? h('span', { class: 'row-detail tnum' }, t('stand.progressGain', { d: `${spark.gain >= 0 ? '+' : '−'}${nf.format(Math.abs(spark.gain))}` })) : null),
     spark && spark.pts.length > 1 ? sparkline(spark.pts) : null,

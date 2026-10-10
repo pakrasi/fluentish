@@ -1,9 +1,9 @@
 /* Reading: small view pieces the screens share. */
 import { h } from '../../core/dom.js';
-import { icon } from '../../core/icons.js';
+import { backLink } from '../../core/ui.js';
 
 /** "‹ Reading". @param {string} href @param {string} text */
-export const back = (href, text) => h('a', { class: 'pr-backlink pressable', href }, icon('prev', { size: 16 }), text);
+export const back = (href, text) => backLink({ href, label: text });
 
 /** 0.906 → "90.6", 0.96 → "96". @param {number} x */
 export const pct = x => { const v = Math.round(x * 1000) / 10; return Number.isInteger(v) ? String(v) : v.toFixed(1); };

@@ -9,11 +9,12 @@
    Content and the search index are built once per session (data.js); long lists render in pages (ui.js paged). */
 import { h, replace, on, announce, append } from '../../core/dom.js';
 import { label } from '../../core/clock.js';
-import { notice, seg } from '../../core/ui.js';
+import { notice, seg, backLink } from '../../core/ui.js';
 import { icon } from '../../core/icons.js';
 import { num } from '../../core/i18n.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
 import { dueOn, compute as readiness } from '../../domain/b1ready.js';
+import { dash, ringGeometry } from '../../domain/meter.js';
 import * as D from './data.js';
 import { parseRoute, hashFor } from './route.js';
 import { search } from './search.js';
@@ -27,6 +28,7 @@ import { familyLink } from '../shared/family-link.js';
 import { connected, resultsRepo } from '../../data/connection.js';
 import { COLLECTION as EXAM_WORDS, inQueue } from '../shared/words.js';
 import { recheckCount } from '../shared/recheck.js';
+import { createSkeleton } from '../../ui/skeleton.js';
 
 const UI_KEY = 'lookup.ui';
 const DEBOUNCE_MS = 120;
@@ -46,6 +48,9 @@ export async function mount(el, ctx) {
   let alive = true;
   const cleanup = () => { alive = false; stop(); offs.forEach(f => f()); pagers.forEach(p => p.stop()); };
   const today = () => ctx.clock.ctx();
+  // the word map loads first (one content file): still rows meanwhile, invisible when it is already cached (ui/skeleton.js)
+  const mountAt = performance.now();
+  replace(el, h('div', { class: 'lookup', 'aria-busy': 'true' }, h('p', { class: 'sr-only', role: 'status' }, t('lookup.loading')), createSkeleton({ shape: 'rows', count: 4 }).el));
   /** lemma → [word id, level], for the card ids of captured words (shared with Practice through domain/itemids.js) */
   const wordmap = await D.wordmap(ctx.content);
   const testsTotal = (await ctx.content.manifest().catch(() => null))?.exams?.find((/** @type {any} */ e) => e.language === lang)?.tests?.length || 14;
@@ -181,19 +186,22 @@ export async function mount(el, ctx) {
   }
 
   const langOpt = () => (lang !== 'german' ? { lang } : {});
-  const loading = () => h('p', { class: 'caption lk-loading', role: 'status' }, t('lookup.loading'));
+  // still blocks in the shape of the rows (ui/skeleton.js: nothing for 150 ms, a band from 400 ms), and the status text
+  // for a screen reader; the region being filled carries aria-busy until it is replaced
+  // the wait counts from the mount, so a skeleton that follows the first one shows at once instead of blinking out
+  const loading = (wait = Math.max(0, 150 - (performance.now() - mountAt))) => h('div', { class: 'lk-loading' }, h('p', { class: 'sr-only', role: 'status' }, t('lookup.loading')), createSkeleton({ shape: 'rows', count: 3, wait }).el);
   /** @param {() => void} retry */
   const failed = retry => notice({ kind: 'warning', children: [h('p', null, t('lookup.loadError')), h('div', { class: 'notice-actions' }, h('button', { type: 'button', class: 'btn pressable', onclick: retry }, t('lookup.retry')))] });
   const moreText = (/** @type {number} */ n, /** @type {number} */ left) => t('lookup.more', { n: num(n), left: num(left) });
   /** @param {any[]} items @param {(x: any) => Node} row @param {string} [tag] */
   const list = (items, row, tag = 'ul') => { const p = paged(items, row, { more: moreText, tag }); pagers.push(p); return p.el; };
-  const back = (/** @type {string} */ href) => h('a', { class: 'lk-back pressable', href }, glyph('caret', 16), t('lookup.back'));
+  const back = (/** @type {string} */ href) => backLink({ href, label: t('lookup.back') });
 
   /* ---------- word sheet: #/lookup/words/<lemma or id> ---------- */
 
   if (route.tab === 'words' && route.id) {
     const id = route.id;
-    replace(el, h('div', { class: 'lookup lk-sheet' }, back(hashFor({ tab: 'words', opts: langOpt() })), h('h1', null, de(id)), loading()));
+    replace(el, h('div', { class: 'lookup lk-sheet', 'aria-busy': 'true' }, back(hashFor({ tab: 'words', opts: langOpt() })), h('h1', null, de(id)), loading()));
     const [mine, dict] = await Promise.all([D.myWords(store), D.dictionary(ctx.content, lang).catch(() => null)]);
     if (!alive) return cleanup;
     const rows = dict ? dict.rows : [];
@@ -282,7 +290,7 @@ export async function mount(el, ctx) {
 
   if (route.tab === 'grammar' && route.id) {
     const id = route.id;
-    replace(el, h('div', { class: 'lookup lk-sheet' }, back(hashFor({ tab: 'grammar', opts: langOpt() })), h('h1', null, t('lookup.grammar.topics')), loading()));
+    replace(el, h('div', { class: 'lookup lk-sheet', 'aria-busy': 'true' }, back(hashFor({ tab: 'grammar', opts: langOpt() })), h('h1', null, t('lookup.grammar.topics')), loading()));
     let gr;
     try { gr = await D.grammar(ctx.content, lang); } catch { if (alive) replace(el, h('div', { class: 'lookup' }, h('h1', null, t('lookup.title')), failed(() => ctx.go(`/lookup/grammar/${id}`)))); return cleanup; }
     if (!alive) return cleanup;
@@ -327,11 +335,12 @@ export async function mount(el, ctx) {
   replace(el, h('div', { class: 'lookup' },
     h('div', { class: 'lk-top' },
       h('h1', null, t('lookup.title')),
+      (route.opts.lang && !LANGS[route.opts.lang]) || (ctx.settings().language && !LANGS[ctx.settings().language]) ? notice({ children: [h('p', null, t('lookup.langOnly'))] }) : null,
+      // the search first, right under the heading: it is what he uses mid-study (design B10)
+      h('div', { class: 'lk-search' }, h('label', { class: 'lk-field' }, glyph('search', 20), input, clearBtn)),
       // the map is built from the German content (C3b: no map for another language)
       LANGS[lang].b1 ? h('a', { class: 'lk-map pressable', href: '#/lookup/map' }, mapArt(),
         h('span', { class: 'lk-map-text' }, h('span', { class: 'lk-map-title' }, t('lookup.map')), h('span', { class: 'lk-map-detail' }, t('lookup.map.detail'))), icon('next', { size: 18 })) : null,
-      (route.opts.lang && !LANGS[route.opts.lang]) || (ctx.settings().language && !LANGS[ctx.settings().language]) ? notice({ children: [h('p', null, t('lookup.langOnly'))] }) : null,
-      h('div', { class: 'lk-search' }, h('label', { class: 'lk-field' }, glyph('search', 20), input, clearBtn)),
       nav),
     body));
 
@@ -384,12 +393,14 @@ export async function mount(el, ctx) {
   async function draw() {
     const mine = ++token;
     pagers.forEach(p => p.stop()); pagers = [];
-    const slow = setTimeout(() => { if (mine === token) replace(body, loading()); }, 150);
+    // after 150 ms the skeleton shows at once (wait 0): the timer here already held it back
+    const slow = setTimeout(() => { if (mine === token) { body.setAttribute('aria-busy', 'true'); replace(body, loading(0)); } }, 150);
     let out;
     try { out = st.q ? await drawSearch() : await drawSection(); }
     catch (e) { console.error('lookup', e); out = failed(() => draw()); }
     clearTimeout(slow);
     if (!alive || mine !== token) return;
+    body.removeAttribute('aria-busy');
     replace(body, out);
     drawNav();
   }
@@ -590,6 +601,15 @@ export async function mount(el, ctx) {
 
   drawNav();
   await draw();
+  // on a desktop (a fine pointer) the search takes the focus on arrival; never on a phone, where it would raise the
+  // keyboard uninvited. The router focuses the heading after mount, so this waits two frames and only takes the
+  // focus from the heading (or nothing), never from something he has already moved to.
+  if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      const a = document.activeElement;
+      if (alive && input.isConnected && (!a || a === document.body || a.tagName === 'H1')) input.focus({ preventScroll: true });
+    }));
+  }
 
   // warm the other sections while the phone is idle, so the first search is instant
   const idle = /** @type {any} */ (globalThis).requestIdleCallback || ((/** @type {() => void} */ f) => setTimeout(f, 400));
@@ -604,15 +624,16 @@ function mapArt() {
   const svg = document.createElementNS(NS, 'svg');
   svg.setAttribute('viewBox', '0 0 64 64'); svg.setAttribute('class', 'lk-map-art'); svg.setAttribute('aria-hidden', 'true');
   for (const [x, y, r, k] of [[29, 30, 15, 0.7], [50, 16, 9, 0.45], [12, 47, 8, 0.85], [49, 46, 11, 0.3], [12, 14, 7, 0.6], [30, 56, 6, 0.5]]) {
-    const c = 2 * Math.PI * r;
-    const ring = (/** @type {string} */ stroke, /** @type {string | null} */ dash) => {
+    // one arc per disc on the meter family's geometry (domain/meter.js): a full track, the known share in ink
+    const g = ringGeometry({ r, stroke: 1.4 });
+    const ring = (/** @type {string} */ stroke, /** @type {string | null} */ pattern) => {
       const e = document.createElementNS(NS, 'circle');
       e.setAttribute('cx', String(x)); e.setAttribute('cy', String(y)); e.setAttribute('r', String(r));
       e.setAttribute('fill', 'none'); e.setAttribute('stroke', stroke); e.setAttribute('stroke-width', '1.4');
-      if (dash) { e.setAttribute('stroke-dasharray', dash); e.setAttribute('transform', `rotate(-90 ${x} ${y})`); }
+      if (pattern) { e.setAttribute('stroke-dasharray', pattern); e.setAttribute('transform', `rotate(-90 ${x} ${y})`); }
       return e;
     };
-    svg.append(ring('var(--hairline-strong)', null), ring('var(--ink)', `${(c * k).toFixed(1)} ${c.toFixed(1)}`));
+    svg.append(ring('var(--hairline-strong)', null), ring('var(--ink)', dash(k, g.seg, g.C)));
     // the paragraph: short lines inside the ring, one in the accent
     const lines = Math.max(1, Math.floor((r * 1.1) / 3));
     for (let j = 0; j < lines; j++) {

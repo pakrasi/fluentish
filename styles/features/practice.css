@@ -52,8 +52,6 @@
 .pr-group-panel .pr-rows { margin-top: 0; }
 :root[data-motion="reduce"] .pr-group-head > .icon { transition: none; }
 @media (prefers-reduced-motion: reduce) { :root:not([data-motion="full"]) .pr-group-head > .icon { transition: none; } }
-.pr-backlink { display: inline-flex; align-items: center; gap: 6px; min-height: var(--tap); padding-top: var(--s-2); color: var(--ink-2); text-decoration: none; font-size: 14px; }
-.pr-backlink + .page-head { padding-top: 0; }
 @media (min-width: 900px) {
   .pr-queue-btn { display: block; }
   .pr-queue-btn .btn { width: auto; min-width: 280px; }
@@ -98,6 +96,14 @@ body.pr-in-round #view { max-width: none; padding: 0; }
 .pr-prefill { flex: none; padding: 14px 0 12px; color: var(--ink-2); font: 400 var(--fs-input)/24px var(--font-ui); max-width: 45%; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
 .answer.is-retype .answer-input { text-decoration: none; color: var(--ink); animation: none; }
 .answer.is-shake .answer-input { animation: nudge 300ms var(--ease-out); }
+/* the verdict sweep (motion.css) lies on the field's rule: the 1px border and the 1px focus shadow under it, so a
+   checked answer shows one 2px line in green or red, not a coloured line over a black one */
+.answer::after { bottom: -2px; }
+/* wrong → type it once (design A7): the struck answer fades (120 ms) before the field empties, then the empty field
+   rises 8 px into its new state (160 ms) instead of both changing in one frame. Reduced motion: no fade, no rise. */
+.answer.is-clearing .answer-input { opacity: 0; transition: opacity 120ms var(--ease-in); }
+.answer.is-retype.is-arriving .answer-input { animation: pr-retype-in var(--dur-quick) var(--ease-out) both; }
+@keyframes pr-retype-in { from { opacity: 0; transform: translateY(calc(8px * var(--move))); } }
 .pr-moves { display: grid; gap: var(--s-2); margin-top: var(--s-5); }
 .pr-moves .btn { justify-content: flex-start; min-height: 52px; }
 .pr-fb { display: grid; gap: var(--s-2); padding-top: var(--s-4); }
@@ -106,10 +112,6 @@ body.pr-in-round #view { max-width: none; padding: 0; }
 .pr-res.is-bad { color: var(--bad); }
 .pr-res.is-warn { color: var(--ink); }
 .pr-yours { font-size: 17px; }
-.pr-slip { text-decoration: underline 2px var(--bad); text-underline-offset: 4px; }
-.pr-fix { color: var(--ink-2); }
-/* a capital or umlaut on a right answer: the changed letters underlined in accent, never red */
-.pr-capfix { text-decoration: underline 2px var(--accent); text-underline-offset: 4px; text-decoration-skip-ink: none; }
 .pr-diff { font-size: 17px; line-height: 1.4; }
 .pr-diff.answer-key { font: 400 20px/1.35 var(--font-display); margin-top: 0; }
 .pr-diff .caption { font-family: var(--font-ui); }
@@ -181,6 +183,20 @@ body.kb .pr-actions kbd { display: none; }
   margin-inline: calc(-1 * var(--s-2)); padding: var(--s-3) var(--s-2) var(--s-2); background: linear-gradient(to bottom, transparent, var(--canvas) 28%); }
 @media (min-width: 900px) { .pr-done .pr-done-actions, .wr-done .pr-done-actions { bottom: 0; } }
 @media (prefers-reduced-transparency: reduce) { .pr-done .pr-done-actions, .wr-done .pr-done-actions { background: var(--canvas); } }
+/* The done page's arrival (done-hero.js arrive(), design A3). html[data-arrive="done"] is set before the route's view
+   transition starts, so the old picture has the round card as its own layer: it lifts away (300 ms, as "I know this"
+   does) while the round's header and buttons fade with the page and the done page rises in its place on the soft
+   spring. The bars slide back on their own layers (motion.css fx-bar, fx-tabs). Reduced motion: no view transition,
+   a 140 ms crossfade. */
+:root[data-arrive="done"] .pr-round .pr-card { view-transition-name: pr-done-card; }
+:root[data-arrive="done"]::view-transition-old(pr-done-card) { animation: vt-lift 300ms var(--ease-out) both; }
+:root[data-arrive="done"]::view-transition-old(fx-roundhead), :root[data-arrive="done"]::view-transition-old(fx-roundact) { display: block; animation: vt-fade-out var(--dur-quick) var(--ease-in) both; }
+:root[data-arrive="done"][data-vt="view"]::view-transition-new(fx-view) { animation: vt-rise var(--dur-card) var(--spring-soft) 60ms both; }
+/* the figure is an odometer (done-hero.js): the next digit's serif is masked at the window's edges, as on Today */
+.pr-done-hero .figure.odo { -webkit-mask-image: linear-gradient(transparent 0, #000 12%, #000 84%, transparent 96%); mask-image: linear-gradient(transparent 0, #000 12%, #000 84%, transparent 96%); margin-bottom: -0.1em; }
+/* what the round added to the exam items known, in accent next to the count (design A4) */
+.pr-ready-n { display: inline-flex; align-items: baseline; gap: var(--s-2); }
+.pr-gain { color: var(--accent); font-weight: 600; font-size: 15px; }
 
 /* ---------- speaking ---------- */
 .pr-speak .pr-card { margin: var(--s-4) 0 0; max-width: none; }
@@ -282,7 +298,8 @@ body.kb .pr-actions kbd { display: none; }
 .wr-line.is-now .wr-slot { border-bottom: 2px solid var(--accent); padding-bottom: 2px; color: var(--accent-ink); }
 /* the finished email: lines land one after another; a line kept with a slip is marked and opens its right form */
 .wr-done .wr-letter .wr-in { animation: land 520ms var(--spring-pop) both; animation-delay: calc(var(--i) * 70ms); }
-.wr-fixme { all: unset; cursor: pointer; text-decoration: underline 2px dotted var(--bad); text-underline-offset: 5px; border-radius: 4px; }
+/* a line accepted with a slip: right, so marked in accent (dotted: it opens its right form), never red */
+.wr-fixme { all: unset; cursor: pointer; text-decoration: underline 2px dotted var(--accent); text-underline-offset: 5px; border-radius: 4px; }
 .wr-fixme:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .wr-fixnote { display: block; margin: 2px 0 var(--s-2); font-family: var(--font-ui); }
 .wr-fixnote[hidden] { display: none; }
@@ -518,17 +535,6 @@ mark.sim-chunk { background: repeating-linear-gradient(90deg, var(--ink-3) 0 2px
 
 /* ---------- the round size picker (picker.js): a bottom sheet on a phone, a card from 720px ---------- */
 .has-picker a[href^="#/practice/round"], .has-picker a[href^="#/practice/situations/round"] { -webkit-touch-callout: none; -webkit-user-select: none; user-select: none; }
-.rs-sheet { --rs-out: 160; position: fixed; inset: auto 0 0 0; width: 100%; max-width: 100%; max-height: min(92dvh, 640px); margin: 0; padding: 0; border: 0; background: transparent; color: var(--ink); overflow: visible; }
-.rs-sheet::backdrop { background: rgb(12 14 20 / 0.36); animation: rs-fade var(--dur-base) var(--ease-out) both; }
-.rs-panel { display: grid; gap: var(--s-3); max-height: min(92dvh, 640px); overflow-y: auto; overscroll-behavior: contain; padding: var(--s-2) var(--gutter, 16px) calc(var(--s-4) + env(safe-area-inset-bottom));
-  border-radius: var(--r-card) var(--r-card) 0 0; background: var(--surface); box-shadow: var(--shadow-sheet);
-  animation: rs-in var(--dur-card) var(--spring-snappy) both; }
-.rs-sheet.is-out .rs-panel { animation: rs-outk calc(var(--rs-out) * 1ms) var(--ease-in) both; }
-.rs-sheet.is-out::backdrop { animation: rs-fade calc(var(--rs-out) * 1ms) var(--ease-in) reverse both; }
-@keyframes rs-in { from { transform: translateY(calc(100% * var(--move))); opacity: calc(1 - var(--move)); } to { transform: none; opacity: 1; } }
-@keyframes rs-outk { to { transform: translateY(calc(40% * var(--move))); opacity: 0; } }
-@keyframes rs-fade { from { opacity: 0; } to { opacity: 1; } }
-.rs-grab { justify-self: center; width: 36px; height: 4px; border-radius: 2px; background: var(--hairline-strong); margin-bottom: var(--s-1); }
 .rs-title { margin: 0; font: 400 var(--fs-h2)/1.15 var(--font-display); }
 .rs-sub { margin: -6px 0 var(--s-1); }
 .rs-opts { display: grid; gap: var(--s-2); }
@@ -548,6 +554,11 @@ mark.sim-chunk { background: repeating-linear-gradient(90deg, var(--ink-3) 0 2px
 .rs-row > .rs-opt { flex: 1; min-width: 0; border: 0; background: transparent; }
 .rs-row > .rs-opt[aria-checked="true"] { box-shadow: none; }
 .rs-row.is-on { border-color: var(--ink); box-shadow: inset 0 0 0 1px var(--ink); }
+/* forced colours drop the inset shadow and the filled key: the chosen option gets a Highlight outline instead */
+@media (forced-colors: active) {
+  .rs-opt[aria-checked="true"], .rs-row.is-on { outline: 2px solid Highlight; outline-offset: -2px; }
+  .rs-row > .rs-opt[aria-checked="true"] { outline: none; }
+}
 .rs-stepper { flex: none; display: flex; align-items: center; gap: 6px; }
 .rs-step { flex: none; width: var(--tap); height: var(--tap); border-radius: var(--r-ctl); border: 1px solid var(--field-border); background: var(--surface); color: var(--ink); font: 400 22px/1 var(--font-ui); cursor: pointer; }
 .rs-step[disabled] { opacity: 0.4; cursor: default; }
@@ -565,11 +576,6 @@ mark.sim-chunk { background: repeating-linear-gradient(90deg, var(--ink-3) 0 2px
 .rs-start { min-height: 52px; }
 .rs-tip { margin: 0; text-align: center; }
 @media (hover: none) { .rs-key { display: none; } }
-@media (min-width: 720px) {
-  .rs-sheet { inset: 0; margin: auto; width: min(440px, calc(100% - 32px)); height: fit-content; }
-  .rs-panel { border-radius: var(--r-card); padding: var(--s-4) var(--s-5) var(--s-5); box-shadow: var(--shadow-lift), 0 0 0 1px var(--hairline); }
-  @keyframes rs-in { from { transform: translateY(calc(24px * var(--move))) scale(calc(1 - 0.02 * var(--move))); opacity: 0; } to { transform: none; opacity: 1; } }
-  .rs-grab { display: none; }
 }
 @media (hover: hover) and (pointer: fine) { .rs-tip { display: none; } }
 

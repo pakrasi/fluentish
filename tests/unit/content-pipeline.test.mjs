@@ -72,11 +72,13 @@ test('native review: reviewedBy and reviewedAt are optional, typed by the schema
 });
 
 /** sw.js stamped with two packs, in a sandbox registered at `script`. */
+/** A network answer: the shell names its version's code (install checks it, round 8), anything else is empty. */
+const shellOr = (/** @type {string} */ href) => new Response(href.endsWith('/fluentish/') ? `<script type="module" src="v/${'a'.repeat(40)}/src/main.js"></script>` : '{}');
 function loadSw(/** @type {string} */ script) {
   const js = stampSw(readFileSync(path.join(ROOT, 'sw.js'), 'utf8'), 'a'.repeat(40), ['./', 'content/manifest.json', 'content/igloo/framework.json?h=1'],
     { de: ['content/b1/items.json?h=2'], fr: ['content/igloo/chunks/french.json?h=3'] });
   /** @type {Record<string, any>} */ const listeners = {};
-  const ctx = /** @type {any} */ ({ URL, Headers, setTimeout, Promise, location: new URL(script), addEventListener: (/** @type {string} */ t, /** @type {any} */ f) => { listeners[t] = f; } });
+  const ctx = /** @type {any} */ ({ URL, Headers, TextDecoder, setTimeout, Promise, location: new URL(script), addEventListener: (/** @type {string} */ t, /** @type {any} */ f) => { listeners[t] = f; } });
   ctx.self = ctx;
   vm.runInNewContext(js, ctx);
   return { ctx, listeners };
@@ -92,7 +94,7 @@ test('the service worker precaches the shared files and only the packs its URL n
   const { ctx, listeners } = loadSw(`${base}?packs=fr`);
   /** @type {string[]} */ const fetched = [];
   ctx.caches = { open: async () => ({ put: async () => {} }), match: async () => null };
-  ctx.fetch = async (/** @type {string} */ href) => { fetched.push(href.replace('https://pakrasi.github.io/fluentish/', '')); return { ok: true }; };
+  ctx.fetch = async (/** @type {string} */ href) => { fetched.push(href.replace('https://pakrasi.github.io/fluentish/', '')); return shellOr(href); };
   /** @type {Promise<any> | null} */ let done = null;
   listeners.install({ waitUntil: (/** @type {Promise<any>} */ p) => { done = p; } });
   await done;
@@ -197,7 +199,7 @@ test('install copies forward the word families an older version cached under the
   ctx.caches = { open: async () => ({ put: async (/** @type {string} */ k, /** @type {any} */ v) => { fresh.set(k, v); }, match: async (/** @type {string} */ k) => (k.endsWith('content/manifest.json') ? { json: async () => manifest } : null) }),
     match: async (/** @type {string} */ k) => old.get(k) || null };
   /** @type {string[]} */ const fetched = [];
-  ctx.fetch = async (/** @type {string} */ href) => { fetched.push(href); return { ok: true }; };
+  ctx.fetch = async (/** @type {string} */ href) => { fetched.push(href); return shellOr(href); };
   /** @type {Promise<any> | null} */ let done = null;
   listeners.install({ waitUntil: (/** @type {Promise<any>} */ p) => { done = p; } });
   await done;

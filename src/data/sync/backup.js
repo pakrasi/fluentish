@@ -24,7 +24,7 @@
    been seen), not a preview profile, at most one flush a minute, stopped by a connection or token error. The
    learner can turn the backup off in Profile › Data (kv 'backup'.on === false). */
 import { fnv1a, isoWithOffset } from '../ids.js';
-import { MONTH_KEY } from '../../domain/progress.js';
+import { MONTH_KEY } from '../../domain/progress-key.js';
 
 /** Event types that carry learning state (review B4: card events carry base and post). */
 export const BACKUP_TYPES = new Set(['card.reviewed', 'card.marked_known', 'card.unmarked_known', 'card.checked', 'settings.changed']);
@@ -155,7 +155,9 @@ export function mergeLines(existing, events) {
 
 /* ---------- what must never leave the device ---------- */
 
-const TOKEN = /github_pat_[A-Za-z0-9_]{20,}|\bgh[opsur]_[A-Za-z0-9]{20,}|sk-ant-[A-Za-z0-9_-]{16,}|-----BEGIN [A-Z ]*PRIVATE KEY-----/;
+// accounts (round 8, docs/ACCOUNTS.md): a Supabase secret key, and a JWT (a session token or a legacy anon or
+// service_role key); the same shapes tools/check-privacy.mjs blocks
+const TOKEN = /github_pat_[A-Za-z0-9_]{20,}|\bgh[opsur]_[A-Za-z0-9]{20,}|sk-ant-[A-Za-z0-9_-]{16,}|-----BEGIN [A-Z ]*PRIVATE KEY-----|sb_secret_[A-Za-z0-9_-]{16,}|\beyJ[A-Za-z0-9_-]{10,}\.eyJ[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}/;
 const SCRIPT_MARKS = /"deck":"script"|"local":true|"(?:SR|SW):|"script:/;
 
 /**
@@ -219,14 +221,21 @@ export async function gunzip(bytes) {
  * }} Files  a target's own files (github-b1exam.js createGithubB1Exam().files)
  */
 
-/** The backup's state on this device. @param {any} store @returns {Record<string, any>} */
-export const state = store => store.get(STATE_KV, {}) || {};
-/** @param {any} store @param {Record<string, any>} patch */
-export const setState = (store, patch) => store.set(STATE_KV, { ...state(store), ...patch });
-/** Whether progress is backed up (on unless turned off). @param {any} store */
-export const backupOn = store => state(store).on !== false;
+/* A target's state lives in a device kv of its own: 'backup' for the results repository (STATE_KV), and later
+   'backup.account' for the account (docs/ACCOUNTS.md, stage 2), which keeps its own high-water mark instead of
+   event.synced. Every function below takes the kv name, and its default is today's. */
+/** The backup's state on this device. @param {any} store @param {string} [kv] @returns {Record<string, any>} */
+export const state = (store, kv = STATE_KV) => store.get(kv, {}) || {};
+/** @param {any} store @param {Record<string, any>} patch @param {string} [kv] */
+export const setState = (store, patch, kv = STATE_KV) => store.set(kv, { ...state(store, kv), ...patch });
+/** Whether progress is backed up (on unless turned off). @param {any} store @param {string} [kv] */
+export const backupOn = (store, kv = STATE_KV) => state(store, kv).on !== false;
+/** The results repository's pending selector: learning events not yet marked synced. @param {any} store @returns {any[]} */
+export const pendingEvents = store => store.pending().filter(backupable);
+/** The results repository's acknowledgement: event.synced. @param {any} store @param {any[]} events */
+export const markEventsSent = (store, events) => store.markSynced(events.map(e => e.id));
 /** Learning events waiting for the backup. @param {any} store */
-export const waiting = store => store.pending().filter(backupable).length;
+export const waiting = store => pendingEvents(store).length;
 
 /**
  * Write a file this device owns: read it (for its sha and what is there), make the new text, write with the sha.
@@ -253,18 +262,21 @@ export async function writeOwned(files, path, next, message, secrets) {
  * Back up what is waiting: the learning events (one file per study day, by this device), then today's snapshot
  * when it is due. Marks the events it wrote as synced. Stops at a token or connection error.
  * @param {any} store @param {Files} files
- * @param {{now?: () => number, force?: boolean, build?: string | null, extra?: (o: {files: Files, secrets: any, now: () => number}) => Promise<void>}} [o]
- *   extra: one more daily upload in the same run (the error log)
+ * @param {{now?: () => number, force?: boolean, build?: string | null, extra?: (o: {files: Files, secrets: any, now: () => number}) => Promise<void>,
+ *   stateKv?: string, pending?: (store: any) => any[], markSent?: (store: any, events: any[]) => void}} [o]
+ *   extra: one more daily upload in the same run (the error log). stateKv, pending, markSent: the target's own state
+ *   kv, its selector of the learning events still to send, and how it records them as sent; the defaults are the
+ *   results repository's ('backup', pendingEvents, markEventsSent)
  * @returns {Promise<{ok: number, files: number, snapshot: boolean, error: any}>}
  */
-export async function backupProgress(store, files, { now = Date.now, force = false, build = null, extra } = {}) {
+export async function backupProgress(store, files, { now = Date.now, force = false, build = null, extra, stateKv = STATE_KV, pending: select = pendingEvents, markSent = markEventsSent } = {}) {
   const out = { ok: 0, files: 0, snapshot: false, error: /** @type {any} */ (null) };
-  if (!backupOn(store)) return out;
-  const st = state(store);
+  if (!backupOn(store, stateKv)) return out;
+  const st = state(store, stateKv);
   const secrets = store.get('secrets', {}) || {};
   const dev = store.device.deviceId;
   // 1. learning events, oldest day first
-  const pending = store.pending().filter(backupable);
+  const pending = select(store).filter(backupable);
   const eventsDue = force || !st.eventsAt || now() - (Date.parse(st.eventsAt) || 0) >= EVENTS_EVERY_MS;
   if (pending.length && eventsDue) {
     /** @type {Map<string, any[]>} */ const byFile = new Map();
@@ -272,7 +284,7 @@ export async function backupProgress(store, files, { now = Date.now, force = fal
     for (const [path, evs] of [...byFile].sort(([a], [b]) => (a < b ? -1 : 1))) {
       try {
         await writeOwned(files, path, old => mergeLines(old, evs), `progress: ${evs.length} event${evs.length === 1 ? '' : 's'} (${deviceDir(dev)})`, secrets);
-        store.markSynced(evs.map(e => e.id));
+        markSent(store, evs);
         out.ok += evs.length;
         out.files++;
       } catch (e) {
@@ -280,31 +292,31 @@ export async function backupProgress(store, files, { now = Date.now, force = fal
         if (/** @type {any} */ (e)?.auth || /** @type {any} */ (e)?.offline) break;
       }
     }
-    if (!out.error) setState(store, { eventsAt: new Date(now()).toISOString() });
+    if (!out.error) setState(store, { eventsAt: new Date(now()).toISOString() }, stateKv);
   }
-  if (out.error?.auth || out.error?.offline) return finish(store, out, now);
+  if (out.error?.auth || out.error?.offline) return finish(store, out, now, stateKv);
   // 2. today's snapshot
-  try { out.snapshot = await snapshotIfDue(store, files, { now, force, build, secrets }); } catch (e) { out.error = out.error || e; }
-  if (out.error?.auth || out.error?.offline) return finish(store, out, now);
+  try { out.snapshot = await snapshotIfDue(store, files, { now, force, build, secrets, stateKv }); } catch (e) { out.error = out.error || e; }
+  if (out.error?.auth || out.error?.offline) return finish(store, out, now, stateKv);
   // 3. anything else that goes once a day (the error log)
   if (extra) { try { await extra({ files, secrets, now }); } catch (e) { out.error = out.error || e; } }
-  return finish(store, out, now);
+  return finish(store, out, now, stateKv);
 }
 
-/** @param {any} store @param {{ok: number, files: number, snapshot: boolean, error: any}} out @param {() => number} now */
-function finish(store, out, now) {
+/** @param {any} store @param {{ok: number, files: number, snapshot: boolean, error: any}} out @param {() => number} now @param {string} stateKv */
+function finish(store, out, now, stateKv) {
   const at = new Date(now()).toISOString();
-  setState(store, out.error ? { error: { at, message: String(out.error?.message || out.error) } } : { at, error: null });
+  setState(store, out.error ? { error: { at, message: String(out.error?.message || out.error) } } : { at, error: null }, stateKv);
   return out;
 }
 
 /**
  * Upload today's snapshot when it is due: none yet today, or older than SNAPSHOT_EVERY_MS and changed, or asked for.
  * A profile without cards writes none (a fresh start never covers a real backup).
- * @param {any} store @param {Files} files @param {{now: () => number, force: boolean, build: string | null, secrets: any}} o
+ * @param {any} store @param {Files} files @param {{now: () => number, force: boolean, build: string | null, secrets: any, stateKv: string}} o
  */
-async function snapshotIfDue(store, files, { now, force, build, secrets }) {
-  const st = state(store);
+async function snapshotIfDue(store, files, { now, force, build, secrets, stateKv }) {
+  const st = state(store, stateKv);
   const today = store.clock.today();
   const prev = st.snapshot && st.snapshot.profileId === store.profile.id ? st.snapshot : null;
   const due = force || !prev || prev.day !== today || now() - (Date.parse(prev.at) || 0) >= SNAPSHOT_EVERY_MS;
@@ -312,7 +324,7 @@ async function snapshotIfDue(store, files, { now, force, build, secrets }) {
   const snap = snapshotOf(store, { now: now(), build });
   if (!snap.counts.cards) return false;
   const hash = snapshotHash(snap);
-  if (prev && prev.day === today && prev.hash === hash) { setState(store, { snapshot: { ...prev, at: snap.at } }); return false; }
+  if (prev && prev.day === today && prev.hash === hash) { setState(store, { snapshot: { ...prev, at: snap.at } }, stateKv); return false; }
   const text = JSON.stringify(snap);
   const leak = leakIn(text, secrets);
   if (leak) throw Object.assign(new Error(`backup blocked: the snapshot would contain ${leak}`), { blocked: true });
@@ -327,7 +339,7 @@ async function snapshotIfDue(store, files, { now, force, build, secrets }) {
       sha = (await files.read(path))?.sha || null;   // written by an earlier try, or by another tab: replace it
     }
   }
-  setState(store, { snapshot: { day: today, at: snap.at, hash, path, sha, profileId: store.profile.id, cards: snap.counts.cards } });
+  setState(store, { snapshot: { day: today, at: snap.at, hash, path, sha, profileId: store.profile.id, cards: snap.counts.cards } }, stateKv);
   return true;
 }
 
@@ -395,16 +407,17 @@ export function convTexts(store) {
  * Upload the error log once a study day: the entries logged since the last upload, to data/logs/<device>/<day>.ndjson,
  * each checked again for script text (a match is replaced, never sent).
  * @param {any} store @param {Files} files
- * @param {{entries: {at: string, where: string, message: string}[], now: () => number, secrets: any, build?: string | null}} o
+ * @param {{entries: {at: string, where: string, message: string}[], now: () => number, secrets: any, build?: string | null, stateKv?: string}} o
+ *   stateKv: the target's state kv (default 'backup')
  * @returns {Promise<number>} entries uploaded
  */
-export async function uploadLog(store, files, { entries, now, secrets, build = null }) {
-  const st = state(store);
+export async function uploadLog(store, files, { entries, now, secrets, build = null, stateKv = STATE_KV }) {
+  const st = state(store, stateKv);
   const today = store.clock.today();
   if (st.logDay === today) return 0;
   const since = st.logAt || '';
   const fresh = entries.filter(e => e && typeof e.at === 'string' && e.at > since);
-  if (!fresh.length) { setState(store, { logDay: today }); return 0; }
+  if (!fresh.length) { setState(store, { logDay: today }, stateKv); return 0; }
   // reading texts (kv reads, read.ctx) and conversation transcripts have Scripts' shape, so the same check finds them
   // (round 4)
   const isScript = scriptText({ ...(store.get('scripts', {}) || {}), ...readTexts(store), ...convTexts(store) });
@@ -413,6 +426,6 @@ export async function uploadLog(store, files, { entries, now, secrets, build = n
     const have = new Set(String(old || '').split('\n').filter(Boolean));
     return [...have, ...lines.filter(l => !have.has(l))].join('\n') + '\n';
   }, `progress: error log (${deviceDir(store.device.deviceId)})`, secrets);
-  setState(store, { logDay: today, logAt: fresh[fresh.length - 1].at });
+  setState(store, { logDay: today, logAt: fresh[fresh.length - 1].at }, stateKv);
   return fresh.length;
 }

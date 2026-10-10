@@ -115,9 +115,6 @@ mark.lk-turn { background: color-mix(in oklab, var(--role-turn) var(--role-mix),
 
 /* sheets: a word, a grammar topic */
 .lk-sheet { padding-bottom: var(--s-10); }
-.lk-back { display: inline-flex; align-items: center; gap: 4px; min-height: var(--tap); margin-block: calc(-1 * var(--s-3)) var(--s-2); margin-inline: -6px 0; padding: 0 6px; color: var(--ink-2); text-decoration: none; font: 500 14px/1 var(--font-ui); }
-.lk-back .icon { transform: rotate(90deg); }
-.lk-back:hover { color: var(--ink); }
 .lk-sheet-head { display: flex; align-items: center; gap: var(--s-2); }
 .lk-sheet-head h1 { overflow-wrap: anywhere; }
 .lk-sheet-head .lk-say { color: var(--ink); }

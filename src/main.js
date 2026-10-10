@@ -7,9 +7,10 @@ import { t, setLocale } from './core/i18n.js';
 import { h, replace, $ } from './core/dom.js';
 import { icon } from './core/icons.js';
 import { markNode } from './core/brand.js';
-import { swap, toast as kitToast } from './core/motion.js';
+import { swap, toast as kitToast, reduced } from './core/motion.js';
 import { startKeyboard } from './core/keyboard.js';
-import { createRouter } from './core/router.js';
+import { createRouter, safeNext } from './core/router.js';
+import { createScrollKeeper } from './core/scroll.js';
 import { avatar } from './core/ui.js';
 import { log, installErrorLog, attachLogStore } from './core/log.js';
 import { createIdbAdapter } from './data/adapters/idb.js';
@@ -18,9 +19,8 @@ import { openSession } from './data/session.js';
 import { normalizeSettings, defaultPrefs, examDate } from './data/settings.js';
 import { createContent } from './data/content.js';
 import { sync, restore, backup, backupFiles } from './data/sync/index.js';
-import { startProgress } from './data/progress.js';
 import { TABS, routes, startFeatures } from './features/registry.js';
-import { createSw } from './services/sw.js';
+import { createSw, takeoverGate } from './services/sw.js';
 import { loadRecordSchemas, recordChecker } from './data/records.js';
 import { takeLink } from './core/link.js';
 import { migrateConnections, resultsRepo, validRepo, connect, applyOwnerLink, OWNER } from './data/connection.js';
@@ -138,7 +138,20 @@ async function main() {
     // the Exam tab: an exam goal with mock tests (a date-only goal such as 'other' has the countdown, not the tab)
     const tabs = TABS.filter(tb => !tb.needsExam || hasMockExam(s));
     return h('nav', { class: `tabs tabs-${where}`, 'aria-label': t('nav.main'), style: { '--n': tabs.length } },
-      tabs.map(tb => h('a', { href: tb.href, dataset: { tab: tb.id }, class: 'pressable' }, icon(tb.icon, { size: 22 }), h('span', null, t(tb.label)))));
+      tabs.map(tb => h('a', { href: tb.href, dataset: { tab: tb.id }, class: 'pressable', onclick: retap }, icon(tb.icon, { size: 22 }), h('span', null, t(tb.label)))),
+      // the phone tab bar's accent dash is one element that slides under the current tab (styles/components.css)
+      where === 'bottom' ? h('i', { class: 'tabs-dash', 'aria-hidden': 'true' }) : null);
+  };
+  /* a tap on the tab you are on, at its root: back to the top (iOS convention; the Home Screen app has no browser
+     Back). At a page inside the tab the link is a new navigation to the tab's root, which starts at the top. */
+  const retap = (/** @type {MouseEvent} */ e) => {
+    const a = /** @type {HTMLAnchorElement} */ (e.currentTarget);
+    if (e.metaKey || e.ctrlKey || e.shiftKey) return;
+    // another tab: it is the current one from the tap, so its label changes with the dash (the route confirms it;
+    // a page that keeps him, an exam asking first, puts the mark back: hashchange below)
+    if (a.getAttribute('href') !== location.hash) { markTab(a.dataset.tab || null); return; }
+    e.preventDefault();
+    scrollTo({ top: 0, behavior: reduced() ? 'instant' : 'smooth' });
   };
   async function refreshShell() {
     const bar = /** @type {HTMLElement} */ ($('#bar-inner'));
@@ -153,9 +166,13 @@ async function main() {
     markTab(currentTab);
   }
   let currentTab = /** @type {string | null} */ (null);
+  // the page on screen and its tab: a tab marked on a tap goes back to it when the page kept him (canLeave)
+  let mounted = { hash: '', tab: /** @type {string | null} */ (null) };
+  addEventListener('hashchange', () => { if (location.hash === mounted.hash && currentTab !== mounted.tab) markTab(mounted.tab); });
   // The automatic merge of the other devices' backups (after the opt-in in Profile › Data) changes cards, so it runs
   // only while the app is at rest on Today or Profile, never mid-round or mid-exam; at most every 30 minutes.
   let atRest = false;
+  const takeover = takeoverGate({ bus, sw });   // onMounted: a new version takes over from Today once it has settled
   const autoMerge = () => {
     if (!atRest || !navigator.onLine || !restore(store).autoMergeOn()) return;
     restore(store).merge().then(r => {
@@ -186,13 +203,21 @@ async function main() {
   startKeyboard({ bus });
 
   // ---------- router ----------
+  // Back and Forward return to where the page was (core/scroll.js)
+  const scrollKeeper = createScrollKeeper();
+  scrollKeeper.start();
   const router = createRouter({
+    scroll: scrollKeeper,
     routes: routes(),
     view: /** @type {HTMLElement} */ ($('#view')),
     home: '/today',
     guard: (path) => {
       const onboarded = !!settings().onboarded;
-      if (!onboarded && path !== '/welcome') return '/welcome';
+      if (!onboarded && path !== '/welcome') {
+        // a link opened before onboarding (the site is shared) opens once Welcome is done
+        const next = path === '/today' ? null : safeNext(location.hash.replace(/^#/, ''));
+        return next ? `/welcome?next=${encodeURIComponent(next)}` : '/welcome';
+      }
       if (onboarded && path === '/welcome') return '/today';
       return null;
     },
@@ -203,7 +228,10 @@ async function main() {
     transition: update => swap(update, { kind: 'view', fallbackEl: /** @type {HTMLElement} */ ($('#view')) }),
     onMounted: ({ route }) => {
       markTab(route.tab || (route.path.startsWith('/profile') ? 'profile' : null));
-      sw.atRest(route.path === '/today');   // a new version applies only from Today, never mid-round or mid-exam
+      mounted = { hash: location.hash, tab: currentTab };
+      // a new version applies only from Today, never mid-round or mid-exam, and only once Today has settled
+      // (services/sw.js takeoverGate)
+      takeover(route.path);
       atRest = route.path === '/today' || route.path.startsWith('/profile');
       if (atRest) autoMerge();
       const h1 = $('#view h1');
@@ -211,9 +239,18 @@ async function main() {
       const custom = $('#view [data-title]')?.getAttribute('data-title') || null;
       document.title = docTitle({ h1: h1 ? h1.textContent : null, custom, path: route.path, name: config.name });
     },
-    onError: (err, path) => {
+    onError: (err, path, route) => {
       log('route', err);
-      replace(/** @type {HTMLElement} */ ($('#view')), h('div', { class: 'stack page-pad' }, h('h1', null, t('error.title')), h('p', null, t('error.view', { path })), h('a', { class: 'btn', href: '#/today' }, t('error.home'))));
+      // the tab of the page that failed stays marked, and the page is named, never its path
+      const tab = route?.tab || (path.startsWith('/profile') ? 'profile' : null);
+      markTab(tab);
+      // Try again loads the page again (a module a bad connection cut off is fetched anew); Today is the way out. On a
+      // phone both sit in the dock, in thumb reach.
+      replace(/** @type {HTMLElement} */ ($('#view')), h('div', { class: 'stack page-pad error-view' }, h('h1', null, t('error.title')),
+        h('p', null, tab && tab !== 'profile' ? t('error.viewNamed', { page: t(`tab.${tab}`) }) : t('error.view')),
+        h('div', { class: 'error-actions dock' },
+          h('button', { type: 'button', class: 'btn btn-primary pressable', onclick: () => location.reload() }, t('error.retry')),
+          h('a', { class: 'btn btn-quiet pressable', href: '#/today' }, t('error.home')))));
     },
   });
   await router.start();
@@ -225,8 +262,11 @@ async function main() {
 
   // ---------- progress log ----------
   // one record per study day (data/progress.js): the past once per device (with the backup when this device is
-  // linked), missed days, then today after study
-  startProgress({ store, clock, content, bus, log, files: () => (backup(store).linked() && backup(store).allowed() && navigator.onLine ? backupFiles(store) : null) });
+  // linked), missed days, then today after study. Loaded after the first screen: it is not part of the boot graph
+  // (tests/unit/boot-graph.test.mjs)
+  import('./data/progress.js')
+    .then(({ startProgress }) => startProgress({ store, clock, content, bus, log, files: () => (backup(store).linked() && backup(store).allowed() && navigator.onLine ? backupFiles(store) : null) }))
+    .catch((/** @type {any} */ e) => log('progress', e));
 
   // ---------- results sync ----------
   // On start and whenever the page becomes visible again, at most once a minute. sync() skips by itself when

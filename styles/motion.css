@@ -59,12 +59,18 @@
 ::view-transition-group(*) { animation-duration: var(--dur-card); animation-timing-function: var(--ease-out); }
 ::view-transition-old(root), ::view-transition-new(root) { animation: none; mix-blend-mode: normal; }
 
+/* The study card is named fx-card only while a card swap runs (data-vt is set before startViewTransition, so both
+   snapshots see it): in a route change the card belongs to fx-view and leaves with it. These are the cards swap()
+   animates; one per screen, as two elements with one name would make the browser skip the transition. */
+:root[data-vt="forward"] :is(.pr-card, .wr-card, .wb-rcard),
+:root[data-vt="back"] :is(.pr-card, .wr-card, .wb-rcard),
+:root[data-vt="lift"] :is(.pr-card, .wr-card, .wb-rcard) { view-transition-name: fx-card; }
 /* card: forward (next card) */
 :root[data-vt="forward"]::view-transition-old(fx-card) { animation: vt-out-left var(--dur-quick) var(--ease-in) both; }
-:root[data-vt="forward"]::view-transition-new(fx-card) { animation: vt-in-right var(--dur-card) var(--spring-snappy) 40ms both; }
+:root[data-vt="forward"]::view-transition-new(fx-card) { animation: vt-in-right var(--dur-card) var(--spring-snappy) 70ms both; }
 /* card: back (previous card) */
 :root[data-vt="back"]::view-transition-old(fx-card) { animation: vt-out-right var(--dur-quick) var(--ease-in) both; }
-:root[data-vt="back"]::view-transition-new(fx-card) { animation: vt-in-left var(--dur-card) var(--spring-snappy) 40ms both; }
+:root[data-vt="back"]::view-transition-new(fx-card) { animation: vt-in-left var(--dur-card) var(--spring-snappy) 70ms both; }
 /* "I know this": the card lifts away, softly, and the next one rises into its place */
 :root[data-vt="lift"]::view-transition-old(fx-card) { animation: vt-lift 300ms var(--ease-out) both; }
 :root[data-vt="lift"]::view-transition-new(fx-card) { animation: vt-in-up var(--dur-card) var(--spring-soft) 90ms both; }
@@ -75,11 +81,46 @@
 ::view-transition-old(fx-roundhead), ::view-transition-old(fx-roundact) { animation: none; display: none; }
 ::view-transition-new(fx-roundhead), ::view-transition-new(fx-roundact) { animation: none; }
 ::view-transition-group(fx-roundhead), ::view-transition-group(fx-roundact) { animation: none; }
+/* entering a round (only the new page has them): the header fades in and the action row rises, 120 ms late, once the
+   app bar has slid away, so neither lands on the departing bar (design review S2) */
+:root::view-transition-new(fx-roundhead):only-child { animation: vt-fade-in var(--dur-quick) var(--ease-out) 120ms both; }
+:root::view-transition-new(fx-roundact):only-child { animation: vt-rise var(--dur-quick) var(--ease-out) 120ms both; }
 :root[data-vt="forward"]::view-transition-old(fx-view), :root[data-vt="back"]::view-transition-old(fx-view) { animation: none; display: none; }
 :root[data-vt="forward"]::view-transition-new(fx-view), :root[data-vt="back"]::view-transition-new(fx-view) { animation: none; }
+/* view, safety net: any other named element that only the old view has (no partner to morph into) leaves with the
+   page in 160 ms instead of the browser's 380 to 520 ms fade (the sparkline leaving Today, a round's header after
+   End). Pairs that morph into each other (fx-disc, pg-known) are not :only-child and keep their own animation. */
+:where(:root[data-vt="view"])::view-transition-old(*):only-child { animation: vt-fade-out var(--dur-quick) var(--ease-in) both; }
 /* view: between tabs/routes. Content rises 8px; the bar and tab bar stay put. */
 :root[data-vt="view"]::view-transition-old(fx-view) { animation: vt-fade-out var(--dur-quick) var(--ease-in) both; }
 :root[data-vt="view"]::view-transition-new(fx-view) { animation: vt-rise var(--dur-card) var(--ease-out) 30ms both; }
+
+/* The app bar and the phone tab bar are their own layers in every view transition (fx-bar, fx-tabs), so the page
+   moves under them and they hold still. Their new picture is live: the tab dash slides inside it (components.css).
+   Where a view hides them (a round, the exam runner, any full-screen flow) the old picture slides off its edge with
+   a fade in 160 ms; where they come back the new one slides in on the card duration. Reduced motion: no view
+   transition, so they appear and go at once. */
+.bar { view-transition-name: fx-bar; }
+.tabs-bottom { view-transition-name: fx-tabs; }
+/* the phone dock (one per page) is chrome too: on both sides it holds still and its label just changes; on one side
+   it slides off or on its bottom edge like the tab bar (design review S1) */
+.dock { view-transition-name: fx-dock; }
+::view-transition-group(fx-dock) { animation: none; }
+::view-transition-old(fx-dock) { animation: none; opacity: 0; }
+::view-transition-new(fx-dock) { animation: none; }
+:root::view-transition-old(fx-dock):only-child { opacity: 1; animation: vt-off-down var(--dur-quick) var(--ease-in) both; }
+:root::view-transition-new(fx-dock):only-child { animation: vt-on-up var(--dur-card) var(--ease-out) 30ms both; }
+::view-transition-group(fx-bar), ::view-transition-group(fx-tabs) { animation: none; }
+::view-transition-old(fx-bar), ::view-transition-old(fx-tabs) { animation: none; opacity: 0; }
+::view-transition-new(fx-bar), ::view-transition-new(fx-tabs) { animation: none; }
+:root::view-transition-old(fx-tabs):only-child { opacity: 1; animation: vt-off-down var(--dur-quick) var(--ease-in) both; }
+:root::view-transition-old(fx-bar):only-child { opacity: 1; animation: vt-off-up var(--dur-quick) var(--ease-in) both; }
+:root::view-transition-new(fx-tabs):only-child { animation: vt-on-up var(--dur-card) var(--ease-out) 30ms both; }
+:root::view-transition-new(fx-bar):only-child { animation: vt-on-down var(--dur-card) var(--ease-out) 30ms both; }
+@keyframes vt-off-down { to { opacity: 0; transform: translateY(calc(100% * var(--move))); } }
+@keyframes vt-off-up   { to { opacity: 0; transform: translateY(calc(-100% * var(--move))); } }
+@keyframes vt-on-up    { from { opacity: 0; transform: translateY(calc(100% * var(--move))); } }
+@keyframes vt-on-down  { from { opacity: 0; transform: translateY(calc(-100% * var(--move))); } }
 
 /* a shared element across a route (motion.js handoff/receive): a map group's disc grows into its page's header on
    the snappy spring, the old picture fading as the new one comes in (both kept to their own aspect) */
@@ -138,6 +179,16 @@
 .reveal-answer { display: grid; grid-template-rows: 0fr; opacity: 0; transition: grid-template-rows var(--dur-base) var(--ease-out), opacity var(--dur-base) var(--ease-out); }
 .reveal-answer > * { overflow: hidden; }
 .reveal-answer.is-open { grid-template-rows: 1fr; opacity: 1; }
+
+/* Reduced motion (DESIGN: "the check and underline appear without sweeping", "fills jump"): what --move cannot reach.
+   The answer reveal opens at once (wrong() and Show me add .is-open directly, not through disclose()), the check's
+   stroke and the round segments jump to their end, and the segmented thumb (a translateX set from JS) does not slide. */
+@media (prefers-reduced-motion: reduce) {
+  :root:not([data-motion="full"]) :is(.reveal-answer, .is-correct .check path, .seg-thumb, .tabs-dash),
+  :root:not([data-motion="full"]) .segments i::after { transition: none; }
+}
+:root[data-motion="reduce"] :is(.reveal-answer, .is-correct .check path, .seg-thumb, .tabs-dash),
+:root[data-motion="reduce"] .segments i::after { transition: none; }
 
 /* ---------- round progress segments ---------- */
 .segments i::after { transform: scaleX(0); transform-origin: left; transition: transform var(--dur-base) var(--spring-snappy); }

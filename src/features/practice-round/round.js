@@ -11,9 +11,9 @@
    with the differing words marked), then "type it once". Scheduling is session.js; saving is data.js. */
 import { h, replace, announce } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
-import { correct as fxCorrect, wrong as fxWrong, resetAnswer, swap, skip as skipHold, reduced, fill } from '../../core/motion.js';
+import { correct as fxCorrect, wrong as fxWrong, resetAnswer, swap, skip as skipHold, reduced, countTo, haptic, pulse } from '../../core/motion.js';
 import { progressOf, drawProgress, againRow } from '../shared/progress.js';
-import { doneHero, againLink } from '../shared/done-hero.js';
+import { doneHero, againLink, arrive, ROLL_AT } from '../shared/done-hero.js';
 import { label, add } from '../../core/clock.js';
 import * as Match from '../../domain/match.js';
 import * as RD from '../../domain/b1ready.js';
@@ -21,12 +21,11 @@ import { roundMinutes } from '../../domain/today.js';
 import * as C from '../shared/compose.js';
 import * as S from '../shared/session.js';
 import { gradeAnswer, isSituation, retypeOk } from '../shared/grade.js';
-import { loadData, stateFor, session, saveAnswer, saveLogs, forecaster, tz, addActivity, secrets } from '../shared/data.js';
+import { loadData, stateFor, session, saveAnswer, saveLogs, forecaster, tz, addActivity } from '../shared/data.js';
 import { checkAnswer } from '../../services/claude.js';
 import { play as playAudio, stop as stopAudio, prefetchAudio } from '../../services/audio.js';
 import * as voice from '../../services/voice.js';
 import { bcp47, dirAttr } from '../../core/lang.js';
-import { recallBar } from '../shared/recall-bar.js';
 import { Field } from '../../core/brand.js';
 import { readinessView } from './field.js';
 import { loadKnowledge } from '../../data/knowledge.js';
@@ -47,6 +46,10 @@ import { langAttr, languageName } from '../../core/lang.js';
 import { courseRound } from '../shared/course.js';
 import { scopeItem } from '../../domain/itemids.js';
 import { keep, fitToKeyboard, reveal as revealEl, fitPrompt } from '../../core/keyboard.js';
+import { claude, canAskClaude } from '../../data/credentials.js';
+import { createAnswerDiff } from '../../ui/answer-diff.js';
+import { describe as describeDiff, firstDiffWord, slipSegs, sameWords, gapWords } from '../../domain/letterdiff.js';
+import { activePack } from '../../lang/registry.js';
 
 const TEIL = /** @type {Record<string, string>} */ ({ S1: 'Teil 1', S2: 'Teil 2', S3: 'Teil 3', W1: 'Aufgabe 1', W2: 'Aufgabe 2', W3: 'Aufgabe 3', L2: 'Teil 2', L3: 'Teil 3', L5: 'Teil 5' });
 const fmtS = (/** @type {number} */ ms) => `${(ms / 1000).toFixed(1).replace(/\.0$/, '')} s`;
@@ -70,42 +73,14 @@ function highlight(text, part) {
   if (i < 0 || !part || part.length >= s.replace(/[.!?…\s]+$/, '').length - 1) return [s];   // the whole prompt: nothing to point at
   return [s.slice(0, i), h('mark', { class: 'pr-hl' }, s.slice(i, i + part.length)), s.slice(i + part.length)];
 }
-/** "You:" with wrong words boxed, "Right:" with the words he missed marked. @param {string} typed @param {string} right */
-function diffLines(typed, right) {
-  const d = Match.diffWords(typed, right);
-  /** @type {any[]} */ const you = []; let pos = 0;
-  for (const w of d.wrong) { you.push(typed.slice(pos, w.start), h('s', { class: 'pr-wrongword' }, typed.slice(w.start, w.end))); pos = w.end; }
-  you.push(typed.slice(pos));
-  const miss = new Set(d.missing); /** @type {any[]} */ const rt = []; let p2 = 0;
-  d.right.forEach((/** @type {any} */ w, /** @type {number} */ k) => { if (!miss.has(k)) return; rt.push(right.slice(p2, w.start), h('mark', null, right.slice(w.start, w.end))); p2 = w.end; });
-  rt.push(right.slice(p2));
-  return { you, right: rt };
-}
-
-/** Text with ranges wrapped: marks → <mark>, struck → <s>. @param {string} text @param {{start: number, end: number}[]} ranges @param {'mark'|'s'} tag */
-function wrapRanges(text, ranges, tag) {
-  /** @type {any[]} */ const out = []; let p = 0;
-  for (const r of [...ranges].sort((a, b) => a.start - b.start)) {
-    if (r.start < p) continue;
-    out.push(text.slice(p, r.start), h(tag, tag === 's' ? { class: 'pr-wrongword' } : null, text.slice(r.start, r.end))); p = r.end;
-  }
-  out.push(text.slice(p));
-  return out;
-}
-
 /**
- * A situation's lines: what he typed, plain (only one phrase is graded), and the answer with that phrase's words marked.
- * @param {string} typed @param {string} right @param {string} pattern the accepted pattern that was checked
+ * A situation grades one phrase, not the whole sentence: the indexes of the answer's words that belong to the accepted
+ * pattern that was checked (marked in the Right line; his line stays plain).
+ * @param {string} right @param {string} pattern
  */
-function phraseLines(typed, right, pattern) {
+function phraseWords(right, pattern) {
   const want = new Set(Match.words(String(pattern).replace(/…/g, ' ')).map((/** @type {any} */ w) => w.n));
-  /** @type {any[]} */ const rt = []; let p = 0;
-  for (const w of Match.words(right)) {
-    if (!want.has(w.n)) continue;
-    rt.push(right.slice(p, w.start), h('mark', null, right.slice(w.start, w.end))); p = w.end;
-  }
-  rt.push(right.slice(p));
-  return { you: [typed], right: rt };
+  return Match.words(right).map((/** @type {any} */ w, /** @type {number} */ i) => (want.has(w.n) ? i : -1)).filter((/** @type {number} */ i) => i >= 0);
 }
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
@@ -288,7 +263,6 @@ export async function mountRound(el, ctx) {
     const k = stripIds.indexOf(id);
     if (strip && k >= 0) strip.set(k, 2);
     updateDots();
-    announce(t('practice.know.announce'));
     if (!S.advance(round)) { saveLogs(store, { round, slot }, kv); finish(); return; }
     saveLogs(store, { round, slot }, kv);
     drawCard(false, 'lift');
@@ -475,38 +449,37 @@ export async function mountRound(el, ctx) {
   /** The device voice reads a text (the first of "a / b" alternatives). @param {string} text */
   function readAloud(text) { voice.say(String(text).replace(/\s*\/\s*.*$/, ''), bcp47(), { rate: 0.9 }); }
   function sayAnswer(/** @type {string} */ text) { if (settings.practice.readAloud) readAloud(text); }
-  // his answer with typo, capital and umlaut slips marked and the right spelling after each
-  function markSlips(/** @type {any} */ g) {
-    const s = g.input, marks = [...g.typos.map((/** @type {any} */ x) => ({ ...x, k: 'typo' })), ...g.capMiss.map((/** @type {any} */ x) => ({ ...x, k: 'cap' })), ...g.umlautMiss.map((/** @type {any} */ x) => ({ ...x, k: 'uml' }))].sort((a, b) => a.start - b.start);
-    /** @type {any[]} */ const out = []; let p = 0;
-    for (const m of marks) {
-      if (m.start < p) continue;
-      // a capital or an umlaut: the word once, in its right spelling, with the letters that changed underlined in accent
-      // (it was graded right, so nothing here is red); a typo keeps its mark and the right spelling after it
-      if (m.k === 'typo') out.push(s.slice(p, m.start), h('span', { class: 'pr-slip' }, s.slice(m.start, m.end)), h('span', { class: 'pr-fix' }, ` ${m.expected}`));
-      else out.push(s.slice(p, m.start), changedLetters(s.slice(m.start, m.end), m.expected));
-      p = m.end;
-    }
-    out.push(s.slice(p));
-    return out;
+  // the lines under a verdict (ui/answer-diff.js), one set at a time: the next set ends the last one's motion
+  /** @type {AbortController | null} */ let linesAc = null;
+  // the last set's handle and its right line: a retype miss points at its first missing word (handle.locus)
+  /** @type {{ handle: import('../../ui/answer-diff.js').AnswerDiffHandle, right: string } | null} */ let lastLines = null;
+  /** The handle, so a caller can reach locus(attempt) and finish() later; .el is the node.
+   * @param {Omit<import('../../ui/answer-diff.js').AnswerDiffOpts, 'signal' | 'lang' | 'dir'>} o */
+  function lines(o) {
+    linesAc?.abort();
+    linesAc = new AbortController();
+    const handle = createAnswerDiff({ ...o, lang: langAttr(), dir: dirAttr(), signal: linesAc.signal });
+    lastLines = { handle, right: o.right || '' };
+    return handle;
   }
-
-  /** "damen" → "Damen" with the D underlined. @param {string} typed @param {string} right */
-  function changedLetters(typed, right) {
-    /** @type {any[]} */ const out = [];
-    const a = [...typed], b = [...String(right)];
-    if (a.length !== b.length) return h('span', { class: 'pr-capfix' }, right);
-    b.forEach((ch, k) => out.push(ch === a[k] ? ch : h('span', { class: 'pr-capfix' }, ch)));
-    return h('span', null, out);
-  }
+  const LINES = { you: 'pr-diff', right: 'pr-diff answer-key', label: 'caption', caption: 'caption' };
+  /** One line about a near miss, when the diff can say it (a missing ending). @param {import('../../domain/letterdiff.js').AnswerDiff} d */
+  const diffCaption = d => {
+    const x = describeDiff(d);
+    if (!x) return null;
+    // the German word in italics and in its own language (a screen reader says it in a German voice)
+    const [a, b] = t('practice.diff.endingMissing', { part: x.part, word: '\u0000', n: [...x.part].length }).split('\u0000');
+    return h('span', null, a, h('i', { lang: langAttr(), dir: dirAttr() }, x.word), b ?? '');
+  };
 
   // right
   // the phrase is right, the rest of the sentence is not: "<phrase> is right.", the rest with its differences, Hard
   function restLines(/** @type {any} */ g) {
     const r = g.rest, kids = [];
     if (r.junk) kids.push(h('p', { class: 'caption' }, t('practice.partial.junk')));
-    else if (r.ref) kids.push(h('p', { class: 'pr-diff answer-key pr-rest', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, isSituation(entry.item) ? t('practice.partial.situation') : t('practice.partial.rest')), ' ', wrapRanges(r.ref, r.marks || [], 'mark')));
-    if ((r.wrong || []).length) kids.push(h('p', { class: 'pr-diff', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, t('practice.you')), ' ', wrapRanges(g.input, r.wrong, 's')));
+    // the grader's ranges, letter by letter where his word is close to the right one
+    else if (r.ref) kids.push(lines({ kind: 'partial', typed: (r.wrong || []).length ? g.input : '', right: r.ref, ranges: { typed: r.wrong || [], right: r.marks || [] },
+      labels: { you: t('practice.you'), right: isSituation(entry.item) ? t('practice.partial.situation') : t('practice.partial.rest'), caption: diffCaption }, classes: { ...LINES, right: 'pr-diff answer-key pr-rest' } }).el);
     // his errors in the whole answer: a comma, a capital (also in the phrase: kontakt), the item's note on a word
     const nb = notesBox(g, null);
     if (nb) kids.push(nb);
@@ -545,12 +518,17 @@ export async function mountRound(el, ctx) {
     if (it.area === 'mistakes' && it.rule) kids.push(h('p', { class: 'pr-rule' }, it.rule));
     // a preposition gap: the usage note is the point, so it shows after a right answer too
     if (it.usage) kids.push(h('p', { class: 'pr-rule' }, it.usage));
-    if (g.typos.length || capSlip || umlaut) kids.push(h('p', { class: 'pr-yours', lang: langAttr(), dir: dirAttr() }, markSlips(g)));
+    // his answer once, in its right spelling, the letters to fix underlined in accent (it counts: nothing here is red)
+    const slips = [...g.typos, ...g.capMiss, ...g.umlautMiss];
+    const slipLine = g.typos.length || capSlip || umlaut;
+    if (slipLine) kids.push(lines({ kind: 'right-slip', typed: g.input, slips, labels: {}, classes: { you: 'pr-yours' } }).el);
     const capHead = !isNew && !veryLate && !late && !umlaut && capSlip;
     if (capSlip && !capHead) kids.push(h('p', { class: 'caption' }, t('practice.capsNote', { list: [...new Set(g.capMiss.map((/** @type {any} */ x) => x.expected))].join(', ') })));
     if (situation) kids.push(h('p', { class: 'caption' }, t('practice.checkedPhrase')));
     // a word card's other accepted form ("bewerben" for "sich bewerben") is not news after a right answer
-    const others = it.card?.type ? [] : g.alsoCorrect || [];
+    // nor is the line just shown: his answer in its right spelling (a typo makes the grader list the model again)
+    const shown = slipLine ? slipSegs(g.input, slips).filter(x => x.k !== 'extra').map(x => x.text).join('') : null;
+    const others = (it.card?.type ? [] : g.alsoCorrect || []).filter((/** @type {string} */ x) => shown == null || !sameWords(x, shown));
     if (others.length && !clean) kids.push(h('p', { class: 'pr-also' }, h('span', { class: 'caption' }, situation ? t('practice.otherWays') : t('practice.alsoCorrect')), ' ',
       h('span', { lang: langAttr(), dir: dirAttr() }, others.slice(0, 2).join(' · ')), others.length > 2 ? alsoMore(others.slice(2), '') : null));
     replace(fb, kids, wordCard(it));
@@ -585,11 +563,15 @@ export async function mountRound(el, ctx) {
     const right = g.target || g.right;   // the whole sentence he types once, the same one shown here
     // a situation grades one phrase, not the whole sentence: only that phrase is marked, the rest is shown plain
     const situation = it.kind === 'topic' || it.kind === 'reply';
-    const df = situation && g.pattern ? phraseLines(full(typed), right, g.pattern) : diffLines(full(typed), right);
-    const kids = [h('p', { class: 'pr-res is-bad' }, t('practice.wrong')),
-      h('p', { class: 'pr-diff', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, t('practice.you')), ' ', df.you),
-      h('p', { class: 'pr-diff answer-key', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, t('practice.rightIs')), ' ', df.right),
+    const marked = situation && g.pattern ? phraseWords(right, g.pattern) : undefined;
+    // a gap card: on a far miss its word is still marked
+    const gap = it.gap && !marked ? gapWords(it.prompt, right) : undefined;
+    const diffLines = lines({ kind: 'wrong', typed: full(typed), right, marked, gap, capMiss: g.capMiss, labels: { you: t('practice.you'), right: t('practice.rightIs'), caption: diffCaption }, classes: LINES });
+    const kids = [h('p', { class: 'pr-res is-bad' }, t('practice.wrong')), diffLines.el,
       situation ? h('p', { class: 'caption' }, t('practice.checkedPhrase')) : null];
+    // the caption already says a word is cut short: "Check the spelling of <the cut word>" would say it again, wrongly
+    const cut = describeDiff(diffLines.diff);
+    if (cut) g = { ...g, notes: (g.notes || []).filter((/** @type {any} */ n) => !(n.code === 'unknown' && n.word && cut.word.toLowerCase().startsWith(String(n.word).toLowerCase()))) };
     if (g.alsoCorrect?.length) kids.push(h('p', { class: 'pr-also' }, alsoMore(g.alsoCorrect, t('practice.otherWays') + ' ')));
     // his errors, each from his answer, and a rule only when it is about one of them (a detector's always: g.rule);
     // after a self-repair, the trap's rule that was hinted
@@ -597,20 +579,22 @@ export async function mountRound(el, ctx) {
     if (nb) kids.push(nb);
     if (claudeOk() && !d && !g.det) kids.push(claudeBox(typed));
     replace(fb, kids, wordCard(it));
-    fxWrong(answerEl, { revealEl: reveal });
+    // two ticks 70 ms apart (a right answer has one), so the verdict is felt before it is read (design A14)
+    fxWrong(answerEl, { revealEl: reveal, haptics: false });
+    haptic(); setTimeout(haptic, 70);
     announce(`${t('practice.wrong')}. ${t('practice.rightIs')} ${right}`);
     sayAnswer(right);
     toRetype(right, 360);
   }
   // the answer check's prompt is German B1's (services/claude.js): not offered in another course
-  const claudeOk = () => !cr && !!secrets(store).anthropicKey && settings.practice.claudeCheck && navigator.onLine;
+  const claudeOk = () => !cr && canAskClaude(store) && settings.practice.claudeCheck && navigator.onLine;
   function claudeBox(/** @type {string} */ typed) {
     const boxEl = h('div', { class: 'pr-claude' });
     const btn = /** @type {HTMLButtonElement} */ (h('button', { type: 'button', class: 'btn pressable', onpointerdown: keep, onclick: async () => {
       btn.disabled = true; btn.textContent = t('practice.claude.checking');
       const cur = entry;
       try {
-        const v = await checkAnswer({ key: secrets(store).anthropicKey, item: cur.item, answer: full(typed) });
+        const v = await checkAnswer({ cred: claude(store), item: cur.item, answer: full(typed) });
         if (cur !== entry) return;
         if (v.verdict === 'correct' || v.verdict === 'minor') {
           const cards = store.cards(deck);
@@ -653,9 +637,8 @@ export async function mountRound(el, ctx) {
     record({ ok: false, ms: elapsed() });
     const kids = [];
     if (typed) {
-      const df = diffLines(full(typed), (g.target || g.right));
-      kids.push(h('p', { class: 'pr-diff', lang: langAttr(), dir: dirAttr() }, h('span', { class: 'caption' }, t('practice.you')), ' ', df.you),
-        h('p', { class: ['answer-key', 'pr-study', String(g.target || g.right).length > 90 && 'is-long'], lang: langAttr(), dir: dirAttr() }, df.right));
+      kids.push(lines({ kind: 'study', typed: full(typed), right: g.target || g.right, capMiss: g.capMiss, labels: { you: t('practice.you'), caption: diffCaption },
+        classes: { ...LINES, right: ['answer-key', 'pr-study', String(g.target || g.right).length > 90 ? 'is-long' : ''].join(' ').trim() } }).el);
     } else kids.push(h('p', { class: ['answer-key', 'pr-study', String(g.target || g.right).length > 90 && 'is-long'], lang: langAttr(), dir: dirAttr() }, (g.target || g.right)));
     if (g.alsoCorrect?.length) kids.push(h('p', { class: 'pr-also' }, h('span', { class: 'caption' }, t('practice.alsoCorrect')), ' ', h('span', { lang: langAttr(), dir: dirAttr() }, g.alsoCorrect.slice(0, 2).join(' · ')), g.alsoCorrect.length > 2 ? alsoMore(g.alsoCorrect.slice(2)) : null));
     // a typed attempt: his errors and the rule when it is about one; Show me: the item's rule, the lesson
@@ -672,8 +655,18 @@ export async function mountRound(el, ctx) {
     tbar.hidden = true; secs.textContent = '';
     setButtons();
     // the sentence to type sits above the field: scroll it into view (it may be below the fold of the card)
-    const go = () => { if (state !== 'retype') return; input.value = ''; grow(); answerEl.classList.add('is-retype'); input.placeholder = t('practice.ph.retype'); focusInput(); showKey(); };
-    if (delay && !reduced()) setTimeout(go, delay); else go();
+    // with a delay (after a wrong answer) the struck answer fades out first and the empty field rises in (design A7)
+    const motion = !!delay && !reduced();
+    const go = () => {
+      answerEl.classList.remove('is-clearing');
+      if (state !== 'retype') return;
+      input.value = ''; grow(); answerEl.classList.add('is-retype'); input.placeholder = t('practice.ph.retype'); focusInput(); showKey();
+      if (motion) { answerEl.classList.add('is-arriving'); setTimeout(() => answerEl.classList.remove('is-arriving'), 260); }
+    };
+    if (motion) {
+      setTimeout(() => { if (state === 'retype') answerEl.classList.add('is-clearing'); }, Math.max(0, delay - 120));
+      setTimeout(go, delay);
+    } else go();
   }
   /** The answer key (the sentence to retype) into view, clear of the field pinned over the card's bottom. */
   function showKey() { showFb(fb.querySelector('.answer-key') || fb.lastElementChild); }
@@ -698,6 +691,61 @@ export async function mountRound(el, ctx) {
       return;
     }
     answerEl.classList.remove('is-shake'); void answerEl.offsetWidth; answerEl.classList.add('is-shake');
+    locus(typed);
+  }
+  /**
+   * A retype miss: the first word of the sentence to type that his copy does not have gets an accent underline that
+   * draws and holds (motion.js pulse 'locus', design A7), so he need not reread the whole sentence. The diff's own
+   * right line when it is the sentence (a wrong answer, a study card with his try); else the plain answer key's word.
+   * @param {string} typed
+   */
+  function locus(typed) {
+    const attempt = full(typed);
+    const line = lastLines && lastLines.right === entry.right && lastLines.handle.el.isConnected ? lastLines.handle.el.querySelector('.ui-ad-right') : null;
+    // a letter or word diff numbers its words (data-w): the diff finds the word itself
+    if (line?.querySelector('.ui-ad-w[data-w]')) { void lastLines?.handle.locus(attempt); return; }
+    const j = firstDiffWord(attempt, entry.right);
+    if (j < 0) return;
+    /** @type {HTMLElement | null} */ let w = null;
+    if (line) {
+      // a far miss draws the right line plain: one span per run of non-space text, in the sentence's order
+      const k = spaceWord(entry.right, j);
+      w = k < 0 ? null : /** @type {HTMLElement | null} */ (line.querySelectorAll('.ui-ad-w')[k] || null);
+    } else {
+      const key = /** @type {HTMLElement | null} */ ([...fb.querySelectorAll('.answer-key')].find(x => x.textContent === entry.right) || null);
+      w = key ? keyWord(key, j) : null;
+    }
+    if (w) void pulse(w, 'locus');
+  }
+  /**
+   * Which run of non-space text of s holds its j-th word (the pack's words skip punctuation that stands alone).
+   * @param {string} s @param {number} j @returns {number}
+   */
+  function spaceWord(s, j) {
+    const P = activePack().text, norm = P.normalize(s);
+    const tok = norm.length === s.length ? P.tokenize(norm)[j] : null;
+    if (!tok) return -1;
+    return (s.slice(0, tok.start).match(/\S+(?=\s)/g) || []).length;
+  }
+  /**
+   * The j-th word of a plain answer key as its own span (made once, on the first miss), or null.
+   * @param {HTMLElement} key @param {number} j
+   */
+  function keyWord(key, j) {
+    if (j < 0) return null;
+    const had = /** @type {HTMLElement | null} */ (key.querySelector(`.pr-kw[data-w="${j}"]`));
+    if (had) return had;
+    const text = key.firstChild;
+    if (!text || text.nodeType !== Node.TEXT_NODE || key.childNodes.length !== 1) return null;   // only a key that is one run of text
+    const P = activePack().text, raw = String(text.textContent), norm = P.normalize(raw);
+    if (norm.length !== raw.length) return null;   // offsets would not line up
+    const tok = P.tokenize(norm)[j];
+    if (!tok) return null;
+    const r = document.createRange();
+    r.setStart(text, tok.start); r.setEnd(text, tok.end);
+    const span = h('span', { class: 'pr-kw', 'data-w': String(j) });
+    r.surroundContents(span);
+    return span;
   }
   function skipRetype() { state = 'feedback'; next(); }
   function next() {
@@ -729,6 +777,7 @@ export async function mountRound(el, ctx) {
 
   function cleanup() {
     alive = false;
+    linesAc?.abort();
     strip?.destroy();
     clearInterval(tick); clearTimeout(auto);
     document.removeEventListener('visibilitychange', onVis);
@@ -800,37 +849,40 @@ function drawDone(el, ctx, data, round, backTo) {
   const { t, store } = ctx;
   const st = stateFor(ctx, data), c = st.c;
   const sum = S.summary(round, data.byId);
-  // readiness before = the same store with only this round's items rolled back
   const pool = data.pool.filter((/** @type {any} */ it) => it.area !== 'mistakes');
-  const rd = (/** @type {any} */ cards) => RD.compute({ pool, store: cards, today: c.today, exam: c.exam, phase: c.phase });
   const cr = data.course ? courseRound(data.course) : null;
-  const now = store.cards(cr ? cr.deck : 'b1'), before = { ...now };
-  for (const [id, r] of Object.entries(round.prev || {})) { if (r) before[id] = r; else delete before[id]; }
-  const a = rd(now).overall, b = rd(before).overall;
+  const now = store.cards(cr ? cr.deck : 'b1');
   // a Schreiben round goes on with Schreiben phrases: their own due and new counts
   const write = round.kind === 'write';
   const wDue = write ? pool.filter((/** @type {any} */ it) => it.area === 'writing' && RD.isDue(now[it.id], c.today, c)).length : 0;
   const more = write ? wDue > 0 || C.newLeftOf(st, 'w') > 0 : st.dueN > 0 || C.newLeft(st) > 0;
   const tomorrow = RD.forecast(now, c.today, 2, c)[1]?.n || 0;
-  const p1 = (/** @type {number} */ x) => (100 * (x || 0)).toFixed(1);
   const short = (/** @type {any} */ it) => it.model || it.prompt;
   const list = (/** @type {string} */ title, /** @type {any[]} */ items) => items.length ? h('section', { class: 'pr-list' }, h('h2', null, title),
     h('ul', { class: 'list' }, items.map(it => h('li', { class: 'list-item', lang: langAttr(), dir: dirAttr() }, short(it))))) : null;
-  // the exam items known before and after the round: the one definition of known (domain/knowledge.js, Where you
-  // stand), which a round never lowers; filled in once the knowledge score is loaded
-  const bar = recallBar(0, a.coverage, t('practice.area.bar', { recall: '', seen: `${p1(a.coverage)} %` }));
+  // the exam items known after the round and what the round added (+N, in accent): the one definition of known
+  // (domain/knowledge.js, Where you stand), which a round never lowers; filled in once the knowledge score is loaded.
+  // A round moves the share of a ~1,000-item pool by a fraction of a percent, so there is no bar: the number says it
+  // and the field below shows where (design A4)
   const knownEl = h('b', { class: 'tnum' }, '…');
+  const gainEl = h('span', { class: 'pr-gain tnum', hidden: true });
   const anotherHref = round.kind === 'today' || round.kind === 'mistakes' || round.kind === 'missed' ? '#/practice/round' : S.roundHref(round);
   // the brand moment: the atmosphere breathes once behind the result, and the field shows the round's right answers
   // landing in the exam pool
   const view = round.kind === 'mistakes' ? null : readinessView(st);
   const fieldEl = view ? h('canvas', { class: 'field pr-done-field' }) : null;
-  const hero = doneHero({ label: t('practice.roundDone'), figure: sum.right, of: t('practice.ofRight', { n: sum.total }),
+  // a round of new items only (or of "I know this" only) has no first answers to count: "0 of 0 right first time"
+  // said nothing. Its figure is then the new items studied, or the items marked as known.
+  const fig = sum.total ? { figure: sum.right, of: t('practice.ofRight', { n: sum.total }) }
+    : sum.news.length ? { figure: sum.news.length, of: t('practice.done.newOnly', { n: sum.news.length }) }
+    : sum.known.length ? { figure: sum.known.length, of: t('practice.done.knownOnly', { n: sum.known.length }) }
+    : { figure: 0, of: t('practice.ofRight', { n: 0 }) };
+  const hero = doneHero({ label: t('practice.roundDone'), ...fig,
     lines: [sum.late ? t('practice.late', { n: sum.late }) : null, sum.partial ? t('practice.partialN', { n: sum.partial }) : null, sum.fixedLast ? t('practice.lastFixed') : null,
-      sum.known.length ? t('practice.know.inRound', { n: sum.known.length }) : null],
+      sum.known.length && (sum.total || sum.news.length) ? t('practice.know.inRound', { n: sum.known.length }) : null],
     data: view ? h('div', { class: 'pr-ready' },
-      h('p', { class: 'pr-ready-top' }, h('span', { class: 'label' }, t(cr ? 'course.knownItems' : 'practice.knownItems')), knownEl), bar, fieldEl) : null });
-  replace(el, h('div', { class: 'practice pr-done stack' },
+      h('p', { class: 'pr-ready-top' }, h('span', { class: 'label' }, t(cr ? 'course.knownItems' : 'practice.knownItems')), h('span', { class: 'pr-ready-n' }, knownEl, gainEl)), fieldEl) : null });
+  const page = h('div', { class: 'practice pr-done stack' },
     hero.el,
     h('p', { class: 'pr-next' }, more ? t(write ? (wDue ? 'practice.write.nextUp' : 'practice.write.nextNew') : 'practice.nextUp', write ? { due: wDue, n: C.newLeftOf(st, 'w') } : { due: st.dueN, n: C.newLeft(st) }) : t('practice.allDone', { n: tomorrow })),
     h('div', { class: 'pr-done-actions' },
@@ -839,7 +891,35 @@ function drawDone(el, ctx, data, round, backTo) {
     sum.back.length ? h('section', { class: 'pr-list' }, h('h2', null, t('practice.list.back')), h('p', { class: 'caption' }, t('practice.list.backSub')),
       h('ul', { class: 'list' }, sum.back.map((/** @type {any} */ it) => h('li', { class: 'list-item' }, h('span', { lang: langAttr(), dir: dirAttr() }, short(it)),
         sum.fixed.includes(it) ? h('span', { class: 'caption' }, t('practice.list.fixedTag')) : null)))) : null,
-    list(t('practice.list.new'), sum.news)));
+    list(t('practice.list.new'), sum.news));
+  // the round's card lifts away and the done page rises in its place, the bars slide back (done-hero.js arrive());
+  // its timeline starts once the page is on screen
+  arrive(() => replace(el, page), el).then(() => doneTimeline(el, ctx, { round, view, fieldEl, knownEl, gainEl, hero, more, anotherHref, backTo, pool, cr }));
+}
+
+/**
+ * The done page's arrival after the hero's own steps (done-hero.js: the figure rolls and the atmosphere breathes at
+ * 120 ms): the cells answered right land in the field one after another from 500 ms, 90 ms apart, and "+N" (the exam
+ * items this round added) ticks up in accent with the first of them. A tap skips to the end state.
+ * @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx @param {any} o
+ */
+function doneTimeline(el, ctx, { round, view, fieldEl, knownEl, gainEl, hero, more, anotherHref, backTo, pool, cr }) {
+  const { t } = ctx;
+  /** @type {{ nb: number, na: number } | null} */ let counts = null;
+  let gainDue = false, gainInstant = false, gainShown = false;
+  /** "+N" once the counts are in and its moment has come. @param {boolean} instant */
+  const gain = instant => {
+    if (instant) gainInstant = true;
+    if (!counts || !gainDue) return;
+    const d = counts.na - counts.nb;
+    if (d <= 0) return;
+    const fmt = (/** @type {number} */ n) => t('practice.done.gain', { n: Math.round(n) });
+    gainEl.hidden = false;
+    // a skip mid-count: a 1 ms count takes the running one over and ends on the number (countTo has no stop)
+    if (gainInstant) { if (gainShown) countTo(gainEl, d, { from: 0, duration: 1, format: fmt }); else { gainEl.textContent = fmt(d); gainEl.dataset.value = String(d); } }
+    else if (!gainShown) countTo(gainEl, d, { from: 0, duration: 600, format: fmt });
+    gainShown = true;
+  };
   if (view) {
     /** @type {Record<string, any>} */ const patch = {};
     for (const [id, r] of Object.entries(round.prev || {})) patch[id] = r || null;
@@ -847,24 +927,31 @@ function drawDone(el, ctx, data, round, backTo) {
     Promise.all([loadKnowledge(ctx, { patch: { [cr ? cr.deck : 'b1']: patch } }), loadKnowledge(ctx)]).then(([kb, ka]) => {
       // a course's items are scoped by its language (domain/itemids.js); German's never are
       const itemOf = (/** @type {any} */ k, /** @type {string} */ id) => cr ? scopeItem(cr.lang, k.maps.resolve(id, 'core') || id) : k.maps.resolve(id, 'b1') || id;
-      const known = (/** @type {any} */ k) => knownOf(ids, id => k.get(itemOf(k, id))).known;
-      const nb = known(kb), na = known(ka), n = ids.length || 1;
-      knownEl.textContent = t('practice.knownOf', { b: nb, a: na, n: ids.length });
-      requestAnimationFrame(() => fill(bar, nb / n));
-      setTimeout(() => fill(bar, na / n), reduced() ? 0 : 380);
+      const known = (/** @type {any} */ k, /** @type {string[]} */ over) => knownOf(over, id => k.get(itemOf(k, id))).known;
+      knownEl.textContent = t('practice.done.knownNow', { a: known(ka, ids), n: ids.length });
+      // "+N" leaves out the items missed this round, so it never drops overnight (session.js gainIds)
+      const counted = S.gainIds(round, ids);
+      counts = { nb: known(kb, counted), na: known(ka, counted) };
+      gain(reduced());
     }).catch(() => { knownEl.textContent = ''; });
   }
   /** @type {Field | null} */ let field = null;
+  /** @type {import('../../core/motion.js').SeqStep[]} */ const steps = [];
+  const LAND_AT = 500;
   if (view && fieldEl) {
     const rightIds = new Set(round.results.filter((/** @type {any} */ r) => r.first && r.ok).map((/** @type {any} */ r) => r.id));
-    const cells = view.ids.map((id, i) => (rightIds.has(id) ? i : -1)).filter(i => i >= 0);
+    const cells = view.ids.map((/** @type {string} */ id, /** @type {number} */ i) => (rightIds.has(id) ? i : -1)).filter((/** @type {number} */ i) => i >= 0);
     // the cells answered right start in their earlier state and land one after another
-    const start = view.states.map((x, i) => (rightIds.has(view.ids[i]) ? Math.min(x, 1) : x));
-    field = new Field(/** @type {HTMLCanvasElement} */ (fieldEl), start, { cell: 5, gap: 1, label: null });
-    cells.slice(0, 24).forEach((i, k) => setTimeout(() => field?.ripple(i, { state: Math.max(2, view.states[i]) }), reduced() ? 0 : 500 + k * 90));
-    cells.slice(24).forEach(i => field?.set(i, Math.max(2, view.states[i])));
+    const start = view.states.map((/** @type {number} */ x, /** @type {number} */ i) => (rightIds.has(view.ids[i]) ? Math.min(x, 1) : x));
+    const f = new Field(/** @type {HTMLCanvasElement} */ (fieldEl), start, { cell: 5, gap: 1, label: null });
+    field = f;
+    const to = (/** @type {number} */ i) => Math.max(2, view.states[i]);
+    cells.slice(0, 24).forEach((/** @type {number} */ i, /** @type {number} */ k) => steps.push({ at: LAND_AT + k * 90, run: instant => { if (instant) f.set(i, to(i)); else f.ripple(i, { state: to(i) }); } }));
+    cells.slice(24).forEach((/** @type {number} */ i) => f.set(i, to(i)));
   }
-  const stopHero = hero.start();
+  // "+N" with the first cell that lands (or at that moment when no cell does)
+  steps.push({ at: LAND_AT, run: instant => { gainDue = true; gain(instant); } });
+  const stopHero = hero.start({ steps, signal: ctx.signal });
   const doneEl = el.firstElementChild;
   const onKey = (/** @type {KeyboardEvent} */ e) => {
     if (!doneEl || !doneEl.isConnected) { stop(); return; }   // another round mounted on the same address
@@ -872,6 +959,9 @@ function drawDone(el, ctx, data, round, backTo) {
     if (e.key === 'Escape') { e.preventDefault(); ctx.go(backTo); }
   };
   document.addEventListener('keydown', onKey);
-  const stop = () => { document.removeEventListener('keydown', onKey); field?.destroy(); stopHero(); };
-  addEventListener('hashchange', stop, { once: true });
+  // the view's signal ends it: "Another round" to the same address mounts the round again with no hashchange, and the
+  // field's observers, the keydown listener and the atmosphere's WebGL context would stay behind on every repeat
+  let stopped = false;
+  const stop = () => { if (stopped) return; stopped = true; document.removeEventListener('keydown', onKey); field?.destroy(); stopHero(); };
+  if (ctx.signal.aborted) stop(); else ctx.signal.addEventListener('abort', stop, { once: true });
 }

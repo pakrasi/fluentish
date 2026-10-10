@@ -21,8 +21,22 @@
 .tabs a { position: relative; display: grid; place-items: center; gap: 2px; min-height: var(--tap); padding: 4px 0; color: var(--ink-3); text-decoration: none; font: 500 11px/1.2 var(--font-ui); }
 .tabs a svg { width: 22px; height: 22px; }
 .tabs a[aria-current="page"] { color: var(--ink); }
-.tabs a[aria-current="page"]::before { content: ""; position: absolute; top: -7px; width: 18px; height: 2px; border-radius: 2px; background: var(--accent); }
-@media (min-width: 900px) { .tabs { position: static; display: flex; gap: var(--s-6); background: none; border: 0; padding: 0; backdrop-filter: none; } .tabs a { grid-auto-flow: column; font-size: 14px; color: var(--ink-2); } .tabs a svg { display: none; } .tabs a[aria-current="page"]::before { top: auto; bottom: -2px; width: 100%; } }
+.tabs-top a[aria-current="page"]::before { content: ""; position: absolute; top: -7px; width: 18px; height: 2px; border-radius: 2px; background: var(--accent); }
+/* The phone tab bar's dash: one element, one column wide, that slides to the current tab (transform only, on the
+   snappy spring) instead of jumping. Its column comes from aria-current, so nothing else has to set it. During a
+   route's view transition the tab bar is its own live layer (fx-tabs, motion.css), so the slide shows there too.
+   Without a current tab (Profile) it is not drawn; when it comes back it fades in where it belongs. Reduced motion:
+   it moves at once. From 900px the tabs are top links with their own underline, and there is no dash. */
+.tabs-dash { position: absolute; top: -1px; inset-inline-start: max(8px, env(safe-area-inset-left)); width: calc((100% - 2 * max(8px, env(safe-area-inset-left))) / var(--n, 4)); height: 2px; pointer-events: none;
+  transform: translateX(calc(var(--tab-i, 0) * 100% * var(--dir, 1))); transition: transform var(--dur-card) var(--spring-snappy), opacity var(--dur-quick) var(--ease-out); }
+.tabs-dash::after { content: ""; display: block; width: 18px; height: 2px; margin-inline: auto; border-radius: 2px; background: var(--accent); }
+.tabs-dash:dir(rtl) { --dir: -1; }
+.tabs:has(> a:nth-of-type(2)[aria-current="page"]) { --tab-i: 1; }
+.tabs:has(> a:nth-of-type(3)[aria-current="page"]) { --tab-i: 2; }
+.tabs:has(> a:nth-of-type(4)[aria-current="page"]) { --tab-i: 3; }
+.tabs:not(:has(> a[aria-current="page"])) .tabs-dash { display: none; }
+@starting-style { .tabs-dash { opacity: 0; } }
+@media (min-width: 900px) { .tabs { position: static; display: flex; gap: var(--s-6); background: none; border: 0; padding: 0; backdrop-filter: none; } .tabs a { grid-auto-flow: column; font-size: 14px; color: var(--ink-2); } .tabs a svg { display: none; } .tabs a[aria-current="page"]::before { top: auto; bottom: -2px; width: 100%; } .tabs-dash { display: none; } }
 
 /* ---------- buttons ---------- */
 .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: var(--tap); padding: 0 18px; border-radius: var(--r-ctl); border: 1px solid var(--hairline-strong); background: var(--surface); color: var(--ink); font: 500 15px/1 var(--font-ui); text-decoration: none; cursor: pointer; white-space: nowrap; user-select: none; -webkit-user-select: none; }
@@ -42,7 +56,7 @@
 .seg { position: relative; display: inline-grid; grid-auto-flow: column; grid-auto-columns: 1fr; padding: 3px; border-radius: var(--r-ctl); background: var(--surface-2); }
 .seg button { position: relative; z-index: 1; min-height: 34px; padding: 0 14px; border: 0; border-radius: 9px; background: transparent; color: var(--ink-2); font: 500 13px/1 var(--font-ui); cursor: pointer; }
 .seg button[aria-pressed="true"] { color: var(--ink); }
-.seg-thumb { position: absolute; z-index: 0; top: 3px; bottom: 3px; left: 0; border-radius: 9px; background: var(--surface); box-shadow: 0 1px 2px rgb(0 0 0 / 0.08), 0 0 0 1px var(--hairline); transition: transform var(--dur-base) var(--spring-snappy), width var(--dur-base) var(--spring-snappy); }
+.seg-thumb { position: absolute; z-index: 0; top: 3px; bottom: 3px; left: 0; border-radius: 9px; background: var(--surface); box-shadow: 0 1px 2px rgb(0 0 0 / 0.08), 0 0 0 1px var(--hairline); transition: transform var(--dur-base) var(--spring-snappy); }
 /* touch: every chip and segment is a 44px target (DESIGN.md: chip 36px fine pointer / 44px coarse) */
 @media (pointer: coarse) {
   .chip { min-height: var(--tap); padding: 0 16px; }
@@ -65,7 +79,7 @@
 .answer.is-wrong .answer-input { color: var(--ink-2); text-decoration: line-through; text-decoration-color: var(--bad); text-decoration-thickness: 1.5px; }
 
 /* ---------- study card ---------- */
-.card { position: relative; background: var(--surface); border-radius: var(--r-card); box-shadow: var(--shadow-card); padding: var(--s-6) var(--s-5) var(--s-5); view-transition-name: fx-card; }
+.card { position: relative; background: var(--surface); border-radius: var(--r-card); box-shadow: var(--shadow-card); padding: var(--s-6) var(--s-5) var(--s-5); }
 .card-meta { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-3); }
 .prompt { margin-top: var(--s-4); font: 400 var(--fs-prompt)/1.18 var(--font-display); letter-spacing: -0.012em; text-wrap: pretty; }
 .prompt-hint { margin-top: var(--s-2); color: var(--ink-2); font-size: 14px; }
@@ -226,3 +240,22 @@
 .wp-ex-de { font: 400 17px/1.45 var(--font-display); color: var(--ink); }
 .wp-hl { background: none; color: inherit; font-weight: 600; text-decoration: underline; text-decoration-color: var(--accent); text-decoration-thickness: 2px; text-underline-offset: 3px; }
 .wp-src { margin-top: 2px; }
+
+/* ---- R8 U1: Back link (core/ui.js backLink) ----
+   One back control on every page: chevron + the name of the page it goes back to, one line, 44 px tall and wide. */
+.back-link { display: inline-flex; align-items: center; gap: 2px; min-height: var(--tap); min-width: var(--tap); max-width: 100%;
+  margin-inline-start: -6px; padding: 0 4px 0 6px; border: 0; border-radius: var(--r-ctl); background: none;
+  color: var(--ink-2); font: 500 14px/1.2 var(--font-ui); text-decoration: none; white-space: nowrap;
+  align-self: flex-start; justify-self: start; flex: none; cursor: pointer; }
+.back-link:hover { color: var(--ink); }
+.back-link:focus-visible { outline: 2px solid var(--accent); outline-offset: -2px; }
+.back-link .icon { flex: none; }
+.back-link .icon:dir(rtl) { transform: scaleX(-1); }
+.back-link-text { min-width: 0; overflow: hidden; text-overflow: ellipsis; }
+.back-link + .page-head { padding-top: 0; }
+/* a header row that also holds controls: below 400 px only the chevron, centred in its 44 px */
+@media (max-width: 399.98px) {
+  .back-link-narrow { justify-content: center; padding: 0; margin-inline-start: -12px; }
+  .back-link-narrow .back-link-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+}
+/* ---- end of R8 U1 ---- */

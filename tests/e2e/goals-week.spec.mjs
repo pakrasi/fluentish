@@ -5,11 +5,15 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { test, expect, seed, open, checkA11y, storedCards } from './fixtures.mjs';
+import { DEFAULT_CUTOFF, add } from '../../src/core/clock.js';
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 /** Content ids whose cards count as b1 reviews (phrases and grammar). */
 const IDS = readFileSync(path.join(ROOT, 'tests/fixtures/shipped-ids.txt'), 'utf8').split('\n').filter(l => /^(K|G):/.test(l));
-const day = (/** @type {number} */ n) => { const d = new Date(); d.setHours(12); d.setDate(d.getDate() + n); return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`; };
+// days from the app's study day (Berlin, 04:00 cutoff: core/clock.js), not the test machine's calendar day: CI runs
+// node in UTC, so between 22:00 and 02:00 UTC (00:00 to 04:00 in Berlin) the two differ by one day
+const studyToday = () => new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Berlin' }).format(new Date(Date.now() - DEFAULT_CUTOFF * 3600e3));
+const day = (/** @type {number} */ n) => add(studyToday(), n);
 /** n cards in deck b1, due yesterday. @param {number} n */
 function dueCards(n) {
   const back = day(-20), due = day(-1);
@@ -60,7 +64,7 @@ test('a week set on Goals and week: Today names the kind of day and draws the we
   await expect(page.getByText('Read days are coming later. Until then this is a normal day.')).toHaveCount(0);
   await expect(page.locator('button[name="week:1:kind:read"]')).not.toHaveClass(/is-later/);
   await checkA11y(page, phone ? 'Goals and week, day sheet' : 'Goals and week');
-  if (phone) { await page.keyboard.press('Escape'); await expect(page.locator('dialog.rs-sheet')).toHaveCount(0); await checkA11y(page, 'Goals and week'); }
+  if (phone) { await page.keyboard.press('Escape'); await expect(page.locator('dialog.ui-sheet')).toHaveCount(0); await checkA11y(page, 'Goals and week'); }
   // every day light: on a phone in one sheet, stepping from day to day
   if (phone) await openDay(0);
   for (let i = 0; i < 7; i++) {
@@ -69,7 +73,7 @@ test('a week set on Goals and week: Today names the kind of day and draws the we
     await page.locator(`button[name="week:${i}:kind:light"]`).click();
     if (phone && i < 6) await page.getByRole('button', { name: `Go to ${['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'][i + 1]}` }).click();
   }
-  if (phone) await page.keyboard.press('Escape');
+  if (phone) { await page.keyboard.press('Escape'); await expect(page.locator('dialog.ui-sheet')).toHaveCount(0); }
   // the rows (or the columns) are one tab stop; the arrow keys move between days
   if (phone) {
     await page.locator('button[name="week:day:0"]').focus();

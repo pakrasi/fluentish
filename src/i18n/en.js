@@ -827,7 +827,6 @@ export default {
   'practice.know.toast': 'Marked as known. One check in about 60 days.',
   'practice.know.undo': 'Undo',
   'practice.know.undone': 'Back to new.',
-  'practice.know.announce': 'Marked as known. Next card.',
   'practice.know.inRound': { one: '{n} marked as known', other: '{n} marked as known' },
   'practice.sort.title': 'Quick sort',
   'practice.sort.titleOf': 'Quick sort · {name}',
@@ -1601,7 +1600,8 @@ export default {
   // errors
   'error.title': 'Something went wrong',
   'error.notFound': 'No such page',
-  'error.view': 'This page could not open ({path}).',
+  'error.view': 'This page could not open.',
+  'error.viewNamed': '{page} could not open.',
   'error.boot': 'Fluentish could not start. Reload the page; your progress is kept.',
   'error.home': 'Back to Today',
   'error.save': 'Could not save ({what}). Your last change may be lost if you close the page.',
@@ -2590,6 +2590,7 @@ export default {
   'conv.lead': 'Write with Claude in {lang}. Its replies quietly correct some of your mistakes. At the end you get feedback and pick up to 3 mistakes to review.',
   'conv.noKey': 'Conversation needs a Claude key.',
   'conv.noKey.link': 'Add it in Profile › Connections',
+  'conv.addKey': 'Add a Claude key',
   'conv.noPack': 'Conversation is not available for this language yet.',
   'conv.offline': 'You are offline. A conversation needs a connection.',
   'conv.mode': 'Kind of conversation',
@@ -2907,16 +2908,64 @@ export default {
   // ---- R8 S2 ----
   // ---- end of R8 S2 ----
   // ---- R8 ACC0 ----
+  // Profile › Account (docs/ACCOUNTS.md): shown only when an account provider is on for this page
+  'account.title': 'Account',
+  'account.email': 'Email',
+  'account.email.hint': 'A 6-digit sign-in code is sent to this address.',
+  'account.sendCode': 'Send code',
+  'account.codeSent': 'A code was sent to {email}.',
+  'account.code': '6-digit code',
+  'account.signIn': 'Sign in',
+  'account.resend': 'Send a new code',
+  'account.otherEmail': 'Use another email',
+  'account.signedIn': 'Signed in as {email}.',
+  'account.signOut': 'Sign out',
+  'account.signOutAll': 'Sign out on all devices',
+  'account.signedOutToast': 'Signed out.',
+  'account.offline': 'No connection. Your progress is saved on this device either way.',
+  'account.fake': 'Test accounts on this computer. Nothing is sent. The code is always 123456.',
+  'account.err.off': 'Accounts are off.',
+  'account.err.badEmail': 'Enter an email address.',
+  'account.err.noAccount': 'There is no account for this email.',
+  'account.err.badCode': 'That code is wrong or has run out. Check it, or send a new one.',
+  'account.err.rateLimited': 'Too many tries. Wait a minute, then try again.',
+  'account.err.offline': 'No connection. Try again when you are online.',
+  'account.err.signedOut': 'You are signed out. Sign in again.',
+  'account.err.failed': 'That did not work. Try again.',
+  // Profile › Diagnostics: shown only when accounts are configured or on
+  'diag.accounts': 'Accounts',
+  'diag.accounts.on': 'On ({provider})',
+  'diag.accounts.off': 'Off: {why}',
+  'accounts.provider.fake': 'test accounts, this computer only',
+  'accounts.provider.supabase': 'Supabase',
+  'accounts.why.unknownProvider': 'the provider is not known',
+  'accounts.why.badUrl': 'the project address is not valid',
+  'accounts.why.badKey': 'the key is not a publishable key',
+  'accounts.why.legacyKey': 'legacy keys are refused',
+  'accounts.why.secretKey': 'secret keys are refused',
+  'accounts.why.badOrigins': 'the list of allowed addresses is not valid',
+  'accounts.why.sharedOrigin': 'this address is shared with other sites',
+  'accounts.why.originNotAllowed': 'this address is not on the allowed list',
   // ---- end of R8 ACC0 ----
   // ---- R8 A1 ----
   // ---- end of R8 A1 ----
   // ---- R8 F1 ----
   // ---- end of R8 F1 ----
   // ---- R8 U1 ----
+  'error.retry': 'Try again',
   // ---- end of R8 U1 ----
   // ---- R8 U2 ----
+  'exam.upNextLine': '{module} · Test {n}',
+  'practice.reviewRow': 'Review round · {n} questions',
+  'practice.reviewRow.detail': 'About {min} min',
   // ---- end of R8 U2 ----
   // ---- R8 M1 ----
+  // the round done screen: a round of new items only (figure = new items), of "I know this" only, and the exam items
+  // known after the round with what it added in accent
+  'practice.done.newOnly': { one: 'new item studied', other: 'new items studied' },
+  'practice.done.knownOnly': { one: 'marked as known', other: 'marked as known' },
+  'practice.done.knownNow': '{a} of {n}',
+  'practice.done.gain': '+{n}',
   // ---- end of R8 M1 ----
   // ---- R8 M2 ----
   // ---- end of R8 M2 ----
@@ -2925,6 +2974,8 @@ export default {
   // ---- R8 U3 ----
   // ---- end of R8 U3 ----
   // ---- R8 C1 ----
+  // answer feedback (ui/answer-diff.js): one line under a near miss whose only difference is a missing ending
+  'practice.diff.endingMissing': { one: 'Letter missing at the end of {word}: {part}.', other: 'Letters missing at the end of {word}: {part}.' },
   // ---- end of R8 C1 ----
   // ---- R8 C2 ----
   // ---- end of R8 C2 ----
@@ -2933,5 +2984,9 @@ export default {
   // ---- R8 C4 ----
   // ---- end of R8 C4 ----
   // ---- R8 C5 ----
+  'read.lib.loading': 'Loading the texts…',
   // ---- end of R8 C5 ----
+  // ---- R8 P3 ----
+  'today.loading': 'Loading today’s plan…',
+  // ---- end of R8 P3 ----
 };

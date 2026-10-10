@@ -20,6 +20,7 @@ import { getMeanings } from './meanings.js';
 import { say, hasVoice } from './voice.js';
 import { back, sheet, fullScreen } from './ui.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
+import { claude, canAskClaude } from '../../data/credentials.js';
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx @param {any} script0 @param {string | null} sectionId */
 export async function mountMark(el, ctx, script0, sectionId) {
@@ -281,7 +282,7 @@ export async function mountMark(el, ctx, script0, sectionId) {
       for (const m of script.marks || []) if (!byCard.has(m.cardId)) byCard.set(m.cardId, m);
       const list = [...byCard.values()];
       const missing = list.filter(m => !m.gloss);
-      const key = !!(store.get('secrets', {}) || {}).anthropicKey;
+      const key = canAskClaude(store);
       const status = h('p', { class: 'caption', 'aria-live': 'polite' });
       replace(body,
         list.length ? null : h('p', { class: 'lead' }, t('practice.script.tray.empty')),
@@ -292,7 +293,7 @@ export async function mountMark(el, ctx, script0, sectionId) {
               const b = /** @type {HTMLButtonElement} */ (e.currentTarget); b.disabled = true; b.textContent = t('practice.script.tray.getting');
               try {
                 const ws = missing.map(m => ({ surface: m.surface, lemma: m.lemma, sentence: sentenceOf(m.sentenceId) }));
-                const res = await getMeanings({ key: store.get('secrets', {}).anthropicKey, words: ws });
+                const res = await getMeanings({ cred: claude(store), words: ws });
                 missing.forEach((m, i) => {
                   const r = res.get(i + 1); if (!r) return;
                   const entry = (L.idx.lemmas.get(r.lemma.toLowerCase()) || [])[0] || null;

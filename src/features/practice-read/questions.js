@@ -17,6 +17,7 @@ import * as R from '../shared/read-data.js';
 import * as L from './logic.js';
 import { language, sectionsFor } from './load.js';
 import { back, errLine } from './ui.js';
+import { claude, canAskClaude } from '../../data/credentials.js';
 
 const PROMPT = 'read-questions@1';
 /** True and false in the text's language, for the true-or-false items. */
@@ -30,7 +31,6 @@ export async function mountQuestions(el, ctx, read) {
   const sentences = L.sentencesOf({ sections });
   const text = sentences.map(x => x.de).join(' ');
   const hash = L.textHash({ sections });
-  const key = () => (store.get('secrets', {}) || {}).anthropicKey || null;
   const cached = () => {
     const q = ((store.get(R.CACHE, {}) || {})[read.id] || {}).q;
     return q && q.promptVersion === PROMPT && q.textHash === hash && Array.isArray(q.items) && q.items.length >= L.MIN_QUESTIONS ? q.items : null;
@@ -47,7 +47,7 @@ export async function mountQuestions(el, ctx, read) {
   function start() {
     const items = fromContent || cached();
     if (items) { drawQuestions(items); return; }
-    if (!key()) {
+    if (!canAskClaude(store)) {
       replace(body, h('p', { class: 'lead' }, t('read.q.noKey')), h('a', { class: 'btn btn-primary pressable', href: `#/practice/read/${read.id}/done` }, t('read.finish')));
       return;
     }
@@ -67,7 +67,7 @@ export async function mountQuestions(el, ctx, read) {
       /** @type {L.Question[]} */ let items = [];
       let model = '';
       for (let tries = 0; tries < 2 && items.length < L.MIN_QUESTIONS; tries++) {
-        const res = await ask({ key: key(), user, model: config.anthropic.models.grade, maxTokens: 3000, effort: 'low', fallback: false, format: { type: 'json_schema', schema: L.QUESTIONS_SCHEMA } });
+        const res = await ask({ cred: claude(store), user, model: config.anthropic.models.grade, maxTokens: 3000, effort: 'low', fallback: false, format: { type: 'json_schema', schema: L.QUESTIONS_SCHEMA } });
         items = L.checkQuestions(res.text, text, inLang);
         model = res.model;
       }

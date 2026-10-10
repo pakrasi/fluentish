@@ -12,8 +12,6 @@
 :root[data-theme="dark"] .progress { --pg-k1: #5c5f68; --pg-k2: #8b8e97; --pg-k3: #d6d7dc; --pg-col: #8b8e97; }
 
 .progress > * { min-width: 0; }
-.pg-back { display: inline-flex; align-items: center; gap: 6px; min-height: var(--tap); padding-top: var(--s-2); color: var(--ink-2); text-decoration: none; font-size: 14px; }
-.pg-back + .page-head { padding-top: 0; }
 .pg-empty { max-width: 60ch; margin-top: var(--s-4); font: 400 15px/1.55 var(--font-ui); color: var(--ink-2); }
 .pg-empty-sec { margin-top: var(--s-6); }
 .pg-empty-title { margin: 0; font: 600 13px/1.35 var(--font-ui); color: var(--ink-3); }
@@ -35,8 +33,8 @@
 
 /* charts */
 .pg-frame { position: relative; width: 100%; min-width: 0; margin-top: var(--s-3); }
-/* Today's Progress row and this chart share the name: the route's view transition morphs the one into the other */
-.pg-known-frame { view-transition-name: pg-known; }
+/* Today's Progress row hands its sparkline to this chart (motion.js handoff/receive name both pg-known only for that
+   route change): the route's view transition morphs the one into the other */
 ::view-transition-group(pg-known) { animation-duration: 520ms; animation-timing-function: var(--spring-snappy); }
 ::view-transition-old(pg-known), ::view-transition-new(pg-known) { height: 100%; object-fit: fill; }
 .pg-chart { display: block; overflow: visible; font-family: var(--font-ui); -webkit-tap-highlight-color: transparent; touch-action: pan-y; }

@@ -122,13 +122,20 @@ body[data-chrome="off"] .bar, body[data-chrome="off"] #tabs-slot { display: none
 
 .dock { position: fixed; inset-inline-start: 0; inset-inline-end: 0; bottom: calc(57px + env(safe-area-inset-bottom)); z-index: calc(var(--z-bar) - 1); padding: var(--s-3) max(var(--gutter), env(safe-area-inset-left)) var(--s-2); background: linear-gradient(to bottom, transparent, var(--canvas) 34%); }
 .dock .btn { box-shadow: var(--shadow-lift); }
+/* a tablet (600 to 899 px): the dock's button keeps the content's width, centred */
+@media (min-width: 600px) { .dock { padding-inline: max(var(--gutter), calc((100% - 560px) / 2)); } }
 .today.has-dock { padding-bottom: 76px; }
 /* the sticky bars never cover what has focus or what a link scrolls to */
 html { scroll-padding-top: calc(52px + env(safe-area-inset-top) + var(--s-2)); scroll-padding-bottom: calc(57px + env(safe-area-inset-bottom) + var(--s-3)); }
 :root:has(.dock) { scroll-padding-bottom: calc(57px + 84px + env(safe-area-inset-bottom)); }
+/* the error view: Try again and Back to Today in the dock on a phone, inline on a desktop */
+.error-actions { display: flex; flex-wrap: wrap; gap: var(--s-2); }
+.error-actions.dock .btn { flex: 1; }
 @media (prefers-reduced-transparency: reduce) { .dock { background: var(--canvas); } }
 @media (min-width: 900px) {
   .dock { display: none; }
+  .error-actions.dock { display: flex; position: static; padding: 0; background: none; }
+  .error-actions.dock .btn { flex: none; box-shadow: none; }
   .today.has-dock { padding-bottom: 0; }
   .hero-btn { display: inline-flex; }
   html, :root:has(.dock) { scroll-padding-bottom: var(--s-4); }
@@ -249,7 +256,7 @@ input[type="date"].input { min-height: var(--tap); }
   border-block: 1px solid var(--hairline); color: var(--ink); text-decoration: none; }
 .stand-progress .row-detail { color: var(--ink-3); }
 .stand-progress > svg:last-child { color: var(--ink-3); }
-.stand-spark { display: block; overflow: visible; view-transition-name: pg-known; }
+.stand-spark { display: block; overflow: visible; }
 .stand-spark-line { fill: none; stroke: var(--ink); stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; }
 .stand-spark-end { fill: var(--accent); stroke: var(--canvas); stroke-width: 1.5; }
 .stand-none { margin-top: var(--s-4); color: var(--ink-2); }
@@ -300,7 +307,6 @@ input[type="date"].input { min-height: var(--tap); }
 @media (forced-colors: active) { .lv-gain, .stand-key-swatch { background: Highlight; forced-color-adjust: none; } }
 
 /* ---------- Profile › Goals and week (round 4) ---------- */
-.goals-back { display: inline-flex; align-items: center; gap: var(--s-1); min-height: var(--tap); color: var(--ink-2); font-size: 14px; text-decoration: none; }
 .goals-page .page-head { padding-top: 0; }
 .goal-card { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: var(--s-3); row-gap: 2px; padding: var(--s-4) 0; border-bottom: 1px solid var(--hairline); }
 .goal-card > * { grid-column: 1 / -1; margin: 0; }
@@ -338,10 +344,6 @@ input[type="date"].input { min-height: var(--tap); }
 .chip[aria-pressed="true"] .week-later { color: inherit; opacity: 0.8; }
 .chip.is-later:not([aria-pressed="true"]) { border-style: dashed; }
 .week-kind-line { margin: 0; color: var(--ink-2); }
-.week-sheet { gap: var(--s-3); }
-.week-sheet-head { display: flex; align-items: center; justify-content: space-between; gap: var(--s-3); }
-.week-sheet-title:focus { outline: none; }
-.week-sheet-x { flex: none; width: var(--tap); padding: 0; }
 .week-sheet-body { display: grid; gap: var(--s-2); }
 .week-sheet-body .field-label { margin: var(--s-2) 0 0; }
 .week-steps { display: flex; justify-content: space-between; gap: var(--s-3); padding-top: var(--s-2); border-top: 1px solid var(--hairline); }
@@ -397,12 +399,10 @@ body.kb .kb-short { display: inline; }
 /* a page (not a fitted round) gets room at its end, so a field low on it scrolls above the keyboard instead of iOS
    panning the whole page (the jump of 200 to 450 px in the audit) */
 body.kb main.page { padding-bottom: calc(var(--kb-screen, 0px) + var(--s-4)); }
-/* bottom sheets with a field (the round size picker, the reader's word sheet, the script's marked words): on the
-   keyboard, no taller than the visible screen, their buttons in reach (the picker's Start is sticky at its end) */
-body.kb .rs-sheet, body.kb .tv-sheet, body.kb .sc-sheet { bottom: var(--kb, 0px); max-height: var(--vv-h, 100dvh); }
-body.kb .rs-panel { max-height: var(--vv-h, 100dvh); padding-bottom: var(--s-3); }
+/* bottom sheets with a field (the reader's word sheet, the script's marked words): on the keyboard, no taller than the
+   visible screen, their buttons in reach. ui/sheet.js sheets (the round size picker) do this themselves (ui.css). */
+body.kb .tv-sheet, body.kb .sc-sheet { bottom: var(--kb, 0px); max-height: var(--vv-h, 100dvh); }
 body.kb .tv-sheet, body.kb .sc-sheet { padding-bottom: var(--s-3); }
-body.kb .rs-start { position: sticky; bottom: 0; z-index: 1; box-shadow: 0 0 0 6px var(--surface); }
 
 /* keyboard mode, a short prompt (core/keyboard.js fitPrompt, round 6 follow-up): while the band between the header and
    the field is empty (nothing open on the card but a plain "Right"), it is the prompt's. A short prompt grows toward the

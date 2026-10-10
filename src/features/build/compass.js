@@ -9,6 +9,7 @@
    Keyboard: the ring is a group with a roving tab stop; arrow keys move around it by angle. */
 import { h, replace, announce } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
+import { backLink as uiBack } from '../../core/ui.js';
 import { scene, glyphFor } from './picto.js';
 import { wordNode, joinFrom, weld, exampleNode } from './word.js';
 import { gradeRow } from './grade4.js';
@@ -21,7 +22,7 @@ const W = 358, H = 330, CX = W / 2, CY = H / 2 - 4, RX = 142, RY = 128;
 const GRADE_KEY = /** @type {Record<string, string>} */ ({ T: 'build.grade.T', M: 'build.grade.M', O: 'build.grade.O' });
 const ORDER = /** @type {Record<string, number>} */ ({ known: 0, shaky: 1, unknown: 2, unseen: 3 });
 
-export const backLink = (/** @type {string} */ href, /** @type {string} */ text) => h('a', { class: 'wb-back pressable', href }, icon('prev', { size: 16 }), text);
+export const backLink = (/** @type {string} */ href, /** @type {string} */ text) => uiBack({ href, label: text });
 
 /** The view switch of the Prefixes screen (links, so each view has its own address). @param {any} t @param {'compass'|'drill'|'table'} cur */
 export function viewSwitch(t, cur) {

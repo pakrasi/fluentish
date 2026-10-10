@@ -2,7 +2,7 @@
    month's spend against his cap, Start. Earlier conversations of this device are listed under it. */
 import { h, replace } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
-import { seg, notice } from '../../core/ui.js';
+import { seg, notice, backLink } from '../../core/ui.js';
 import { reduced } from '../../core/motion.js';
 import { label } from '../../core/clock.js';
 import { add } from '../../domain/days.js';
@@ -14,6 +14,7 @@ import * as D from './data.js';
 import { sentSheet } from './sheets.js';
 import { radioKeys } from '../../core/radiogroup.js';
 import { IDS } from './prompts.js';
+import { canAskClaude } from '../../data/credentials.js';
 
 /** @param {HTMLElement} el @param {import('../contract.js').ViewCtx} ctx */
 export async function mountSetup(el, ctx) {
@@ -23,7 +24,7 @@ export async function mountSetup(el, ctx) {
   const ui = /** @type {{mode: 'free' | 'roleplay', pick: string | null, own: string}} */ ({ mode: 'free', pick: null, own: '' });
   const remembered = (store.get('ui', {}) || {}).convMode;
   if (remembered === 'roleplay' || remembered === 'free') ui.mode = remembered;
-  let alive = true;
+  let alive = true, risen = false;
   /** The scene whose goal is open (it opens once, when picked). @type {string | null} */ let shownGoal = null;
 
   function draw() {
@@ -32,7 +33,7 @@ export async function mountSetup(el, ctx) {
     const cs = D.convSettings(settings);
     const c = ctx.clock.ctx();
     const level = settings.level || 'B1';
-    const key = D.claudeKey(store);
+    const canAsk = canAskClaude(store);
     const all = D.listSessions(store);
     const spent = D.monthSpent(store, c.today);
     const month = C.monthLoad(spent, cs.monthlyCapUsd);
@@ -88,18 +89,19 @@ export async function mountSetup(el, ctx) {
     }
 
     const offline = typeof navigator !== 'undefined' && navigator.onLine === false;
-    const why = !conv || !content ? t('conv.noPack') : !key ? null : offline ? t('conv.offline') : month.over ? t('conv.month.over', { cap: D.money(month.cap) }) : null;
+    const why = !conv || !content ? t('conv.noPack') : !canAsk ? null : offline ? t('conv.offline') : month.over ? t('conv.month.over', { cap: D.money(month.cap) }) : null;
     const startBtn = /** @type {HTMLButtonElement} */ (h('button', { type: 'button', class: 'btn btn-primary btn-wide pressable cv-start', onclick: start },
       t('conv.start', { usd: D.money(est) })));
-    const syncStart = () => { startBtn.disabled = !!why || !key || (ui.mode === 'free' ? !(ui.own.trim() || ui.pick) : !ui.pick); };
+    const syncStart = () => { startBtn.disabled = !!why || !canAsk || (ui.mode === 'free' ? !(ui.own.trim() || ui.pick) : !ui.pick); };
     syncStart();
 
     const earlier = all.slice(0, 5);
-    const view = h('div', { class: 'practice stack cv cv-setup' },
-      h('a', { class: 'btn btn-quiet pressable cv-back', href: '#/practice' }, icon('back', { size: 18 }), t('practice.title')),
+    const chosen = !!(ui.pick || ui.own.trim());
+    const view = h('div', { class: ['practice', 'stack', 'cv', 'cv-setup', chosen && 'has-dock'] },
+      backLink({ href: '#/practice', label: t('practice.title') }),
       h('div', { class: 'page-head' }, h('h1', null, t('conv.title'))),
       h('p', { class: 'cv-lede' }, t('conv.lead', { lang: conv?.language || '' })),
-      !key ? notice({ kind: 'warning', children: [h('p', { class: 'notice-title' }, t('conv.noKey')), h('p', null, h('a', { href: '#/profile/connections' }, t('conv.noKey.link')))] }) : null,
+      !canAsk ? notice({ kind: 'warning', children: [h('p', { class: 'notice-title' }, t('conv.noKey')), h('p', null, h('a', { href: '#/profile/connections' }, t('conv.noKey.link')))] }) : null,
       seg({ label: t('conv.mode'), value: ui.mode, options: [['free', t('conv.mode.free')], ['roleplay', t('conv.mode.roleplay')]],
         onChange: v => { ui.mode = /** @type {any} */ (v); ui.pick = null; ui.own = ''; store.update('ui', (/** @type {any} */ u) => ({ ...(u || {}), convMode: v }), {}); draw(); } }),
       ui.mode === 'free' ? freeBlock : roleBlock,
@@ -110,8 +112,12 @@ export async function mountSetup(el, ctx) {
       h('p', { class: ['caption', 'cv-month', month.warn && 'is-warn'] }, month.over ? t('conv.month.over', { cap: D.money(month.cap) })
         : month.warn ? t('conv.month.warn', { spent: D.money(spent), cap: D.money(month.cap) }) : t('conv.month', { spent: D.money(spent), cap: D.money(month.cap) })),
       why ? h('p', { class: 'caption cv-why', role: 'status' }, why) : null,
-      // with the keyboard up (his own topic) Start sits on the keyboard (styles/app.css .kb-dock)
-      h('div', { class: 'cv-startbar kb-dock' }, startBtn),
+      // with a topic or scene chosen (one is chosen for him) Start sits in the shared bottom dock on a phone, in the
+      // thumb zone, and inline on a desktop (design B3); it rises in once per visit. With the keyboard up (his own
+      // topic) it sits on the keyboard (styles/app.css .kb-dock).
+      // no Claude key: the dock's action is the way to add one (the reason sits far up the page)
+      h('div', { class: ['cv-startbar', 'kb-dock', chosen && 'dock', chosen && !risen && 'fx-rise'] },
+        canAsk ? startBtn : h('a', { class: 'btn btn-primary btn-wide pressable cv-addkey', href: '#/profile/connections' }, t('conv.addKey'))),
       earlier.length ? h('section', { class: 'cv-earlier' }, h('h2', { class: 'cv-h' }, t('conv.earlier')),
         h('ul', { class: 'cv-earlier-list' }, earlier.map(s => {
           const tr = D.getTranscript(store, s.id);
@@ -122,6 +128,7 @@ export async function mountSetup(el, ctx) {
             icon('next', { size: 16 })));
         }))) : null);
     replace(el, view);
+    if (chosen) risen = true;
     // the topic and scene lists: one tab stop each, arrow keys choose (core/radiogroup.js)
     for (const g of el.querySelectorAll('.cv-choices[role="radiogroup"]')) radioKeys(g, { root: el });
   }

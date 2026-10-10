@@ -125,14 +125,15 @@ components:
   week-strip:     { columns: "7, Monday first (brand.js weekStrip), spread to the card's inner width", bar: "max 30px wide, centred, height by planned minutes",
                     states: { done: "ink fill over the plan fill", missed: "the plan fill only ({colors.wk-plan} + field-border edge)", future: "field-border outline, no fill", today: "accent outline + accent-soft, minutes done in accent", off: "1px field-border baseline (a bar of the minutes when he studied anyway)" },
                     labels: "weekday 11px ink-3, kind 10px ink-3 (none for Normal)", plan: "plan mode (the week editor): every day the plan fill", update: "weekStripUpdate: one column grows from its old height (scaleY, spring-soft), its label crosses over" }
-  week-editor:    { phone: "the strip, then seven 56px rows ('Thursday  45 min · Write (later)  ›'); a row opens a bottom sheet (rs-sheet) with the minute and kind chips wrapped, one line on the kind, ‹ day / day › steps", wide: ">=720px: the strip's columns are tabs (selected: 1.5px ink inset), the day's editor in a surface panel under them", keys: "roving tabindex: one tab stop, arrows, Home, End", code: "src/features/profile/week-editor.js" }
+  week-editor:    { phone: "the strip, then seven 56px rows ('Thursday  45 min · Write (later)  ›'); a row opens a bottom sheet (ui/sheet.js) with the minute and kind chips wrapped, one line on the kind, ‹ day / day › steps", wide: ">=720px: the strip's columns are tabs (selected: 1.5px ink inset), the day's editor in a surface panel under them", keys: "roving tabindex: one tab stop, arrows, Home, End", code: "src/features/profile/week-editor.js" }
   progress-column: { width: "min(16px, 55% of slot)", fill: "{colors.pg-col}", top: "4px rounded", now: "accent outline 1.5px + accent 25% fill, labelled 'so far'", average: "ink-2 hairline at the 8-week average, labelled at the right edge only" }
   progress-line:  { endLabel: "the value at the end, Geist 12/600 ink, with a canvas halo", markers: "diamonds and the end dot pop in (spring-pop) as the draw passes them; the label fades in last" }
   progress-row:   { use: "Today › Where you stand: the door to Progress", height: 64px, parts: "title, the last 4 weeks' change (caption, tabular), a 96x28 sparkline of known over 12 weeks (2px ink, accent end dot), chevron", morph: "view-transition-name pg-known on the sparkline and on Progress's known chart" }
   reader-head:    { parts: "h1 (Newsreader 30, 34 >=720px), one meta line ('Graded text at B1, 241 words · 90.5% known'), a 3px meter (ink known, surface-2 track, no legend), a caption only for a stretch or a hard text and for 'assumed from your level'" }
   reader-marks:   { suggested: "{typography.reading-mark-suggest}", saved: "ink text on {colors.read-saved} (+2px of the same as a halo); a 4px accent dot after the word in the tray only", band: "{colors.read-band}, one element across the phrase's words and spaces" }
   toast:          { backgroundColor: "{colors.ink}", textColor: "{colors.on-ink}", rounded: "{rounded.pill}", position: "fixed, above tab bar" }
-  tab-bar:        { position: "fixed bottom on phone, inline links >=900px", current: "ink label + 18x2px accent dash", glass: "92% canvas + blur; solid canvas under prefers-reduced-transparency" }
+  tab-bar:        { position: "fixed bottom on phone, inline links >=900px", current: "ink label + 18x2px accent dash", glass: "92% canvas + blur; solid canvas under prefers-reduced-transparency", retap: "a tap on the current tab at its root goes to the top" }
+  back-link:      { use: "the one back control at the top of a page (core/ui.js backLink)", parts: "prev chevron 16px + the name of the page it goes back to, Geist 14/500 ink-2, one line with an ellipsis", size: "min 44x44", narrow: "a header row that also holds controls (exam runner, Map): below 400px only the chevron, the name stays the accessible name", back: "Back and Forward return to the scroll position the page was left at (core/scroll.js); a new navigation starts at the top" }
   dock:           { position: "fixed above the tab bar on phone (<900px)", use: "Today and Practice's one Start button; the element itself, never an aria-hidden copy", scrollPadding: "html scroll-padding-bottom covers dock + tab bar" }
   grade4:         { layout: "4 equal columns, gap 8px", height: 64px, rounded: "{rounded.ctl}", background: "{colors.surface}", border: "1px {colors.hairline-strong}",
                     label: "Geist 15/600 ink", interval: "{typography.caption} ink-3 tabular", suggested: "6px accent dot top-right, no fill; takes the focus",
@@ -424,15 +425,48 @@ Purpose first: every animation is feedback (an answer, a tap), a state change (c
 5. Distances are small: 28-40px for cards, 8-10px for reveals, 7px for the wrong nudge.
 6. Correct answer sequence (about 450 ms, then auto-advance): underline sweeps green left to right (240 ms), check scales in with the pop spring while its stroke draws, round segment fills (snappy), haptic tick, field cell lands in accent and a faint wave crosses its neighbours (720 ms, runs during the next card). Enter during the hold skips it (`skip()`).
 7. Wrong answer: underline sweeps red, the typed text is struck through, the field nudges once (300 ms damped, not a shake), the answer opens below with the differing words underlined in red. The user presses Next; no auto-advance on a miss.
-8. Card to card: View Transition on `fx-card`; old card slides 28px left and fades (160 ms), new one comes from 40px right at 98.5% scale with the snappy spring, 40 ms after. Back reverses direction. Fallback without View Transitions: the same keyframes by class.
+8. Card to card: View Transition on `fx-card`; old card slides 28px left and fades (160 ms), new one comes from 40px right at 98.5% scale with the snappy spring, 70 ms after (round 8 fix pass: 40 ms let the two cards' text overlap). Back reverses direction. Fallback without View Transitions: the same keyframes by class.
 9. View to view (tabs): `fx-view` content fades out quick and rises 8px in; bars stay still. Give the content wrapper `view-transition-name: fx-view`; the bars must not be inside it.
 10. Numbers: the one big numeral per screen is an odometer (digits roll on their own columns, ones place first). Other counts tick with `countTo` (ease-out quart, 600-900 ms).
 11. Brand moment: the atmosphere is still at rest. It breathes (speed ramps up, holds 1.6 s, eases out) once when a round is finished, behind the round-done result. Nothing else on Today moves at rest.
 12. The only brand motions: the field's intro (once a day on Today), `ripple()` on every first-try correct answer (round strip) and on cells that became known (Today, round-done), and `breathe()` once per finished round. A lost WebGL context falls back to the CSS gradient.
 
+**Round 8 motion rules (PENDING THE OWNER'S APPROVAL).** Written by the round 8 fix pass from the build as merged on
+`r8/integration`; until the owner approves them, rules 7 and 9 above still read as before and these say what the build
+does. Approve, change or strike each one.
+- **R8-1 Done screen (M1).** A round's end is one timeline (`shared/done-hero.js`): the round card lifts away while the
+  done page rises and the bars slide back (one view transition, `arrive()`); at 120 ms the figure rolls on its odometer
+  and the atmosphere breathes once; from 500 ms the round's right answers land in the field 90 ms apart and "+N" ticks
+  up in accent with the first. "+N" counts only the items right first time, the new items studied and the items marked
+  known, so it never drops overnight. The actions are there from 0 ms; a tap anywhere skips to the end state; reduced
+  motion shows the end state. Everything the page starts ends with the view (its signal).
+- **R8-2 Tab dash and bars (M2), replacing rule 9's "bars stay still".** The app bar, the phone tab bar and the dock are
+  their own layers (fx-bar, fx-tabs, fx-dock). On both sides of a change they hold still and only their content
+  changes; where a page hides one (a round, the exam runner) it slides off its edge in 160 ms ease-in, and where it
+  comes back it slides in on the card duration, ease-out. The tab bar's accent dash slides under the new tab on
+  spring-snappy, and the tapped tab's label turns current with it, on the tap. Entering a round, its header fades in
+  and its action row rises, 120 ms late, once the bar has gone; card swaps keep the round chrome still.
+- **R8-3 Sheet (`ui/sheet.js`).** Rises on spring-snappy (card duration), leaves in 160 ms ease-in (a fling: at its own
+  speed); drag on the handle or the header, or the body at its top; a third of its height or a flick closes it; two
+  detents step one at a time. One close control per size: the handle on a phone, a 44 px × from 720 px. Esc and the
+  scrim close it; leaving the page closes it at once and that wins over any close already running. Reduced motion:
+  140 ms fades, the drag still works.
+- **R8-4 Toast (`ui/toast.js`).** One ink pill at a time; a replacement waits for the old one's exit (160 ms) before it
+  enters 16 px up on spring-snappy (380 ms). 4 s, or 6 s with an action; hover or focus holds it; swipe down or
+  sideways dismisses. An action toast that belongs to a page (Undo) closes with that page. Spoken once through the
+  shell's live region, with its action; Undo's hit box is 44 px.
+- **R8-5 Answer diff (`ui/answer-diff.js`), replacing rule 7's "underlined in red".** His line and the right line, marks
+  drawn in after the verdict (scaleX, base duration, 28 ms apart from 120 ms): letters to correct on an answer that
+  counts in accent (never red); letters he typed wrong underlined red; letters the right answer has and he lacks
+  green on the right line; letters he left out shown in his word in ink-3 with a red dotted underline (the faint-letter
+  idea is the owner's call; it must never read as typed); a far miss stays plain except a gap card's word. A retype
+  miss underlines the first word his copy lacks (`pulse('locus')`). Capitals only where the grader listed them.
+
+**Primitives for choreography** (core/motion.js, round 8): `sequence(steps, { signal })` places steps on a timeline (`at` in ms, `'<'` with the previous step, `'>'` after it, `'+=n'`); Enter to skip calls its `finish()`, which sets every step's end state at once, and an unmount cancels it. `pulse(el, 'locus' | 'look')` is a one-shot "look here". `odometer(el, n, { from })` rolls from a given number. `play`, `nudge`, `pop` and `finishAll` (from Word building) are shared by every component in `src/ui/`.
+
 **Reduced motion** (system setting, or `html[data-motion="reduce"]` as a user setting): `--move` becomes 0 so every translate/scale distance is zero; card and view changes become 140 ms crossfades; fills, rings and the runway jump to their values; the odometer and counters write the final number; the field draws its final state with no intro or ripple; the check and underline appear without sweeping; the atmosphere renders one still frame and never breathes. Haptics stay (they are not motion). `html[data-motion="full"]` opts back in.
 
-**Performance**: the shader is the only WebGL context on Today (one per page, max; Explore › 3D holds its own only while open), mounted after idle, low-power, pixel count capped at 900x900, speed 0 at rest. The field canvas runs rAF only while animating. No scroll listeners: reveals use IntersectionObserver. Total kit cost: about 5 kB + 5 kB gzipped JS, 8 kB gzipped CSS, plus Paper Shaders' mesh gradient (lazy, CDN, optional).
+**Performance**: the shader is the only WebGL context on Today (one per page, max; Explore › 3D holds its own only while open), mounted after idle, low-power, pixel count capped at 900x900, speed 0 at rest. The field canvas runs rAF only while animating. No scroll listeners: reveals use IntersectionObserver (the one passive listener is core/scroll.js, which keeps the page's y for Back and writes it to history.state at most every 300 ms). Total kit cost: about 5 kB + 5 kB gzipped JS, 8 kB gzipped CSS, plus Paper Shaders' mesh gradient (lazy, CDN, optional).
 
 ## Copy
 

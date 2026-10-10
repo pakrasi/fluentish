@@ -1,12 +1,14 @@
 /* Building blocks shared by the exam screens: the clock bar, answer options, the confirm panel and small rows. */
 import { h, replace, announce } from '../../core/dom.js';
 import { icon } from '../../core/icons.js';
+import { backLink as uiBack } from '../../core/ui.js';
 import * as T from './timer.js';
 import { draft, saveDraft } from './data.js';
 import { langAttr, dirAttr } from '../../core/lang.js';
 
-/** The back link at the top of every exam screen ("← Test 3"). @param {string} href @param {string} text */
-export const backLink = (href, text) => h('a', { class: 'ex-back pressable', href }, icon('prev', { size: 18 }), h('span', null, text));
+/** The back link at the top of every exam screen ("‹ Test 3", core/ui.js). narrow: in the runner's header, only the
+    chevron below 400 px. @param {string} href @param {string} text @param {{narrow?: boolean}} [o] */
+export const backLink = (href, text, { narrow = false } = {}) => uiBack({ href, label: text, narrow });
 
 /**
  * The module clock: shows time left (or time used for Hören), pauses and resumes, writes the last tick every 15 s,

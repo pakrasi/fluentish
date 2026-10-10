@@ -4,7 +4,7 @@
    The count reads "3 of 8" against the planned cards, and "Again · 8 of 8" while a returning card is up.
    Shared by the B1 rounds (round.js), Speaking situations (sim-view.js) and Word clusters (say it aloud). */
 import { h, replace } from '../../core/dom.js';
-import { segments } from '../../core/motion.js';
+import { segments, reduced } from '../../core/motion.js';
 
 /**
  * @param {{queue: {id: string, re?: boolean}[], i: number, results: any[], planned?: number}} round
@@ -38,7 +38,8 @@ export function drawProgress(segs, againEl, p) {
   p.again.forEach((st, k) => {
     let tick = /** @type {HTMLElement | undefined} */ (againEl.children[k]);
     if (!tick) { tick = h('i', { class: 'land' }); againEl.append(tick); }
-    tick.className = [k >= had ? 'land' : '', st ? `is-${st}` : ''].filter(Boolean).join(' ');
+    // a new tick lands (520 ms fade) only with motion on
+    tick.className = [k >= had && !reduced() ? 'land' : '', st ? `is-${st}` : ''].filter(Boolean).join(' ');
   });
   againEl.hidden = !p.again.length;
 }

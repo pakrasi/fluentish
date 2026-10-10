@@ -10,8 +10,7 @@
 import { h } from '../../core/dom.js';
 import { label, windowStart, parse } from '../../core/clock.js';
 import { config } from '../../core/config.js';
-import { icon } from '../../core/icons.js';
-import { section, seg, field, nextId } from '../../core/ui.js';
+import { section, seg, field, nextId, backLink } from '../../core/ui.js';
 import { setSetting, setExamDate, setCourse, examDate, activeCourse, MODULES } from '../../data/settings.js';
 import { defaultWeek, weekMinutes, courseWeek } from '../../domain/week.js';
 import { courseGoal } from '../../domain/levels.js';
@@ -74,7 +73,7 @@ export function goalsPage(ctx, { exams, languages }) {
   function parts() {
     const s = ctx.settings();
     return [
-      h('a', { class: 'goals-back pressable', href: '#/profile' }, icon('back', { size: 16 }), t('goals.back')),
+      backLink({ href: '#/profile', label: t('goals.back') }),
       h('header', { class: 'page-head' }, h('h1', null, t('goals.title'))),
       goals(s), weekPlan(s)];
   }
@@ -324,7 +323,7 @@ export function goalsPage(ctx, { exams, languages }) {
     };
     // the goals above show the week's total: refresh them when the editor's changes settle
     const refreshGoals = () => { const old = page.querySelector('#profile-goal'); if (old) old.replaceWith(goals(ctx.settings())); };
-    editor = weekEditor({ t, days: DAYS, week: () => /** @type {any} */ (courseWeek(ctx.settings())) || week, setDay, fmt: n => fmtMin(t, n), onDone: refreshGoals });
+    editor = weekEditor({ t, days: DAYS, week: () => /** @type {any} */ (courseWeek(ctx.settings())) || week, setDay, fmt: n => fmtMin(t, n), onDone: refreshGoals, signal: ctx.signal });
     sec.append(...[
       inWindow ? h('p', { class: 'caption' }, t('week.examNote')) : null,
       editor.el,

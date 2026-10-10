@@ -11,7 +11,7 @@ import { icon } from '../../core/icons.js';
 import { notice, section, nextId } from '../../core/ui.js';
 import { odometer, fill, reveal, countTo, reduced } from '../../core/motion.js';
 import { runway, weekStrip, weekStripUpdate, atmosphere } from '../../core/brand.js';
-import { composeDay } from '../day.js';
+import { composeDay, prepareDay, statsFresh } from '../day.js';
 import { summaryText } from '../../data/migrate.js';
 import { examDate, activeCourse } from '../../data/settings.js';
 import { previewText } from '../../data/cutover.js';
@@ -25,7 +25,18 @@ import { connected, resultsRepo } from '../../data/connection.js';
 import { renderStanding, standingCounts, sparkOf } from './standing.js';
 
 /** What the hero showed last (kept across visits to Today in one session): the week strip fills from it. */
-const shown = /** @type {{week: string | null, ratios: number[], done: number | null, kind: string | null, welcome: string | null}} */ ({ week: null, ratios: [], done: null, kind: null, welcome: null });
+const shown = /** @type {{week: string | null, ratios: number[], done: number | null, kind: string | null, welcome: string | null, fig: Record<string, {day: string, value: number}>}} */ ({ week: null, ratios: [], done: null, kind: null, welcome: null, fig: {} });
+
+/**
+ * Today's figure rolls up once a day (design review S8): back on Today the same day it rolls from the number it showed
+ * last, so an unchanged count stands still and a changed one rolls only the difference.
+ * @param {HTMLElement} el @param {number} value @param {string} label @param {string} kind which figure @param {string} today
+ */
+function rollFigure(el, value, label, kind, today) {
+  const last = shown.fig[kind];
+  shown.fig[kind] = { day: today, value };
+  odometer(el, value, last && last.day === today ? { label, from: last.value } : { label });
+}
 const COUNTDOWN = new Set(['week', 'lastNew', 'eve', 'day']);
 /** "Wednesday" of a day. @param {string} d */
 const weekdayLong = d => new Intl.DateTimeFormat('en-GB', { weekday: 'long' }).format(parse(d));
@@ -39,16 +50,29 @@ export async function mount(el, ctx) {
   /** "Study anyway" was just tapped: the next render changes the hero in place instead of drawing it again. */
   let anywayNext = false;
 
-  async function render() {
-    const { plan, exam, lang, c, settings: s, activity } = await composeDay(ctx);
-    if (!alive) return;
-    const my = ++gen;
-    const allow = dayAllowance({ store, c, settings: s });
+  /** Every compose that draws (render, or the first visit's) takes a number; the background one draws only if none
+   *  started after it. */
+  let req = 0;
+  /** What is on screen (the plan and the allowance it was drawn with), so the background compose redraws only on a change. */
+  let drawnKey = '';
+  /** The features' prepare on this visit (set before the first draw), then a turn of the event loop. */
+  let prepared = /** @type {Promise<unknown>} */ (Promise.resolve());
+  /** @param {any} day composeDay's result @param {any} allow */
+  const keyOf = (day, allow) => JSON.stringify({ plan: day.plan, allow });
 
-    const examName = exam ? exam.short : t('exam.generic');
-    // an Off day in maintenance has no rows to start (Study anyway brings them)
-    const primary = !COUNTDOWN.has(c.phase) && allow.plan?.kind === 'off' ? null : plan.primary;
-    const hero = renderHero({ s, c, plan, activity, examName, lang, allow, primary });
+  async function render() {
+    ++req;
+    const day = await composeDay(ctx);
+    if (!alive) return;
+    draw(day);
+  }
+
+  /** @param {Awaited<ReturnType<typeof composeDay>>} day */
+  function draw(day) {
+    const { plan, c, settings: s } = day;
+    const my = ++gen;
+    const { hero, allow, examName, primary } = heroOf(day);
+    drawnKey = keyOf(day, allow);
     const feedbackSec = plan.feedback.length ? section(t('today.feedback'),
       h('ul', { class: 'list' }, plan.feedback.map(f => h('li', { class: 'list-item' },
         h('div', { class: 'row-main' }, h('span', { class: 'row-title' }, f.title), h('span', { class: 'row-detail' }, f.status)),
@@ -84,13 +108,26 @@ export async function mount(el, ctx) {
         requestAnimationFrame(() => requestAnimationFrame(() => panel.classList.add('is-open')));
       }
     }
-    if (stand) standingCounts(ctx, plan.modules).then(n => { if (alive && my === gen) stand.fill(n); });
+    // (after the features' prepare: both load the same pool, and counting in the same task as the plan's stats would make
+    // one long task of the two)
+    // the counts are display only: if their content cannot load (offline, or a reload cancelled the fetch) the rows keep
+    // their quiet state; never an unhandled rejection
+    if (stand) prepared.then(() => (alive && my === gen ? standingCounts(ctx, plan.modules) : null)).then(n => { if (n && alive && my === gen) stand.fill(n); }).catch(() => {});
     reveal(page);
     for (const tr of page.querySelectorAll('.mbar .track')) fill(/** @type {HTMLElement} */ (tr), Number(/** @type {HTMLElement} */ (tr).dataset.p));
     if (oldAtmo) return;
     const atmoEl = /** @type {HTMLElement | null} */ (page.querySelector('.atmo'));
     if (atmo) { atmo.destroy(); atmo = null; }
     if (atmoEl) atmosphere(atmoEl).then(a => { if (alive) atmo = a; else a.destroy(); }).catch(() => {});
+  }
+
+  /** The hero of a composed day, with the allowance it reads. @param {Awaited<ReturnType<typeof composeDay>>} day */
+  function heroOf({ plan, exam, lang, c, settings: s, activity }) {
+    const allow = dayAllowance({ store, c, settings: s });
+    const examName = exam ? exam.short : t('exam.generic');
+    // an Off day in maintenance has no rows to start (Study anyway brings them)
+    const primary = !COUNTDOWN.has(c.phase) && allow.plan?.kind === 'off' ? null : plan.primary;
+    return { hero: renderHero({ s, c, plan, activity, examName, lang, allow, primary }), allow, examName, primary };
   }
 
   /** @param {any} o */
@@ -131,7 +168,7 @@ export async function mount(el, ctx) {
             plan: d => planned(iso(d)), done: d => (activity[iso(d)]?.minutes || 0),
             examLabel: t('today.runway.exam'), minLabel: (d, p) => t('today.runway.min', { d, p }),
           });
-          if (c.phase !== 'day') odometer(num, c.daysLeft, { label: t('today.daysLeftLabel', { n: c.daysLeft }) });
+          if (c.phase !== 'day') rollFigure(num, c.daysLeft, t('today.daysLeftLabel', { n: c.daysLeft }), 'days', c.today);
         },
       };
     }
@@ -215,7 +252,7 @@ export async function mount(el, ctx) {
         if (dayOff) return;
         // the number is the odometer's only when it changes: Study anyway shows the count without a roll
         if (patch) { num.textContent = String(value); num.setAttribute('aria-label', fresh ? t('today.newLabel', { n: value }) : t('today.dueLabel', { n: value })); if (!reduced()) countEl.classList.add('is-new'); }
-        else odometer(num, value, { label: fresh ? t('today.newLabel', { n: value }) : t('today.dueLabel', { n: value }) });
+        else rollFigure(num, value, fresh ? t('today.newLabel', { n: value }) : t('today.dueLabel', { n: value }), fresh ? 'new' : 'due', c.today);
       },
     };
   }
@@ -331,8 +368,56 @@ export async function mount(el, ctx) {
       paused, laterEl);
   }
 
+  /**
+   * The day's first visit (the stats are yesterday's): the page head and notices, the hero's card drawn from the stats
+   * it has with its contents hidden (it only holds its height: the week strip and runway are drawn, nothing can be read
+   * or tapped), and the plan's first rows as empty space, until the plan is composed. @param {Awaited<ReturnType<typeof composeDay>>} day
+   */
+  function shell(day) {
+    const { c, settings: s } = day;
+    const { hero, allow } = heroOf(day);
+    // Today's family line: the day's board is made by prepare (build/plan.js), so on the day's first visit it is not
+    // in the hero yet; hold its line where it comes as a rule (German, past the first week, no exam in its window: with
+    // one, the board waits until he has seen six forms of a root, which only the content can tell)
+    if (s.language === 'german' && !COUNTDOWN.has(c.phase) && allow.mode !== 'start' && !hero.el.querySelector('.hero-fam')) {
+      hero.el.append(h('div', { class: 'hero-fam' }, h('span', { class: 'hero-fam-t' }, '\u00a0'), h('span', { class: 'hero-fam-d' }, '\u00a0')));
+    }
+    hero.el.classList.add('is-wait');
+    hero.el.setAttribute('aria-hidden', 'true');
+    hero.el.inert = true;
+    // the card shows, empty: what is in it is hidden (the atmosphere starts with the real draw)
+    for (const child of hero.el.children) /** @type {HTMLElement} */ (child).style.visibility = 'hidden';
+    // rows the height of a plan row (app.css .plan-row: 60 px and a hairline), held by the CSSOM, never a .plan-row
+    const row = () => h('div', { 'aria-hidden': 'true', style: { minHeight: '60px', borderBottom: '1px solid var(--hairline)' } });
+    replace(el, h('div', { class: 'today is-loading', 'aria-busy': 'true' },
+      h('header', { class: 'page-head' }, h('h1', null, t('today.title')), h('p', { class: 'caption' }, label(c.today))),
+      h('p', { class: 'sr-only', role: 'status' }, t('today.loading')),
+      h('div', { class: 'today-grid' },
+        h('div', { class: 'today-a' }, hero.el, phaseNotice(c), importNotice()),
+        h('div', { class: 'today-b' }, section(t('today.plan'), h('p', { class: 'caption section-sub', 'aria-hidden': 'true' }, '\u00a0'), h('div', { class: 'today-wait' }, [row(), row(), row(), row()]))))));
+    // the strip and runway take their height; what the hero remembers for the real draw's motion is left as it was
+    const keep = { ...shown, ratios: [...shown.ratios] };
+    hero.after(null);
+    Object.assign(shown, keep);
+  }
+
   const rerender = () => { if (!pending) pending = render().finally(() => { pending = null; }); };
-  await render();
+  // Draw at once from the stats the features wrote today (no content loaded), then let the features refresh them
+  // (prepareDay loads the content) and compose again: the plan then is the one composeDay(ctx) gives in one call, and
+  // it is drawn again only if it changed. On the day's first visit the page waits for it behind a quiet shell.
+  const early = await composeDay(ctx, { prepare: false });
+  const ready = statsFresh(store, early.c, early.settings);
+  /** @type {unknown} */ let failed = null;
+  prepared = prepareDay(ctx).catch(e => { failed = e || new Error('prepare'); }).then(() => new Promise(r => setTimeout(r)));
+  if (ready) draw(early); else shell(early);
+  const at = req;
+  prepared.then(() => { if (failed) throw failed; return composeDay(ctx, { prepare: false }); }).then(day => {
+    if (!alive || at !== req) return;   // a render since (settings, cards …) has drawn a newer plan
+    if (!ready || keyOf(day, dayAllowance({ store, c: day.c, settings: day.settings })) !== drawnKey) draw(day);
+  }).catch(e => {
+    console.error('today: prepare', e);
+    if (alive && at === req && !ready) draw(early);   // as offline: the plan from the last stats
+  }).finally(() => { if (alive) bus.emit('today:settled'); });   // main.js: a new version may take over from here
   const offs = [
     bus.on('settings:changed', rerender),
     store.subscribe('cards:b1', rerender), store.subscribe('attempts', rerender), store.subscribe('activity', rerender), store.subscribe('mistakes', rerender),

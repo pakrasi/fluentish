@@ -17,7 +17,9 @@ let sink = null;
 /** @type {ReturnType<typeof setTimeout> | null} */
 let timer = null;
 
-const SECRET = /github_pat_[A-Za-z0-9_]+|\bgh[opsur]_[A-Za-z0-9]+|sk-ant-[A-Za-z0-9_-]+|\b(Bearer|token)\s+[A-Za-z0-9._~+/=-]{8,}|("?(x-api-key|authorization|apikey|api_key|githubToken|anthropicKey)"?\s*[:=]\s*)("[^"]*"|'[^']*'|\S+)/gi;
+// accounts (round 8): Supabase secret keys, JWTs (session tokens, legacy keys) and the session's token fields too, and
+// an Authorization value's token after its scheme
+const SECRET = /github_pat_[A-Za-z0-9_]+|\bgh[opsur]_[A-Za-z0-9]+|sk-ant-[A-Za-z0-9_-]+|sb_secret_[A-Za-z0-9_-]+|\beyJ[A-Za-z0-9_-]*\.[A-Za-z0-9_-]+\.[A-Za-z0-9_-]*|\b(Bearer|token)\s+[A-Za-z0-9._~+/=-]{8,}|("?(x-api-key|authorization|apikey|api_key|githubToken|anthropicKey|access_token|refresh_token|accessToken|refreshToken)"?\s*[:=]\s*)((?:Bearer|token)\s+\S+|"[^"]*"|'[^']*'|\S+)/gi;
 
 /**
  * A message with nothing private left in it: keys and tokens, URL queries, quoted text longer than a word or two.

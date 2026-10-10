@@ -13,6 +13,7 @@ import { courseGoal } from '../../domain/levels.js';
 import { back, pct } from './ui.js';
 import { langOf } from './load.js';
 import { fits, gradedTexts, slugOf } from './fit.js';
+import { createSkeleton } from '../../ui/skeleton.js';
 
 /** The graded level shown last (kept for the session). @type {string | null} */
 let shownLevel = null;
@@ -22,6 +23,13 @@ export async function mountLibrary(el, ctx) {
   const { t, store } = ctx;
   const lang = langOf(ctx);
   const deck = R.readDeck(lang);
+  // while the graded texts load (one content file): the page head and still rows in place of the list
+  // (ui/skeleton.js: nothing for 150 ms, so a cached load shows no flash), and the status text for a screen reader
+  replace(el, h('div', { class: 'practice stack rd-lib', 'aria-busy': 'true' },
+    back('#/practice', t('practice.title')),
+    h('div', { class: 'page-head' }, h('h1', null, t('read.title'))),
+    h('p', { class: 'sr-only', role: 'status' }, t('read.lib.loading')),
+    createSkeleton({ shape: 'rows', count: 5 }).el));
   const graded = await gradedTexts(ctx, lang);
   /** @type {import('./fit.js').Fit[] | null} */ let fit = null;
   let alive = true;

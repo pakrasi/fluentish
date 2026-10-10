@@ -6,6 +6,10 @@ import { readFileSync } from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { GRADER_TEMPLATE, graderSystem, graderMessage, ask, correctSchreiben, ClaudeError } from '../../src/services/claude.js';
+import { keyCredential } from '../../src/data/credentials.js';
+
+/** A synthetic key credential. */
+const CRED = keyCredential('k');
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '../..');
 const ex = JSON.parse(readFileSync(path.join(ROOT, 'content/exams/goethe-b1/day01.json'), 'utf8'));
@@ -35,7 +39,7 @@ test('request shape, the score line, and errors', async () => {
   const BODY = '! circa 62 / 100 · bestanden\nGut gemacht.\n## Aufgabe 1 · Einladung · circa 26 / 40';
   const reply = (/** @type {string} */ text) => async (url, init) => { seen = { url, init, body: JSON.parse(init.body) }; return new Response(JSON.stringify({ model: 'm', stop_reason: 'end_turn', content: [{ type: 'thinking', thinking: '' }, { type: 'text', text }] }), { status: 200 }); };
   const ok = reply(BODY);
-  const r = await correctSchreiben({ key: 'k', ex, texts: { aufgabe1: 'x' }, learnerNotes: 'N', fetch: ok });
+  const r = await correctSchreiben({ cred: CRED, ex, texts: { aufgabe1: 'x' }, learnerNotes: 'N', fetch: ok });
   assert.equal(r.body, BODY);
   assert.equal(seen.url, 'https://api.anthropic.com/v1/messages');
   assert.equal(seen.init.headers['x-api-key'], 'k');
@@ -47,19 +51,19 @@ test('request shape, the score line, and errors', async () => {
   assert.match(seen.body.system[0].text, /Hinweise zum Lerner:\nN/);
 
   const fail = (status, body) => async () => new Response(JSON.stringify(body), { status });
-  await assert.rejects(ask({ key: 'k', system: 's', user: 'u', fetch: fail(401, { error: { message: 'invalid x-api-key' } }) }), e => e instanceof ClaudeError && e.code === 'key');
-  await assert.rejects(ask({ key: 'k', system: 's', user: 'u', fetch: fail(529, {}) }), e => e.code === 'overloaded');
-  await assert.rejects(ask({ key: 'k', system: 's', user: 'u', fetch: fail(200, { stop_reason: 'refusal', content: [] }) }), e => e.code === 'refusal');
-  await assert.rejects(ask({ key: 'k', system: 's', user: 'u', fetch: async () => { throw new TypeError('Load failed'); } }), e => e.code === 'offline');
-  await assert.rejects(ask({ key: '', system: 's', user: 'u' }), e => e.code === 'nokey');
+  await assert.rejects(ask({ cred: CRED, system: 's', user: 'u', fetch: fail(401, { error: { message: 'invalid x-api-key' } }) }), e => e instanceof ClaudeError && e.code === 'key');
+  await assert.rejects(ask({ cred: CRED, system: 's', user: 'u', fetch: fail(529, {}) }), e => e.code === 'overloaded');
+  await assert.rejects(ask({ cred: CRED, system: 's', user: 'u', fetch: fail(200, { stop_reason: 'refusal', content: [] }) }), e => e.code === 'refusal');
+  await assert.rejects(ask({ cred: CRED, system: 's', user: 'u', fetch: async () => { throw new TypeError('Load failed'); } }), e => e.code === 'offline');
+  await assert.rejects(ask({ cred: null, system: 's', user: 'u' }), e => e.code === 'nokey');
 });
 
 test('a reply that is not a correction is never saved as one', async () => {
   const reply = (/** @type {string} */ text) => async () => new Response(JSON.stringify({ model: 'm', stop_reason: 'end_turn', content: [{ type: 'text', text }] }), { status: 200 });
   for (const bad of ['Gut gemacht.', '{"verdict":"correct","note":"ok"}', '! circa 62 / 100 · bestanden\nOhne Aufgaben.']) {
-    await assert.rejects(correctSchreiben({ key: 'k', ex, texts: {}, fetch: reply(bad) }), e => e instanceof ClaudeError && e.code === 'format', bad);
+    await assert.rejects(correctSchreiben({ cred: CRED, ex, texts: {}, fetch: reply(bad) }), e => e instanceof ClaudeError && e.code === 'format', bad);
   }
-  const fenced = await correctSchreiben({ key: 'k', ex, texts: {}, fetch: reply('```markdown\n! circa 50 / 100 · nicht bestanden\n## Aufgabe 1 · x · circa 20 / 40\n```') });
+  const fenced = await correctSchreiben({ cred: CRED, ex, texts: {}, fetch: reply('```markdown\n! circa 50 / 100 · nicht bestanden\n## Aufgabe 1 · x · circa 20 / 40\n```') });
   assert.match(fenced.body, /^! circa 50/);
 });
 
@@ -67,7 +71,7 @@ test('the answer check (Practice) uses the small model without effort or fallbac
   const { checkAnswer } = await import('../../src/services/claude.js');
   let seen = null;
   const ok = async (url, init) => { seen = { init, body: JSON.parse(init.body) }; return new Response(JSON.stringify({ model: 'claude-haiku-4-5', stop_reason: 'end_turn', content: [{ type: 'text', text: '{"verdict":"minor","note":"Word order."}' }] }), { status: 200 }); };
-  const v = await checkAnswer({ key: 'k', item: { kind: 'phrase', prompt: 'Deal!', model: 'Abgemacht!' }, answer: 'Einverstanden!', fetch: ok });
+  const v = await checkAnswer({ cred: CRED, item: { kind: 'phrase', prompt: 'Deal!', model: 'Abgemacht!' }, answer: 'Einverstanden!', fetch: ok });
   assert.deepEqual(v, { verdict: 'minor', note: 'Word order.' });
   assert.equal(seen.body.model, 'claude-haiku-4-5');
   assert.equal(seen.body.max_tokens, 200);

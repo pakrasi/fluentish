@@ -66,7 +66,7 @@
 .fv-kid.is-unseen { stroke-dasharray: 1.5 2; }
 .fv-node { position: absolute; transform: translate(-50%, -50%); min-width: 40px; height: 26px; padding: 0 5px; border: 0; border-radius: var(--r-tile); background: var(--surface);
   box-shadow: inset 0 0 0 1.5px var(--x-box); color: var(--ink); font: 400 15px/1 var(--font-display); cursor: pointer; display: grid; place-items: center; }
-.fv-node::before { content: ""; position: absolute; inset: -9px -2px; }   /* a 44 px tap target */
+.fv-node::before { content: ""; position: absolute; inset: -9px -4px; }   /* a 44 px tap target */
 .fv-node.is-known { background: var(--ink); color: var(--on-ink); box-shadow: none; }
 .fv-node.is-shaky { background: var(--ink-3); color: var(--on-ink); box-shadow: none; }
 .fv-node.is-unseen { box-shadow: none; outline: 1.5px dotted var(--x-box); outline-offset: -1.5px; font-style: italic; color: var(--x-new); }
@@ -193,7 +193,6 @@
 .pz-main { display: flex; flex-direction: column; width: 100%; max-width: 440px; min-height: 100%; margin: 0 auto; }
 .pz-head { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; min-height: 44px; }
 .pz-head h1 { font: 600 17px/1.2 var(--font-ui); letter-spacing: -0.01em; text-align: center; }
-.pz-back { display: inline-flex; align-items: center; gap: 4px; min-height: var(--tap); color: var(--ink-2); text-decoration: none; font: 500 15px/1 var(--font-ui); justify-self: start; white-space: nowrap; }
 @media (max-width: 379px) { .pz-head { grid-template-columns: auto minmax(0, 1fr) auto; gap: 8px; } }
 .pz-help { justify-self: end; width: 44px; height: 44px; border: 0; border-radius: 22px; background: none; color: var(--ink-2); cursor: pointer; display: grid; place-items: center; margin-inline-end: -10px; }
 /* the root (a link to its family) and the count on one row, the squares under them */
@@ -229,7 +228,8 @@
 .pz-tries i.is-used { background: var(--ink-3); box-shadow: none; }
 
 /* the build row: one tile per part; the root is given */
-.pz-build { position: relative; display: flex; justify-content: center; align-items: flex-end; gap: 4px; min-height: 52px; margin-top: 10px; perspective: 600px; }
+/* a part flips with perspective(600px) in its own transform (src/ui/tile.js flipTo), so the row sets none */
+.pz-build { position: relative; display: flex; justify-content: center; align-items: flex-end; gap: 4px; min-height: 52px; margin-top: 10px; }
 .pt { position: relative; display: inline-grid; place-items: center; min-width: 40px; height: 46px; padding: 0 10px; border-radius: var(--r-tile); background: var(--surface-2); color: var(--ink); font: 500 21px/1 var(--font-display); transform-style: preserve-3d; }
 .pt.is-empty { background: transparent; box-shadow: inset 0 0 0 1.5px var(--hairline-strong); color: var(--ink-3); font: 400 13px/1 var(--font-ui); }
 .pt.is-empty.is-hint { box-shadow: inset 0 0 0 1.5px var(--field-border); font: italic 400 19px/1 var(--font-display); }
@@ -244,20 +244,22 @@
 .pz-shown { display: block; width: 100%; text-align: center; margin-top: 6px; }
 .pz-weld { position: absolute; bottom: 2px; inset-inline-start: 50%; width: 46%; margin-inline-start: -23%; height: 2px; border-radius: 1px; background: var(--ink); transform-origin: left; }
 
-.pz-msg { margin: 8px 6px 0; font: 400 14px/1.4 var(--font-ui); color: var(--ink-2); text-align: center; text-wrap: balance; }
+.pz-msg { margin: 8px 6px 0; min-height: 2.8em; font: 400 14px/1.4 var(--font-ui); color: var(--ink-2); text-align: center; text-wrap: balance; }
 .pz-de, .pz-ex { font: 400 16px/1.4 var(--font-display); color: var(--ink); }
+.pz-msg .pz-de { line-height: 1; }   /* the German word in a message keeps the line's height: two lines fit the reserve */
 .pz-ex u { text-decoration-color: var(--accent); text-decoration-thickness: 1.5px; text-underline-offset: 3px; }
 
 /* the hive: the root in the middle, the prefixes round it */
 .pz-play { margin-top: 10px; transition: opacity var(--dur-quick) var(--ease-out); }
 .pz-play.is-dim { opacity: 0.35; pointer-events: none; }
 .pz-hive { position: relative; width: 260px; height: 184px; margin: 2px auto 0; flex: none; }
-.hx { position: absolute; transform: translate(-50%, -50%); min-width: 52px; padding: 0 8px; height: 40px; border: 1px solid var(--hairline-strong); border-radius: var(--r-tile); background: var(--surface); color: var(--ink);
-  font: 500 18px/1 var(--font-display); cursor: pointer; display: grid; place-items: center; }
+.hx { position: absolute; transform: translate(-50%, -50%); min-width: 52px; height: 40px; color: var(--ink); font: 500 18px/1 var(--font-display); }
 .hx::before { content: ""; position: absolute; inset: -3px -1px; }
-.hx[aria-pressed="true"] { background: var(--ink); color: var(--on-ink); border-color: var(--ink); }
-.hx:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
-.hx.is-centre { inset-inline-start: 50%; top: 50%; width: 88px; height: 56px; background: var(--ink); color: var(--on-ink); border-color: var(--ink); font-size: 23px; cursor: default; align-content: center; gap: 2px; }
+/* the tiles are src/ui/tile.js: the button is placed here (the ring's centring translate stays on it), the face draws
+   the tile and takes the press (scale 0.94 on the face, so the hit box never shrinks and nothing jumps) */
+.hx > .ui-tile-face { padding: 0 8px; }
+.hx.is-centre { inset-inline-start: 50%; top: 50%; width: 88px; height: 56px; border: 1px solid var(--ink); border-radius: var(--r-tile); background: var(--ink); color: var(--on-ink); font-size: 23px; cursor: default;
+  display: grid; place-items: center; align-content: center; gap: 2px; }
 .hx.is-centre small { display: block; font: 400 12px/1 var(--font-ui); opacity: 0.72; }
 .pz-ends { display: flex; justify-content: center; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
 .pz-ends.is-two { flex-direction: column; align-items: center; }
@@ -269,8 +271,11 @@
 .pz-hive.is-rows .hx:not(.is-centre) { min-width: 50px; }
 .pz-ends[hidden] { display: none; }
 .pz-hive.is-rows .hx.is-centre { inset: auto; height: 50px; margin-inline: 4px; }
-.pz-ends .hx { position: relative; transform: none; width: auto; min-width: 48px; height: 40px; padding: 0 10px; font-size: 17px; }
-.pz-ends .hx.is-art { min-width: 48px; font: 500 15px/1 var(--font-ui); display: inline-flex; align-items: center; justify-content: center; gap: 0; }
+.pz-ends .hx { position: relative; transform: none; width: auto; min-width: 48px; height: 40px; font-size: 17px; }
+.pz-ends .hx > .ui-tile-face { padding: 0 10px; }
+/* 44 px to touch, and no further: the hive's last row is 6 px above, so the two hit boxes meet and never overlap */
+.pz-ends .hx::before { inset: -2px -1px; }
+.pz-ends .hx.is-art { min-width: 48px; font: 500 15px/1 var(--font-ui); }
 .pz-sep { width: 1px; margin: 6px 4px; background: var(--hairline-strong); }
 .hx kbd, .pz-acts kbd, .pz-split kbd { font: 500 10px/1 var(--font-mono); opacity: 0.6; border: 1px solid currentColor; border-radius: 4px; padding: 1px 3px; margin-inline-start: 6px; }
 .pz-ends .hx kbd { display: none; }
@@ -296,7 +301,8 @@
 .pz-grade { display: inline-flex; align-items: center; gap: 6px; color: var(--ink-3); }
 .pz-learn-ex .pz-ex { font-size: 17px; }
 .pz-exen { margin-top: -6px; font: 400 13px/1.35 var(--font-ui); color: var(--ink-3); }
-.pz-msg:empty { margin: 0; }   /* kept in the tree: a live region must exist before it speaks */
+/* the status line keeps its two lines when quiet, so a message never moves the tiles under his thumb (it is kept in
+   the tree anyway: a live region must exist before it speaks); typing hides it while it is empty */
 .pz-acts.is-next { grid-template-columns: 1fr; }
 .pz-acts.is-next > .btn:not(.pz-check) { display: none; }
 
@@ -364,7 +370,6 @@ body.kb .pz-top { justify-content: end; }
 .pz-dw-w { grid-area: w; font: 400 19px/1.2 var(--font-display); color: var(--ink); }
 .pz-dw-en { grid-area: en; font: 400 13px/1.3 var(--font-ui); color: var(--ink-2); }
 .pz-dw-st { grid-area: st; color: var(--ink-3); }
-.pz-fly { position: fixed; z-index: var(--z-fx, 80); pointer-events: none; display: grid; place-items: center; border-radius: var(--r-tile); background: var(--ink); color: var(--on-ink); font: 500 18px/1 var(--font-display); }
 
 @media (min-width: 900px) {
   .pz { grid-template-columns: minmax(0, 440px) minmax(0, 360px); justify-content: center; gap: 0 48px; padding-top: var(--s-6); align-items: start; }
@@ -375,7 +380,7 @@ body.kb .pz-top { justify-content: end; }
 }
 @media (max-width: 899px) { .pz-board { display: none; } }
 @media (forced-colors: active) {
-  .pt.is-ok, .hx[aria-pressed="true"], .pz-sqs i.is-f1, .pz-bsq.is-f1, .pz-grid i.is-f1 { background: CanvasText; color: Canvas; forced-color-adjust: none; }
+  .pt.is-ok, .pz-sqs i.is-f1, .pz-bsq.is-f1, .pz-grid i.is-f1 { background: CanvasText; color: Canvas; forced-color-adjust: none; }
   .pz-sqs i.is-now { outline: 2px solid Highlight; }
 }
 

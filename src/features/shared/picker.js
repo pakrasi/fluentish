@@ -6,11 +6,13 @@
    starts Recommended at once; Today's buttons and the hub's Start round skip the sheet. A list with a paused round
    resumes it. The last choice per list type is remembered on this device (sizes.js).
 
-   Keys: 1 2 3 choose, arrows change the number (and choose Custom), Enter starts, Esc closes. The sheet springs in
-   (kit tokens; a fade under reduced motion), the number ticks as it changes. The sheet is a modal <dialog>, so focus
-   stays in it and returns to the list after. */
+   Keys: 1 2 3 choose, arrows change the number (and choose Custom), Enter starts, Esc closes. The sheet is
+   ui/sheet.js (a modal <dialog>: it springs in, follows a drag down to close, a fade under reduced motion; focus stays
+   in it and returns to the list after; it closes when the view is left). Start sits under the choices, never
+   scrolled away. The number ticks as it changes. */
 import { h, replace, announce } from '../../core/dom.js';
 import { haptic } from '../../core/motion.js';
+import { createSheet } from '../../ui/sheet.js';
 import * as RS from '../../domain/roundsize.js';
 import { listOf, listInfo, remembered, remember, sizedHref } from './sizes.js';
 
@@ -105,13 +107,13 @@ export async function openPicker(ctx, href, opener = null) {
   const moreBtn = h('button', { type: 'button', class: 'btn btn-quiet pressable rs-more', onclick: () => { showAll(); allBtn.focus(); } }, t('practice.size.moreChoices'));
   if (init.mode !== 'all') allBtn.hidden = true;
   const warn = h('p', { class: 'rs-warn', 'aria-live': 'polite' });
-  const startBtn = h('button', { type: 'button', class: 'btn btn-primary btn-wide pressable rs-start', autofocus: true, onclick: () => start() });
-  const panel = h('div', { class: 'rs-panel' },
-    h('div', { class: 'rs-grab', 'aria-hidden': 'true' }), title, sub,
-    h('div', { class: 'rs-opts', role: 'radiogroup', 'aria-labelledby': 'rs-title' }, recBtn, custom, allBtn), allBtn.hidden ? moreBtn : null,
-    warn, startBtn, h('p', { class: 'caption rs-tip' }, t('practice.size.tip')));
-  const dlg = /** @type {HTMLDialogElement} */ (h('dialog', { class: 'rs-sheet', 'aria-labelledby': 'rs-title' }, panel));
-  document.body.append(dlg);
+  const startBtn = h('button', { type: 'button', class: 'btn btn-primary btn-wide pressable rs-start', onclick: () => start() });
+  const sheet = createSheet({
+    title, className: 'rs-picker', opener, focus: startBtn, signal: ctx.signal, labels: { close: t('practice.size.close') },
+    body: [sub, h('div', { class: 'rs-opts', role: 'radiogroup', 'aria-labelledby': 'rs-title' }, recBtn, custom, allBtn), allBtn.hidden ? moreBtn : null, warn],
+    actions: [startBtn, h('p', { class: 'caption rs-tip' }, t('practice.size.tip'))],
+  });
+  const dlg = sheet.el;
 
   /** The round the current choice makes. */
   const current = () => (mode === 'rec' ? { ids: r.ids, due: r.due, fresh: r.fresh, early: r.early, over: 0 } : mode === 'all' ? opts.all : opts.custom(n));
@@ -148,24 +150,22 @@ export async function openPicker(ctx, href, opener = null) {
   });
   input.addEventListener('blur', () => { input.value = String(n); });
 
+  let starting = false;   // Enter during the close animation must not start it twice
   function start() {
     const cur = current();
-    if (!cur.ids.length) return;
+    if (!cur.ids.length || starting) return;
+    starting = true;
     remember(info?.type || 'list', { mode, n });
-    close(() => ctx.go(sizedHref(href, mode === 'rec' ? 'rec' : mode === 'all' ? 'all' : n).slice(1)));
+    const to = sizedHref(href, mode === 'rec' ? 'rec' : mode === 'all' ? 'all' : n).slice(1);
+    // only a sheet that closed for Start goes on: Back during its close animation leaves the page instead. The router
+    // aborts the view's signal only once the next page has loaded (slow on a slow phone), so the address is checked
+    // too: he is still where the sheet was opened.
+    const here = location.hash;
+    void sheet.close('start');
+    void sheet.closed.then(why => { if (why === 'start' && !ctx.signal.aborted && location.hash === here) ctx.go(to); });
   }
-  let closing = false;
-  function close(/** @type {(() => void) | null} */ then = null) {
-    if (closing) return;
-    closing = true;
-    dlg.classList.add('is-out');
-    const done = () => { dlg.close(); dlg.remove(); if (then) then(); else opener?.focus({ preventScroll: true }); };
-    const ms = parseFloat(getComputedStyle(dlg).getPropertyValue('--rs-out')) || 160;
-    setTimeout(done, matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : ms);
-  }
-  dlg.addEventListener('cancel', e => { e.preventDefault(); close(); });
-  dlg.addEventListener('click', e => { if (e.target === dlg) close(); });   // a tap on the backdrop
   dlg.addEventListener('keydown', e => {
+    if (/** @type {HTMLElement} */ (e.target).closest?.('.ui-sheet-grab')) return;   // the handle is Close: Enter there closes
     const inInput = e.target === input;
     if (e.key === 'Enter' && !e.isComposing) { e.preventDefault(); start(); return; }
     if (!inInput && ['1', '2', '3'].includes(e.key)) { e.preventDefault(); choose(/** @type {any} */ (['rec', 'custom', 'all'][+e.key - 1])); if (e.key === '2') input.focus(); return; }
@@ -173,8 +173,6 @@ export async function openPicker(ctx, href, opener = null) {
     if (['ArrowDown', 'ArrowLeft'].includes(e.key) && (inInput || e.target instanceof HTMLButtonElement)) { e.preventDefault(); step(e.shiftKey ? -5 : -1); }
   });
   draw();
-  dlg.showModal();
-  startBtn.focus({ preventScroll: true });
   // test hook (localhost only)
   if (/^(localhost|127\.0\.0\.1)$/.test(location.hostname)) /** @type {any} */ (window).__picker = { get mode() { return mode; }, get n() { return n; }, current, opts };
 }
