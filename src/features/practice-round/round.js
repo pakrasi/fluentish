@@ -452,11 +452,12 @@ export async function mountRound(el, ctx) {
   function sayAnswer(/** @type {string} */ text) { if (settings.practice.readAloud) readAloud(text); }
   // the lines under a verdict (ui/answer-diff.js), one set at a time: the next set ends the last one's motion
   /** @type {AbortController | null} */ let linesAc = null;
-  /** @param {Omit<import('../../ui/answer-diff.js').AnswerDiffOpts, 'signal' | 'lang' | 'dir'>} o */
+  /** The handle, so a caller can reach locus(attempt) and finish() later (a retype miss, round 8 M1); .el is the node.
+   * @param {Omit<import('../../ui/answer-diff.js').AnswerDiffOpts, 'signal' | 'lang' | 'dir'>} o */
   function lines(o) {
     linesAc?.abort();
     linesAc = new AbortController();
-    return createAnswerDiff({ ...o, lang: langAttr(), dir: dirAttr(), signal: linesAc.signal }).el;
+    return createAnswerDiff({ ...o, lang: langAttr(), dir: dirAttr(), signal: linesAc.signal });
   }
   const LINES = { you: 'pr-diff', right: 'pr-diff answer-key', label: 'caption', caption: 'caption' };
   /** One line about a near miss, when the diff can say it (a missing ending). @param {import('../../domain/letterdiff.js').AnswerDiff} d */
@@ -469,7 +470,7 @@ export async function mountRound(el, ctx) {
     if (r.junk) kids.push(h('p', { class: 'caption' }, t('practice.partial.junk')));
     // the grader's ranges, letter by letter where his word is close to the right one
     else if (r.ref) kids.push(lines({ kind: 'partial', typed: (r.wrong || []).length ? g.input : '', right: r.ref, ranges: { typed: r.wrong || [], right: r.marks || [] },
-      labels: { you: t('practice.you'), right: isSituation(entry.item) ? t('practice.partial.situation') : t('practice.partial.rest'), caption: diffCaption }, classes: { ...LINES, right: 'pr-diff answer-key pr-rest' } }));
+      labels: { you: t('practice.you'), right: isSituation(entry.item) ? t('practice.partial.situation') : t('practice.partial.rest'), caption: diffCaption }, classes: { ...LINES, right: 'pr-diff answer-key pr-rest' } }).el);
     // his errors in the whole answer: a comma, a capital (also in the phrase: kontakt), the item's note on a word
     const nb = notesBox(g, null);
     if (nb) kids.push(nb);
@@ -509,7 +510,7 @@ export async function mountRound(el, ctx) {
     // a preposition gap: the usage note is the point, so it shows after a right answer too
     if (it.usage) kids.push(h('p', { class: 'pr-rule' }, it.usage));
     // his answer once, in its right spelling, the letters to fix underlined in accent (it counts: nothing here is red)
-    if (g.typos.length || capSlip || umlaut) kids.push(lines({ kind: 'right-slip', typed: g.input, slips: [...g.typos, ...g.capMiss, ...g.umlautMiss], labels: {}, classes: { you: 'pr-yours' } }));
+    if (g.typos.length || capSlip || umlaut) kids.push(lines({ kind: 'right-slip', typed: g.input, slips: [...g.typos, ...g.capMiss, ...g.umlautMiss], labels: {}, classes: { you: 'pr-yours' } }).el);
     const capHead = !isNew && !veryLate && !late && !umlaut && capSlip;
     if (capSlip && !capHead) kids.push(h('p', { class: 'caption' }, t('practice.capsNote', { list: [...new Set(g.capMiss.map((/** @type {any} */ x) => x.expected))].join(', ') })));
     if (situation) kids.push(h('p', { class: 'caption' }, t('practice.checkedPhrase')));
@@ -551,7 +552,7 @@ export async function mountRound(el, ctx) {
     const situation = it.kind === 'topic' || it.kind === 'reply';
     const marked = situation && g.pattern ? phraseWords(right, g.pattern) : undefined;
     const kids = [h('p', { class: 'pr-res is-bad' }, t('practice.wrong')),
-      lines({ kind: 'wrong', typed: full(typed), right, marked, capMiss: g.capMiss, labels: { you: t('practice.you'), right: t('practice.rightIs'), caption: diffCaption }, classes: LINES }),
+      lines({ kind: 'wrong', typed: full(typed), right, marked, capMiss: g.capMiss, labels: { you: t('practice.you'), right: t('practice.rightIs'), caption: diffCaption }, classes: LINES }).el,
       situation ? h('p', { class: 'caption' }, t('practice.checkedPhrase')) : null];
     if (g.alsoCorrect?.length) kids.push(h('p', { class: 'pr-also' }, alsoMore(g.alsoCorrect, t('practice.otherWays') + ' ')));
     // his errors, each from his answer, and a rule only when it is about one of them (a detector's always: g.rule);
@@ -617,7 +618,7 @@ export async function mountRound(el, ctx) {
     const kids = [];
     if (typed) {
       kids.push(lines({ kind: 'study', typed: full(typed), right: g.target || g.right, capMiss: g.capMiss, labels: { you: t('practice.you'), caption: diffCaption },
-        classes: { ...LINES, right: ['answer-key', 'pr-study', String(g.target || g.right).length > 90 ? 'is-long' : ''].join(' ').trim() } }));
+        classes: { ...LINES, right: ['answer-key', 'pr-study', String(g.target || g.right).length > 90 ? 'is-long' : ''].join(' ').trim() } }).el);
     } else kids.push(h('p', { class: ['answer-key', 'pr-study', String(g.target || g.right).length > 90 && 'is-long'], lang: langAttr(), dir: dirAttr() }, (g.target || g.right)));
     if (g.alsoCorrect?.length) kids.push(h('p', { class: 'pr-also' }, h('span', { class: 'caption' }, t('practice.alsoCorrect')), ' ', h('span', { lang: langAttr(), dir: dirAttr() }, g.alsoCorrect.slice(0, 2).join(' · ')), g.alsoCorrect.length > 2 ? alsoMore(g.alsoCorrect.slice(2)) : null));
     // a typed attempt: his errors and the rule when it is about one; Show me: the item's rule, the lesson
