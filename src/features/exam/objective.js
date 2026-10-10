@@ -30,7 +30,7 @@ function renderParts({ exam, ex, module, answers, review, key, onPick, t, tx, au
     option({ name: id, value: v, label, badge, answers, review, correct: correct(id), onPick: x => onPick(id, x), t: tx });
   const instr = (/** @type {any[]} */ ...c) => h('p', { class: 'ex-instr' }, ...c);
   const textCard = (/** @type {any} */ x, /** @type {string | null} */ label = null) => h('article', { class: 'ex-text', tabindex: '0' },   // it scrolls by itself on a wide screen, so it takes focus
-    label ? h('p', { class: 'label' }, label) : null, x.title ? h('h3', null, x.title) : null, h('div', { class: 'ex-prose' }, String(x.text).split(/\n\n+/).map(p => h('p', null, p))));
+    label ? h('p', { class: 'label' }, label) : null, x.title ? h(review ? 'h3' : 'h2', { class: 'ex-text-title' }, x.title) : null, /* the runner has no h2 above it (design B11) */ h('div', { class: 'ex-prose' }, String(x.text).split(/\n\n+/).map(p => h('p', null, p))));
   const script = (/** @type {any[]} */ segs, /** @type {Record<string, string> | null} */ names = null) => (review && segs ? h('details', { class: 'ex-script' }, h('summary', null, t('exam.transcript')),
     segs.map(s => h('p', null, names && names[s.speaker] ? h('b', null, `${names[s.speaker]} `) : null, s.text))) : null);
 

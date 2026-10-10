@@ -54,13 +54,21 @@ export function makeTip() {
 
 /* ---------- scales and axes ---------- */
 
-/** A round axis top and step for values up to v (at most 4 steps of 1, 2, 2.5 or 5 × 10^k). @param {number} v @returns {{max: number, step: number}} */
-export function niceAxis(v) {
+/**
+ * A round axis top and step for values up to v (at most 4 steps of 1, 2, 2.5 or 5 × 10^k). A count (`integer`) never
+ * gets a fractional tick: its step is a whole number of at least 1, so an empty chart reads 0 and 1, not 0.25.
+ * @param {number} v @param {{integer?: boolean}} [o] @returns {{max: number, step: number}}
+ */
+export function niceAxis(v, { integer = false } = {}) {
   if (!(v > 0)) return { max: 1, step: 1 };
   const raw = v / 4, p = Math.pow(10, Math.floor(Math.log10(raw)));
-  const step = [1, 2, 2.5, 5, 10].map(m => m * p).find(x => x >= raw) || 10 * p;
+  const steps = [1, 2, 2.5, 5, 10].map(m => m * p).filter(x => !integer || (x >= 1 && Number.isInteger(x)));
+  const step = steps.find(x => x >= raw) || (integer ? Math.max(1, 10 * p) : 10 * p);
   return { max: Math.ceil(v / step) * step, step };
 }
+
+/** True when every value is a whole number (counts of words or items), so the axis gets whole ticks. @param {number[]} vs */
+export const allWhole = vs => vs.every(v => Number.isInteger(v));
 
 const MONTH_F = new Intl.DateTimeFormat('en-GB', { month: 'short' });
 const DAY_MONTH_F = new Intl.DateTimeFormat('en-GB', { day: 'numeric', month: 'short' });
@@ -225,8 +233,9 @@ export function riseIn(svg) {
 export function lineChart(o) {
   return W => {
     const H = o.height || (o.compact ? 64 : 200);
-    const top = o.yMax ?? niceAxis(Math.max(1, ...o.points.map(p => p.v))).max;
-    const step = o.yMax ? o.yMax / 2 : niceAxis(top).step;
+    const integer = o.yMax == null && allWhole(o.points.map(p => p.v));
+    const top = o.yMax ?? niceAxis(Math.max(1, ...o.points.map(p => p.v)), { integer }).max;
+    const step = o.yMax ? o.yMax / 2 : niceAxis(top, { integer }).step;
     const ticks = []; for (let v = 0; v <= top + 1e-9; v += step) ticks.push(v);
     const yLabelW = o.compact ? 0 : Math.max(...ticks.map(v => o.yFormat(v).length)) * 6.6 + 8;
     const endText = !o.compact && o.endLabel && o.points.length ? o.endLabel(o.points[o.points.length - 1]) : null;
@@ -327,7 +336,8 @@ export function lineChart(o) {
 export function columns(o) {
   return W => {
     const H = o.height || (o.compact ? 72 : 170);
-    const ax = niceAxis(Math.max(o.yMax || 0, ...o.cols.map(c => c.v), o.ref ? o.ref.v : 0, o.avg ? o.avg.v : 0));
+    const ax = niceAxis(Math.max(o.yMax || 0, ...o.cols.map(c => c.v), o.ref ? o.ref.v : 0, o.avg ? o.avg.v : 0),
+      { integer: !o.yMax && allWhole(o.cols.map(c => c.v)) && (!o.ref || Number.isInteger(o.ref.v)) });
     const ticks = []; for (let v = 0; v <= ax.max + 1e-9; v += ax.step) ticks.push(v);
     const labelled = !o.compact && (o.ref || o.avg || o.soFar);
     const L = o.compact ? 0 : Math.max(...ticks.map(v => o.yFormat(v).length)) * 6.6 + 8, R = 4, T = labelled ? 20 : 8, B = o.compact ? 4 : 24;

@@ -92,7 +92,7 @@
 @media (min-width: 960px) { .ex-split { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); align-items: start; } .ex-split > .ex-text { position: sticky; top: 72px; max-height: calc(100vh - 96px); overflow: auto; } }
 .ex-text, .ex-block { padding: var(--s-5); border-radius: var(--r-card); background: var(--surface); box-shadow: var(--shadow-card); }
 .ex-block { margin-top: var(--s-4); }
-.ex-text h3 { margin-top: var(--s-1); font: 400 22px/1.2 var(--font-display); }
+.ex-text :is(h2, h3) { margin-top: var(--s-1); font: 400 22px/1.2 var(--font-display); }
 .ex-prose { font: 400 18px/1.55 var(--font-display); color: var(--ink); max-width: var(--measure); }
 .ex-prose p + p { margin-top: 0.7em; }
 .ex-text .ex-prose { margin-top: var(--s-3); }
@@ -264,3 +264,14 @@ body.kb .ex-run:has(> .kb-stick) { padding-top: 57px; }
 body.kb .ex-write { min-height: 140px; max-height: calc(var(--vv-h, 100dvh) - 150px); }
 /* the back link keeps its name for a screen reader but shows only its chevron, so the row fits a phone */
 body.kb .ex-runhead.kb-stick .back-link-text { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+
+/* ---- R8 U2: the Exam tab's Start in the shared dock (styles/app.css .dock) on a phone, inline on a desktop ---- */
+.ex-upnext-title { font: 500 var(--fs-title)/1.3 var(--font-ui); color: var(--ink); }
+.ex-home.has-dock { padding-bottom: 92px; }
+@media (min-width: 900px) {
+  .ex-upnext-title { display: none; }
+  .ex-home.has-dock { padding-bottom: 0; }
+  .ex-dock.dock { display: grid; position: static; padding: 0; background: none; }
+  .ex-dock.dock .btn { box-shadow: none; }
+}
+@media (min-width: 720px) and (max-width: 899px) { .ex-dock .btn-wide { width: 100%; min-width: 0; max-width: none; } }

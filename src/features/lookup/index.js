@@ -335,11 +335,12 @@ export async function mount(el, ctx) {
   replace(el, h('div', { class: 'lookup' },
     h('div', { class: 'lk-top' },
       h('h1', null, t('lookup.title')),
+      (route.opts.lang && !LANGS[route.opts.lang]) || (ctx.settings().language && !LANGS[ctx.settings().language]) ? notice({ children: [h('p', null, t('lookup.langOnly'))] }) : null,
+      // the search first, right under the heading: it is what he uses mid-study (design B10)
+      h('div', { class: 'lk-search' }, h('label', { class: 'lk-field' }, glyph('search', 20), input, clearBtn)),
       // the map is built from the German content (C3b: no map for another language)
       LANGS[lang].b1 ? h('a', { class: 'lk-map pressable', href: '#/lookup/map' }, mapArt(),
         h('span', { class: 'lk-map-text' }, h('span', { class: 'lk-map-title' }, t('lookup.map')), h('span', { class: 'lk-map-detail' }, t('lookup.map.detail'))), icon('next', { size: 18 })) : null,
-      (route.opts.lang && !LANGS[route.opts.lang]) || (ctx.settings().language && !LANGS[ctx.settings().language]) ? notice({ children: [h('p', null, t('lookup.langOnly'))] }) : null,
-      h('div', { class: 'lk-search' }, h('label', { class: 'lk-field' }, glyph('search', 20), input, clearBtn)),
       nav),
     body));
 
@@ -600,6 +601,15 @@ export async function mount(el, ctx) {
 
   drawNav();
   await draw();
+  // on a desktop (a fine pointer) the search takes the focus on arrival; never on a phone, where it would raise the
+  // keyboard uninvited. The router focuses the heading after mount, so this waits two frames and only takes the
+  // focus from the heading (or nothing), never from something he has already moved to.
+  if (matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    requestAnimationFrame(() => requestAnimationFrame(() => {
+      const a = document.activeElement;
+      if (alive && input.isConnected && (!a || a === document.body || a.tagName === 'H1')) input.focus({ preventScroll: true });
+    }));
+  }
 
   // warm the other sections while the phone is idle, so the first search is instant
   const idle = /** @type {any} */ (globalThis).requestIdleCallback || ((/** @type {() => void} */ f) => setTimeout(f, 400));
